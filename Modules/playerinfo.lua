@@ -28,7 +28,7 @@ function render(deltaTime)
     local player_x,player_y,player_z = player.position()
     local block_x,block_y,block_z = player.selectedPos()
     local biome = dimension.getBiome(player_x,player_y,player_z)
-    local biomeName = "No biome"
+    local biomeName = "Unknown"
     local block = dimension.getBlock(block_x,block_y,block_z)
     local blockId = block.id
     local blockData = block.data
