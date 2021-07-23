@@ -59,12 +59,20 @@ function render(deltaTime)
     gfx.color(0,0,0,0)
     gfx.rect(module_x, module_y, module_size*150, module_size*63)
 
+    
     gfx.color(255, 255, 255)
     gfx.text(module_x - 1, module_y + module_size*1, " X: " .. player_x, module_size)
     
     gfx.text(module_x - 1, module_y + module_size*10, " Y: " .. player_y, module_size)
 
     gfx.text(module_x - 1, module_y + module_size*19, " Z: " .. player_z, module_size)
+    
+    gfx.text(module_x - 1, module_y + module_size*34, " H: " .. health, module_size)
+    
+    gfx.text(module_x - 1, module_y + module_size*43, " F: " .. food, module_size)
+
+    gfx.text(module_x - 1, module_y + module_size*52, " S: " .. saturation, module_size)
+    
 
     gfx.text(module_x + module_size*40, module_y + module_size*1, " Player: " .. name, module_size)
 
@@ -77,11 +85,4 @@ function render(deltaTime)
     gfx.text(module_x + module_size*40, module_y + module_size*43, " Facing Block ID: " .. blockId, module_size)
     
     gfx.text(module_x + module_size*40, module_y + module_size*52, " Facing Block Data: " .. blockData, module_size)
-
-
-    gfx.text(module_x - 1, module_y + module_size*34, " H: " .. health, module_size)
-    
-    gfx.text(module_x - 1, module_y + module_size*43, " F: " .. food, module_size)
-
-    gfx.text(module_x - 1, module_y + module_size*52, " S: " .. saturation, module_size)
 end
