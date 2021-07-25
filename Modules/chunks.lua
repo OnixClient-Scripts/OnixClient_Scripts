@@ -13,7 +13,6 @@ function update(deltaTime)
 end
 
 
-
 function render(deltaTime)
 
     local x,y,z = player.position()
