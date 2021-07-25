@@ -1,3 +1,19 @@
+name = "ChunkInfo"
+description = "Chunk info"
+
+--[[
+    Chunk info Module Script
+    
+    made by Onix86
+    thanks for ItzHugo for help
+]]
+
+function update(deltaTime)
+    
+end
+
+
+
 function render(deltaTime)
 
     local x,y,z = player.position()
