@@ -24,18 +24,21 @@ end
 
 function render(deltaTime)
     local inventory = player.inventory()
-    local potCount = 0
+    local arrowCount = 0
     local selected = inventory.at(inventory.selected)
     if (bowOnly == false or (selected ~= nil and (selected.id == bowId or selected.id == crossbowId))) then
         for i=1,inventory.size do
             local slot = inventory.at(i)
             if (slot ~= nil and slot.id == 301) then
-                potCount = potCount + slot.count
+                arrowCount = arrowCount + slot.count
             end
+        end
+	if (inventory.offhand() ~= nil and inventory.offhand().id == 301) then
+            arrowCount = arrowCount + inventory.offhand().count
         end
     
         local font = gui.font()
-        local text = " Arrow Count: " .. potCount
+        local text = " Arrow Count: " .. arrowCount
 
         gfx.color(0,0,0,120)
         gfx.rect(positionX, positionY, size*1.2*font.width(text), size*10)
