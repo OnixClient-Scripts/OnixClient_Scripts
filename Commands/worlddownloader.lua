@@ -1,4 +1,4 @@
-command = "WorldDownloader"
+command = "downloadworld"
 description = "WARNING, GAME WILL FREEZE OR CRASH DURING DOWNLOAD OR IMPORTr"
 help_message = "World Downloader /  WARNING, GAME WILL FREEZE OR CRASH DURING DOWNLOAD OR IMPORT"
 
