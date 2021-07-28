@@ -1,9 +1,18 @@
-command = "download"
-help_message = "download world WARNING, GAME WILL FREEZE OR CRASH DURING DOWNLOAD OR IMPORT"
+command = "WorldDownloader"
+description = "WARNING, GAME WILL FREEZE OR CRASH DURING DOWNLOAD OR IMPORTr"
+help_message = "World Downloader /  WARNING, GAME WILL FREEZE OR CRASH DURING DOWNLOAD OR IMPORT"
+
+--[[
+    World Downloader Module Script
+    
+    made by Onix86
+
+============== WARNING ==============
+GAME WILL FREEZE OR CRASH DURING DOWNLOAD OR IMPORT
+]]
+
 
 function execute(arguments)
-
-
 
     local file = io.open("import.mcfunction", "w")
     io.output(file)
