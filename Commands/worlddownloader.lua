@@ -7,8 +7,8 @@ help_message = "World Downloader /  WARNING, GAME WILL FREEZE OR CRASH DURING DO
     
     made by Onix86
 
-============== WARNING ==============
-GAME WILL FREEZE OR CRASH DURING DOWNLOAD OR IMPORT
+    ============== WARNING ==============
+    GAME WILL FREEZE OR CRASH DURING DOWNLOAD OR IMPORT
 ]]
 
 
