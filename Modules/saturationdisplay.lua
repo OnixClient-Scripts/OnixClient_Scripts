@@ -1,6 +1,12 @@
 name = "Saturation display"
 description = "gives the amout of saturation"
 
+--[[
+    Saturation Display Module Script
+	
+	made by MCBE Craft
+]]
+
 positionX = 401
 positionY = 285
 imagePathFull = "hunger_full.png"
