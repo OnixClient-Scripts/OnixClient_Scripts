@@ -7,9 +7,10 @@ description = "shows a map of blocks around you"
 	made by MCBE Craft
 ]]
 
-positionX = 585
-positionY = 290
+positionX = 575
+positionY = 50
 size = 10
+opacity = 3
 
 function update(deltaTime)
 
@@ -27,7 +28,7 @@ function render(deltaTime)
     local ez = sz + (2 * size)
 
 
-    gfx.color(255,255,255, math.floor(255 / size * 2))
+    gfx.color(255,255,255, math.floor(255 / size * opacity))
     for px=sx,ex do
         for pz=sz,ez do
             local highest = sy - 1
