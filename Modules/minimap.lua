@@ -2,7 +2,7 @@ name = "minimap"
 description = "shows a map of blocks around you"
 
 --[[
-    Arrow Counter Module Script
+    Minimap Module Script
 	
 	made by MCBE Craft
 ]]
