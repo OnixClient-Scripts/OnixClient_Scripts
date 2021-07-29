@@ -7,8 +7,8 @@ description = "shows a map of blocks around you"
 	made by MCBE Craft
 ]]
 
-positionX = 100
-positionY = 100
+positionX = 585
+positionY = 290
 size = 10
 
 function update(deltaTime)
