@@ -1,6 +1,12 @@
 name = "Arrow Counter"
 description = "gives the amout of arrow"
 
+--[[
+    Arrow Counter Module Script
+	
+	made by MCBE Craft
+]]
+
 positionX = 5
 positionY = 210
 imagePath = "arrow.png"
