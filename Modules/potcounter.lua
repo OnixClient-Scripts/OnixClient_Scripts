@@ -11,7 +11,6 @@ description = "gives the amout of healing pots"
 positionX = 90
 positionY = 10
 size = 1
-imagePath = "pot.png"
 
 function update(deltaTime)
     
@@ -23,7 +22,7 @@ function render(deltaTime)
     local potCount = 0
     for i=1,inventory.size do
         local slot = inventory.at(i)
-        if (slot ~= nil and slot.id == 561) then
+        if (slot ~= nil and slot.id == 551) then
             potCount = potCount + slot.count
         end
     end
@@ -36,5 +35,5 @@ function render(deltaTime)
     gfx.color(255, 255, 255)
     
     gfx.text(positionX+10, positionY + 2, text, size)
-    gfx.image(positionX, positionY, size*10, size*10, imagePath)
+    gfx.texture(positionX, positionY, size*10, size*10, "textures/items/potion_bottle_splash_heal.png", 100)
 end
