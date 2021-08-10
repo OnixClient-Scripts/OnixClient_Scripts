@@ -9,11 +9,25 @@ description = "gives the amout of arrow"
 
 positionX = 5
 positionY = 210
-imagePath = "arrow.png"
+sizeX = 30
+sizeY = 10
+
+Background_Color_R = 0
+Background_Color_G = 0
+Background_Color_B = 0
+Background_Color_A = 127
+
+Text_Color_R = 255
+Text_Color_G = 0
+Text_Color_B = 0
+Text_Color_A = 255
+
 bowOnly = true   --crossbows too, will be invisible if you don't hold one
 
 bowId = 300
 crossbowId = 575
+arrowId = 301
+texturePath = "textures/items/arrow"
 
 function update(deltaTime)
 
@@ -28,26 +42,28 @@ function render(deltaTime)
     if (bowOnly == false or (selected ~= nil and (selected.id == bowId or selected.id == crossbowId))) then
         for i=1,inventory.size do
             local slot = inventory.at(i)
-            if (slot ~= nil and slot.id == 301) then
+            if (slot ~= nil and slot.id == arrowId) then
                 arrowCount = arrowCount + slot.count
                 itemLocation = slot.location
             end
         end
-        if (inventory.offhand() ~= nil and inventory.offhand().id == 301) then
-            arrowCount = arrowCount + inventory.offhand().count
-            itemLocation = inventory.offhand().location
+        local offhand = inventory.offhand()
+        if (offhand ~= nil and offhand.id == arrowId) then
+            arrowCount = arrowCount + offhand.count
+            itemLocation = offhand.location
         end
-        if (itemLocation ~= "") then
+        
+        if (itemLocation ~= "" or bowOnly == false) then
             local font = gui.font()
             local text = " Arrow Count: " .. arrowCount
 
-            gfx.color(0,0,0,0)
-            gfx.rect(positionX, positionY, 12 + font.width(text), 10)
+            gfx.color(Background_Color_R,Background_Color_G,Background_Color_B,Background_Color_A)
+            sizeX = 14 + font.width(text)
+            gfx.rect(0, 0, sizeX, 10)
 
-            gfx.color(255, 0, 0)
-
-            gfx.text(positionX + 17, positionY + 3, text, 1)
-            gfx.item(positionX, positionY - 3, itemLocation)
+            gfx.color(Text_Color_R, Text_Color_G, Text_Color_B, Text_Color_A)
+            gfx.text(12, 5 - (font.height / 2), text, 1)
+            gfx.texture(0, 0, 10, 10, texturePath)
         end
         
     end
