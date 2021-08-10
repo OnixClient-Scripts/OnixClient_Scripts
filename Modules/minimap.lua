@@ -1,18 +1,31 @@
-name = "minimap"
+name = "Minimap"
 description = "shows a map of blocks around you"
 
 --[[
     Minimap Module Script
     
     made by MCBE Craft
+	improvements by Onix86
 ]]
 
+isFirstUpdate = true
 positionX = 575
 positionY = 50
+sizeX = 50
+sizeY = 50
 size = 10
+PixelBlockRatio = 4
 opacity = 3
 
 function update(deltaTime)
+	if (isFirstUpdate == true) then
+		positionX = gui.width() - ((PixelBlockRatio * size) + 20)
+		isFirstUpdate = false
+	end
+	
+	sizeX = size * PixelBlockRatio + PixelBlockRatio
+	sizeY = sizeX
+
     x,y,z = player.position()
     lx,ly,lz = player.lookingPos()
     sx = x - size
@@ -45,15 +58,19 @@ end
 
 
 function render(deltaTime)
-    gfx.color(255,255,255, math.floor(255 / size * opacity))
-    for px=sx,ex do
-        for pz=sz,ez do
-            for i=sy,array[px][pz]do
-                gfx.rect(positionX + (4 * (px - x)), positionY + (4 * (pz - z)), 4, 4)
-            end
-        end
-    end
-    gfx.color(255,0,0)
-    gfx.rect(positionX, positionY, 4, 4)
-    gfx.rect(positionX + lx - x, positionY + lz - z, 4, 4)
+	if (isFirstUpdate == false) then --fix errors that happen on reloads
+	    gfx.color(255,255,255, math.floor(255 / size * opacity))
+	    for px=sx,ex do
+			local cposx = (PixelBlockRatio * (px - x))
+	        for pz=sz,ez do
+				local cposz = (PixelBlockRatio * (pz - z))
+	            for i=sy,array[px][pz]do
+	                gfx.rect(cposx, cposz, PixelBlockRatio, PixelBlockRatio)
+	            end
+	        end
+	    end
+	    gfx.color(255,0,0)
+	    gfx.rect(0, 0, PixelBlockRatio, PixelBlockRatio)
+	    gfx.rect(lx - x, lz - z, PixelBlockRatio, PixelBlockRatio)
+	end
 end
