@@ -5,6 +5,7 @@ description = "gives the amout of arrow"
     Arrow Counter Module Script
 	
 	made by MCBE Craft
+	improvements by Onix86
 ]]
 
 positionX = 5
@@ -63,7 +64,7 @@ function render(deltaTime)
 
             gfx.color(Text_Color_R, Text_Color_G, Text_Color_B, Text_Color_A)
             gfx.text(12, 5 - (font.height / 2), text, 1)
-            gfx.texture(0, 0, 10, 10, texturePath)
+            gfx.texture(0, 0, 10, 10, texturePath, Text_Color_A)
         end
         
     end
