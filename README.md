@@ -11,3 +11,7 @@
 ```diff
 @@ Discord : Quoty0#0001, Onix86#0001, ItzHugo#0001, MCBE Craft#6545 @@
 ```
+
+```diff
+! give me your suggestions about scripts to my Discord : Quoty0#0001
+```
