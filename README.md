@@ -12,4 +12,13 @@
 
 ---
 
-<h3>How to install scripts</h3>
+<h2>How to install scripts</h2>
+
+<h3>STEP 1</h3>
+Press 'Win + R' and type in
+```diff
+explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\RoamingState\OnixClient
+```
+
+
+Make 'Scripts' folder
