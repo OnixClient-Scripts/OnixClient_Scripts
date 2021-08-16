@@ -16,9 +16,10 @@
 
 <h3>STEP 1</h3>
 Press 'Win + R' and type in
+
 ```diff
 explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\RoamingState\OnixClient
 ```
 
-
+<h3>STEP 2</h3>
 Make 'Scripts' folder
