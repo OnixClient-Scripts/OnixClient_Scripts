@@ -22,4 +22,5 @@ explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\Roamin
 ```
 
 <h3>STEP 2</h3>
+
 Make 'Scripts' folder
