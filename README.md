@@ -12,4 +12,4 @@
 
 ---
 
-<h1>How to install scripts</h1>
+<h3>How to install scripts</h3>
