@@ -39,3 +39,10 @@ Unzip files into 'Scripts' folder
 <h3>STEP 5</h3>
 
 Open 'Modules' folder and delete modules that you do not want to use
+
+<h2>Remember to put the following in chat after adding/editing scripts :</h2> 
+
+```diff
+.lua reload
+```
+This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the cmd.
