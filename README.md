@@ -24,3 +24,8 @@ explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\Roamin
 <h3>STEP 2</h3>
 
 Make 'Scripts' folder
+
+
+<h3>STEP 3</h3>
+
+[Download zip file](https://github.com/Quoty0/OnixClient_Scripts/archive/refs/heads/master.zip)
