@@ -29,3 +29,13 @@ Make 'Scripts' folder
 <h3>STEP 3</h3>
 
 [Download zip file](https://github.com/Quoty0/OnixClient_Scripts/archive/refs/heads/master.zip)
+
+
+<h3>STEP 4</h3>
+
+Unzip files into 'Scripts' folder
+
+
+<h3>STEP 5</h3>
+
+Open 'Modules' folder and delete modules that you do not want to use
