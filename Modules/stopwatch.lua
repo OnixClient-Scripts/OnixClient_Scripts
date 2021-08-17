@@ -1,10 +1,19 @@
 name = "Stopwatch"
 description = "Count time for whatever reason..."
 
+positionX = 0
+positionY = 0
+sizeX = 24
+sizeY = 10
+scale = 1
+
 START_STOP_KEY = 0x55 --or 'U'
 --[[
+    Stopwatch Module Script
+    made by Onix86
+
     if you wish to change the key you can take the key code from here
-https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+    https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 ]]--
 
 -------------script-code-------------
@@ -38,6 +47,7 @@ function doubleDigit(number)
         return math.floor(number)
     end
 end
+
 function timeText(time)
     local result = ""
     local days = 0
@@ -86,9 +96,9 @@ function render()
     local font = gui.font()
     local tw = font.width(TimerText)
 
-    gfx.color(0,0,0,255)
-    gfx.rect(gui.width() - (tw + 4), gui.height() - 10, tw + 4, 10)
+    gfx.color(0,0,0,120)
+    gfx.rect(0, 0, tw + 4, 10)
 
     gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
-    gfx.text(gui.width() - (tw + 2), (gui.height()) - (10 - (font.height / 2)), TimerText)
+    gfx.text(2, 1, TimerText)
 end
