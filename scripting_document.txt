@@ -3,7 +3,7 @@ local mcVersion = game.version
 
 
 local clientVersion = client.version
---the version of the client, example: "2.34"
+--the version of the client, example: "2.40"
 
 client.execute("setcolor 0 #2020FF")
 --runs a client command, do not incldue the prefix
