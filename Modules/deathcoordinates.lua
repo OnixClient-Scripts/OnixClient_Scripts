@@ -28,6 +28,6 @@ function render()
 	if health == 0 and check == true then
 	    print("§cYou died! Your §4death coordinates §care:")
 	    print("§8(§7" .. player_x .. " " .. player_y .. " " .. player_z .. "§8)")
-		check = false
+            check = false
     end
 end
