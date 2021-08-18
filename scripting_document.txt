@@ -19,6 +19,12 @@ local clipboardData = getClipboard()
 setClipboard("text")
 --sets the clipboard to the text
 
+ImportedLib = importLib("Thing")
+--will import the things from the Scripting/Libs/Thing.lua file
+--"Thing.lua" would work too
+--lets you have helper functions in a file that other scripts can use
+--will return false if it could not find the file
+--the functions in the file will be usable in this file basically
 
 
 local gamemode = player.gamemode()
@@ -318,9 +324,6 @@ gfx.item(positionX, positionY, itemLocation, scale)
 
 gfx.image(positionX, positionY, sizeX, sizeY, filePath)
 --will draw the image, you start from OnixClient/Scripts/Data
-
-gfx.texture(positionX, positionY, sizeX, sizeY, "textures/items/bread", opacity)
---will draw the texture, you start from the root of a texture pack, opacity is optional but goes from 0.0 to 1.0
 
 gfx.texture(positionX, positionY, sizeX, sizeY, "textures/items/bread", opacity)
 --will draw the texture, you start from the root of a texture pack, opacity is optional but goes from 0.0 to 1.0
