@@ -4,7 +4,7 @@ description = "Show player death coordinates"
 --[[
     Death Coordinate Module Script
 
-    idea from plugin from java edition Spigot plugin
+    idea from java edition Spigot plugin
     https://www.spigotmc.org/resources/deathcoordinates-1-8-1-17.43318/?__cf_chl_jschl_tk__=pmd_GGv3MB44d330IoCWzR0VJ6jJ0cp2VE.65LIw10oS7jg-1629286446-0-gqNtZGzNAhCjcnBszQi9
 
     made by Quoty0
