@@ -2,7 +2,7 @@ name = "TestLuaMod"
 description = "A simple module to test lua module stuff"
 
 
-function update(deltaTime) --about 10 times per second, DONT USE GFX inside
+function update(deltaTime) --about 10 times per second, DON'T USE GFX inside
 
 end
 
