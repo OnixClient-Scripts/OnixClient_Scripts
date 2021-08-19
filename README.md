@@ -28,12 +28,12 @@ Make 'Scripts' folder
 
 <h3>STEP 3</h3>
 
-[Download zip file](https://github.com/Quoty0/OnixClient_Scripts/archive/refs/heads/master.zip)
+Click onto the module or cmd you want from this repo.
 
 
 <h3>STEP 4</h3>
 
-Unzip files into 'Scripts' folder
+then click the ``raw`` button then do ctrl + s then save in the modules/scripts folder, make sure the file extention is .lua and **not** .txt
 
 
 <h3>STEP 5</h3>
