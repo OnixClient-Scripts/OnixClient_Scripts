@@ -36,10 +36,6 @@ Click onto the module or cmd you want from this repo.
 then click the ``raw`` button then do ctrl + s then save in the modules/scripts folder, make sure the file extention is .lua and **not** .txt
 
 
-<h3>STEP 5</h3>
-
-Open 'Modules' folder and delete modules that you do not want to use
-
 <h2>Remember to put the following in chat after adding/editing scripts :</h2> 
 
 ```diff
