@@ -1,7 +1,7 @@
 name = "DeathCoordinates"
 description = "Show player death coordinates"
 
-waypoint_style = 3
+waypoint_style = 1
 
 --[[
     Death Coordinate Module Script
