@@ -9,21 +9,21 @@ description = "shows a map of blocks around you"
 ]]
 
 isFirstUpdate = true
-positionX = 575
-positionY = 50
-sizeX = 50
-sizeY = 50
+positionX = 500
+positionY = 25
+sizeX = 100
+sizeY = 100
 size = 10
 PixelBlockRatio = 4
 opacity = 3
 
 function update(deltaTime)
 	if (isFirstUpdate == true) then
-		positionX = gui.width() - ((PixelBlockRatio * size) + 20)
+		positionX = gui.width() - ((PixelBlockRatio * size) + 75)
 		isFirstUpdate = false
 	end
 	
-	sizeX = size * PixelBlockRatio + PixelBlockRatio
+	sizeX = (size * PixelBlockRatio + PixelBlockRatio) * 2
 	sizeY = sizeX
 
     x,y,z = player.position()
@@ -65,12 +65,12 @@ function render(deltaTime)
 	        for pz=sz,ez do
 				local cposz = (PixelBlockRatio * (pz - z))
 	            for i=sy,array[px][pz]do
-	                gfx.rect(cposx, cposz, PixelBlockRatio, PixelBlockRatio)
+	                gfx.rect(cposx + sizeX / 2 - PixelBlockRatio / 2, cposz + sizeY / 2 - PixelBlockRatio / 2, PixelBlockRatio, PixelBlockRatio)
 	            end
 	        end
 	    end
 	    gfx.color(255,0,0)
-	    gfx.rect(0, 0, PixelBlockRatio, PixelBlockRatio)
-	    gfx.rect(lx - x, lz - z, PixelBlockRatio, PixelBlockRatio)
+	    gfx.rect(sizeX / 2 - PixelBlockRatio / 2, sizeY / 2 - PixelBlockRatio / 2, PixelBlockRatio, PixelBlockRatio)
+	    gfx.rect(lx - x + sizeX / 2 - PixelBlockRatio / 2, lz - z + sizeY / 2 - PixelBlockRatio / 2, PixelBlockRatio, PixelBlockRatio)
 	end
 end
