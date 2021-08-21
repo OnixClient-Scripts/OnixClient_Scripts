@@ -43,16 +43,16 @@ function render()
 	    print("§8(§7" .. player_x .. " " .. player_y .. " " .. player_z .. "§8)")
 		check = false
         if waypoint_style > 0 then
-			if waypoint_style == 1 then
-			    client.execute("waypoint remove Death")
-			    client.execute("waypoint add Death " .. player_x .. " " .. player_y .. " " .. player_z)
-		    elseif waypoint_style == 2 then
-			    client.execute("waypoint add \"Death " .. current_time .. "\" " .. player_x .. " " .. player_y .. " " .. player_z)
-			elseif waypoint_style == 3 then
-			    client.execute("waypoint add \"" .. current_time .."\" " .. player_x .. " " .. player_y .. " " .. player_z)
-			else
-			    waypoint_style = 1
-			end
+	    if waypoint_style == 1 then
+	        client.execute("waypoint remove Death")
+	        client.execute("waypoint add Death " .. player_x .. " " .. player_y .. " " .. player_z)
+            elseif waypoint_style == 2 then
+                client.execute("waypoint add \"Death " .. current_time .. "\" " .. player_x .. " " .. player_y .. " " .. player_z)
+            elseif waypoint_style == 3 then
+                client.execute("waypoint add \"" .. current_time .."\" " .. player_x .. " " .. player_y .. " " .. player_z)
+            else
+                waypoint_style = 1
+            end
         end
     end
 end
