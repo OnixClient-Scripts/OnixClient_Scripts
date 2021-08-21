@@ -25,7 +25,7 @@ function render(deltaTime)
     positionX = gui.width() / 2 + 80
     positionY = gui.height()  - 50
 
-    if (player.gamemode() ~= 1 and gui.mouseGrabbed() == true) then
+    if (player.gamemode() ~= 1 and gui.mouseGrabbed() == false) then
         local attributeList = player.attributes()
         local saturation = math.floor(attributeList.name("minecraft:player.saturation").value)
         for i = 0, 9 do
