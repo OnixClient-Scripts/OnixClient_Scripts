@@ -3,7 +3,7 @@ local mcVersion = game.version
 
 
 local clientVersion = client.version
---the version of the client, example: "2.40"
+--the version of the client, example: "2.34"
 
 client.execute("setcolor 0 #2020FF")
 --runs a client command, do not incldue the prefix
@@ -32,6 +32,9 @@ local gamemode = player.gamemode()
 
 local x,y,z = player.position()
 --returns xyz player position
+
+local yaw, pitch = player.rotation()
+--returns camera rotation
 
 local name = player.name()
 --returns the player's name
