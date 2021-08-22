@@ -20,7 +20,7 @@ end
 
 function render(deltaTime)
 
-    if (gui.mouseGrabbed() == true) then
+    if (gui.mouseGrabbed() == false then
         local inventory = player.inventory()
         local offhandItem = inventory.offhand()
         if (offhandItem ~= nil) then
