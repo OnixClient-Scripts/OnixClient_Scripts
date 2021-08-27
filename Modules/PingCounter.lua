@@ -1,24 +1,38 @@
 name = "Ping Display"
 description = "tries its best to show your ping"
 
-hide = false
-
 TextColor = { r=255, g=255, b=255, a=255 }
-BackColor = { r=0, g=0, b=0, a=0 }
+BackColor = { r=0, g=0, b=0, a=127 }
 
-positionX = 926
-positionY = 1
+positionX = 65
+positionY = 2
 sizeX = 35
 sizeY = 10
 
-PingDelay = 2000
+PingDelay = 250 --in ms, you will need to restart the LuaPingHelper.exe for it to apply
+
+--[[
+for this to work you will need to execute the LuaPingHelper.exe file
+(so it can do the ping and tell the script of its results)
+you can download it here
+
+https://www.mediafire.com/file/37wm885qwyk3bjj/LuaPingHelper.exe/file
+
+]]--
+
+
+
+-----script-code-----
+
+
 
 DelayFile = io.open("PingCounterDelay.txt", "w")
 io.output(DelayFile)
 io.write(PingDelay)
 io.close(DelayFile)
 
-CurrentPing = -1
+
+CurrentPing = -69
 
 PingState = 0
 function update()
@@ -52,14 +66,13 @@ function update()
 end
 
 function render()
-    if(hide == false) then
-        local text = CurrentPing .. "ms"
-        local font = gui.font()
+    local text = CurrentPing .. "ms"
+    local font = gui.font()
 
-        gfx.color(BackColor.r, BackColor.g, BackColor.b, BackColor.a)
-        gfx.rect(0,0,sizeX,sizeY)
+    gfx.color(BackColor.r, BackColor.g, BackColor.b, BackColor.a)
+    gfx.rect(0,0,sizeX,sizeY)
 
-        gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
-        gfx.text((sizeX / 2) - (font.width(text) / 2), 5 - (font.height / 2), text, 1)
-    end
+    gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
+    gfx.text((sizeX / 2) - (font.width(text) / 2), 5 - (font.height / 2), text, 1)
+
 end
