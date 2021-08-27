@@ -4,7 +4,7 @@ description = "tries its best to show your ping"
 TextColor = { r=255, g=255, b=255, a=255 }
 BackColor = { r=0, g=0, b=0, a=127 }
 
-positionX = 65
+positionX = 100
 positionY = 2
 sizeX = 35
 sizeY = 10
