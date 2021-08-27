@@ -25,7 +25,7 @@ waypoint_message = true
 check = false
 
 function update()
-    
+
 end
 
 function render()
@@ -41,7 +41,7 @@ function render()
 	if health == 0 and check == true then
 	    print("§cYou died! Your §4death coordinates §care:")
 	    print("§8(§7" .. player_x .. " " .. player_y .. " " .. player_z .. "§8)")
-		check = false
+            check = false
         if waypoint_style > 0 then
             if waypoint_style == 1 then
                 client.execute("waypoint remove Death")
@@ -49,19 +49,19 @@ function render()
                     if waypoint_message == true then
                         print("§eWaypoint §aDeath §eadded")
                     end
-                    elseif waypoint_style == 2 then
-                        client.execute("waypoint add \"Death " .. current_time .. "\" " .. player_x .. " " .. player_y .. " " .. player_z)
-                            if waypoint_message == true then
-                                print("§eWaypoint §aDeath " .. current_time .. " §eadded")
-                            end
-                        elseif waypoint_style == 3 then
-                            client.execute("waypoint add \"" .. current_time .."\" " .. player_x .. " " .. player_y .. " " .. player_z)
-                            if waypoint_message == true then
-                                print("§eWaypoint §a" .. current_time .. " §eadded")
-                            end
-                    else
-                        waypoint_style = 1
-                    end
+            elseif waypoint_style == 2 then
+                client.execute("waypoint add \"Death " .. current_time .. "\" " .. player_x .. " " .. player_y .. " " .. player_z)
+                if waypoint_message == true then
+                    print("§eWaypoint §aDeath " .. current_time .. " §eadded")
+                end
+            elseif waypoint_style == 3 then
+                client.execute("waypoint add \"" .. current_time .."\" " .. player_x .. " " .. player_y .. " " .. player_z)
+                if waypoint_message == true then
+                    print("§eWaypoint §a" .. current_time .. " §eadded")
+                end
+            else
+                waypoint_style = 1
+            end
         end
     end
 end
