@@ -1,3 +1,5 @@
+--library used to read color file, check .color command
+
 function readFile(path)
     local lines = io.lines(path)
     local result = {}
