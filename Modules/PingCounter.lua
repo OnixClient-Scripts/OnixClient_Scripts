@@ -1,27 +1,44 @@
 name = "Ping Display"
 description = "tries its best to show your ping"
 
-hide = false
-
 TextColor = { r=255, g=255, b=255, a=255 }
 BackColor = { r=0, g=0, b=0, a=0 }
 
-positionX = 926
-positionY = 1
+brackets = true
+
+if (brackets == true) then
+    bracketLeft = "["
+    bracketRight = "]"
+end
+
+if (brackets == false) then
+    bracketLeft = " "
+    bracketRight = " "
+end
+
+positionX = 100
+positionY = 2
 sizeX = 35
 sizeY = 10
 
-PingDelay = 2000
+PingDelay = 250
 
 DelayFile = io.open("PingCounterDelay.txt", "w")
 io.output(DelayFile)
 io.write(PingDelay)
 io.close(DelayFile)
 
-CurrentPing = -1
+
+CurrentPing = -69
 
 PingState = 0
 function update()
+	if (server.ipConnected() == "") then
+		PingState = 0
+		CurrentPing = -1
+		return nil
+	end
+
     if (PingState == 0) then
         file = 0
         while (file == 0) do file = io.open("PingCounterInfo.txt", "w") end
@@ -52,14 +69,13 @@ function update()
 end
 
 function render()
-    if(hide == false) then
-        local text = CurrentPing .. "ms"
-        local font = gui.font()
+    local text = bracketLeft .. CurrentPing .. "ms" .. bracketRight
+    local font = gui.font()
 
-        gfx.color(BackColor.r, BackColor.g, BackColor.b, BackColor.a)
-        gfx.rect(0,0,sizeX,sizeY)
+    gfx.color(BackColor.r, BackColor.g, BackColor.b, BackColor.a)
+    gfx.rect(0,0,sizeX,sizeY)
 
-        gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
-        gfx.text((sizeX / 2) - (font.width(text) / 2), 5 - (font.height / 2), text, 1)
-    end
+    gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
+    gfx.text((sizeX / 2) - (font.width(text) / 2), 5 - (font.height / 2), text, 1)
+
 end
