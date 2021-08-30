@@ -62,14 +62,14 @@ function render(deltaTime)
     local b = 1
     for a=1,9 do
         if (amountOre[a] > 0) then
-            gfx.item(positionX + 1, positionY + b * 10 + 1, pathOre[a], 0.625)
+            gfx.item(1, b * 10 + 1, pathOre[a], 0.625)
             gfx.text(12, b * 10 + 1, ores[a] .. ": " .. amountOre[a])
             b = b + 1
         end
     end
     for a=1,9 do
         if (amountRessource[a] > 0) then
-            gfx.item(positionX + 1, positionY + b * 10 + 1, pathRessource[a], 0.625)
+            gfx.item(1, b * 10 + 1, pathRessource[a], 0.625)
             gfx.text(12, b * 10 + 1, ores[a] .. ": " .. amountRessource[a])
             b = b + 1
         end
