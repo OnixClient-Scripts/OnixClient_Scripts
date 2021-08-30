@@ -1,7 +1,7 @@
 name = "screendarker"
 description = "Make screen darker (make a black dimm on your screen)"
 
-[[--
+--[[
     ScreenDarker Module Script
 
     made by hugo
