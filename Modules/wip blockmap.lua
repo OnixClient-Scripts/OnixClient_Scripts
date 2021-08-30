@@ -12,8 +12,6 @@ description = "shows a map of blocks around you (some textures hasn't been setup
 ]]
 
 ImportedLib = importLib("translator.lua")
-ImportedLib2 = importLib("readfile.lua")
-color = readFile("color.txt")
 
 isFirstUpdate = true
 positionX = 500
@@ -25,10 +23,9 @@ PixelBlockRatio = 4
 opacity = 3
 
 --player and border color
+r, g, b, a = 255, 0, 0, 255
 
 function update(deltaTime)
-	color = {}
-	color = readFile("color.txt")
 	if (isFirstUpdate == true) then
 		isFirstUpdate = false
 	end
@@ -75,7 +72,6 @@ end
 
 function render(deltaTime)
 	if (isFirstUpdate == false) then --fix errors that happen on reloads
-		gfx.color(255,255,255, math.floor(255 / size * opacity))
 		for px=sx,ex do
 			local cposx = (PixelBlockRatio * (px - x))
 			for pz=sz,ez do
@@ -85,7 +81,7 @@ function render(deltaTime)
 				end
 			end
 		end
-		gfx.color(color[1], color[2], color[3], color[4])
+		gfx.color(r, g, b, a)
 
 
         --wip player indicator
