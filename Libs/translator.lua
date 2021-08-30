@@ -1,4 +1,4 @@
---library to translate minecraft block name to textures
+--library to translate minecraft block name to textures, used for the blockmap
 
 wood = {"oak", "spruce", "birch", "jungle", "acacia", "big_oak"}
 
