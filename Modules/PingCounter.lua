@@ -4,6 +4,9 @@ description = "tries its best to show your ping"
 TextColor = { r=255, g=255, b=255, a=255 }
 BackColor = { r=0, g=0, b=0, a=127 }
 
+brackets = false
+
+
 positionX = 100
 positionY = 2
 sizeX = 35
@@ -70,7 +73,12 @@ function update()
 end
 
 function render()
-    local text = CurrentPing .. "ms"
+    local text = ""
+	if brackets == true then
+		text = "[" .. CurrentPing .. "ms" .. "]"
+	else
+		text = CurrentPing .. "ms"
+	end
     local font = gui.font()
 
     gfx.color(BackColor.r, BackColor.g, BackColor.b, BackColor.a)
@@ -78,5 +86,4 @@ function render()
 
     gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
     gfx.text((sizeX / 2) - (font.width(text) / 2), 5 - (font.height / 2), text, 1)
-
 end
