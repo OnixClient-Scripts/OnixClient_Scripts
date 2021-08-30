@@ -26,7 +26,7 @@ function render(deltaTime)
         if (offhandItem ~= nil) then
             gfx.texture(0, 0, sizeX, sizeY, path, opacity)
             gfx.item(3, 3, offhandItem.location, 1)
-            if (offhandItem.count ~= 0 and player.gamemode() ~= 1) then
+            if (offhandItem.count ~= 1 and player.gamemode() ~= 1) then
                 gfx.color(255,255,255, math.floor(255 * opacity))
                 if (offhandItem.count >= 10) then
                     gfx.text(8, 11, offhandItem.count, 1)
