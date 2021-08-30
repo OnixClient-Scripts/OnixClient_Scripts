@@ -24,8 +24,6 @@ https://www.mediafire.com/file/37wm885qwyk3bjj/LuaPingHelper.exe/file
 
 -----script-code-----
 
-
-
 DelayFile = io.open("PingCounterDelay.txt", "w")
 io.output(DelayFile)
 io.write(PingDelay)
@@ -36,6 +34,12 @@ CurrentPing = -69
 
 PingState = 0
 function update()
+	if (server.ipConnected() == "") then
+		PingState = 0
+		CurrentPing = -1
+		return nil
+	end
+	
     if (PingState == 0) then
         file = 0
         while (file == 0) do file = io.open("PingCounterInfo.txt", "w") end
