@@ -83,16 +83,18 @@ function render(deltaTime)
 		end
 		gfx.color(r, g, b, a)
 
+		--player indicator
+        	local a = math.cos(math.rad(yaw-120+90))
+        	local b = math.sin(math.rad(yaw-120+90))
+        	local c = math.cos(math.rad(yaw+120+90))
+        	local d = math.sin(math.rad(yaw+120+90))
+        	local e = math.cos(math.rad(yaw+90))
+        	local f = math.sin(math.rad(yaw+90))
 
-        --wip player indicator
-		--player position square
-		gfx.rect(sizeX / 2 - PixelBlockRatio / 2, sizeY / 2 - PixelBlockRatio / 2, PixelBlockRatio, PixelBlockRatio)
-		--looking position square
-		--gfx.rect(lx - x + sizeX / 2 - PixelBlockRatio / 2, lz - z + sizeY / 2 - PixelBlockRatio / 2, PixelBlockRatio, PixelBlockRatio)
-		--angle position square
-		gfx.rect(math.cos(math.rad(yaw + 90)) * 10 + sizeX / 2 - PixelBlockRatio / 2, math.sin(math.rad(yaw + 90)) * 10 + sizeY / 2 - PixelBlockRatio / 2, PixelBlockRatio, PixelBlockRatio)
-		--player indicator triangle not really working
-		--gfx.triangle(math.cos(math.rad(yaw + 180)) * 10 + sizeX / 2, math.sin(math.rad(yaw + 180)) * 10 + sizeY / 2, math.cos(math.rad(yaw + 90)) * 20 + sizeX / 2, math.sin(math.rad(yaw + 90)) * 20 + sizeY / 2, math.cos(math.rad(yaw - 45)) * 10 + sizeX / 2, math.sin(math.rad(yaw - 45)) * 10 + sizeY / 2)
+        	local halfSizeX = sizeX / 2
+        	local halfSizeY = sizeY / 2
+        	local triangleSize = 3
+        	gfx.triangle(a * triangleSize + halfSizeX, b * triangleSize + halfSizeY, c * triangleSize + halfSizeX, d * triangleSize + halfSizeY, e * (triangleSize*1.5) + halfSizeX, f * (triangleSize*1.5) + halfSizeY)
 
 		--border
 		gfx.rect(0, 0, sizeX, 2)
