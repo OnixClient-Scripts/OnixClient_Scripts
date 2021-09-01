@@ -1,6 +1,7 @@
---library to translate minecraft block name to textures, used for the blockmap
+--library to translate minecraft block name to textures
 
 wood = {"oak", "spruce", "birch", "jungle", "acacia", "big_oak"}
+colors = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"}
 
 function translate(block, id)
     
@@ -10,8 +11,22 @@ function translate(block, id)
         return "blocks/water_placeholder"
     elseif (block == "leaves" or block == "leaves2") then
         return "blocks/leaves_oak_carried"
-    elseif (block == "bed" or block == "wool") then
-        return "blocks/wool_colored_white"
+    elseif (block == "bed" or block == "wool" or block == "carpet") then
+        return "blocks/wool_colored_" .. colors[id + 1]
+    elseif (block == "stained_glass" or block == "stained_glass_pane") then
+        return "blocks/glass_" .. colors[id + 1]
+    elseif (block == "concrete") then
+        return "blocks/concrete_" .. colors[id + 1]
+    elseif (block == "concretePowder") then
+        return "blocks/concrete_powder_" .. colors[id + 1]
+    elseif (block == "stained_hardened_clay") then
+        return "blocks/hardened_clay_stained_" .. colors[id + 1]
+    elseif (block == "shulker_box") then
+        return "blocks/shulker_top_" .. colors[id + 1]
+    elseif (block == "undyed_shulker_box") then
+        return "blocks/shulker_top_undyed"
+    elseif (block == "glass_pane") then
+        return "blocks/glass"
     elseif (block == "crafting_table") then
         return "blocks/crafting_table_top"
     elseif (block == "cactus") then
@@ -43,14 +58,8 @@ function translate(block, id)
     elseif (block == "chest" or block == "trapped_chest") then
         return "blocks/chest_front"
     elseif (block == "planks" or block == "fence") then
-        while (id > 5) do
-            id = id - 6
-        end
         return "blocks/planks_" .. wood[id + 1]
     elseif (block == "log") then
-        while (id > 5) do
-            id = id - 6
-        end
         return "blocks/log_" .. wood[id + 1] .. "_top"
     elseif (block == "grass_path") then
         return "blocks/grass_path_top"
@@ -58,15 +67,18 @@ function translate(block, id)
         return "blocks/planks_oak"
     elseif (string.find(block, "_slab") ~= nil) then
         if (string.find(block, "wooden_") ~= nil) then
-            while (id > 5) do
-                id = id - 6
-            end
             return "blocks/planks_" .. wood[id + 1]
         else
             return "blocks/" .. string.gsub(block, "_stairs", "")
         end
     elseif (string.find(block, "mossy_cobblestone") ~= nil) then
         return "blocks/cobblestone_mossy"
+    elseif (string.find(block, "_glazed_terracotta") ~= nil) then
+        for i = 1, 16, 1 do
+            if (string.find(block, colors[i]) ~= nil) then
+                return "blocks/glazed_terracotta_" .. colors[i]
+            end
+        end
     elseif (string.find(block, "_repeater") ~= nil) then
         return "blocks/repeater_off"
     elseif (string.find(block, "_comparator") ~= nil) then
