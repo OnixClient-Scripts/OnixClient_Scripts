@@ -23,6 +23,8 @@ local globalPath = "%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe
 local globalMesg = "§l[§1Onix§fClient]§r Global directory copied to clipboard!"
 local globalNotif = "Global directory copied to clipboard!"
 
+local helpMesg = "§l[§1Onix§fClient]§r Valid values are config, script, screenshot, crosshair and pack"
+
 -- Script Start
 
 function findSpace(str)
@@ -46,159 +48,103 @@ function execute(arguments)
 
     for index, value in pairs(sortedArgs) do
 
-            --Configs
+        --Configs
 
-        if (value == "config") then
-            echo("Config")
+        if
+            (
+                value == "config"
+                or value == "configs"
+                or value == "Config"
+                or value == "Configs"
+            ) then
             setClipboard(configPath)
             client.notification(configNotif)
             print(configMesg)
-        else if (value == "configs") then
-            setClipboard(configPath)
-            client.notification(configNotif)
-            print(configMesg)
-        else if (value == "Configs") then
-            setClipboard(configPath)
-            client.notification(configNotif)
-            print(configMesg)
 
-            --Scripts
+        --Scripts
 
-        else if (value == "script") then
-            setClipboard(scriptPath)
-            client.notification(scriptNotif)
-            print(scriptMesg)
-        else if (value == "scripts") then
-            setClipboard(scriptPath)
-            client.notification(scriptNotif)
-            print(scriptMesg)
-        else if (value == "Script") then
-            setClipboard(scriptPath)
-            client.notification(scriptNotif)
-            print(scriptMesg)
-        else if (value == "Scripts") then
+        else if
+            (
+                value == "script"
+                or value == "scripts"
+                or value == "Script"
+                or value == "Scripts"
+            ) then
             setClipboard(scriptPath)
             client.notification(scriptNotif)
             print(scriptMesg)
 
-            --Screenshots
+        --Screenshots
 
-        else if (value == "screenshot") then
-            setClipboard(screenshotPath)
-            client.notification(screenshotNotif)
-            print(screenshotMesg)
-        else if (value == "screenshots") then
-            setClipboard(screenshotPath)
-            client.notification(screenshotNotif)
-            print(screenshotMesg)
-        else if (value == "Screenshot") then
-            setClipboard(screenshotPath)
-            client.notification(screenshotNotif)
-            print(screenshotMesg)
-        else if (value == "Screenshots") then
+        else if
+            (
+                value == "screenshot"
+                or value == "screenshots"
+                or value == "Screenshot"
+                or value == "Screenshots"
+            ) then
             setClipboard(screenshotPath)
             client.notification(screenshotNotif)
             print(screenshotMesg)
 
-            --Crosshairs
+        --Crosshairs
 
-        else if (value == "crosshair") then
-            setClipboard(crosshairPath)
-            client.notification(crosshairNotif)
-            print(crosshairMesg)
-        else if (value == "crosshairs") then
-            setClipboard(crosshairPath)
-            client.notification(crosshairNotif)
-            print(crosshairMesg)
-        else if (value == "Crosshair") then
-            setClipboard(crosshairPath)
-            client.notification(crosshairNotif)
-            print(crosshairMesg)
-        else if (value == "Crosshairs") then
+        else if
+            (
+                value == "crosshair" 
+                or value == "crosshairs" 
+                or value == "Crosshair" 
+                or value == "Crosshairs"
+            ) then
             setClipboard(crosshairPath)
             client.notification(crosshairNotif)
             print(crosshairMesg)
 
-            --Packs
+        --Packs
 
-        else if (value == "pack") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "packs") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "Pack") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "Packs") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "tpack") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "tpacks") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "texture pack") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "texture packs") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "Texture pack") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "Texture Pack") then
-            setClipboard(packPath)
-            client.notification(packNotif)
-            print(packMesg)
-        else if (value == "Texture packs") then
+        else if
+            (
+                value == "pack"
+                or value == "packs"
+                or value == "texture pack"
+                or value == "texture packs"
+                or value == "tpack"
+                or value == "tpacks"
+                or value == "Pack"
+                or value == "Packs"
+                or value == "Texture Pack"
+                or value == "Texture Packs"
+                or value == "Tpack"
+                or value == "Tpacks"
+            ) then
             setClipboard(packPath)
             client.notification(packNotif)
             print(packMesg)
 
-            --Global
+        --Global
 
-        else if (value == "global") then
+        else if
+            (
+                value == "global"
+                or value == "Global"
+            ) then
             setClipboard(globalPath)
             client.notification(globalNotif)
             print(globalMesg)
 
-            --Other
+        else if
+            (
+                value == "help"
+                or value == "Help"
+            ) then
+            print(helpMesg)
+
+        --Other
 
         else
             client.notification("Invalid value")
             print("§l[§1Onix§fClient]§r Invalid Value")
 
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
-        end
         end
         end
         end
