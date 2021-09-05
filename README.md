@@ -3,7 +3,7 @@
 [<h2>Onix Client Discord</h2>](https://discord.gg/onixclient)
 
 ```diff
-- You need Onix Client to use these scripts
+- You need Onix Client (Scripting Beta) to use these scripts
 ```
 
 ```diff
@@ -27,7 +27,7 @@ explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\Roamin
 
 <h3>STEP 2</h3>
 
-Make 'Scripts' folder
+Make 'Scripts' folder and send in chat ``.lua reload`` to create sub folders
 
 
 <h3>STEP 3</h3>
