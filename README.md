@@ -141,6 +141,7 @@ Shows the saturation
 [<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/scope.lua)
 Adds a scope do bows and crossbos
 You need [scope.png](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png) for this module script
+<img src="https://cdn.discordapp.com/attachments/867187675605237795/882605385603776512/Minecraft_2021-09-01_14-37-28.mp4">
 
 [<h2>Screen Darker</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/screendarker.lua)
 Make screen darker (make a black dimm on your screen)
