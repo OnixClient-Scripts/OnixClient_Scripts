@@ -105,7 +105,7 @@ Shows the amount of arrow
 Gives you the current chunk's chunk pos and your position inside of it
 
 [<h2>Coordinate Copy</h2>]()
-Copy coordinates by pressing key ('O' and 'J' for default}
+Copy coordinates by pressing key ('O' and 'J' for default)
 
 [<h2>Death Coordinates</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/deathcoordinates.lua)
 Shows player death coordinates
