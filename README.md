@@ -37,7 +37,7 @@ Click onto the module or cmd you want from this repo.
 
 <h3>STEP 4</h3>
 
-then click the ``raw`` button then do ctrl + s then save in the modules/scripts folder, make sure the file extention is .lua and **not** .txt
+then click the ``raw`` button then do ctrl + s then save in the modules/scripts folder, make sure the file extention is .lua and **not** .txt as it is .txt by default so you're gonna need to change it for the scripts to work.
 
 
 <h2>Remember to put the following in chat after adding/editing scripts :</h2> 
@@ -45,7 +45,7 @@ then click the ``raw`` button then do ctrl + s then save in the modules/scripts 
 ```diff
 .lua reload
 ```
-This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the cmd.
+This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the cmd in chat.
 
 ​
 
