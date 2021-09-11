@@ -4,7 +4,7 @@ description = "customizable toggle sprint"
 --[[
     Toggle sprint indicator
 
-    make sure to have the tsData.txt file in the data folder and the sprintCommand.lua in the command folder
+    make sure to have the tsData.txt file in the data folder and the sprintCommand.lua in the command folder and readfile.lua library in the library folder
     in  tsData.txt file, first line is the text that will be displayed as text in [text: (Toggled)]
     second, third, fourth and fifth are the rgba value codes
     to use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text
