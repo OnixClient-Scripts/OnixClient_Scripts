@@ -3,7 +3,7 @@ help_message = "changes toggle sprint indicator data (text or color)"
 
 --[[
     sprint command for sprint.lua module
-    needs tsData.txt and sprint.lua module to work
+    needs tsData.txt, sprint.lua module and readfile.lua library to work
     more infos in sprint.lua module
 
     by MCBE Craft
