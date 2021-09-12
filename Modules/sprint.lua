@@ -22,8 +22,8 @@ toggle_by_default = false
 --reading data file
 ImportedLib = importLib("readfile.lua")
 tsData = readFile("tsData.txt")
-not_toggled_text = "[" .. tsData[1] .. ": (Not Toggled)"
-toggled_text = "[" .. tsData[1] .. ": (Toggled)"
+not_toggled_text = "[" .. tsData[1] .. ": (Not Toggled)]"
+toggled_text = "[" .. tsData[1] .. ": (Toggled)]"
 
 color = {tsData[2], tsData[3], tsData[4], tsData[5]}
 
