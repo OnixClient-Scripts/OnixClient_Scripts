@@ -74,6 +74,14 @@ Copy coordinates by pressing key ('O' and 'J' for default)
 [<h2>Death Coordinates</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/deathcoordinates.lua)
 Shows player death coordinates
 
+waypoint_style configs
+      0: disable waypoint
+	    1 (default): make a waypoint 'Death' (overwrites the old waypoint) 
+	    2: make a waypoint 'Death [Current Time]
+      3: make a waypoint '[Current Time]'
+      ​
+      example of [Current Time]: [08/21/21 12:30:45]
+
 [<h2>Input Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/inputexample.lua)
 Example script about using input library
 
@@ -122,6 +130,12 @@ Example script about making module script
 Shows a map of blocks around you (some textures hasn't been setup yet)
 You need [translator library](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua) for this module script
 
+WARNING
+- causes massive fps drop because of all the textures it is drawing
+
+
+- needs library translator.lua or almost all block textures will be missing
+
 [<h2>Toggle Sprint Indicator</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/sprint.lua)
 Customizable toggle sprint indicator
 
@@ -140,6 +154,21 @@ to use the command, do ".ts color r g b a" by replacing r, g, b and a by the val
 
 [<h2>Color</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/color.lua)
 Changes module color
+
+to use
+make sure you have the readfile.lua in the lib folder
+in the module files have
+at the beginning:
+ImportedLib = importLib("readfile.lua")
+color = readFile("color.txt")
+in the update function:
+color = {}
+color = readFile("color.txt")
+for your rendering:
+gfx.color(color[5], color[6], color[7], color[8])
+gfx.rect(0, 0, sizeX, sizeY)
+gfx.color(color[1], color[2], color[3], color[4])
+gfx.text(0, 0, text)
 
 command - ``.color``
 
@@ -160,6 +189,8 @@ command - ``.inv``
 
 [<h2>Music</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/music.lua)
 Plays music in-game from resource pack
+
+you can put in ``11, 13, blocks, chirp, far, mall, mellohi, pigstep, stal, strad, wait, ward``
 
 command - ``.music``
 
@@ -186,6 +217,9 @@ command - ``.worldinfo``
 
 [<h2>Toggle Sprint Indicator Editor</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/sprintCommand.lua)
 changes toggle sprint indicator data (text or color)
+
+needs tsData.txt, sprint.lua module and readfile.lua library to work
+more infos in sprint.lua module
 
 command - ``.ts``
 
