@@ -1,4 +1,4 @@
-command = "test"
+command = "test_notif"
 help_message = "testing command"
 
 
