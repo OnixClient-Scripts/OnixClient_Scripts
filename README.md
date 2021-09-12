@@ -114,12 +114,17 @@ Shows the amout of projectile
 [<h2>Saturation Display</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/saturationdisplay.lua)
 Shows the saturation
 
+
+
+
 [<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/scope.lua)
 Adds a scope to bows and crossbows
+
 You need [scope.png](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png) for this module script
 
-[Video of the module in action here](https://youtu.be/4rMo2-1PZHs)
+Video of the module in action here
 
+https://user-images.githubusercontent.com/48370588/132985141-89ad6332-d7cb-408e-9249-473a06879c72.mp4
 
 [<h2>Screen Darker</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/screendarker.lua)
 Make screen darker (make a black dimm on your screen)
