@@ -55,42 +55,6 @@ This is because when saving/editing scripts the game won't notice that you've ma
 
 <h1>What each module/command does</h1>
 
-<h2>Commands</h2>
-
-[<h2>Color</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/color.lua)
-Changes module color
-
-[<h2>Dot</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/dot.lua)
-Send chat starts with a dot
-
-[<h2>Gamemode</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/gamemode.lua)
-Show information about player's gamemode
-
-[<h2>inv</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/inv.lua)
-Sends current inventory
-
-[<h2>Music</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/music.lua)
-Plays music in-game from resource pack
-
-[<h2>Notification Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.lua)
-Example script about using notification
-<img src="https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.png">
-
-[<h2>Pathfinder</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/pathfinder.lua)
-Copies the directories of the specified location
-
-[<h2>TestLuaCmd</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/testluacmd.lua)
-Example script about making command script
-
-[<h2>World Info</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/worldinfo.lua)
-Show information about the world
-
-​
-
----
-
-​
-
 <h2>Modules</h2>
 
 [<h2>Ping Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/PingCounter.lua)
@@ -158,6 +122,73 @@ Example script about making module script
 Shows a map of blocks around you (some textures hasn't been setup yet)
 You need [translator library](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua) for this module script
 
+[<h2>Toggle Sprint Indicator</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/sprint.lua)
+Customizable toggle sprint indicator
+
+make sure to have the tsData.txt file in the data folder and the sprintCommand.lua in the command folder and readfile.lua library in the library folder
+in  tsData.txt file, first line is the text that will be displayed as text in [text: (Toggled)]
+second, third, fourth and fifth are the rgba value codes
+to use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text
+
+​
+
+---
+
+​
+
+<h2>Commands</h2>
+
+[<h2>Color</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/color.lua)
+Changes module color
+
+command - ``.color``
+
+[<h2>Dot</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/dot.lua)
+Send chat starts with a dot
+
+command - ``.``
+
+[<h2>Gamemode</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/gamemode.lua)
+Show information about player's gamemode
+
+command - ``.gamemode``
+
+[<h2>Inv</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/inv.lua)
+Sends current inventory
+
+command - ``.inv``
+
+[<h2>Music</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/music.lua)
+Plays music in-game from resource pack
+
+command - ``.music``
+
+[<h2>Notification Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.lua)
+Example script about using notification
+<img src="https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.png">
+
+command - ``.test_notif``
+
+[<h2>Pathfinder</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/pathfinder.lua)
+Copies the directories of the specified location
+
+command - ``.path``
+
+[<h2>TestLuaCmd</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/testluacmd.lua)
+Example script about making command script
+
+command - ``.test``
+
+[<h2>World Info</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/worldinfo.lua)
+Show information about the world
+
+command - ``.worldinfo``
+
+[<h2>Toggle Sprint Indicator Editor</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/sprintCommand.lua)
+changes toggle sprint indicator data (text or color)
+
+command - ``.ts``
+
 ​
 
 ---
@@ -183,3 +214,6 @@ Library to translate minecraft block name to textures
 
 [<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png)
 Example image for scope module
+
+[<h2>tsData</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/tsData.txt)
+Data file for Toggle Sprint Indicator module
