@@ -1,5 +1,5 @@
-name = "Input Example"
-description = "Keyboard, Mouse input example module script"
+name = "World Edit Module"
+description = "Adds usable wand tool to select position 1 and 2"
 
 --[[
     World Edit Module
