@@ -64,6 +64,11 @@ local time = dimension.time()
 local isRaining = dimension.isRaining()
 --if its raining in the current dimension
 
+local blockBrightness, skyBrightness = dimension.getBrightness(x, y, z)
+-- gives you the brightness at a location
+-- block brightness is for things like torch and stuff
+-- sky is how much the sky will give its brightness
+
 dimension.sound("random.fuse", 420, 69, 86)
 --plays the minecraft sound at the coordinates --can only be minecraft sounds
 
