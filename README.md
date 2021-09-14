@@ -161,7 +161,7 @@ Make your construction easier
 
 You need [World Edit Command](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/world_edit.lua) and [weData](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/weData.txt) to use this module.
 
-[![Everything Is AWESOME](https://img.youtube.com/vi/kVMlO3lRBuA/0.jpg)](https://www.youtube.com/watch?v=kVMlO3lRBuA "Everything Is AWESOME")
+[![World Edit on Minecraft Bedrock edition with Onix Client](https://img.youtube.com/vi/kVMlO3lRBuA/0.jpg)](https://www.youtube.com/watch?v=kVMlO3lRBuA "World Edit on Minecraft Bedrock edition with Onix Client")
 
 ​
 
