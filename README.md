@@ -114,9 +114,6 @@ Shows the amout of projectile
 [<h2>Saturation Display</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/saturationdisplay.lua)
 Shows the saturation
 
-
-
-
 [<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/scope.lua)
 Adds a scope to bows and crossbows
 
@@ -149,6 +146,8 @@ WARNING
 [<h2>Toggle Sprint Indicator</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/sprint.lua)
 Customizable toggle sprint indicator
 
+
+
 make sure to have the tsData.txt file in the data folder and the sprintCommand.lua in the command folder and readfile.lua library in the library folder
 
 in  tsData.txt file, first line is the text that will be displayed as text in [text: (Toggled)]
@@ -156,6 +155,13 @@ in  tsData.txt file, first line is the text that will be displayed as text in [t
 second, third, fourth and fifth are the rgba value codes
 
 to use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text
+
+[<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/world_edit_mod.lua)
+Make your construction easier
+
+You need [World Edit Command](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/world_edit.lua) and [weData](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/weData.txt) to use this module.
+
+[![Everything Is AWESOME](https://img.youtube.com/vi/kVMlO3lRBuA/0.jpg)](https://www.youtube.com/watch?v=kVMlO3lRBuA "Everything Is AWESOME")
 
 ​
 
@@ -167,6 +173,8 @@ to use the command, do ".ts color r g b a" by replacing r, g, b and a by the val
 
 [<h2>Color</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/color.lua)
 Changes module color
+
+command - ``.color``
 
 to use
 
@@ -196,8 +204,6 @@ gfx.color(color[1], color[2], color[3], color[4])
 
 gfx.text(0, 0, text)
 
-command - ``.color``
-
 [<h2>Dot</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/dot.lua)
 Send chat starts with a dot
 
@@ -216,15 +222,16 @@ command - ``.inv``
 [<h2>Music</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/music.lua)
 Plays music in-game from resource pack
 
-you can put in ``11, 13, blocks, chirp, far, mall, mellohi, pigstep, stal, strad, wait, ward``
-
 command - ``.music``
+
+you can put in ``11, 13, blocks, chirp, far, mall, mellohi, pigstep, stal, strad, wait, ward``
 
 [<h2>Notification Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.lua)
 Example script about using notification
-<img src="https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.png">
 
 command - ``.test_notif``
+
+<img src="https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.png">
 
 [<h2>Pathfinder</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/pathfinder.lua)
 Copies the directories of the specified location
@@ -244,11 +251,30 @@ command - ``.worldinfo``
 [<h2>Toggle Sprint Indicator Editor</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/sprintCommand.lua)
 changes toggle sprint indicator data (text or color)
 
+command - ``.ts``
+
 needs tsData.txt, sprint.lua module and readfile.lua library to work
 
 more infos in sprint.lua module
 
-command - ``.ts``
+[<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/world_edit.lua)
+Make your construction easier
+
+command - ``.we``
+
+setpos1: sets the first position
+
+setpos2: sets the second position
+
+os: tells you which coordinates are selected
+
+wand: gives you the wand tool (wooden sword cuz it doesn't break blocks in creative)
+
+cut: removes the selected area
+
+clone: clones the selected area to your current position
+
+fill: fills the selected area
 
 ​
 
@@ -279,3 +305,6 @@ Example image for scope module
 
 [<h2>tsData</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/tsData.txt)
 Data file for Toggle Sprint Indicator module
+
+[<h2>weData</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/weData.txt)
+Data file for World Edit module
