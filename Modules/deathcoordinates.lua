@@ -2,7 +2,7 @@ name = "DeathCoordinates"
 description = "Show player death coordinates"
 
 waypoint_style = 1
-waypoint_message = true
+waypoint_message = false
 
 
 
@@ -11,8 +11,8 @@ waypoint_message = true
 
         waypoint_style configs
         0: disable waypoint
-	    1 (default): make a waypoint 'Death' (overwrites the old waypoint) 
-	    2: make a waypoint 'Death [Current Time]
+	1 (default): make a waypoint 'Death' (overwrites the old waypoint) 
+	2: make a waypoint 'Death [Current Time]
         3: make a waypoint '[Current Time]'
         
         example of [Current Time]: [08/21/21 12:30:45]
