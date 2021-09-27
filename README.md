@@ -60,22 +60,22 @@ This is because when saving/editing scripts the game won't notice that you've ma
 [<h2>Ping Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/PingCounter.lua)
 Ping counter using [external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true)
 
-[This external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true) should be opened
+[This external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true) should be kept open while using the script for it to work.
 
-[<h2>hivegamehotkeys</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
-Hive gamemode hotkeys module by chillihero
+[<h2>Hive Game Hotkeys</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
+Hive gamemode hotkeys module by [chillihero](https://www.youtube.com/channel/UCvHKDOw_RTDrvxjn-2YUwig), you can also change the hotkeys by replacing the "x" at "key == x" with a key values, find key values [here.](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
 
 [<h2>Arrow Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/arrowcounter.lua)
-Shows the amount of arrow
+Shows the amount of arrow(s) you have.
 
 [<h2>Chunk Positions</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/chunkinfo.lua)
-Gives you the current chunk's chunk pos and your position inside of it
+Gives you the current chunk's chunk pos and your position inside of it.
 
 [<h2>Coordinate Copy</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/coordinatecopy.lua)
-Copy coordinates by pressing key ('O' and 'J' for default)
+Copy coordinates by pressing key ('O' and 'J' for default).
 
 [<h2>Death Coordinates</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/deathcoordinates.lua)
-Shows player death coordinates
+Shows player death coordinates.
 
 waypoint_style configs
    
@@ -90,64 +90,64 @@ waypoint_style configs
    example of [Current Time]: [08/21/21 12:30:45]
 
 [<h2>Input Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/inputexample.lua)
-Example script about using input library
+Example script about using input library.
 
 [<h2>Minimap</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/minimap.lua)
 Shows a map of blocks around you
-It will decrease your fps a lot
+It will decrease your fps a lot.
 
 [<h2>Mining Mod</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/miningmod.lua)
-Shows useful informations and statistics for mining
+Shows useful informations and statistics for mining.
 
 [<h2>Module Toggle</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/moduletoggle.lua)
-Toggles specific modules and shows toggled message using a hotkey
+Toggles specific modules and shows toggled message using a hotkey.
 
 [<h2>Offhand Slot Display</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/offhanddisplay.lua)
-Shows the offhand item
+Shows the offhand item.
 
 [<h2>Player Info</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/playerinfo.lua)
-Shows information of the player
+Shows information of the player.
 
 [<h2>Pot Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/potcounter.lua)
-Shows the amount of pot
+Shows the amount of pot.
 
 [<h2>Projectile Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/projectilecounter.lua)
-Shows the amout of projectile
+Shows the amout of projectile.
 
 [<h2>Saturation Display</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/saturationdisplay.lua)
-Shows the saturation
+Shows the saturation.
 
 [<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/scope.lua)
-Adds a scope to bows and crossbows
+Adds a scope to bows and crossbows.
 
 You need [scope.png](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png) for this module script
 
-Video of the module in action here
+Video of the module in action here.
 
 https://user-images.githubusercontent.com/48370588/132985141-89ad6332-d7cb-408e-9249-473a06879c72.mp4
 
 [<h2>Screen Darker</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/screendarker.lua)
-Make screen darker (make a black dimm on your screen)
+Make screen darker (make a black dimm on your screen).
 
 [<h2>Stopwatch</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/stopwatch.lua)
-Count time
+Count time, if you wish to change the key you can take the key code from [here.](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
 
 [<h2>TestLuaMod</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/testluamod.lua)
-Example script about making module script
+Example script about making module script.
 
 [<h2>Blockmap</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/wip%20blockmap.lua)
-Shows a map of blocks around you (some textures hasn't been setup yet)
+Shows a map of blocks around you (some textures hasn't been setup yet).
 
 You need [translator library](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua) for this module script
 
 WARNING
-- causes massive fps drop because of all the textures it is drawing
+- causes massive fps drop because of all the textures it is drawing.
 
 
-- needs library translator.lua or almost all block textures will be missing
+- needs library translator.lua or almost all block textures will be missing.
 
 [<h2>Toggle Sprint Indicator</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/sprint.lua)
-Customizable toggle sprint indicator
+Customizable toggle sprint indicator.
 
 
 
@@ -157,7 +157,7 @@ in  tsData.txt file, first line is the text that will be displayed as text in [t
 
 second, third, fourth and fifth are the rgba value codes
 
-to use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text
+to use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text.
 
 [<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/world_edit_mod.lua)
 Make your construction easier
