@@ -41,7 +41,7 @@ function render(deltaTime)
 	local health = attribs.id(7).value
 	local food = attribs.id(2).value
 	local saturation = attribs.id(3).value
-    local font = gui.font()
+        local font = gui.font()
 	
 	if gamemode == 0 then
 		gamemode_string = "Survival"
@@ -57,7 +57,7 @@ function render(deltaTime)
 	if (biome ~= nil) then biomeName = biome.name end
 	
 	
-	gfx.color(0,0,0,120)
+    gfx.color(0,0,0,120)
     gfx.rect(0, 0, 100, 50)
 
     gfx.color(255, 255, 255)
@@ -80,7 +80,7 @@ function render(deltaTime)
     gfx.text(26, 42, " Facing Block Data: " .. blockData, 0.7)
 
 
-	gfx.text(1, 26, " H: " .. health, 0.7)
+    gfx.text(1, 26, " H: " .. health, 0.7)
 	
     gfx.text(1, 34, " F: " .. food, 0.7)
 
