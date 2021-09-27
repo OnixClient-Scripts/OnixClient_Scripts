@@ -62,6 +62,9 @@ Ping counter using [external program](https://github.com/Quoty0/OnixClient_Scrip
 
 [This external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true) should be opened
 
+[<h2>hivegamehotkeys</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
+Hive gamemode hotkeys module by chillihero
+
 [<h2>Arrow Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/arrowcounter.lua)
 Shows the amount of arrow
 
