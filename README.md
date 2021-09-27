@@ -163,7 +163,7 @@ You need [World Edit Command](https://raw.githubusercontent.com/Quoty0/OnixClien
 
 [![World Edit on Minecraft Bedrock edition with Onix Client](https://img.youtube.com/vi/kVMlO3lRBuA/0.jpg)](https://www.youtube.com/watch?v=kVMlO3lRBuA "World Edit on Minecraft Bedrock edition with Onix Client")
 
-[<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/ew%20ng.lua)
+[<h2>ew ng</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/ew%20ng.lua)
 Block onix client on nethergames L
 
 ​
