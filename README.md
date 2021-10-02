@@ -10,6 +10,11 @@
 @@ Discord : Quoty0#3884, Onix86#0001, ItzHugo#2308, MCBE Craft#6545 @@
 ```
 
+```diff
++ Please do pull request if you want to upload your script into the repository.
++ We'll accept your pull request after reviewing your script, so be patient.
+```
+
 ​
 
 ---
