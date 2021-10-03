@@ -3,7 +3,7 @@
 [<h2>Onix Client Discord</h2>](https://discord.gg/onixclient)
 
 ```diff
-- You need Onix Client (Scripting Beta) to use these scripts
+- You need Onix Client (Scripting Beta) to use these scripts!
 ```
 
 ```diff
@@ -32,7 +32,7 @@ explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\Roamin
 
 <h3>STEP 2</h3>
 
-Make 'Scripts' folder and send in chat ``.lua reload`` to create sub folders
+Make 'Scripts' folder and send in chat ``.lua reload`` to create sub folders.
 
 
 <h3>STEP 3</h3>
@@ -63,7 +63,7 @@ This is because when saving/editing scripts the game won't notice that you've ma
 <h2>Modules</h2>
 
 [<h2>Ping Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/PingCounter.lua)
-Ping counter using [external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true)
+Ping counter using [external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true).
 
 [This external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true) should be kept open while using the script for it to work.
 
@@ -98,7 +98,7 @@ waypoint_style configs
 Example script about using input library.
 
 [<h2>Minimap</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/minimap.lua)
-Shows a map of blocks around you
+Shows a map of blocks around you,
 It will decrease your fps a lot.
 
 [<h2>Mining Mod</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/miningmod.lua)
@@ -165,7 +165,7 @@ second, third, fourth and fifth are the rgba value codes
 to use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text.
 
 [<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/world_edit_mod.lua)
-Make your construction easier
+Make your construction easier.
 
 You need [World Edit Command](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/world_edit.lua) and [weData](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/weData.txt) to use this module.
 
@@ -216,12 +216,12 @@ gfx.color(color[1], color[2], color[3], color[4])
 gfx.text(0, 0, text)
 
 [<h2>Dot</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/dot.lua)
-Send chat starts with a dot
+Send chat starts with a dot.
 
 command - ``.``
 
 [<h2>Gamemode</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/gamemode.lua)
-Show information about player's gamemode
+Show information about player's gamemode.
 
 command - ``.gamemode``
 
@@ -231,45 +231,45 @@ Sends current inventory
 command - ``.inv``
 
 [<h2>Music</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/music.lua)
-Plays music in-game from resource pack
+Plays music in-game from resource pack.
 
 command - ``.music``
 
 you can put in ``11, 13, blocks, chirp, far, mall, mellohi, pigstep, stal, strad, wait, ward``
 
 [<h2>Notification Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.lua)
-Example script about using notification
+Example script about using notification.
 
 command - ``.test_notif``
 
 <img src="https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.png">
 
 [<h2>Pathfinder</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/pathfinder.lua)
-Copies the directories of the specified location
+Copies the directories of the specified location.
 
 command - ``.path``
 
 [<h2>TestLuaCmd</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/testluacmd.lua)
-Example script about making command script
+Example script about making command script.
 
 command - ``.test``
 
 [<h2>World Info</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/worldinfo.lua)
-Show information about the world
+Show information about the world.
 
 command - ``.worldinfo``
 
 [<h2>Toggle Sprint Indicator Editor</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/sprintCommand.lua)
-changes toggle sprint indicator data (text or color)
+changes toggle sprint indicator data (text or color).
 
 command - ``.ts``
 
-needs tsData.txt, sprint.lua module and readfile.lua library to work
+needs tsData.txt, sprint.lua module and readfile.lua library to work!
 
-more infos in sprint.lua module
+more infos in sprint.lua module.
 
 [<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/world_edit.lua)
-Make your construction easier
+Make your construction easier.
 
 command - ``.we``
 
@@ -296,12 +296,12 @@ fill: fills the selected area
 <h2>Libs</h2>
 
 [<h2>Read File</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/readfile.lua)
-Library used to read color file
+Library used to read color file.
 
-Check .color command
+Check .color command.
 
 [<h2>Translator</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua)
-Library to translate minecraft block name to textures
+Library to translate minecraft block name to textures.
 
 ​
 
@@ -312,10 +312,10 @@ Library to translate minecraft block name to textures
 <h2>Data</h2>
 
 [<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png)
-Example image for scope module
+Example image for scope module.
 
 [<h2>tsData</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/tsData.txt)
-Data file for Toggle Sprint Indicator module
+Data file for Toggle Sprint Indicator module.
 
 [<h2>weData</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/weData.txt)
-Data file for World Edit module
+Data file for World Edit module.
