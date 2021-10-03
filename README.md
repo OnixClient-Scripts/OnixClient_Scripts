@@ -125,7 +125,7 @@ Shows the saturation.
 [<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/scope.lua)
 Adds a scope to bows and crossbows.
 
-You need [scope.png](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png) for this module script
+You need [scope.png](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png) for this module script.
 
 Video of the module in action here.
 
@@ -135,7 +135,7 @@ https://user-images.githubusercontent.com/48370588/132985141-89ad6332-d7cb-408e-
 Make screen darker (make a black dimm on your screen).
 
 [<h2>Stopwatch</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/stopwatch.lua)
-Count time, if you wish to change the key you can take the key code from [here.](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
+Count time, if you wish to change the key you can take the key code from [here](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
 
 [<h2>TestLuaMod</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/testluamod.lua)
 Example script about making module script.
@@ -143,7 +143,7 @@ Example script about making module script.
 [<h2>Blockmap</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/wip%20blockmap.lua)
 Shows a map of blocks around you (some textures hasn't been setup yet).
 
-You need [translator library](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua) for this module script
+You need [translator library](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua) for this module script.
 
 WARNING
 - causes massive fps drop because of all the textures it is drawing.
@@ -156,13 +156,13 @@ Customizable toggle sprint indicator.
 
 
 
-make sure to have the tsData.txt file in the data folder and the sprintCommand.lua in the command folder and readfile.lua library in the library folder
+make sure to have the tsData.txt file in the data folder and the sprintCommand.lua in the command folder and readfile.lua library in the library folder.
 
-in  tsData.txt file, first line is the text that will be displayed as text in [text: (Toggled)]
+in  tsData.txt file, first line is the text that will be displayed as text in [text: (Toggled)].
 
-second, third, fourth and fifth are the rgba value codes
+second, third, fourth and fifth are the rgba value codes.
 
-to use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text.
+To use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text.
 
 [<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/world_edit_mod.lua)
 Make your construction easier.
@@ -187,11 +187,11 @@ Changes module color
 
 command - ``.color``
 
-to use
+**To use:**
 
 make sure you have the readfile.lua in the lib folder
 
-in the module files have
+**In the module files have:**
 
 at the beginning:
 
@@ -226,7 +226,7 @@ Show information about player's gamemode.
 command - ``.gamemode``
 
 [<h2>Inv</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/inv.lua)
-Sends current inventory
+Sends current inventory.
 
 command - ``.inv``
 
