@@ -189,7 +189,7 @@ command - ``.color``
 
 **To use:**
 
-make sure you have the readfile.lua in the lib folder
+make sure you have the readfile.lua in the lib folder.
 
 **In the module files have:**
 
