@@ -7,7 +7,7 @@ description = "Make screen darker (make a black dimm on your screen)"
     made by hugo
 ]]
 
-darkStrength = 40
+darkStrength = 120
 
 client.settings.addInt("Strength", "darkStrength", 1, 255)
 
