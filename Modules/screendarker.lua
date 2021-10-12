@@ -4,7 +4,7 @@ description = "Make screen darker (make a black dimm on your screen)"
 --[[
     ScreenDarker Module Script
 
-    made by hugo
+    made by hugo, in game client settings added by Shige
 ]]
 
 darkStrength = 120
