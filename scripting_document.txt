@@ -13,6 +13,36 @@ client.notification("Scripting on top")
 --sends a notification to the player
 
 
+
+--Settings
+--the first parameter is the visual name
+--the second parameter is the variable name with the default value
+--do that outside of any functions
+
+wanaDie = false
+client.settings.addBool("Do you want to die?", "wanaDie")
+--will add a toggle option with default value of false
+
+dieCount = 3
+client.settings.addInt("Do you want to die?", "dieCount", 0, 250)
+--adds a slider with integer numbers
+--the last two parameters for int is minimum and maximum
+
+textSize = 0.8
+client.settings.addFloat("Do you want to die?", "textSize", 0.2, 3.5)
+--adds a slider with .00 at the end
+--the last two parameters for int is minimum and maximum
+
+keybind = 0x45
+client.settings.addKeybind("Suicide Key", "keybind")
+--adds a key setting with default value of A
+--see Windows Virtual KeyCodes in google for a list
+
+color = {255,0,0} --you can also specify the default opacity {255,0,0,255}
+client.settings.addColor("Text Color", "color")
+-- to access the color after addColor you must do color.r
+-- its now a table with {r g b a} defined
+
 local clipboardData = getClipboard()
 --gives you the content of the clipboard
 
