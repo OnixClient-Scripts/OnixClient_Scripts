@@ -33,6 +33,7 @@ client.settings.addBool("Waypoint style configs", "null")
 client.settings.addBool("1: make a waypoint 'Death' (overwrites the old waypoint)", "null")
 client.settings.addBool("2: make a waypoint 'Death [Current Time]", "null")
 client.settings.addBool("3: make a waypoint '[Current Time]'", "null")
+client.settings.addBool("", "null")
 client.settings.addBool("example of [Current Time]: [08/21/21 12:30:45]", "null")
 
 check = false
