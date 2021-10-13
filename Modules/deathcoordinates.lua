@@ -1,16 +1,11 @@
 name = "DeathCoordinates"
 description = "Show player death coordinates"
 
-waypoint_style = 1
-waypoint_message = false
-
-
 
 --[[
     Death Coordinate Module Script
 
         waypoint_style configs
-        0: disable waypoint
         1 (default): make a waypoint 'Death' (overwrites the old waypoint) 
         2: make a waypoint 'Death [Current Time]
         3: make a waypoint '[Current Time]'
@@ -23,6 +18,22 @@ waypoint_message = false
 
     made by Quoty0
 ]]
+
+
+waypoint_style = 1
+client.settings.addInt("Waypoint style", "waypoint_style", 1, 3)
+
+waypoint_message = false
+client.settings.addBool("Waypoint message", "waypoint_message")
+
+null = false
+client.settings.addBool("", "null")
+client.settings.addBool("", "null")
+client.settings.addBool("Waypoint style configs", "null")
+client.settings.addBool("1: make a waypoint 'Death' (overwrites the old waypoint)", "null")
+client.settings.addBool("2: make a waypoint 'Death [Current Time]", "null")
+client.settings.addBool("3: make a waypoint '[Current Time]'", "null")
+client.settings.addBool("example of [Current Time]: [08/21/21 12:30:45]", "null")
 
 check = false
 
@@ -45,27 +56,25 @@ function render()
         print("§cYou died! Your §4death coordinates §care:")
         print("§8(§7" .. player_x .. " " .. player_y .. " " .. player_z .. "§8)")
         check = false
-        if waypoint_style > 0 then
-            if waypoint_style == 1 then
-                client.execute("waypoint remove Death")
-                client.execute("waypoint add Death " .. player_x .. " " .. player_y .. " " .. player_z)
-                if waypoint_message == true then
-                    print("§eWaypoint §aDeath §eadded")
-                end
-            elseif waypoint_style == 2 then
-                client.execute("waypoint add \"Death " .. current_time .."\" " .. player_x .. " " .. player_y .. " " .. player_z)
-                if waypoint_message == true then
-                    print("§eWaypoint §aDeath " .. current_time .. " §eadded")
-                end
-            elseif waypoint_style == 3 then
-                datafile = io.open("dc" .. worldName .. ".txt","a")
-                client.execute("waypoint add \"" .. current_time .."\" " .. player_x .. " " .. player_y .. " " .. player_z)
-                if waypoint_message == true then
-                    print("§eWaypoint §a" .. current_time .. " §eadded")
-                end
-            else
-                waypoint_style = 1
+        if waypoint_style == 1 then
+            client.execute("waypoint remove Death")
+            client.execute("waypoint add Death " .. player_x .. " " .. player_y .. " " .. player_z)
+            if waypoint_message == true then
+                print("§eWaypoint §aDeath §eadded")
             end
+        elseif waypoint_style == 2 then
+            client.execute("waypoint add \"Death " .. current_time .."\" " .. player_x .. " " .. player_y .. " " .. player_z)
+            if waypoint_message == true then
+                print("§eWaypoint §aDeath " .. current_time .. " §eadded")
+            end
+        elseif waypoint_style == 3 then
+            datafile = io.open("dc" .. worldName .. ".txt","a")
+            client.execute("waypoint add \"" .. current_time .."\" " .. player_x .. " " .. player_y .. " " .. player_z)
+            if waypoint_message == true then
+                print("§eWaypoint §a" .. current_time .. " §eadded")
+            end
+        else
+            waypoint_style = 1
         end
     end
 end
