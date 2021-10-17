@@ -1,4 +1,3 @@
-try that
 name = "guiscale"
 description = "change guiscale"
 
