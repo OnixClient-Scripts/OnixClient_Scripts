@@ -19,6 +19,14 @@ client.notification("Scripting on top")
 --the second parameter is the variable name with the default value
 --do that outside of any functions
 
+client.settings.addAir(15)
+--adds a space in the ui at that place (15 is the height)
+
+someText = "hi this is me"
+client.settings.addInfo("someText")
+--first parametter is name of text variable
+--the text of that variable can change and it will update
+
 wanaDie = false
 client.settings.addBool("Do you want to die?", "wanaDie")
 --will add a toggle option with default value of false
@@ -42,6 +50,16 @@ color = {255,0,0} --you can also specify the default opacity {255,0,0,255}
 client.settings.addColor("Text Color", "color")
 -- to access the color after addColor you must do color.r
 -- its now a table with {r g b a} defined
+--you can add a bool after the 2nd parameter if you want opacity to be visible or no
+
+function funnyThingLmao()
+	print("+1 Vbuck")
+end
+client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao", "Click here!")
+--first thing is the text before the button
+--second thing is the name of the function
+--third is the text inside of the button
+--will be called when the user clicks on it
 
 local clipboardData = getClipboard()
 --gives you the content of the clipboard
