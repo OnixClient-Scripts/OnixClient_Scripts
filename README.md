@@ -174,6 +174,9 @@ You need [World Edit Command](https://raw.githubusercontent.com/Quoty0/OnixClien
 [<h2>ew ng</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/ew%20ng.lua)
 Block onix client on nethergames L
 
+[<h2>guiscale</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/guiscale.lua)
+set guiscale
+
 ​
 
 ---
