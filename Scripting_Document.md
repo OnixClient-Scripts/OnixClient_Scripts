@@ -62,7 +62,7 @@ keybind = 0x45
 -- To access the color after addColor you must do color.r
 
 
-s now a table with {r g b a} defined
+-- Its now a table with {r g b a} defined
 
 You can add a bool after the 2nd parameter if you want opacity to be visible or no
 
