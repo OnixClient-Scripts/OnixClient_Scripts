@@ -1,9 +1,9 @@
-﻿name = "Fake ping display"
+name = "Fake ping display"
 description = "Show random number instead of ping"
 
 --[[
     Fake ping display Module Script
-    
+
     made by Quoty0
 ]]
 
@@ -28,13 +28,13 @@ end
 
 
 function render(deltaTime)
-	if time ~= os.date("%S") then
-		text = math.random(min, max) .. " ms"
-		time = os.date("%S")
-	end
+    if time ~= os.date("%S") then
+        text = math.random(min, max) .. " ms"
+        time = os.date("%S")
+    end
 
     local font = gui.font()
-	gfx.color(0, 0, 0, 180)
+    gfx.color(0, 0, 0, 180)
     gfx.rect(0, 0, 40, 10)
     gfx.color(255, 255, 255, 255)
     gfx.text(9, 2, text)
