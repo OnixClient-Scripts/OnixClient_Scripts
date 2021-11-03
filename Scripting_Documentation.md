@@ -78,6 +78,12 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 --third is the text inside of the button
 --will be called when the user clicks on it
 
+### **client.settings.send()**
+--if you change a setting in the script (not for info ones) to apply it to the client you need to send them
+
+### **client.settings.reload()**
+--if you want to refresh your version of the settings you can do it too
+
 ### **local clipboardData = getClipboard()**
 --gives you the content of the clipboard
 
