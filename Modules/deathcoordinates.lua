@@ -26,15 +26,12 @@ client.settings.addInt("Waypoint style", "waypoint_style", 1, 3)
 waypoint_message = false
 client.settings.addBool("Waypoint message", "waypoint_message")
 
-null = false
-client.settings.addBool("", "null")
-client.settings.addBool("", "null")
-client.settings.addBool("Waypoint style configs", "null")
-client.settings.addBool("1: make a waypoint 'Death' (overwrites the old waypoint)", "null")
-client.settings.addBool("2: make a waypoint 'Death [Current Time]", "null")
-client.settings.addBool("3: make a waypoint '[Current Time]'", "null")
-client.settings.addBool("", "null")
-client.settings.addBool("example of [Current Time]: [08/21/21 12:30:45]", "null")
+client.settings.addInfo("Waypoint style configs")
+client.settings.addInfo("1: make a waypoint 'Death' (overwrites the old waypoint)")
+client.settings.addInfo("2: make a waypoint 'Death [Current Time]")
+client.settings.addInfo("3: make a waypoint '[Current Time]")
+client.settings.addInfo("")
+client.settings.addInfo("example of [Current Time]: [08/21/21 12:30:45]")
 
 check = false
 
