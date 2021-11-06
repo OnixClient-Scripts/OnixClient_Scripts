@@ -1,6 +1,13 @@
 name = "Projectile Counter"
 description = "gives the amout of Projectiles"
 
+--[[
+    Projectile Counter Module Script
+	
+	made by MCBE Craft
+	edited by Prathpro17
+]]
+
 hide = false
 
 positionX = 0
