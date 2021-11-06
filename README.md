@@ -117,7 +117,7 @@ Shows information of the player.
 Shows the amount of pot.
 
 [<h2>Projectile Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/projectilecounter.lua)
-Shows the amout of projectile.
+Shows the amount of projectile.
 
 [<h2>Saturation Display</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/saturationdisplay.lua)
 Shows the saturation.
@@ -174,8 +174,14 @@ You need [World Edit Command](https://raw.githubusercontent.com/Quoty0/OnixClien
 [<h2>ew ng</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/ew%20ng.lua)
 Block onix client on nethergames L
 
-[<h2>guiscale</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/guiscale.lua)
-set guiscale
+[<h2>Gamemode hotkeys</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
+Press hotkey to switch between Gamemode Creative and Survival
+
+[<h2>Fake Ping Display</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/fakepingdisplay.lua)
+Show random number instead of ping
+
+[<h2>Item Counter</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/itemcounter.lua)
+Shows the amount of iron ingot, gold ingot, diamond, and emerald
 
 ​
 
