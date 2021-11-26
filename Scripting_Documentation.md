@@ -21,9 +21,7 @@ Sends a notification to the player
 
 # **Settings**
 -- The first parameter is the visual name
-
 -- The second parameter is the variable name with the default value
-
 -- Do that outside of any functions
 
 ### **client.settings.addAir(15)**
@@ -253,7 +251,7 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 
 
 
-# --blocks
+# blocks
 ### **local block = dimension.getBlock(x,y,z)**
 --gets a block table at these coordinates
 
@@ -267,10 +265,46 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 ### **local blockId = block.id**
 --the id of the block
 
+### **flags**
+-- do note that status flags are sent by the SERVER. Thus, many custom servers
+-- may only send essential flags such as on fire or sneaking. However, more niche flags
+-- are expected to be sent by the vanilla bedrock server.
+
+flag type:
+0: on fire
+1: is sneaking
+2: riding an entity
+3: sprinting
+4: using an item
+5: invisible (example: EianLee)
+14: can show nametag (usually true for players)
+15: always show nametag (also usually true for players)
+16: immobile (when player is dead or unable to move)
+19: can climb (if the player can use ladders)
+32: gliding with elytra
+38: if player is moving
+39: if player is breathing
+47: has collision with other entities
+48: has gravity
+49: immune to fire/lava damage
+52: returning loyalty trident
+55: doing spin attack with riptide trident
+56: swimming
+68: inside a scaffolding block
+69: on top of a scaffolding block
+70: falling through a scaffolding block
+71: blocking (using shield or riding a horse? confused about how this one gets triggered)
+72: transition blocking (same idea as 71)
+73: blocked from entity using a shield
+74: blocked from entity using a damaged shield (why does this exist?)
+75: sleeping
+88: if the player should render when they have the invisibility status effect
+
+The other status flags do not apply to players and are thus omitted from the documentation (for now)
 
 
 
---biome
+## biome
 ### **local biome = dimension.getBiome(x,y,z)**
 --gets the biome table at the coordinates specified
 
@@ -293,7 +327,7 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 
 
 
---inventory
+## inventory
 ### **local inventory = player.inventory()**
 --gives you an inventory table
 
@@ -315,7 +349,7 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 --will return nil if there is no item
 
 
---item
+## item
 --make sure its not nil before accessing stuff in the table
 
 ### **local quantity = firstInvSlot.count --firstInvSlot.amount will work aswell**
@@ -339,10 +373,19 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 ### **local durability = firstInvSlot.data --or firstInvSlot.durability**
 --will give you the Damage of the item or the block's data
 
+### **local customName = firstInvSlot.customName**
+--the name that a player would put in an anvil
 
+### **local enchants = firstInvSlot.enchant**
+--its a list of enchantements, it may have 0 of them
+--here is how you can go trough them
+```
+for key,value in pairs(enchants) do
+        print(value.id .. "  " .. value.level .. ", or: " .. value.name)
+end
+```
 
-
---font
+## font
 local font = gui.font()
 
 --the font is a table with the following members
@@ -390,6 +433,10 @@ local font = gui.font()
 
 ### **gfx.triangle(point1X, point1Y, point2X, point2Y, point3X, point3Y)**
 --fills the rectangle between those points
+
+### **gfx.quad(point1X, point1Y, point2X, point2Y, point3X, point3Y, point4X, point4Y)**
+--fills the rectangle between those points
+--works in 3d and will take xyz 4 times instead of xy
 
 ### **gfx.text(positionX, positionY, "Hello World", scale)**
 --draws text, scale of 1 is normal, if you don't put a scale
