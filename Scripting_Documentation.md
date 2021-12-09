@@ -20,8 +20,8 @@ Sends a notification to the player
 
 
 # **Settings**
--- The first parameter is the visual name
--- The second parameter is the variable name with the default value
+-- The first parameter is the visual name<br/>
+-- The second parameter is the variable name with the default value<br/>
 -- Do that outside of any functions
 
 ### **client.settings.addAir(15)**
@@ -29,37 +29,30 @@ Sends a notification to the player
 
 someText = "hi this is me"
 ### **client.settings.addInfo("someText")**
--- First parametter is name of text variable
-
+-- First parametter is name of text variable<br/>
 -- The text of that variable can change and it will update
 
 wanaDie = false
 ### **client.settings.addBool("Do you want to die?", "wanaDie")**
--- Will add a toggle option with default value of false
-
+-- Will add a toggle option with default value of false<br/>
 dieCount = 3
 ### **client.settings.addInt("Do you want to die?", "dieCount", 0, 250)**
--- Adds a slider with integer numbers
-
+-- Adds a slider with integer numbers<br/>
 -- The last two parameters for int is minimum and maximum
 
 textSize = 0.8
 ### **client.settings.addFloat("Do you want to die?", "textSize", 0.2, 3.5)**
--- Adds a slider with .00 at the end
-
+-- Adds a slider with .00 at the end<br/>
 -- The last two parameters for int is minimum and maximum
 
 keybind = 0x45
 ### **client.settings.addKeybind("Suicide Key", "keybind")**
--- Adds a key setting with default value of A
-
+-- Adds a key setting with default value of A<br/>
 -- See [Windows Virtual KeyCodes](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
 
 ### **color = {255,0,0} --you can also specify the default opacity {255,0,0,255}**
 ### **client.settings.addColor("Text Color", "color")**
--- To access the color after addColor you must do color.r
-
-
+-- To access the color after addColor you must do color.r<br/>
 -- Its now a table with {r g b a} defined
 
 You can add a bool after the 2nd parameter if you want opacity to be visible or no
@@ -71,9 +64,9 @@ end
 client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao", "Click here!")
 ```
 
---first thing is the text before the button
---second thing is the name of the function
---third is the text inside of the button
+--first thing is the text before the button<br/>
+--second thing is the name of the function<br/>
+--third is the text inside of the button<br/>
 --will be called when the user clicks on it
 
 ### **client.settings.send()**
@@ -89,10 +82,10 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 --sets the clipboard to the text
 
 ### **ImportedLib = importLib("Thing")**
---will import the things from the Scripting/Libs/Thing.lua file
---"Thing.lua" would work too
---lets you have helper functions in a file that other scripts can use
---will return false if it could not find the file
+--will import the things from the Scripting/Libs/Thing.lua file<br/>
+--"Thing.lua" would work too<br/>
+--lets you have helper functions in a file that other scripts can use<br/>
+--will return false if it could not find the file<br/>
 --the functions in the file will be usable in this file basically
 
 
@@ -134,8 +127,8 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 --if its raining in the current dimension
 
 ### **local blockBrightness, skyBrightness = dimension.getBrightness(x, y, z)**
--- gives you the brightness at a location
--- block brightness is for things like torch and stuff
+-- gives you the brightness at a location<br/>
+-- block brightness is for things like torch and stuff<br/>
 -- sky is how much the sky will give its brightness
 
 ### **dimension.sound("random.fuse", 420, 69, 86)**
@@ -184,7 +177,7 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 
 # **Effects**
 ### **local effects = player.effects()**
---returns a table of effect table, see effect table below.
+--returns a table of effect table, see effect table below.<br/>
 --here is how to go trough the entire list:  for a, effect in pairs(effects) do
 
 # **Effect Table**
@@ -227,7 +220,7 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 
 
 --these 3 functions all return an attribute table
---if you ask an invalid attribute, you will be given nil
+--if you ask an invalid attribute, you will be given nil<br/>
 --the content of this table goes as follow
 
 ### **local attribute_name = attributeHeight.name**
@@ -266,41 +259,41 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 --the id of the block
 
 ### **flags**
--- do note that status flags are sent by the SERVER. Thus, many custom servers
--- may only send essential flags such as on fire or sneaking. However, more niche flags
--- are expected to be sent by the vanilla bedrock server.
+-- do note that status flags are sent by the SERVER. Thus, many custom servers<br/>
+-- may only send essential flags such as on fire or sneaking. However, more niche flags<br/>
+-- are expected to be sent by the vanilla bedrock server.<br/>
 
-flag type:
-0: on fire
-1: is sneaking
-2: riding an entity
-3: sprinting
-4: using an item
-5: invisible (example: EianLee)
-14: can show nametag (usually true for players)
-15: always show nametag (also usually true for players)
-16: immobile (when player is dead or unable to move)
-19: can climb (if the player can use ladders)
-32: gliding with elytra
-38: if player is moving
-39: if player is breathing
-47: has collision with other entities
-48: has gravity
-49: immune to fire/lava damage
-52: returning loyalty trident
-55: doing spin attack with riptide trident
-56: swimming
-68: inside a scaffolding block
-69: on top of a scaffolding block
-70: falling through a scaffolding block
-71: blocking (using shield or riding a horse? confused about how this one gets triggered)
-72: transition blocking (same idea as 71)
-73: blocked from entity using a shield
-74: blocked from entity using a damaged shield (why does this exist?)
-75: sleeping
-88: if the player should render when they have the invisibility status effect
 
-The other status flags do not apply to players and are thus omitted from the documentation (for now)
+flag type:<br/>
+0: on fire<br/>
+1: is sneaking<br/>
+2: riding an entity<br/>
+3: sprinting<br/>
+4: using an item<br/>
+5: invisible (example: EianLee)<br/>
+14: can show nametag (usually true for players)<br/>
+15: always show nametag (also usually true for players)<br/>
+16: immobile (when player is dead or unable to move)<br/>
+19: can climb (if the player can use ladders)<br/>
+32: gliding with elytra<br/>
+38: if player is moving<br/>
+39: if player is breathing<br/>
+47: has collision with other entities<br/>
+48: has gravity<br/>
+49: immune to fire/lava damage<br/>
+52: returning loyalty trident<br/>
+55: doing spin attack with riptide trident<br/>
+56: swimming<br/>
+68: inside a scaffolding block<br/>
+69: on top of a scaffolding block<br/>
+70: falling through a scaffolding block<br/>
+71: blocking (using shield or riding a horse? confused about how this one gets triggered)<br/>
+72: transition blocking (same idea as 71)<br/>
+73: blocked from entity using a shield<br/>
+74: blocked from entity using a damaged shield (why does this exist?)<br/>
+75: sleeping<br/>
+88: if the player should render when they have the invisibility status effect<br/>
+The other status flags do not apply to players and are thus omitted from the documentation (for now)<br/>
 
 
 
@@ -338,14 +331,14 @@ The other status flags do not apply to players and are thus omitted from the doc
 --the item in your hand basically
 
 ### **local armor = inventory.armor()**
---gives you the armor items (item table) (armor.helmet, armor.chestplate, armor.leggings, armor.boots)
+--gives you the armor items (item table) (armor.helmet, armor.chestplate, armor.leggings, armor.boots)<br/>
 --**if there is no items it will be nil**
 
 ### **local offhandItem = inventory.offhand()**
 --gives you an item table for the 2nd hand, nil if no item
 
 ### **local firstInvSlot = inventory.at(1)**
---gives you an item table for the slot, dont go below one or above size
+--gives you an item table for the slot, dont go below one or above size<br/>
 --will return nil if there is no item
 
 
@@ -377,7 +370,7 @@ The other status flags do not apply to players and are thus omitted from the doc
 --the name that a player would put in an anvil
 
 ### **local enchants = firstInvSlot.enchant**
---its a list of enchantements, it may have 0 of them
+--its a list of enchantements, it may have 0 of them<br/>
 --here is how you can go trough them
 ```
 for key,value in pairs(enchants) do
@@ -385,9 +378,41 @@ for key,value in pairs(enchants) do
 end
 ```
 
-## font
-local font = gui.font()
+##theme
+--here is what colors the ui contains, same order as theme editor
 
+### **theme.back**
+--the background color, whats below everything
+
+### **theme.moduleOutline**
+-- the outline of the visual modules in the hud editor
+
+### **theme.moduleOverlay**
+-- the overlay on top of the visual modules in the hud editor
+
+### **theme.darkbutton**
+-- most buttons use "enabled" but some use darkbutton's color instead
+
+### **theme.text**
+--color of the text on the ui
+
+### **theme.largeArea**
+--color of the body of a window/pannel
+
+### **theme.titlebar**
+--color of the titlebar 
+
+### **theme.disabled**
+--color of disabled stuff
+
+### **theme.enabled**
+-- color of enabled stuff, can be used as accent color
+
+### **theme.blocked**
+--blocked content in that color
+
+## font
+### **local font = gui.font()**
 --the font is a table with the following members
 
 ### **local isMcFont = font.isMinecrafttia**
@@ -405,12 +430,12 @@ local font = gui.font()
 
 
 
---gfx
---DO NOT USE OUTSIDE OF RENDER()!!!!!
+--gfx<br/>
+--DO NOT USE OUTSIDE OF RENDER()!!!!!<br/>
 --otherwise the game will crash..
 
 ### **gfx.color(255,255,255, 255)**
---this will set the current drawing color to white, you can use rgb codes
+--this will set the current drawing color to white, you can use rgb codes<br/>
 --note, opacity is optional, no value will be 255.
 
 ### **gfx.rect(positionX, positionY, sizeX, sizeY)**
@@ -420,32 +445,32 @@ local font = gui.font()
 --will draw a rectangle (just the outline) with the specified width
 
 ### **gfx.roundrect(positionX, positionY, sizeX, sizeY, radius, iterations)**
---same as rect but with rounded corners!
---radius is for the 4 corners and the number of iterations 
---(2 would be blocky and 10 would be smooth, play with it and see)
+--same as rect but with rounded corners!<br/>
+--radius is for the 4 corners and the number of iterations <br/>
+--(2 would be blocky and 10 would be smooth, play with it and see)<br/>
 --its kinda like quality, dont put too much as it would be bad for performance
 
 ### **gfx.circle(positionX, positionY, height, iterations)**
---height is radius*2, basically if you had a square
---of 50 by 50 it will put a circle in the very center
---iterations again is kinda like the quality, dont put too little or too much!
+--height is radius*2, basically if you had a square<br/>
+--of 50 by 50 it will put a circle in the very center<br/>
+--iterations again is kinda like the quality, dont put too little or too much!<br/>
 --see how it look and adapt to put as little as you can for the desired result
 
 ### **gfx.triangle(point1X, point1Y, point2X, point2Y, point3X, point3Y)**
 --fills the rectangle between those points
 
 ### **gfx.quad(point1X, point1Y, point2X, point2Y, point3X, point3Y, point4X, point4Y)**
---fills the rectangle between those points
+--fills the rectangle between those points<br/>
 --works in 3d and will take xyz 4 times instead of xy
 
 ### **gfx.text(positionX, positionY, "Hello World", scale)**
---draws text, scale of 1 is normal, if you don't put a scale
+--draws text, scale of 1 is normal, if you don't put a scale<br/>
 --it will be 1, but its availible if you want to render bigger or smaller text
 
 ### **gfx.item(positionX, positionY, itemLocation, scale)**
---draws an item at the location
---scale is optional will be 1 if not specified
---do not guess item location as a wrong value would most likely crash the game!
+--draws an item at the location<br/>
+--scale is optional will be 1 if not specified<br/>
+--do not guess item location as a wrong value would most likely crash the game!<br/>
 --you get the location from the ItemTable.location
 
 ### **gfx.image(positionX, positionY, sizeX, sizeY, filePath)**
