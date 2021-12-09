@@ -47,7 +47,7 @@ then click the ``raw`` button then do ctrl + s then save in the modules/scripts 
 
 ## Remember to put the following in chat after adding/editing scripts : 
 
-```diff
+```
 .lua reload
 ```
 This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the cmd in chat.
