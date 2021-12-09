@@ -16,6 +16,9 @@ client.settings.addFloat("Rainbow Update Speed", "rainbow_speed", 1, 500)
 slow_update = false
 client.settings.addBool("Slow Updates (FPS+)", "slow_update")
 
+connect_lines = true
+client.settings.addBool("ConnectLines", "connect_lines")
+
 function colorFromHue(hue)
     while (hue > 360) do hue = hue - 360 end
     while (hue < 0  ) do hue = hue + 360 end
@@ -96,10 +99,15 @@ function render(dt)
     for k, t in pairs(texts) do
         gfx.rect(t.x+2, t.y, t.w-2, t.h)
     end
-
+    local lastConnection = texts[1].x
     for k, t in pairs(texts) do --texts & rects
         gfx.color(255 - t.r, 255 - t.g, 255 - t.b)
         gfx.rect(t.x, t.y, 2, t.h)
         gfx.text(t.tx, t.ty, t.text)
+
+        if connect_lines == true then
+            gfx.rect(lastConnection, t.y, t.x - lastConnection, 2)
+            lastConnection = t.x
+        end
     end
 end
