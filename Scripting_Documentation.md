@@ -270,7 +270,7 @@ flag type:<br/>
 2: riding an entity<br/>
 3: sprinting<br/>
 4: using an item<br/>
-5: invisible (example: EianLee)<br/>
+5: invisible (example: [EianLee](https://github.com/ItzEianLee))<br/>
 14: can show nametag (usually true for players)<br/>
 15: always show nametag (also usually true for players)<br/>
 16: immobile (when player is dead or unable to move)<br/>
