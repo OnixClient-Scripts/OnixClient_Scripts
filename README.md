@@ -1,6 +1,6 @@
 # Scripts for Onix Client
 
-[<h2>Onix Client Discord</h2>](https://discord.gg/onixclient)
+## [Onix Client Discord](https://discord.gg/onixclient)
 
 ```diff
 - You need Onix Client (Scripting Beta) to use these scripts!
@@ -21,31 +21,31 @@
 
 ​
 
-<h2>How to install scripts</h2>
+## How to install scripts
 
-<h3>STEP 1</h3>
+### STEP 1
 Press 'Win + R' and type in
 
-```diff
+```
 explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\RoamingState\OnixClient
 ```
 
-<h3>STEP 2</h3>
+### STEP 2
 
 Make 'Scripts' folder and send in chat ``.lua reload`` to create sub folders.
 
 
-<h3>STEP 3</h3>
+### STEP 3
 
 Click onto the module or cmd you want from this repo.
 
 
-<h3>STEP 4</h3>
+### STEP 4
 
 then click the ``raw`` button then do ctrl + s then save in the modules/scripts folder, make sure the file extention is .lua and **not** .txt as it is .txt by default so you're gonna need to change it for the scripts to work.
 
 
-<h2>Remember to put the following in chat after adding/editing scripts :</h2> 
+## Remember to put the following in chat after adding/editing scripts : 
 
 ```diff
 .lua reload
@@ -58,95 +58,92 @@ This is because when saving/editing scripts the game won't notice that you've ma
 
 ​
 
-<h1>What each module/command does</h1>
+# What each module/command does
 
-<h2>Modules</h2>
+## Modules
 
-[<h2>Ping Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/PingCounter.lua)
+## [Ping Counter](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/PingCounter.lua)
 Ping counter using [external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true).
 
 [This external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true) should be kept open while using the script for it to work.
 
-[<h2>Hive Game Hotkeys</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
+## [Hive Game Hotkeys](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
 Hive gamemode hotkeys module by [chillihero](https://www.youtube.com/channel/UCvHKDOw_RTDrvxjn-2YUwig), you can also change the hotkeys by replacing the "x" at "key == x" with a key values, find key values [here.](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
 
-[<h2>Arrow Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/arrowcounter.lua)
+## [Arrow Counter](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/arrowcounter.lua)
 Shows the amount of arrow(s) you have.
 
-[<h2>Chunk Positions</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/chunkinfo.lua)
+## [Chunk Positions](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/chunkinfo.lua)
 Gives you the current chunk's chunk pos and your position inside of it.
 
-[<h2>Coordinate Copy</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/coordinatecopy.lua)
+## [Coordinate Copy](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/coordinatecopy.lua)
 Copy coordinates by pressing key ('O' and 'J' for default).
 
-[<h2>Death Coordinates</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/deathcoordinates.lua)
+## [Death Coordinates](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/deathcoordinates.lua)
 Shows player death coordinates.
 
-waypoint_style configs<br/>
-   0: disable waypoint<br/>
-   1 (default): make a waypoint 'Death' (overwrites the old waypoint) <br/>
-   2: make a waypoint 'Death [Current Time]<br/>
-   3: make a waypoint '[Current Time]'<br/>
-   example of [Current Time]: [08/21/21 12:30:45]
+```
+waypoint_style configs
+   0: disable waypoint
+   1 (default): make a waypoint 'Death' (overwrites the old waypoint)
+   2: make a waypoint 'Death [Current Time]
+   3: make a waypoint '[Current Time]'
+   
+example of [Current Time]: [08/21/21 12:30:45]
+```
 
-[<h2>Input Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/inputexample.lua)
+## [Input Example](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/inputexample.lua)
 Example script about using input library.
 
-[<h2>Minimap</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/minimap.lua)
+## [Minimap](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/minimap.lua)
 Shows a map of blocks around you,<br/>
 It will decrease your fps a lot.
 
-[<h2>Mining Mod</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/miningmod.lua)
+## [Mining Mod](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/miningmod.lua)
 Shows useful informations and statistics for mining.
 
-[<h2>Module Toggle</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/moduletoggle.lua)
+## [Module Toggle](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/moduletoggle.lua)
 Toggles specific modules and shows toggled message using a hotkey.
 
-[<h2>Offhand Slot Display</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/offhanddisplay.lua)
+## [Offhand Slot Display](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/offhanddisplay.lua)
 Shows the offhand item.
 
-[<h2>Player Info</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/playerinfo.lua)
+## [Player Info](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/playerinfo.lua)
 Shows information of the player.
 
-[<h2>Pot Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/potcounter.lua)
+## [Pot Counter](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/potcounter.lua)
 Shows the amount of pot.
 
-[<h2>Projectile Counter</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/projectilecounter.lua)
+## [Projectile Counter](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/projectilecounter.lua)
 Shows the amount of projectile.
 
-[<h2>Saturation Display</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/saturationdisplay.lua)
+## [Saturation Display](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/saturationdisplay.lua)
 Shows the saturation.
 
-[<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/scope.lua)
-Adds a scope to bows and crossbows.
-
-You need [scope.png](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png) for this module script.
-
-Video of the module in action here.
-
+## [Scope](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/scope.lua)
+Adds a scope to bows and crossbows.<br/>
+You need [scope.png](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png) for this module script.<br/>
+Video of the module in action here.<br/>
 https://user-images.githubusercontent.com/48370588/132985141-89ad6332-d7cb-408e-9249-473a06879c72.mp4
 
-[<h2>Screen Darker</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/screendarker.lua)
+## [Screen Darker](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/screendarker.lua)
 Make screen darker (make a black dimm on your screen).
 
-[<h2>Stopwatch</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/stopwatch.lua)
+## [Stopwatch](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/stopwatch.lua)
 Count time, if you wish to change the key you can take the key code from [here](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
 
-[<h2>TestLuaMod</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/testluamod.lua)
+## [TestLuaMod](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/testluamod.lua)
 Example script about making module script.
 
-[<h2>Blockmap</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/wip%20blockmap.lua)
-Shows a map of blocks around you (some textures hasn't been setup yet).
-
+## [Blockmap](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/wip%20blockmap.lua)
+Shows a map of blocks around you (some textures hasn't been setup yet).<br/>
 You need [translator library](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua) for this module script.
 
 WARNING
-- causes massive fps drop because of all the textures it is drawing.
-
-
+- causes massive fps drop because of all the textures it is drawing.<br/>
 - needs library translator.lua or almost all block textures will be missing.
 
-[<h2>Toggle Sprint Indicator</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/sprint.lua)
+## [Toggle Sprint Indicator](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/sprint.lua)
 Customizable toggle sprint indicator.
 
 
@@ -156,10 +153,10 @@ in  tsData.txt file, first line is the text that will be displayed as text in [t
 second, third, fourth and fifth are the rgba value codes.<br/>
 To use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text.
 
-[<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/world_edit_mod.lua)
+## [World Edit](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/world_edit_mod.lua)
 Make your construction easier.
 
-```diff
+```
 - No Longer Works
 ```
 
@@ -167,19 +164,19 @@ You need [World Edit Command](https://raw.githubusercontent.com/Quoty0/OnixClien
 
 [![World Edit on Minecraft Bedrock edition with Onix Client](https://img.youtube.com/vi/kVMlO3lRBuA/0.jpg)](https://www.youtube.com/watch?v=kVMlO3lRBuA "World Edit on Minecraft Bedrock edition with Onix Client")
 
-[<h2>ew ng</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/ew%20ng.lua)
+## [ew ng](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/ew%20ng.lua)
 Block onix client on nethergames L
 
-[<h2>Gamemode hotkeys</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
+## [Gamemode hotkeys](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
 Press hotkey to switch between Gamemode Creative and Survival
 
-[<h2>Fake Ping Display</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/fakepingdisplay.lua)
+## [Fake Ping Display](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/fakepingdisplay.lua)
 Show random number instead of ping
 
-[<h2>Item Counter</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/itemcounter.lua)
+## [Item Counter](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/itemcounter.lua)
 Shows the amount of iron ingot, gold ingot, diamond, and emerald
 
-[<h2>Arraylist</h2>](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/arraylist.lua)
+## [Arraylist](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/arraylist.lua)
 Shows what module is enabled
 
 ​
@@ -188,9 +185,9 @@ Shows what module is enabled
 
 ​
 
-<h2>Commands</h2>
+## Commands
 
-[<h2>Color</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/color.lua)
+## [Color](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/color.lua)
 Changes module color<br/>
 command - ``.color``
 
@@ -210,51 +207,51 @@ gfx.rect(0, 0, sizeX, sizeY)<br/>
 gfx.color(color[1], color[2], color[3], color[4])<br/>
 gfx.text(0, 0, text)
 
-[<h2>Dot</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/dot.lua)
+## [Dot](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/dot.lua)
 Send chat starts with a dot.
 
 command - ``.``
 
-[<h2>Gamemode</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/gamemode.lua)
+## [Gamemode](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/gamemode.lua)
 Show information about player's gamemode.
 
 command - ``.gamemode``
 
-[<h2>Inv</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/inv.lua)
+## [Inv](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/inv.lua)
 Sends current inventory.
 
 command - ``.inv``
 
-[<h2>Music</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/music.lua)
+## [Music](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/music.lua)
 Plays music in-game from resource pack.
 
 command - ``.music``
 
 you can put in ``11, 13, blocks, chirp, far, mall, mellohi, pigstep, stal, strad, wait, ward``
 
-[<h2>Notification Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.lua)
+## [Notification Example](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.lua)
 Example script about using notification.
 
 command - ``.test_notif``
 
 <img src="https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.png">
 
-[<h2>Pathfinder</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/pathfinder.lua)
+## [Pathfinder](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/pathfinder.lua)
 Copies the directories of the specified location.
 
 command - ``.path``
 
-[<h2>TestLuaCmd</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/testluacmd.lua)
+## [TestLuaCmd](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/testluacmd.lua)
 Example script about making command script.
 
 command - ``.test``
 
-[<h2>World Info</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/worldinfo.lua)
+## [World Info](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/worldinfo.lua)
 Show information about the world.
 
 command - ``.worldinfo``
 
-[<h2>Toggle Sprint Indicator Editor</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/sprintCommand.lua)
+## [Toggle Sprint Indicator Editor](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/sprintCommand.lua)
 changes toggle sprint indicator data (text or color).
 
 command - ``.ts``
@@ -262,7 +259,7 @@ command - ``.ts``
 needs tsData.txt, sprint.lua module and readfile.lua library to work!<br/>
 more infos in sprint.lua module.
 
-[<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/world_edit.lua)
+## [World Edit](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/world_edit.lua)
 Make your construction easier.
 
 command - ``.we``
@@ -281,13 +278,13 @@ fill: fills the selected area<br/>
 
 ​
 
-<h2>Libs</h2>
+## Libs
 
-[<h2>Read File</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/readfile.lua)
+## [Read File](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/readfile.lua)
 Library used to read color file.<br/>
 Check .color command.
 
-[<h2>Translator</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua)
+## [Translator](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua)
 Library to translate minecraft block name to textures.
 
 ​
@@ -296,13 +293,13 @@ Library to translate minecraft block name to textures.
 
 ​
 
-<h2>Data</h2>
+## Data
 
-[<h2>Scope</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png)
+## [Scope](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png)
 Example image for scope module.
 
-[<h2>tsData</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/tsData.txt)
+## [tsData](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/tsData.txt)
 Data file for Toggle Sprint Indicator module.
 
-[<h2>weData</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/weData.txt)
+## [weData](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/weData.txt)
 Data file for World Edit module.
