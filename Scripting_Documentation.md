@@ -88,7 +88,6 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 --will return false if it could not find the file<br/>
 --the functions in the file will be usable in this file basically
 
-
 ### **local gamemode = player.gamemode()**
 --get player gamemode
 
@@ -112,7 +111,6 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 
 ### **local x,y,z = player.lookingPos()**
 --where the player looks in the world
-
 
 ### **local dimensionId = dimension.id()**
 --get the numeric id of the current dimension
@@ -147,7 +145,6 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 ### **local worldName = server.worldName()**
 --the name of the world (top right in pause)
 
-
 ### **local width = gui.width()**
 --game ui width
 
@@ -171,6 +168,34 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 
 ### **gui.sound("mob.wither.death")**
 --plays the minecraft sound --can only be minecraft sounds
+
+
+
+
+# **Module**
+--This is the base that every module has.</br>
+--We will pretend that "module" is a Module.
+
+### **module.name**
+--The name of the module
+
+### **module.description**
+--The description of the module
+
+### **module.isVisual**
+-Will be true if the module is a Visual Module
+
+### **module.isScript**
+-Will be true if the module is a Script Module
+
+### **module.isvisibleingui**
+--Will be true if it should be visible in the ui
+
+### **module.enabled**
+--Will be true when the module is Enabled
+
+### **module.settings**
+--A table of Setting
 
 
 
@@ -258,6 +283,9 @@ client.settings.addFunction("Click the button for free vbuck", "funnyThingLmao",
 ### **local blockId = block.id**
 --the id of the block
 
+
+
+
 ### **flags**
 -- do note that status flags are sent by the SERVER. Thus, many custom servers<br/>
 -- may only send essential flags such as on fire or sneaking. However, more niche flags<br/>
@@ -294,6 +322,7 @@ flag type:<br/>
 75: sleeping<br/>
 88: if the player should render when they have the invisibility status effect<br/>
 The other status flags do not apply to players and are thus omitted from the documentation (for now)<br/>
+
 
 
 
@@ -340,6 +369,8 @@ The other status flags do not apply to players and are thus omitted from the doc
 ### **local firstInvSlot = inventory.at(1)**
 --gives you an item table for the slot, dont go below one or above size<br/>
 --will return nil if there is no item
+
+
 
 
 ## item
