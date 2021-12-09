@@ -82,23 +82,18 @@ Copy coordinates by pressing key ('O' and 'J' for default).
 [<h2>Death Coordinates</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/deathcoordinates.lua)
 Shows player death coordinates.
 
-waypoint_style configs
-   
-   0: disable waypoint
-   
-   1 (default): make a waypoint 'Death' (overwrites the old waypoint) 
-   
-   2: make a waypoint 'Death [Current Time]
-   
-   3: make a waypoint '[Current Time]'
-   
+waypoint_style configs<br/>
+   0: disable waypoint<br/>
+   1 (default): make a waypoint 'Death' (overwrites the old waypoint) <br/>
+   2: make a waypoint 'Death [Current Time]<br/>
+   3: make a waypoint '[Current Time]'<br/>
    example of [Current Time]: [08/21/21 12:30:45]
 
 [<h2>Input Example</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/inputexample.lua)
 Example script about using input library.
 
 [<h2>Minimap</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/minimap.lua)
-Shows a map of blocks around you,
+Shows a map of blocks around you,<br/>
 It will decrease your fps a lot.
 
 [<h2>Mining Mod</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/miningmod.lua)
@@ -156,12 +151,9 @@ Customizable toggle sprint indicator.
 
 
 
-make sure to have the tsData.txt file in the data folder and the sprintCommand.lua in the command folder and readfile.lua library in the library folder.
-
-in  tsData.txt file, first line is the text that will be displayed as text in [text: (Toggled)].
-
-second, third, fourth and fifth are the rgba value codes.
-
+make sure to have the tsData.txt file in the data folder and the sprintCommand.lua in the command folder and readfile.lua library in the library folder.<br/>
+in  tsData.txt file, first line is the text that will be displayed as text in [text: (Toggled)].<br/>
+second, third, fourth and fifth are the rgba value codes.<br/>
 To use the command, do ".ts color r g b a" by replacing r, g, b and a by the value from 0 to 255 or ".ts text New Text" to change the indicator text.
 
 [<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/world_edit_mod.lua)
@@ -187,6 +179,9 @@ Show random number instead of ping
 [<h2>Item Counter</h2>](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/itemcounter.lua)
 Shows the amount of iron ingot, gold ingot, diamond, and emerald
 
+[<h2>Arraylist</h2>](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/arraylist.lua)
+Shows what module is enabled
+
 ​
 
 ---
@@ -196,36 +191,23 @@ Shows the amount of iron ingot, gold ingot, diamond, and emerald
 <h2>Commands</h2>
 
 [<h2>Color</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/color.lua)
-Changes module color
-
+Changes module color<br/>
 command - ``.color``
 
 **To use:**
-
 make sure you have the readfile.lua in the lib folder.
 
 **In the module files have:**
-
-at the beginning:
-
-ImportedLib = importLib("readfile.lua")
-
-color = readFile("color.txt")
-
-in the update function:
-
-color = {}
-
-color = readFile("color.txt")
-
-for your rendering:
-
-gfx.color(color[5], color[6], color[7], color[8])
-
-gfx.rect(0, 0, sizeX, sizeY)
-
-gfx.color(color[1], color[2], color[3], color[4])
-
+at the beginning:<br/>
+ImportedLib = importLib("readfile.lua")<br/>
+color = readFile("color.txt")<br/>
+in the update function:<br/>
+color = {}<br/>
+color = readFile("color.txt")<br/>
+for your rendering:<br/>
+gfx.color(color[5], color[6], color[7], color[8])<br/>
+gfx.rect(0, 0, sizeX, sizeY)<br/>
+gfx.color(color[1], color[2], color[3], color[4])<br/>
 gfx.text(0, 0, text)
 
 [<h2>Dot</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/dot.lua)
@@ -277,8 +259,7 @@ changes toggle sprint indicator data (text or color).
 
 command - ``.ts``
 
-needs tsData.txt, sprint.lua module and readfile.lua library to work!
-
+needs tsData.txt, sprint.lua module and readfile.lua library to work!<br/>
 more infos in sprint.lua module.
 
 [<h2>World Edit</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/world_edit.lua)
@@ -286,19 +267,13 @@ Make your construction easier.
 
 command - ``.we``
 
-setpos1: sets the first position
-
-setpos2: sets the second position
-
-os: tells you which coordinates are selected
-
-wand: gives you the wand tool (wooden sword cuz it doesn't break blocks in creative)
-
-cut: removes the selected area
-
-clone: clones the selected area to your current position
-
-fill: fills the selected area
+setpos1: sets the first position<br/>
+setpos2: sets the second position<br/>
+os: tells you which coordinates are selected<br/>
+wand: gives you the wand tool (wooden sword cuz it doesn't break blocks in creative)<br/>
+cut: removes the selected area<br/>
+clone: clones the selected area to your current position<br/>
+fill: fills the selected area<br/>
 
 ​
 
@@ -309,8 +284,7 @@ fill: fills the selected area
 <h2>Libs</h2>
 
 [<h2>Read File</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/readfile.lua)
-Library used to read color file.
-
+Library used to read color file.<br/>
 Check .color command.
 
 [<h2>Translator</h2>](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua)
