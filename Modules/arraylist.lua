@@ -7,8 +7,18 @@ description="Shows what module is enabled"
     made by Onix86
 ]]
 
+hue_shift_speed = 5
+client.settings.addFloat("Hue Shift Speed", "hue_shift_speed", 0.2, 35)
+
+rainbow_speed = 25
+client.settings.addFloat("Rainbow Update Speed", "rainbow_speed", 1, 500)
+
+slow_update = false
+client.settings.addBool("Slow Updates (FPS+)", "slow_update")
+
 function colorFromHue(hue)
     while (hue > 360) do hue = hue - 360 end
+    while (hue < 0  ) do hue = hue + 360 end
 
     if (hue < 60) then
       return 255, hue*255/60, 0
@@ -26,17 +36,12 @@ function colorFromHue(hue)
     return 255,255,255;
 end
 
-function update(dt)
-    local mods = client.modules()
-    local settings = mods[1].settings
+texts = {}
 
-end
-
-hue = 0
-
-function render(dt)
-    hue = hue + dt * 25
+function _update(dt)
+    hue = hue + dt * rainbow_speed
     if hue > 360 then hue = 0 end
+    if hue < 0 then hue = 360 end
 
     texts = {}
 
@@ -66,8 +71,24 @@ function render(dt)
         t.tx = t.x + 3
         t.ty = y + 1
 
-        txthue = txthue + 5
+        txthue = txthue - hue_shift_speed
         y = y + font.height + 2
+    end
+end
+
+
+
+function update(dt)
+    if (slow_update == true) then
+        _update(dt)
+    end
+end
+
+hue = 0
+
+function render(dt)
+    if (slow_update == false) then
+        _update(dt)
     end
     
     --doing them split allows batch rendering which results in better performance
@@ -75,10 +96,9 @@ function render(dt)
     for k, t in pairs(texts) do
         gfx.rect(t.x+2, t.y, t.w-2, t.h)
     end
-    gfx.color(69,69,69)
 
     for k, t in pairs(texts) do --texts & rects
-        gfx.color(t.r, t.g, t.b)
+        gfx.color(255 - t.r, 255 - t.g, 255 - t.b)
         gfx.rect(t.x, t.y, 2, t.h)
         gfx.text(t.tx, t.ty, t.text)
     end
