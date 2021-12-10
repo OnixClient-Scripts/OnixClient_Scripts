@@ -179,6 +179,9 @@ Shows the amount of iron ingot, gold ingot, diamond, and emerald
 ## [Arraylist](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/arraylist.lua)
 Shows what module is enabled
 
+## [TabGui](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/tabgui.lua)
+A simple tabgui
+
 ​
 
 ---
