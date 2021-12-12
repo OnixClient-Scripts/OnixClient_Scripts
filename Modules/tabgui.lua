@@ -1,12 +1,10 @@
 name="TabGui"
 description="A simple tabgui"
-
 --[[
-    TabGui Module Script
+    Arraylist Module Script
     
     made by Onix86
 ]]
-
 positionX = 5
 positionY = 5
 sizeX = 166
@@ -106,6 +104,7 @@ function keyboard(key, down)
         table.insert(userInteractions, 4)
     end
 end
+event.listen("KeyboardInput", keyboard)
 
 
 function tableLenght(t)
