@@ -57,7 +57,7 @@ keybind = 0x45
 
 You can add a bool after the 2nd parameter if you want opacity to be visible or no
 
-```
+```lua
 function funnyThingLmao()
 	print("+1 Vbuck")
 end
