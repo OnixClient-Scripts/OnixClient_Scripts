@@ -6,9 +6,11 @@ ImportedLib = importLib("readfile.lua")
 function execute(arguments)
     if arguments == "reset" then
         writeFile("video.txt", "")
+        gui.stopallsound()
         print("Stopped playing")
     elseif arguments == "stop" then
         writeFile("video.txt", "")
+        gui.stopallsound()
         print("Stopped playing")
     else
         writeFile("video.txt", arguments)
