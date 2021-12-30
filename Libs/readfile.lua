@@ -1,11 +1,14 @@
 function readFile(file)
-    local lines = io.lines(file)
-    local result = {}
-    
-    for line in lines do 
-        table.insert(result, line)
+    if os.rename(file, file) then
+        local lines = io.lines(file)
+        local result = {}
+        for line in lines do 
+            table.insert(result, line)
+        end
+        return result
+    else
+        return nil
     end
-    return result
 end
 
 function writeFile(file, text)
