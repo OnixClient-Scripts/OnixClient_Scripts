@@ -7,6 +7,20 @@ description = "can play videos"
     made by MCBE Craft
 ]]
 
+
+
+--pos stuff
+positionX = 400
+positionY = 50
+sizeX = 200
+sizeY = 100
+
+--file stuff
+importLib("readfile.lua")
+writeFile("video.txt", "")
+local file = 000001
+local oVideo = ""
+
 --timing stuff
 fps = 25
 client.settings.addAir(5)
@@ -22,43 +36,48 @@ extInfo = "file extension:\n1: png\n2: jpg\n3: gif"
 client.settings.addInfo("extInfo")
 client.settings.addInt("", "extension", 1, 3)
 extensions = {".png", ".jpg", ".gif"}
-extensionName = extensions[extension]
+local extensionName = extensions[extension]
 
---pos stuff
-positionX = 400
-positionY = 50
-sizeX = 200
-sizeY = 100
+--loop
+loopVideo = true
+client.settings.addAir(5)
+client.settings.addBool("Loop the video", "loopVideo")
 
---file stuff
-importLib("readfile.lua")
-writeFile("video.txt", "")
-file = 000000
-oVideo = ""
+--debug
+debugOpt = false
+client.settings.addAir(5)
+client.settings.addBool("Debug: shows frame and latency", "debugOpt")
 
-firstUpdate = true
+
+
 
 function update(deltaTime)
     extensionName = extensions[extension]
+    video = readFile("video.txt")
 end
 
 
 function render(deltaTime)
     time = time + deltaTime
-    video = readFile("video.txt")
     if video == nil then
         video = {oVideo}
     end
+    if oVideo ~= video[1] then
+        resetVid()
+        oVideo = video[1]
+    end
     if video[1] ~= nil and video[1] ~= "" and video[1] ~= "\n" then
-        if oVideo ~= video[1] then
-            file = "000000"
-            time = 0
-            oVideo = video[1]
-        end
-        if firstUpdate == true then
-            file = "000000"
-            time = 0
-            firstUpdate = false
+        if not os.rename(video[1] .. "\\" .. file .. extensionName, video[1] .. "\\" .. file .. extensionName) and os.rename("video.txt", "video.txt") then
+            if loopVideo then
+                resetVid()
+                gui.sound("record." .. video[1])
+                print("Now playing: " .. video[1])
+            else
+                resetVid()
+                writeFile("video.txt", "")
+                gui.stopallsound()
+                print("Stopped playing")
+            end
         end
         while time >= 1/fps do
             file = numToStr(file + 1)
@@ -69,8 +88,9 @@ function render(deltaTime)
             gfx.image(0, 0, sizeX, sizeY, video[1] .. "\\" .. file2 .. extensionName)
         end
         gfx.image(0, 0, sizeX, sizeY, video[1] .. "\\" .. file .. extensionName)
-    else
-        firstUpdate = true
+        if debugOpt then
+            gfx.text(0, 0, file .. ", " .. time)
+        end
     end
 end
 
@@ -87,4 +107,9 @@ function numToStr(num)
         num = "0" .. num
     end
     return tostring(num)
+end
+
+function resetVid()
+    file = "000001"
+    time = 0
 end
