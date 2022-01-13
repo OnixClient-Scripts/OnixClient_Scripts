@@ -90,7 +90,11 @@ function render(deltaTime)
         end
         gfx.image(0, 0, sizeX, sizeY, video[1] .. "\\" .. file .. extensionName)
         if tonumber(file) > 1 then
-            gfx.unloadimage(video[1] .. "\\" .. numToStr(file - 1) .. extensionName)
+            if gfx.unloadimage == nil then
+                print("Unloading feature not supported!")
+            else
+                gfx.unloadimage(video[1] .. "\\" .. numToStr(file - 1) .. extensionName)
+            end
         end
         if debugOpt then
             gfx.text(0, 0, file .. ", " .. time)
