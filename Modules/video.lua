@@ -5,6 +5,7 @@ description = "can play videos"
     Video player
     
     made by MCBE Craft
+    how to use: https://youtu.be/ibfWOKq_TWY
 ]]
 
 
