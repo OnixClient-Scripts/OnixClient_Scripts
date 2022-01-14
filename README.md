@@ -237,7 +237,7 @@ Example script about using notification.
 
 command - ``.test_notif``
 
-<img src="https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/notification_example.png">
+<img src="https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Extras/notification_example.png">
 
 ## [Pathfinder](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/pathfinder.lua)
 Copies the directories of the specified location.
