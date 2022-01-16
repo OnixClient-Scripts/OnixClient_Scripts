@@ -6,6 +6,8 @@ description = "can play videos"
     
     made by MCBE Craft
     how to use: https://youtu.be/ibfWOKq_TWY
+    special thanks to Bryan#8966 and notshige#5253 for beta testing the script and helping me to improve it <3
+    and to onix for adding the unloadimage function
 ]]
 
 
