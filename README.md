@@ -58,6 +58,15 @@ This is because when saving/editing scripts the game won't notice that you've ma
 
 ​
 
+# Script documentation
+You can see the documentation on [Github](https://github.com/OnixClient-Scripts/OnixClient_Scripts/blob/master/Scripting_Documentation.md) or [official website](http://onixclient.xyz/scripting/main.html)
+
+​
+
+---
+
+​
+
 # What each module/command does
 
 ## Modules
