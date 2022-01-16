@@ -20,13 +20,24 @@ you can download it here
 https://www.mediafire.com/file/37wm885qwyk3bjj/LuaPingHelper.exe/file
 
 ]]--
+HowMakeWorkInfoText = "for this to work you will need to execute the LuaPingHelper.exe file\
+(so it can do the ping and tell the script of its results)\
+you can download it here\
+\
+https://www.mediafire.com/file/37wm885qwyk3bjj/LuaPingHelper.exe/file\n\n"
 
-
+function ClickCopyButton()
+    setClipboard("https://www.mediafire.com/file/37wm885qwyk3bjj/LuaPingHelper.exe/file")
+    client.notification("The link is in your clipboard!")
+end
 
 -----script-code-----
 
 client.settings.addColor("Text Color", "color")
 client.settings.addColor("Background Color", "background_color")
+client.settings.addAir(15)
+client.settings.addInfo("HowMakeWorkInfoText")
+client.settings.addFunction("Copy Download Link", "ClickCopyButton", "Copy")
 
 DelayFile = io.open("PingCounterDelay.txt", "w")
 io.output(DelayFile)

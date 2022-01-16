@@ -19,6 +19,10 @@ local packPath = "%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/L
 local packMesg = "§l[§1Onix§fClient]§r Texture Pack directory copied to clipboard!"
 local packNotif = "Texture Pack directory copied to clipboard!"
 
+local crosshairPath = "%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/RoamingState/OnixClient/Crosshairs"
+local crosshairMesg = "§l[§1Onix§fClient]§r Crosshairs directory copied to clipboard!"
+local crosshairNotif = "Crosshairs directory copied to clipboard!"
+
 local globalPath = "%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/RoamingState/OnixClient"
 local globalMesg = "§l[§1Onix§fClient]§r Global directory copied to clipboard!"
 local globalNotif = "Global directory copied to clipboard!"

@@ -29,8 +29,8 @@ function render(deltaTime)
     for i=1,inventory.size do
         local slot = inventory.at(i)
         if (slot ~= nil) then
-            if (slot.id == 297 or slot.id == 318 or slot.id == 604) then
-                durability = durability + slot.maxData - slot.data
+            if string.match(slot.name, "pickaxe") ~= nil then
+                durability = durability + slot.maxDamage - slot.data
             elseif (string.find(slot.name, "_ore") ~= nil or slot.name == "ancient_debris") then
                 for a=1,9 do
                     local ore = ores[a]

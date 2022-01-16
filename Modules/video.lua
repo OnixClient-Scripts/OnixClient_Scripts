@@ -6,8 +6,6 @@ description = "can play videos"
     
     made by MCBE Craft
     how to use: https://youtu.be/ibfWOKq_TWY
-    special thanks to Bryan#8966 and notshige#5253 for beta testing the script and helping me to improve it <3
-    and to onix for adding the unloadimage function
 ]]
 
 
@@ -88,7 +86,7 @@ function render(deltaTime)
         end
         for i = 1, 10, 1 do
             file2 = numToStr(tonumber(file) + i)
-            gfx.image(gui.width() * 2, gui.height(), sizeX, sizeY, video[1] .. "\\" .. file2 .. extensionName)
+            gfx.image(0, 0, sizeX, sizeY, video[1] .. "\\" .. file2 .. extensionName)
         end
         gfx.image(0, 0, sizeX, sizeY, video[1] .. "\\" .. file .. extensionName)
         if tonumber(file) > 1 then

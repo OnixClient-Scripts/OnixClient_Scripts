@@ -1,30 +1,25 @@
 command = "inv"
-help_message = "sends current inventory"
+help_message = "sends current inventory, or count an item"
+
+
+local function printItem(item)
+    if item ~= nil then
+        print(item.count .. " " .. item.name .. " " .. item.chestplate.data .. " (" .. item.id .. ")")
+    end
+end
+
 
 function execute(arguments)
     if (arguments == "") then
         local inventory = player.inventory()
         local armor = inventory.armor()
-        if (armor.helmet ~= nil) then
-            print("1 " .. armor.helmet.name .. " " .. armor.helmet.data .. " " .. armor.helmet.id)
-        end
-        if (armor.chestplate ~= nil) then
-            print("1 " .. armor.chestplate.name .. " " .. armor.chestplate.data .. " " .. armor.chestplate.id)
-        end
-        if (armor.leggings ~= nil) then
-            print("1 " .. armor.leggings.name .. " " .. armor.leggings.data .. " " .. armor.leggings.id)
-        end
-        if (armor.boots ~= nil) then
-            print("1 " .. armor.boots.name .. " " .. armor.boots.data .. " " .. armor.boots.id)
-        end
-        if (inventory.offhand() ~= nil) then
-            print(inventory.offhand().count .. " " .. inventory.offhand().name .. " " .. inventory.offhand().maxData - inventory.offhand().data .. " " .. inventory.offhand().id)
-        end
+        printItem(armor.helmet)
+        printItem(armor.chestplate)
+        printItem(armor.leggings)
+        printItem(armor.boots)
+        printItem(inventory.offhand())
         for i=1,inventory.size do
-            local slot = inventory.at(i)
-            if (slot ~= nil) then
-                print(slot.count .. " " .. slot.name .. " " .. slot.maxData - slot.data .. " " .. slot.id)
-            end
+            printItem(inventory.at(i))
         end
     else
         local total = 0

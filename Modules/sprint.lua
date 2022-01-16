@@ -14,19 +14,18 @@ description = "customizable toggle sprint"
 
 -- toggle sprint key, you can find key value here https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 sprint_key = 17
+client.settings.addKeybind("Toggle Sprint Key", "sprint_key")
 
 -- if your togglesprint isn't on when you log onto a world, set this to false, otherwise set it to true
 toggle_by_default = false
 
 
 --reading data file
-ImportedLib = importLib("readfile.lua")
-tsData = readFile("tsData.txt")
-not_toggled_text = "[" .. tsData[1] .. ": (Not Toggled)]"
-toggled_text = "[" .. tsData[1] .. ": (Toggled)]"
+not_toggled_text = "[" .. "Sprint" .. ": (Not Toggled)]"
+toggled_text = "[" .. "Sprint" .. ": (Toggled)]"
 
-color = {tsData[2], tsData[3], tsData[4], tsData[5]}
-
+textColor = {255,255,255,255}
+client.settings.addColor("Text Color","textColor")
 
 -- useless data that gets changed, just initializing values
 positionX = 100
@@ -52,30 +51,21 @@ function keyboard(key, isDown)
         text = not_toggled_text
     end
 end
+event.listen("KeyboardInput", keyboard)
 
 function update(deltaTime)
     local font = gui.font()
     sizeX = font.width(text)
-    sizeY = font.height
+    sizeY = font.wrap
     if firstUpdate then
         positionX = 0
-        positionY = gui.height() - font.height
+        positionY = gui.height() - font.wrap
         firstUpdate = false
     end
-
-
-    tsData = {}
-    tsData = readFile("tsData.txt")
-
-    not_toggled_text = "[" .. tsData[1] .. ": (Not Toggled)]"
-    toggled_text = "[" .. tsData[1] .. ": (Toggled)]"
-
-    color = {tsData[2], tsData[3], tsData[4], tsData[5]}
-
 end
 
 
 function render(deltaTime)
-    gfx.color(color[1], color[2], color[3], color[4])
+    gfx.color(textColor.r,textColor.g,textColor.b,textColor.a)
     gfx.text(0, 0, text)
 end

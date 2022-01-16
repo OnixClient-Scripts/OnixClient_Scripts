@@ -24,10 +24,9 @@ function update(deltaTime)
 end
 
 function render(deltaTime)
-    if (true == true) then 
     --for countingCount=1,1000 do
     local name = player.name()
-    local gamemode_string
+    local gamemode_string = "Unknown"
     local player_x,player_y,player_z = player.position()
     local block_x,block_y,block_z = player.selectedPos()
     local biome = dimension.getBiome(player_x,player_y,player_z)
@@ -41,17 +40,20 @@ function render(deltaTime)
     local food = attribs.id(2).value
     local saturation = attribs.id(3).value
     local font = gui.font()
-	
+	local gamemode = player.gamemode()
+    
     if gamemode == 0 then
         gamemode_string = "Survival"
     elseif gamemode == 1 then
         gamemode_string = "Creative"
     elseif gamemode == 2 then
         gamemode_string = "Adventure"
+    elseif gamemode == 3 then
+        gamemode_string = "Survival Spectator"
+    elseif gamemode == 4 then
+        gamemode_string = "Creative Spectator"
     elseif gamemode == 5 then
         gamemode_string = "Default"
-    else
-        gamemode_string = "Unknown"
     end
     if (biome ~= nil) then biomeName = biome.name end
 
@@ -76,5 +78,4 @@ function render(deltaTime)
     gfx.text(1, 26, " H: " .. health, 0.7)
     gfx.text(1, 34, " F: " .. food, 0.7)
     gfx.text(1, 42, " S: " .. saturation, 0.7)
-end
 end

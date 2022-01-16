@@ -8,6 +8,14 @@ sizeY = 10
 scale = 1
 
 START_STOP_KEY = 0x55 --or 'U'
+client.settings.addKeybind("Start/Stop key", "START_STOP_KEY")
+
+StoppedColor = {255,0,0,255}
+CountingColor = {0,255,0,255}
+BackgroundColor = {0,0,0,128}
+client.settings.addColor("Stopped Color", "StoppedColor")
+client.settings.addColor("Counting Color", "CountingColor")
+client.settings.addColor("Background Color", "BackgroundColor")
 --[[
     Stopwatch Module Script
     made by Onix86
@@ -37,6 +45,7 @@ function keyboard(key, isDown)
         end
     end
 end
+event.listen("KeyboardInput", keyboard)
 
 TimerText = "00:00"
 TextColor = {r=30,g=255,b=30,a=255}
@@ -81,14 +90,14 @@ end
 
 function update()
     if (state == 0) then
-        TextColor = {r=30,g=255,b=30,a=255}
+        TextColor = StoppedColor
         TimerText = "00:00"
     elseif (state == 1) then
         TimerText = timeText(os.time() - startTime)
-        TextColor = {r=30,g=255,b=30,a=255}
+        TextColor = CountingColor
     elseif (state == 2) then
         TimerText = timeText(stopTime - startTime)
-        TextColor = {r=30,g=30,b=255,a=255}
+        TextColor = StoppedColor
     end
 end
 
@@ -96,7 +105,7 @@ function render()
     local font = gui.font()
     local tw = font.width(TimerText)
 
-    gfx.color(0,0,0,120)
+    gfx.color(BackgroundColor.r,BackgroundColor.g,BackgroundColor.b,BackgroundColor.a)
     gfx.rect(0, 0, tw + 4, 10)
 
     gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)

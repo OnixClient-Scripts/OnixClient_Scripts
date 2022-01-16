@@ -6,6 +6,7 @@ description = "gives the amout of arrow"
 	
 	made by MCBE Craft
 	improvements by Onix86
+    improvements by Onix86 (again)
 ]]
 
 positionX = 5
@@ -13,26 +14,19 @@ positionY = 210
 sizeX = 30
 sizeY = 10
 
-Background_Color_R = 0
-Background_Color_G = 0
-Background_Color_B = 0
-Background_Color_A = 127
+Background_Color = {0,0,0,128}
+Text_Color = {255, 255, 255, 255}
+bowOnly = true 
 
-Text_Color_R = 255
-Text_Color_G = 0
-Text_Color_B = 0
-Text_Color_A = 255
+client.settings.addBool("Bow & Crossbow Only", "bowOnly")
+client.settings.addColor("Text Color", "Text_Color")
+client.settings.addColor("Background Color", "Background_Color")
 
-bowOnly = true   --crossbows too, will be invisible if you don't hold one
 
-bowId = 300
-crossbowId = 575
-arrowId = 301
+bowId = "bow"
+crossbowId = "crossbow"
+arrowId = "arrow"
 texturePath = "textures/items/arrow"
-
-function update(deltaTime)
-
-end
 
 
 function render(deltaTime)
@@ -40,16 +34,16 @@ function render(deltaTime)
     local arrowCount = 0
     local selected = inventory.at(inventory.selected)
     local itemLocation = ""
-    if (bowOnly == false or (selected ~= nil and (selected.id == bowId or selected.id == crossbowId))) then
+    if (bowOnly == false or (selected ~= nil and (selected.name == bowId or selected.name == crossbowId))) then
         for i=1,inventory.size do
             local slot = inventory.at(i)
-            if (slot ~= nil and slot.id == arrowId) then
+            if (slot ~= nil and string.match(slot.name, arrowId) ~= nil) then
                 arrowCount = arrowCount + slot.count
                 itemLocation = slot.location
             end
         end
         local offhand = inventory.offhand()
-        if (offhand ~= nil and offhand.id == arrowId) then
+        if (offhand ~= nil and string.match(offhand.name, arrowId) ~= nil) then
             arrowCount = arrowCount + offhand.count
             itemLocation = offhand.location
         end
@@ -58,13 +52,13 @@ function render(deltaTime)
             local font = gui.font()
             local text = " Arrow Count: " .. arrowCount
 
-            gfx.color(Background_Color_R,Background_Color_G,Background_Color_B,Background_Color_A)
+            gfx.color(Background_Color.r,Background_Color.g,Background_Color.b,Background_Color.a)
             sizeX = 14 + font.width(text)
             gfx.rect(0, 0, sizeX, 10)
 
-            gfx.color(Text_Color_R, Text_Color_G, Text_Color_B, Text_Color_A)
+            gfx.color(Text_Color.r, Text_Color.g, Text_Color.b, Text_Color.a)
             gfx.text(12, 5 - (font.height / 2), text, 1)
-            gfx.texture(0, 0, 10, 10, texturePath, Text_Color_A)
+            gfx.texture(0, 0, 10, 10, texturePath, Text_Color.a)
         end
         
     end

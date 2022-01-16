@@ -1,15 +1,9 @@
 command = "worldinfo"
 help_message = "World Info"
 
-function execute(arguments)
-	local dimensionId = dimension.id()
-	local dimensionName = dimension.name()
-	local time = dimension.time()
-	local worldName = server.worldName()
-	local worldVersion = game.version
-	
-	print("World Name: " .. worldName)
-	print("World Version: " .. worldVersion)
-	print("Dimension: " .. dimensionName .. " (" .. dimensionId .. ")")
-	print("Dimension Time: " .. time)
+function execute(arguments)	
+	print("World Name: " .. server.worldName())
+	print("World Version: " .. client.mcversion)
+	print("Dimension: " .. dimension.name() .. " (" .. dimension.id() .. ")")
+	print("Dimension Time: " .. dimension.time())
 end

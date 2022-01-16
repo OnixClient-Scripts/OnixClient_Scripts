@@ -1,8 +1,11 @@
-command = "test_notif"
-help_message = "testing command"
+command = "notification"
+help_message = "Sends a notification of your choice"
 
 
 function execute(arguments)
-    print("cool notif shouldve happened")
-    client.notification("aaaaaaaaaaaaaaaaaaaaaaaaa")
-en
+    if string.len(arguments) > 0 then
+        client.notification(arguments)
+    else
+        client.notification("Empty notification, ." .. command .. " <Message>")
+    end
+end

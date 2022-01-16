@@ -17,7 +17,7 @@ sizeY = 30
 scale = 1
 
 color = {255,255,255,255}
-background_color = {0,0,0,127}
+background_color = {0,0,0,128}
 
 client.settings.addBool("Show X: Y: Z:", "showXYZ")
 client.settings.addBool("Display on the Same Line", "sameLine")
@@ -25,9 +25,6 @@ client.settings.addAir(15)
 client.settings.addColor("Text Color", "color")
 client.settings.addColor("Background Color", "background_color")
 
-function update(deltaTime)
-
-end
 
 
 function render(deltaTime) 

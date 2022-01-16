@@ -14,16 +14,15 @@ atlasPath = "textures/gui/icons.png"
     Improvements by Onix86
 ]]--
 
-function update(deltaTime)
-
-end
-
-
 function render(deltaTime)
     
     
     positionX = gui.width() / 2 + 80
-    positionY = gui.height()  - 50
+    positionY = gui.height()  - 51
+    local x,y,z = player.position()
+    if (dimension.getBlock(x,y,z).name == "water") then
+        positionY = positionY - 10
+    end
 
     if (player.gamemode() ~= 1 and gui.mouseGrabbed() == false) then
         local attributeList = player.attributes()

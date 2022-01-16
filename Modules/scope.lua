@@ -8,27 +8,14 @@ description = "adds a scope do bows and crossbows"
 ]]
 
 --!!! NEEDS A "scope.png" FILE IN THE DATA FOLDER !!!
-
-posX = 5
-posY = 210
-scale = 500
-
-bowId = 300
-crossbowId = 575
+bowId = "bow"
+crossbowId = "crossbow"
 arrowId = 301
-
-function update(deltaTime)
-    scale = gui.width()
-    posX = gui.width() / 2 - scale / 2
-    posY = gui.height() / 2 - scale / 2
-end
-
 
 function render(deltaTime)
     local inventory = player.inventory()
     local selected = inventory.at(inventory.selected)
-    if ((selected ~= nil and (selected.id == bowId or selected.id == crossbowId))) then
-        gfx.image(posX, posY, scale, scale, "scope.png")
-        
+    if ((selected ~= nil and (selected.name == bowId or selected.name == crossbowId))) then
+        gfx.image(0, 0, gui.width(), gui.height(), "scope.png")
     end
 end

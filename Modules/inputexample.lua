@@ -11,12 +11,18 @@ description = "Keyboard, Mouse input example module script"
 ]]
 
 function keyboard(key, isDown)
-	print(key)
+    if isDown then
+        print("Key pressed: " .. key)
+    end
 end
+event.listen("KeyboardInput", keyboard)
 
 function mouse(button, isDown)
-	print(button)
+    if isDown then
+        print("Mouse Button pressed: " .. button)
+    end
 end
+event.listen("MouseInput", keyboard)
 
 function update(deltaTime)
     

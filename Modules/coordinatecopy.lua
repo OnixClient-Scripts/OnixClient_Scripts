@@ -15,6 +15,8 @@ description = "Copy coordinates in one press of a button!"
 Get_Player_Position_Key = 0x4F --or the 'O' key
 Get_Selected_Block_Position_Key = 0x4A --or the 'J' key
 
+client.settings.addKeybind("Get Player Position", "Get_Player_Position_Key")
+client.settings.addKeybind("Get Block Selection", "Get_Selected_Block_Position_Key")
 
 --script start
 
@@ -36,3 +38,4 @@ function keyboard(key, isDown)
         end
     end
 end
+event.listen("KeyboardInput", keyboard)

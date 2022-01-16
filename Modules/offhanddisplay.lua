@@ -14,10 +14,7 @@ opacity = 0.75
     Original module made by MCBE Craft
 ]]--
 
-function update(deltaTime)
-
-end
-
+client.settings.addFloat("Opacity", "opacity", 0, 1)
 
 function render(deltaTime)
 
