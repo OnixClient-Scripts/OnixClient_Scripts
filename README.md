@@ -182,6 +182,9 @@ Shows what module is enabled
 ## [TabGui](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/tabgui.lua)
 A simple tabgui
 
+## [Video Player](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/video.lua)
+[how to use](https://youtu.be/ibfWOKq_TWY)
+
 ​
 
 ---
