@@ -123,8 +123,7 @@ Shows the saturation.
 ## [Scope](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/scope.lua)
 Adds a scope to bows and crossbows.<br/>
 You need [scope.png](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Data/scope.png) for this module script.<br/>
-Video of the module in action here.<br/>
-https://user-images.githubusercontent.com/48370588/132985141-89ad6332-d7cb-408e-9249-473a06879c72.mp4
+[Video of the module in action here.](https://user-images.githubusercontent.com/48370588/132985141-89ad6332-d7cb-408e-9249-473a06879c72.mp4)<br/>
 
 ## [Screen Darker](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/screendarker.lua)
 Make screen darker (make a black dimm on your screen).
