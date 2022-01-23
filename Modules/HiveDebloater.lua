@@ -16,6 +16,7 @@ RemoveGameOver = false
 RemoveTeamers = false
 RemoveVoting = false
 RemoveEliminated = false
+RemoveLoginStreak = false
 
 function Debloat()
     RemoveUnlocks = true
@@ -25,6 +26,7 @@ function Debloat()
     RemoveTeamers = true
     RemoveVoting = true
     RemoveEliminated = true
+    RemoveLoginStreak = true
     client.settings.send()
 end
 function Bloat()
@@ -35,6 +37,7 @@ function Bloat()
     RemoveTeamers = false
     RemoveVoting = false
     RemoveEliminated = false
+    RemoveLoginStreak = false
     client.settings.send()
 end
 
@@ -42,6 +45,11 @@ end
 client.settings.addAir(10)
 client.settings.addFunction("Enable All", "Debloat", "Debloat")
 client.settings.addFunction("Disable All", "Bloat", "Bloat")
+client.settings.addAir(10)
+
+client.settings.addBool("Remove login streak message.", "RemoveLoginStreak")
+noLoginStreak = "Removes:\n§8§l[§a§lLR§8§l] §rYou're now on a (day) day login streak. XP boost: +(XP boost)%"
+client.settings.addInfo("noLoginStreak")
 client.settings.addAir(10)
 
 client.settings.addBool("Remove \"You have unused unlocks\" message.", "RemoveUnlocks")
@@ -128,6 +136,10 @@ function onChat(message, username, type)
     end
 
     if RemoveEliminated == true and string.find(message, "was ELIMINATED!") ~= nil then
+    return true
+    end
+
+    if RemoveLoginStreak == true and string.find(message, "day loginstreak. XP boost: +") ~= nil then
     return true
     end
 
