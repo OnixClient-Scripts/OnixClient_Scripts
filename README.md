@@ -193,6 +193,11 @@ A simple tabgui
 ## [Video Player](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/video.lua)
 [how to use](https://youtu.be/ibfWOKq_TWY)
 
+## [MusicBee Current Song](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/musicbeecurrentsong.lua)
+Displays current song, artist, album name, and album cover. </br>MusicBee only.
+
+![image](https://user-images.githubusercontent.com/62657139/151176126-de908f2e-dbbb-4bbd-966b-0845387238fa.png)
+
 ​
 
 ---
