@@ -179,7 +179,7 @@ function onChat(message, username, type)
     return true
     end
 
-    if RemovePlayerJoined == true and string.find(message,"joined.") ~= nil then
+    if RemovePlayerJoined == true and string.find(message," joined. §8") ~= nil then
     return true
     end
 
