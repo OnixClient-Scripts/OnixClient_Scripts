@@ -1,5 +1,5 @@
 name = "Hive Chat Debloater"
-description = "Adds small aesthetic tweaks to §eThe Hive§r's chat (debloats).                                      §o§l§8Release §0v2.0\n§rExtra: .block command. (Requires §7Blocker.lua§r &§7 Blockernt.lua)                                    §r§7Made by §eJams\nHeavy big thank to Mr. Onix!"
+description = "Adds small aesthetic tweaks to §eThe Hive§r's chat (debloats).                                      §o§l§8Release §0v2.2\n§rExtra: .block command. (Requires §7Blocker.lua§r &§7 Blockernt.lua)                                    §r§7Made by §eJams\nHeavy big thank to Mr. Onix!"
 
 --[[
     Hive Chat Debloater Script
@@ -125,8 +125,6 @@ serverMessages = "Removes the following server messages:\n\n§6[§e!§6] §r§7D
 client.settings.addInfo("serverMessages")
 
 
-local initlog = io.open("Chatlog.txt", 'w')
-io.close(initlog)
 
 function onChat(message, username, type)
     if RemoveUnlocks == true and message == "§a§l» §rYou have unused unlocks in your Locker!" then
@@ -181,7 +179,7 @@ function onChat(message, username, type)
     return true
     end
 
-    if RemoveLoginStreak == true and string.find(message, "§a§l»".."joined.") ~= nil then
+    if RemovePlayerJoined == true and string.find(message,"joined.") ~= nil then
     return true
     end
 
@@ -191,10 +189,7 @@ function onChat(message, username, type)
             return true
         end
     end
-    local file = io.open("Chatlog.txt", 'a')
-    file:write(message .. "\n")
-    io.close(file)
-    
+
 end
 
 function saveBlockedList()
@@ -224,7 +219,7 @@ function saveBlockedList()
 
 function onLocalData(identifier, content)
     if identifier == "57f718bd-79e0-4212-9c6d-f6b9c091946f" then 
-        print("Added word \"§7" .. content .. "§r\" to the block list.")
+        print("Blocked \"§7" .. content .. "§r\".")
         table.insert(blocked,content)
         saveBlockedList()
     elseif identifier == "7772437c-671c-4682-8728-238bc46efd7a" then
@@ -241,9 +236,9 @@ function onLocalData(identifier, content)
         saveBlockedList()
 
         if found == true then
-            print("Removed word \"§7" .. content .. "§r\" from the block list.")
+            print("Unblocked \"§7" .. content .. "§r\".")
         else
-            print("The word \"§7" .. content .. "§r\" was not on the block list.")
+            print("\"§7" .. content .. "§r\" was not blocked.")
         end
     end
 
