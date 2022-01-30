@@ -1,5 +1,5 @@
 command = "unblock"
-help_message = "Unlocks a word. §8Usage: §7.unblock {§9Word§7}§r"
+help_message = "Unblocks a word. §8Usage: §7.unblock {§9Word§7}§r"
 
 function execute(arguments)
     if arguments == "" then
