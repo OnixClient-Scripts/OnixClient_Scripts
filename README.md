@@ -198,6 +198,22 @@ Displays current song, artist, album name, and album cover. </br>MusicBee only.
 
 ![image](https://user-images.githubusercontent.com/62657139/151176126-de908f2e-dbbb-4bbd-966b-0845387238fa.png)
 
+
+## [Custom Auto GG](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/Custom%20Auto%20GG.lua)
+Send any message - works like auto GG</br>
+edit in the lua file
+
+## [HiveDebloater](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/HiveDebloater.lua)
+Adds small aesthetic tweaks to The Hive's chat (debloats).</br>
+Extra: .block command. (Requires [Blocker.lua](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/Blocker.lua) & [Blockernt.lua](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/Blockernt.lua)) 
+
+## [Chatlog](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/Chatlog.lua)
+Saves in Chatlogger.txt
+
+## [Auto Nick](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/AutoNick.lua)
+Automatically sets your nickname!</br>
+Extra: .autonick command (Requires [autonickcommand.lua](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/autonickcommand.lua)) 
+
 ​
 
 ---
@@ -290,6 +306,22 @@ wand: gives you the wand tool (wooden sword cuz it doesn't break blocks in creat
 cut: removes the selected area<br/>
 clone: clones the selected area to your current position<br/>
 fill: fills the selected area<br/>
+
+## [Blocker](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/Blocker.lua)
+Blocks a word.
+
+command - ``.block {Word}``
+
+
+## [Blockernt](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/Blockernt.lua)
+Unblocks a word.
+
+command - ``.unblock {Word}``
+
+## [autonickcommand](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Commands/autonickcommand.lua)
+Sets the autonick.
+
+command - ``.autonick {Nickname}``
 
 ​
 
