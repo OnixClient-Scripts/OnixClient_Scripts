@@ -1,8 +1,8 @@
-name = "MusicBee Current Song"
+name = "MusicBee Overlay"
 description = "Displays current song, artist, album name, and album cover. \nMusicBee only."
 
 --[[
-    currentsongdisplay
+    musicbee overlay
 	by notshige w/ "borrowed" code from onix's stopwatch script
 	
 	requirements:
