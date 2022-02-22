@@ -214,6 +214,9 @@ Saves in Chatlogger.txt
 Automatically sets your nickname!</br>
 Extra: .autonick command (Requires [autonickcommand.lua](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/autonickcommand.lua)) 
 
+## [More Keystrokes](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Modules/morekeystrokes.lua) and [More keystrokes(numpad version)](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Modules/morekeystrokes(numpad).lua)
+More keystrokes to display ingame other than the default keystrokes mod<br>
+Uses [keytostring library](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Libs/keytostring.lua)
 ​
 
 ---
@@ -338,6 +341,8 @@ Check .color command.
 ## [Translator](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua)
 Library to translate minecraft block name to textures.
 
+## [Key to string](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Libs/keytostring.lua)
+Library to convert key values into string values
 ​
 
 ---
