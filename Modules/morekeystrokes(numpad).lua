@@ -71,16 +71,36 @@ function kbpress(key, isDown)
             kbcolorpressed10 = pressed
         end
     else
-        kbcolorpressed1 = {0,0,0,0}
-        kbcolorpressed2 = {0,0,0,0}
-        kbcolorpressed3 = {0,0,0,0}
-        kbcolorpressed4 = {0,0,0,0}
-        kbcolorpressed5 = {0,0,0,0}
-        kbcolorpressed6 = {0,0,0,0}
-        kbcolorpressed7 = {0,0,0,0}
-        kbcolorpressed8 = {0,0,0,0}
-        kbcolorpressed9 = {0,0,0,0}
-        kbcolorpressed10 = {0,0,0,0}
+        if key == keybind1 then
+            kbcolorpressed1 = {0,0,0,0}
+        end
+        if key == keybind2 then
+            kbcolorpressed2 = {0,0,0,0}
+        end
+        if key == keybind3 then
+            kbcolorpressed3 = {0,0,0,0}
+        end
+        if key == keybind4 then
+            kbcolorpressed4 = {0,0,0,0}
+        end
+        if key == keybind5 then
+            kbcolorpressed5 = {0,0,0,0}
+        end
+        if key == keybind6 then
+            kbcolorpressed6 = {0,0,0,0}
+        end
+        if key == keybind7 then
+            kbcolorpressed7 = {0,0,0,0}
+        end
+        if key == keybind8 then
+            kbcolorpressed8 = {0,0,0,0}
+        end
+        if key == keybind9 then
+            kbcolorpressed9 = {0,0,0,0}
+        end
+        if key == keybind10 then
+            kbcolorpressed10 = {0,0,0,0}
+        end
     end
 end
 event.listen("KeyboardInput", kbpress)
