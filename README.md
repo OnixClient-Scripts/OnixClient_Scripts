@@ -217,6 +217,11 @@ Extra: .autonick command (Requires [autonickcommand.lua](https://github.com/Onix
 ## [More Keystrokes](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Modules/morekeystrokes.lua) and [More keystrokes(numpad version)](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Modules/morekeystrokes(numpad).lua)
 More keystrokes to display ingame other than the default keystrokes mod<br>
 Uses [keytostring library](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Libs/keytostring.lua)
+
+## [Cinematic Black Bars](https://github.com/EpiclyRaspberry/OnixClient_Scripts/raw/master/Modules/blackbars.lua)
+Adds those cinematic black bars, height are adjustable
+![image](https://user-images.githubusercontent.com/84133368/156894399-9f0c8f47-fa4e-42d6-85bc-c8a8047ad98d.png)
+
 ​
 
 ---
