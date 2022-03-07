@@ -24,6 +24,6 @@ function render3d(dt)
     cube(0,0,20,3)
     gfx.color(255,0,0,255)
     cubeframe(0,0,20,1,10)
-    --the
+    --more features coming soon
 
 end
