@@ -104,7 +104,7 @@ function gfx.image(x, y, width, height, filepath) end
 ---@param height number The Height of the rectangle to render the image in
 ---@param filepath string From the root of a texture pack ex: textures/blocks/stone
 ---@return nil
-function gfx.texture(x, y, width, height, filepath) 
+function gfx.texture(x, y, width, height, filepath) end
 
 ---Unloads an image from memory
 ---@param filepath string the filepath you used in gfx.image or gfx.texture
