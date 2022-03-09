@@ -46,7 +46,21 @@ function gfx.drawRect(x, y, width, height, lineWidth) end
 ---@param radius number The radius of the corners's circle
 ---@param quality integer The amount of triangles that will form each circles
 ---@return nil
-function gfx.roundrect(x, y, width, height, radius, quality) end
+function gfx.roundRect(x, y, width, height, radius, quality) end
+
+---Renders a rectangle with round in the corners or not
+---@param x number The position X
+---@param y number The position Y
+---@param width number The Width of the rectangle
+---@param height number The Height of the rectangle
+---@param radius number The radius of the corners's circle
+---@param quality integer The amount of triangles that will form each circles
+---@param topLeft boolean Top left corner 
+---@param topRight boolean Top right corner
+---@param bottomLeft boolean Bottom left corner
+---@param bottomRight boolean Bottom right corner
+---@return nil
+function gfx.roundRectex(x, y, width, height, radius, quality, topLeft, topRight, bottomLeft, bottomRight) end
 
 ---Renders a circle
 ---@param x number The position X
