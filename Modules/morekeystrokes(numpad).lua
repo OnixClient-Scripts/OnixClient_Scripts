@@ -6,7 +6,7 @@ positionY = 60
 sizeX = 69
 sizeY = 93
 --imports
-importLib('keytostring.lua')
+importLib('keyconverter.lua')
 --colors
 text = {255,255,255,255}
 background = {0,0,0,128}
