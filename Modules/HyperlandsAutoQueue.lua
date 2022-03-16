@@ -52,7 +52,7 @@ client.settings.addBool("UHC Meetup", "UHCM")
 
 function onChat(message, username, type)
     message = string.lower(message)
-    Winstreak = string.find(message, "win") and string.find(message, "streak") and string.find(message, "current") and (string.find(message, "of") or string.find(message, "is"))
+    Winstreak = string.find(message, "win") and string.find(message, "streak") and (string.find(message, "current") or  string.find(message, "ended")) and (string.find(message, "of") or string.find(message, "is"))
     AutoQueue = string.find(message, "autoqueue")
     
     if BedWars_Solos == true and (Winstreak or AutoQueue) then
