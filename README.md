@@ -59,7 +59,7 @@ This is because when saving/editing scripts the game won't notice that you've ma
 ​
 
 # Scripting documentation
-You can see the documentation on [Github](https://github.com/OnixClient-Scripts/OnixClient_Scripts/blob/master/Scripting_Documentation.md) or [official website](http://onixclient.xyz/scripting/main.html)
+You can see the documentation on [Github](https://github.com/OnixClient-Scripts/OnixClient_Scripts/blob/master/Scripting_Documentation.md) or [official website](https://ocwebsite.github.io/scripting/main.html)
 
 ​
 
