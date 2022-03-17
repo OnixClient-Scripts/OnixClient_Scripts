@@ -22,7 +22,7 @@ function mouse(button, isDown)
         print("Mouse Button pressed: " .. button)
     end
 end
-event.listen("MouseInput", keyboard)
+event.listen("MouseInput", mouse)
 
 function update(deltaTime)
     
