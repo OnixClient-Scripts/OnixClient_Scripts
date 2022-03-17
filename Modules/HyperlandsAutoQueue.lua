@@ -54,64 +54,66 @@ function onChat(message, username, type)
     message = string.lower(message)
     Winstreak = string.find(message, "win") and string.find(message, "streak") and (string.find(message, "current") or  string.find(message, "ended")) and (string.find(message, "of") or string.find(message, "is"))
     AutoQueue = string.find(message, "autoqueue")
+    Spectator = string.match(message, "§f>§byou are now a spectator!")
+    Queued = string.match(message, "§a§lqueued, teleporting you to a new game in 3s! right click the portal to cancel it.")
     
-    if BedWars_Solos == true and (Winstreak or AutoQueue) then
+    if BedWars_Solos == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q bedwars-solos")
     end
 
-    if BedWars_Doubles == true and (Winstreak or AutoQueue) then
+    if BedWars_Doubles == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q bedwars-doubles")
     end
 
-    if BedWars_Squads == true and (Winstreak or AutoQueue) then
+    if BedWars_Squads == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q bedwars-squads")
     end
 
-    if SkyWars_Solos == true and (Winstreak or AutoQueue) then
+    if SkyWars_Solos == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q skywars-solos")
     end
 
-    if SkyWars_Doubles == true and (Winstreak or AutoQueue) then
+    if SkyWars_Doubles == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q skywars-doubles")
     end
 
-    if SkyWars_Duels == true and (Winstreak or AutoQueue) then
+    if SkyWars_Duels == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q skywars-duels")
     end
 
-    if TheBridge_Solos == true and (Winstreak or AutoQueue) then
+    if TheBridge_Solos == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q thebridge-solos")
     end
 
-    if TheBridge_Doubles == true and (Winstreak or AutoQueue) then
+    if TheBridge_Doubles == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q thebridge-doubles")
     end
 
-    if TheBridge_Squads == true and (Winstreak or AutoQueue) then
+    if TheBridge_Squads == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q thebridge-squads")
     end
 
-    if Duels_BUHC == true and (Winstreak or AutoQueue) then
+    if Duels_BUHC == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q duels-builduhc")
     end
 
-    if Duels_PotPvP == true and (Winstreak or AutoQueue) then
+    if Duels_PotPvP == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q duels-potpvp")
     end
 
-    if Duels_Iron == true and (Winstreak or AutoQueue) then
+    if Duels_Iron == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q duels-iron")
     end
 
-    if Duels_Archer == true and (Winstreak or AutoQueue) then
+    if Duels_Archer == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q duels-archer")
     end
 
-    if Duels_Sumo == true and (Winstreak or AutoQueue) then
+    if Duels_Sumo == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q duels-sumo")
     end
 
-    if UHCM == true and (Winstreak or AutoQueue) then
+    if UHCM == true and (Winstreak or AutoQueue or Spectator or Queued) then
         client.execute("say /q uhcmeetup-solos")
     end
 end
