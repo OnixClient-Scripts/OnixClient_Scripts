@@ -1,4 +1,4 @@
-name = "Exemple"
+name = "Example"
 description = "A Simple \"Hello World\""
 
 
