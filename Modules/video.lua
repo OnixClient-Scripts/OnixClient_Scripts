@@ -86,7 +86,7 @@ function render(deltaTime)
         end
         for i = 1, 10, 1 do
             file2 = numToStr(tonumber(file) + i)
-            gfx.image(0, 0, sizeX, sizeY, video[1] .. "\\" .. file2 .. extensionName)
+            gfx.image(gui.width()*2, 0, sizeX, sizeY, video[1] .. "\\" .. file2 .. extensionName)
         end
         gfx.image(0, 0, sizeX, sizeY, video[1] .. "\\" .. file .. extensionName)
         if tonumber(file) > 1 then
