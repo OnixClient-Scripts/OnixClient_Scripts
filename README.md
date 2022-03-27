@@ -196,7 +196,7 @@ A simple tabgui
 ## [MusicBee Overlay](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/musicbeeoverlay.lua)
 Displays current song, artist, album name, and album cover. </br>MusicBee only.
 
-![image](https://user-images.githubusercontent.com/62657139/151176126-de908f2e-dbbb-4bbd-966b-0845387238fa.png)
+[![image](https://user-images.githubusercontent.com/62657139/151176126-de908f2e-dbbb-4bbd-966b-0845387238fa.png)](https://youtu.be/dQw4w9WgXcQ)
 
 
 ## [Custom Auto GG](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/Custom%20Auto%20GG.lua)
