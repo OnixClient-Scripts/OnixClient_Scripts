@@ -1,4 +1,10 @@
+## This documentation is no longer maintained, you can see the latest documentation [here](https://ocwebsite.github.io/scripting/main.html)
+</br></br></br>
+
+
+
 # **Onix Scripting Documentation**
+
 ### **local mcVersion = game.version**
 -- The version of minecraft, example: "1.16.40"
 
