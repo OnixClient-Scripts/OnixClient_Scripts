@@ -44,3 +44,13 @@ function sendLocalData(uuid, data)
 ---@param Command string The text after .  ex: .lol would be "lol"
 ---@param OnExecuted fun(arguments:string):void when the command is executed this is called
 function registerCommand(Command, OnExecuted) end
+  
+  
+---Splits the string as expected
+---@param text string The text to split by splitter
+---@param splitter string what to split the text with
+---@return string[] splittedText
+function string.split(text, splitter) end
+  
+  
+  
