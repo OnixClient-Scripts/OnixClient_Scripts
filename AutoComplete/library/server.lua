@@ -21,6 +21,10 @@ function server.port() end
 function server.worldName() end
 
 
+---The name of everyone in the pause menu
+---@return string[] playernames
+function server.players() end
+
 
 
 
