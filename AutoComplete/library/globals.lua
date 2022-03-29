@@ -37,3 +37,10 @@ function jsonToTable(JSON) end
 ---@param uuid string Something unique enough to make sure what sent the data to read things that you expect only
 ---@param data string Data to send, you can use tableToJson and jsonToTable to send tables via string
 function sendLocalData(uuid, data)
+  
+  
+---Allows you to make a command in a module
+---You dont need a command file but it does not show in .help
+---@param Command string The text after .  ex: .lol would be "lol"
+---@param OnExecuted fun(arguments:string):void when the command is executed this is called
+function registerCommand(Command, OnExecuted) end
