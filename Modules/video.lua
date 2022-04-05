@@ -17,10 +17,8 @@ sizeX = 200
 sizeY = 100
 
 --file stuff
-importLib("readfile.lua")
-writeFile("video.txt", "")
+importLib("fileUtility.lua")
 local file = 000001
-local oVideo = ""
 
 --timing stuff
 fps = 25
@@ -50,32 +48,42 @@ client.settings.addAir(5)
 client.settings.addBool("Debug: shows frame and latency", "debugOpt")
 
 
+registerCommand("video", function(arguments)
+    if arguments == "reset" then
+        resetVid()
+        gui.stopallsound()
+        print("Now playing: " .. video)
+    elseif arguments == "stop" then
+        resetVid()
+        video = nil
+        gui.stopallsound()
+        print("Stopped playing")
+    else
+        resetVid()
+        video = arguments
+        gui.sound("record." .. video)
+        print("Now playing: " .. video)
+    end
+end)
+
 
 
 function update(deltaTime)
     extensionName = extensions[extension]
-    video = readFile("video.txt")
 end
 
 
 function render(deltaTime)
     time = time + deltaTime
-    if video == nil then
-        video = {oVideo}
-    end
-    if oVideo ~= video[1] then
-        resetVid()
-        oVideo = video[1]
-    end
-    if video[1] ~= nil and video[1] ~= "" and video[1] ~= "\n" then
-        if not os.rename(video[1] .. "\\" .. file .. extensionName, video[1] .. "\\" .. file .. extensionName) and os.rename("video.txt", "video.txt") then
+    if video ~= nil then
+        if not os.rename(video .. "\\" .. file .. extensionName, video .. "\\" .. file .. extensionName) then
             if loopVideo then
                 resetVid()
-                gui.sound("record." .. video[1])
-                print("Now playing: " .. video[1])
+                gui.sound("record." .. video)
+                print("Now playing: " .. video)
             else
                 resetVid()
-                writeFile("video.txt", "")
+                video = nil
                 gui.stopallsound()
                 print("Stopped playing")
             end
@@ -86,14 +94,14 @@ function render(deltaTime)
         end
         for i = 1, 10, 1 do
             file2 = numToStr(tonumber(file) + i)
-            gfx.image(gui.width()*2, 0, sizeX, sizeY, video[1] .. "\\" .. file2 .. extensionName)
+            gfx.image(gui.width()*2, 0, sizeX, sizeY, video .. "\\" .. file2 .. extensionName)
         end
-        gfx.image(0, 0, sizeX, sizeY, video[1] .. "\\" .. file .. extensionName)
+        gfx.image(0, 0, sizeX, sizeY, video .. "\\" .. file .. extensionName)
         if tonumber(file) > 1 then
             if gfx.unloadimage == nil then
                 print("Unloading feature not supported!")
             else
-                gfx.unloadimage(video[1] .. "\\" .. numToStr(file - 1) .. extensionName)
+                gfx.unloadimage(video .. "\\" .. numToStr(file - 1) .. extensionName)
             end
         end
         if debugOpt then
