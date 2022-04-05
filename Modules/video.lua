@@ -60,9 +60,15 @@ registerCommand("video", function(arguments)
         print("Stopped playing")
     else
         resetVid()
-        video = arguments
-        gui.sound("record." .. video)
-        print("Now playing: " .. video)
+        if os.rename(arguments .. "\\" .. file .. extensionName, arguments .. "\\" .. file .. extensionName) then
+            video = arguments
+            gui.sound("record." .. video)
+            print("Now playing: " .. video)
+        else
+            video = nil
+            gui.stopallsound()
+            print("Video not found\nStopped playing")
+        end
     end
 end)
 
@@ -86,6 +92,7 @@ function render(deltaTime)
                 video = nil
                 gui.stopallsound()
                 print("Stopped playing")
+                return
             end
         end
         while time >= 1/fps do
