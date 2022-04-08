@@ -216,7 +216,7 @@ Extra: .autonick command (Requires [autonickcommand.lua](https://github.com/Onix
 
 ## [More Keystrokes](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Modules/morekeystrokes.lua) and [More keystrokes(numpad version)](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Modules/morekeystrokes(numpad).lua)
 More keystrokes to display ingame other than the default keystrokes mod<br>
-Uses [keyconverter library](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Libs/keyconverter.lua)
+Uses [keyconverter library](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Libs/keyconverter.lua)
 
 ## [Cinematic Black Bars](https://github.com/EpiclyRaspberry/OnixClient_Scripts/raw/master/Modules/blackbars.lua)
 Adds those cinematic black bars, height are adjustable
@@ -349,8 +349,8 @@ Check .color command.
 ## [Translator](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Libs/translator.lua)
 Library to translate minecraft block name to textures.
 
-## [Key to string](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Libs/keyconverter.lua)
-Library to convert key values into string values
+## [Key Converter](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Libs/keyconverter.lua)
+Library to convert key values into string values and vice versa
 
 ## [RenderThreeD](https://github.com/EpiclyRaspberry/OnixClient_Scripts/raw/master/Libs/renderthreeD.lua)
 Library that uses `gfx.quad(x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4,displayBothSide)` function to display cubes inside the world<br>
