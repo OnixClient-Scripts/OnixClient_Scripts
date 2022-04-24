@@ -22,7 +22,9 @@
 ​
 
 ## How to install scripts
-
+### Video:
+[How to get started with OnixClient Scripting](https://youtu.be/8jy_jE-MSoo)
+[![How to get started with OnixClient Scripting](https://cdn.discordapp.com/attachments/955853116388040809/967815674917449738/maxresdefault.jpg)](https://youtu.be/8jy_jE-MSoo)
 ### STEP 1
 Press 'Win + R' and type in
 
