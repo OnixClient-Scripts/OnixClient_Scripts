@@ -1,6 +1,10 @@
 name = "Plasmic ClickGUI"
 description = "Plasmic ClickGUI by MCBE Craft"
 
+--[[
+    made by MCBE Craft
+]]--
+
 client.settings.addAir(5)
 openingKey = 0
 client.settings.addKeybind("Gui key", "openingKey")
