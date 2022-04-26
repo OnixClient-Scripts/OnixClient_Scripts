@@ -1,6 +1,11 @@
 name = "Funny fps thing"
 description = "By MCBE Craft"
 
+--[[
+By MCBE Craft
+credits to Quoty0 for alternate lagging method
+]]--
+
 local lag = 0
 local health = 0
 local newHealth = health
@@ -15,13 +20,14 @@ function render(dt)
     newHealth = player.attributes().name("minecraft:health").value
     if newHealth < health then
         lag = lag + 1
+        gui.sound("")
     end
     health = newHealth
     if health == 0 then
         lag = 0
     end
-    for i = 0, lag*lagIntensity*100, 1 do
-        gfx.roundRect(-gui.width(), -gui.height(), gui.width(), gui.height(), lagIntensity, lagIntensity)
+    local time = os.clock()
+    while os.clock() - time <= lag * lagIntensity / 1000 do
     end
 end
 
