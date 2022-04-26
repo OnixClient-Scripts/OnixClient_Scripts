@@ -237,6 +237,9 @@ Get damage for more lag, hit entity for less lag 👍
 ## [FPS Limiter](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/fps_limiter.lua)
 Limit your game's fps
 
+## [Motion blur](https://raw.githubusercontent.com/h-m-m-m/OnixClient_Scripts/master/Modules/MotionBlur.lua)
+Blur your motion! || FLASH WARNING!!!!!!!!!!!!
+
 ​
 
 ---
