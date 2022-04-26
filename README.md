@@ -216,16 +216,26 @@ Saves in Chatlogger.txt
 Automatically sets your nickname!</br>
 Extra: .autonick command (Requires [autonickcommand.lua](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/autonickcommand.lua)) 
 
-## [More Keystrokes](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Modules/morekeystrokes.lua) and [More keystrokes(numpad version)](https://raw.githubusercontent.com/EpiclyRaspberry/OnixClient_Scripts/master/Modules/morekeystrokes(numpad).lua)
+## [More Keystrokes](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/morekeystrokes.lua) and [More keystrokes(numpad version)](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/morekeystrokes(numpad).lua)
 More keystrokes to display ingame other than the default keystrokes mod<br>
 Uses [keyconverter library](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Libs/keyconverter.lua)
 
-## [Cinematic Black Bars](https://github.com/EpiclyRaspberry/OnixClient_Scripts/raw/master/Modules/blackbars.lua)
+## [Cinematic Black Bars](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/blackbars.lua)
 Adds those cinematic black bars, height are adjustable
 ![image](https://user-images.githubusercontent.com/84133368/156894399-9f0c8f47-fa4e-42d6-85bc-c8a8047ad98d.png)
 
-## [RenderThreeD exemples](https://github.com/EpiclyRaspberry/OnixClient_Scripts/raw/master/Modules/renderthreeDexemples.lua)
-Shows all the exemples of [RenderThreeD](https://github.com/EpiclyRaspberry/OnixClient_Scripts/raw/master/Libs/renderthreeD.lua) library
+## [RenderThreeD exemples](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/renderthreeDexemples.lua)
+Shows all the exemples of [RenderThreeD](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Libs/renderthreeD.lua) library
+
+## [Plasmic Click GUI](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/plasmicGUI.lua)
+Adds Plasmic Client style GUI
+
+## [Funny FPS Thing](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/funnyfpsthing.lua)
+Very Funny
+Get damage for more lag, hit entity for less lag 👍
+
+## [FPS Limiter](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/fps_limiter.lua)
+Limit your game's fps
 
 ​
 
