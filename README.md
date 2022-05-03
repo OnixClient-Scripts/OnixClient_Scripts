@@ -241,7 +241,7 @@ Limit your game's fps
 Blur your motion! || FLASH WARNING!!!!!!!!!!!!
 
 ## [BetterHunger](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/betterHunger.lua)
-Hunger has never been so efficient and intuitive
+Hunger has never been so efficient and intuitive - made by O2Flash20
 
 ​
 
