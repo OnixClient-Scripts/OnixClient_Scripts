@@ -8,7 +8,8 @@ lastMessage = ""
 Auto = "Fully Automatic (Recommended)"
 Skywars = "Skywars"
 TreasureWars = "Treasure Wars"
-OptionalText = "The following options are optional! Fully automatic requeue handles selecting the gamemode for you!"
+OptionalText = [[The following options are optional! Fully automatic requeue 
+handles selecting the gamemode for you!]]
 
 FullyAuto = false
 
@@ -49,6 +50,7 @@ client.settings.addBool("Treasure Wars Duos", "WarsDuos")
 client.settings.addBool("Treasure Wars Trios", "WarsTrios")
 client.settings.addBool("Treasure Wars Squads", "WarsSquads")
 
+
 function onChat(message, username, type)
 
 --fully automatic requeue :D
@@ -58,7 +60,6 @@ function onChat(message, username, type)
     if FullyAuto == true and string.find(message,"You are connected to server ") then
         lastMessage = message
         lastMessage = string.sub(message, 29)
-
         lastMessage = string.match(lastMessage,"[%a-]*")
     end
 
@@ -97,12 +98,21 @@ function onChat(message, username, type)
     if FullyAuto == true and string.find(message, "are the WINNERS!") then
         print("Congratulations on §6winning!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastMessage)
+
+    --murder mystery
     end
     if FullyAuto == true and string.find(message, "§c§l» §r§cYou died! §7§oYou will be taken to the Graveyard shortly...") then
         print("Dying is so bald!\n§r§8Queueing into a new game.")
+        client.execute("execute /q " .. lastMessage)
     end
+    if FullyAuto == true and string.find(message, "§b§l» §r§aYou survived!") then
+        print("Congratulations on surviving!\n§r§8Queueing into a new game.")
+        client.execute("execute /q " .. lastMessage)
+    end
+    --all
     if FullyAuto == true and string.find(message, "§c§l» §r§c§lGame OVER!") then
-        print("I can't tell if you won or lost, so I'm just gonna say well done!\n§r§8Queueing into a new game.")
+        print("I don't know if you won or lost, so I'm just going to say well done!\n§r§8Queueing into a new game.")
+        client.execute("execute /q " .. lastMessage)
     end
 
 --skywars
@@ -198,5 +208,4 @@ function onChat(message, username, type)
         client.execute("execute /q wars-squads")
     end
 end
-
 event.listen("ChatMessageAdded", onChat)
