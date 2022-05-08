@@ -1,7 +1,21 @@
 name = "Autoqueue"
 description = "Automatically Queue Hive Games"
 
--- Made by jqms w/ help from onix cuz he gamer
+--[[
+
+Made by jqms w/ help from onix cuz he gamer
+
+if you want to use .rq, you need the script, its called "HiveRequeue.lua" on the github.
+alternatively you can just make a new command and put this as the code:
+
+    command = "rq"
+    help_message = "Requeues Hive Games"
+    function execute(arguments)
+    sendLocalData("00409ed7-72f4-4575-8028-c0abf7736a49", "e")
+    end
+
+bye🙂
+]]--
 
 lastMessage = ""
 
@@ -73,47 +87,59 @@ function onChat(message, username, type)
     if FullyAuto == true and string.find(message, "did an oopsie!") and string.find(message, player.name()) ~=nil then
         print("Falling into the void is §lembarrassing...\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastMessage)
+        return
     end
     if FullyAuto == true and string.find(message, "You were killed by") then
         print("You were §ckilled!\nQueuing into a new game.")
         client.execute("execute /q " .. lastMessage)
+        return
     end
     if FullyAuto == true and string.find(message, "is the WINNER!") then
         print("Congratulations on §6winning!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastMessage)
-    end
-    if FullyAuto == true and string.find(message, "are the WINNERS!") then
-        print("Congratulations on §6winning!\n§r§8Queueing into a new game.")
-        client.execute("execute /q " .. lastMessage)
+        return
     end
     --treasure wars
     if FullyAuto == true and string.find(message, "§c§l» §r§7§lYou were eliminated") then
         print("They were §odefinitely cheating.\n§r§8Queueing into a new game. ")
         client.execute("execute /q " .. lastMessage)
+        return
     end
     if FullyAuto == true and string.find(message, "are the WINNERS!") then
         print("Congratulations on §6winning!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastMessage)
+        return
     end
-    if FullyAuto == true and string.find(message, "are the WINNERS!") then
-        print("Congratulations on §6winning!\n§r§8Queueing into a new game.")
-        client.execute("execute /q " .. lastMessage)
-
     --murder mystery
-    end
     if FullyAuto == true and string.find(message, "§c§l» §r§cYou died! §7§oYou will be taken to the Graveyard shortly...") then
         print("Dying is so bald!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastMessage)
+        return
     end
     if FullyAuto == true and string.find(message, "§b§l» §r§aYou survived!") then
         print("Congratulations on surviving!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastMessage)
+        return
     end
     --all
     if FullyAuto == true and string.find(message, "§c§l» §r§c§lGame OVER!") then
         print("I don't know if you won or lost, so I'm just going to say well done!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastMessage)
+        return
     end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --skywars
     -- solos
@@ -208,4 +234,10 @@ function onChat(message, username, type)
         client.execute("execute /q wars-squads")
     end
 end
+function onLocalData(identifier, content)
+    if identifier == "00409ed7-72f4-4575-8028-c0abf7736a49" then 
+        client.execute("execute /q " .. lastMessage)
+    end
+end
+event.listen("LocalDataReceived", onLocalData)
 event.listen("ChatMessageAdded", onChat)
