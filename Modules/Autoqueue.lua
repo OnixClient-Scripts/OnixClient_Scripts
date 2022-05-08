@@ -98,6 +98,12 @@ function onChat(message, username, type)
         print("Congratulations on §6winning!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastMessage)
     end
+    if FullyAuto == true and string.find(message, "§c§l» §r§cYou died! §7§oYou will be taken to the Graveyard shortly...") then
+        print("Dying is so bald!\n§r§8Queueing into a new game.")
+    end
+    if FullyAuto == true and string.find(message, "§c§l» §r§c§lGame OVER!") then
+        print("I can't tell if you won or lost, so I'm just gonna say well done!\n§r§8Queueing into a new game.")
+    end
 
 --skywars
     -- solos
