@@ -243,6 +243,9 @@ Blur your motion! || FLASH WARNING!!!!!!!!!!!!
 ## [BetterHunger](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/betterHunger.lua)
 Hunger has never been so efficient and intuitive - made by O2Flash20
 
+## [Autoqueue](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Autoqueue.lua)
+Queuing reinvented. - made by jqms
+
 ​
 
 ---
@@ -351,6 +354,11 @@ command - ``.unblock {Word}``
 Sets the autonick.
 
 command - ``.autonick {Nickname}``
+
+## [Requeue Command](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/HiveRequeue.lua)
+Effortless requeueing. Requires [Autoqueue.lua](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Autoqueue.lua).
+
+command - ``.rq``
 
 ​
 
