@@ -7,8 +7,8 @@ area = {
     WorldHeightMin = -64,
     WorldHeightMax = 320
 }
-
-if client.mcversion == "1.16.40" or client.mcversion == "1.16.100" or client.mcversion == "1.16.200" or client.mcversion == "1.16.201" or client.mcversion == "1.16.220" or client.mcversion == "1.16.221" or client.mcversion == "1.17.0" or client.mcversion == "1.17.1" or client.mcversion == "1.17.10" or client.mcversion == "1.17.11" or client.mcversion == "1.17.30" or client.mcversion == "1.17.32" or client.mcversion == "1.17.34" or client.mcversion == "1.17.40" or client.mcversion == "1.17.41" then
+oldversions = "1.16.40 1.16.100 1.16.200 1.16.201 1.16.220 1.16.221 1.17.0 1.17.1 1.17.10 1.17.11 1.17.30 1.17.32 1.17.34 1.17.40 1.17.41"
+if string.find(oldversions, client.mcversion) then
     area.WorldHeightMin = 0
     area.WorldHeightMax = 256
 end
