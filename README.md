@@ -381,6 +381,10 @@ Library to convert key values into string values and vice versa
 ## [RenderThreeD](https://github.com/EpiclyRaspberry/OnixClient_Scripts/raw/master/Libs/renderthreeD.lua)
 Library that uses `gfx.quad(x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4,displayBothSide)` function to display cubes inside the world<br>
 It's documentation is in the file itself
+
+## [AreaSearcher](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/AreaSearcher.lua)
+[Example with notes documenting all features](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/AreaSearcherExemple.lua)
+
 ​
 
 ---
