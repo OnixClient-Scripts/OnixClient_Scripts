@@ -36,7 +36,7 @@ function jsonToTable(JSON) end
 ---You need to uniquely identify the messages that you want via the uuid
 ---@param uuid string Something unique enough to make sure what sent the data to read things that you expect only
 ---@param data string Data to send, you can use tableToJson and jsonToTable to send tables via string
-function sendLocalData(uuid, data)
+function sendLocalData(uuid, data) end
   
   
 ---Allows you to make a command in a module
@@ -51,6 +51,12 @@ function registerCommand(Command, OnExecuted) end
 ---@param splitter string what to split the text with
 ---@return string[] splittedText
 function string.split(text, splitter) end
+  
+  
+---Gets an item from its name, you cannot render it tho as location is missing
+---@param name string The name of the item (the one you would use in .give)
+---@return Item | nil
+function getItem(name) end
   
   
   
