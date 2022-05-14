@@ -72,7 +72,7 @@ local iColor = {}
 ---@field moduleOutline iColor the outline of the visual modules in the hud editor
 ---@field moduleOverlay iColor the overlay on top of the visual modules in the hud editor
 ---@field darkbutton iColor most buttons use "enabled" but some use darkbutton's color instead
----@field textiColor iColor color of the text on the ui
+---@field text iColor color of the text on the ui
 ---@field largeArea iColor color of the body of a window/pannel
 ---@field titlebar iColor color of the titlebar
 ---@field disabled iColor color of disabled stuff
