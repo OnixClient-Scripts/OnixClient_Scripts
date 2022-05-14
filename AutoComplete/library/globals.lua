@@ -42,7 +42,7 @@ function sendLocalData(uuid, data) end
 ---Allows you to make a command in a module
 ---You dont need a command file but it does not show in .help
 ---@param Command string The text after .  ex: .lol would be "lol"
----@param OnExecuted fun(arguments:string):void when the command is executed this is called
+---@param OnExecuted fun(arguments:string):nil when the command is executed this is called
 function registerCommand(Command, OnExecuted) end
   
   
@@ -57,6 +57,3 @@ function string.split(text, splitter) end
 ---@param name string The name of the item (the one you would use in .give)
 ---@return Item | nil
 function getItem(name) end
-  
-  
-  
