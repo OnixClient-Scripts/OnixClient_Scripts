@@ -98,7 +98,7 @@ function _acp_BinaryFile:tell() end
 
 ---Writes content to the file, make sure not to screw up the byteCount
 ---@param content string What to take the bytes from
----@param byteCount how many bytes we taking
+---@param byteCount integer how many bytes we taking from your string
 ---@return nil
 function _acp_BinaryFile:write(content, byteCount) end
 
@@ -128,7 +128,7 @@ function _acp_BinaryFile:writeFloat(Float) end
 function _acp_BinaryFile:writeDouble(Double) end
 
 ---Writes Text to the file
----@param Text the text to put in the file
+---@param Text string the text to put in the file
 ---@return nil
 function _acp_BinaryFile:writeString(Text) end
 
@@ -137,8 +137,7 @@ function _acp_BinaryFile:writeString(Text) end
 
 
 ---Reads content from the file, make sure not to screw up the byteCount
----@param content string What to take the bytes from
----@param byteCount how many bytes we taking
+---@param byteCount integer how many bytes we taking from the file
 ---@return string
 function _acp_BinaryFile:read(byteCount) end
 
@@ -154,7 +153,7 @@ function _acp_BinaryFile:readShort() end
 ---@return integer Int
 function _acp_BinaryFile:readInt() end
 
----Reads a float from the 
+---Reads a float from the file
 ---@return number Float
 function _acp_BinaryFile:readFloat() end
 
