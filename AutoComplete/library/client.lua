@@ -62,7 +62,7 @@ function client.execute(command) end
 ---@field isVisual boolean if the module is a VisualModule
 ---@field isScript boolean if the module is a ScriptingModule
 ---@field isvisibleingui boolean if the module is visible in the clickgui
----@field enabled boolen [you can set] if the module is enabled
+---@field enabled boolean [you can set] if the module is enabled
 ---@field settings Setting[] A list with all the module's settings
 
 ---@class VisualModule : Module
