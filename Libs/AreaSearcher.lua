@@ -2,7 +2,7 @@
 _Z__AreaSearcher_LIB_GlobalVariables_InformationSetting = "Settings about the Chunk Scanning"
 _Z__AreaSearcher_LIB_GlobalVariables_ChunkSize = 5
 _Z__AreaSearcher_LIB_GlobalVariables_DoCloserFirst = true
-_Z__AreaSearcher_LIB_GlobalVariables_SearchIntervalMS = 50
+_Z__AreaSearcher_LIB_GlobalVariables_SearchIntervalMS = 5
 local _Z__AreaSearcher_LIB_LocalVariables_DONT_TOUCH_currentMS = 0
 area = {
     CurrentTask = nil,
