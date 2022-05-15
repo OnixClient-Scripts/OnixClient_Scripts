@@ -12,6 +12,11 @@ gfx = {}
 ---@return nil
 function gfx.color(r, g, b) end
 
+---Sets if the 3D rendering should render trough blocks
+---@param phaseTroughBlocks boolean red
+---@return nil
+function gfx.renderBehind(phaseTroughBlocks) end
+
 ---Sets the drawing color, values range from 0 to 255
 ---@param r number red
 ---@param g number green
@@ -135,6 +140,25 @@ function gfx.unloadimage(filepath) end
 ---@return nil
 function gfx.effect(x, y, width, height, effectId) end
 
+
+
+---Renders a line (2d, use in render)
+---@param x_1 number The position X (1)
+---@param y_1 number The position Y (1)
+---@param x_2 number The position X (2)
+---@param y_2 number The position Y (2)
+---@return nil
+function gfx.line(x_1, y_1, x_2, y_2) end
+
+---Renders a line (3d, use in render3d)
+---@param x_1 number The position X (1)
+---@param y_1 number The position Y (1)
+---@param z_1 number The position Z (1)
+---@param x_2 number The position X (2)
+---@param y_2 number The position Y (2)
+---@param z_2 number The position Z (2)
+---@return nil
+function gfx.line(x_1, y_1, z_1, x_2, y_2, z_2) end
 
 
 ---Renders a triangle (2d, use in render)
