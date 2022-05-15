@@ -19,7 +19,7 @@ function player.gamemode() end
 ---@return integer x
 ---@return integer y
 ---@return integer z
-function player.position() 
+function player.position() end
 
 ---The coordinates of the block that has the outline for the player
 ---You can check if there is one in the first place with player.facingBlock()
@@ -58,7 +58,7 @@ function player.nametag() end
 
 ---Returns if  true if the flag is true
 ---@param flag integer The flag to check
----@return bool flag
+---@return boolean flag
 ---```
 ---0: --on fire
 ---1: --is sneaking
@@ -178,7 +178,9 @@ local _acp_Enchants = {}
 ---@field count integer The amount of items in this stack
 ---@field location integer dont touch this dont guess it use it when referencing an item to client functions
 ---@field id integer The runtime numerical identifier of the item, will change often use for runtime only
+---@field blockid integer The runtime numerical identifier of the block assosiated with the item, will change often use for runtime only
 ---@field name string The name of the item  ex: diamond_sword
+---@field blockname string The name of the block assosiated with the item  ex: carrots
 ---@field maxStackCount integer The maximum amount of this item that can be stacked
 ---@field maxDamage integer The maximum durability of an item
 ---@field durability integer The amount of damage applied to that item
