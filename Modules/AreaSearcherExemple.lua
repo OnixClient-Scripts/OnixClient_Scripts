@@ -6,7 +6,14 @@ importLib("AreaSearcher") --Made by Onix86
 
 BarrierBlocks = 0
 
-function update(dt)
+--let the user decide on the AreaSearcher library's settings
+area.addSettings()
+--radius is not included so we have it there
+Radius = 50
+client.settings.addInt("Radius", "Radius", 5, 100)
+
+--we use render because we can allow faster scans
+function render(dt)
     --you need to call this for it to be able to do some more work
     area.update(dt)
 end
@@ -16,9 +23,12 @@ registerCommand("search", function(args)
     --settings that you can change
 
     --ChunkSize is how big the area you scan per update
-    area.ChunkSize = 10
+    --area.setChunkSize(10)
     --DoCloserFirst will analyze the chunks closer to you first
-    area.DoCloserFirst = true 
+    --area.setDoCloserFirst(true)
+    -- Will scan a new area 20 times per second (1000/50=20) (if called enough to achieve this, hence why we use render)
+    --area.setSearchInterval(50)
+    --we wont change those as we will let the user decide in module settings
     
     --area.WorldHeightMin is set automatically depending on version but you can change it if youd like
     --area.WorldHeightMax is set automatically depending on version but you can change it if youd like
