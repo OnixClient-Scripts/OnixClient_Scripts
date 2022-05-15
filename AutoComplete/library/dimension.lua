@@ -50,6 +50,7 @@ function dimension.sound(x, y, z, name) end
 ---@field id integer The numerical identifier of the block (changes with versions)
 ---@field data integer The data of the block: exemple the color of the wool in a /setblock
 ---@field name string The name that would be used in /setblock
+---@field mapColor iColor The map color of the block
 
 ---@class Biome
 ---@field id integer The numerical identifier of the biome (might change with versions)
