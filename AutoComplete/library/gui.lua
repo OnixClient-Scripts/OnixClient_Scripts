@@ -1,108 +1,82 @@
 ---@meta
 
----@class gui
-gui = {}
+
+---@class Dimension
+dimension = {}
 
 
----The width of the screen
----@return number
-function gui.width() end
----The height of the screen
----@return number
-function gui.height() end
----The minecraft guiscale
----@return number
-function gui.scale() end
----If the user move the mouse it will affect the game or the ui (true = ui)
----@return boolean mouseGrabbed
-function gui.mouseGrabbed() end
+---@The numerical identifier of the dimension
+---```
+---0 = Overworld
+---1 = Nether
+---2 = TheEnd
+---```
+---@return number id
+function dimension.id() end
 
----Set the mouseGrabbed state
----@param grabbed boolean true will not allow the player to interact with the world
----@return nil
-function gui.setGrab(grabbed) end
 
----The position of the mouse on the X axis (left to right)
----@return number mouseX
-function gui.mousex() end
----The position of the mouse on the Y axis (left to right)
----@return number mouseY
-function gui.mousey() end
+---@The name of the dimension
+---```
+---Overworld
+---Nether
+---TheEnd
+---```
+---@return string name
+function dimension.name() end
 
----Opens a client screen, exemple "HudEditor"
----@param name string | "\"HudEditor\"" | "\"ModuleEditor\"" | "\"CrosshairPainter\"" | "\"ThemeEditor\""
----@return boolean screenShowed
-function gui.showScreen(name) end
+---The time in the dimension
+---ranges from 0 to 1, 0 is the start of the day 0.5 is night and 1 is the end of the day will wrap to 0
+---@return number time
+function dimension.time() end
 
----Plays the click sound (the one in minecraft when u clicc button)
----@return nil
-function gui.clickSound() end
+---Will return true if it is currently raining
+---@return boolean isRaining
+function dimension.isRaining() end
 
----Plays a sound on the ui (will not go away if you move)
+---Plays a sound at these coordinates
+---@param x integer | number The x position
+---@param y integer | number The y position
+---@param z integer | number The z position
 ---@param name string [any minecraft sounds](https://www.digminecraft.com/lists/sound_list_pe.php)
 ---@return nil
-function gui.sound(name) end
+function dimension.sound(x, y, z, name) end
 
----Stops all sound that are playing
----@return nil
-function gui.stopallsound() end
-
----Stops all sound that are playing
----@return nil
-function gui.stopallsound() end
-
----Stops all sound that are playing
----@return Theme
-function gui.theme() end
-
----Stops all sound that are playing
----@return Font
-function gui.font() end
+---@class LightnessPair
+---@field blockLight integer The light level caused by torches and stuff
+---@field skyLight integer The light level of the environement (will not adapt to time)
 
 
----@class iColor
----@field r integer
----@field g integer
----@field b integer
----@field a integer
-local iColor = {}
+---@class Block
+---@field id integer The numerical identifier of the block (changes with versions)
+---@field data integer The data of the block: exemple the color of the wool in a /setblock
+---@field name string The name that would be used in /setblock
+---@field mapColor iColor The map color of the block
 
----@class Theme
----@field back iColor the background color, whats below everything
----@field moduleOutline iColor the outline of the visual modules in the hud editor
----@field moduleOverlay iColor the overlay on top of the visual modules in the hud editor
----@field darkbutton iColor most buttons use "enabled" but some use darkbutton's color instead
----@field text iColor color of the text on the ui
----@field largeArea iColor color of the body of a window/pannel
----@field titlebar iColor color of the titlebar
----@field disabled iColor color of disabled stuff
----@field enabled iColor color of enabled stuff, can be used as accent color
----@field blocked iColor blocked content in that color
-local _acp_theme = {}
+---@class Biome
+---@field id integer The numerical identifier of the biome (might change with versions)
+---@field name string The name of the biome
+---@field temperature number The temperature of the biome
+---@field snow boolean Can it snow in that biome
+---@field canRain boolean Can it rain in that biome
 
 
+---Gets the light levels of these coordinates
+---@param x integer | number The x position
+---@param y integer | number The y position
+---@param z integer | number The z position
+---@return LightnessPair lightPair
+function dimension.getBrightness(x, y, z) end
 
----@class Font
----@field isMinecrafttia boolean Is the minecraft blocky font in use
----@field height number the height of one char
----@field wrap number the height of one line
-local _acp_font = {}
+---Gets the block at these coordinates
+---@param x integer | number The x position
+---@param y integer | number The y position
+---@param z integer | number The z position
+---@return Block block
+function dimension.getBlock(x, y, z) end
 
----Returns the size of the text
----@param text string The text to get the size of
----@return number widthOfText
----@diagnostic disable-next-line: duplicate-set-field
-function _acp_font.width(text) end
-
----Returns the size of the text
----@param text string The text to get the size of
----@param scale number The scale
----@return number widthOfText
----@diagnostic disable-next-line: duplicate-set-field
-function _acp_font.width(text, scale) end
-
-
-
-
-
-
+---Gets the biome at these coordinates
+---@param x integer | number The x position
+---@param y integer | number The y position
+---@param z integer | number The z position
+---@return Biome biome
+function dimension.getBiome(x, y, z) end
