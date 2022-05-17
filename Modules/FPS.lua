@@ -41,12 +41,14 @@ function update(dt)
 end
 
 function render(dt)
-    fps = fps + ((1/dt) * multiplier)
+    fps = fps + ((1/dt) * multiplier) + math.random(0, multiplier)
     frames = frames + 1
     sizeY = gui.font().height + 2
     sizeX = gui.font().width(text) + 2
-    gfx.color(background.r, background.g, background.b, background.a)
-    gfx.rect(0, 0, sizeX, sizeY)
-    gfx.color(color.r, color.g, color.b, color.a)
-    gfx.text(1, 1, text)
+    if not gui.mouseGrabbed() then
+        gfx.color(background.r, background.g, background.b, background.a)
+        gfx.rect(0, 0, sizeX, sizeY)
+        gfx.color(color.r, color.g, color.b, color.a)
+        gfx.text(1, 1, text)
+    end
 end
