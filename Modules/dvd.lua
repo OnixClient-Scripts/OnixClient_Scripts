@@ -3,6 +3,7 @@ description = "It will never hit the corner."
 
 --[[
     originally attempted by jqms but made 6969% better by MCBE Craft :)
+    requires dvdlogo.png in the data folder
 ]]
 
 client.settings.addAir(5)
