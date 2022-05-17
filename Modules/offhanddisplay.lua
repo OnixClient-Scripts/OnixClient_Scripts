@@ -14,7 +14,7 @@ client.settings.addAir(5)
 count_visible_in_gmc = false
 client.settings.addBool("Item Count Visible in Creative Mode", "count_visible_in_gmc")
 
-atlasPath = "textures/gui/gui.png"
+atlasPath = "textures/gui/gui2.png"
 
 function render(deltaTime)
 
