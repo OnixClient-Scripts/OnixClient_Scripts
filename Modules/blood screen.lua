@@ -1,6 +1,11 @@
 name = "Blood screen"
 description = "Darkens your screen when low on health"
 
+--[[
+    by MCBE Craft
+    requires blood.png in the data folder
+]]
+
 function render(deltaTime)
     if player.gamemode() == 0 then
         local health = player.attributes().name("minecraft:health")
