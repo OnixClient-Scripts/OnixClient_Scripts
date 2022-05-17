@@ -1,6 +1,10 @@
 name="Gamemode Switcher"
 description = "Gamemode Switcher by MCBE Craft allows you to switch gamemode\nlike on java"
 
+--[[
+    by MCBE Craft
+]]
+
 client.settings.addAir(5)
 holdKey = 0x72 --F3
 client.settings.addKeybind("Hold key to open menu", "holdKey")
