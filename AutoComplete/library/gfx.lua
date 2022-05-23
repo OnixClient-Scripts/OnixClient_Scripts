@@ -116,6 +116,19 @@ function gfx.item(x, y, itemLocation, scale) end
 ---@return nil
 function gfx.image(x, y, width, height, filepath) end
 
+---Loads an Image, use gfx.fimage() to render it
+---@param x number The position X
+---@param y number The position Y
+---@param width number The Width of the rectangle to render the image in
+---@param height number The Height of the rectangle to render the image in
+---@param filepath string From the Scripts/Data folder
+---@param startX number The starting X position
+---@param startY number The starting Y position
+---@param sizeX number The X size
+---@param sizeY number The Y size
+---@return nil
+function gfx.cimage(x, y, width, height, filepath, startX, startY, sizeX, sizeY) end
+
 ---Renders a Texture (from the game)
 ---@param x number The position X
 ---@param y number The position Y
@@ -124,6 +137,33 @@ function gfx.image(x, y, width, height, filepath) end
 ---@param filepath string From the root of a texture pack ex: textures/blocks/stone
 ---@return nil
 function gfx.texture(x, y, width, height, filepath) end
+
+---Loads a Texture (from the game) use gfx.fimage() to render it
+---@param x number The position X
+---@param y number The position Y
+---@param width number The Width of the rectangle to render the image in
+---@param height number The Height of the rectangle to render the image in
+---@param filepath string From the root of a texture pack ex: textures/blocks/stone
+---@param startX number The starting X position
+---@param startY number The starting Y position
+---@param sizeX number The X size
+---@param sizeY number The Y size
+---@return nil
+function gfx.ctexture(x, y, width, height, filepath, startX, startY, sizeX, sizeY) end
+
+---Renders loaded textures from gfx.ctexture() or gfx.cimage() (needs to come from the same file)
+---@param opacity number The opacity
+function gfx.fimage(opacity) end
+
+---Renders loaded textures from gfx.ctexture() or gfx.cimage() (needs to come from the same file)
+function gfx.fimage() end
+
+---Renders loaded textures with colors from gfx.ctexture() or gfx.cimage() (needs to come from the same file)
+---@param r integer red
+---@param g integer green
+---@param b integer blue
+---@param a integer opacity
+function gfx.cfimage(r, g, b, a) end
 
 ---Unloads an image from memory
 ---@param filepath string the filepath you used in gfx.image or gfx.texture
