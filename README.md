@@ -246,6 +246,9 @@ Hunger has never been so efficient and intuitive - made by O2Flash20
 ## [Autoqueue](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Autoqueue.lua)
 Queuing reinvented. - made by jqms
 
+## [Win Particles](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/winParticles.lua)
+Show particles when you win a game in the hive and cubecraft - made by O2Flash20
+
 ​
 
 ---
