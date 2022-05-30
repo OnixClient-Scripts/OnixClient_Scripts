@@ -161,6 +161,17 @@ local function start()
     add()
 end
 
+local function win()
+    for k, v in pairs(board) do
+        for k2, v2 in pairs(v) do
+            if v2 == 11 then
+                return true
+            end
+        end
+    end
+    return false
+end
+
 start()
 
 function render(dt)
@@ -214,7 +225,10 @@ event.listen("KeyboardInput", function(key, down)
                 add()
             end
         end
-        if #emptySpots() == 0 or key == resetKey then
+        if win() then
+            print("win")
+            start()
+        elseif #emptySpots() == 0 or key == resetKey then
             print("Game over")
             start()
         end
