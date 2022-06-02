@@ -28,20 +28,20 @@ timer = 0
 
 function update(dt)
     timer = timer + dt
-    if timer >= refresh then
+    if timer >= tonumber(refresh) then
         text = math.floor(fps/frames) .. " FPS"
         fps = 0
         frames = 1
-        if timer >= 2*refresh then
+        if timer >= 2*tonumber(refresh) then
             timer = 0
         else
-            timer = timer - refresh
+            timer = timer - tonumber(refresh)
         end
     end
 end
 
 function render(dt)
-    fps = fps + ((1/dt) * multiplier) + math.random(0, multiplier)
+    fps = fps + ((1/dt) * tonumber(multiplier)) + math.random(0, math.floor(tonumber(multiplier)))
     frames = frames + 1
     sizeY = gui.font().height + 2
     sizeX = gui.font().width(text) + 2
