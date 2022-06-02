@@ -3,7 +3,7 @@ description = "shows the song spotify is playing"
 
     --the python script is needed for this script to function
 
-ImportedLib = importLib("readfile.lua")
+ImportedLib = importLib("fileUtility.lua")
 
 positionX = 1
 positionY = 1
