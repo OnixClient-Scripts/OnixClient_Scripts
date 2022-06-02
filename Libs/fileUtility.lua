@@ -1,22 +1,24 @@
 --simple file managing library by MCBE Craft
 
 function readFile(file)
-    if os.rename(file, file) then
+    if fileExists(file) then
         local lines = io.lines(file)
         local result = {}
         for line in lines do 
             table.insert(result, line)
         end
+        print("file " .. file .. " found")
         return result
     else
+        print("file " .. file .. " not found")
         return {}
     end
 end
 
 function readWholeFile(file)
-    if os.rename(file, file) then
-        local f = assert(io.open(file, "rb"))
-        local content = f:read("*all")
+    local f = io.open(file, "r")
+    if f then
+        local content = f:read("a")
         f:close()
         return content
     else
@@ -25,7 +27,7 @@ function readWholeFile(file)
 end
 
 function writeFile(file, text)
-    wrFile = io.open(file, "w")
+    local wrFile = io.open(file, "w")
     io.output(wrFile)
     io.write(text)
     io.close(wrFile)
@@ -49,5 +51,5 @@ function split(str, splitter)
 end
 
 function fileExists(file)
-    return os.rename(file, file)
+    return fs.exist(file)
 end
