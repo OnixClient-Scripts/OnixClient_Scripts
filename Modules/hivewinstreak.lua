@@ -99,7 +99,7 @@ end
 
 registerCommand("resetstreak", function()
     setstreak(0)
-    print("Winstreak resetted")
+    print("Winstreak has been reset")
 end)
 
 registerCommand("addstreak", function()
@@ -110,7 +110,7 @@ end)
 registerCommand("setstreak", function(arg)
     if tonumber(arg) then
         setstreak(arg)
-        print("Winstreak setted to " .. arg)
+        print("Winstreak changed to " .. arg)
     else
         print(arg .. " is not number!")
     end
