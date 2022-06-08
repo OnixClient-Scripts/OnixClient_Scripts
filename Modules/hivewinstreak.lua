@@ -25,7 +25,7 @@ else
     winstreak = readWholeFile("hivewinstreak.txt")
 end
     
-function setstreak(tonumber(arg))
+function setstreak(arg)
     winstreak = arg
     file = io.open("hivewinstreak.txt", 'w')
     file:write(arg)
