@@ -37,6 +37,11 @@ client.settings.addBool("Hide 'Winstreak: ' text", "hidetext")
 client.settings.addAir(10)
 client.settings.addColor("Text Color", "textcolor")
 client.settings.addColor("Background Color", "bgcolor")
+client.settings.addAir(10)
+xoffset = 0
+client.settings.addInt("Text X offset", "xoffset", -250, 250)
+yoffset = 0
+client.settings.addInt("Text Y offset", "yoffset", -250, 250)
 client.settings.addAir(30)
 cmdinfo = "Command List\n============================\n.resetstreak - reset your winstreak to 0\n.addstreak - add 1 winstreak\n.setstreak <arg> - set your winstreak to <arg>"
 client.settings.addInfo("cmdinfo")
@@ -89,7 +94,7 @@ function render(dt)
     gfx.color(bgcolor.r,bgcolor.g,bgcolor.b,bgcolor.a)
     gfx.rect(0, 0, width, height)
     gfx.color(textcolor.r,textcolor.g,textcolor.b,textcolor.a)
-    gfx.text(width/2-width/2+3, 10-height/2, text, 1)
+    gfx.text(width/2-width/2+3+(xoffset/100), 10-height/2+(yoffset/100), text, 1)
 end
 
 registerCommand("resetstreak", function()
