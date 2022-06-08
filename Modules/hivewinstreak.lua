@@ -103,6 +103,10 @@ registerCommand("addstreak", function()
 end)
 
 registerCommand("setstreak", function(arg)
-    setstreak(arg)
-    print("Winstreak setted to " .. arg)
+    if tonumber(arg) then
+        setstreak(arg)
+        print("Winstreak setted to " .. arg)
+    else
+        print(arg .. " is not number!")
+    end
 end)
