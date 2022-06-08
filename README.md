@@ -252,6 +252,10 @@ Show particles when you win a game in the hive and cubecraft - made by O2Flash20
 ## [SuicideHotkey](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/SuicideHotkey.lua)
 Allows you to kill yourself! / Press hotkey to kill yourself in game! (OP or permission required)
 
+## [Hive Winstreak](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/hivewinstreak.lua)
+Winstreak counter for The Hive (Skywars, Treasure wars)</br>
+Requires [fileUtility](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/fileUtility.lua) Library
+
 ​
 
 ---
