@@ -70,10 +70,8 @@ function onChat(msg, user, type)
             elseif teamcolor == "3" then team = "Cyan"
             else team = "Unknown"
             end
-            print("you are on " .. team .. " team")
         end
         if string.find(msg, team .. " Team §7has been §cELIMINATED§7!") or string.find(msg, team .. " was ELIMINATED!") then
-            print("eliminated")
             setstreak(0)
         end
         if string.find(msg, team .. " Team are the WINNERS!") then
