@@ -4,9 +4,6 @@ description = "Winstreak counter for The Hive (Only Skywars, Treasure wars)"
 --[[
     Winstreak Counter module (for The Hive Skywars, Treasure wars) 
     made by Quoty0
-	
-	things to do
-	- detect win/defeat
 ]]
 
 positionX = 558
@@ -52,60 +49,60 @@ team = "Unknown"
 function onChat(msg, user, type)
     local ip = server.ip()
     if ip == "geo.hivebedrock.network" or ip == "jp.hivebedrock.network" or ip == "sg.hivebedrock.network" or ip == "fr.hivebedrock.network" or ip == "ca.hivebedrock.network" then
-	    if string.find(msg, "§rYou are on the ") then
-			local teamcolor = msg:sub(30,30)
-			if teamcolor == "e" then team = "Yellow"
-			elseif teamcolor == "a" then team = "Lime"
-			elseif teamcolor == "c" then team = "Red"
-			elseif teamcolor == "9" then team = "Blue"
-			elseif teamcolor == "6" then team = "Gold"
-			elseif teamcolor == "d" then team = "Magenta"
-			elseif teamcolor == "b" then team = "Aqua"
-			elseif teamcolor == "7" then team = "Gray"
-			elseif teamcolor == "5" then team = "Purple"
-			elseif teamcolor == "2" then team = "Green"
-			elseif teamcolor == "8" then team = "Dark Gray"
-			elseif teamcolor == "3" then team = "Cyan"
-			else team = "Unknown"
-		    end
-			print("you are on " .. team .. " team")
-		end
-		if string.find(msg, team .. " Team §7has been §cELIMINATED§7!") or string.find(msg, team .. " was ELIMINATED!") then
+        if string.find(msg, "§rYou are on the ") then
+            local teamcolor = msg:sub(30,30)
+            if teamcolor == "e" then team = "Yellow"
+            elseif teamcolor == "a" then team = "Lime"
+            elseif teamcolor == "c" then team = "Red"
+            elseif teamcolor == "9" then team = "Blue"
+            elseif teamcolor == "6" then team = "Gold"
+            elseif teamcolor == "d" then team = "Magenta"
+            elseif teamcolor == "b" then team = "Aqua"
+            elseif teamcolor == "7" then team = "Gray"
+            elseif teamcolor == "5" then team = "Purple"
+            elseif teamcolor == "2" then team = "Green"
+            elseif teamcolor == "8" then team = "Dark Gray"
+            elseif teamcolor == "3" then team = "Cyan"
+            else team = "Unknown"
+            end
+            print("you are on " .. team .. " team")
+        end
+        if string.find(msg, team .. " Team §7has been §cELIMINATED§7!") or string.find(msg, team .. " was ELIMINATED!") then
             print("eliminated")
             setstreak(0)
-		end
-		if string.find(msg, team .. " Team are the WINNERS!") then
-		    setstreak(winstreak + 1)
-		end
-	end
+        end
+        if string.find(msg, team .. " Team are the WINNERS!") then
+            setstreak(winstreak + 1)
+        end
+    end
 end
 event.listen("ChatMessageAdded", onChat)
 
 function render(dt)
     if hidetext == true then text = tostring(winstreak)
-	else text = "Winstreak: " .. tostring(winstreak)
-	end
-	width = font.width(text)+7
-	height = font.height+7
-	sizeX = width
-	sizeY = height
+    else text = "Winstreak: " .. tostring(winstreak)
+    end
+    width = font.width(text)+7
+    height = font.height+7
+    sizeX = width
+    sizeY = height
     gfx.color(bgcolor.r,bgcolor.g,bgcolor.b,bgcolor.a)
     gfx.rect(0, 0, width, height)
     gfx.color(textcolor.r,textcolor.g,textcolor.b,textcolor.a)
-	gfx.text(width/2-width/2+3, 10-height/2, text, 1)
+    gfx.text(width/2-width/2+3, 10-height/2, text, 1)
 end
 
 registerCommand("resetstreak", function()
     setstreak(0)
-	print("Winstreak resetted")
+    print("Winstreak resetted")
 end)
 
 registerCommand("addstreak", function()
     setstreak(winstreak + 1)
-	print("Winstreak added")
+    print("Winstreak added")
 end)
 
 registerCommand("setstreak", function(arg)
     setstreak(arg)
-	print("Winstreak setted to " .. arg)
+    print("Winstreak setted to " .. arg)
 end)
