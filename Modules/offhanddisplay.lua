@@ -18,23 +18,13 @@ client.settings.addAir(5)
 armorHud = false
 client.settings.addBool("Add to Onix' Armor Hud module", "armorHud")
 
+importLib("module.lua")
+
 local atlasPath = "textures/gui/gui2.png"
 local armorHudModule
 
 function update(dt)
-    for k, v in pairs(client.modules()) do
-        if v.name == "Armor HUD" and not v.isScript then
-            armorHudModule = v
-        end
-    end
-end
-
-function getSett(mod, set)
-    for k, v in pairs(mod.settings) do
-        if v.name == set then
-            return v
-        end
-    end
+    armorHudModule = getModule("Armor HUD")
 end
 
 function render(deltaTime)
@@ -54,14 +44,14 @@ function render(deltaTime)
             end
         end
         if armorHud and armorHudModule then
-            if getSett(armorHudModule, "Horizontally Aligned").value then
+            if getSetting(armorHudModule, "horizontal").value then
                 gfx.item(armorHudModule.pos["x"] + armorHudModule.size["x"] + 3, armorHudModule.pos["y"], offhandItem.location, 1)
             else
                 local text
-                if getSett(armorHudModule, "Show Item Durability").value then
-                    if getSett(armorHudModule, "Show Durability in %").value then
+                if getSetting(armorHudModule, "showDurability").value then
+                    if getSetting(armorHudModule, "durabilityPercent").value then
                         text = nil
-                    elseif getSett(armorHudModule, "Show Durability/TotalDurability").value then
+                    elseif getSetting(armorHudModule, "showMaxDurability").value then
                         text = offhandItem.count .. "/"
                         if offhandItem.maxStackCount then
                             text = text .. offhandItem.maxStackCount
@@ -72,16 +62,16 @@ function render(deltaTime)
                         text = offhandItem.count
                     end
                 end
-                if getSett(armorHudModule, "Text on the Right Side").value then
-                    gfx.item(armorHudModule.pos["x"], armorHudModule.pos["y"] + armorHudModule.size["y"] + 5, offhandItem.location, 1)
-                    local c = getSett(armorHudModule, "Text Color").value
+                if getSetting(armorHudModule, "rightText").value then
+                    gfx.item(armorHudModule.pos["x"], armorHudModule.pos["y"] + armorHudModule.size["y"] + getSetting(armorHudModule, "padding").value, offhandItem.location, 1)
+                    local c = getSetting(armorHudModule, "textColor").value
                     gfx.color(c.r * 255, c.g * 255, c.b * 255, c.a * 255)
                     if text then
-                        gfx.text(armorHudModule.pos["x"] + 18, armorHudModule.pos["y"] + armorHudModule.size["y"] + 10, text)
+                        gfx.text(armorHudModule.pos["x"] + 18, armorHudModule.pos["y"] + armorHudModule.size["y"] + 5 + getSetting(armorHudModule, "padding").value, text)
                     end
                 else
                     gfx.item(armorHudModule.pos["x"] + armorHudModule.size["x"] - 17, armorHudModule.pos["y"] + armorHudModule.size["y"] + 5, offhandItem.location, 1)
-                    local c = getSett(armorHudModule, "Text Color").value
+                    local c = getSgetSettingett(armorHudModule, "textColor").value
                     gfx.color(c.r * 255, c.g * 255, c.b * 255, c.a * 255)
                     if text then
                         gfx.text(armorHudModule.pos["x"] + armorHudModule.size["x"] - 19 - gui.font().width(text) , armorHudModule.pos["y"] + armorHudModule.size["y"] + 10, text)
