@@ -30,11 +30,20 @@ end
 function render(deltaTime)
     local inventory = player.inventory()
     local offhandItem = inventory.offhand()
-    if (offhandItem ~= nil) then
+    if offhandItem and not gui.mouseGrabbed() then
         gfx.ctexture(gui.width() / 2 - 120, gui.height()  - 23.5, 11, 22, atlasPath, 0, 0, 0.04296874999, 0.08593749999)
         gfx.ctexture(gui.width() / 2 - 109, gui.height()  - 23.5, 11, 22, atlasPath, 0.66796875, 0, 0.04296874999, 0.08593749999)
         gfx.fimage(math.floor(255 * opacity))
         gfx.item(gui.width() / 2 - 117, gui.height()  - 20.5, offhandItem.location, 1)
+        if offhandItem.maxDamage  and offhandItem.durability < offhandItem.maxDamage then
+            gfx.color(0, 0, 0, 255)
+            gfx.rect(gui.width() / 2 - 115, gui.height()  - 8, 13, 2)
+            gfx.color(13, 64, 0, 255)
+            gfx.rect(gui.width() / 2 - 115, gui.height()  - 8, 12, 1)
+            local percent = math.floor((offhandItem.maxDamage - offhandItem.durability)/offhandItem.maxDamage*100)
+            gfx.color(255*(100-percent)/100, 255*percent/100, 0, 255)
+            gfx.rect(gui.width() / 2 - 115, gui.height()  - 8, math.floor(12*(percent/100)), 1)
+        end
         if (offhandItem.count ~= 1 and player.gamemode() == 0 or offhandItem.count ~= 1 and count_visible_in_gmc or offhandItem.count ~= 1 and player.gamemode() == 2) then
             gfx.color(255,255,255, 255)
             if (offhandItem.count >= 10) then
@@ -43,39 +52,53 @@ function render(deltaTime)
                 gfx.text(gui.width() / 2 - 106.5, gui.height()  - 12, offhandItem.count, 1)
             end
         end
-        if armorHud and armorHudModule then
-            if getSetting(armorHudModule, "horizontal").value then
-                gfx.item(armorHudModule.pos["x"] + armorHudModule.size["x"] + 3, armorHudModule.pos["y"], offhandItem.location, 1)
-            else
-                local text
-                if getSetting(armorHudModule, "showDurability").value then
-                    if getSetting(armorHudModule, "durabilityPercent").value then
-                        text = nil
-                    elseif getSetting(armorHudModule, "showMaxDurability").value then
+    end
+    if armorHud and armorHudModule and offhandItem then
+        if getSetting(armorHudModule, "horizontal").value then
+            gfx.item(armorHudModule.pos["x"] + armorHudModule.size["x"] + 3, armorHudModule.pos["y"], offhandItem.location, 1)
+        else
+            local text
+            local c = getSetting(armorHudModule, "textColor").value
+            gfx.color(c.r * 255, c.g * 255, c.b * 255, c.a * 255)
+            if getSetting(armorHudModule, "showDurability").value then
+                if getSetting(armorHudModule, "durabilityPercent").value then
+                    if offhandItem.maxDamage then
+                        local percent = math.floor((offhandItem.maxDamage - offhandItem.durability)/offhandItem.maxDamage*100)
+                        text = percent .. "%"
+                        if percent <= 50 then
+                            gfx.color(255, (percent*2)*2.55, 0, c.a * 255)
+                        else
+                            gfx.color((((100-percent)-50)*2)*2.55, 255, 0, c.a * 255)
+                        end
+                    end
+                elseif getSetting(armorHudModule, "showMaxDurability").value then
+                    if offhandItem.maxDamage then
+                        text = (offhandItem.maxDamage - offhandItem.durability) .. "/" .. offhandItem.maxDamage
+                    else
                         text = offhandItem.count .. "/"
                         if offhandItem.maxStackCount then
                             text = text .. offhandItem.maxStackCount
                         else
                             text = text .. "64"
                         end
+                    end
+                else
+                    if offhandItem.maxDamage then
+                        text = (offhandItem.maxDamage - offhandItem.durability)
                     else
                         text = offhandItem.count
                     end
                 end
-                if getSetting(armorHudModule, "rightText").value then
-                    gfx.item(armorHudModule.pos["x"], armorHudModule.pos["y"] + armorHudModule.size["y"] + getSetting(armorHudModule, "padding").value, offhandItem.location, 1)
-                    local c = getSetting(armorHudModule, "textColor").value
-                    gfx.color(c.r * 255, c.g * 255, c.b * 255, c.a * 255)
-                    if text then
-                        gfx.text(armorHudModule.pos["x"] + 18, armorHudModule.pos["y"] + armorHudModule.size["y"] + 5 + getSetting(armorHudModule, "padding").value, text)
-                    end
-                else
-                    gfx.item(armorHudModule.pos["x"] + armorHudModule.size["x"] - 17, armorHudModule.pos["y"] + armorHudModule.size["y"] + 5, offhandItem.location, 1)
-                    local c = getSgetSettingett(armorHudModule, "textColor").value
-                    gfx.color(c.r * 255, c.g * 255, c.b * 255, c.a * 255)
-                    if text then
-                        gfx.text(armorHudModule.pos["x"] + armorHudModule.size["x"] - 19 - gui.font().width(text) , armorHudModule.pos["y"] + armorHudModule.size["y"] + 10, text)
-                    end
+            end
+            if getSetting(armorHudModule, "rightText").value then
+                gfx.item(armorHudModule.pos["x"], armorHudModule.pos["y"] + armorHudModule.size["y"] + getSetting(armorHudModule, "padding").value, offhandItem.location, 1)
+                if text then
+                    gfx.text(armorHudModule.pos["x"] + 18, armorHudModule.pos["y"] + armorHudModule.size["y"] + 5 + getSetting(armorHudModule, "padding").value, text)
+                end
+            else
+                gfx.item(armorHudModule.pos["x"] + armorHudModule.size["x"] - 17, armorHudModule.pos["y"] + armorHudModule.size["y"] + 5, offhandItem.location, 1)
+                if text then
+                    gfx.text(armorHudModule.pos["x"] + armorHudModule.size["x"] - 19 - gui.font().width(text) , armorHudModule.pos["y"] + armorHudModule.size["y"] + 10, text)
                 end
             end
         end
