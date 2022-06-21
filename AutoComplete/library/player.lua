@@ -21,6 +21,13 @@ function player.gamemode() end
 ---@return integer z
 function player.position() end
 
+
+---The precise position of the player
+---@return number x
+---@return number y
+---@return number z
+function player.pposition() end
+
 ---The coordinates of the block that has the outline for the player
 ---You can check if there is one in the first place with player.facingBlock()
 ---@return integer x
