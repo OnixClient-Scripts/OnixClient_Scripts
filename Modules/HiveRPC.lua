@@ -8,7 +8,7 @@ requires HiveRPCHelper.exe (can be found on the repo)
 !!may be innaccurate if youre in the hub due to how i get the current gamemode!!
 
 c# source:
-https://www.mediafire.com/file/bc2agax7hwdvmvq/HiveRPCHelperSRC.zip/file
+https://github.com/jqms/HiveRPCHelperSRC
 ]]--
 
 
@@ -96,6 +96,12 @@ function onChat(message, username, type)
     end
     if formattedGamemodes[lastGamemode] then
         formattedGamemode = formattedGamemodes[lastGamemode]
+    end
+    if string.find(message, "You are connected to proxy ") then
+        return true
+    end
+    if string.find(message, "You are connected to server ") then
+        return true
     end
 end
 
