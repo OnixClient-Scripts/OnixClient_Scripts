@@ -6,6 +6,9 @@ made by rosie (son helped with c#)
 requires HiveRPCHelper.exe (can be found on the repo)
 
 !!may be innaccurate if youre in the hub due to how i get the current gamemode!!
+
+c# source:
+https://www.mediafire.com/file/bc2agax7hwdvmvq/HiveRPCHelperSRC.zip/file
 ]]--
 
 
