@@ -74,8 +74,7 @@ You can see the documentation on [official website](https://ocwebsite.github.io/
 ## Modules
 
 ## [Ping Counter](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/PingCounter.lua)
-Ping counter using [external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true).
-
+Ping counter using [external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true).</br>
 [This external program](https://github.com/Quoty0/OnixClient_Scripts/blob/master/Modules/LuaPingHelper.exe?raw=true) should be kept open while using the script for it to work.
 
 ## [Hive Game Hotkeys](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/gamemodehotkeys.lua)
