@@ -15,6 +15,7 @@ https://github.com/jqms/HiveRPCHelperSRC
 importLib("DependentBoolean")
 
 lastGamemode = ""
+prefix = ""
 
 displaySettings = false
 displayGamemode = false
@@ -57,13 +58,21 @@ formattedGamemodes["BUILDX-DUOS"]="Just Build: Extended, Duos"
 function update(dt)
 	client.settings.updateDependencies()
     
+    if formattedGamemode ~= "Hub" then
+        prefix = "Playing "
+    else
+        if formattedGamemode == "Hub" then
+            prefix = "In the "
+        end
+    end
+
     if formattedGamemode == nil then
         return
     else
         if displayGamemode == true and displaySettings == true then
             file = io.open("HiveRPCHelperGamemode.txt", "w")
             io.output(file)
-            io.write("" ..  formattedGamemode)
+            io.write("" ..  prefix .. formattedGamemode)
             io.close(file)
         else
             file = io.open("HiveRPCHelperGamemode.txt", "w")
@@ -76,7 +85,7 @@ function update(dt)
     if displayUsername == true and displaySettings == true then
         file1 = io.open("HiveRPCHelperUsername.txt", "w")
         io.output(file1)
-        io.write("" ..  username)
+        io.write("As " ..  username)
         io.close(file1)
     else
         file1 = io.open("HiveRPCHelperUsername.txt", "w")
