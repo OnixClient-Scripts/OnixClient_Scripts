@@ -257,7 +257,7 @@ Winstreak counter for The Hive (Skywars, Treasure wars)</br>
 Requires [fileUtility](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/fileUtility.lua) Library
 
 ## [HiveRPC](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveRPC.lua)
-![image](https://user-images.githubusercontent.com/62657139/176230840-df94fcd9-c553-469d-93a0-0e6585eae5bb.png)
+![image](https://user-images.githubusercontent.com/62657139/176230840-df94fcd9-c553-469d-93a0-0e6585eae5bb.png)</br>
 Advanced Discord Rich Presence for The Hive - made by rosie (son/hmmm helped with c#)</br>
 Requires [HiveRPCHelper.exe](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Extras/HiveRPCHelper.exe)
 
