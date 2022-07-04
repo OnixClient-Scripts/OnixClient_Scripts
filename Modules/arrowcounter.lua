@@ -16,9 +16,11 @@ sizeY = 10
 
 Background_Color = {0,0,0,128}
 Text_Color = {255, 255, 255, 255}
+showTexture = true
 bowOnly = true 
 
 client.settings.addBool("Bow & Crossbow Only", "bowOnly")
+client.settings.addBool("Show Arrow Texture", "showTexture")
 client.settings.addColor("Text Color", "Text_Color")
 client.settings.addColor("Background Color", "Background_Color")
 
@@ -58,7 +60,9 @@ function render(deltaTime)
 
             gfx.color(Text_Color.r, Text_Color.g, Text_Color.b, Text_Color.a)
             gfx.text(12, 5 - (font.height / 2), text, 1)
-            gfx.texture(0, 0, 10, 10, texturePath, Text_Color.a)
+            if showTexture == true then
+                gfx.texture(0, 0, 10, 10, texturePath, Text_Color.a)
+            end
         end
         
     end
