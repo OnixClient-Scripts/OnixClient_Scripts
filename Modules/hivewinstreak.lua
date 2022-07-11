@@ -34,6 +34,8 @@ end
 
 hidetext = false
 client.settings.addBool("Hide 'Winstreak: ' text", "hidetext")
+showmsg = false
+client.settings.addBool("Show message when winstreak is changed", "showmsg")
 client.settings.addAir(10)
 client.settings.addColor("Text Color", "textcolor")
 client.settings.addColor("Background Color", "bgcolor")
@@ -55,7 +57,7 @@ function onChat(msg, user, type)
     local ip = server.ip()
     if ip == "geo.hivebedrock.network" or ip == "jp.hivebedrock.network" or ip == "sg.hivebedrock.network" or ip == "fr.hivebedrock.network" or ip == "ca.hivebedrock.network" then
         if string.find(msg, "§rYou are on the ") then
-            local teamcolor = msg:sub(30,30)
+            teamcolor = msg:sub(30,30)
             if teamcolor == "e" then team = "Yellow"
             elseif teamcolor == "a" then team = "Lime"
             elseif teamcolor == "c" then team = "Red"
@@ -73,9 +75,15 @@ function onChat(msg, user, type)
         end
         if string.find(msg, team .. " Team §7has been §cELIMINATED§7!") or string.find(msg, team .. " was ELIMINATED!") then
             setstreak(0)
+			if showmsg == true then
+                print("§" .. teamcolor .. "You §gare eliminated! Your killstreak has been reset.")
+            end
         end
         if string.find(msg, team .. " Team are the WINNERS!") then
             setstreak(winstreak + 1)
+            if showmsg == true then
+                print("§" .. teamcolor .. "You §gare the winner! Your killstreak is §" .. teamcolor .. winstreak .. " §gnow!")
+            end
         end
     end
 end
