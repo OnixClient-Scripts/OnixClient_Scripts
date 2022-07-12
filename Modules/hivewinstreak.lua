@@ -76,13 +76,13 @@ function onChat(msg, user, type)
         if string.find(msg, team .. " Team §7has been §cELIMINATED§7!") or string.find(msg, team .. " was ELIMINATED!") then
             setstreak(0)
 			if showmsg == true then
-                print("§" .. teamcolor .. "You §gare eliminated! Your killstreak has been reset.")
+                print("§l§" .. teamcolor .. "» §r§" .. teamcolor .. "You §gare eliminated! Your killstreak has been reset.")
             end
         end
         if string.find(msg, team .. " Team are the WINNERS!") then
             setstreak(winstreak + 1)
             if showmsg == true then
-                print("§" .. teamcolor .. "You §gare the winner! Your killstreak is §" .. teamcolor .. winstreak .. " §gnow!")
+                print("§l§" .. teamcolor .. "» §r§" .. teamcolor .. "You §gare the winner! Your killstreak is §" .. teamcolor .. winstreak .. " §gnow!")
             end
         end
     end
