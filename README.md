@@ -211,6 +211,11 @@ Extra: .block command. (Requires [Blocker.lua](https://github.com/OnixClient-Scr
 ## [Chatlog](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/Chatlog.lua)
 Saves in Chatlogger.txt
 
+## [amogus](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/amogus.lua)
+[![amoguslkdlkds](https://plextora.is-from.space/r/amogus_module_img.png)](https://plextora.is-from.space/r/amogus_module.mp4 "amogus_module")
+
+a lil amogus fren on your screen!
+
 ## [Auto Nick](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/AutoNick.lua)
 Automatically sets your nickname!</br>
 Extra: .autonick command (Requires [autonickcommand.lua](https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Modules/autonickcommand.lua)) 
