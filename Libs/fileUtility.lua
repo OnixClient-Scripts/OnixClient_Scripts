@@ -1,5 +1,3 @@
---simple file managing library by MCBE Craft
-
 function readFile(file)
     if fileExists(file) then
         local lines = io.lines(file)
@@ -23,6 +21,15 @@ function readWholeFile(file)
         return content
     else
         return nil
+    end
+end
+
+function createFile(file)
+    if fileExists(file) then
+        return false
+    else
+        writeFile(file, "")
+        return true
     end
 end
 
