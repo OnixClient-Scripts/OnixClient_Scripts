@@ -1,6 +1,10 @@
 name = "Particle Mod"
 description = "Adds more particles"
 
+--[[
+    By MCBE Craft
+]]
+
 client.settings.addAir(5)
 color = {172, 140, 99, 255}
 client.settings.addColor("Particle color", "color")

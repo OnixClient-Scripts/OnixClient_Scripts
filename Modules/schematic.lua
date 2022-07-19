@@ -2,6 +2,11 @@ name="schematic"
 description = "Schematic mod by MCBE Craft"
 
 
+--[[
+    By MCBE Craft
+]]
+
+
 lib = importLib("MinimapBlockTools.lua")
 lib = importLib("renderthreeD.lua")
 lib = importLib("fileUtility.lua")

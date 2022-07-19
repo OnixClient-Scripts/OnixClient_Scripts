@@ -1,6 +1,11 @@
 name = "reply"
 description = "allows you to reply to /msg"
 
+
+--[[
+    By MCBE Craft
+]]
+
 local replying
 
 event.listen("ChatMessageAdded", function(message, username)
