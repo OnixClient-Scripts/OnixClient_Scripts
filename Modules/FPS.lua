@@ -1,13 +1,22 @@
-name="FPS"
-description="Spoofs your fps"
+name="FPS booster"
+description="boosts your fps"
 
 --By MCBE
 
 multiplier = 1
-client.settings.addFloat("Fps multiplier", "multiplier", 0, 100)
+client.settings.addFloat("Fps booster ratio", "multiplier", 0, 100)
 
 refresh = 1
 client.settings.addFloat("Fps refreshing", "refresh", 0, 5)
+
+client.settings.addAir(10)
+
+infoAutoSetting = "Goes to the position of original fps display and takes its color"
+autoSetting = true
+client.settings.addBool("Auto settings", "autoSetting")
+client.settings.addInfo("infoAutoSetting")
+
+client.settings.addAir(10)
 
 background = {0, 0, 0, 127}
 client.settings.addColor("Background color", "background")
@@ -19,6 +28,7 @@ positionX = 0
 positionY = 0
 sizeX = 20
 sizeY = 20
+importLib("module.lua")
 
 text = ""
 fps = 0
@@ -46,9 +56,22 @@ function render(dt)
     sizeY = gui.font().height + 2
     sizeX = gui.font().width(text) + 2
     if not gui.mouseGrabbed() then
-        gfx.color(background.r, background.g, background.b, background.a)
-        gfx.rect(0, 0, sizeX, sizeY)
-        gfx.color(color.r, color.g, color.b, color.a)
-        gfx.text(1, 1, text)
+        if autoSetting then
+            mod = getModule("FPS Counter")
+            mod.enabled = false
+            positionX = mod.pos["x"]
+            positionY = mod.pos["y"]
+            c = getSetting(mod, "backColor").value
+            gfx.color(c.r*255, c.g*255, c.b*255, c.a*255)
+            gfx.rect(0, 0, gui.font().width(text) + 6, mod.size["y"])
+            c = getSetting(mod, "textColor").value
+            gfx.color(c.r*255, c.g*255, c.b*255, c.a*255)
+            gfx.text(3, 2, text)
+        else
+            gfx.color(background.r, background.g, background.b, background.a)
+            gfx.rect(0, 0, sizeX, sizeY)
+            gfx.color(color.r, color.g, color.b, color.a)
+            gfx.text(1, 1, text)
+        end
     end
 end

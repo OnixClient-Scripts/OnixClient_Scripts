@@ -126,13 +126,17 @@ local selectionPos = 0
 local fading = fadeDefault
 local chatMessagePos = 0
 local contentPath = {"discordChatBridge\\DiscordChatMessages.txt", "discordChatBridge\\MCChatMessages.txt"}
-local discordMessage = mkString(readFile(contentPath[1]), 2)
+local discordMessage = ""
 local content = discordMessage
 local mouseClicked = false
 local showCur = 0
 
 
 function update(deltaTime)
+    if discordMessage == " " and content == discordMessage then
+        discordMessage = mkString(readFile(contentPath[1]), 2)
+        content = discordMessage
+    end
     if writeShow then
         if keyHold >= 0 then
             if keyCounter == 0 then

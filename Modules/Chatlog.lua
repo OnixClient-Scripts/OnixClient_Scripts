@@ -5,15 +5,17 @@ local lastLine
 
 function onChat(message, username, type)
     if lastLine ~= message then
-        local file = io.open("Chatlogger.txt", 'a')
         local toWrite = message
         if username and username ~= "" then
             toWrite = "<" .. username .. "> " .. toWrite
         end
-        file:write(toWrite .. "\n")
+        local file = io.open("Chatlogger.txt", 'a')
+        if file then
+            file:write(toWrite .. "\n")
+        end
         io.close(file)
         lastLine = message
     end
 end
-
 event.listen("ChatMessageAdded", onChat)
+

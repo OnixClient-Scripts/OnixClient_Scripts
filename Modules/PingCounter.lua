@@ -85,13 +85,15 @@ function update()
 end
 
 function render()
-    local text = CurrentPing .. "ms"
-    local font = gui.font()
+    if not gui.mouseGrabbed() then
+        local text = CurrentPing .. "ms"
+        local font = gui.font()
 
-    gfx.color(background_color.r, background_color.g, background_color.b, background_color.a)
-    gfx.rect(0,0,sizeX,sizeY)
+        gfx.color(background_color.r, background_color.g, background_color.b, background_color.a)
+        gfx.rect(0,0,sizeX,sizeY)
 
-    gfx.color(color.r, color.g, color.b, color.a)
-    gfx.text((sizeX / 2) - (font.width(text) / 2), 5 - (font.height / 2), text, 1)
+        gfx.color(color.r, color.g, color.b, color.a)
+        gfx.text((sizeX / 2) - (font.width(text) / 2), 5 - (font.height / 2), text, 1)
+    end
 
 end
