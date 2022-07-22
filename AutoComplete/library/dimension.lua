@@ -74,6 +74,21 @@ function dimension.getBrightness(x, y, z) end
 ---@return Block block
 function dimension.getBlock(x, y, z) end
 
+---Gets the block at these coordinates
+---@param x integer | number The x position
+---@param y integer | number The y position
+---@param z integer | number The z position
+---@return table blockEntity nbt
+function dimension.getBlockEntity(x, y, z) end
+
+---Gets the block entity nbt at these coordinates
+---@param x integer | number The x position
+---@param y integer | number The y position
+---@param z integer | number The z position
+---@param getServerSideEntity boolean Should we get the server one (unstable outside of the LocalServerUpdate event)
+---@return table blockEntity nbt
+function dimension.getBlockEntity(x, y, z, getServerSideEntity) end
+
 ---Gets the biome at these coordinates
 ---@param x integer | number The x position
 ---@param y integer | number The y position
