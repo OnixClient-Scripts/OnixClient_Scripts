@@ -57,3 +57,8 @@ function string.split(text, splitter) end
 ---@param name string The name of the item (the one you would use in .give)
 ---@return Item | nil
 function getItem(name) end
+
+---Gets the nbt of an item from its location (item.location)
+---@param location integer  the location of the item
+---@return table itemNbt nbt
+function getItemNbt(location) end
