@@ -198,7 +198,7 @@ local _acp_Enchants = {}
 
 ---@class InventoryArmor 
 ---@field helmet Item|nil the item on the head
----@field chestplace Item|nil the item on the torso
+---@field chestplate Item|nil the item on the torso
 ---@field leggings Item|nil the item on the legs
 ---@field boots Item|nil the item on the feets
 
