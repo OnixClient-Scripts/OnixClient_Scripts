@@ -6,7 +6,7 @@ made by rosie (credits: son, mitchell, onix)
 requires HiveRPCHelper.exe (can be found on the repo)
 
 exe source:
-https://github.com/jqms/HiveRPCHelperSRC
+https://github.com/jqms/MinecraftRPC
 ]]--
 
 local appID
@@ -40,7 +40,7 @@ local formattedGamemodes = {
     SKY="Skywars",
     BUILD="Just Build",
     HIDE="Hide And Seek",
-    DR="DR",
+    DR="Death Run",
     ARCADE="Arcade Hub",
     HUB="Hub",
     REPLAY="Replay"
@@ -79,10 +79,16 @@ function update(dt)
         formattedGamemode = "Unknown"
     end
     local item = player.inventory().at(1)
+    local item2 = player.inventory().at(9)
     if item ~= nil and item.customName == "§r§bGame Selector§7 [Use]" then
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
         io.output(file)
         io.write("In the Hub")
+        io.close(file)
+    elseif item2 ~= nil and item2.name == "cubecraft:skyblock_settings" then
+        local file = io.open("RPC/RPCHelperGamemode.txt", "w")
+        io.output(file)
+        io.write("Playing Skyblock")
         io.close(file)
     elseif lastGamemode ~= nil and hiveLobby == false then
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
@@ -94,6 +100,8 @@ function update(dt)
         io.output(file)
         io.write("Queuing " .. formattedGamemode)
         io.close(file)
+    else
+        return
     end
 end
 
@@ -107,7 +115,7 @@ function onChat(message, username, type)
     end
 
 --hive 
-    if string.find(message," joined. §8") then
+    if string.find(message," joined. §8") and string.find(message, player.name()) then
         client.execute("execute /connection")
         hiveLobby = true
     end
