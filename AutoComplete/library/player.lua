@@ -41,6 +41,10 @@ function player.selectedPos() end
 function player.selectedFace() end
 
 
+---The progress for the selected block to be broken (0.0 to 1.0)
+---@return number progress
+function player.breakProgress() end
+
 ---@class PlayerLookingAtEntityInformation
 ---@field type string The type of entity, exemple "player"
 ---@field fullType string The full type of entity, exemple "minecraft:player"
