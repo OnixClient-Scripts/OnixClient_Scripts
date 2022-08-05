@@ -56,7 +56,7 @@ team = "Unknown"
 function onChat(msg, user, type)
     local ip = server.ip()
     if ip == "geo.hivebedrock.network" or ip == "jp.hivebedrock.network" or ip == "sg.hivebedrock.network" or ip == "fr.hivebedrock.network" or ip == "ca.hivebedrock.network" then
-        if string.find(msg, "§rYou are on the ") then
+        if string.find(msg, "§rYou are on the ") and type == 2 then
             teamcolor = msg:sub(30,30)
             if teamcolor == "e" then team = "Yellow"
             elseif teamcolor == "a" then team = "Lime"
@@ -73,13 +73,13 @@ function onChat(msg, user, type)
             else team = "Unknown"
             end
         end
-        if string.find(msg, team .. " Team §7has been §cELIMINATED§7!") or string.find(msg, team .. " was ELIMINATED!") then
+        if (string.find(msg, team .. " Team §7has been §cELIMINATED§7!") or string.find(msg, team .. " was ELIMINATED!")) and type == 2 then
             setstreak(0)
 			if showmsg == true then
                 print("§l§" .. teamcolor .. "» §r§" .. teamcolor .. "You §ghave been eliminated! Your killstreak has been reset.")
             end
         end
-        if string.find(msg, team .. " Team are the WINNERS!") then
+        if string.find(msg, team .. " Team are the WINNERS!") and type == 2 then
             setstreak(winstreak + 1)
             if showmsg == true then
                 print("§l§" .. teamcolor .. "» §r§" .. teamcolor .. "You §gare the winner! Your killstreak is §" .. teamcolor .. winstreak .. " §gnow!")
