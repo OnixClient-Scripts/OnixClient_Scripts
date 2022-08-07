@@ -26,6 +26,13 @@ function gfx.renderBehind(phaseTroughBlocks) end
 function gfx.color(r, g, b, a) end
 
 
+---The render origin
+---@return number x
+---@return number y
+---@return number z
+function gfx.origin() end
+
+
 ---Renders a rectangle 
 ---@param x number The position X
 ---@param y number The position Y
