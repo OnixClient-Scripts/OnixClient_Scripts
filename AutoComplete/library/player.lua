@@ -79,6 +79,11 @@ function player.lookingPos() end
 ---@return number pitch
 function player.rotation() end
 
+---What perspective the player is in (first person, third person back, third person front)
+---@return integer perspective
+function player.perspective() end
+
+
 ---If the player were to left click would it attack an entity
 ---@return boolean
 function player.facingEntity() end
