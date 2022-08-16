@@ -20,6 +20,57 @@ function tablelen(tbl)
     end
     return a
 end
+
+local GAME_XP = {
+    wars={150,52},
+    dr={200},
+    hide={100},
+    murder={100, 82},
+    sg={150},
+    sky={150, 52},
+    build={100},
+    ground={150},
+    drop={150, 22},
+    ctf={150}
+}
+function calculateLevel(game, xp)
+    local increment = GAME_XP[game][1] / 2
+    local flattenLevel = GAME_XP[game][2]
+    local level =
+        (-increment + math.sqrt((increment^2) - 4 * increment * -xp)) /
+        (2 * increment) +
+        1
+    if flattenLevel and level > flattenLevel then
+        level =
+            flattenLevel +
+            (xp -
+                (increment * ((flattenLevel - 1)^2) +
+                    (flattenLevel - 1) * increment)) /
+            ((flattenLevel - 1) * increment * 2)
+    end
+    return level
+end
+
+function printLevel(level)
+    if level <= 9 then
+        print("§7Level: §e" .. level)
+    elseif level <= 19 then
+        print("§6Level: §e" .. level)
+    elseif level <= 24 then
+        print("§eLevel: §e" .. level)
+    elseif level <= 29 then
+        print("§bLevel: §e" .. level)
+    elseif level <= 49 then
+        print("§dLevel: §e" .. level)
+    elseif level <= 79 then
+        print("§aLevel: §e" .. level)
+    elseif level <= 99 then
+        print("§cLevel: §e" .. level)
+    elseif level <= 100 then
+        print("§9Level: §e" .. level)
+    end
+end
+
 function onNetworkData(code, netGamemode, data)
     if code == 0 then
         result = jsonToTable(data)
@@ -33,6 +84,8 @@ function onNetworkData(code, netGamemode, data)
         else
             print("§b§l------------------------------------§r\n§eHive Statistics Checker\n§cUser: §r" .. username .. "\n§aGamemode: §r" .. formattedGamemode[string.upper(gamemode)] .. "\n§b§l------------------------------------§r")
             if netGamemode == "wars" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
@@ -46,23 +99,27 @@ function onNetworkData(code, netGamemode, data)
                 print("§eK§cD§eR: §e" .. math.floor((result["kills"] / result["deaths"])*100)/100)
                 print("§3Prestige: §e" .. result["prestige"])
             elseif netGamemode == "sky" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§5Kills: §e" .. result["kills"])
                 print("§dMystery Chests Destroyed: §e" .. result["mystery_chests_destroyed"])
                 print("§9Ores Mined: §e" .. result["ores_mined"])
                 print("§dSpells Used: §e" .. result["spells_used"])
             elseif netGamemode == "ctf" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§5Kills: §e" .. result["kills"])
                 print("§4Deaths: §e" .. result["deaths"])
                 print("§eK§cD§eR: §e" .. math.floor((result["kills"] / result["deaths"])*100)/100)
@@ -70,76 +127,89 @@ function onNetworkData(code, netGamemode, data)
                 print("§cFlags Returned: §e" .. result["flags_returned"])
                 print("§2Assists: §e" .. result["assists"])
             elseif netGamemode == "sg" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§5Kills: §e" .. result["kills"])
                 print("§7Crates: §e" .. result["crates"])
                 print("§8Deathmatches: §e" .. result["deathmatches"])
                 print("§cCows: §e" .. result["cows"])
             elseif netGamemode == "dr" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§5Kills: §e" .. result["kills"])
                 print("§4Deaths: §e" .. result["deaths"])
                 print("§0C§rh§0e§rc§0k§rp§0o§ri§0n§rt§0s§r: §e" .. result["checkpoints"])
                 print("§bT§dr§ra§dp§bs §aActivated: §e" .. result["activated"])
             elseif netGamemode == "hide" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§4Deaths: §e" .. result["deaths"])
                 print("§1Hider Kills: §e" .. result["hider_kills"])
                 print("§4Seeker Kills: §e" .. result["seeker_kills"])
             elseif netGamemode == "murder" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
-                print("§5Kills: §e" .. result["kills"])
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§4Deaths: §e" .. result["deaths"])
                 print("§6Coins: §e" .. result["coins"])
-                print("§4Times Murderer: §e" .. result["murderers"])
+                print("§6Avg Coins/game: §e: " .. math.floor(10*(result["coins"]/result["played"]))/10)
             elseif netGamemode == "drop" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§4Deaths: §e" .. result["deaths"])
                 print("§Blocks Destroyed: §e" .. result["blocks_destroyed"])
                 print("§bPowerups Collected: §e" .. result["powerups_collected"])
                 print("§aVaults Used: §e" .. result["vaults_used"])
             elseif netGamemode == "ground" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§4Deaths: §e" .. result["deaths"])
                 print("§3Blocks Destroyed: §e" .. result["blocks_destroyed"])
                 print("§dProjectiles Fired: §e" .. result["projectiles_fired"])
             elseif netGamemode == "build" then
+                local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+                printLevel(level)
                 print("§2Experience: §e" .. result["xp"])
                 print("§8Games Played: §e" .. result["played"])
                 print("§6Victories: §e" .. result["victories"])
                 print("§8Losses: §e" .. result["played"] - result["victories"])
-                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 100) .. "%")
-                print("§4Lossrate: §e" .. math.floor(100-(result["victories"] / result["played"]) * 100) .. "%")
+                print("§1Winrate: §e" .. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
+                print("§4Lossrate: §e" .. 100-math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%")
                 print("§2Loved Builds: §e" .. result["rating_love_received"])
                 print("§aGood Builds: §e" .. result["rating_good_received"])
                 print("§eOkay Builds: §e" .. result["rating_okay_received"])
@@ -159,7 +229,7 @@ function onNetworkData(code, netGamemode, data)
 end
 
 
-
+usernameSearch = " "
 registerCommand("stats", function (arguments)
     if arguments == "" then
         print("§b§l------------------------------------§r\n§eUsage:\n§cUsername§r, §aGamemode \n§r§b§l------------------------------------§r")
@@ -169,8 +239,10 @@ registerCommand("stats", function (arguments)
 
         if string.find(gamemode, "-") then
             gamemode = string.sub(gamemode, 1, string.find(gamemode, "-") - 1)
-            print(gamemode)
         end
+        
+        usernameSearch = string.gsub(username, " ", "%%20")
+
         if formattedGamemode[string.upper(username)] then
             --dude switched gamemode and username L
             local temp = username
@@ -181,6 +253,6 @@ registerCommand("stats", function (arguments)
             return
         end
         print("§b§l------------------------------------§r\n§eGetting §a".. formattedGamemode[string.upper(gamemode)] .. "§r§e statistics for§r§c " .. username .. "§r\n§r§b§l------------------------------------§r")
-        network.get("https://api.playhive.com/v0/game/all/" .. gamemode .. "/" .. username, gamemode)
+        network.get("https://api.playhive.com/v0/game/all/" .. gamemode .. "/" .. usernameSearch,  gamemode)
     end
 end)
