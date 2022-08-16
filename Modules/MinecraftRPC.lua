@@ -132,12 +132,18 @@ function onChat(message, username, type)
     end
 
  --hide the /connection message
-    if string.find(message, "You are connected to proxy ") then
-        return true
-    end
-    if string.find(message, "You are connected to server ") then
-        return true
-    end
+ if string.find(message, "You are connected to proxy ") then
+    return true
+end
+if string.find(message, "You are connected to server ") then
+    return true
+end
+if string.find(message, "§cYou're issuing commands too quickly, try again later.") then
+    return true
+end
+if string.find(message, "§cUnknown command. Sorry!") then
+    return true
+end
 end
 
 event.listen("ChatMessageAdded", onChat)
