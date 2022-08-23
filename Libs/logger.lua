@@ -1,3 +1,4 @@
+--made by O2Flash20
 function getTable(table)
     local output = ""
     output = "{"
