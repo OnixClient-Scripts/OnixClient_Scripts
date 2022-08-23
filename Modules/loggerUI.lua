@@ -1,3 +1,4 @@
+-- made by O2Flash20
 name = "Logger"
 description = "Logs things better"
 
