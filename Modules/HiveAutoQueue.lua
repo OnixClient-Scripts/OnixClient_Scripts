@@ -1,5 +1,6 @@
 name = "Hive Autoqueue"
 description = "Automatically Queue Hive Games.\nScript Version: v3.0"
+ --
 
 --[[
 
@@ -15,9 +16,9 @@ alternatively you can just make a new command and put this as the code:
     end
 
 bye🙂
-]]--
+]]
 
-team = "Unknown"
+team ="Unknown"
 lastGamemode = ""
 formattedGamemode = ""
 
@@ -53,37 +54,35 @@ client.settings.addInt("Rounded Corners", "round", 1, 10)
 quality = 1
 client.settings.addInt("Quality", "quality", 1, 10)
 
-
-
 local formattedGamemodes = {
-    DROP="§5Block Drop",
-    CTF="§6Capture The Flag",
-    BRIDGE="§9The §5Bridge",
-    GROUND="§3Ground §2Wars",
-    SG="§3Survival Games",
-    MURDER="§fMurder Mystery",
-    WARS="§6Treasure Wars",
-    SKY="§9Skywars",
-    BUILD="§5Just Build",
-    HIDE="§9Hide And Seek",
-    DR="§cDR",
-    ARCADE="§eArcade Hub",
-    HUB="§eHub"
+    DROP = "§5Block Drop",
+    CTF = "§6Capture The Flag",
+    BRIDGE = "§9The §5Bridge",
+    GROUND = "§3Ground §2Wars",
+    SG = "§3Survival Games",
+    MURDER = "§fMurder Mystery",
+    WARS = "§6Treasure Wars",
+    SKY = "§9Skywars",
+    BUILD = "§5Just Build",
+    HIDE = "§9Hide And Seek",
+    DR = "§cDR",
+    ARCADE = "§eArcade Hub",
+    HUB = "§eHub"
 }
-formattedGamemodes["BRIDGE-DUOS"]="§9The §5Bridge§8: Duos" 
-formattedGamemodes["SG-DUOS"]="§3Survival Games§8: Duos"
-formattedGamemodes["WARS-DUOS"]="§6Treasure Wars§8: Duos"
-formattedGamemodes["WARS-SQUADS"]="§6Treasure Wars§8: Squads"
-formattedGamemodes["WARS-MEGA"]="§6Treasure Wars§8: Mega"
-formattedGamemodes["SKY-DUOS"]="§9Skywars§8: Duos"
-formattedGamemodes["SKY-TRIOS"]="§9Skywars§8: Trios"
-formattedGamemodes["SKY-SQUADS"]="§9Skywars§8: Squads"
-formattedGamemodes["SKY-KITS"]="§9Skywars §5Kits"
-formattedGamemodes["SKY-KITS-DUOS"]="§9Skywars §5Kits§8: Duos"
-formattedGamemodes["SKY-MEGA"]="§9Skywars §cMega"
-formattedGamemodes["BUILD-DUOS"]="§5Just Build§8: Duos"
-formattedGamemodes["BUILDX"]="§5Just Build§7: Extended"
-formattedGamemodes["BUILDX-DUOS"]="§5Just Build§7: Extended§8, Duos"
+formattedGamemodes["BRIDGE-DUOS"] = "§9The §5Bridge§8: Duos"
+formattedGamemodes["SG-DUOS"] = "§3Survival Games§8: Duos"
+formattedGamemodes["WARS-DUOS"] = "§6Treasure Wars§8: Duos"
+formattedGamemodes["WARS-SQUADS"] = "§6Treasure Wars§8: Squads"
+formattedGamemodes["WARS-MEGA"] = "§6Treasure Wars§8: Mega"
+formattedGamemodes["SKY-DUOS"] = "§9Skywars§8: Duos"
+formattedGamemodes["SKY-TRIOS"] = "§9Skywars§8: Trios"
+formattedGamemodes["SKY-SQUADS"] = "§9Skywars§8: Squads"
+formattedGamemodes["SKY-KITS"] = "§9Skywars §5Kits"
+formattedGamemodes["SKY-KITS-DUOS"] = "§9Skywars §5Kits§8: Duos"
+formattedGamemodes["SKY-MEGA"] = "§9Skywars §cMega"
+formattedGamemodes["BUILD-DUOS"] = "§5Just Build§8: Duos"
+formattedGamemodes["BUILDX"] = "§5Just Build§7: Extended"
+formattedGamemodes["BUILDX-DUOS"] = "§5Just Build§7: Extended§8, Duos"
 
 function update(deltaTime)
     if formattedGamemode == "" then
@@ -106,41 +105,65 @@ end
 
 function onChat(message, username, type)
     -- fully automatic requeue :D
-    if string.find(message, "§b§l» §r§a§lVoting has ended!") or string.find(message," joined. §8") then
+    if string.find(message, "§b§l» §r§a§lVoting has ended!") then
         client.execute("execute /connection")
         hub = false
         inGame = true
     end
-    if string.find(message,"You are connected to server ") then
+    if string.find(message, player.name()) and string.find(message, " joined. §8") then
+        client.execute("execute /connection")
+        hub = false
+        inGame = true
+    end
+    if string.find(message, "You are connected to server ") then
         lastGamemode = message
         lastGamemode = string.sub(message, 29)
-        lastGamemode = string.match(lastGamemode,"[%a-]*")
+        lastGamemode = string.match(lastGamemode, "[%a-]*")
     end
 
--- hide the /connection message
+    -- hide the /connection message
     if string.find(message, "You are connected to proxy ") then
         return true
     end
     if string.find(message, "You are connected to server ") then
         return true
     end
+    if string.find(message, "§cYou're issuing commands too quickly, try again later.") then
+        return true
+    end
+    if string.find(message, "§cUnknown command. Sorry!") then
+        return true
+    end
 
--- fully auto
+    -- fully auto
     if string.find(message, "§rYou are on the ") then
-        local teamcolor = message:sub(30,30)
-        if teamcolor == "e" then team = "Yellow"
-        elseif teamcolor == "a" then team = "§aLime"
-        elseif teamcolor == "c" then team = "§cRed"
-        elseif teamcolor == "9" then team = "§9Blue"
-        elseif teamcolor == "6" then team = "§6Gold"
-        elseif teamcolor == "d" then team = "§dMagenta"
-        elseif teamcolor == "b" then team = "§bAqua"
-        elseif teamcolor == "7" then team = "§7Gray"
-        elseif teamcolor == "5" then team = "§5Purple"
-        elseif teamcolor == "2" then team = "§2Green"
-        elseif teamcolor == "8" then team = "§8Dark Gray"
-        elseif teamcolor == "3" then team = "§3Cyan"
-        else team = "Unknown"
+        local teamcolor = message:sub(30, 30)
+        if teamcolor == "e" then
+            team = "Yellow"
+        elseif teamcolor == "a" then
+            team = "§aLime"
+        elseif teamcolor == "c" then
+            team = "§cRed"
+        elseif teamcolor == "9" then
+            team = "§9Blue"
+        elseif teamcolor == "6" then
+            team = "§6Gold"
+        elseif teamcolor == "d" then
+            team = "§dMagenta"
+        elseif teamcolor == "b" then
+            team = "§bAqua"
+        elseif teamcolor == "7" then
+            team = "§7Gray"
+        elseif teamcolor == "5" then
+            team = "§5Purple"
+        elseif teamcolor == "2" then
+            team = "§2Green"
+        elseif teamcolor == "8" then
+            team = "§8Dark Gray"
+        elseif teamcolor == "3" then
+            team = "§3Cyan"
+        else
+            team = "Unknown"
         end
     end
     if FullyAuto == true and string.find(message, team .. " Team §7has been §cELIMINATED§7!") then
@@ -151,19 +174,19 @@ function onChat(message, username, type)
             return
         else
             print("Unfortulately you lost.\n§r§8Queueing into a new game.")
-            client.execute("execute /q " ..  lastGamemode)
+            client.execute("execute /q " .. lastGamemode)
             ShowGamemode = false
             return
         end
     end
     if FullyAuto == true and string.find(message, team .. " was ELIMINATED!") then
-        client.execute("execute /q " ..  lastGamemode)
+        client.execute("execute /q " .. lastGamemode)
         print("Unfortulately you lost.\n§r§8Queueing into a new game.")
         ShowGamemode = false
         return
     end
     if FullyAuto == true and string.find(message, team .. " Team are the WINNERS!") then
-        client.execute("execute /q " ..  lastGamemode)
+        client.execute("execute /q " .. lastGamemode)
         print("Congratulations on winning! <3\n§r§8Queueing into a new game.")
         ShowGamemode = false
         return
@@ -208,20 +231,19 @@ end
 function render(dt)
     if ShowGamemode == true and hub == false then
         gfx.color(background.r, background.g, background.b, background.a)
-        gfx.roundRect(gui.width() - gui.font().width("Playing " .. formattedGamemode)-8, 24, gui.font().width("Playing " .. formattedGamemode)+3, gui.font().height+3, round, quality)
+        gfx.roundRect(gui.width() - gui.font().width("Playing " .. formattedGamemode) - 8,24,gui.font().width("Playing " .. formattedGamemode) + 3,gui.font().height + 3,round,quality)
         gfx.color(color.r, color.g, color.b, color.a)
-        gfx.text(gui.width() - gui.font().width("Playing " .. formattedGamemode)-7, 25,("Playing " .. formattedGamemode))
+        gfx.text(gui.width() - gui.font().width("Playing " .. formattedGamemode) - 7,25,("Playing " .. formattedGamemode))
     elseif hub == true and inGame == false then
         gfx.color(background.r, background.g, background.b, background.a)
-        gfx.roundRect(gui.width() - gui.font().width("In the " .. formattedGamemode)-8, 24, gui.font().width("In the " .. formattedGamemode)+3, gui.font().height+3, round, quality)
+        gfx.roundRect(gui.width() - gui.font().width("In the " .. formattedGamemode) - 8,24,gui.font().width("In the " .. formattedGamemode) + 3,gui.font().height + 3,round,quality)
         gfx.color(color.r, color.g, color.b, color.a)
-        gfx.text(gui.width() - gui.font().width("In the " .. formattedGamemode)-7, 25,("In the " .. formattedGamemode))
+        gfx.text(gui.width() - gui.font().width("In the " .. formattedGamemode) - 7,25,("In the " .. formattedGamemode))
     end
 end
 
-
 function onLocalData(identifier, content)
-    if identifier == "00409ed7-72f4-4575-8028-c0abf7736a49" then 
+    if identifier == "00409ed7-72f4-4575-8028-c0abf7736a49" then
         client.execute("execute /q " .. lastGamemode)
         ShowGamemode = false
     end

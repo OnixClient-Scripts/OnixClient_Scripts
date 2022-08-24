@@ -35,6 +35,10 @@ function gui.mousey() end
 ---@return boolean screenShowed
 function gui.showScreen(name) end
 
+---Gives you the name of the current minecraft screen
+---@return string screenName
+function gui.screen() end
+
 ---Plays the click sound (the one in minecraft when u clicc button)
 ---@return nil
 function gui.clickSound() end

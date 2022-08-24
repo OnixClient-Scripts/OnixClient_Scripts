@@ -3,11 +3,11 @@
 ## [Onix Client Discord](https://discord.gg/onixclient)
 
 ```diff
-- You need Onix Client (Scripting Beta) to use these scripts!
+- You need Onix Client (Scripting) to use these scripts!
 ```
 
 ```diff
-@@ Discord : Quoty0#3884, Onix86#7822, Mac Becraft's#6545, .rosie#4801, hmmm_#9439 @@
+@@ Discord : Quoty0#3884, Onix86#0001, Mac Becraft's#6545, rosie#1337, hmmm_#9439 @@
 ```
 
 ```diff
@@ -53,6 +53,7 @@ then click the ``raw`` button then do ctrl + s then save in the modules/scripts 
 .lua reload
 ```
 This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the cmd in chat.
+You can do .lua autoreload to make it automatically reload when you've edited a script.
 
 ​
 

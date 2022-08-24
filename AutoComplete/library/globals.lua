@@ -62,3 +62,15 @@ function getItem(name) end
 ---@param location integer  the location of the item
 ---@return table itemNbt nbt
 function getItemNbt(location) end
+
+--pairs alternative for iterating trough nbt 
+---@param tbl table Your NBT
+---@return any
+---@return any
+function Nbt(tbl) end
+
+
+---Returns you an item from a NBT tag
+---@param ItemNBT table
+---@return Item item
+function itemFromNbt(ItemNBT) end

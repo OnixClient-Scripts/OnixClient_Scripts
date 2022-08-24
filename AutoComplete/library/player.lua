@@ -35,6 +35,39 @@ function player.pposition() end
 ---@return integer z
 function player.selectedPos() end
 
+---The block face of the currently selected block
+---You can check if there is one in the first place with player.facingBlock()
+---@return integer selectedFace
+function player.selectedFace() end
+
+
+---The progress for the selected block to be broken (0.0 to 1.0)
+---@return number progress
+function player.breakProgress() end
+
+---@class PlayerLookingAtEntityInformation
+---@field type string The type of entity, exemple "player"
+---@field fullType string The full type of entity, exemple "minecraft:player"
+---@field nametag string The name of the entity
+---@field username string|nil The username of the entity, players only
+---@field yaw number The yaw viewing angle of the entity
+---@field pitch number The pitch viewing angle of the entity
+---@field x integer The X position of the entity
+---@field y integer The Y position of the entity
+---@field z integer The Z position of the entity
+---@field ppx integer The precise X position of the entity
+---@field ppy integer The precise Y position of the entity
+---@field ppz integer The precise Z position of the entity
+---@field vx integer The X velocity of the entity
+---@field vy integer The Y velocity of the entity
+---@field vz integer The Z velocity of the entity
+
+---The coordinates of the block that has the outline for the player
+---You can check if there is one in the first place with player.facingBlock()
+---@return PlayerLookingAtEntityInformation entity
+function player.selectedEntity() end
+
+
 ---Where the raytrace hit, exemple: you look at a block far away, where on that block are you looking at
 ---@return number x
 ---@return number y
@@ -45,6 +78,11 @@ function player.lookingPos() end
 ---@return number yaw
 ---@return number pitch
 function player.rotation() end
+
+---What perspective the player is in (first person, third person back, third person front)
+---@return integer perspective
+function player.perspective() end
+
 
 ---If the player were to left click would it attack an entity
 ---@return boolean
@@ -198,7 +236,7 @@ local _acp_Enchants = {}
 
 ---@class InventoryArmor 
 ---@field helmet Item|nil the item on the head
----@field chestplace Item|nil the item on the torso
+---@field chestplate Item|nil the item on the torso
 ---@field leggings Item|nil the item on the legs
 ---@field boots Item|nil the item on the feets
 
