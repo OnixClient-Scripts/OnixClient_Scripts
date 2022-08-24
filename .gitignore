@@ -4,3 +4,9 @@ Website
 Configs
 Data/ChatLog.txt
 Data/video.txt
+Configs/*
+Data/*
+external/*
+Extras/*
+.vs/
+.gitignore
