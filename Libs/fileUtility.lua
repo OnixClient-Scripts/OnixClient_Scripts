@@ -20,7 +20,7 @@ function readWholeFile(file)
         f:close()
         return content
     else
-        return nil
+        return ""
     end
 end
 
@@ -35,9 +35,13 @@ end
 
 function writeFile(file, text)
     local wrFile = io.open(file, "w")
-    io.output(wrFile)
-    io.write(text)
-    io.close(wrFile)
+    if wrFile then
+        io.output(wrFile)
+        io.write(text)
+        io.close(wrFile)
+        return true
+    end
+    return false
 end
 
 function jsonLoad(file)
@@ -46,7 +50,7 @@ function jsonLoad(file)
 end
 
 function jsonDump(json, file)
-    writeFile(file, tableToJson(json))
+    writeFile(file, tableToJson(json, true))
 end
 
 function split(str, splitter)

@@ -20,7 +20,7 @@ function getMapColorName(Name, Data)
     return coloration
 end
 
----Gets the color for the Block Name [1]=r [2]=g [3]=b range of 0 to 255
+---Gets the color for the Block Id [1]=r [2]=g [3]=b range of 0 to 255
 ---@param ID integer
 ---@param Data integer
 ---@return table

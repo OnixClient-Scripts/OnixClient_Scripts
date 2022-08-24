@@ -11,7 +11,7 @@ end
 
 function getSetting(module, name)
     for k, v in pairs(module.settings) do
-        if string.find(v.saveName, name) or string.find(v.name, name) then
+        if string.lower(v.saveName) == string.lower(name) or string.lower(v.name) == string.lower(name) then
             return v
         end
     end
