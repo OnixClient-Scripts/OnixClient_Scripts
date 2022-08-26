@@ -1,31 +1,32 @@
 ---@meta
 
-networking = {}
+---@class network
+network = {}
 
 ---Does a web request to the specified url
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
-function networking.get(url, identifier) end
+function network.get(url, identifier) end
 
 ---Does a web request to the specified url
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
-function networking.get(url, identifier, headers) end
+function network.get(url, identifier, headers) end
 
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
 ---@param filepath string Where to store the result
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
-function networking.fileget(filepath, url, identifier) end
+function network.fileget(filepath, url, identifier) end
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
 ---@param filepath string Where to store the result
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
-function networking.fileget(filepath, url, identifier, headers) end
+function network.fileget(filepath, url, identifier, headers) end
 
 
 
@@ -34,14 +35,14 @@ function networking.fileget(filepath, url, identifier, headers) end
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param data string What data to post
-function networking.post(url, identifier, data) end
+function network.post(url, identifier, data) end
 
 ---Does a web request to the specified url
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
 ---@param data string What data to post
-function networking.post(url, identifier, headers, data) end
+function network.post(url, identifier, headers, data) end
 
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
@@ -49,7 +50,7 @@ function networking.post(url, identifier, headers, data) end
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param data string What data to post
-function networking.filepost(filepath, url, identifier, data) end
+function network.filepost(filepath, url, identifier, data) end
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
 ---@param filepath string Where to store the result
@@ -57,7 +58,7 @@ function networking.filepost(filepath, url, identifier, data) end
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
 ---@param data string What data to post
-function networking.filepost(filepath, url, identifier, headers, data) end
+function network.filepost(filepath, url, identifier, headers, data) end
 
 
 
@@ -67,14 +68,14 @@ function networking.filepost(filepath, url, identifier, headers, data) end
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param data string What data to delete
-function networking.delete(url, identifier, data) end
+function network.delete(url, identifier, data) end
 
 ---Does a web request to the specified url
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
 ---@param data string What data to delete
-function networking.delete(url, identifier, headers, data) end
+function network.delete(url, identifier, headers, data) end
 
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
@@ -82,7 +83,7 @@ function networking.delete(url, identifier, headers, data) end
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param data string What data to delete
-function networking.filedelete(filepath, url, identifier, data) end
+function network.filedelete(filepath, url, identifier, data) end
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
 ---@param filepath string Where to store the result
@@ -90,7 +91,7 @@ function networking.filedelete(filepath, url, identifier, data) end
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
 ---@param data string What data to delete
-function networking.filedelete(filepath, url, identifier, headers, data) end
+function network.filedelete(filepath, url, identifier, headers, data) end
 
 
 
@@ -101,14 +102,14 @@ function networking.filedelete(filepath, url, identifier, headers, data) end
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param data string What data to patch
-function networking.patch(url, identifier, data) end
+function network.patch(url, identifier, data) end
 
 ---Does a web request to the specified url
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
 ---@param data string What data to patch
-function networking.patch(url, identifier, headers, data) end
+function network.patch(url, identifier, headers, data) end
 
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
@@ -116,7 +117,7 @@ function networking.patch(url, identifier, headers, data) end
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param data string What data to patch
-function networking.filepatch(filepath, url, identifier, data) end
+function network.filepatch(filepath, url, identifier, data) end
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
 ---@param filepath string Where to store the result
@@ -124,7 +125,7 @@ function networking.filepatch(filepath, url, identifier, data) end
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
 ---@param data string What data to patch
-function networking.filepatch(filepath, url, identifier, headers, data) end
+function network.filepatch(filepath, url, identifier, headers, data) end
 
 
 
@@ -135,14 +136,14 @@ function networking.filepatch(filepath, url, identifier, headers, data) end
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param data string What data to put
-function networking.put(url, identifier, data) end
+function network.put(url, identifier, data) end
 
 ---Does a web request to the specified url
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
 ---@param data string What data to put
-function networking.put(url, identifier, headers, data) end
+function network.put(url, identifier, headers, data) end
 
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
@@ -150,7 +151,7 @@ function networking.put(url, identifier, headers, data) end
 ---@param url string What url we sending our request to
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param data string What data to put
-function networking.fileput(filepath, url, identifier, data) end
+function network.fileput(filepath, url, identifier, data) end
 
 ---Does a web request to the specified url and stores the result in the file, data will be filepath
 ---@param filepath string Where to store the result
@@ -158,4 +159,4 @@ function networking.fileput(filepath, url, identifier, data) end
 ---@param identifier string Will be the second parameter of onNetworkData
 ---@param headers string[] List of headers
 ---@param data string What data to put
-function networking.fileput(filepath, url, identifier, headers, data) end
+function network.fileput(filepath, url, identifier, headers, data) end
