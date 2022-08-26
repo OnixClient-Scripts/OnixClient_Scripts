@@ -106,6 +106,9 @@ example of [Current Time]: [08/21/21 12:30:45]
 ## [Input Example](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/inputexample.lua)
 Example script about using input library.
 
+## [Logger UI](https://raw.githubusercontent.com/O2Flash20/OnixClient_Scripts/master/Modules/loggerUI.lua)
+A better alternative to print() for debugging. Logger library is required.
+
 ## [Minimap](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/minimap.lua)
 Shows a map of blocks around you,<br/>
 It will decrease your fps a lot.
@@ -406,6 +409,9 @@ It's documentation is in the file itself
 
 ## [AreaSearcher](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/AreaSearcher.lua)
 [Example with notes documenting all features](https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/AreaSearcherExemple.lua)
+
+## [Logger](https://raw.githubusercontent.com/O2Flash20/OnixClient_Scripts/master/Libs/logger.lua)
+A better alternative to print() for debugging. Logger UI module is required.
 
 ​
 
