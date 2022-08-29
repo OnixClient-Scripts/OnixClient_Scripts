@@ -13,8 +13,8 @@ local appID
 importLib("DependentBoolean")
 
 fs.mkdir("RPC")
-io.open("RPC/RPCHelperUsername.txt","w")
-io.open("RPC/RPCHelperGamemode.txt","w")
+_ = io.open("RPC/RPCHelperUsername.txt","w")
+_ = io.open("RPC/RPCHelperGamemode.txt","w")
 
 lastGamemode = ""
 prefix = "Playing "

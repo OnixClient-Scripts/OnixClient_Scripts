@@ -73,12 +73,12 @@ function render(deltaTime)
         gfx.rect(0, 0, sizeX, sizeY)
         gfx.color(TextColor.r,TextColor.g,TextColor.b,TextColor.a)
         gfx.text(12, 15 - (font.height / 2), textTwo, 1)
-        gfx.effect(0, 10, 10, 10, effectId, TextColor.a)
+        gfx.effect(0, 10, 10, 10, effectId)
     else
         sizeX = 14 + font.width(text)
         gfx.rect(0, 0, sizeX, sizeY)
         gfx.color(TextColor.r,TextColor.g,TextColor.b,TextColor.a)
     end    
-    gfx.texture(0, 0, 10, 10, texturePath, TextColor.a)
+    gfx.texture(0, 0, 10, 10, texturePath)
     gfx.text(12, 5 - (font.height / 2), text, 1)
 end

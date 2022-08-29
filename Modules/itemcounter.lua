@@ -68,19 +68,19 @@ function render(deltaTime)
 
             gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
             gfx.text(14, 6 - (font.height / 2), ironCount, 1)
-            gfx.texture(0, 0, 12, 12, ironPath, 255)
+            gfx.texture(0, 0, 12, 12, ironPath)
 
             gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
             gfx.text(14, 20 - (font.height / 2), goldCount, 1)
-            gfx.texture(0, 18 - (font.height / 2), 12, 12, goldPath, 255)
+            gfx.texture(0, 18 - (font.height / 2), 12, 12, goldPath)
 
             gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
             gfx.text(14, 34 - (font.height / 2), diamondCount, 1)
-            gfx.texture(0, 32 - (font.height / 2), 12, 12, diamondPath, 255)
+            gfx.texture(0, 32 - (font.height / 2), 12, 12, diamondPath)
 
             gfx.color(TextColor.r, TextColor.g, TextColor.b, TextColor.a)
             gfx.text(14, 48 - (font.height / 2), emeraldCount, 1)
-            gfx.texture(0, 46 - (font.height / 2), 12, 12, emeraldPath, 255)
+            gfx.texture(0, 46 - (font.height / 2), 12, 12, emeraldPath)
         end
     end
 end

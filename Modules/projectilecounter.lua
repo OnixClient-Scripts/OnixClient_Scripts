@@ -32,7 +32,7 @@ function render(deltaTime)
     local snowballCount = 0
     local eggCount = 0
     local selected = inventory.at(inventory.selected)
-    local itemLocation = ""
+    local itemLocation = -1
     for i=1,inventory.size do
         local slot = inventory.at(i)
         if (slot ~= nil and slot.name == snowballId) then
@@ -53,7 +53,7 @@ function render(deltaTime)
         itemLocation = offhand.location
     end
 
-    if (itemLocation ~= "") then
+    if (itemLocation ~= -1) then
         local font = gui.font()
         local text = " Projectiles: " .. snowballCount + eggCount
 
@@ -64,9 +64,9 @@ function render(deltaTime)
         gfx.color(TextColor.r,TextColor.g,TextColor.b,TextColor.a)
         gfx.text(12, 5 - (font.height / 2), text, 1)
         if snowballCount < eggCount then
-            gfx.texture(0, 0, 10, 10, textureEGGPath, TextColor.a)
+            gfx.texture(0, 0, 10, 10, textureEGGPath)
         else
-            gfx.texture(0, 0, 10, 10, textureSnowballPath, TextColor.a)
+            gfx.texture(0, 0, 10, 10, textureSnowballPath)
         end
     end
 end

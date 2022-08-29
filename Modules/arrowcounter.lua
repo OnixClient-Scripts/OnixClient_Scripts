@@ -35,7 +35,7 @@ function render(deltaTime)
     local inventory = player.inventory()
     local arrowCount = 0
     local selected = inventory.at(inventory.selected)
-    local itemLocation = ""
+    local itemLocation = -1
     if (bowOnly == false or (selected ~= nil and (selected.name == bowId or selected.name == crossbowId))) then
         for i=1,inventory.size do
             local slot = inventory.at(i)
@@ -50,7 +50,7 @@ function render(deltaTime)
             itemLocation = offhand.location
         end
         
-        if (itemLocation ~= "" or bowOnly == false) then
+        if (itemLocation ~= -1 or bowOnly == false) then
             local font = gui.font()
             local text = " Arrow Count: " .. arrowCount
 
@@ -61,7 +61,7 @@ function render(deltaTime)
             gfx.color(Text_Color.r, Text_Color.g, Text_Color.b, Text_Color.a)
             gfx.text(12, 5 - (font.height / 2), text, 1)
             if showTexture == true then
-                gfx.texture(0, 0, 10, 10, texturePath, Text_Color.a)
+                gfx.texture(0, 0, 10, 10, texturePath)
             end
         end
         

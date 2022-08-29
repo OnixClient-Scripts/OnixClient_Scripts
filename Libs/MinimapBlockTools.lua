@@ -8990,7 +8990,7 @@ function InitIDColorMap()
 
 end
 
-_UpdateMapToolsInitialised = false
+local _UpdateMapToolsInitialised = false
 function UpdateMapTools()
     if (_UpdateMapToolsInitialised == false) then
         _UpdateMapToolsInitialised = true

@@ -227,13 +227,13 @@ function area._scanAir(x,y,z, radius, BlockCallback, DoneCallback)
     end
 end
 
----Scan an area slowly
----@param x number
----@param y number
----@param z number
----@param radius number
----@param BlockCallback fun(block:Block, x:number, y:number, z:number):nil --Called for every single block
----@param DoneCallback fun():nil --Called when the area finished scanning
+-- -Scan an area slowly
+-- -@param x number
+-- -@param y number
+-- -@param z number
+-- -@param radius number
+-- -@param BlockCallback fun(block:Block, x:number, y:number, z:number):nil --Called for every single block
+-- -@param DoneCallback fun():nil --Called when the area finished scanning
 
 
 ---Scan an area but includes air blocks
