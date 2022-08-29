@@ -239,8 +239,8 @@ event.listen("ChatMessageAdded", onChat)
 
 function addMessage(m)
     if gui.font().width(m) + 5 > sizeX then
-        table.insert(chat, {"", string.sub(m, 1, sizeX // gui.font().width("a") - 2 + 2 * (countChar(message, "§") + countChar(message, "Â") + countChar(username, "§"))) .. "-"})
-        addMessage(string.sub(m, sizeX // gui.font().width("a") + 2 * (countChar(message, "§") + countChar(message, "Â") + countChar(username, "§")) - 1, #m))
+        table.insert(chat, {"", string.sub(m, 1, sizeX // gui.font().width("a") - 2 + 2 * (countChar(m, "§") + countChar(m, "Â") + countChar(username, "§"))) .. "-"})
+        addMessage(string.sub(m, sizeX // gui.font().width("a") + 2 * (countChar(m, "§") + countChar(m, "Â") + countChar(m, "§")) - 1, #m))
     else
         table.insert(chat, {"", m})
     end
