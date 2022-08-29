@@ -37,6 +37,19 @@ local cookTimes = {
     Smoker = 100
 }
 
+function postInit()
+    for k, _ in pairs(uiSize) do
+        if not fs.exist("ui/" .. k .. ".png") then
+            print("no " .. k)
+            network.fileget("ui/" .. k .. ".png", "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Data/ui/" .. k .. ".png", "image")
+        end
+    end
+end
+
+function onNetworkData(code, id, data)
+    print("code: " .. code .. " id: " .. id .. " data: " .. data)
+end
+
 function render(dt)
     if content then
         local yVal = 0
@@ -53,7 +66,9 @@ function render(dt)
             end
         end
         for _, v in ipairs(container[type]) do
-            gfx.image(0, yVal, 176, uiSize[v], "ui/" .. v .. ".png")
+            if fs.exist("ui/" .. v .. ".png") then
+                gfx.image(0, yVal, 176, uiSize[v], "ui/" .. v .. ".png")
+            end
             yVal = yVal + uiSize[v]
         end
         gfx.color(76, 76, 76)
