@@ -138,7 +138,7 @@ for _, v in pairs(ids) do
     containerIds[v] = ""
 end
 
-event.listen("LocalServerUpdate", function()
+function update()
     local x,y,z = player.selectedPos()
     local block = dimension.getBlock(math.floor(x),math.floor(y),math.floor(z))
 
@@ -192,4 +192,4 @@ event.listen("LocalServerUpdate", function()
     else
         content = nil
     end
-end)
+end
