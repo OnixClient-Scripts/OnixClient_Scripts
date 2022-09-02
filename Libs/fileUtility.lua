@@ -5,10 +5,8 @@ function readFile(file)
         for line in lines do 
             table.insert(result, line)
         end
-        print("file " .. file .. " found")
         return result
     else
-        print("file " .. file .. " not found")
         return {}
     end
 end
