@@ -1,4 +1,4 @@
-name="FPS booster"
+name="FPS Chroma"
 description="boosts your fps"
 
 --By MCBE
