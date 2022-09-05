@@ -84,6 +84,9 @@ Hive gamemode hotkeys module by [chillihero](https://www.youtube.com/channel/UCv
 ## [Arrow Counter](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/arrowcounter.lua)
 Shows the amount of arrow(s) you have.
 
+## [Arrow Trajectory](https://raw.githubusercontent.com/O2Flash20/OnixClient_Scripts/master/Modules/arrowTrail.lua)
+Shows the path that your arrow will take and where it will land (if the bow is fully charged). Currently works with vanilla physics and with Cubecraft physics.
+
 ## [Chunk Positions](https://raw.githubusercontent.com/Quoty0/OnixClient_Scripts/master/Modules/chunkinfo.lua)
 Gives you the current chunk's chunk pos and your position inside of it.
 
