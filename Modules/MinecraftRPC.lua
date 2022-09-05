@@ -3,66 +3,128 @@ description = "Rich Presence. Intelligently.\nClosing the launcher when using th
 
 --[[
 made by rosie (credits: son, mitchell, onix)
-requires HiveRPCHelper.exe (can be found on the repo)
+requires MinecraftRPCHelper.exe (can be found on the repo)
 
 exe source:
 https://github.com/jqms/MinecraftRPC
-]]--
+]] --
 
 local appID
 importLib("DependentBoolean")
 
 fs.mkdir("RPC")
-_ = io.open("RPC/RPCHelperUsername.txt","w")
-_ = io.open("RPC/RPCHelperGamemode.txt","w")
+io.open("RPC/RPCHelperUsername.txt", "w")
+io.open("RPC/RPCHelperGamemode.txt", "w")
 
 lastGamemode = ""
 prefix = "Playing "
 suffix = "lobby."
-
+local result = {}
 hiveLobby = false
 displaySettings = true
 displayGamemode = true
 displayUsername = true
+displayLevel = true
 
-client.settings.addBool("RPC Settings","displaySettings")
-client.settings.addDependentBool("Display Gamemode?","displayGamemode","displaySettings")
-client.settings.addDependentBool("Display Username?","displayUsername","displaySettings")
+client.settings.addBool("RPC Settings", "displaySettings")
+client.settings.addDependentBool("Display Gamemode?", "displayGamemode", "displaySettings")
+client.settings.addDependentBool("Display Username?", "displayUsername", "displaySettings")
+client.settings.addDependentBool("Display Level?", "displayLevel", "displaySettings")
 
 local formattedGamemodes = {
-    DROP="Block Drop",
-    CTF="Capture The Flag",
-    BRIDGE="The Bridge",
-    GROUND="Ground Wars",
-    SG="Survival Games",
-    MURDER="Murder Mystery",
-    WARS="Treasure Wars",
-    SKY="Skywars",
-    BUILD="Just Build",
-    HIDE="Hide And Seek",
-    DR="Death Run",
-    ARCADE="Arcade Hub",
-    HUB="Hub",
-    REPLAY="Replay"
+    DROP = "Block Drop",
+    CTF = "Capture The Flag",
+    BRIDGE = "The Bridge",
+    GROUND = "Ground Wars",
+    SG = "Survival Games",
+    MURDER = "Murder Mystery",
+    WARS = "Treasure Wars",
+    SKY = "Skywars",
+    BUILD = "Just Build",
+    HIDE = "Hide And Seek",
+    DR = "Death Run",
+    ARCADE = "Arcade Hub",
+    HUB = "Hub",
+    REPLAY = "Replay"
 }
-formattedGamemodes["BRIDGE-DUOS"]="The Bridge: Duos" 
-formattedGamemodes["SG-DUOS"]="Survival Games: Duos"
-formattedGamemodes["WARS-DUOS"]="Treasure Wars: Duos"
-formattedGamemodes["WARS-SQUADS"]="Treasure Wars: Squads"
-formattedGamemodes["WARS-MEGA"]="Treasure Wars: Mega"
-formattedGamemodes["SKY-DUOS"]="Skywars: Duos"
-formattedGamemodes["SKY-TRIOS"]="Skywars: Trios"
-formattedGamemodes["SKY-SQUADS"]="Skywars: Squads"
-formattedGamemodes["SKY-KITS"]="Skywars Kits"
-formattedGamemodes["SKY-KITS-DUOS"]="Skywars Kits: Duos"
-formattedGamemodes["SKY-MEGA"]="Skywars Mega"
-formattedGamemodes["BUILD-DUOS"]="Just Build: Duos"
-formattedGamemodes["BUILDX"]="§5Just Build: Extended"
-formattedGamemodes["BUILDX-DUOS"]="Just Build: Extended, Duos"
+formattedGamemodes["BRIDGE-DUOS"] = "The Bridge: Duos"
+formattedGamemodes["SG-DUOS"] = "Survival Games: Duos"
+formattedGamemodes["WARS-DUOS"] = "Treasure Wars: Duos"
+formattedGamemodes["WARS-SQUADS"] = "Treasure Wars: Squads"
+formattedGamemodes["WARS-MEGA"] = "Treasure Wars: Mega"
+formattedGamemodes["SKY-DUOS"] = "Skywars: Duos"
+formattedGamemodes["SKY-TRIOS"] = "Skywars: Trios"
+formattedGamemodes["SKY-SQUADS"] = "Skywars: Squads"
+formattedGamemodes["SKY-KITS"] = "Skywars Kits"
+formattedGamemodes["SKY-KITS-DUOS"] = "Skywars Kits: Duos"
+formattedGamemodes["SKY-MEGA"] = "Skywars Mega"
+formattedGamemodes["BUILD-DUOS"] = "Just Build: Duos"
+formattedGamemodes["BUILDX"] = "§5Just Build: Extended"
+formattedGamemodes["BUILDX-DUOS"] = "Just Build: Extended, Duos"
+
+globalLevel = 0
+globalGamemode = ""
+
+local GAME_XP = {
+    wars={150,52},
+    dr={200,42},
+    hide={100},
+    murder={100, 82},
+    sg={150},
+    sky={150, 52},
+    build={100},
+    ground={150},
+    drop={150, 22},
+    ctf={150}
+}
+function calculateLevel(game, xp)
+    local increment = GAME_XP[game][1] / 2
+    local flattenLevel = GAME_XP[game][2]
+    local level =
+        (-increment + math.sqrt((increment^2) - 4 * increment * -xp)) /
+        (2 * increment) +
+        1
+    if flattenLevel and level > flattenLevel then
+        level =
+            flattenLevel +
+            (xp -
+                (increment * ((flattenLevel - 1)^2) +
+                    (flattenLevel - 1) * increment)) /
+            ((flattenLevel - 1) * increment * 2);
+    end
+    return level
+end
+function onNetworkData(code, gamemode, data)
+    if code == 0 then
+        result = jsonToTable(data)
+        if type(result) ~= "table" then
+            print("Error...")
+            return
+        end
+        if tablelen(result) == 0 then
+            print("No results found.")
+            return
+        else
+            globalLevel = math.floor(10*calculateLevel(globalGamemode, result["xp"]))/10
+        end
+    end
+end
+
+function postInit()
+    client.execute("toggle on script MinecraftRPC")
+    client.execute("lua autoreload")
+end
+
+function tablelen(tbl)
+    local a = 0
+    for k, v in pairs(tbl) do
+        a = a + 1
+    end
+    return a
+end
 
 function update(dt)
-	client.settings.updateDependencies()
-
+    client.settings.updateDependencies()
     local username = player.name()
     if displayUsername == true and displaySettings == true then
         local file = io.open("RPC/RPCHelperUsername.txt", "w")
@@ -91,15 +153,37 @@ function update(dt)
         io.write("Playing Skyblock")
         io.close(file)
     elseif lastGamemode ~= nil and hiveLobby == false then
-        local file = io.open("RPC/RPCHelperGamemode.txt", "w")
-        io.output(file)
-        io.write("Playing " .. formattedGamemode)
-        io.close(file)
+        if displayLevel == true then
+            local file = io.open("RPC/RPCHelperGamemode.txt", "w")
+            io.output(file)
+            if globalLevel ~= 0 then
+                io.write("Playing " .. formattedGamemode .. " (Lvl: " .. globalLevel .. ")")
+            else
+                io.write("Playing " .. formattedGamemode)
+            end
+            io.close(file)
+        else
+            local file = io.open("RPC/RPCHelperGamemode.txt", "w")
+            io.output(file)
+            io.write("Playing " .. formattedGamemode)
+            io.close(file)
+        end
     elseif lastGamemode ~= nil and hiveLobby == true then
-        local file = io.open("RPC/RPCHelperGamemode.txt", "w")
-        io.output(file)
-        io.write("Queuing " .. formattedGamemode)
-        io.close(file)
+        if displayLevel == true then
+            local file = io.open("RPC/RPCHelperGamemode.txt", "w")
+            io.output(file)
+            if globalLevel == 0 then
+                io.write("Queuing " .. formattedGamemode)
+            else
+                io.write("Queuing " .. formattedGamemode.. " (Lvl: " .. globalLevel .. ")")
+            end
+            io.close(file)
+        else
+            local file = io.open("RPC/RPCHelperGamemode.txt", "w")
+            io.output(file)
+            io.write("Queuing " .. formattedGamemode)
+            io.close(file)
+        end
     else
         return
     end
@@ -113,37 +197,44 @@ function onChat(message, username, type)
         io.write(prefix)
         io.close(file)
     end
-
---hive 
-    if string.find(message," joined. §8") and string.find(message, player.name()) then
-        client.execute("execute /connection")
-        hiveLobby = true
-    end
+    --hive
     if string.find(message, "§b§l» §r§a§lVoting has ended!") then
         hiveLobby = false
     end
-    if string.find(message,"You are connected to server ") then
+    if string.find(message, "You are connected to server ") then
         lastGamemode = message
         lastGamemode = string.sub(message, 29)
-        lastGamemode = string.match(lastGamemode,"[%a-]*")
+        lastGamemode = string.match(lastGamemode, "[%a-]*")
+        local gamemode = lastGamemode
+        if string.find(gamemode, "-") then
+            gamemode = string.sub(gamemode, 1, string.find(gamemode, "-") - 1)
+        end
+        globalGamemode = string.lower(gamemode)
+        usernameSearch = string.gsub(player.name()," ", "%%20")
+        if displayLevel == true then
+            network.get("https://api.playhive.com/v0/game/all/" .. string.lower(gamemode) .. "/" .. usernameSearch,  gamemode)
+        end
     end
     if formattedGamemodes[lastGamemode] then
         formattedGamemode = formattedGamemodes[lastGamemode]
     end
 
- --hide the /connection message
- if string.find(message, "You are connected to proxy ") then
-    return true
+    if string.find(message, " joined. §8") and string.find(message, player.name()) then
+        client.execute("execute /connection")
+        hiveLobby = true
+    end
+    --hide the /connection message
+    if string.find(message, "You are connected to proxy ") then
+        return true
+    end
+    if string.find(message, "You are connected to server ") then
+        return true
+    end
+    if string.find(message, "§cYou're issuing commands too quickly, try again later.") then
+        return true
+    end
+    if string.find(message, "§cUnknown command. Sorry!") then
+        return true
+    end
 end
-if string.find(message, "You are connected to server ") then
-    return true
-end
-if string.find(message, "§cYou're issuing commands too quickly, try again later.") then
-    return true
-end
-if string.find(message, "§cUnknown command. Sorry!") then
-    return true
-end
-end
-
 event.listen("ChatMessageAdded", onChat)
