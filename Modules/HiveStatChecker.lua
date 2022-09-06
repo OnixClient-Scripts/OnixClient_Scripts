@@ -6,13 +6,30 @@ description = "Allows you to check the statistics of people in-game."
     thnx onix for being epic and making the brain of the script lol
 ]]
 
-importLib("hiveGamemodes.lua")
+importLib("hiveGamemodes")
+importLib("DependentBoolean")
+
+statMode = ""
+fullStats = false
+
+client.settings.addAir(5)
+client.settings.addBool("Stat Display Type","fullStats")
+function update()
+    if fullStats == true then
+        statMode = "Displaying Full Stats"
+    else
+        statMode = "Displaying Compact Stats"
+    end
+end
+client.settings.addDependentInfo("statMode","fullStats")
 
 ign = ""
 local lastResult = {}
 local result = {}
 formattedGamemode = getListGamemodes()
+
 local ip = server.ip()
+
 function tablelen(tbl)
     local a = 0
     for k, v in pairs(tbl) do
@@ -46,11 +63,31 @@ function calculateLevel(game, xp)
             (xp -
                 (increment * ((flattenLevel - 1)^2) +
                     (flattenLevel - 1) * increment)) /
-            ((flattenLevel - 1) * increment * 2)
+            ((flattenLevel - 1) * increment * 2);
     end
     return level
 end
 
+function getLevelColor(level)
+    if level <= 9 then
+        return "§7"
+    elseif level <= 19 then
+        return "§6"
+    elseif level <= 24 then
+        return "§e"
+    elseif level <= 29 then
+        return "§b"
+    elseif level <= 49 then
+        return "§d"
+    elseif level <= 79 then
+        return "§a"
+    elseif level <= 99 then
+        return "§c"
+    elseif level <= 100 then
+        return "§9"
+    end
+    return "Massive fat error contact xJqms"
+end
 function printLevel(level)
     if level <= 9 then
         print("§7Level: §e" .. level)
@@ -70,7 +107,6 @@ function printLevel(level)
         print("§9Level: §e" .. level)
     end
 end
-
 function onNetworkData(code, netGamemode, data)
     if code == 0 then
         result = jsonToTable(data)
@@ -81,7 +117,7 @@ function onNetworkData(code, netGamemode, data)
         if tablelen(result) == 0 then
             print("No results found.")
             return
-        else
+        elseif fullStats == true then
             print("§b§l------------------------------------§r\n§eHive Statistics Checker\n§cUser: §r" .. username .. "\n§aGamemode: §r" .. formattedGamemode[string.upper(gamemode)] .. "\n§b§l------------------------------------§r")
             if netGamemode == "wars" then
                 local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
@@ -214,20 +250,22 @@ function onNetworkData(code, netGamemode, data)
                 print("§aGood Builds: §e" .. result["rating_good_received"])
                 print("§eOkay Builds: §e" .. result["rating_okay_received"])
                 print("§cMeh Builds: §e" .. result["rating_meh_received"])
+            end
+        elseif fullStats == false then
+            local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
+            print("§8" .. username .. "§f, Lvl: " .. getLevelColor(level) .. level .. "§f, W: §e" .. result["victories"] .. "§f, W/L: §7".. math.floor((result["victories"] / result["played"]) * 1000)/10 .. "%§f, " .. "Mode: §a" .. formattedGamemode[string.upper(gamemode)])
+        else
+            if tablelen(result) == 0 then
+                print("No results found.")
             else
-                if tablelen(result) == 0 then
-                    print("No results found.")
-                else
-                    for k,v in pairs (result) do
-                        print(k .. ": " .. v)
-                    end
+                for k,v in pairs (result) do
+                    print(k .. ": " .. v)
                 end
             end
-            print("§b§l------------------------------------§r")
         end
+        if fullStats == true then print("§b§l------------------------------------§r") end
     end
 end
-
 
 usernameSearch = " "
 registerCommand("stats", function (arguments)
@@ -252,7 +290,7 @@ registerCommand("stats", function (arguments)
             print("§b§l------------------------------------§r\n§eUnknown gamemode:§r\n\"" .. gamemode .. "\"\n§r§b§l------------------------------------§r")
             return
         end
-        print("§b§l------------------------------------§r\n§eGetting §a".. formattedGamemode[string.upper(gamemode)] .. "§r§e statistics for§r§c " .. username .. "§r\n§r§b§l------------------------------------§r")
+        if fullStats == true then print("§b§l------------------------------------§r\n§eGetting §a".. formattedGamemode[string.upper(gamemode)] .. "§r§e statistics for§r§c " .. username .. "§r\n§r§b§l------------------------------------§r") end
         network.get("https://api.playhive.com/v0/game/all/" .. gamemode .. "/" .. usernameSearch,  gamemode)
     end
 end)
