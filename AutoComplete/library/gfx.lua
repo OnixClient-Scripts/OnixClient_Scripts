@@ -119,6 +119,14 @@ function gfx.item(x, y, itemLocation) end
 ---@return nil
 function gfx.item(x, y, itemLocation, scale) end
 
+---Renders an Item 
+---@param x number The position X
+---@param y number The position Y
+---@param itemLocation number Get it from an item in the player's inventory, dont guess it
+---@param scale number The scale of the item
+---@param renderDecorations boolean Should render the decorations (item count/durability)
+---@return nil
+function gfx.item(x, y, itemLocation, scale, renderDecorations) end
 
 
 ---Renders an Image 
