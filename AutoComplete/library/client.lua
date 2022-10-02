@@ -44,7 +44,7 @@ function client.execute(command) end
 ---@field type integer [Types](http://onixclient.xyz/scripting/setting_type.html)
 ---@field name string The display name of the setting_type
 ---@field saveName string The name used to save/load this Setting, no spaces
----@field invisible boolean Should hide in the ui
+---@field visible boolean Should show in the ui
 ---@field value boolean|integer|number|MathematicalVector2|ColorSetting The value of the setting
 ---@field default boolean|integer|number|MathematicalVector2|ColorSetting The default value of the setting
 ---@field min integer|number|MathematicalVector2|nil Minimum value of the setting
@@ -61,7 +61,7 @@ function client.execute(command) end
 ---@field description string The description of the module
 ---@field isVisual boolean if the module is a VisualModule
 ---@field isScript boolean if the module is a ScriptingModule
----@field isvisibleingui boolean if the module is visible in the clickgui
+---@field visible boolean if the module is visible in the clickgui
 ---@field enabled boolean [you can set] if the module is enabled
 ---@field settings Setting[] A list with all the module's settings
 
