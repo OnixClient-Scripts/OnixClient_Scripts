@@ -20,11 +20,12 @@ lastGamemode = ""
 prefix = "Playing "
 suffix = "lobby."
 local result = {}
-hiveLobby = false
+gameLobby = false
 displaySettings = true
 displayGamemode = true
 displayUsername = true
 displayLevel = true
+hub = false
 
 client.settings.addBool("RPC Settings", "displaySettings")
 client.settings.addDependentBool("Display Gamemode?", "displayGamemode", "displaySettings")
@@ -142,7 +143,7 @@ function update(dt)
     end
     local item = player.inventory().at(1)
     local item2 = player.inventory().at(9)
-    if item ~= nil and item.customName == "§r§bGame Selector§7 [Use]" then
+    if (item ~= nil and item.customName == "§r§bGame Selector§7 [Use]") or (item2 ~= nil and item2.customName == "§r§7» §ePlayer §fSettings§7 «" and gameLobby == false) or hub == true then
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
         io.output(file)
         io.write("In the Hub")
@@ -152,7 +153,7 @@ function update(dt)
         io.output(file)
         io.write("Playing Skyblock")
         io.close(file)
-    elseif lastGamemode ~= nil and hiveLobby == false then
+    elseif lastGamemode ~= nil and gameLobby == false then
         if displayLevel == true then
             local file = io.open("RPC/RPCHelperGamemode.txt", "w")
             io.output(file)
@@ -168,7 +169,7 @@ function update(dt)
             io.write("Playing " .. formattedGamemode)
             io.close(file)
         end
-    elseif lastGamemode ~= nil and hiveLobby == true then
+    elseif lastGamemode ~= nil and gameLobby == true then
         if displayLevel == true then
             local file = io.open("RPC/RPCHelperGamemode.txt", "w")
             io.output(file)
@@ -188,7 +189,9 @@ function update(dt)
         return
     end
 end
-
+zeqaGamemodeUntamptered = ""
+zeqaGamemode = ""
+opponent = ""
 function onChat(message, username, type)
     if string.find(message, "§aWelcome to Galaxite") then
         prefix = "Playing Galaxite"
@@ -197,11 +200,35 @@ function onChat(message, username, type)
         io.write(prefix)
         io.close(file)
     end
+    --zeqa
+    if string.find(message,"§eZEQA§8 » §r§7You have joined the queue for") then
+        hub = false
+        zeqaGamemode = string.gsub(message,"§eZEQA§8 » §r§7You have joined the queue for ","")
+        zeqaGamemodeUntamptered = zeqaGamemode
+        zeqaGamemode = string.gsub(zeqaGamemode,"§.","")
+        formattedGamemode = zeqaGamemode
+        lastGamemode = zeqaGamemode
+        gameLobby = true
+    end
+    if string.find(message,"§eZEQA§8 » §r§7You have left the queue for") then
+        gameLobby = false
+        hub = true
+    end
+    if string.find(message, "§eZEQA§8 » §r§7Found a " .. zeqaGamemodeUntamptered .. " match against") then
+        opponent = string.gsub(message, "§eZEQA§8 » §r§7Found a " .. zeqaGamemodeUntamptered .. " match against ","")
+        opponent = string.gsub(opponent,"§.","")
+        formattedGamemode = zeqaGamemode
+        lastGamemode = zeqaGamemode
+        gameLobby = false
+    end
+
     --hive
     if string.find(message, "§b§l» §r§a§lVoting has ended!") then
-        hiveLobby = false
+        hub = false
+        gameLobby = false
     end
     if string.find(message, "You are connected to server ") then
+        hub = false
         lastGamemode = message
         lastGamemode = string.sub(message, 29)
         lastGamemode = string.match(lastGamemode, "[%a-]*")
@@ -220,8 +247,9 @@ function onChat(message, username, type)
     end
 
     if string.find(message, " joined. §8") and string.find(message, player.name()) then
+        hub = false
         client.execute("execute /connection")
-        hiveLobby = true
+        gameLobby = true
     end
     --hide the /connection message
     if string.find(message, "You are connected to proxy ") then
