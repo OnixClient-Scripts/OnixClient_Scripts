@@ -62,6 +62,42 @@ function client.settings.addFunction(name, variableName, buttonName) end
 
 
 
+---Adds a toggle switch in the ui
+---@param name string The name of the setting in the ui
+---@param defaultValue boolean The name of the global variable holding the default value
+---@return Setting
+function client.settings.addNamelessBool(name, defaultValue) end
+
+---Adds a keybind for the user to set in the ui
+---@param name string The name of the setting in the ui
+---@param defaultValue integer The name of the global variable holding the default value [Keycodes](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
+---@return Setting
+function client.settings.addNamelessKeybind(name, defaultValue) end
+
+---Adds a slider in the ui
+---@param name string The name of the setting in the ui
+---@param minimum integer The minimum value of this setting
+---@param maximum integer The maximum value of this setting
+---@param defaultValue integer The default value of the setting
+---@return Setting
+function client.settings.addNamelessInt(name, variableName, minimum, maximum, defaultValue) end
+
+---Adds a slider in the ui
+---@param name string The name of the setting in the ui
+---@param minimum number The minimum value of this setting
+---@param maximum number The maximum value of this setting
+---@param defaultValue number The default value of the setting
+---@return Setting
+function client.settings.addNamelessFloat(name, minimum, maximum, defaultValue) end
+
+---Adds a color for the user to change in the ui
+---@param name string The name of the setting in the ui
+---@param defaultValue integer[3]|integer[4]
+---@return Setting
+function client.settings.addNamelessColor(name, defaultValue) end
+
+
+
 ---Sends setting value from the script to the client
 ---If you change one of the settings yourself it may not apply, this will make it apply
 ---@param invisbleSettingsOnly boolean The name of the setting in the ui
