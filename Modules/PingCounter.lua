@@ -7,9 +7,6 @@ sizeX = 35
 sizeY = 10
 scale = 1.0
 
-color = {255,255,255,255}
-background_color = {0,0,0,127}
-
 PingDelay = 250 --in ms, you will need to restart the LuaPingHelper.exe for it to apply
 
 --[[
@@ -33,8 +30,10 @@ end
 
 -----script-code-----
 
-client.settings.addColor("Text Color", "color")
-client.settings.addColor("Background Color", "background_color")
+textColor = client.settings.addNamelessColor("Text Color", {255,255,255,255})
+backColor = client.settings.addNamelessColor("Background Color", {0,0,0,127})
+backRadius = client.settings.addNamelessFloat("Background Radius", 0, 20, 0)
+
 client.settings.addAir(15)
 client.settings.addInfo("HowMakeWorkInfoText")
 client.settings.addFunction("Copy Download Link", "ClickCopyButton", "Copy")
@@ -84,16 +83,15 @@ function update()
     end
 end
 
-function render()
-    if not gui.mouseGrabbed() then
-        local text = CurrentPing .. "ms"
-        local font = gui.font()
+function render2()
+    local text = CurrentPing .. "ms"
+    local textWidth, textHeight = gfx2.textSize(text)
+    sizeX = textWidth * 1.75
+    sizeY = textHeight + 2
 
-        gfx.color(background_color.r, background_color.g, background_color.b, background_color.a)
-        gfx.rect(0,0,sizeX,sizeY)
+    gfx2.color(backColor)
+    gfx2.fillRoundRect(0,0,sizeX,sizeY, backRadius.value)
 
-        gfx.color(color.r, color.g, color.b, color.a)
-        gfx.text((sizeX / 2) - (font.width(text) / 2), 5 - (font.height / 2), text, 1)
-    end
-
+    gfx2.color(textColor)
+    gfx2.text((sizeX / 2) - (textWidth / 2), (sizeY / 2) - (textHeight / 2), text, 1)
 end
