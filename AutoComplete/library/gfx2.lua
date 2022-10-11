@@ -76,14 +76,16 @@ function gfx2.fillElipse(centerX, centerY, radiusX, radiusY) end
 ---@param centerX number The X axis center position of the elipse
 ---@param centerY number The Y axis center position of the elipse
 ---@param radius number How big is the circle 
-function gfx2.drawElipse(centerX, centerY, radius) end
+---@param width number How wide is the outline
+function gfx2.drawElipse(centerX, centerY, radius, width) end
 
 ---Draws an elipse (circle but possibly wider)
 ---@param centerX number The X axis center position of the elipse
 ---@param centerY number The Y axis center position of the elipse
 ---@param radiusX number How Wide is the elipse
 ---@param radiusY number how High is the elipse
-function gfx2.drawElipse(centerX, centerY, radiusX, radiusY) end
+---@param width number How wide is the outline
+function gfx2.drawElipse(centerX, centerY, radiusX, radiusY, width) end
 
 ---Draws a line between point1 and point2
 ---@param Point1X number X axis posiiton of the first point
