@@ -51,6 +51,17 @@ function registerCommand(Command, OnExecuted) end
 ---@param splitter string what to split the text with
 ---@return string[] splittedText
 function string.split(text, splitter) end
+
+---Returns a value in this range or untouched
+---@param value any The value to check
+---@param min any The minimum value of the value
+---@param max any The maximum value of the value
+function math.clamp(value, min, max) end
+
+---COPYS a table
+---@param Table table
+---@return table copy
+function table.clone(Table) end
   
   
 ---Gets an item from its name, you cannot render it tho as location is missing
