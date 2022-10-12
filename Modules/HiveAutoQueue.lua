@@ -1,7 +1,5 @@
 name = "Hive Autoqueue"
 description = "Automatically Queue Hive Games.\nScript Version: v3.0"
- --
-
 --[[
 
 Made by rosie w/ help from onix cuz he gamer (thx rice for letting me skid some code <3)
@@ -17,6 +15,7 @@ alternatively you can just make a new command and put this as the code:
 
 bye🙂
 ]]
+importLib("GFX2ColourFixer")
 
 team ="Unknown"
 lastGamemode = ""
@@ -42,11 +41,9 @@ client.settings.addInfo("Other")
 client.settings.addBool("Show the gamemode on screen?", "ShowGamemode")
 client.settings.addAir(15)
 
-background = {0, 0, 0, 127}
-client.settings.addColor("Background color", "background")
+background = client.settings.addNamelessColor("Background Color", {0,0,0,127})
 
-color = {255, 255, 255}
-client.settings.addColor("Color", "color")
+color = client.settings.addNamelessColor("Color", {255, 255, 255})
 
 round = 1
 client.settings.addInt("Rounded Corners", "round", 1, 10)
@@ -65,7 +62,7 @@ local formattedGamemodes = {
     SKY = "§9Skywars",
     BUILD = "§5Just Build",
     HIDE = "§9Hide And Seek",
-    DR = "§cDR",
+    DR = "§cDeath Run",
     ARCADE = "§eArcade Hub",
     HUB = "§eHub"
 }
@@ -197,6 +194,12 @@ function onChat(message, username, type)
         ShowGamemode = false
         return
     end
+    if FullyAuto == true and string.find(message, "§a§l» §r§eYou finished in §f") then
+        print("Wow, you did something.\n§r§8Queueing into a new game.")
+        client.execute("execute /q " .. lastGamemode)
+        ShowGamemode = false
+        return
+    end
     -- murder mystery
     if FullyAuto == true and string.find(message, "§c§l» §r§cYou died! §7§oYou will be taken to the Graveyard shortly...") then
         print("Dying is so bald!\n§r§8Queueing into a new game.")
@@ -228,19 +231,23 @@ function onChat(message, username, type)
         return
     end
 end
-function render(dt)
+function render2(dt)
+    local text = ""
     if ShowGamemode == true and hub == false then
-        gfx.color(background.r, background.g, background.b, background.a)
-        gfx.roundRect(gui.width() - gui.font().width("Playing " .. formattedGamemode) - 8,24,gui.font().width("Playing " .. formattedGamemode) + 3,gui.font().height + 3,round,quality)
-        gfx.color(color.r, color.g, color.b, color.a)
-        gfx.text(gui.width() - gui.font().width("Playing " .. formattedGamemode) - 7,25,("Playing " .. formattedGamemode))
+        text = "Playing " .. formattedGamemode
     elseif hub == true and inGame == false then
-        gfx.color(background.r, background.g, background.b, background.a)
-        gfx.roundRect(gui.width() - gui.font().width("In the " .. formattedGamemode) - 8,24,gui.font().width("In the " .. formattedGamemode) + 3,gui.font().height + 3,round,quality)
-        gfx.color(color.r, color.g, color.b, color.a)
-        gfx.text(gui.width() - gui.font().width("In the " .. formattedGamemode) - 7,25,("In the " .. formattedGamemode))
+        text = "In the " .. formattedGamemode
+    else
+        return
     end
+
+    local mesh = getGfx2Mesh(text)
+    gfx2.color(background)
+    gfx2.fillRoundRect(gui.width() - mesh.width - 8, 24 ,mesh.width + 3, mesh.height + 3, round)
+    gfx2.color(color)
+    mesh:render((gui.width() - mesh.width - 8) + ((mesh.width + 3) / 2 - mesh.width/2), 24 + (mesh.height + 3) / 2 - mesh.height / 2)
 end
+
 
 function onLocalData(identifier, content)
     if identifier == "00409ed7-72f4-4575-8028-c0abf7736a49" then
