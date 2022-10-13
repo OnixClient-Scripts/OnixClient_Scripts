@@ -15,7 +15,7 @@ alternatively you can just make a new command and put this as the code:
 
 bye🙂
 ]]
-importLib("GFX2ColourFixer")
+importLib("GFX2Colour")
 
 team ="Unknown"
 lastGamemode = ""
