@@ -6,23 +6,18 @@ positionY = 80
 sizeX = 80
 sizeY = 64
 
-
 switchkey = 0
 client.settings.addKeybind("Get New", "switchkey")
-
-
 --status = "nothing"
 shouldRefreshImage = false
-
 
 function searchImage()
     --status = "getting url..."
     network.get("https://api.thecatapi.com/v1/images/search", "url", {"bloat1", "bloat2", "bloat3"})
 end
-
 function onNetworkData(code, id, data)
     if id == "url" then
-        thing = jsonToTable(data)
+        local thing = jsonToTable(data)[1]
         if type(thing) ~= "table" then
             searchImage()
         else
@@ -39,15 +34,11 @@ function onNetworkData(code, id, data)
         --status = ""
     end
 end
-
-
-
 event.listen("KeyboardInput", function(key, down)
     if down == true and gui.mouseGrabbed() == false and key == switchkey then
         searchImage()
     end
 end)
-
 searchImage()
 function render(dt)
     if shouldRefreshImage == true then
