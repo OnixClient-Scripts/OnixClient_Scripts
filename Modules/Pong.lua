@@ -28,11 +28,6 @@ BALL_MOVEMENT_SPEED = 75
 PADDLE_MOVEMENT_SPEED = client.settings.addNamelessInt("Paddle Movement Speed", 10, 250, 75)
 
 LastResetTime = os.clock()
-
-function postInit()
-    client.execute("toggle script on ".. name)
-end
-
 function makePlayer(isP1)
     --add fields to the table
     local player = {score = 0, paddleY = 0, isP1 = isP1, paddleHits = 0}
