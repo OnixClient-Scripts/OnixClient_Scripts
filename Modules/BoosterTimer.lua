@@ -1,6 +1,5 @@
 name="Booster Timer"
-description = "Shows how long you have left on your boost. The command is .boosterinfo"
-
+description = "Shows how long you have left on your boost. The command is .boosterinfo\nVersion 1.1.0"
 positionX = 0
 positionY = 0
 sizeX = 150
@@ -30,7 +29,7 @@ function update()
         boosterEnded = true
         print("§6[§e!§6] §aYour booster has ended.")
     end
-    if boosterStarted ~= 0 then
+    if boosterStarted ~= 0 and boosterEnded == false then
         timeLeft = math.floor((3660 - (os.time() - boosterStarted))/60)
     end
 end
