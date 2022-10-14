@@ -7,7 +7,7 @@ description = "Schematic mod by MCBE Craft"
 ]]
 
 
-lib = importLib("MinimapBlockTools.lua")
+--lib = importLib("MinimapBlockTools.lua") this breaks the script but the lib isnt here anyway sooooooooooooooooo
 lib = importLib("renderthreeD.lua")
 lib = importLib("fileUtility.lua")
 
