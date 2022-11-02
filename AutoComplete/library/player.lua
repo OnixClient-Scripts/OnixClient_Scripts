@@ -107,6 +107,12 @@ function player.breakProgress() end
 ---@field vx integer The X velocity of the entity
 ---@field vy integer The Y velocity of the entity
 ---@field vz integer The Z velocity of the entity
+local _acp__PlayerLookingAtEntityInformation_Skin = {}
+---The player skin
+---@return Skin skin
+function _acp__PlayerLookingAtEntityInformation_Skin.skin() end
+
+
 
 ---The coordinates of the block that has the outline for the player
 ---You can check if there is one in the first place with player.facingBlock()
