@@ -219,3 +219,45 @@ function gfx2.drawImage(x, y, width, height, image, opacity) end
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 ---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
 function gfx2.drawImage(x, y, width, height, image, opacity, isLinear) end
+
+
+
+
+---Renders an image to the Minecraft: Bedrock Edition Screen
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the image to render
+---@param height number Height of the image to render
+---@param image Gfx2Texture image to render
+---@param srcStartX number Where in the source should we start taking the image
+---@param srcStartY number Where in the source should we start taking the image
+---@param srcSizeX number what size in the source image are we taking
+---@param srcSizeY number what size in the source image are we taking
+function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY) end
+
+---Renders an image to the Minecraft: Bedrock Edition Screen
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the image to render
+---@param height number Height of the image to render
+---@param image Gfx2Texture image to render
+---@param srcStartX number Where in the source should we start taking the image
+---@param srcStartY number Where in the source should we start taking the image
+---@param srcSizeX number what size in the source image are we taking
+---@param srcSizeY number what size in the source image are we taking
+---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
+function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY, opacity) end
+
+---Renders an image to the Minecraft: Bedrock Edition Screen
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the image to render
+---@param height number Height of the image to render
+---@param image Gfx2Texture image to render
+---@param srcStartX number Where in the source should we start taking the image
+---@param srcStartY number Where in the source should we start taking the image
+---@param srcSizeX number what size in the source image are we taking
+---@param srcSizeY number what size in the source image are we taking
+---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
+---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
+function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY, opacity, isLinear) end
