@@ -233,17 +233,6 @@ function gfx.line(x_1, y_1, z_1, x_2, y_2, z_2) end
 ---@return nil
 function gfx.triangle(x_1, y_1, x_2, y_2, x_3, y_3) end
 
----Renders a triangle (2d, use in render)
----@param x_1 number The position X (1)
----@param y_1 number The position Y (1)
----@param x_2 number The position X (2)
----@param y_2 number The position Y (2)
----@param x_3 number The position X (3)
----@param y_3 number The position Y (3)
----@param bothSides boolean Should render both sides (would be visible from only one side if set to false) not really useful in 2d but if you mess up ordering it will still maybe show
----@return nil
-function gfx.triangle(x_1, y_1, x_2, y_2, x_3, y_3, bothSides) end
-
 
 ---Renders a triangle (3d, use in render3d)
 ---@param x_1 number The position X (1)
@@ -286,19 +275,6 @@ function gfx.triangle(x_1, y_1, z_1, x_2, y_2, z_2, x_3, y_3, z_3, bothSides) en
 ---@return nil
 function gfx.quad(x_1, y_1, x_2, y_2, x_3, y_3, x_4, y_4) end
 
----Renders a quad (2d, use in render)
----@param x_1 number The position X (1)
----@param y_1 number The position Y (1)
----@param x_2 number The position X (2)
----@param y_2 number The position Y (2)
----@param x_3 number The position X (3)
----@param y_3 number The position Y (3)
----@param x_4 number The position X (4)
----@param y_4 number The position Y (4)
----@param bothSides boolean Should render both sides (would be visible from only one side if set to false) not really useful in 2d but if you mess up ordering it will still maybe show
----@return nil
-function gfx.quad(x_1, y_1, x_2, y_2, x_3, y_3, x_4, y_4, bothSides) end
-
 ---Renders a quad (3d, use in render)
 ---@param x_1 number The position X (1)
 ---@param y_1 number The position Y (1)
@@ -332,3 +308,146 @@ function gfx.quad(x_1, y_1, z_1, x_2, y_2, z_2, x_3, y_3, z_3, x_4, y_4, z_4) en
 ---@return nil
 function gfx.quad(x_1, y_1, z_1, x_2, y_2, z_2, x_3, y_3, z_3, x_4, y_4, z_4, bothSides) end
 
+
+
+
+
+
+
+
+
+
+
+
+
+---Renders a textured triangle (2d, use in render)
+---@param x_1 number The position X (1)
+---@param y_1 number The position Y (1)
+---@param uvx_1 number The position X (1)
+---@param uvy_1 number The position Y (1)
+---@param x_2 number The position X (2)
+---@param y_2 number The position Y (2)
+---@param uvx_2 number The position X (2)
+---@param uvy_2 number The position Y (2)
+---@param x_3 number The position X (3)
+---@param y_3 number The position Y (3)
+---@param uvx_3 number The position X (3)
+---@param uvy_3 number The position Y (3)
+---@param texturePath string the texture file (starting with "textures" will be taken from the resource pack otherwise data folder)
+---@return nil
+function gfx.ttriangle(x_1, y_1, uvx_1, uvy_1, x_2, y_2, uvx_2, uvy_2, x_3, y_3, uvx_3, uvy_3, texturePath) end
+
+---Renders a textured triangle (3d, use in render3d)
+---@param x_1 number The position X (1)
+---@param y_1 number The position Y (1)
+---@param z_1 number The position Z (1)
+---@param uvx_1 number The position X (1)
+---@param uvy_1 number The position Y (1)
+---@param x_2 number The position X (2)
+---@param y_2 number The position Y (2)
+---@param z_2 number The position Z (2)
+---@param uvx_2 number The position X (2)
+---@param uvy_2 number The position Y (2)
+---@param x_3 number The position X (3)
+---@param y_3 number The position Y (3)
+---@param z_3 number The position Z (3)
+---@param uvx_3 number The position X (3)
+---@param uvy_3 number The position Y (3)
+---@param texturePath string the texture file (starting with "textures" will be taken from the resource pack otherwise data folder)
+---@return nil
+function gfx.ttriangle(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, texturePath) end
+
+---Renders a textured triangle (3d, use in render3d)
+---@param x_1 number The position X (1)
+---@param y_1 number The position Y (1)
+---@param z_1 number The position Z (1)
+---@param uvx_1 number The position X (1)
+---@param uvy_1 number The position Y (1)
+---@param x_2 number The position X (2)
+---@param y_2 number The position Y (2)
+---@param z_2 number The position Z (2)
+---@param uvx_2 number The position X (2)
+---@param uvy_2 number The position Y (2)
+---@param x_3 number The position X (3)
+---@param y_3 number The position Y (3)
+---@param z_3 number The position Z (3)
+---@param uvx_3 number The position X (3)
+---@param uvy_3 number The position Y (3)
+---@param texturePath string the texture file (starting with "textures" will be taken from the resource pack otherwise data folder)
+---@param bothSides boolean Should render both sides (would be visible from only one side if set to false)
+---@return nil
+function gfx.ttriangle(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, texturePath, bothSides) end
+
+
+
+---Renders a textured quad (2d, use in render)
+---@param x_1 number The position X (1)
+---@param y_1 number The position Y (1)
+---@param uvx_1 number The position X (1)
+---@param uvy_1 number The position Y (1)
+---@param x_2 number The position X (2)
+---@param y_2 number The position Y (2)
+---@param uvx_2 number The position X (2)
+---@param uvy_2 number The position Y (2)
+---@param x_3 number The position X (3)
+---@param y_3 number The position Y (3)
+---@param uvx_3 number The position X (3)
+---@param uvy_3 number The position Y (3)
+---@param x_4 number The position X (4)
+---@param y_4 number The position Y (4)
+---@param uvx_4 number The position X (4)
+---@param uvy_4 number The position Y (4)
+---@param texturePath string the texture file (starting with "textures" will be taken from the resource pack otherwise data folder)
+---@return nil
+function gfx.tquad(x_1, y_1, uvx_1, uvy_1, x_2, y_2, uvx_2, uvy_2, x_3, y_3, uvx_3, uvy_3, x_4, y_4, uvx_4, uvy_4, texturePath) end
+
+---Renders a textured quad (3d, use in render)
+---@param x_1 number The position X (1)
+---@param y_1 number The position Y (1)
+---@param z_1 number The position Z (1)
+---@param uvx_1 number The position X (1)
+---@param uvy_1 number The position Y (1)
+---@param x_2 number The position X (2)
+---@param y_2 number The position Y (2)
+---@param z_2 number The position Z (2)
+---@param uvx_2 number The position X (2)
+---@param uvy_2 number The position Y (2)
+---@param x_3 number The position X (3)
+---@param y_3 number The position Y (3)
+---@param z_3 number The position Z (3)
+---@param uvx_3 number The position X (3)
+---@param uvy_3 number The position Y (3)
+---@param x_4 number The position X (4)
+---@param y_4 number The position Y (4)
+---@param z_4 number The position Z (4)
+---@param uvx_4 number The position X (4)
+---@param uvy_4 number The position Y (4)
+---@param texturePath string the texture file (starting with "textures" will be taken from the resource pack otherwise data folder)
+---@return nil
+function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, x_4, y_4, z_4, uvx_4, uvy_4, texturePath) end
+
+---Renders a textured quad (3d, use in render)
+---@param x_1 number The position X (1)
+---@param y_1 number The position Y (1)
+---@param z_1 number The position Z (1)
+---@param uvx_1 number The position X (1)
+---@param uvy_1 number The position Y (1)
+---@param x_2 number The position X (2)
+---@param y_2 number The position Y (2)
+---@param z_2 number The position Z (2)
+---@param uvx_2 number The position X (2)
+---@param uvy_2 number The position Y (2)
+---@param x_3 number The position X (3)
+---@param y_3 number The position Y (3)
+---@param z_3 number The position Z (3)
+---@param uvx_3 number The position X (3)
+---@param uvy_3 number The position Y (3)
+---@param x_4 number The position X (4)
+---@param y_4 number The position Y (4)
+---@param z_4 number The position Z (4)
+---@param uvx_4 number The position X (4)
+---@param uvy_4 number The position Y (4)
+---@param texturePath string the texture file (starting with "textures" will be taken from the resource pack otherwise data folder)
+---@param bothSides boolean Should render both sides (would be visible from only one side if set to false)
+---@return nil
+function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, x_4, y_4, z_4, uvx_4, uvy_4, texturePath, bothSides) end
