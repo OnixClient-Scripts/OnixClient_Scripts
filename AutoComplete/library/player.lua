@@ -1,5 +1,51 @@
 ---@meta
 
+---@class Skin
+local _acp__Player_Skin = {}
+
+---Gives you the skin id (you should be able to just check id or fullid to see if player changed skin)
+---@return string skinId skin identifier 
+function _acp__Player_Skin.id() end
+
+---Gives you the skin id (but sometimes longer)  (you should be able to just check id or fullid to see if player changed skin)
+---@return string fullSkinId The full skin identifier (sometimes larger than id)
+function _acp__Player_Skin.fullId() end
+
+---Gives you the cape id (you should be able to just check capeId to see if player has changed cape)
+---@return string capeid The cape identifier
+function _acp__Player_Skin.capeId() end
+
+---Tells you if the skin has a cape or no
+---@return boolean hasCape
+function _acp__Player_Skin.hasCape() end
+
+---Saves the skin's texture into a file
+---@param FilePath string The path to save the texture to
+---@return boolean HasSaved If the skin saved or no
+function _acp__Player_Skin.save(FilePath) end
+
+---Saves the cape's texture into a file (check if present with hasCape)
+---@param FilePath string The path to save the texture to
+---@return boolean HasSaved If the cape saved or no
+function _acp__Player_Skin.saveCape(FilePath) end
+
+---Gets you the skin geometry
+---@return string geometry Json skin geometry
+function _acp__Player_Skin.geometry() end
+
+---Gets the skin texture as a gfx2 texture dont have to write to disk 
+---this function is slow, well faster than disk but as its convenient to call it every frame, DONT
+---@return Gfx2Texture texture The skins gfx2 texture
+function _acp__Player_Skin.texture() end
+
+---Gets the cape texture as a gfx2 (check if present with hasCape) texture dont have to write to disk 
+---this function is slow, well faster than disk but as its convenient to call it every frame, DONT
+---@return Gfx2Texture texture The skins gfx2 texture
+function _acp__Player_Skin.capeTexture() end
+
+
+
+
 ---@class player
 player = {}
 
@@ -270,3 +316,7 @@ function _acp_Inventory.at(slot) end
 ---Gets the inventory of the player
 ---@return Inventory
 function player.inventory() end
+
+---Gets the player skin
+---@return Skin
+function player.skin() end
