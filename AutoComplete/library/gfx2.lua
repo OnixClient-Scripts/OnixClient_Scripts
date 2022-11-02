@@ -143,6 +143,7 @@ function gfx2.textSize(text, scale) end
 function gfx2.textSize(text) end
 
 
+
 ---@class Gfx2Texture
 ---@field width integer The width of the texture
 ---@field height integer The height of the texture
@@ -154,18 +155,40 @@ local _acp__Gfx2Texture_ = {}
 ---@return iColor
 function _acp__Gfx2Texture_:getPixel(x, y) end
 
----Unloads the texture when you no longer need it
+---Sets the color of a pixel in the texture, you must unload if you used it for changes to apply
+---@param x integer X position of the pixel to get
+---@param y integer Y position of the pixel to get
+---@param r integer new red color value (0-255)
+---@param g integer new green color value (0-255)
+---@param b integer new blue color value (0-255)
+---@diagnostic disable-next-line: duplicate-set-field
+function _acp__Gfx2Texture_:setPixel(x, y, r, g, b) end
+
+---Sets the color of a pixel in the texture, you must unload if you used it for changes to apply
+---@param x integer X position of the pixel to get
+---@param y integer Y position of the pixel to get
+---@param r integer new red color value (0-255)
+---@param g integer new green color value (0-255)
+---@param b integer new blue color value (0-255)
+---@param a integer new alpha value (0-255)
+---@diagnostic disable-next-line: duplicate-set-field
+function _acp__Gfx2Texture_:setPixel(x, y, r, g, b ,a) end
+
+---Unloads the texture when you no longer need it or to reload its content
 function _acp__Gfx2Texture_:unload() end
+
 
 
 ---Loads a texture from base64 text (can be used outside of render2)
 ---@param width integer
 ---@param height integer
 ---@param Base64Texture string The texture itself, convert with https://cdn.discordapp.com/attachments/877878499749289984/1029113574406242405/ImgToBase64.exe
+---@return Gfx2Texture|nil The loaded texture or nil
 function gfx2.loadImage(width, height, Base64Texture) end
 
 ---Loads a texture from base64 text (can be used outside of render2)
 ---@param filepath string The path relative to the Scripts/Data folder
+---@return Gfx2Texture|nil The loaded texture or nil
 function gfx2.loadImage(filepath) end
 
 
