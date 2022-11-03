@@ -19,6 +19,59 @@ function client.execute(command) end
 
 
 
+---@class Waypoint
+---@field x integer The x position of the waypoint
+---@field y integer The y position of the waypoint
+---@field z integer The z position of the waypoint
+---@field name string The name of the waypoint
+---@field dimensionId integer The dimension id the waypoint is for
+
+---@class Waypoints
+local _acp__Waypoints_ = {}
+
+---Get waypoint list
+---@return Waypoint[]
+function _acp__Waypoints_.get() end
+
+---Adds a waypoint
+---@param x integer The x position of the waypoint
+---@param y integer The y position of the waypoint
+---@param z integer The z position of the waypoint
+---@param name string The name of the waypoint
+function _acp__Waypoints_.add(x, y, z, name) end
+
+---Adds a waypoint
+---@param x integer The x position of the waypoint
+---@param y integer The y position of the waypoint
+---@param z integer The z position of the waypoint
+---@param name string The name of the waypoint
+---@param dimensionId integer In what dimension is it
+function _acp__Waypoints_.add(x, y, z, name, dimensionId) end
+
+---Removes a waypoint by its name
+---@param name string The name of the waypoint to remove
+function _acp__Waypoints_.remove(name) end
+
+---Removes a waypoint by its position
+---@param x integer The x position of the waypoint to remove
+---@param y integer The y position of the waypoint to remove
+---@param z integer The z position of the waypoint to remove
+function _acp__Waypoints_.remove(x, y, z) end
+
+---Saves the waypoint list to file
+function _acp__Waypoints_.save() end
+---Loads the waypoint list to file
+function _acp__Waypoints_.load() end
+
+---Clears all waypoints
+function _acp__Waypoints_.clear() end
+
+
+---@return Waypoints
+function client.waypoints() end
+
+
+
 
 
 
