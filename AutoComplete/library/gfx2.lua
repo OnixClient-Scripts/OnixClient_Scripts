@@ -174,6 +174,11 @@ function _acp__Gfx2Texture_:setPixel(x, y, r, g, b) end
 ---@diagnostic disable-next-line: duplicate-set-field
 function _acp__Gfx2Texture_:setPixel(x, y, r, g, b ,a) end
 
+---Saves the texture to a png file (for if you wana draw to it using setPixel)
+---@param path string Where to save this
+---@return boolean saved
+function _acp__Gfx2Texture_:save(path) end
+
 ---Unloads the texture when you no longer need it or to reload its content
 function _acp__Gfx2Texture_:unload() end
 
