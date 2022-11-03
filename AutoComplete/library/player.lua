@@ -131,6 +131,14 @@ function player.lookingPos() end
 ---@return number pitch
 function player.rotation() end
 
+---Where the player's body looks at
+---@return number rotation
+function player.bodyRotation() end
+
+---Where the player's head looks at
+---@return number rotation
+function player.headRotation() end
+
 ---What perspective the player is in (first person, third person back, third person front)
 ---@return integer perspective
 function player.perspective() end
