@@ -9,6 +9,11 @@ fs = {}
 ---@return boolean
 function fs.exist(path) end
 
+---Opens a folder in explorer
+---@param path string The path from Scripts/Data to open
+---@return boolean
+function fs.showFolder(path) end
+
 ---Checks if a path is a directory
 ---@param path string The path from Scripts/Data
 ---@return boolean
