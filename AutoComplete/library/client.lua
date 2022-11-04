@@ -102,6 +102,8 @@ function client.waypoints() end
 ---@field default boolean|integer|number|MathematicalVector2|ColorSetting The default value of the setting
 ---@field min integer|number|MathematicalVector2|nil Minimum value of the setting
 ---@field max integer|number|MathematicalVector2|nil Maximum value of the setting
+---@field scale number The scale of info settings
+---@field parent Module the parent module
 
 
 
@@ -117,6 +119,11 @@ function client.waypoints() end
 ---@field visible boolean if the module is visible in the clickgui
 ---@field enabled boolean [you can set] if the module is enabled
 ---@field settings Setting[] A list with all the module's settings
+local _acp__Module_ = {}
+
+---Remove a setting from the mod
+---@param setting Setting the setting to remove from the mod
+function _acp__Module_.removeSetting(setting) end
 
 ---@class VisualModule : Module
 ---@field size MathematicalVector2 The size of the module
