@@ -17,6 +17,12 @@ function client.settings.addAir(Space) end
 function client.settings.addInfo(variableName) end
 
 
+---Adds text in the ui, you can change the content of the variable and the ui will display the changes
+---@param variableName string The name of the global variable holding the default value
+---@return Setting
+function client.settings.addTitle(variableName) end
+
+
 ---Adds a toggle switch in the ui
 ---@param name string The name of the setting in the ui
 ---@param variableName string The name of the global variable holding the default value
