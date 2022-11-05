@@ -86,7 +86,7 @@ function client.settings.addNamelessKeybind(name, defaultValue) end
 ---@param maximum integer The maximum value of this setting
 ---@param defaultValue integer The default value of the setting
 ---@return Setting
-function client.settings.addNamelessInt(name, variableName, minimum, maximum, defaultValue) end
+function client.settings.addNamelessInt(name, minimum, maximum, defaultValue) end
 
 ---Adds a slider in the ui
 ---@param name string The name of the setting in the ui
