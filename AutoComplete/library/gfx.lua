@@ -12,6 +12,13 @@ gfx = {}
 ---@return nil
 function gfx.color(r, g, b) end
 
+---Sets the texture drawing color, values range from 0 to 255
+---@param r number red
+---@param g number green
+---@param b number blue
+---@return nil
+function gfx.tcolor(r, g, b) end
+
 ---Sets if the 3D rendering should render trough blocks
 ---@param phaseTroughBlocks boolean red
 ---@return nil
