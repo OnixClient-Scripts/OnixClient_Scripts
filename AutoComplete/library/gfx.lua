@@ -129,6 +129,18 @@ function gfx.item(x, y, itemLocation, scale) end
 function gfx.item(x, y, itemLocation, scale, renderDecorations) end
 
 
+
+---Loads a gfx texture from texture pack root
+---@param filepath string
+---@return string GfxTexture
+function gfx.loadTexture(filepath) end
+
+---Loads a gfx image from Scripts/Data
+---@param filepath string
+---@return string GfxTexture
+function gfx.loadImage(filepath) end
+
+
 ---Renders an Image 
 ---@param x number The position X
 ---@param y number The position Y
@@ -451,3 +463,18 @@ function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3
 ---@param bothSides boolean Should render both sides (would be visible from only one side if set to false)
 ---@return nil
 function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, x_4, y_4, z_4, uvx_4, uvy_4, texturePath, bothSides) end
+
+
+---Pushes transformation(s)
+---@param transformations table
+function gfx.pushTransformation(transformations) end
+
+---Pops transformation(s)
+function gfx.popTransformation() end
+
+---Pops transformation(s)
+---@param count integer Number of transformations to pop
+function gfx.popTransformation(count) end
+
+
+
