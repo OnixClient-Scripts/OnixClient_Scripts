@@ -122,6 +122,21 @@ function _acp_BinaryFile:writeShort(Short) end
 ---@return nil
 function _acp_BinaryFile:writeInt(Int) end
 
+---Writes a byte to the file
+---@param Byte integer a number in the range of -0 to 255
+---@return nil
+function _acp_BinaryFile:writeUByte(Byte) end
+
+---Writes a short to the file
+---@param Short integer a number in the range of 0 to 65535
+---@return nil
+function _acp_BinaryFile:writeUShort(Short) end
+
+---Writes an int to the file
+---@param Int integer a number from from 0 to 4294967295
+---@return nil
+function _acp_BinaryFile:writeUInt(Int) end
+
 ---Writes a float to the file
 ---@param Float number a number with decimal places
 ---@return nil
@@ -157,6 +172,18 @@ function _acp_BinaryFile:readShort() end
 ---Reads an int from the file
 ---@return integer Int
 function _acp_BinaryFile:readInt() end
+
+---Reads a byte from the file
+---@return integer Byte
+function _acp_BinaryFile:readUByte() end
+
+---Reads a short from the file
+---@return integer Short
+function _acp_BinaryFile:readUShort() end
+
+---Reads an int from the file
+---@return integer Int
+function _acp_BinaryFile:readUInt() end
 
 ---Reads a float from the file
 ---@return number Float
