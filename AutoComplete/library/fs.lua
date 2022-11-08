@@ -41,6 +41,12 @@ function fs.copy(pathFrom, pathTo) end
 ---@return nil
 function fs.move(pathFrom, pathTo) end
 
+---Renames a file
+---@param pathFrom string The path from Scripts/Data
+---@param pathTo string The path from Scripts/Data
+---@return nil
+function fs.rename(pathFrom, pathTo) end
+
 ---Give you a list of all files in a directory
 ---@param path string The path from Scripts/Data
 ---@return string[]
