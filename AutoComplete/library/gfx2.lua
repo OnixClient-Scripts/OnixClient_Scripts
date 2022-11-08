@@ -194,6 +194,12 @@ function gfx2.loadImage(width, height, Base64Texture) end
 ---@return Gfx2Texture|nil The loaded texture or nil
 function gfx2.loadImage(filepath) end
 
+---Creates a texture with the specified width and height
+---@param width integer
+---@param height integer
+---@return Gfx2Texture|nil The created texture or nil
+function gfx2.createImage(width, height) end
+
 
 
 ---Renders an image to the Minecraft: Bedrock Edition Screen
