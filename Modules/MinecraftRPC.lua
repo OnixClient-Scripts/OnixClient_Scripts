@@ -9,7 +9,15 @@ exe source:
 https://github.com/jqms/MinecraftRPC
 ]] --
 
-local appID
+function downloadExe()
+    workingDir = "RoamingState/OnixClient/Scripts/Extras"
+    network.fileget("MinecraftRPCHelper.exe","https://github.com/OnixClient-Scripts/OnixClient_Scripts/blob/master/Extras/MinecraftRPCHelper.exe?raw=true", "MinecraftRPCHelper")
+    workingDir = "RoamingState/OnixClient/Scripts/Data"
+end
+downloadExe()
+
+function openFolder() workingDir = "RoamingState/OnixClient/Scripts";fs.showFolder("Extras") workingDir = "RoamingState/OnixClient/Scripts/Data" end
+
 importLib("DependentBoolean")
 
 fs.mkdir("RPC")
@@ -27,6 +35,8 @@ displayUsername = true
 displayLevel = true
 hub = false
 
+client.settings.addFunction("Open Exe Folder", "openFolder", "Open")
+client.settings.addAir(2)
 client.settings.addBool("RPC Settings", "displaySettings")
 client.settings.addDependentBool("Display Gamemode?", "displayGamemode", "displaySettings")
 client.settings.addDependentBool("Display Username?", "displayUsername", "displaySettings")
@@ -99,7 +109,6 @@ function onNetworkData(code, gamemode, data)
     if code == 0 then
         result = jsonToTable(data)
         if type(result) ~= "table" then
-            print("Error...")
             return
         end
         if tablelen(result) == 0 then
@@ -109,11 +118,6 @@ function onNetworkData(code, gamemode, data)
             globalLevel = math.floor(10*calculateLevel(globalGamemode, result["xp"]))/10
         end
     end
-end
-
-function postInit()
-    client.execute("toggle on script MinecraftRPC")
-    client.execute("lua autoreload")
 end
 
 function tablelen(tbl)
@@ -149,6 +153,7 @@ function update(dt)
         io.write("In the Hub")
         io.close(file)
     elseif item2 ~= nil and item2.name == "cubecraft:skyblock_settings" then
+        globalLevel = 0
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
         io.output(file)
         io.write("Playing Skyblock")
@@ -214,9 +219,7 @@ function onChat(message, username, type)
         gameLobby = false
         hub = true
     end
-    if string.find(message, "§eZEQA§8 » §r§7Found a " .. zeqaGamemodeUntamptered .. " match against") then
-        opponent = string.gsub(message, "§eZEQA§8 » §r§7Found a " .. zeqaGamemodeUntamptered .. " match against ","")
-        opponent = string.gsub(opponent,"§.","")
+    if (string.find(message, "§eZEQA§8 » §r§7Found a ") and string.find(message, "match against")) then
         formattedGamemode = zeqaGamemode
         lastGamemode = zeqaGamemode
         gameLobby = false
