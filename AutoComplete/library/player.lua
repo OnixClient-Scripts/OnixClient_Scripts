@@ -113,7 +113,6 @@ local _acp__PlayerLookingAtEntityInformation_Skin = {}
 function _acp__PlayerLookingAtEntityInformation_Skin.skin() end
 
 
-
 ---The coordinates of the block that has the outline for the player
 ---You can check if there is one in the first place with player.facingBlock()
 ---@return PlayerLookingAtEntityInformation entity
@@ -130,14 +129,6 @@ function player.lookingPos() end
 ---@return number yaw
 ---@return number pitch
 function player.rotation() end
-
----Where the player's body looks at
----@return number rotation
-function player.bodyRotation() end
-
----Where the player's head looks at
----@return number rotation
-function player.headRotation() end
 
 ---What perspective the player is in (first person, third person back, third person front)
 ---@return integer perspective
@@ -228,14 +219,29 @@ local _acp_AttributeListHolder = {}
 ---@field max number The maximum value of the attribute
 
 ---Gets the attribute with this name or nil
----@param attribute_name string | "\"minecraft:player.hunger\"" | "\"minecraft:player.saturation\"" | "\"minecraft:player.exhaustion\"" | "\"minecraft:player.level\"" | "\"minecraft:player.experience\"" | "\"minecraft:health\"" | "\"minecraft:follow_range\"" | "\"minecraft:knockback_resistance\"" | "\"minecraft:movement\"" | "\"minecraft:underwater_movement\"" | "\"minecraft:lava_movement\"" | "\"minecraft:attack_damage\"" | "\"minecraft:absorption\"" | "\"minecraft:luck\""
+---Attribute Names
+---"minecraft:player.hunger"
+---"minecraft:player.saturation"
+---"minecraft:player.exhaustion"
+---"minecraft:player.level"
+---"minecraft:player.experience"
+---"minecraft:health"
+---"minecraft:follow_range"
+---"minecraft:knockback_resistance"
+---"minecraft:movement"
+---"minecraft:underwater_movement"
+---"minecraft:lava_movement"
+---"minecraft:attack_damage"
+---"minecraft:absorption"
+---"minecraft:luck"
+---
+---@param attribute_name string | '"minecraft:player.hunger"' | "\"minecraft:player.saturation\"" | "\"minecraft:player.exhaustion\"" | "\"minecraft:player.level\"" | "\"minecraft:player.experience\"" | "\"minecraft:health\"" | "\"minecraft:follow_range\"" | "\"minecraft:knockback_resistance\"" | "\"minecraft:movement\"" | "\"minecraft:underwater_movement\"" | "\"minecraft:lava_movement\"" | "\"minecraft:attack_damage\"" | "\"minecraft:absorption\"" | "\"minecraft:luck\""
 ---@return Attribute attrib
 function _acp_AttributeListHolder.name(attribute_name) end
 
 
 ---Gets the attribute with this id or nil
----@param attribute_id integer the attribute id
----```
+---Attribute ids
 ---2: --Hunger
 ---3: --Saturation
 ---4: --Exhaustion
@@ -249,17 +255,18 @@ function _acp_AttributeListHolder.name(attribute_name) end
 ---13: --Attack Damage
 ---14: --Absorption
 ---15: --Luck
----```
+---
+---@param attribute_id integer the attribute id
+---@return Attribute attribute
 function _acp_AttributeListHolder.id(attribute_id) end
 
 ---Gets the attribute at this position in the list or nil
----@param position integer 
----```
 --- --you can iterate trough all of them by doing this:
 ---for i,attributes.size do
 ---	print(attributes.at(i).id .. ": " .. attributes.at(i).name)
 ---end
----```
+---@param position integer 
+---@return Attribute attribute
 function _acp_AttributeListHolder.at(position) end
 
 
