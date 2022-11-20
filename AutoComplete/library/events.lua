@@ -6,8 +6,72 @@ event = {}
 
 
 ---Binds an event to a function
+---Here are the events you can listen to
+---This will be called everytime the user presses a key.
+---The value of the different keys can be found there
+---https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+---You can cancel this event by returning true (and the game will have no clue it ever happened)
+---event.listen("KeyboardInput", function(key, down)
+---    
+---end)
+---
+---This will be called everytime the user clicks a mouse button.
+---button values:
+---1 == Left Click
+---2 == Right Click
+---3 == Middle Click
+---4 == Mouse Scroll
+---You can cancel this event by returning true (and the game will have no clue it ever happened)
+---event.listen("MouseInput", function(button, down)
+---    
+---end)
+---
+---This will be called everytime a chat message is added to the chat
+---The username will most likely only be filled for wisper/chat message
+---Here are the types of messages
+---0 == Raw
+---1 == Chat
+---2 == Translate
+---3 == Popup
+---4 == JukeboxPopup
+---5 == Tip
+---6 == SystemMessage
+---7 == Whisper
+---8 == Announcement
+---9 == TextObject
+---You can cancel this event by returning true and it won't add it to the chat
+---event.listen("ChatMessageAdded", function(message, username, type, xuid)
+---    
+---end)
+---
+---This will get called everytime any script calls "sendLocalData"
+---Generally you want to filter them to make sure it is the one you want
+---(Before actually trying to read the content)
+---event.listen("LocalDataReceived", function(uuid, content)
+---
+---end)
+---
+---This will be called everytime the script config is saved
+---You can use it to save a lua table (basic tytpes only: integer, number, string, table)
+---return the table you wish to save
+---event.listen("ConfigurationSaved", function()
+---    local data = {}
+---    
+---    return data
+---end)
+---
+---This will be called everytime the script config is loaded
+---data will be lua table you returned at the "ConfigurationSaved" event
+---event.listen("ConfigurationLoaded", function(data)
+---    
+---end)
+---
+---This will be called every server tick (~20 times per seconds)
+---You can do server things in there like getting serverside blockActor
+---event.listen("LocalServerUpdate", function()
+---    
+---end)
 ---@param eventName string | '"KeyboardInput", function(key, down)\n\t\nend' | '"MouseInput", function(button, down)\n\t\nend' | '"ChatMessageAdded", function(message, username, type, xuid)\n\t\nend' | '"LocalDataReceived", function(uuid, content)\n\t\nend' | '"ConfigurationSaved", function()\n\tlocal data = {}\n\t\n\treturn data\nend' | '"ConfigurationLoaded", function(data)\n\t\nend' | '"LocalServerUpdate", function()\n\t\nend' Name of the event to listen to
 ---@param handler function Function that will handle the event
 ---@return nil
 function event.listen(eventName, handler) end
-
