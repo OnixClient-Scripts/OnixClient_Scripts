@@ -151,7 +151,7 @@ local _acp__Gfx2Texture_ = {}
 ---Gets the color of a pixel in the texture
 ---@param x integer X position of the pixel to get
 ---@param y integer Y position of the pixel to get
----@return iColor
+---@return iColor color The color of the pixel
 function _acp__Gfx2Texture_:getPixel(x, y) end
 
 ---Sets the color of a pixel in the texture, you must unload if you used it for changes to apply
@@ -175,7 +175,7 @@ function _acp__Gfx2Texture_:setPixel(x, y, r, g, b ,a) end
 
 ---Saves the texture to a png file (for if you wana draw to it using setPixel)
 ---@param path string Where to save this
----@return boolean saved
+---@return boolean saved Did the texture successfully save
 function _acp__Gfx2Texture_:save(path) end
 
 ---Unloads the texture when you no longer need it or to reload its content
