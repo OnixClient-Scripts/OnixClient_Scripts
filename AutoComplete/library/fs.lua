@@ -6,55 +6,50 @@ fs = {}
 
 ---Checks if a file exist
 ---@param path string The path from Scripts/Data
----@return boolean
+---@return boolean exists If the file exists
 function fs.exist(path) end
 
 ---Opens a folder in explorer
 ---@param path string The path from Scripts/Data to open
----@return boolean
+---@return boolean showed If the folder was showed
 function fs.showFolder(path) end
 
 ---Checks if a path is a directory
 ---@param path string The path from Scripts/Data
----@return boolean
+---@return boolean isDirectory If the path is a directory
 function fs.isdir(path) end
 
 ---Creates a directory
 ---@param path string The path from Scripts/Data
----@return nil
 function fs.mkdir(path) end
 
 ---Deletes a file
 ---@param path string The path from Scripts/Data
----@return nil
 function fs.delete(path) end
 
 ---Copies a file
----@param pathFrom string The path from Scripts/Data
----@param pathTo string The path from Scripts/Data
----@return nil
+---@param pathFrom string The source path from Scripts/Data
+---@param pathTo string The destination path from Scripts/Data
 function fs.copy(pathFrom, pathTo) end
 
 ---Moves a file
----@param pathFrom string The path from Scripts/Data
----@param pathTo string The path from Scripts/Data
----@return nil
+---@param pathFrom string The source path from Scripts/Data
+---@param pathTo string The destination path from Scripts/Data
 function fs.move(pathFrom, pathTo) end
 
 ---Renames a file
----@param pathFrom string The path from Scripts/Data
----@param pathTo string The path from Scripts/Data
----@return nil
+---@param pathFrom string The source path from Scripts/Data
+---@param pathTo string The destination path from Scripts/Data
 function fs.rename(pathFrom, pathTo) end
 
 ---Give you a list of all files in a directory
 ---@param path string The path from Scripts/Data
----@return string[]
+---@return string[] files The filepath o every file in the directory
 function fs.files(path) end
 
 ---Give you a list of all directories in a directory
 ---@param path string The path from Scripts/Data
----@return string[]
+---@return string[] directories The filepath o every directory in the directory
 function fs.directories(path) end
 
 
@@ -71,7 +66,7 @@ function fs.directories(path) end
 
 ---Gets information about a file
 ---@path string The path from Scripts/Data
----@return Stats
+---@return Stats stats The file informtion
 function fs.stats(path) end
 
 
@@ -80,29 +75,26 @@ function fs.stats(path) end
 ---@class BinaryFile
 local _acp_BinaryFile = {}
 
----Close the file 
----@return nil
+---Close the file (when you are done with it please close thx)
 function _acp_BinaryFile:close() end
 
----Flushes the buffer, Makes what you wrote to it actually go to disk without closing it
----@return nil
+---Flushes the written content to the file, Makes what you wrote to it actually go to disk without closing it
 function _acp_BinaryFile:flush() end
 
 ---If the file has reach the end of the file
----@return boolean
+---@return boolean eof Is is the end of the file
 function _acp_BinaryFile:eof() end
 
 ---The size of the file in bytes (**not remaining bytes to read**)
----@return integer
+---@return integer fileSize The size of the file
 function _acp_BinaryFile:size() end
 
 ---Goes to a position in the file
----@param position integer Where to go from the begin(0)
----@return nil
+---@param position integer Where to go from the file start(0)
 function _acp_BinaryFile:seek(position) end
 
----The current position in the file (ex: reading from begin + 56)
----@return integer
+---The current position in the file (ex: reading from start + 56)
+---@return integer filepos Position in the file
 function _acp_BinaryFile:tell() end
 
 
@@ -110,37 +102,30 @@ function _acp_BinaryFile:tell() end
 ---Writes content to the file, make sure not to screw up the byteCount
 ---@param content string What to take the bytes from
 ---@param byteCount integer how many bytes we taking from your string
----@return nil
 function _acp_BinaryFile:write(content, byteCount) end
 
 ---Writes a byte to the file
 ---@param Byte integer a number in the range of -128 to 127
----@return nil
 function _acp_BinaryFile:writeByte(Byte) end
 
 ---Writes a short to the file
 ---@param Short integer a number in the range of -32768 to 35767
----@return nil
 function _acp_BinaryFile:writeShort(Short) end
 
 ---Writes an int to the file
 ---@param Int integer a number from from -2147483648 to 2147483647
----@return nil
 function _acp_BinaryFile:writeInt(Int) end
 
 ---Writes a byte to the file
 ---@param Byte integer a number in the range of -0 to 255
----@return nil
 function _acp_BinaryFile:writeUByte(Byte) end
 
 ---Writes a short to the file
 ---@param Short integer a number in the range of 0 to 65535
----@return nil
 function _acp_BinaryFile:writeUShort(Short) end
 
 ---Writes an int to the file
 ---@param Int integer a number from from 0 to 4294967295
----@return nil
 function _acp_BinaryFile:writeUInt(Int) end
 
 ---Writes a float to the file
@@ -149,58 +134,56 @@ function _acp_BinaryFile:writeUInt(Int) end
 function _acp_BinaryFile:writeFloat(Float) end
 
 ---Writes a double to the file
----@param Double number a number with decimal places
----@return nil
+---@param Double number a number with decimal 
 function _acp_BinaryFile:writeDouble(Double) end
 
 ---Writes Text to the file
 ---@param Text string the text to put in the file
----@return nil
 function _acp_BinaryFile:writeString(Text) end
 
 
 
 
 
----Reads content from the file, make sure not to screw up the byteCount
+---Reads content from the file, make sure not to fail on the byteCount
 ---@param byteCount integer how many bytes we taking from the file
----@return string
+---@return string content What was read
 function _acp_BinaryFile:read(byteCount) end
 
 ---Reads a byte from the file
----@return integer Byte
+---@return integer Byte The byte that was read
 function _acp_BinaryFile:readByte() end
 
 ---Reads a short from the file
----@return integer Short
+---@return integer Short The short that was read
 function _acp_BinaryFile:readShort() end
 
 ---Reads an int from the file
----@return integer Int
+---@return integer Int The int that was read
 function _acp_BinaryFile:readInt() end
 
 ---Reads a byte from the file
----@return integer Byte
+---@return integer Byte The unsigned byte that was read
 function _acp_BinaryFile:readUByte() end
 
 ---Reads a short from the file
----@return integer Short
+---@return integer Short The unsigned short that was read
 function _acp_BinaryFile:readUShort() end
 
 ---Reads an int from the file
----@return integer Int
+---@return integer Int The unsigned int that was read
 function _acp_BinaryFile:readUInt() end
 
 ---Reads a float from the file
----@return number Float
+---@return number Float The float that was read
 function _acp_BinaryFile:readFloat() end
 
 ---Reads a double from the file
----@return number Double
+---@return number Double The double that was read
 function _acp_BinaryFile:readDouble() end
 
 ---Reads Text from the file
----@return string Text
+---@return string Text The text that was read
 function _acp_BinaryFile:readString() end
 
 
@@ -208,8 +191,8 @@ function _acp_BinaryFile:readString() end
 
 ---Opens a file to read/write data
 ---@param path string The path from Scripts/Data
----@param openmode string | "'w'" | "'r'" | "'a'" how to open the file
----@return BinaryFile file
+---@param openmode string | "'w'" | "'r'" | "'a'" how to open the file, w is write mode, r is read mode, a is append(and it will add to an existing file or start)
+---@return BinaryFile|nil file The (hopefully) opened file
 function fs.open(path, openmode) end
 
 
