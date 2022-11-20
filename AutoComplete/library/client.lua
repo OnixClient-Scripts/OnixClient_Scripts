@@ -1,3 +1,4 @@
+---@diagnostic disable: duplicate-set-field
 ---@meta
 
 
@@ -8,15 +9,13 @@ client = client or {}
 
 ---Sends a client notification
 ---@param text string The text in the notification
----@return nil
 function client.notification(text) end
 
 ---Executes a client command, do not include the prefix
+---You may use the execute command to do minecraft commands
+---Example: client.execute("execute /say imbald")
 ---@param command string The command without the prefix
----@return nil
 function client.execute(command) end
-
-
 
 
 ---@class Waypoint
@@ -26,10 +25,12 @@ function client.execute(command) end
 ---@field name string The name of the waypoint
 ---@field dimensionId integer The dimension id the waypoint is for
 
+
+
 ---@class Waypoints
 local _acp__Waypoints_ = {}
 
----Get waypoint list
+---Gets the list of waypoint
 ---@return Waypoint[]
 function _acp__Waypoints_.get() end
 
@@ -41,21 +42,24 @@ function _acp__Waypoints_.get() end
 function _acp__Waypoints_.add(x, y, z, name) end
 
 ---Adds a waypoint
----@param x integer The x position of the waypoint
----@param y integer The y position of the waypoint
----@param z integer The z position of the waypoint
----@param name string The name of the waypoint
----@param dimensionId integer In what dimension is it
+---@param x integer The x position of the new waypoint
+---@param y integer The y position of the new waypoint
+---@param z integer The z position of the new waypoint
+---@param name string The name of the new waypoint
+---@param dimensionId integer In what dimension is the mew waypoint
+---@return boolean added If the waypoint has been added or not
 function _acp__Waypoints_.add(x, y, z, name, dimensionId) end
 
 ---Removes a waypoint by its name
 ---@param name string The name of the waypoint to remove
+---@return boolean added If the waypoint has been removed or not
 function _acp__Waypoints_.remove(name) end
 
 ---Removes a waypoint by its position
 ---@param x integer The x position of the waypoint to remove
 ---@param y integer The y position of the waypoint to remove
 ---@param z integer The z position of the waypoint to remove
+---@return boolean added If the waypoint has been removed or not
 function _acp__Waypoints_.remove(x, y, z) end
 
 ---Saves the waypoint list to file
@@ -66,7 +70,7 @@ function _acp__Waypoints_.load() end
 ---Clears all waypoints
 function _acp__Waypoints_.clear() end
 
-
+---Gets the waypoints
 ---@return Waypoints
 function client.waypoints() end
 
@@ -76,7 +80,10 @@ function client.waypoints() end
 
 
 
----@class MathematicalVector2
+
+
+
+---@class Vector2
 ---@field x number
 ---@field y number
 
@@ -98,12 +105,13 @@ function client.waypoints() end
 ---@field name string The display name of the setting_type
 ---@field saveName string The name used to save/load this Setting, no spaces
 ---@field visible boolean Should show in the ui
----@field value boolean|integer|number|MathematicalVector2|ColorSetting The value of the setting
----@field default boolean|integer|number|MathematicalVector2|ColorSetting The default value of the setting
----@field min integer|number|MathematicalVector2|nil Minimum value of the setting
----@field max integer|number|MathematicalVector2|nil Maximum value of the setting
+---@field value boolean|integer|number|Vector2|ColorSetting The value of the setting
+---@field default boolean|integer|number|Vector2|ColorSetting The default value of the setting
+---@field min integer|number|Vector2|nil Minimum value of the setting
+---@field max integer|number|Vector2|nil Maximum value of the setting
 ---@field scale number The scale of info settings
 ---@field parent Module the parent module
+
 
 
 
@@ -125,17 +133,18 @@ local _acp__Module_ = {}
 ---@param setting Setting the setting to remove from the mod
 function _acp__Module_.removeSetting(setting) end
 
+
 ---@class VisualModule : Module
----@field size MathematicalVector2 The size of the module
----@field pos MathematicalVector2 The position of the module
----@field relativepos MathematicalVector2 The relative position of the module (relative from anchor position)
+---@field size Vector2 The size of the module
+---@field pos Vector2 The position of the module
+---@field relativepos Vector2 The relative position of the module (relative from anchor position)
 ---@field anchor 0 = Invalid, 1 = Top Left, 2 = Top Right, 3 = Bottom Left, 4 = Bottom Right
 
 ---@class ScriptingModule : Module
 ---@field movable boolean If the module is movable
 ---@field scale number The scale of the module
----@field size MathematicalVector2 The size of the module
----@field pos MathematicalVector2 The position of the module
+---@field size Vector2 The size of the module
+---@field pos Vector2 The position of the module
 
 
 
