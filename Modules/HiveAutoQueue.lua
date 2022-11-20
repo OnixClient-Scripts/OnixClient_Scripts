@@ -24,22 +24,16 @@ formattedGamemode = ""
 Auto = "Fully Automatic (Recommended)"
 Other = "Other Settings"
 
-FullyAuto = false
+FullyAuto = true
 ShowGamemode = false
 inGame = false
 oopsie = false
 hub = false
 
 client.settings.addAir(5)
-
-client.settings.addInfo("Auto")
-client.settings.addBool("Fully Automatic Requeue", "FullyAuto")
-
-client.settings.addAir(10)
-
 client.settings.addInfo("Other")
 client.settings.addBool("Show the gamemode on screen?", "ShowGamemode")
-client.settings.addAir(15)
+client.settings.addAir(5)
 
 background = client.settings.addNamelessColor("Background Color", {0,0,0,127})
 
@@ -81,7 +75,7 @@ formattedGamemodes["BUILD-DUOS"] = "§5Just Build§8: Duos"
 formattedGamemodes["BUILDX"] = "§5Just Build§7: Extended"
 formattedGamemodes["BUILDX-DUOS"] = "§5Just Build§7: Extended§8, Duos"
 
-function update(deltaTime)
+function update()
     if formattedGamemode == "" then
         ShowGamemode = false
     end
@@ -240,12 +234,13 @@ function render2(dt)
     else
         return
     end
-
-    local mesh = getGfx2Mesh(text)
-    gfx2.color(background)
-    gfx2.fillRoundRect(gui.width() - mesh.width - 8, 24 ,mesh.width + 3, mesh.height + 3, round)
-    gfx2.color(color)
-    mesh:render((gui.width() - mesh.width - 8) + ((mesh.width + 3) / 2 - mesh.width/2), 24 + (mesh.height + 3) / 2 - mesh.height / 2)
+    if ShowGamemode == true then
+        local mesh = getGfx2Mesh(text)
+        gfx2.color(background)
+        gfx2.fillRoundRect(gui.width() - mesh.width - 8, 24 ,mesh.width + 3, mesh.height + 3, round)
+        gfx2.color(color)
+        mesh:render((gui.width() - mesh.width - 8) + ((mesh.width + 3) / 2 - mesh.width/2), 24 + (mesh.height + 3) / 2 - mesh.height / 2)
+    end
 end
 
 
