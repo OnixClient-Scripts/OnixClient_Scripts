@@ -3,7 +3,7 @@
 
 
 ---@class client
----@field version string The client version [autorebuild test]
+---@field version string The client version
 ---@field mcversion string The minecraft version
 client = client or {}
 
