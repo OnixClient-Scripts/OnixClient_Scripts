@@ -93,3 +93,93 @@ function dimension.getBlockEntity(x, y, z, getServerSideEntity) end
 ---@param z integer | number The z position
 ---@return Biome biome The biome information
 function dimension.getBiome(x, y, z) end
+
+
+---Gets the color that would show on a minecraft map
+---@param x integer | number The x position
+---@param y integer | number The y position
+---@param z integer | number The z position
+---@return integer r The red part of the color
+---@return integer g The green part of the color
+---@return integer b The blue part of the color
+---@return integer a The opacity part of the color
+function dimension.getMapColor(x,y,z) end
+
+
+---@class RaycastInfo
+---@field x integer The x position of the hit block
+---@field y integer The y position of the hit block
+---@field z integer The z position of the hit block
+---@field px number The precise x position on the block where the hit happened
+---@field py number The precise y position on the block where the hit happened
+---@field pz number The precise z position on the block where the hit happened
+---@field isEntity boolean If the raycast hit an entity
+---@field isBlock boolean If the raycast hit a block
+---@field blockFace integer What face of a block did the raycast hit
+
+
+
+---Casts a ray in the world between two points
+---Traces a line in the world hoping or not to hit a block
+---@param startX number The x start position
+---@param startY number The y start position
+---@param startZ number The y start position
+---@param endX number the x end position, where are we going
+---@param endY number the y end position, where are we going
+---@param endZ number the z end position, where are we going
+---@return RaycastInfo hit The result of the raycase
+function dimension.raycast(startX, startY, startZ, endX, endY, endZ) end
+
+---Casts a ray in the world between two points
+---Traces a line in the world hoping or not to hit a block
+---@param startX number The x start position
+---@param startY number The y start position
+---@param startZ number The y start position
+---@param endX number the x end position, where are we going
+---@param endY number the y end position, where are we going
+---@param endZ number the z end position, where are we going
+---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
+---@return RaycastInfo hit The result of the raycase
+function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance) end
+
+---Casts a ray in the world between two points
+---Traces a line in the world hoping or not to hit a block
+---@param startX number The x start position
+---@param startY number The y start position
+---@param startZ number The y start position
+---@param endX number the x end position, where are we going
+---@param endY number the y end position, where are we going
+---@param endZ number the z end position, where are we going
+---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
+---@param hitLiquid boolean (default: false) If don't want to go through liquid make this true
+---@return RaycastInfo hit The result of the raycase
+function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid) end
+
+---Casts a ray in the world between two points
+---Traces a line in the world hoping or not to hit a block
+---@param startX number The x start position
+---@param startY number The y start position
+---@param startZ number The y start position
+---@param endX number the x end position, where are we going
+---@param endY number the y end position, where are we going
+---@param endZ number the z end position, where are we going
+---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
+---@param hitLiquid boolean (default: false) If don't want to go through liquid make this true
+---@param solidBlocksOnly boolean (default: true) Will ignore things like grass, flowers, etc that you can walk through
+---@return RaycastInfo hit The result of the raycase
+function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid, solidBlocksOnly) end
+
+---Casts a ray in the world between two points
+---Traces a line in the world hoping or not to hit a block
+---@param startX number The x start position
+---@param startY number The y start position
+---@param startZ number The y start position
+---@param endX number the x end position, where are we going
+---@param endY number the y end position, where are we going
+---@param endZ number the z end position, where are we going
+---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
+---@param hitLiquid boolean (default: false) If don't want to go through liquid make this true
+---@param solidBlocksOnly boolean (default: true) Will ignore things like grass, flowers, etc that you can walk through
+---@param fullBlocksOnly boolean (default: false) not certain, probably wont go through opened trapdoors and that kindof stuff
+---@return RaycastInfo hit The result of the raycase
+function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid, solidBlocksOnly, fullBlocksOnly) end
