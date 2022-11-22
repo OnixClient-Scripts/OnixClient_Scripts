@@ -127,7 +127,7 @@ function dimension.getMapColor(x,y,z) end
 ---@param endX number the x end position, where are we going
 ---@param endY number the y end position, where are we going
 ---@param endZ number the z end position, where are we going
----@return RaycastInfo hit The result of the raycase
+---@return RaycastInfo hit The result of the raycast
 function dimension.raycast(startX, startY, startZ, endX, endY, endZ) end
 
 ---Casts a ray in the world between two points
@@ -139,7 +139,7 @@ function dimension.raycast(startX, startY, startZ, endX, endY, endZ) end
 ---@param endY number the y end position, where are we going
 ---@param endZ number the z end position, where are we going
 ---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
----@return RaycastInfo hit The result of the raycase
+---@return RaycastInfo hit The result of the raycast
 function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance) end
 
 ---Casts a ray in the world between two points
@@ -152,7 +152,7 @@ function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance
 ---@param endZ number the z end position, where are we going
 ---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
 ---@param hitLiquid boolean (default: false) If don't want to go through liquid make this true
----@return RaycastInfo hit The result of the raycase
+---@return RaycastInfo hit The result of the raycast
 function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid) end
 
 ---Casts a ray in the world between two points
@@ -166,7 +166,7 @@ function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance
 ---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
 ---@param hitLiquid boolean (default: false) If don't want to go through liquid make this true
 ---@param solidBlocksOnly boolean (default: true) Will ignore things like grass, flowers, etc that you can walk through
----@return RaycastInfo hit The result of the raycase
+---@return RaycastInfo hit The result of the raycast
 function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid, solidBlocksOnly) end
 
 ---Casts a ray in the world between two points
@@ -181,5 +181,5 @@ function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance
 ---@param hitLiquid boolean (default: false) If don't want to go through liquid make this true
 ---@param solidBlocksOnly boolean (default: true) Will ignore things like grass, flowers, etc that you can walk through
 ---@param fullBlocksOnly boolean (default: false) not certain, probably wont go through opened trapdoors and that kindof stuff
----@return RaycastInfo hit The result of the raycase
+---@return RaycastInfo hit The result of the raycast
 function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid, solidBlocksOnly, fullBlocksOnly) end
