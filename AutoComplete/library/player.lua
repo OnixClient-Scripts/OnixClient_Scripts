@@ -72,6 +72,14 @@ function player.position() end
 ---@return number z The player's current precise position
 function player.pposition() end
 
+---The position at a chosen distance from the player
+---@param distance number How much distance in front of the player to go?
+---@return number x The position at distance of the player
+---@return number y The position at distance of the player
+---@return number z The position at distance of the player
+function player.forwardPosition(distance) end
+
+
 ---The coordinates of the block that has the outline for the player
 ---You can check if there is one in the first place with player.facingBlock()
 ---@return integer x Selected block position
