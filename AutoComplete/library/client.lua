@@ -11,6 +11,10 @@ client = client or {}
 ---@param text string The text in the notification
 function client.notification(text) end
 
+---Gets the game's language
+---@return string languageCode The language code, example: en_US
+function client.language() end
+
 ---Executes a client command, do not include the prefix
 ---You may use the execute command to do minecraft commands
 ---Example: client.execute("execute /say imbald")
