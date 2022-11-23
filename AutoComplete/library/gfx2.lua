@@ -202,6 +202,7 @@ function gfx2.loadImageFromUrl(url) end
 
 ---Loads a texture from a url, great for things that render images that changes
 ---Note that while the texture is loading, drawing it will draw a gfx2.color() colored rectangle
+---Please don't use this for static images that don't change.
 ---@param url string The url to download the image from
 ---@param headers string[] Headers if needed to get access to the image
 ---@return Gfx2Texture texture The texture that will be loaded from the web
