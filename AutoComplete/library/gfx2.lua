@@ -194,6 +194,19 @@ function gfx2.loadImage(width, height, Base64Texture) end
 ---@return Gfx2Texture|nil texture The loaded texture or nil
 function gfx2.loadImage(filepath) end
 
+---Loads a texture from a url, great for things that render images that changes
+---Note that while the texture is loading, drawing it will draw a gfx2.color() colored rectangle
+---@param url string The url to download the image from
+---@return Gfx2Texture texture The texture that will be loaded from the web
+function gfx2.loadImageFromUrl(url) end
+
+---Loads a texture from a url, great for things that render images that changes
+---Note that while the texture is loading, drawing it will draw a gfx2.color() colored rectangle
+---@param url string The url to download the image from
+---@param headers string[] Headers if needed to get access to the image
+---@return Gfx2Texture texture The texture that will be loaded from the web
+function gfx2.loadImageFromUrl(url, headers) end
+
 ---Creates a texture with the specified width and height
 ---@param width integer
 ---@param height integer
