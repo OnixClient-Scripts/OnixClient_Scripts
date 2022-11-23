@@ -62,4 +62,4 @@ You can do .lua autoreload to make it automatically reload when you've edited a 
 ​
 
 # Scripting documentation
-You can see the documentation on [official website](https://ocwebsite.github.io/scripting/main.html)
+You can see the documentation on [official website](https://docs.onixclient.com/scripting/main.html)
