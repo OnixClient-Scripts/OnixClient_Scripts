@@ -73,16 +73,15 @@ function gui.font() end
 local iColor = {}
 
 ---@class Theme
----@field back iColor the background color, whats below everything
----@field moduleOutline iColor the outline of the visual modules in the hud editor
----@field moduleOverlay iColor the overlay on top of the visual modules in the hud editor
----@field darkbutton iColor most buttons use "enabled" but some use darkbutton's color instead
----@field text iColor color of the text on the ui
----@field largeArea iColor color of the body of a window/pannel
----@field titlebar iColor color of the titlebar
----@field disabled iColor color of disabled stuff
----@field enabled iColor color of enabled stuff, can be used as accent color
----@field blocked iColor blocked content in that color
+---@field text ColorSetting color of the text on the ui
+---@field blocked ColorSetting blocked content in that color
+---@field enabled ColorSetting color of enabled stuff, can be used as accent color
+---@field disabled ColorSetting color of disabled stuff
+---@field highlight ColorSetting the highlight color on top of the elements
+---@field outline ColorSetting the color of the outline of ui elements
+---@field windowBackground ColorSetting the background color
+---@field button ColorSetting most buttons use "enabled" but some use darkbutton's color instead
+---@field scrollbar ColorSetting color of the scrollbar
 local _acp_theme = {}
 
 
