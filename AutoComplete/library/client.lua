@@ -79,9 +79,66 @@ function _acp__Waypoints_.clear() end
 function client.waypoints() end
 
 
+---@class ClientConfig
+---@field name string The name of the config
+---@field exists boolean If this config exists on disk
 
+---@class ConfigManager
+local _acp__ConfigManager_ = {}
 
+---Gets a config from its name
+---@param name string The name
+---@return ClientConfig clientConfig The config you wanted (check if it exists if thats important)
+function _acp__ConfigManager_:get(name) end
 
+---Gets the active config (Could differ from default)
+---@return ClientConfig clientConfig The active config
+function _acp__ConfigManager_:getActive() end
+
+---Gets the default config (the one that will be loaded on inject)
+---@return ClientConfig clientConfig The default config
+function _acp__ConfigManager_:getDefault() end
+
+---Sets the default config (the one that will be loaded on inject)
+---@param config ClientConfig The config to set as default
+function _acp__ConfigManager_:setDefault(config) end
+
+---Checks to see if a config is the default one or not
+---@param config ClientConfig The config you want to know if its the default one or not
+function _acp__ConfigManager_:isDefault(config) end
+
+---Checks to see if a config is the active one or not
+---@param config ClientConfig The config you want to know if its the active one or not
+function _acp__ConfigManager_:isActive(config) end
+
+---Gets a list of client configs
+---@return ClientConfig[] clientConfig List of existing configs at the time of the request
+function _acp__ConfigManager_:list() end
+
+---Deletes a config
+---@param config ClientConfig the config to delete
+function _acp__ConfigManager_:delete(config) end
+
+---Creates a new config with default settings on everything
+---@param config ClientConfig Deletes a config
+function _acp__ConfigManager_:new(config) end
+
+---Saves the current config to a config
+---@param config ClientConfig The config to save into
+function _acp__ConfigManager_:save(config) end
+
+---Loads a config
+---@param config ClientConfig The config to load
+function _acp__ConfigManager_:load(config) end
+
+---Gets the config manager that can do various config things
+---@return ConfigManager configManager The client config manager
+function client.getConfigManager() end
+
+---Gets the config manager that can do various config things
+---@param scripting boolean (default: false) Get the scripting version of the Config Manager?
+---@return ConfigManager configManager The client config manager
+function client.getConfigManager(scripting) end
 
 
 
