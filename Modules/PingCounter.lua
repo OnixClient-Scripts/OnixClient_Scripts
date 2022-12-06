@@ -84,7 +84,7 @@ function update()
 end
 
 function render2()
-    if brackets.value == true then
+    if brackets.value == false then
         text = CurrentPing .. "ms"
     else
         text = "[" .. CurrentPing .. "ms]"

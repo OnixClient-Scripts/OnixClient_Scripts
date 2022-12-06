@@ -30,11 +30,14 @@ inGame = false
 oopsie = false
 hub = false
 
+client.settings.addAir(2)
+client.settings.addTitle("Settings")
+keybindButton = client.settings.addNamelessKeybind("Requeue Key", 0)
 client.settings.addAir(5)
-client.settings.addInfo("Other")
+client.settings.addTitle("Other Settings")
 client.settings.addBool("Show the gamemode on screen?", "ShowGamemode")
 client.settings.addAir(5)
-
+client.settings.addTitle("Display Settings")
 background = client.settings.addNamelessColor("Background Color", {0,0,0,127})
 
 color = client.settings.addNamelessColor("Color", {255, 255, 255})
@@ -76,6 +79,11 @@ formattedGamemodes["BUILDX"] = "§5Just Build§7: Extended"
 formattedGamemodes["BUILDX-DUOS"] = "§5Just Build§7: Extended§8, Duos"
 
 function update()
+    local language = client.language()
+    if not language:find("en") then
+        client.notification("This script only supports English.")
+        client.execute("toggle off script" .. name)
+    end
     if formattedGamemode == "" then
         ShowGamemode = false
     end
@@ -243,12 +251,25 @@ function render2(dt)
     end
 end
 
+event.listen("KeyboardInput", function(key, down)
+	if key == keybindButton.value and down and gui.mouseGrabbed() == false then
+		requeue(lastGamemode)
+	end
+end)
 
-function onLocalData(identifier, content)
-    if identifier == "00409ed7-72f4-4575-8028-c0abf7736a49" then
-        client.execute("execute /q " .. lastGamemode)
-        ShowGamemode = false
-    end
+function requeue(game)
+	client.execute("execute /q " .. game)
 end
-event.listen("LocalDataReceived", onLocalData)
+
+registerCommand("rq", function(args)
+	if args == "" then
+		client.execute("execute /q " .. lastGamemode)
+		print("§c§l» §r§cQueuing into a new game of " .. formattedGamemodes[lastGamemode] .. "§r§c.")
+	end
+	if args ~= "" then
+		print(to)
+		print("§c§l» §r§cQueuing into a new game of " .. formattedGamemodes[args] .. "§r§c.")
+	end
+end)
+
 event.listen("ChatMessageAdded", onChat)
