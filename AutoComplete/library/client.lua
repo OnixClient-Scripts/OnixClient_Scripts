@@ -162,8 +162,8 @@ function client.getConfigManager(scripting) end
 
 
 ---@class Setting
----@field type integer [Types](http://onixclient.xyz/scripting/setting_type.html)
----@field name string The display name of the setting_type
+---@field type integer
+---@field name string The display name of the setting
 ---@field saveName string The name used to save/load this Setting, no spaces
 ---@field visible boolean Should show in the ui
 ---@field value boolean|integer|number|Vector2|ColorSetting The value of the setting
