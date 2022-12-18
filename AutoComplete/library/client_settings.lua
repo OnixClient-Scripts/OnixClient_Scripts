@@ -63,6 +63,18 @@ function client.settings.addColor(name, variableName) end
 ---@return Setting setting The setting that was added
 function client.settings.addFunction(name, variableName, buttonName) end
 
+---Adds a textbox in the UI
+---@param name string The name of the setting in the UI
+---@param variableName string The name of the global variable that contains the setting value  (a function to be executed when clicked)
+---@return Setting setting The setting that was added
+function client.settings.addTextbox(name, variableName) end
+
+---Adds a textbox in the UI
+---@param name string The name of the setting in the UI
+---@param variableName string The name of the global variable that contains the setting value  (a function to be executed when clicked)
+---@param maxCharacters integer The maximum amount of letters in the textbox
+---@return Setting setting The setting that was added
+function client.settings.addTextbox(name, variableName, maxCharacters) end
 
 
 
@@ -101,6 +113,18 @@ function client.settings.addNamelessFloat(name, minimum, maximum, defaultValue) 
 ---@return Setting setting The setting that was added
 function client.settings.addNamelessColor(name, defaultValue) end
 
+---Adds a textbox for the user to type in the UI
+---@param name string The name of the setting in the UI
+---@param defaultValue string Default textbox text
+---@return Setting setting The setting that was added
+function client.settings.addNamelessTextbox(name, defaultValue) end
+
+---Adds a textbox for the user to type in the UI
+---@param name string The name of the setting in the UI
+---@param defaultValue string Default textbox text
+---@param maxCharacters integer The maximum amount of letters in the textbox
+---@return Setting setting The setting that was added
+function client.settings.addNamelessTextbox(name, defaultValue, maxCharacters) end
 
 
 ---Sends setting value from the script to the client
