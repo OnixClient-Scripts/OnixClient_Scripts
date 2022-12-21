@@ -427,6 +427,26 @@ function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3
 function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, x_4, y_4, z_4, uvx_4, uvy_4, texturePath, bothSides) end
 
 
+
+---@param filepath string Filepath to the .obj file
+---@return userdata
+function gfx.objLoad(filepath) end
+
+---@param content string Filepath to the .obj file
+---@param isFilepath boolean use 'content' as filepath or obj file content
+---@return userdata
+function gfx.objLoad(content, isFilepath) end
+
+---Renders a obj mesh (you can move scale and rotate it with gfx.pushTransformation)
+---@param mesh userdata
+function gfx.objRender(mesh) end
+
+---Renders a obj mesh with texture (you can move scale and rotate it with gfx.pushTransformation)
+---@param mesh userdata
+---@param texture string
+function gfx.objRender(mesh, texture) end
+
+
 ---Pushes transformation(s)
 ---@param transformations table
 function gfx.pushTransformation(transformations) end
@@ -437,3 +457,4 @@ function gfx.popTransformation() end
 ---Pops transformation(s)
 ---@param count integer Number of transformations to pop
 function gfx.popTransformation(count) end
+
