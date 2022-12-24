@@ -39,7 +39,7 @@ function gfx2.fillRect(x, y, width, height) end
 ---@param width number Width of the rectangle
 ---@param height number Height of the rectangle
 ---@param lineWidth number How large is the line
-function gfx2.fillRect(x, y, width, height, lineWidth) end
+function gfx2.drawRect(x, y, width, height, lineWidth) end
 
 ---Fills a rectangle with rounded corners
 ---@param x number Position on the X axis
