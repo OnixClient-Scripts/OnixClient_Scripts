@@ -56,7 +56,7 @@ function gfx2.fillRoundRect(x, y, width, height, radius) end
 ---@param height number Height of the rectangle
 ---@param radius number Radius of the rounded corners
 ---@param lineWidth number How large is the line
-function gfx2.drawRoundRect(x, y, width, height, lineWidth, radius) end
+function gfx2.drawRoundRect(x, y, width, height, radius, lineWidth) end
 
 
 ---Fills an elipse (circle but possibly wider)
