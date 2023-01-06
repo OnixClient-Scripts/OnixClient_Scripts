@@ -141,6 +141,10 @@ function _acp_BinaryFile:writeDouble(Double) end
 ---@param Text string the text to put in the file
 function _acp_BinaryFile:writeString(Text) end
 
+---Writes Data to the file
+---@param Data userdata the data to put in the file
+function _acp_BinaryFile:writeRaw(Data) end
+
 
 
 
@@ -186,6 +190,9 @@ function _acp_BinaryFile:readDouble() end
 ---@return string Text The text that was read
 function _acp_BinaryFile:readString() end
 
+---Reads Data from the file
+---@return userdata Data The data that was read
+function _acp_BinaryFile:readRaw() end
 
 
 
