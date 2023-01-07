@@ -1,6 +1,6 @@
 
 #close vscode
-taskkill /f /im Code.exe
+Stop-Process -Force -Name "Code"
 
 #make sure it is installed / we have the code command
 if ((Get-Command -Name "code" -ErrorAction SilentlyContinue) -eq $null) {
@@ -127,6 +127,6 @@ try {
 Write-Host
 
 Write-Host "Opening Visual studio in the Scripts workspace"
-Start-Process -FilePath "code" -ArgumentList $onixClientScriptsFolder
+Start-Process -FilePath "code" -ArgumentList $onixClientScriptsFolder -WindowStyle Hidden
 
 
