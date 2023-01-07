@@ -1,6 +1,6 @@
 
 #close vscode
-Stop-Process -Force -Name "Code"
+Stop-Process -Force -Name "Code" -ErrorAction SilentlyContinue
 
 #make sure it is installed / we have the code command
 if ((Get-Command -Name "code" -ErrorAction SilentlyContinue) -eq $null) {
