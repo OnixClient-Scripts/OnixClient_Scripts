@@ -127,6 +127,6 @@ try {
 Write-Host
 
 Write-Host "Opening Visual studio in the Scripts workspace"
-cmd.exe /c "code $($onixClientScriptsFolder) &"
+Start-Process -FilePath "code" -ArgumentList $onixClientScriptsFolder
 
 
