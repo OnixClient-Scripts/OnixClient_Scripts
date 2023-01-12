@@ -40,7 +40,7 @@ client.settings.addAir(2)
 client.settings.addBool("RPC Settings", "displaySettings")
 client.settings.addDependentBool("Display Gamemode?", "displayGamemode", "displaySettings")
 client.settings.addDependentBool("Display Username?", "displayUsername", "displaySettings")
-client.settings.addDependentBool("Display Level?", "displayLevel", "displaySettings")
+client.settings.addDependentBool("Display Level? (Hive Only)", "displayLevel", "displaySettings")
 
 local formattedGamemodes = {
     DROP = "Block Drop",
@@ -70,7 +70,7 @@ formattedGamemodes["SKY-KITS"] = "Skywars Kits"
 formattedGamemodes["SKY-KITS-DUOS"] = "Skywars Kits: Duos"
 formattedGamemodes["SKY-MEGA"] = "Skywars Mega"
 formattedGamemodes["BUILD-DUOS"] = "Just Build: Duos"
-formattedGamemodes["BUILDX"] = "§5Just Build: Extended"
+formattedGamemodes["BUILDX"] = "Just Build: Extended"
 formattedGamemodes["BUILDX-DUOS"] = "Just Build: Extended, Duos"
 
 globalLevel = 0
@@ -156,7 +156,7 @@ function update(dt)
         globalLevel = 0
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
         io.output(file)
-        io.write("Playing Skyblock")
+        io.write("In The Hub")
         io.close(file)
     elseif lastGamemode ~= nil and gameLobby == false then
         if displayLevel == true then
@@ -175,14 +175,10 @@ function update(dt)
             io.close(file)
         end
     elseif lastGamemode ~= nil and gameLobby == true then
-        if displayLevel == true then
+        if displayLevel == true and globalLevel ~= (nil or 0) then
             local file = io.open("RPC/RPCHelperGamemode.txt", "w")
             io.output(file)
-            if globalLevel == 0 then
-                io.write("Queuing " .. formattedGamemode)
-            else
-                io.write("Queuing " .. formattedGamemode.. " (Lvl: " .. globalLevel .. ")")
-            end
+			io.write("Queuing " .. formattedGamemode.. " (Lvl: " .. globalLevel .. ")")
             io.close(file)
         else
             local file = io.open("RPC/RPCHelperGamemode.txt", "w")
@@ -199,13 +195,44 @@ zeqaGamemode = ""
 opponent = ""
 function onChat(message, username, type)
     if string.find(message, "§aWelcome to Galaxite") then
-        prefix = "Playing Galaxite"
+		hub = true
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
         io.output(file)
         io.write(prefix)
         io.close(file)
     end
-    --zeqa
+	if message:find(" §6Joining ") then
+		hub = false
+		local galaxiteTeam = ""
+		local temp = message:sub(16)
+		if temp:find("Solo") then
+			galaxiteTeam = "Solos"
+			temp = temp:gsub(" Solo", "")
+		elseif temp:find("Double") then
+			galaxiteTeam = "Doubles"
+			temp = temp:gsub(" Double", "")
+		elseif temp:find("Quad") then
+			galaxiteTeam = "Quads"
+			temp = temp:gsub(" Quad", "")
+		end
+		if galaxiteTeam == "" then
+			prefix = temp
+		else
+			prefix = temp .. " (" .. galaxiteTeam .. ")"
+		end
+		formattedGamemode = prefix
+		lastGamemode = prefix
+	end
+	--cubecraft
+	if message:find("is starting in §r§e§e§r§e§e5§r§e§e seconds") then
+		hub = false
+		local temp = message:gsub("§.", "")
+		temp = temp:gsub(" is starting in 5 seconds.", "")
+		prefix = temp
+		formattedGamemode = prefix
+		lastGamemode = prefix
+	end
+	--zeqa
     if string.find(message,"§eZEQA§8 » §r§7You have joined the queue for") then
         hub = false
         zeqaGamemode = string.gsub(message,"§eZEQA§8 » §r§7You have joined the queue for ","")

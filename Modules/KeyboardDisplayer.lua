@@ -1,140 +1,166 @@
 name = "Keyboard Displayer"
 description = "Show what Keyboard keys you have pressed"
 
+--[[
+	If you want to add extra keys:
+	- https://github.com/OnixClient-Scripts/OnixClient_Scripts/blob/master/Libs/keyconverter.lua or 
+	- https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+]]--
+
 positionX = 0
 positionY = 0
 
 sizeX = 270
 sizeY = 108
 
-backgroundColor = { 0, 0, 0, 82 }
-client.settings.addColor("Background color", "backgroundColor")
-
-keyColor = { 0, 0, 0, 49 }
-client.settings.addColor("Key color", "keyColor")
-
-pressedKeyColor = { 255, 18, 18, 77 }
-client.settings.addColor("Pressed key color", "pressedKeyColor")
-
-reservedColor = { 255, 120, 0, 74 }
-client.settings.addColor("Reserved key color", "reservedColor")
-
-textColor = { 255, 255, 255, 100 }
-client.settings.addColor("Text color", "textColor")
+backgroundColor = client.settings.addNamelessColor("Background color", { 0, 0, 0, 82 })
+keyColor = client.settings.addNamelessColor("Key color", { 0, 0, 0, 49 })
+pressedKeyColor = client.settings.addNamelessColor("Pressed key color", { 255, 18, 18, 77 })
+reservedColor = client.settings.addNamelessColor("Reserved key color", { 255, 120, 0, 74 })
+textColor = client.settings.addNamelessColor("Text color", { 255, 255, 255, 100 })
 
 keyboardSizeX = 270
 keyboardSizeY = 108
 
-keyboard = {
-	[0x08] = { translation = "BackSpace" , x = 233, y = 18, sizeX = 37, sizeY = 16, reserved = false, pressed = false },
-	[0x09] = { translation = "Tab"       , x = 0  , y = 36, sizeX = 24, sizeY = 16, reserved = false, pressed = false },
-	[0x0D] = { translation = "Enter"     , x = 227, y = 54, sizeX = 43, sizeY = 16, reserved = false, pressed = false },
-	[0x10] = { translation = "Shift"     , x = 0  , y = 72, sizeX = 36, sizeY = 16, reserved = false, pressed = false },
-	[0x11] = { translation = "Ctrl"      , x = 0  , y = 90, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x12] = { translation = "Alt"       , x = 164, y = 90, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x14] = { translation = "CapsLock"  , x = 0  , y = 54, sizeX = 27, sizeY = 16, reserved = false, pressed = false },
-	[0x1B] = { translation = "Esc"       , x = 0  , y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x20] = { translation = "Space"     , x = 74 , y = 90, sizeX = 88, sizeY = 16, reserved = false, pressed = false },
-	[0x25] = { translation = "Left"      , x = 218, y = 90, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x26] = { translation = "Up"        , x = 236, y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x27] = { translation = "Right"     , x = 254, y = 90, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x28] = { translation = "Down"      , x = 236, y = 90, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x30] = { translation = "0"         , x = 179, y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x31] = { translation = "1"         , x = 17 , y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x32] = { translation = "2"         , x = 35 , y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x33] = { translation = "3"         , x = 53 , y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x34] = { translation = "4"         , x = 71 , y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x35] = { translation = "5"         , x = 89 , y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x36] = { translation = "6"         , x = 107, y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x37] = { translation = "7"         , x = 125, y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x38] = { translation = "8"         , x = 143, y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x39] = { translation = "9"         , x = 161, y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x41] = { translation = "A"         , x = 29 , y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x42] = { translation = "B"         , x = 110, y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x43] = { translation = "C"         , x = 74 , y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x44] = { translation = "D"         , x = 65 , y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x45] = { translation = "E"         , x = 62 , y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x46] = { translation = "F"         , x = 83 , y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x47] = { translation = "G"         , x = 101, y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x48] = { translation = "H"         , x = 119, y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x49] = { translation = "I"         , x = 152, y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x4A] = { translation = "J"         , x = 137, y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x4B] = { translation = "K"         , x = 155, y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x4C] = { translation = "L"         , x = 173, y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x4D] = { translation = "M"         , x = 146, y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x4E] = { translation = "N"         , x = 128, y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x4F] = { translation = "O"         , x = 170, y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x50] = { translation = "P"         , x = 188, y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x51] = { translation = "Q"         , x = 26 , y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x52] = { translation = "R"         , x = 80 , y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x53] = { translation = "S"         , x = 47 , y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x54] = { translation = "T"         , x = 98 , y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x55] = { translation = "U"         , x = 134, y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x56] = { translation = "V"         , x = 92 , y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x57] = { translation = "W"         , x = 44 , y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x58] = { translation = "X"         , x = 56 , y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x59] = { translation = "Y"         , x = 116, y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x5A] = { translation = "Z"         , x = 38 , y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0x70] = { translation = "F1"        , x = 18 , y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x71] = { translation = "F2"        , x = 34 , y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x72] = { translation = "F3"        , x = 50 , y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x73] = { translation = "F4"        , x = 66 , y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x74] = { translation = "F5"        , x = 82 , y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x75] = { translation = "F6"        , x = 98 , y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x76] = { translation = "F7"        , x = 114, y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x77] = { translation = "F8"        , x = 130, y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x78] = { translation = "F9"        , x = 146, y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x79] = { translation = "F10"       , x = 162, y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x7A] = { translation = "F11"       , x = 178, y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0x7B] = { translation = "F12"       , x = 194, y = 2 , sizeX = 14, sizeY = 14, reserved = false, pressed = false },
-	[0xBC] = { translation = ", <"       , x = 164, y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0xBE] = { translation = ". >"       , x = 182, y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0xBF] = { translation = "? /"       , x = 200, y = 72, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0xBA] = { translation = ": ;"       , x = 191, y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-  [0xDE] = { translation = "\" '"      , x = 209, y = 54, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0xDB] = { translation = "{ ["       , x = 206, y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0xDD] = { translation = "} ]"       , x = 224, y = 36, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-  [0xDC] = { translation = "| \\"      , x = 242, y = 36, sizeX = 28, sizeY = 16, reserved = false, pressed = false },
-	[0xBD] = { translation = "- _"       , x = 197, y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0xBB] = { translation = "+ ="       , x = 215, y = 18, sizeX = 16, sizeY = 16, reserved = false, pressed = false },
-	[0xC0] = { translation = "~ `"       , x = 0  , y = 18, sizeX = 15, sizeY = 16, reserved = false, pressed = false },
-	--- Reserved keys --- 
-	[0x07] = { translation = ""          , x = 18 , y = 90, sizeX = 54, sizeY = 16, reserved = true , pressed = false },
-	[0x0E] = { translation = ""          , x = 212, y = 2 , sizeX = 58, sizeY = 14, reserved = true , pressed = false },
-	[0x3A] = { translation = ""          , x = 182, y = 90, sizeX = 34, sizeY = 16, reserved = true , pressed = false },
-	[0x88] = { translation = ""          , x = 218, y = 72, sizeX = 16, sizeY = 16, reserved = true , pressed = false },
-	[0x97] = { translation = ""          , x = 254, y = 72, sizeX = 16, sizeY = 16, reserved = true , pressed = false }
-}
+function createKeyboard(name)
+	local keyboard = { id = name, keys = { } }
+	
+	keyboard.createKey = function(id, _translation, _x, _y, _sizeX, _sizeY, _reserved, _pressed, _toggleable)
+		if keyboard then 
+			keyboard.keys[id] = { translation = _translation, x = _x, y = _y, sizeX = _sizeX, sizeY = _sizeY, reserved = _reserved , pressed = _pressed, toggleable = _toggleable }
+		end 
+	end 
+	
+	keyboards[name] = keyboard
+	
+	return keyboard
+end
+
+keyboards = { }
+selectedKeyboard = "english"
+
+keyboard = createKeyboard(selectedKeyboard);
+keyboard.createKey(0x07, ""         , 18 , 90, 54, 16, true , false, false)
+keyboard.createKey(0x08, "BackSpace", 233, 18, 37, 16, false, false, false)
+keyboard.createKey(0x09, "Tab"      , 0  , 36, 24, 16, false, false, false)
+keyboard.createKey(0x0D, "Enter"    , 227, 54, 43, 16, false, false, false)
+keyboard.createKey(0x0E, ""         , 212, 2 , 58, 14, true , false, false)
+keyboard.createKey(0x10, "Shift"    , 0  , 72, 36, 16, false, false, false)
+keyboard.createKey(0x11, "Ctrl"     , 0  , 90, 16, 16, false, false, false)
+keyboard.createKey(0x12, "Alt"      , 164, 90, 16, 16, false, false, false)
+keyboard.createKey(0x14, "CapsLock" , 0  , 54, 27, 16, false, false, true )
+keyboard.createKey(0x97, ""         , 254, 72, 16, 16, true , false, false)
+keyboard.createKey(0x1B, "Esc"      , 0  , 2 , 14, 14, false, false, false)
+keyboard.createKey(0x20, "Space"    , 74 , 90, 88, 16, false, false, false)
+keyboard.createKey(0x25, "Left"     , 218, 90, 16, 16, false, false, false)
+keyboard.createKey(0x26, "Up"       , 236, 72, 16, 16, false, false, false)
+keyboard.createKey(0x27, "Right"    , 254, 90, 16, 16, false, false, false)
+keyboard.createKey(0x28, "Down"     , 236, 90, 16, 16, false, false, false)
+keyboard.createKey(0x30, "0"        , 179, 18, 16, 16, false, false, false)
+keyboard.createKey(0x31, "1"        , 17 , 18, 16, 16, false, false, false)
+keyboard.createKey(0x32, "2"        , 35 , 18, 16, 16, false, false, false)
+keyboard.createKey(0x33, "3"        , 53 , 18, 16, 16, false, false, false)
+keyboard.createKey(0x34, "4"        , 71 , 18, 16, 16, false, false, false)
+keyboard.createKey(0x35, "5"        , 89 , 18, 16, 16, false, false, false)
+keyboard.createKey(0x36, "6"        , 107, 18, 16, 16, false, false, false)
+keyboard.createKey(0x37, "7"        , 125, 18, 16, 16, false, false, false)
+keyboard.createKey(0x38, "8"        , 143, 18, 16, 16, false, false, false)
+keyboard.createKey(0x39, "9"        , 161, 18, 16, 16, false, false, false)
+keyboard.createKey(0xBA, ": ;"      , 191, 54, 16, 16, false, false, false)
+keyboard.createKey(0xBB, "+ ="      , 215, 18, 16, 16, false, false, false)
+keyboard.createKey(0xBC, ", <"      , 164, 72, 16, 16, false, false, false)
+keyboard.createKey(0xBD, "- _"      , 197, 18, 16, 16, false, false, false)
+keyboard.createKey(0xBE, ". >"      , 182, 72, 16, 16, false, false, false)
+keyboard.createKey(0xBF, "? /"      , 200, 72, 16, 16, false, false, false)
+keyboard.createKey(0xC0, "~ `"      , 0  , 18, 15, 16, false, false, false)
+keyboard.createKey(0x41, "A"        , 29 , 54, 16, 16, false, false, false)
+keyboard.createKey(0x42, "B"        , 110, 72, 16, 16, false, false, false)
+keyboard.createKey(0x43, "C"        , 74 , 72, 16, 16, false, false, false)
+keyboard.createKey(0x44, "D"        , 65 , 54, 16, 16, false, false, false)
+keyboard.createKey(0x45, "E"        , 62 , 36, 16, 16, false, false, false)
+keyboard.createKey(0x46, "F"        , 83 , 54, 16, 16, false, false, false)
+keyboard.createKey(0x47, "G"        , 101, 54, 16, 16, false, false, false)
+keyboard.createKey(0x48, "H"        , 119, 54, 16, 16, false, false, false)
+keyboard.createKey(0x49, "I"        , 152, 36, 16, 16, false, false, false)
+keyboard.createKey(0x4A, "J"        , 137, 54, 16, 16, false, false, false)
+keyboard.createKey(0x4B, "K"        , 155, 54, 16, 16, false, false, false)
+keyboard.createKey(0x4C, "L"        , 173, 54, 16, 16, false, false, false)
+keyboard.createKey(0x4D, "M"        , 146, 72, 16, 16, false, false, false)
+keyboard.createKey(0x4E, "N"        , 128, 72, 16, 16, false, false, false)
+keyboard.createKey(0x4F, "O"        , 170, 36, 16, 16, false, false, false)
+keyboard.createKey(0x50, "P"        , 188, 36, 16, 16, false, false, false)
+keyboard.createKey(0x51, "Q"        , 26 , 36, 16, 16, false, false, false)
+keyboard.createKey(0x52, "R"        , 80 , 36, 16, 16, false, false, false)
+keyboard.createKey(0x53, "S"        , 47 , 54, 16, 16, false, false, false)
+keyboard.createKey(0x54, "T"        , 98 , 36, 16, 16, false, false, false)
+keyboard.createKey(0x55, "U"        , 134, 36, 16, 16, false, false, false)
+keyboard.createKey(0x56, "V"        , 92 , 72, 16, 16, false, false, false)
+keyboard.createKey(0x57, "W"        , 44 , 36, 16, 16, false, false, false)
+keyboard.createKey(0x58, "X"        , 56 , 72, 16, 16, false, false, false)
+keyboard.createKey(0x59, "Y"        , 116, 36, 16, 16, false, false, false)
+keyboard.createKey(0x5A, "Z"        , 38 , 72, 16, 16, false, false, false)
+keyboard.createKey(0xDB, "{ ["      , 206, 36, 16, 16, false, false, false)
+keyboard.createKey(0xDC, "| \\"     , 242, 36, 28, 16, false, false, false)
+keyboard.createKey(0xDD, "} ]"      , 224, 36, 16, 16, false, false, false)
+keyboard.createKey(0xDE, "\" '"     , 209, 54, 16, 16, false, false, false)
+keyboard.createKey(0x70, "F1"       , 18 , 2 , 14, 14, false, false, false)
+keyboard.createKey(0x71, "F2"       , 34 , 2 , 14, 14, false, false, false)
+keyboard.createKey(0x72, "F3"       , 50 , 2 , 14, 14, false, false, false)
+keyboard.createKey(0x73, "F4"       , 66 , 2 , 14, 14, false, false, false)
+keyboard.createKey(0x74, "F5"       , 82 , 2 , 14, 14, false, false, false)
+keyboard.createKey(0x75, "F6"       , 98 , 2 , 14, 14, false, false, false)
+keyboard.createKey(0x76, "F7"       , 114, 2 , 14, 14, false, false, false)
+keyboard.createKey(0x77, "F8"       , 130, 2 , 14, 14, false, false, false)
+keyboard.createKey(0x78, "F9"       , 146, 2 , 14, 14, false, false, false)
+keyboard.createKey(0x79, "F10"      , 162, 2 , 14, 14, false, false, false)
+keyboard.createKey(0x7A, "F11"      , 178, 2 , 14, 14, false, false, false)
+keyboard.createKey(0x7B, "F12"      , 194, 2 , 14, 14, false, false, false)
+keyboard.createKey(0x88, ""         , 218, 72, 16, 16, true , false, false)
+keyboard.createKey(0x3A, ""         , 182, 90, 34, 16, true , false, false)
 
 event.listen("KeyboardInput", function(key, isDown)
-  local data = keyboard[key]
+  local data = keyboards[selectedKeyboard]
   if data then 
-    data.pressed = isDown
+	local key = data.keys[key]
+	if key then 
+		if key.toggleable then 
+			if isDown == false then
+				return
+			end 
+			key.pressed = key.pressed == false
+		else key.pressed = isDown end 
+	end
   end
 end)
 
-function render(deltaTime) 
-  gfx.color(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a)
-  gfx.roundRect(0, 0, keyboardSizeX, keyboardSizeY, 2, 10)
+function render2(deltaTime) 
+	local keyboard = keyboards[selectedKeyboard];
+	
+	if keyboard == nil then
+		return
+	end 
+	
+	gfx2.color(backgroundColor)
+	gfx2.fillRect(0, 0, keyboardSizeX, keyboardSizeY, 10)
     
-  local color = nil;
+	local color = nil
   
-  for code, data in pairs(keyboard) do 
-    if data.pressed then
-      color = pressedKeyColor
-    else
-      if data.reserved then
-        color = reservedColor
-      else 
-        color = keyColor
-      end 
-    end 
+	for code, data in pairs(keyboard.keys) do 
+		if data.pressed then
+			color = pressedKeyColor
+		else
+			if data.reserved then
+				color = reservedColor
+			else 
+				color = keyColor
+			end 
+		end 
     
-    gfx.color(color.r, color.g, color.b, color.a)
-    gfx.roundRect(data.x, data.y, data.sizeX, data.sizeY, 2, 10)
+		gfx2.color(color)
+		gfx2.fillRect(data.x, data.y, data.sizeX, data.sizeY, 2)
  	
-    gfx.color(textColor.r, textColor.g, textColor.b, textColor.a)
-    gfx.text(data.x + 4, data.y + 5, data.translation, 0.5)
-  end
+		gfx2.color(textColor)
+		gfx2.text(data.x + 4, data.y + 5, data.translation, 0.5)
+	end
 end
 
