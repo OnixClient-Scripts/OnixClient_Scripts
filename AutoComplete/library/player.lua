@@ -316,6 +316,8 @@ local _acp_Enchants = {}
 ---@field leggings Item|nil the item on the legs
 ---@field boots Item|nil the item on the feets
 
+
+
 ---@class Inventory
 ---@field size integer The size of the inventory
 ---@field selected integer The selected slot in the inventory (hotbar)
@@ -329,14 +331,58 @@ function _acp_Inventory.armor() end
 ---@return Item|nil offhand The item in the offhand
 function _acp_Inventory.offhand() end
 
+
 ---The item in slot or nil
 ---@param slot integer The inventory slot
 ---@return Item|nil item The item if present otherwise nil for air
 function _acp_Inventory.at(slot) end
 
+
+--- Which slot to access, slots are listed below
+--- 1 = Inventory Holding 
+--- 2 = Anvil Input
+--- 3 = Anvil Material
+--- 4 = Stone Cutter Input
+--- 5 = Trade2 Ingredient 1
+--- 6 = Trade2 Ingredient 2
+--- 7 = Trade Ingredient 1
+--- 8 = Trade Ingredient 2
+--- 10 = Loom Input
+--- 11 = Loom Dye
+--- 12 = Loom Material
+--- 13 = Cartography Input
+--- 14 = Cartography Additional
+--- 15 = Enchanting Input
+--- 16 = Enchanting Material
+--- 17 = Grindstone Input
+--- 18 = Grindstone Additional
+--- 28 = BeaconPayment
+--- 29 = Crafting 2x2 Input 1
+--- 30 = Crafting 2x2 Input 2
+--- 31 = Crafting 2x2 Input 3
+--- 32 = Crafting 2x2 Input 4
+---
+--- 33 = Crafting 3x3 Input 1
+--- 34 = Crafting 3x3 Input 2
+--- 35 = Crafting 3x3 Input 3
+--- 36 = Crafting 3x3 Input 4
+--- 37 = Crafting 3x3 Input 5
+--- 38 = Crafting 3x3 Input 6
+--- 39 = Crafting 3x3 Input 7
+--- 40 = Crafting 3x3 Input 8
+--- 41 = Crafting 3x3 Input 9
+--- 51 = CreatedItemOutput
+---@param slot integer
+---@return Item|nil
+function _acp_Inventory.ui(slot) end
+
 ---Gets the contents of the players inventory
 ---@return Inventory inventory The player's inventory
 function player.inventory() end
+
+
+
+
 
 ---Gets the player skin
 ---@return Skin skin The user's current skin
