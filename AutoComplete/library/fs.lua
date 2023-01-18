@@ -199,8 +199,9 @@ function _acp_BinaryFile:readDouble() end
 function _acp_BinaryFile:readString() end
 
 ---Reads Data from the file
+---@param bytesToRead integer How many bytes to read
 ---@return userdata Data The data that was read
-function _acp_BinaryFile:readRaw() end
+function _acp_BinaryFile:readRaw(bytesToRead) end
 
 
 
