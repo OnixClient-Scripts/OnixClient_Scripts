@@ -76,6 +76,36 @@ function client.settings.addTextbox(name, variableName) end
 ---@return Setting setting The setting that was added
 function client.settings.addTextbox(name, variableName, maxCharacters) end
 
+---Adds a category in the UI
+---@param name string The name of the setting in the UI
+---@return Setting setting The setting that was added
+function client.settings.addCategory(name) end
+
+---Adds a category in the UI
+---@param name string The name of the setting in the UI
+---@param settingCount integer The maximum amount of letters in the textbox
+---@return Setting setting The setting that was added
+function client.settings.addCategory(name, settingCount) end
+
+---Ends the last added category here
+function client.settings.stopCategory() end
+
+---Adds a dropdown of values in the UI
+---@param name string The name of the setting in the UI
+---@param variableName string The name of the global variable that contains the setting value 
+---@param enumValues table[] The values of the enum in the following format: { {1, "first", 7, "second"} } basically number value and a name for that number
+---@return Setting setting The setting that was added
+function client.settings.addEnum(name, variableName, enumValues) end
+
+---Adds a dropdown of values in the UI
+---@param name string The name of the setting in the UI
+---@param defaultValue integer The default value, make sure it exists tho
+---@param enumValues table[] The values of the enum in the following format: { {1, "first", 7, "second"} } basically number value and a name for that number
+---@return Setting setting The setting that was added
+function client.settings.addNamelessEnum(name, defaultValue, enumValues) end
+
+
+
 
 
 
@@ -125,6 +155,17 @@ function client.settings.addNamelessTextbox(name, defaultValue) end
 ---@param maxCharacters integer The maximum amount of letters in the textbox
 ---@return Setting setting The setting that was added
 function client.settings.addNamelessTextbox(name, defaultValue, maxCharacters) end
+
+
+---Adds a category in the ui
+---@param name string The name of this category
+function client.settings.addNamelessCategory(name) end
+---Adds a category in the ui
+---@param name string The name of this category
+---@param SettingCount integer How many settings to include in this category
+function client.settings.addNamelessCategory(name, SettingCount) end
+
+
 
 
 ---Sends setting value from the script to the client
