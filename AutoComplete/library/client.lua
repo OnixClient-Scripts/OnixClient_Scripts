@@ -172,6 +172,7 @@ function client.getConfigManager(scripting) end
 ---@field max integer|number|Vector2|nil Maximum value of the setting
 ---@field scale number The scale of info settings
 ---@field parent Module the parent module
+---@field enumValues table[] table of tables, e.g. { {value, name}, {value2, name2} }
 
 
 
