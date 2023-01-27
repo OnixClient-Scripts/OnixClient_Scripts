@@ -93,14 +93,14 @@ function client.settings.stopCategory() end
 ---Adds a dropdown of values in the UI
 ---@param name string The name of the setting in the UI
 ---@param variableName string The name of the global variable that contains the setting value 
----@param enumValues table[] The values of the enum in the following format: { {1, "first", 7, "second"} } basically number value and a name for that number
+---@param enumValues table[] The values of the enum in the following format: { {1, "first"}, {7, "second"} } basically number value and a name for that number
 ---@return Setting setting The setting that was added
 function client.settings.addEnum(name, variableName, enumValues) end
 
 ---Adds a dropdown of values in the UI
 ---@param name string The name of the setting in the UI
 ---@param defaultValue integer The default value, make sure it exists tho
----@param enumValues table[] The values of the enum in the following format: { {1, "first", 7, "second"} } basically number value and a name for that number
+---@param enumValues table[] The values of the enum in the following format: { {1, "first"}, {7, "second"} } basically number value and a name for that number
 ---@return Setting setting The setting that was added
 function client.settings.addNamelessEnum(name, defaultValue, enumValues) end
 
