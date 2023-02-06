@@ -468,7 +468,6 @@ function getRegularMessage(playerKilled)
 end
 
 function onChat(message, username, type)
-
     if string.find(message," joined. §8") then
         client.execute("execute /connection")
     end
@@ -498,11 +497,10 @@ function onChat(message, username, type)
         end
     end
 	if attacker == "You" or attacker == player.name() then
-		if toxicMessages == true or randomMessages == true or packetMessages == true or ngMessages == true and rareMessage == 86 then
-			client.execute("say this is a very rare message of good game (1 in 250 million chance this shows), @" .. target .. " <3") -- this has a 1/250,000,000 chance of being sent! make sure to screenshot if you see it <3
+		if rareMessage == 86 then
+			client.execute("say this is a very rare message of good game, @" .. target .. " <3")
 			return
 		end
-
 		if allMessages == true then
 			local randomNumber = math.random(1,6)
 			if randomNumber == 1 then
