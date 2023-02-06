@@ -8,7 +8,15 @@ positionY = 165
 name = "PvP Helper"
 description = "A mod that can help you improve your PvP."
 
-importLib("renderthreeD")
+-- this function was written by Raspberry
+function cubexyz(x, y, z, sx, sy, sz)
+    gfx.quad(x, y, z, x + sx, y, z, x + sx, y + sy, z, x, y + sy, z, true)
+    gfx.quad(x, y, z + sz, x + sx, y, z + sz, x + sx, y + sy, z + sz, x, y + sy, z + sz, true)
+    gfx.quad(x, y, z, x, y, z + sz, x, y + sy, z + sz, x, y + sy, z, true)
+    gfx.quad(x + sx, y, z, x + sx, y, z + sz, x + sx, y + sy, z + sz, x + sx, y + sy, z, true)
+    gfx.quad(x, y, z, x + sx, y, z, x + sx, y, z + sz, x, y, z + sz, true)
+    gfx.quad(x, y + sy, z, x + sx, y + sy, z, x + sx, y + sy, z + sz, x, y + sy, z + sz, true)
+end
 
 function render3d()
     px, py, pz = player.pposition()

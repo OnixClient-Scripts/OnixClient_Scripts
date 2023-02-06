@@ -3,9 +3,9 @@ description = "A customizable coordinates module"
 --[[Better Coordinates Credits:
 Shige - Creator of Nether Translator Module (Which I may or may not have stolen (please don't sue me))
 Onix - Helped Shige with Nether Translator Module and supported dOGbone (and made Onix Client (also please give me scripting role))
-Jams - For calling out dOGbone on his stupidity (But in a positive and helpful way)
+Rosie - For calling out dOGbone on his stupidity (But in a positive and helpful way)
+Potatosare - Found issues with dimension settings
 dOGbone - For making objectively decent code]]
-
 --Module Settings
 sameLine = true
 position = true
@@ -41,16 +41,16 @@ client.settings.addAir(2.5)
 function render(deltaTime)
    local player_x, player_y, player_z = player.position()
 	if (dimension.id() == 1) and universal == true then
-        player_x = math.floor(player_x * 8)
-        player_z = math.floor(player_z * 8)
+        	player_x = math.floor(player_x * 8)
+        	player_z = math.floor(player_z * 8)
 	end
 	if (dimension.id() == 1) and translator == true then
-		player_x = math.floor(player_x / 8)
-        player_z = math.floor(player_z / 8)
+		player_x = math.floor(player_x * 8)
+        	player_z = math.floor(player_z * 8)
 	end
 	if (dimension.id() ~= 1) and translator == true then
-		player_x = math.floor(player_x * 8)
-		player_z = math.floor(player_z * 8)
+		player_x = math.floor(player_x / 8)
+		player_z = math.floor(player_z / 8)
 	end
 --Module Display
    if showXYZ == true and colored == true and position == true then 
