@@ -1,6 +1,7 @@
 // Made by Tom16 to generate index.json
 
 const { readdir, readFile, writeFile } = require("fs/promises");
+const crypto = require("crypto");
 const path = require("path");
 
 (async () => {
@@ -23,6 +24,7 @@ const path = require("path");
                 moduleContent
                     .match(/registerCommand( *?)\(('|")(.+?)('|")/g)
                     ?.map?.((x) => x.match(/(('|")(.+?)('|"))/)[3]) ?? [];
+            const moduleHash = crypto.createHash("md5").update(moduleContent).digest().toString("hex");
             return {
                 name: moduleName,
                 file: moduleFile,
@@ -32,6 +34,7 @@ const path = require("path");
                     moduleFile,
                 libs: moduleDeps,
                 commands: moduleCommands,
+                hash: moduleHash,
             };
         })
     );
@@ -53,7 +56,7 @@ const path = require("path");
                 commandContent
                     .match(/importLib( *?)\(( *?)("|')(.+?)("|')\)/g)
                     ?.map?.((x) => x.match(/(('|")(.+?)('|"))/)[3].replace(/\.lua$/, "")) ?? [];
-
+            const commandHash = crypto.createHash("md5").update(commandContent).digest().toString("hex");
             return {
                 name: commandName,
                 file: commandFile,
@@ -62,23 +65,31 @@ const path = require("path");
                     "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/" +
                     commandFile,
                 libs: commandDeps,
+                hash: commandHash,
             };
         })
     );
 
     //libs
     const libs = await readdir(path.join(__dirname, "../Libs"));
-    const libIndex = libs.map((libFile) => ({
-        name: libFile.replace(/\.lua$/, ""),
-        file: libFile,
-        url: "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/" + libFile,
-    }));
+    const libIndex = await Promise.all(
+        libs.map(async (libFile) => {
+            const libContent = await readFile(path.join(__dirname, "../Libs", libFile));
+            const libHash = crypto.createHash("md5").update(libContent).digest().toString("hex");
+            return {
+                name: libFile.replace(/\.lua$/, ""),
+                file: libFile,
+                url: "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/" + libFile,
+                hash: libHash,
+            };
+        })
+    );
 
     const index = {
         modules: moduleIndex,
         commands: commandIndex,
         libs: libIndex,
     };
-    await writeFile("../index.json", JSON.stringify(index, null, 2));
+    await writeFile(path.join(__dirname, "../index.json"), JSON.stringify(index, null, 2));
     console.dir(index, { depth: 2 });
 })();
