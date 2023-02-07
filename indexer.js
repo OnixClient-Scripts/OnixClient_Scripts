@@ -1,3 +1,5 @@
+// Made by Tom16 to generate index.json
+
 const { readdir, readFile, writeFile } = require("fs/promises");
 const path = require("path");
 
