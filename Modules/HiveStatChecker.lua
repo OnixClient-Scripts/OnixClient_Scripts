@@ -5,7 +5,6 @@ description = "Allows you to check the statistics of people in-game."
     by rosie
     thnx onix for being epic and making the brain of the script lol
 ]]
-
 importLib("hiveGamemodes")
 importLib("DependentBoolean")
 
@@ -18,6 +17,7 @@ checkStatsOnJoin = client.settings.addNamelessBool("Display Stats On User Joined
 client.settings.addAir(5)
 client.settings.addBool("Stat Display Type","fullStats")
 function update()
+	if loadedLib == false then return end
     if fullStats == true then
         statMode = "Displaying Full Stats"
     else
@@ -28,6 +28,7 @@ function epochToDate(epoch)
     local date = os.date("*t", epoch)
     return date.day .. "/" .. date.month .. "/" .. date.year
 end
+
 client.settings.addDependentInfo("statMode","fullStats")
 
 ign = ""
@@ -151,6 +152,10 @@ end
 autoPlayerSearch = false
 function onNetworkData(code, netGamemode, data)
     if code == 0 then
+		if netGamemode == "libDownload" then
+			client.execute("lua reload")
+			loadedLib = true
+		end
         result = jsonToTable(data)
         if type(result) ~= "table" then
             print("Error...")
@@ -377,11 +382,6 @@ registerCommand("stats", function (arguments)
 		end
     end
 end)
-
-function postInit()
-    client.execute("lua autoreload")
-    client.execute("toggle on script " .. name)
-end
 -- function onChat(message,username,type)
 --     if checkStatsOnJoin.value == true then
 --         if string.find(message,"joined. §8") then
