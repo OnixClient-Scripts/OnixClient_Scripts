@@ -22,10 +22,29 @@
 ​
 
 ## How to install scripts
+
+### Setup script
+
+Use this setup script to get started quickly and easily.
+Press `Win + R` and paste this in:
+
+```
+powershell.exe -nop -c "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Extras/SetupScript.ps1')"
+```
+
+This will set up the whole environment:
+
+-   Install the lua extension
+-   Install the autocomplete
+-   Open VSCode in the correct folder
+
 ### Video:
+
 [How to get started with OnixClient Scripting](https://youtu.be/8jy_jE-MSoo)
 [![How to get started with OnixClient Scripting](https://cdn.discordapp.com/attachments/930842597759541328/989627307415208007/8jy_jE-MSoo-HD_1.jpg)](https://youtu.be/8jy_jE-MSoo)
+
 ### STEP 1
+
 Press 'Win + R' and type in
 
 ```
@@ -34,24 +53,22 @@ explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\Roamin
 
 ### STEP 2
 
-Make 'Scripts' folder and send in chat ``.lua reload`` to create sub folders.
-
+Make 'Scripts' folder and send in chat `.lua reload` to create sub folders.
 
 ### STEP 3
 
 Click onto the module or cmd you want from this repo.
 
-
 ### STEP 4
 
-then click the ``raw`` button then do ctrl + s then save in the modules/scripts folder, make sure the file extention is .lua and **not** .txt as it is .txt by default so you're gonna need to change it for the scripts to work.
+then click the `raw` button then do ctrl + s then save in the modules/scripts folder, make sure the file extention is .lua and **not** .txt as it is .txt by default so you're gonna need to change it for the scripts to work.
 
-
-## Remember to put the following in chat after adding/editing scripts : 
+## Remember to put the following in chat after adding/editing scripts :
 
 ```
 .lua reload
 ```
+
 This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the cmd in chat.
 You can do .lua autoreload to make it automatically reload when you've edited a script.
 
@@ -62,4 +79,5 @@ You can do .lua autoreload to make it automatically reload when you've edited a 
 ​
 
 # Scripting documentation
+
 You can see the documentation on [official website](https://docs.onixclient.com/scripting/main.html)
