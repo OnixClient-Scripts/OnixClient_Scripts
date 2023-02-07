@@ -15,9 +15,16 @@ alternatively you can just make a new command and put this as the code:
 
 bye🙂
 ]]
-importLib("GFX2Colour")
 
-team ="Unknown"
+positionX = 100
+positionY = 24
+sizeX = 0
+sizeY = 0
+
+loadedLib = true
+importLib("gfx2Colors")
+
+team = "Unknown"
 lastGamemode = ""
 formattedGamemode = ""
 
@@ -25,28 +32,27 @@ Auto = "Fully Automatic (Recommended)"
 Other = "Other Settings"
 
 FullyAuto = true
-ShowGamemode = false
 inGame = false
 oopsie = false
 hub = false
 
-client.settings.addAir(2)
-client.settings.addTitle("Settings")
+client.settings.addCategory("Settings")
 keybindButton = client.settings.addNamelessKeybind("Requeue Key", 0)
 client.settings.addAir(5)
-client.settings.addTitle("Other Settings")
-client.settings.addBool("Show the gamemode on screen?", "ShowGamemode")
-client.settings.addAir(5)
-client.settings.addTitle("Display Settings")
-background = client.settings.addNamelessColor("Background Color", {0,0,0,127})
+client.settings.addCategory("Display Settings")
+ShowGamemode = client.settings.addNamelessBool("Show the gamemode on screen?", false)
+client.settings.addAir(2)
 
+outline = client.settings.addNamelessBool("Outline", true)
+outlineWidth = client.settings.addNamelessFloat("Outline Width", 0.1, 5, 0.65)
+outlineColor = client.settings.addNamelessColor("Outline Color", {255,255,255,255})
+client.settings.addAir(2)
 color = client.settings.addNamelessColor("Color", {255, 255, 255})
-
-round = 1
-client.settings.addInt("Rounded Corners", "round", 1, 10)
+background = client.settings.addNamelessColor("Background Color", {0,0,0,127})
+client.settings.addAir(2)
+round = client.settings.addNamelessInt("Rounded Corners",  1, 10 , 2)
 
 quality = 1
-client.settings.addInt("Quality", "quality", 1, 10)
 
 local formattedGamemodes = {
     DROP = "§5Block Drop",
@@ -61,7 +67,8 @@ local formattedGamemodes = {
     HIDE = "§9Hide And Seek",
     DR = "§cDeath Run",
     ARCADE = "§eArcade Hub",
-    HUB = "§eHub"
+    HUB = "§eHub",
+	PARTY = "§dBlock §9Party"
 }
 formattedGamemodes["BRIDGE-DUOS"] = "§9The §5Bridge§8: Duos"
 formattedGamemodes["SG-DUOS"] = "§3Survival Games§8: Duos"
@@ -79,13 +86,28 @@ formattedGamemodes["BUILDX"] = "§5Just Build§7: Extended"
 formattedGamemodes["BUILDX-DUOS"] = "§5Just Build§7: Extended§8, Duos"
 
 function update()
+	if ShowGamemode.value == false then
+		outline.visible = false
+		outlineWidth.visible = false
+		outlineColor.visible = false
+		color.visible = false
+		background.visible = false
+		round.visible = false
+	else
+		outline.visible = true
+		outlineWidth.visible = true
+		outlineColor.visible = true
+		color.visible = true
+		background.visible = true
+		round.visible = true
+	end
     local language = client.language()
     if not language:find("en") then
         client.notification("This script only supports English.")
         client.execute("toggle off script" .. name)
-    end
+	end
     if formattedGamemode == "" then
-        ShowGamemode = false
+        ShowGamemode.value = false
     end
     local item = player.inventory().at(1)
     if item ~= nil and item.customName == "§r§bGame Selector§7 [Use]" then
@@ -169,58 +191,94 @@ function onChat(message, username, type)
         if string.find(message, player.name()) and string.find(message, " did an oopsie!") and lastGamemode == "SKY" then
             oopsie = true
             client.execute("execute /q " .. lastGamemode)
-            ShowGamemode = false
+            ShowGamemode.value = false
             return
         else
             print("Unfortulately you lost.\n§r§8Queueing into a new game.")
             client.execute("execute /q " .. lastGamemode)
-            ShowGamemode = false
+            ShowGamemode.value = false
             return
         end
     end
     if FullyAuto == true and string.find(message, team .. " was ELIMINATED!") then
         client.execute("execute /q " .. lastGamemode)
         print("Unfortulately you lost.\n§r§8Queueing into a new game.")
-        ShowGamemode = false
+        ShowGamemode.value = false
         return
     end
     if FullyAuto == true and string.find(message, team .. " Team are the WINNERS!") then
         client.execute("execute /q " .. lastGamemode)
         print("Congratulations on winning! <3\n§r§8Queueing into a new game.")
-        ShowGamemode = false
+        ShowGamemode.value = false
         return
     end
     if FullyAuto == true and string.find(message, team .. " Team is the WINNER!") then
         print("Congratulations on §6winning!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastGamemode)
-        ShowGamemode = false
+        ShowGamemode.value = false
         return
     end
     if FullyAuto == true and string.find(message, "§a§l» §r§eYou finished in §f") then
         print("Wow, you did something.\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastGamemode)
-        ShowGamemode = false
+        ShowGamemode.value = false
         return
     end
     -- murder mystery
     if FullyAuto == true and string.find(message, "§c§l» §r§cYou died! §7§oYou will be taken to the Graveyard shortly...") then
         print("Dying is so bald!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastGamemode)
-        ShowGamemode = false
+        ShowGamemode.value = false
         return
     end
     if FullyAuto == true and string.find(message, "§b§l» §r§aYou survived!") then
         print("Congratulations on surviving!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastGamemode)
-        ShowGamemode = false
+        ShowGamemode.value = false
         return
     end
+	-- block party
+	if FullyAuto == true and message:find(player.name()) and message:find("§crock 'n' rolled into the void") then
+		print(player.name() .. " gave you up. " .. player.name() .. " let you down.\n§r§8Queueing into a new game.")
+        client.execute("execute /q " .. lastGamemode)
+        ShowGamemode.value = false
+        return
+	end
+	if FullyAuto == true and message:find(player.name()) and message:find("§ctook the L!§8") then
+		print("The 12th letter of the alphabet is yours.\n§r§8Queueing into a new game.")
+		client.execute("execute /q " .. lastGamemode)
+		ShowGamemode.value = false
+		return
+	end
+	if FullyAuto == true and message:find(player.name()) and message:find("§cain't stayin' alive") then
+		print("Ah, ha, ha, ha not staying alive. Not staying alive!\n§r§8Queueing into a new game.")
+		client.execute("execute /q " .. lastGamemode)
+		ShowGamemode.value = false
+		return
+	end
+	if FullyAuto == true and message:find(player.name()) and message:find("§chas two left feet") then
+		print("How can you dance?\n§r§8Queueing into a new game.")
+		client.execute("execute /q " .. lastGamemode)
+		ShowGamemode.value = false
+		return
+	end
+	if FullyAuto == true and message:find(player.name()) and message:find("§cfell off the map") then
+		print("L ratio.\n§r§8Queueing into a new game.")
+		client.execute("execute /q " .. lastGamemode)
+		ShowGamemode.value = false
+		return
+	end
     -- all
     if FullyAuto == true and string.find(message, "§c§l» §r§c§lGame OVER!") then
-        if string.find(lastGamemode, "BRIDGE") ~= nil then
-            print("Your game has ended.\n§r§8Queueing into a new game.")
-            client.execute("execute /hub")
-            client.execute("execute /q " .. lastGamemode)
+        if lastGamemode:find("BRIDGE") ~= nil then
+			if lastGamemode:find("DUOS") then
+				print("Your game has ended.\n§r§8Queueing into a new game.")
+				client.execute("execute /q " .. lastGamemode)
+			else
+				print("Your game has ended.\n§r§8Queueing into a new game.")
+				client.execute("execute /hub")
+				client.execute("execute /q " .. lastGamemode)
+			end
         else
             client.execute("execute /q " .. lastGamemode)
         end
@@ -229,26 +287,34 @@ function onChat(message, username, type)
     if FullyAuto == true and string.find(message, "§c§l» §r§cYou died! §7Stick around or play another round.") then
         print("F.\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastGamemode)
-        ShowGamemode = false
+        ShowGamemode.value = false
         return
     end
 end
 function render2(dt)
     local text = ""
-    if ShowGamemode == true and hub == false then
+    if ShowGamemode.value == true and hub == false then
         text = "Playing " .. formattedGamemode
     elseif hub == true and inGame == false then
         text = "In the " .. formattedGamemode
     else
         return
-    end
-    if ShowGamemode == true then
-        local mesh = getGfx2Mesh(text)
-        gfx2.color(background)
-        gfx2.fillRoundRect(gui.width() - mesh.width - 8, 24 ,mesh.width + 3, mesh.height + 3, round)
-        gfx2.color(color)
-        mesh:render((gui.width() - mesh.width - 8) + ((mesh.width + 3) / 2 - mesh.width/2), 24 + (mesh.height + 3) / 2 - mesh.height / 2)
-    end
+    end --gui.width() - mesh.width - 8
+    if ShowGamemode.value == true then
+		if loadedLib then
+			local mesh = getGfx2Mesh(text)
+			gfx2.color(background)
+			gfx2.fillRoundRect(0, 0 ,mesh.width + 3, mesh.height + 3, round.value)
+            if outline.value then
+                gfx2.color(outlineColor)
+                gfx2.drawRoundRect(0, 0 ,mesh.width + 3, mesh.height + 3, round.value, outlineWidth.value)
+            end
+			gfx2.color(color)
+			mesh:render(1.5, 1.5)
+            sizeX = mesh.width + 3
+            sizeY = mesh.height + 3
+		end
+	end
 end
 
 event.listen("KeyboardInput", function(key, down)
@@ -265,10 +331,6 @@ registerCommand("rq", function(args)
 	if args == "" then
 		client.execute("execute /q " .. lastGamemode)
 		print("§c§l» §r§cQueuing into a new game of " .. formattedGamemodes[lastGamemode] .. "§r§c.")
-	end
-	if args ~= "" then
-		print(to)
-		print("§c§l» §r§cQueuing into a new game of " .. formattedGamemodes[args] .. "§r§c.")
 	end
 end)
 
