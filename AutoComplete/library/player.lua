@@ -136,6 +136,10 @@ function player.lookingPos() end
 ---@return number pitch The current pitch rotation
 function player.rotation() end
 
+---Where the players body looks at
+---@return number yaw The current yaw rotation
+function player.bodyRotation() end
+
 ---What perspective the player is in 
 ---0 == First Person(first person, third person back, third person front)
 ---1 == Third Person Back
