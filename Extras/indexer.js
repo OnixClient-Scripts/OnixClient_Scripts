@@ -4,6 +4,10 @@ const { readdir, readFile, writeFile } = require("fs/promises");
 const crypto = require("crypto");
 const path = require("path");
 
+if (!process.argv[0].endsWith("node.exe")) __dirname = path.dirname(process.execPath);
+
+console.log("DIRNAME:", __dirname);
+
 (async () => {
     //modules
     const modules = await readdir(path.join(__dirname, "../Modules"));
