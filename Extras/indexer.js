@@ -91,12 +91,31 @@ console.log("DIRNAME:", __dirname);
         })
     );
 
+    //check if there are any differences
+    const oldIndex = require("../index.json");
+    const areChanges =
+        !moduleIndex.every(
+            (newModule) =>
+                oldIndex.modules.find((oldModule) => newModule.file === oldModule.file).hash === newModule.hash
+        ) ||
+        !commandIndex.every(
+            (newCommand) =>
+                oldIndex.modules.find((oldCommand) => newCommand.file === oldCommand.file).hash === newCommand.hash
+        ) ||
+        !libIndex.every(
+            (newLib) => oldIndex.modules.find((oldLib) => newLib.file === oldLib.file).hash === newLib.hash
+        );
+
+    if (!areChanges) return console.log("No changes to index.");
+
     const index = {
         updated: new Date().toISOString(),
         modules: moduleIndex,
         commands: commandIndex,
         libs: libIndex,
     };
+
     await writeFile(path.join(__dirname, "../index.json"), JSON.stringify(index, null, 2));
-    console.dir(index, { depth: 2 });
+
+    return console.dir(index, { depth: null });
 })();
