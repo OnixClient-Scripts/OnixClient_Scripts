@@ -26,4 +26,4 @@ jobs:
                   cache-dependency-path: Extras/package-lock.json
 
             - name: Run indexer script
-              run: ./Extras/indexer.js
+              run: node ./Extras/indexer.js
