@@ -1,4 +1,5 @@
 {
+  "a": "test the auto index generate thing",
   "modules": [
     {
       "name": "Advanced coordinates",
