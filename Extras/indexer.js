@@ -4,6 +4,13 @@ const { readdir, readFile, writeFile } = require("fs/promises");
 const crypto = require("crypto");
 const path = require("path");
 
+console.log("ARGV:", process.argv);
+
+if (!process.argv[0].endsWith("node") && !process.argv[0].endsWith("node.exe"))
+    __dirname = path.dirname(process.execPath);
+
+console.log("DIRNAME:", __dirname);
+
 (async () => {
     //modules
     const modules = await readdir(path.join(__dirname, "../Modules"));
@@ -86,10 +93,12 @@ const path = require("path");
     );
 
     const index = {
-        modules: moduleIndex,
-        commands: commandIndex,
+        modules: moduleIndex.sort((a, b) => a.name.localeCompare(b.name)),
+        commands: commandIndex.sort((a, b) => a.name.localeCompare(b.name)),
         libs: libIndex,
     };
+
     await writeFile(path.join(__dirname, "../index.json"), JSON.stringify(index, null, 2));
-    console.dir(index, { depth: 2 });
+
+    return console.dir(index, { depth: null });
 })();

@@ -1,0 +1,32 @@
+# Runs the Node.js script that generates the index.json file
+# -Tom16
+
+name: "Generate index.json"
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [master]
+    pull_request:
+
+permissions:
+    contents: write
+    pull-requests: read
+
+jobs:
+    generate-index:
+        runs-on: "ubuntu-latest"
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18.12.x
+                  cache: npm
+                  cache-dependency-path: Extras/package-lock.json
+            - name: Run indexer.js
+              run: node ./Extras/indexer.js
+            - name: Commit changes
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                  commit_message: Update index.json

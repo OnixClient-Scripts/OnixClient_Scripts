@@ -1,22 +1,13 @@
 {
   "modules": [
     {
-      "name": "game 2048",
-      "file": "2048.lua",
-      "description": "2048 game by MCBE",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/2048.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "50fbb16b56d7b939fd150dec7b8f0552"
-    },
-    {
       "name": "Advanced coordinates",
       "file": "advancedCoordinates.lua",
       "description": "Coordinates with some more information",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/advancedCoordinates.lua",
       "libs": [],
       "commands": [],
-      "hash": "13af348624ab83cb52c1876812b8df3e"
+      "hash": "13f51827e6f9824df113920760f6893e"
     },
     {
       "name": "amogus",
@@ -25,7 +16,16 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/amogus.lua",
       "libs": [],
       "commands": [],
-      "hash": "e4f0d4288c549a82473bcfe4576bbbc8"
+      "hash": "72284c180ef6621806650c356d5dd362"
+    },
+    {
+      "name": "Among UI",
+      "file": "susUI.lua",
+      "description": "gives you a sus UI",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/susUI.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "60444bc0ca34c63640f2f73be06e0568"
     },
     {
       "name": "AreaSearcherExemple",
@@ -38,7 +38,7 @@
       "commands": [
         "search"
       ],
-      "hash": "c38c0ae4bbdd19983d276c6fe89618c4"
+      "hash": "f195e75bbdceb3a93b22401eaa988282"
     },
     {
       "name": "Armor Damage Reduction Viewer",
@@ -79,6 +79,15 @@
       "hash": "38926aff838726a455541eeff8729449"
     },
     {
+      "name": "Better Coordinates",
+      "file": "coords.lua",
+      "description": "A customizable coordinates module",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/coords.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "dbfda9c934eaacbd1f15bb329ac91116"
+    },
+    {
       "name": "Better Hunger",
       "file": "betterHunger.lua",
       "description": "Hunger has never been so efficient and intuitive",
@@ -86,15 +95,6 @@
       "libs": [],
       "commands": [],
       "hash": "a9dff83b06038bf4ee1bb5697c87f713"
-    },
-    {
-      "name": "Cinematic Black Bar",
-      "file": "blackbars.lua",
-      "description": "Just a random Black Bar that is adjustable",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/blackbars.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "08b301b55a17dfbd28da016ac7bea551"
     },
     {
       "name": "Blood screen",
@@ -126,15 +126,6 @@
       "hash": "be53d83fda1a938816c6ae92c56b54a4"
     },
     {
-      "name": "ChatLogger",
-      "file": "Chatlog.lua",
-      "description": "Saves in Chatlogger.txt",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Chatlog.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "f874088e8c99039efed52a2887c6b4d7"
-    },
-    {
       "name": "Chat Reverser",
       "file": "chatReverser.lua",
       "description": "Reverses chat (works properly in singleplayer and hive)",
@@ -144,22 +135,31 @@
       "hash": "fe94d6061bdf5299c7e5a3cc06940191"
     },
     {
+      "name": "ChatLogger",
+      "file": "Chatlog.lua",
+      "description": "Saves in Chatlogger.txt",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Chatlog.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "f874088e8c99039efed52a2887c6b4d7"
+    },
+    {
       "name": "Chest Visualizer",
       "file": "chestContentVisualizer.lua",
       "description": "Shows content of the selected chest",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/chestContentVisualizer.lua",
       "libs": [],
       "commands": [],
-      "hash": "67cd54fbb910743508260b2f79148f16"
+      "hash": "39d5a5060e2014902a2707d3662ba608"
     },
     {
-      "name": "Better Coordinates",
-      "file": "coords.lua",
-      "description": "A customizable coordinates module",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/coords.lua",
+      "name": "Cinematic Black Bar",
+      "file": "blackbars.lua",
+      "description": "Just a random Black Bar that is adjustable",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/blackbars.lua",
       "libs": [],
       "commands": [],
-      "hash": "b12992bb3b0649a4dcacc046ed0b333d"
+      "hash": "08b301b55a17dfbd28da016ac7bea551"
     },
     {
       "name": "Copy Last Message",
@@ -191,15 +191,6 @@
       "hash": "056a52d1b9259637e05764e9ac6b7008"
     },
     {
-      "name": "Custom Message",
-      "file": "Custom Auto GG.lua",
-      "description": "Send any message - works like auto GG. edit in the lua file",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Custom Auto GG.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "59b036c867aed7c4a66d0a8eda9a193e"
-    },
-    {
       "name": "custom chat",
       "file": "custom chat.lua",
       "description": "Custom chat by MCBE Craft",
@@ -209,6 +200,15 @@
       ],
       "commands": [],
       "hash": "0e4c393864a87dc8a3fb53d6e8324446"
+    },
+    {
+      "name": "Custom Message",
+      "file": "Custom Auto GG.lua",
+      "description": "Send any message - works like auto GG. edit in the lua file",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Custom Auto GG.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "59b036c867aed7c4a66d0a8eda9a193e"
     },
     {
       "name": "Death Coordinates",
@@ -267,15 +267,22 @@
       "hash": "574f71a36523c00e10a1e584f72106a9"
     },
     {
-      "name": "Gamemode Switcher",
-      "file": "gamemode switcher.lua",
-      "description": "Gamemode Switcher by MCBE Craft allows you to switch gamemode\\nlike on java",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/gamemode switcher.lua",
-      "libs": [
-        "keyconverter"
-      ],
+      "name": "Galaxite Tweaks",
+      "file": "gxt.lua",
+      "description": "Allows players to tweak Galaxite",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/gxt.lua",
+      "libs": [],
       "commands": [],
-      "hash": "fbdbdec221984d25c61f2caf851e433b"
+      "hash": "a6696c507a8855937c1a6629c8c9ecb5"
+    },
+    {
+      "name": "game 2048",
+      "file": "2048.lua",
+      "description": "2048 game by MCBE",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/2048.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "50fbb16b56d7b939fd150dec7b8f0552"
     },
     {
       "name": "Gamemode Hotkey",
@@ -287,6 +294,17 @@
       "hash": "1a33a37967c2b7a582f127d1096c5765"
     },
     {
+      "name": "Gamemode Switcher",
+      "file": "gamemode switcher.lua",
+      "description": "Gamemode Switcher by MCBE Craft allows you to switch gamemode\\nlike on java",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/gamemode switcher.lua",
+      "libs": [
+        "keyconverter"
+      ],
+      "commands": [],
+      "hash": "fbdbdec221984d25c61f2caf851e433b"
+    },
+    {
       "name": "guiscale",
       "file": "guiscale.lua",
       "description": "changes and save your custom guiscale",
@@ -296,32 +314,12 @@
       "hash": "12b22d56fd6d3a74751be34c7236b1d6"
     },
     {
-      "name": "Galaxite Tweaks",
-      "file": "gxt.lua",
-      "description": "Allows players to tweak Galaxite",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/gxt.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "a6696c507a8855937c1a6629c8c9ecb5"
-    },
-    {
       "name": "Hit Particles",
       "file": "HitParticles.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HitParticles.lua",
       "libs": [],
       "commands": [],
       "hash": "6d3a3c8bdea2fd31ad870e676f18c445"
-    },
-    {
-      "name": "Hive Custom AutoGG",
-      "file": "HiveAutoGG.lua",
-      "description": "AutoGG Reimagined.",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutoGG.lua",
-      "libs": [
-        "DependentBoolean"
-      ],
-      "commands": [],
-      "hash": "705c6562fd9b19b3b9f997667dfea34c"
     },
     {
       "name": "Hive Autoqueue",
@@ -346,6 +344,17 @@
       "hash": "72490fe2de49819c63ef25db9d5bd239"
     },
     {
+      "name": "Hive Custom AutoGG",
+      "file": "HiveAutoGG.lua",
+      "description": "AutoGG Reimagined.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutoGG.lua",
+      "libs": [
+        "DependentBoolean"
+      ],
+      "commands": [],
+      "hash": "705c6562fd9b19b3b9f997667dfea34c"
+    },
+    {
       "name": "Hive Statistic Checker",
       "file": "HiveStatChecker.lua",
       "description": "Allows you to check the statistics of people in-game.",
@@ -357,7 +366,7 @@
       "commands": [
         "stats"
       ],
-      "hash": "4b9c8a1c60d9dab6933a9b3fe536a61e"
+      "hash": "ecc80e53dfcf33fc340f316f23a5254c"
     },
     {
       "name": "HiveWinstreak",
@@ -372,7 +381,7 @@
         "addstreak",
         "setstreak"
       ],
-      "hash": "ccbfb4006338831f076649dfc3a2cd3f"
+      "hash": "b8a58e9fd88b9831941c45035be240f0"
     },
     {
       "name": "HyperlandsAutoQueue",
@@ -485,17 +494,6 @@
       "hash": "d3c7855f3f7749b065e4aafa532b5b6e"
     },
     {
-      "name": "More Keystrokes numpad version",
-      "file": "morekeystrokes(numpad).lua",
-      "description": "More keystrokes by raspberry (numpad version):)",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/morekeystrokes(numpad).lua",
-      "libs": [
-        "keyconverter"
-      ],
-      "commands": [],
-      "hash": "7db24eda754547bbf70dc1991d3b1082"
-    },
-    {
       "name": "More Keystrokes",
       "file": "morekeystrokes.lua",
       "description": "More keystrokes by raspberry :)",
@@ -505,6 +503,17 @@
       ],
       "commands": [],
       "hash": "1c396eb3f068a8f3209524ff91c3eac8"
+    },
+    {
+      "name": "More Keystrokes numpad version",
+      "file": "morekeystrokes(numpad).lua",
+      "description": "More keystrokes by raspberry (numpad version):)",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/morekeystrokes(numpad).lua",
+      "libs": [
+        "keyconverter"
+      ],
+      "commands": [],
+      "hash": "7db24eda754547bbf70dc1991d3b1082"
     },
     {
       "name": "MusicBee Overlay",
@@ -573,7 +582,7 @@
         "renderthreeD"
       ],
       "commands": [],
-      "hash": "fd07c56180bcceaeac339b556f04b8a7"
+      "hash": "2f18853318c15411c0b1a1ddc237a957"
     },
     {
       "name": "Ping Display",
@@ -647,7 +656,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/quantity.lua",
       "libs": [],
       "commands": [],
-      "hash": "3d131df6e42987d49133ffc06dec4124"
+      "hash": "c9eb24a0376cf0a3fa249ff11edcf7f8"
     },
     {
       "name": "RenderThreeD library exemples",
@@ -658,7 +667,7 @@
         "renderthreeD"
       ],
       "commands": [],
-      "hash": "13dcf5aa57e3eea7d6a14fb6b15457b9"
+      "hash": "f8626cf62a55a672f20daf10571821b4"
     },
     {
       "name": "reply",
@@ -670,7 +679,7 @@
         "r",
         "reply"
       ],
-      "hash": "5a5702ce81c85c58c2cbec5342144945"
+      "hash": "6400afd3bb95c641b51320f2bd29cd43"
     },
     {
       "name": "Saturation display",
@@ -704,7 +713,7 @@
         "scPos",
         "scHelp"
       ],
-      "hash": "e15fe0e76091a580f88d3309589457ee"
+      "hash": "0cc4055253c3353c6166b0fe7556d057"
     },
     {
       "name": "scope",
@@ -735,7 +744,7 @@
       "commands": [
         "findBlock"
       ],
-      "hash": "46f1eae43631294629592f276c200d10"
+      "hash": "a1c0ff5b6df970768243d1effe4a3c63"
     },
     {
       "name": "Skinstealer",
@@ -747,18 +756,6 @@
         "skinsteal"
       ],
       "hash": "a085ec98327025978d169675d05cc894"
-    },
-    {
-      "name": "Toggle Sprint Indicator",
-      "file": "sprint.lua",
-      "description": "customizable toggle sprint",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/sprint.lua",
-      "libs": [
-        "module",
-        "chroma"
-      ],
-      "commands": [],
-      "hash": "21163cc322ce1abf792d3f73f1766d02"
     },
     {
       "name": "Stopwatch",
@@ -779,15 +776,6 @@
       "hash": "341a3c3810253f10775af49aff966d63"
     },
     {
-      "name": "Among UI",
-      "file": "susUI.lua",
-      "description": "gives you a sus UI",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/susUI.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "60444bc0ca34c63640f2f73be06e0568"
-    },
-    {
       "name": "TabGui",
       "file": "tabgui.lua",
       "description": "A simple tabgui",
@@ -803,7 +791,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/testluamod.lua",
       "libs": [],
       "commands": [],
-      "hash": "a3033f383ceb1b385f4f0ee70fc6f3a1"
+      "hash": "ac0de7302a5f6b077d3a241fbcff4e22"
     },
     {
       "name": "Tetrizz",
@@ -815,13 +803,25 @@
       "hash": "73cd57adfeb6d7e2fc7f01a670af8871"
     },
     {
+      "name": "Toggle Sprint Indicator",
+      "file": "sprint.lua",
+      "description": "customizable toggle sprint",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/sprint.lua",
+      "libs": [
+        "module",
+        "chroma"
+      ],
+      "commands": [],
+      "hash": "21163cc322ce1abf792d3f73f1766d02"
+    },
+    {
       "name": "TW Resource Counter",
       "file": "TwResourceCounter.lua",
       "description": "Helps blind users see what is right in front of them",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/TwResourceCounter.lua",
       "libs": [],
       "commands": [],
-      "hash": "d7b3c4f3c81fcc32e41814668dd676b9"
+      "hash": "7b88e0e6e8df10f61773c85f07bd6390"
     },
     {
       "name": "Video player",
@@ -868,6 +868,14 @@
   ],
   "commands": [
     {
+      "name": ".",
+      "file": "dot.lua",
+      "description": "shortcut for .say ., ex: .._.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/dot.lua",
+      "libs": [],
+      "hash": "74df846dea5e5cdc6bb0b8bdc7fbb611"
+    },
+    {
       "name": "autonick",
       "file": "autonickcommand.lua",
       "description": "Sets the autonick. §8Usage: §7.autonick {§9Nickname§7}§r",
@@ -882,22 +890,6 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/Blocker.lua",
       "libs": [],
       "hash": "d04021b087a1e48ad0e4603eff37b21b"
-    },
-    {
-      "name": "unblock",
-      "file": "Blockernt.lua",
-      "description": "Unblocks a word. §8Usage: §7.unblock {§9Word§7}§r",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/Blockernt.lua",
-      "libs": [],
-      "hash": "62cb6bd3e7ec516925af14e4c20bf661"
-    },
-    {
-      "name": ".",
-      "file": "dot.lua",
-      "description": "shortcut for .say ., ex: .._.",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/dot.lua",
-      "libs": [],
-      "hash": "74df846dea5e5cdc6bb0b8bdc7fbb611"
     },
     {
       "name": "exemple",
@@ -921,15 +913,7 @@
       "description": "Gives an item with nbt",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/givenbt.lua",
       "libs": [],
-      "hash": "639fb56ebf230b3c52568716f570fd52"
-    },
-    {
-      "name": "rq",
-      "file": "HiveRequeue.lua",
-      "description": "Requeues Hive Games",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/HiveRequeue.lua",
-      "libs": [],
-      "hash": "c370c9f51ad34c05ce5b7f3844b3de8f"
+      "hash": "90de86e280638c9c3497121d43af633d"
     },
     {
       "name": "inv",
@@ -972,12 +956,28 @@
       "hash": "c4f008dc656ddec14011c06ee5952eab"
     },
     {
+      "name": "rq",
+      "file": "HiveRequeue.lua",
+      "description": "Requeues Hive Games",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/HiveRequeue.lua",
+      "libs": [],
+      "hash": "c370c9f51ad34c05ce5b7f3844b3de8f"
+    },
+    {
       "name": "sleep",
       "file": "sleep.lua",
       "description": "sleep for <arg>ms",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/sleep.lua",
       "libs": [],
       "hash": "adaff64be366651357533af27d77e837"
+    },
+    {
+      "name": "unblock",
+      "file": "Blockernt.lua",
+      "description": "Unblocks a word. §8Usage: §7.unblock {§9Word§7}§r",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/Blockernt.lua",
+      "libs": [],
+      "hash": "62cb6bd3e7ec516925af14e4c20bf661"
     },
     {
       "name": "worldinfo",
@@ -996,16 +996,28 @@
       "hash": "92ce3fb670f3c82dff230c58ad1a79dc"
     },
     {
+      "name": "DependentBoolean",
+      "file": "DependentBoolean.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/DependentBoolean.lua",
+      "hash": "52a7400268669ea0e1e63ad322f37574"
+    },
+    {
+      "name": "Wait",
+      "file": "Wait.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Wait.lua",
+      "hash": "8b9d30d7876f0e051a03d9c27083b3ce"
+    },
+    {
       "name": "charPixel",
       "file": "charPixel.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/charPixel.lua",
-      "hash": "63ef7da7bc45f6d5e2aa9938efadaabb"
+      "hash": "0288cd4aaf198427ea3b7631ef3c3391"
     },
     {
       "name": "chroma",
       "file": "chroma.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/chroma.lua",
-      "hash": "32e7bc817c700584d1e3cd3ca00777cb"
+      "hash": "006fbe9351bee5bb3d8adb2950082078"
     },
     {
       "name": "cosmeticTools",
@@ -1014,16 +1026,10 @@
       "hash": "44f373eb0c884f2205421c90805353ea"
     },
     {
-      "name": "DependentBoolean",
-      "file": "DependentBoolean.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/DependentBoolean.lua",
-      "hash": "52a7400268669ea0e1e63ad322f37574"
-    },
-    {
       "name": "fileUtility",
       "file": "fileUtility.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/fileUtility.lua",
-      "hash": "c340f062a35caa03c2a431e6a3040d98"
+      "hash": "c82a3d478b8108bab626ec6b5c1b87dc"
     },
     {
       "name": "functionsPlusPlus",
@@ -1047,7 +1053,7 @@
       "name": "hiveGamemodes",
       "file": "hiveGamemodes.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/hiveGamemodes.lua",
-      "hash": "5a2dcd75a840f7399fd484a530977aca"
+      "hash": "a6cd8d2a77ab746bbe73f223c457d8ee"
     },
     {
       "name": "keyconverter",
@@ -1077,7 +1083,7 @@
       "name": "text",
       "file": "text.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/text.lua",
-      "hash": "8567bc805e68ba760b70931f3612e3df"
+      "hash": "c503bb5ef438b67472045c7c1b963a45"
     },
     {
       "name": "translator",
@@ -1089,13 +1095,7 @@
       "name": "uiLib",
       "file": "uiLib.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/uiLib.lua",
-      "hash": "f68e8cd362b95e282f33f18371bfa55a"
-    },
-    {
-      "name": "Wait",
-      "file": "Wait.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Wait.lua",
-      "hash": "8b9d30d7876f0e051a03d9c27083b3ce"
+      "hash": "b7fb4b849341e701d37ca0859062b200"
     }
   ]
 }
