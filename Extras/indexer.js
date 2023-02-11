@@ -92,6 +92,7 @@ console.log("DIRNAME:", __dirname);
     );
 
     const index = {
+        updated: new Date().toISOString(),
         modules: moduleIndex,
         commands: commandIndex,
         libs: libIndex,
