@@ -14,6 +14,11 @@ function fs.exist(path) end
 ---@return boolean showed If the folder was showed
 function fs.showFolder(path) end
 
+---Opens a file to read/write data
+---@param path string The path from Scripts/Data
+---@return string|nil hash The file hash or nil if the file does not exist
+function fs.hash(path, openmode) end
+
 ---Checks if a path is a directory
 ---@param path string The path from Scripts/Data
 ---@return boolean isDirectory If the path is a directory
