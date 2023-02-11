@@ -94,8 +94,8 @@ console.log("DIRNAME:", __dirname);
 
     const index = {
         // updated: new Date().toISOString(),
-        modules: moduleIndex,
-        commands: commandIndex,
+        modules: moduleIndex.sort((a, b) => a.name.localeCompare(b.name)),
+        commands: commandIndex.sort((a, b) => a.name.localeCompare(b.name)),
         libs: libIndex,
     };
 
