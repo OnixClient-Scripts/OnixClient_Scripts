@@ -81,7 +81,7 @@ You can do .lua autoreload to make it automatically reload when you've edited a 
 # Scripting documentation
 
 You can see the documentation on [official website](https://docs.onixclient.com/scripting/main.html)
-
+---
 # Useful resources for new developers
 ## Documentations
 [Lua Documentaion](https://www.lua.org/docs.html)
