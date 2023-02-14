@@ -996,18 +996,6 @@
       "hash": "92ce3fb670f3c82dff230c58ad1a79dc"
     },
     {
-      "name": "DependentBoolean",
-      "file": "DependentBoolean.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/DependentBoolean.lua",
-      "hash": "52a7400268669ea0e1e63ad322f37574"
-    },
-    {
-      "name": "Wait",
-      "file": "Wait.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Wait.lua",
-      "hash": "8b9d30d7876f0e051a03d9c27083b3ce"
-    },
-    {
       "name": "charPixel",
       "file": "charPixel.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/charPixel.lua",
@@ -1024,6 +1012,12 @@
       "file": "cosmeticTools.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/cosmeticTools.lua",
       "hash": "44f373eb0c884f2205421c90805353ea"
+    },
+    {
+      "name": "DependentBoolean",
+      "file": "DependentBoolean.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/DependentBoolean.lua",
+      "hash": "52a7400268669ea0e1e63ad322f37574"
     },
     {
       "name": "fileUtility",
@@ -1096,6 +1090,12 @@
       "file": "uiLib.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/uiLib.lua",
       "hash": "b7fb4b849341e701d37ca0859062b200"
+    },
+    {
+      "name": "Wait",
+      "file": "Wait.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Wait.lua",
+      "hash": "8b9d30d7876f0e051a03d9c27083b3ce"
     }
   ]
 }

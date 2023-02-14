@@ -95,7 +95,7 @@ console.log("DIRNAME:", __dirname);
     const index = {
         modules: moduleIndex.sort((a, b) => a.name.localeCompare(b.name)),
         commands: commandIndex.sort((a, b) => a.name.localeCompare(b.name)),
-        libs: libIndex,
+        libs: libIndex.sort((a, b) => a.name.localeCompare(b.name)),
     };
 
     await writeFile(path.join(__dirname, "../index.json"), JSON.stringify(index, null, 2));
