@@ -71,20 +71,14 @@ then click the `raw` button then do ctrl + s then save in the modules/scripts fo
 
 This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the cmd in chat.
 You can do .lua autoreload to make it automatically reload when you've edited a script.
-
 ​
-
 ---
-
 ​
-
-# Scripting documentation
-
-You can see the documentation on [official website](https://docs.onixclient.com/scripting/main.html)
 <br>
-<br>
-# Useful resources for new developers
+# Useful resources
 ## Documentations
+[Onix Client Scripting Documentation](https://docs.onixclient.com/scripting/main.html)
+<br>
 [Lua Documentaion](https://www.lua.org/docs.html)
 <br>
 [Rosie's Lua Basics](https://onixclient.com/luabasics)
