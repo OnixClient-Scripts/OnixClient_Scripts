@@ -28,6 +28,15 @@
       "hash": "60444bc0ca34c63640f2f73be06e0568"
     },
     {
+      "name": "Anti Interact",
+      "file": "AntiInteract.lua",
+      "description": "Prevents players from interacting with inventory screens when moving.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/AntiInteract.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "d226e76e6a91ee5a5c2270966c28a2b9"
+    },
+    {
       "name": "AreaSearcherExemple",
       "file": "AreaSearcherExemple.lua",
       "description": "an exemple for the area searcher",
