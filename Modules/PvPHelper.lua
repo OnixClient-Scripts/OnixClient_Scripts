@@ -24,7 +24,6 @@ function render3d()
 
     entity = player.selectedEntity()
     if entity and entity.type == "player" then
-
         -- hitbox
         if showHitbox.value then
             gfx.renderBehind(true)
@@ -37,7 +36,12 @@ function render3d()
         -- target
         if showTarget.value then
             pointX, pointY, pointZ = getClosestPointToPlayer(px, py, pz, entity.ppx, entity.ppy, entity.ppz)
-            gfx.color(targetColor.r, targetColor.g, targetColor.b, targetColor.a)
+
+            if targetIndicator.value then
+                gfx.color(indicatorColor[1], indicatorColor[2], indicatorColor[3])
+            else
+                gfx.color(targetColor.r, targetColor.g, targetColor.b, targetColor.a)
+            end
             xyzCross(pointX, pointY, pointZ, crossSize)
         end
 
@@ -49,10 +53,10 @@ function render3d()
     end
 end
 
+indicatorColor = {}
 function render2()
     -- combo indicator
     if entity and entity.type == "player" and showComboIndicator.value then
-
         local distToPlayer = 10000
         raycastPoint = { entity.ppx, entity.ppy, entity.ppz }
         for i = 1, 20, 1 do
@@ -64,32 +68,27 @@ function render2()
             )
 
             if distToPlayer <= 0.4 then
-                gfx2.color(
-                    comboIndicatorBorderColor.r,
-                    comboIndicatorBorderColor.g,
-                    comboIndicatorBorderColor.b,
-                    comboIndicatorBorderColor.a
-                )
-                gfx2.drawRoundRect(0, 0, 10, 10, comboIndicatorRoundness, 2)
-
-                gfx2.color(comboIndicatorDanger.r, comboIndicatorDanger.g, comboIndicatorDanger.b)
-                gfx2.fillRoundRect(0, 0, 10, 10, comboIndicatorRoundness)
+                indicatorColor = { comboIndicatorDanger.r, comboIndicatorDanger.g, comboIndicatorDanger.b }
                 break
             end
 
             if distToPlayer > 6 then
-                gfx2.color(
-                    comboIndicatorBorderColor.r,
-                    comboIndicatorBorderColor.g,
-                    comboIndicatorBorderColor.b,
-                    comboIndicatorBorderColor.a
-                )
-                gfx2.drawRoundRect(0, 0, 10, 10, comboIndicatorRoundness, 2)
-
-                gfx2.color(comboIndicatorGood.r, comboIndicatorGood.g, comboIndicatorGood.b)
-                gfx2.fillRoundRect(0, 0, 10, 10, comboIndicatorRoundness)
+                indicatorColor = { comboIndicatorGood.r, comboIndicatorGood.g, comboIndicatorGood.b }
                 break
             end
+        end
+
+        if not targetIndicator.value then
+            gfx2.color(
+                comboIndicatorBorderColor.r,
+                comboIndicatorBorderColor.g,
+                comboIndicatorBorderColor.b,
+                comboIndicatorBorderColor.a
+            )
+            gfx2.drawRoundRect(0, 0, 10, 10, comboIndicatorRoundness, 2)
+
+            gfx2.color(indicatorColor[1], indicatorColor[2], indicatorColor[3])
+            gfx2.fillRoundRect(0, 0, 10, 10, comboIndicatorRoundness)
         end
     end
 end
@@ -145,6 +144,9 @@ function getClosestPointToPlayer(playerX, playerY, playerZ, otherPlayerX, otherP
         oz = 1
     end
 
+    -- stops errors hopefully
+    if not (ox and oy and oz) then return 0, 0, 0 end
+
     -- put everything back and render
     if flipX then ox = -ox end
     if flipY then oy = -oy end
@@ -188,7 +190,7 @@ end
 
 function raycastFromPlayer(playerX, playerY, playerZ, playerPitch, playerYaw, maxDistance)
     playerPitch = math.rad(playerPitch)
-    playerYaw = math.rad(-playerYaw)
+    playerYaw = math.rad( -playerYaw)
 
     y = -maxDistance * math.sin(playerPitch)
     z = maxDistance * math.cos(playerPitch)
@@ -226,6 +228,10 @@ client.settings.addFloat("Combo Indicator: Roundness", "comboIndicatorRoundness"
 
 client.settings.addAir(6)
 
+targetIndicator = client.settings.addNamelessBool("Use target as combo indicator", false)
+
+client.settings.addAir(6)
+
 showTarget = client.settings.addNamelessBool("Show Target", true)
 showHitbox = client.settings.addNamelessBool("Show Hitbox", true)
 showEyeline = client.settings.addNamelessBool("Show Eyeline", true)
@@ -233,5 +239,6 @@ showComboIndicator = client.settings.addNamelessBool("Show Combo Indicator", tru
 
 client.settings.addAir(10)
 
-client.settings.addTitle("How to use:\nKeep your mouse on the target and keep the square on the good color,\nand you'll probably get a combo.")
+client.settings.addTitle(
+    "How to use:\nKeep your mouse on the target and keep the square on the good color,\nand you'll probably get a combo.")
 ------------
