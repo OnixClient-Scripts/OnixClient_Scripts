@@ -44,7 +44,7 @@ end
 
 function jsonLoad(file)
     local content = readWholeFile(file)
-    if content == nil | content == "" then content = {} end
+    if not content | content == "" then content = {} end
     return jsonToTable(content)
 end
 
