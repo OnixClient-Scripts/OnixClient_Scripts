@@ -44,7 +44,6 @@ end
 
 function jsonLoad(file)
     local content = readWholeFile(file)
-    if not content | content == "" then content = {} end
     return jsonToTable(content)
 end
 
