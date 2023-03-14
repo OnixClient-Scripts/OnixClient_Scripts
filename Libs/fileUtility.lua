@@ -59,6 +59,14 @@ function split(str, splitter)
     return result
 end
 
+function join(table, joint)
+    local result = ""
+    for k, v in pairs(table) do
+        result = result .. joint .. v
+    end
+    return result
+end
+
 function fileExists(file)
     return fs.exist(file)
 end
