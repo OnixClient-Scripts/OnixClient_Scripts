@@ -341,6 +341,10 @@ function _acp_Inventory.offhand() end
 ---@return Item|nil item The item if present otherwise nil for air
 function _acp_Inventory.at(slot) end
 
+---Changes the player's slot
+---@param slot integer Which slot should be the selected slot now?
+function _acp_Inventory.setSelectedSlot(slot) end
+
 
 --- Which slot to access, slots are listed below
 --- 1 = Inventory Holding 

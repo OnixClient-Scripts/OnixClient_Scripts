@@ -28,6 +28,15 @@
       "hash": "60444bc0ca34c63640f2f73be06e0568"
     },
     {
+      "name": "Anti Interact",
+      "file": "AntiInteract.lua",
+      "description": "Prevents players from interacting with inventory screens when moving.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/AntiInteract.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "d226e76e6a91ee5a5c2270966c28a2b9"
+    },
+    {
       "name": "AreaSearcherExemple",
       "file": "AreaSearcherExemple.lua",
       "description": "an exemple for the area searcher",
@@ -322,9 +331,20 @@
       "hash": "6d3a3c8bdea2fd31ad870e676f18c445"
     },
     {
+      "name": "Hive Autododge",
+      "file": "HiveAutododge.lua",
+      "description": "Automatically requeue to dodge sweats.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutododge.lua",
+      "libs": [],
+      "commands": [
+        "dodge"
+      ],
+      "hash": "cdb871a3c0f88cfc9cb664212988ef9c"
+    },
+    {
       "name": "Hive Autoqueue",
       "file": "HiveAutoQueue.lua",
-      "description": "Automatically Queue Hive Games.\\nScript Version: v3.0",
+      "description": "Automatically Queue Hive Games. Includes .rq command.\\nScript Version: v3.4",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutoQueue.lua",
       "libs": [
         "gfx2Colors"
@@ -332,7 +352,7 @@
       "commands": [
         "rq"
       ],
-      "hash": "4c139ac2c18fe14fcb3dc65afc83af4e"
+      "hash": "ffb8d6cbc972cf48ae65aed8b3111f00"
     },
     {
       "name": "Hive Chat Debloater",
@@ -647,7 +667,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/PvPHelper.lua",
       "libs": [],
       "commands": [],
-      "hash": "817d2bccf147e44994edc1953eb56303"
+      "hash": "979ae932386137fed7ce39bb96230c5e"
     },
     {
       "name": "Quantity",
@@ -1023,7 +1043,7 @@
       "name": "fileUtility",
       "file": "fileUtility.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/fileUtility.lua",
-      "hash": "c82a3d478b8108bab626ec6b5c1b87dc"
+      "hash": "7f23d35580da2da352e7b3def34c41bd"
     },
     {
       "name": "functionsPlusPlus",

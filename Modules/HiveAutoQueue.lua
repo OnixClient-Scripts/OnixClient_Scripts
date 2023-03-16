@@ -1,20 +1,7 @@
 name = "Hive Autoqueue"
-description = "Automatically Queue Hive Games.\nScript Version: v3.0"
---[[
+description = "Automatically Queue Hive Games. Includes .rq command.\nScript Version: v3.4"
 
-Made by rosie w/ help from onix cuz he gamer (thx rice for letting me skid some code <3)
-
-if you want to use .rq, you need the script, its called "HiveRequeue.lua" on the github.
-alternatively you can just make a new command and put this as the code:
-
-    command = "rq"
-    help_message = "Requeues Hive Games"
-    function execute(arguments)
-    sendLocalData("00409ed7-72f4-4575-8028-c0abf7736a49", "e")
-    end
-
-bye🙂
-]]
+-- Made by rosie w/ help from onix cuz he gamer (thx quoty for letting me skid some code <3)
 
 positionX = 100
 positionY = 24
