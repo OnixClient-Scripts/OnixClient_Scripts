@@ -23,9 +23,9 @@ jobs:
               with:
                   node-version: 18.12.x
                   cache: npm
-                  cache-dependency-path: Extras/package-lock.json
+                  cache-dependency-path: Extras/indexer/package-lock.json
             - name: Run indexer.js
-              run: node ./Extras/indexer.js
+              run: node ./Extras/indexer/indexer.js
             - name: Commit changes
               uses: stefanzweifel/git-auto-commit-action@v4
               with:

@@ -7,7 +7,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/advancedCoordinates.lua",
       "libs": [],
       "commands": [],
-      "hash": "13f51827e6f9824df113920760f6893e"
+      "hash": "13af348624ab83cb52c1876812b8df3e"
     },
     {
       "name": "amogus",
@@ -16,7 +16,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/amogus.lua",
       "libs": [],
       "commands": [],
-      "hash": "72284c180ef6621806650c356d5dd362"
+      "hash": "e4f0d4288c549a82473bcfe4576bbbc8"
     },
     {
       "name": "Among UI",
@@ -38,7 +38,7 @@
       "commands": [
         "search"
       ],
-      "hash": "f195e75bbdceb3a93b22401eaa988282"
+      "hash": "c38c0ae4bbdd19983d276c6fe89618c4"
     },
     {
       "name": "Armor Damage Reduction Viewer",
@@ -85,7 +85,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/coords.lua",
       "libs": [],
       "commands": [],
-      "hash": "dbfda9c934eaacbd1f15bb329ac91116"
+      "hash": "b12992bb3b0649a4dcacc046ed0b333d"
     },
     {
       "name": "Better Hunger",
@@ -150,7 +150,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/chestContentVisualizer.lua",
       "libs": [],
       "commands": [],
-      "hash": "39d5a5060e2014902a2707d3662ba608"
+      "hash": "67cd54fbb910743508260b2f79148f16"
     },
     {
       "name": "Cinematic Black Bar",
@@ -381,7 +381,7 @@
         "addstreak",
         "setstreak"
       ],
-      "hash": "b8a58e9fd88b9831941c45035be240f0"
+      "hash": "ccbfb4006338831f076649dfc3a2cd3f"
     },
     {
       "name": "HyperlandsAutoQueue",
@@ -582,7 +582,7 @@
         "renderthreeD"
       ],
       "commands": [],
-      "hash": "2f18853318c15411c0b1a1ddc237a957"
+      "hash": "fd07c56180bcceaeac339b556f04b8a7"
     },
     {
       "name": "Ping Display",
@@ -656,7 +656,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/quantity.lua",
       "libs": [],
       "commands": [],
-      "hash": "c9eb24a0376cf0a3fa249ff11edcf7f8"
+      "hash": "3d131df6e42987d49133ffc06dec4124"
     },
     {
       "name": "RenderThreeD library exemples",
@@ -667,7 +667,7 @@
         "renderthreeD"
       ],
       "commands": [],
-      "hash": "f8626cf62a55a672f20daf10571821b4"
+      "hash": "13dcf5aa57e3eea7d6a14fb6b15457b9"
     },
     {
       "name": "reply",
@@ -679,7 +679,7 @@
         "r",
         "reply"
       ],
-      "hash": "6400afd3bb95c641b51320f2bd29cd43"
+      "hash": "5a5702ce81c85c58c2cbec5342144945"
     },
     {
       "name": "Saturation display",
@@ -713,7 +713,7 @@
         "scPos",
         "scHelp"
       ],
-      "hash": "0cc4055253c3353c6166b0fe7556d057"
+      "hash": "e15fe0e76091a580f88d3309589457ee"
     },
     {
       "name": "scope",
@@ -744,7 +744,7 @@
       "commands": [
         "findBlock"
       ],
-      "hash": "a1c0ff5b6df970768243d1effe4a3c63"
+      "hash": "46f1eae43631294629592f276c200d10"
     },
     {
       "name": "Skinstealer",
@@ -791,7 +791,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/testluamod.lua",
       "libs": [],
       "commands": [],
-      "hash": "ac0de7302a5f6b077d3a241fbcff4e22"
+      "hash": "a3033f383ceb1b385f4f0ee70fc6f3a1"
     },
     {
       "name": "Tetrizz",
@@ -821,7 +821,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/TwResourceCounter.lua",
       "libs": [],
       "commands": [],
-      "hash": "7b88e0e6e8df10f61773c85f07bd6390"
+      "hash": "d7b3c4f3c81fcc32e41814668dd676b9"
     },
     {
       "name": "Video player",
@@ -913,7 +913,7 @@
       "description": "Gives an item with nbt",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/givenbt.lua",
       "libs": [],
-      "hash": "90de86e280638c9c3497121d43af633d"
+      "hash": "639fb56ebf230b3c52568716f570fd52"
     },
     {
       "name": "inv",
@@ -999,13 +999,13 @@
       "name": "charPixel",
       "file": "charPixel.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/charPixel.lua",
-      "hash": "0288cd4aaf198427ea3b7631ef3c3391"
+      "hash": "63ef7da7bc45f6d5e2aa9938efadaabb"
     },
     {
       "name": "chroma",
       "file": "chroma.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/chroma.lua",
-      "hash": "006fbe9351bee5bb3d8adb2950082078"
+      "hash": "32e7bc817c700584d1e3cd3ca00777cb"
     },
     {
       "name": "cosmeticTools",
@@ -1023,7 +1023,7 @@
       "name": "fileUtility",
       "file": "fileUtility.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/fileUtility.lua",
-      "hash": "c82a3d478b8108bab626ec6b5c1b87dc"
+      "hash": "c340f062a35caa03c2a431e6a3040d98"
     },
     {
       "name": "functionsPlusPlus",
@@ -1047,7 +1047,7 @@
       "name": "hiveGamemodes",
       "file": "hiveGamemodes.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/hiveGamemodes.lua",
-      "hash": "a6cd8d2a77ab746bbe73f223c457d8ee"
+      "hash": "5a2dcd75a840f7399fd484a530977aca"
     },
     {
       "name": "keyconverter",
@@ -1077,7 +1077,7 @@
       "name": "text",
       "file": "text.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/text.lua",
-      "hash": "c503bb5ef438b67472045c7c1b963a45"
+      "hash": "8567bc805e68ba760b70931f3612e3df"
     },
     {
       "name": "translator",
@@ -1089,7 +1089,7 @@
       "name": "uiLib",
       "file": "uiLib.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/uiLib.lua",
-      "hash": "b7fb4b849341e701d37ca0859062b200"
+      "hash": "f68e8cd362b95e282f33f18371bfa55a"
     },
     {
       "name": "Wait",
@@ -1097,5 +1097,74 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Wait.lua",
       "hash": "8b9d30d7876f0e051a03d9c27083b3ce"
     }
-  ]
+  ],
+  "autocomplete": {
+    "config": {
+      "file": "config.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/config.lua",
+      "hash": "7346131b733239836551fbd19e15badd"
+    },
+    "library": [
+      {
+        "file": "client_settings.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryclient_settings.lua",
+        "hash": "042afbad75ce245113556ea0d8d28440"
+      },
+      {
+        "file": "client.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryclient.lua",
+        "hash": "d0523ad89b427591a99db6a30e49f474"
+      },
+      {
+        "file": "dimension.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarydimension.lua",
+        "hash": "c3a959b7c02f9ba530330b69b84688bd"
+      },
+      {
+        "file": "events.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryevents.lua",
+        "hash": "934b7dc07dddbdcca0e3c1a0ad34cd32"
+      },
+      {
+        "file": "fs.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryfs.lua",
+        "hash": "26652d5c57d15a2dfc72e755ad1a1232"
+      },
+      {
+        "file": "gfx.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarygfx.lua",
+        "hash": "212fed8c5e84a130f63f38a161adee84"
+      },
+      {
+        "file": "gfx2.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarygfx2.lua",
+        "hash": "aed385ac7b5d57a6d43414814cfa8d04"
+      },
+      {
+        "file": "globals.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryglobals.lua",
+        "hash": "e4c275dd02bdd12f1982ddb1fc666cc9"
+      },
+      {
+        "file": "gui.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarygui.lua",
+        "hash": "0f9a398fda656fe7aa490d0842e86460"
+      },
+      {
+        "file": "network.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarynetwork.lua",
+        "hash": "9a3187410aa3d357587a7ab9b6675468"
+      },
+      {
+        "file": "player.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryplayer.lua",
+        "hash": "fd1cab07813e12f423178c403a5a3f87"
+      },
+      {
+        "file": "server.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryserver.lua",
+        "hash": "52dda2c7a377fd0a9ba3c05048d9c930"
+      }
+    ]
+  }
 }
