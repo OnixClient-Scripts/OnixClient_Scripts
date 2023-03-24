@@ -364,6 +364,15 @@
       "hash": "72490fe2de49819c63ef25db9d5bd239"
     },
     {
+      "name": "Hive Chat Replacer",
+      "file": "HiveChatReplacer.lua",
+      "description": "Replaces Hive bloat chat messages with awesome Onix Client messages.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveChatReplacer.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "c11487655aadc659e76f96a4d786081c"
+    },
+    {
       "name": "Hive Custom AutoGG",
       "file": "HiveAutoGG.lua",
       "description": "AutoGG Reimagined.",
@@ -572,15 +581,6 @@
       ],
       "commands": [],
       "hash": "50474935cbf028f4e9418b44e186c6ff"
-    },
-    {
-      "name": "Onix Promo",
-      "file": "OnixPromo.lua",
-      "description": "Promotes Onix Client in Hive chat.",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/OnixPromo.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "9d7ca30e772b8ea86810a3eca09f5db0"
     },
     {
       "name": "Pack Downloader",
