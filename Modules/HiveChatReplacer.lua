@@ -1,5 +1,5 @@
-name="Onix Promo"
-description="Promotes Onix Client in Hive chat."
+name="Hive Chat Replacer"
+description="Replaces Hive bloat chat messages with awesome Onix Client messages."
 
 PromoteOnix = false
 PromoteOnixText = "Promote Onix Client in Hive chat. It replaces the server messages with Onix Client promotion. :)"
