@@ -1070,6 +1070,12 @@
       "hash": "a6cd8d2a77ab746bbe73f223c457d8ee"
     },
     {
+      "name": "Inventory",
+      "file": "Inventory.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Inventory.lua",
+      "hash": "c05df0e188e1a05d2561d443ae924183"
+    },
+    {
       "name": "keyconverter",
       "file": "keyconverter.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/keyconverter.lua",
@@ -1086,6 +1092,12 @@
       "file": "module.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/module.lua",
       "hash": "33b6ecd14b12a0b2ee60c91d047f20a2"
+    },
+    {
+      "name": "PathFinder",
+      "file": "PathFinder.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/PathFinder.lua",
+      "hash": "0cd1aad5a88cfce32b4f199832ae77f1"
     },
     {
       "name": "renderthreeD",
