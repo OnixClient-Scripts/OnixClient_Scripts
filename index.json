@@ -171,6 +171,15 @@
       "hash": "08b301b55a17dfbd28da016ac7bea551"
     },
     {
+      "name": "Circle Tool",
+      "file": "CircleTool.lua",
+      "description": "Helps you build circles in minecraft",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/CircleTool.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "7820525b5af2f7c2ebe099e36a23e71c"
+    },
+    {
       "name": "Copy Last Message",
       "file": "CopyLastMessage.lua",
       "description": "Allows you to copy the last messsage sent in chat",
@@ -312,6 +321,15 @@
       ],
       "commands": [],
       "hash": "fbdbdec221984d25c61f2caf851e433b"
+    },
+    {
+      "name": "Guardian Spawn Spots",
+      "file": "GuardianSpawnSpots.lua",
+      "description": "Finds the area where guardians spawns in ocean monuments",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/GuardianSpawnSpots.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "fb742a987ee9829bb4c4d0da798298fb"
     },
     {
       "name": "guiscale",
@@ -605,6 +623,15 @@
       "hash": "2f18853318c15411c0b1a1ddc237a957"
     },
     {
+      "name": "Pillager Spawn Spots",
+      "file": "PillagerSpawnSpots.lua",
+      "description": "Finds the area where pillagers spawns in pillager outposts",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/PillagerSpawnSpots.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "75cec08beef3d474718222831705c1c4"
+    },
+    {
       "name": "Ping Display",
       "file": "PingCounter.lua",
       "description": "tries its best to show your ping",
@@ -775,7 +802,7 @@
       "commands": [
         "skinsteal"
       ],
-      "hash": "a085ec98327025978d169675d05cc894"
+      "hash": "0d6cebf3fadef079de37cef0d41dd90a"
     },
     {
       "name": "Stopwatch",
@@ -803,6 +830,15 @@
       "libs": [],
       "commands": [],
       "hash": "40f3fb81960093706788ecaf76052f82"
+    },
+    {
+      "name": "Target HUD",
+      "file": "TargetHUD.lua",
+      "description": "Displays a HUD with the target",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/TargetHUD.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "cb227c6a85448a183565f8aa65d92682"
     },
     {
       "name": "TestLuaMod",
@@ -833,6 +869,15 @@
       ],
       "commands": [],
       "hash": "21163cc322ce1abf792d3f73f1766d02"
+    },
+    {
+      "name": "ToxicHelper",
+      "file": "ToxicHelper.lua",
+      "description": "Help yourself not be toxic in chat",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ToxicHelper.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "c6033fe4e2bf94c92c5bd9884b615580"
     },
     {
       "name": "TW Resource Counter",
