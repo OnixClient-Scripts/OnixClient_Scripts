@@ -2,8 +2,8 @@ name = "Pack Downloader"
 description = "Allows you to download and install texture packs from the web, directly inside the game."
 
 workingDir = "RoamingState/"
-fs.mkdir("PackManager")
-workingDir = "RoamingState/PackManager"
+fs.mkdir("PackManager/packs")
+workingDir = "RoamingState/PackManager/packs"
 foundDownload = false
 discordLink = ""
 
@@ -30,12 +30,12 @@ function getDownload(link)
 end
 
 function downloadPack(pack)
-	foundDownload = false
-	workingDir = "RoamingState/PackManager/packs"
-	filepath = pack:sub(pack:find("([^/]+)$"), -1)
-	filepath = filepath:gsub("zip", "mcpack")
-	network.fileget(filepath, pack, "packDownloader")
+    foundDownload = false
+    filepath = pack:sub(pack:find("([^/]+)$"), -1)
+    filepath = filepath:gsub("zip", "mcpack")
+    network.fileget(filepath, pack, "packDownloader")
 end
+
 
 function onNetworkData(code, id, data)
 	if id == "mediafireFetch" then
@@ -54,7 +54,6 @@ function onNetworkData(code, id, data)
 	end
 	if id == "discordFetch" then
 		if code == 0 then
-			workingDir = "RoamingState/PackManager/packs"
 			filepath = discordLink:sub(discordLink:find("([^/]+)$"), -1)
 			filepath = filepath:gsub("zip", "mcpack")
 			network.fileget(filepath, discordLink, "packDownloader")
@@ -71,4 +70,5 @@ function onNetworkData(code, id, data)
 			client.notification("Failed to download pack!")
 		end
 	end
+	
 end
