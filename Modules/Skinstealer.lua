@@ -147,8 +147,8 @@ event.listen("MouseInput", function(button,down)
 end)
 function skinsteal()
     if player.facingEntity() then
-        if (player.selectedEntity().type ~= "player" or player.selectedEntity().nametag == "") and warningMessage.value == false and disableChatMessage.value == false then
-            print("§cCould not steal skin.\nThis could be because it's not a player, or the player is crouching.")
+        if (player.selectedEntity().type ~= "player" or player.selectedEntity().username == "") and warningMessage.value == false and disableChatMessage.value == false then
+            print("§cCould not steal skin.\nThis could be because it's not a player.")
         else
             local p = player.selectedEntity()
             if p.username ~= nil then
