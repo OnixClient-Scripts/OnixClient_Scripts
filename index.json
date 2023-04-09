@@ -814,6 +814,15 @@
       "hash": "05ea2f4679b98a0ac875b455120c1cc1"
     },
     {
+      "name": "Structure Spawn Spots",
+      "file": "SSSStructureSpawnSpots.lua",
+      "description": "Finds the area where mobs spawn in a structure",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/SSSStructureSpawnSpots.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "974eea83c75a6ebc9c44e5ab9bf4f75c"
+    },
+    {
       "name": "Suicide Hotkey",
       "file": "SuicideHotkey.lua",
       "description": "Allows you to kill yourself!",
@@ -929,6 +938,15 @@
       "libs": [],
       "commands": [],
       "hash": "f674b78f9269f063c060db25e6a2628d"
+    },
+    {
+      "name": "Wordle",
+      "file": "Wordle.lua",
+      "description": "Wordle game in minecraft",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Wordle.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "194307c32c0676551f6ca027ba7fcd80"
     }
   ],
   "commands": [
