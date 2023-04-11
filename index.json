@@ -1187,6 +1187,12 @@
       "hash": "b7fb4b849341e701d37ca0859062b200"
     },
     {
+      "name": "vectors",
+      "file": "vectors.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/vectors.lua",
+      "hash": "84320524c835bac9e6c48353e1f27274"
+    },
+    {
       "name": "Wait",
       "file": "Wait.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Wait.lua",
