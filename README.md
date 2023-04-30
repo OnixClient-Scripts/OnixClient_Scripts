@@ -2,6 +2,8 @@
 
 ## [Onix Client Discord](https://discord.gg/onixclient)
 
+## [Scripting Repo](https://onixclient.com/scripting/repo)
+
 ```diff
 - You need Onix Client (Scripting) to use these scripts!
 ```
