@@ -823,6 +823,15 @@
       "hash": "974eea83c75a6ebc9c44e5ab9bf4f75c"
     },
     {
+      "name": "Sudoku",
+      "file": "Sudoku.lua",
+      "description": "Sudoku in minecraft",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Sudoku.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "ce2f814f736743e84f4291f1037b288a"
+    },
+    {
       "name": "Suicide Hotkey",
       "file": "SuicideHotkey.lua",
       "description": "Allows you to kill yourself!",
