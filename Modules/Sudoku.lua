@@ -6,6 +6,7 @@ positionY = 0
 sizeX = 100
 sizeY = 100
 
+show_mouse_key = client.settings.addNamelessKeybind("Show Mouse", 220)
 puz_grid = {}
 for i = 0, 8 do
     puz_grid[i] = {}
@@ -43,7 +44,7 @@ function render2()
 end
 
 event.listen("KeyboardInput", function(key, down)
-    if key == 220 and down then
+    if key == show_mouse_key.value and down then
         gui.setGrab(not gui.mouseGrabbed())
         return true
     end
