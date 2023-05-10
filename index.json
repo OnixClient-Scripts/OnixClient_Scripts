@@ -494,6 +494,15 @@
       "hash": "9d82b39492259c4318055552e98213a9"
     },
     {
+      "name": "Kill Aura",
+      "file": "KillAura.lua",
+      "description": "Automatically kills mobs around you.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/KillAura.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "6e8ebe2d9939a2450acc1d51a21edf76"
+    },
+    {
       "name": "Logger",
       "file": "loggerUI.lua",
       "description": "Logs things better",
