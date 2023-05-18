@@ -1,6 +1,5 @@
 name = "Zeqa Chat Debloater"
-description =
-"Removes many annoying messages from Zeqa.net's chat.                                                         Made by miniguy7\nWith alot of code from xjqms."
+description = "Removes many annoying messages from Zeqa.net's chat.                                                         Made by miniguy7\nWith alot of code from xjqms."
 
 --[[
     Hive Chat Debloater Script
