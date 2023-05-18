@@ -13,12 +13,12 @@ function ice()
 
     for px=sx,ex do
         for pz=sz,ez do
-            client.execute("execute /setblock " .. px .. " " .. y .. " " .. pz .. " minecraft:packed_ice")
+            client.execute("execute /setblock " .. px .. " " .. y .. " " .. pz .. " minecraft:blue_ice")
         end
     end
 end
 
-function update(dt)
+function render(dt)
     local selectedItem = player.inventory().selected
     local item = player.inventory().at(selectedItem)
     if item then
