@@ -238,6 +238,15 @@
       "hash": "11c3710e34007dce7a455f755d7bf4e8"
     },
     {
+      "name": "Everything Sponge",
+      "file": "EverythingSponge.lua",
+      "description": "Sponge but it removes everything. Even blocks. Only works on the second sponge place for safety reasons. Made by Naomi.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/EverythingSponge.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "ef961616d64e40a75237b34bbd0259aa"
+    },
+    {
       "name": "Exemple",
       "file": "Exemple.lua",
       "description": "A Simple \\",
@@ -438,6 +447,15 @@
       "libs": [],
       "commands": [],
       "hash": "fa59af1f050c9439e145b606c16a69cb"
+    },
+    {
+      "name": "Ice Boat",
+      "file": "IceBoat.lua",
+      "description": "Places ice under you when you",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/IceBoat.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "3d506362592c98c64f0d1c88d1e009ad"
     },
     {
       "name": "Input Example",
@@ -706,6 +724,17 @@
       "hash": "979ae932386137fed7ce39bb96230c5e"
     },
     {
+      "name": "Pyramid Generator",
+      "file": "PyramidGenerator.lua",
+      "description": "Generates a pyramid.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/PyramidGenerator.lua",
+      "libs": [],
+      "commands": [
+        "pyramid"
+      ],
+      "hash": "027947e310ce2349f161912099d7ac57"
+    },
+    {
       "name": "Quantity",
       "file": "quantity.lua",
       "description": "gives the amount of the selected item you have in your inventory",
@@ -812,6 +841,18 @@
         "skinsteal"
       ],
       "hash": "0d6cebf3fadef079de37cef0d41dd90a"
+    },
+    {
+      "name": "Sphere Generator",
+      "file": "SphereGenerator.lua",
+      "description": "Generates a sphere.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/SphereGenerator.lua",
+      "libs": [],
+      "commands": [
+        "sphere",
+        "hsphere"
+      ],
+      "hash": "31642438078836f03b22571dcfc668e1"
     },
     {
       "name": "Stopwatch",
@@ -965,6 +1006,15 @@
       "libs": [],
       "commands": [],
       "hash": "194307c32c0676551f6ca027ba7fcd80"
+    },
+    {
+      "name": "Zeqa Chat Debloater",
+      "file": "ZeqaDebloater.lua",
+      "description": "Removes many annoying messages from Zeqa.net",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ZeqaDebloater.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "659f5079990366874f63726b6b041072"
     }
   ],
   "commands": [
