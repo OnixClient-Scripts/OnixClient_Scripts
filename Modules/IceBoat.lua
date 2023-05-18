@@ -3,13 +3,14 @@ description = "Places ice under you when you're in a boat. You must be holding a
 
 -- made by naomi. thank you to rosie for helping me with the code <3
 
-function ice()
+radius = client.settings.addNamelessInt("Radius", 1, 20, 5)
+
+function ice(radius)
     local x,y,z = player.position()
-    -- get a 5x5 x and y area
-    local sx = x - 2
-    local sz = z - 2
-    local ex = x + 2
-    local ez = z + 2
+    local sx = x - radius
+    local sz = z - radius
+    local ex = x + radius
+    local ez = z + radius
 
     for px=sx,ex do
         for pz=sz,ez do
@@ -18,12 +19,12 @@ function ice()
     end
 end
 
-function render(dt)
+function update(dt)
     local selectedItem = player.inventory().selected
     local item = player.inventory().at(selectedItem)
     if item then
         if item.name:find("splash") and item.data == 2 then
-            ice()
+            ice(radius.value)
         end
     end
 end
