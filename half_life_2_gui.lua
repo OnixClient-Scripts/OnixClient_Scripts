@@ -140,28 +140,28 @@ function render2(dt)
 end
 
 --pls donnt mess with this atm
-local pos = {
-    {gui.width()/2 - 125, 50}, --1
-    {gui.width()/2 - 70, 20}, --2
-    {gui.width()/2 - 45, 20}, --3
-    {gui.width()/2 - 20, 20}, --4
-    {gui.width()/2 - -5, 20}, --5
-    {gui.width()/2 + 30, 20}, --6
-    {gui.width()/2 + 55, 20}, --7
-    {gui.width()/2 + 80, 20}, --8
-    {gui.width()/2 + 105, 20} --9
-}
-local firstItemTbl = {
-    {gui.width()/2 - 125, 50}, --1
-    {gui.width()/2 - 70, 20}, --2
-    {gui.width()/2 - 45, 20}, --3
-    {gui.width()/2 - 20, 20}, --4
-    {gui.width()/2 - -5, 20}, --5
-    {gui.width()/2 + 30, 20}, --6
-    {gui.width()/2 + 55, 20}, --7
-    {gui.width()/2 + 80, 20}, --8
-    {gui.width()/2 + 105, 20} --9
-}
+-- local pos = {
+--     {gui.width()/2 - 125, 50}, --1
+--     {gui.width()/2 - 70, 20}, --2
+--     {gui.width()/2 - 45, 20}, --3
+--     {gui.width()/2 - 20, 20}, --4
+--     {gui.width()/2 - -5, 20}, --5
+--     {gui.width()/2 + 30, 20}, --6
+--     {gui.width()/2 + 55, 20}, --7
+--     {gui.width()/2 + 80, 20}, --8
+--     {gui.width()/2 + 105, 20} --9
+-- }
+-- local firstItemTbl = {
+--     {gui.width()/2 - 125, 50}, --1
+--     {gui.width()/2 - 70, 20}, --2
+--     {gui.width()/2 - 45, 20}, --3
+--     {gui.width()/2 - 20, 20}, --4
+--     {gui.width()/2 - -5, 20}, --5
+--     {gui.width()/2 + 30, 20}, --6
+--     {gui.width()/2 + 55, 20}, --7
+--     {gui.width()/2 + 80, 20}, --8
+--     {gui.width()/2 + 105, 20} --9
+-- }
 function render(dt)
     -- using this func because there's no equivalent for gfx.item in new renderer
     -- gfx.color(background[1],background[2],background[3],background[4])
@@ -187,45 +187,45 @@ function render(dt)
     -- end
 end
 
-local clicked = false
-local prev = 1
-local function shiftToRight()
-    pos[player.inventory().selected][2] = 20
-    pos[player.inventory().selected + 1][1] = pos[player.inventory().selected + 1][1] - 30
-    pos[player.inventory().selected + 1][2] = 50
-end
-local function shiftToLeft()
-    pos[player.inventory().selected][2] = 20
-    pos[player.inventory().selected][1] = pos[player.inventory().selected][1] + 30
-    pos[player.inventory().selected - 1][2] = 50
-end
-event.listen("MouseInput", function(button, down)
-    if button == 4 then -- mouse scroll
-        if down then -- scrolling down
-            scrolling = true
-            if prev == 9 and player.inventory().selected == 1 then
-                prev = player.inventory().selected
-                pos = firstItemTbl
-                return nil
-            end
-            prev = player.inventory().selected
-            pos[player.inventory().selected][2] = 20
-            pos[player.inventory().selected + 1][1] = pos[player.inventory().selected + 1][1] - 30
-            pos[player.inventory().selected + 1][2] = 50
-        elseif not down then --scrolling up
-            scrolling = true
-            if prev == 1 and player.inventory().selected == 9 then
-                for i = 1, 8, 1 do
-                    pos[i][2] = 20
-                    pos[i + 1][1] = pos[i + 1][1] - 30
-                    pos[i + 1][2] = 50
-                end
-            end
-            prev = player.inventory().selected
-            pos[player.inventory().selected][2] = 20
-            pos[player.inventory().selected][1] = pos[player.inventory().selected][1] + 30
-            pos[player.inventory().selected - 1][2] = 50
-        end
+-- local clicked = false
+-- local prev = 1
+-- local function shiftToRight()
+--     pos[player.inventory().selected][2] = 20
+--     pos[player.inventory().selected + 1][1] = pos[player.inventory().selected + 1][1] - 30
+--     pos[player.inventory().selected + 1][2] = 50
+-- end
+-- local function shiftToLeft()
+--     pos[player.inventory().selected][2] = 20
+--     pos[player.inventory().selected][1] = pos[player.inventory().selected][1] + 30
+--     pos[player.inventory().selected - 1][2] = 50
+-- end
+-- -- event.listen("MouseInput", function(button, down)
+--     if button == 4 then -- mouse scroll
+--         if down then -- scrolling down
+--             scrolling = true
+--             if prev == 9 and player.inventory().selected == 1 then
+--                 prev = player.inventory().selected
+--                 pos = firstItemTbl
+--                 return nil
+--             end
+--             prev = player.inventory().selected
+--             pos[player.inventory().selected][2] = 20
+--             pos[player.inventory().selected + 1][1] = pos[player.inventory().selected + 1][1] - 30
+--             pos[player.inventory().selected + 1][2] = 50
+--         elseif not down then --scrolling up
+--             scrolling = true
+--             if prev == 1 and player.inventory().selected == 9 then
+--                 for i = 1, 8, 1 do
+--                     pos[i][2] = 20
+--                     pos[i + 1][1] = pos[i + 1][1] - 30
+--                     pos[i + 1][2] = 50
+--                 end
+--             end
+--             prev = player.inventory().selected
+--             pos[player.inventory().selected][2] = 20
+--             pos[player.inventory().selected][1] = pos[player.inventory().selected][1] + 30
+--             pos[player.inventory().selected - 1][2] = 50
+--         end
         
-    else scrolling = false end
-end)
+--     else scrolling = false end
+-- end)
