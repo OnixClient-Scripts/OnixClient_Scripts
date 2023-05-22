@@ -351,12 +351,12 @@
     },
     {
       "name": "Half Life 2 GUI",
-      "file": "half_life_2_gui.lua.txt",
+      "file": "half_life_2_gui.lua",
       "description": "Recreates the HalfLife 2 GUI, Based on the HalfLife 2 Episode 2 HUD",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/half_life_2_gui.lua.txt",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/half_life_2_gui.lua",
       "libs": [],
       "commands": [],
-      "hash": "d9087603aa47ff6f98f045c0ba22d4ab"
+      "hash": "b04a28d32bf13c3dd5aa7b593eedcc7d"
     },
     {
       "name": "Hit Particles",
