@@ -1312,7 +1312,7 @@
       {
         "file": "globals.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryglobals.lua",
-        "hash": "e4c275dd02bdd12f1982ddb1fc666cc9"
+        "hash": "995343a7e716898eaa49b5b71fdfc961"
       },
       {
         "file": "gui.lua",
@@ -1327,7 +1327,7 @@
       {
         "file": "player.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryplayer.lua",
-        "hash": "b0080c3def1ae15361426c1efa8d3887"
+        "hash": "6af06b5414362b9c086fe77b2ce16a9a"
       },
       {
         "file": "server.lua",

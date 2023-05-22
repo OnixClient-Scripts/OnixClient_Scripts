@@ -85,3 +85,19 @@ function Nbt(tbl) end
 ---@param ItemNBT table The nbt tag
 ---@return Item item
 function itemFromNbt(ItemNBT) end
+
+
+---Returns the translated message/text (for minecraft)
+---@param translationKey string The key to translate (you can check in vanilla text files ex: gui.yes)
+---@return string translated The translated string or the translation key
+function getTranslatedMessage(translationKey) end
+---Returns the translated message/text (for minecraft)
+---@param translationKey string The key to translate (you can check in vanilla text files ex: gui.yes)
+---@param params string[] The params the key takes (like a name or number things like that)
+---@return string translated The translated string or the translation key
+function getTranslatedMessage(translationKey, params) end
+
+
+---Plays a sound file
+---@param path string The path to the audio file
+function playCustomSound(path) end
