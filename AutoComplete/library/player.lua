@@ -312,6 +312,7 @@ local _acp_Enchants = {}
 ---@field data integer The data of the item, like in /give with dye and things like that
 ---@field customName string The name (ex: from anvils)
 ---@field enchant Enchants[] The item's enchantements
+---@field displayName string The item's display name (the one that would show above hotbar)
 
 
 ---@class InventoryArmor 
