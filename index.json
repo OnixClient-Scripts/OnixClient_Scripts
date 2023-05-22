@@ -530,6 +530,15 @@
       "hash": "6e8ebe2d9939a2450acc1d51a21edf76"
     },
     {
+      "name": "Kill Ding",
+      "file": "KillDing.lua",
+      "description": "Plays a ding sound when you kill someone on The Hive.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/KillDing.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "7c31944f5eef38824657d0a96a736c6b"
+    },
+    {
       "name": "Logger",
       "file": "loggerUI.lua",
       "description": "Logs things better",
