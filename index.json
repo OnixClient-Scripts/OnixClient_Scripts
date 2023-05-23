@@ -418,6 +418,15 @@
       "hash": "c11487655aadc659e76f96a4d786081c"
     },
     {
+      "name": "Hive CS Code Copier",
+      "file": "HiveCSCodeCopier.lua",
+      "description": "Copies the custom server code from the Hive to your clipboard.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveCSCodeCopier.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "e8351e3c6589ff778daff7ff11caf6bf"
+    },
+    {
       "name": "Hive Custom AutoGG",
       "file": "HiveAutoGG.lua",
       "description": "AutoGG Reimagined.",
