@@ -180,6 +180,15 @@
       "hash": "7820525b5af2f7c2ebe099e36a23e71c"
     },
     {
+      "name": "Click Limiter",
+      "file": "ClickLimiter.lua",
+      "description": "Limits your CPS to user defined values.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ClickLimiter.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "a13a7a683644769ce02514526255c1b1"
+    },
+    {
       "name": "Copy Last Message",
       "file": "CopyLastMessage.lua",
       "description": "Allows you to copy the last messsage sent in chat",
