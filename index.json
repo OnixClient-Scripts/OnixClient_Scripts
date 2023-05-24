@@ -37,13 +37,13 @@
       "hash": "d226e76e6a91ee5a5c2270966c28a2b9"
     },
     {
-      "name": "Anti slab Interact",
+      "name": "Anti Slab Interact",
       "file": "IHateInteractingWithMyMouseWhenIAmLookingAtStoneSlabs.lua",
       "description": "Prevents players from interacting with slabs.",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/IHateInteractingWithMyMouseWhenIAmLookingAtStoneSlabs.lua",
       "libs": [],
       "commands": [],
-      "hash": "0b1e4e1c2ca46c596a8c96af4ecda42d"
+      "hash": "1834a7311676983200025ff85ea5a534"
     },
     {
       "name": "AreaSearcherExemple",
