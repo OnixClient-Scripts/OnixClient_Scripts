@@ -1,4 +1,4 @@
-name = "Anti slab Interact"
+name = "Anti Slab Interact"
 description = "Prevents players from interacting with slabs."
 
 blocks = {
