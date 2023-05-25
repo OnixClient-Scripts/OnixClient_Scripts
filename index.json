@@ -561,9 +561,11 @@
       "file": "KillDing.lua",
       "description": "Plays a ding sound when you kill someone on The Hive.",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/KillDing.lua",
-      "libs": [],
+      "libs": [
+        "SoundDownloader"
+      ],
       "commands": [],
-      "hash": "7c31944f5eef38824657d0a96a736c6b"
+      "hash": "fa07146a7c9875f39ee8d703363024a2"
     },
     {
       "name": "Logger",
@@ -579,9 +581,11 @@
       "file": "MentionPing.lua",
       "description": "Makes it so when you get pinged in chat, it will play a sound.",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MentionPing.lua",
-      "libs": [],
+      "libs": [
+        "SoundDownloader"
+      ],
       "commands": [],
-      "hash": "1ec225b4118e139b19eb71c2d9a62fd0"
+      "hash": "facb158c2ba2a8097343049c28f49bf0"
     },
     {
       "name": "Middle Click Tools",
