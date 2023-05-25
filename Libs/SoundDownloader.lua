@@ -2,15 +2,13 @@
 ---@param url string The url of the sound to download
 ---@return nil
 function downloadSound(url)
-    workingDir = "RoamingState/OnixClient/Scripts/Data"
     if not fs.exist("Sounds") then
         fs.mkdir("Sounds")
     end
-    workingDir = "RoamingState/OnixClient/Scripts/Data/Sounds/"
     local name = url:match("([^/]+)$")
 
     if not fs.exist(name) then
-        network.fileget(name,url, name)
+        network.fileget("Sounds/" .. name,url, name)
     end
 end
 
