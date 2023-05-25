@@ -575,6 +575,15 @@
       "hash": "46642b9969a299818276df595c09ac84"
     },
     {
+      "name": "Mention Ping",
+      "file": "MentionPing.lua",
+      "description": "Makes it so when you get pinged in chat, it will play a sound.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MentionPing.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "1ec225b4118e139b19eb71c2d9a62fd0"
+    },
+    {
       "name": "Middle Click Tools",
       "file": "MiddleClickTools.lua",
       "description": "Allows you to use the middle mouse button to perform various actions.",
