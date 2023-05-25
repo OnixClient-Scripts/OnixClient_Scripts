@@ -1,5 +1,3 @@
-workingDir = "RoamingState/OnixClient/Scripts/Data/Sounds/"
-
 ---Downloads a sound from the OnixClient_Scripts repo (upload sounds to the sound folder in data on the repo)
 ---@param url string The url of the sound to download
 ---@return nil
