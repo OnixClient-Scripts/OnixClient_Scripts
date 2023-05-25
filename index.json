@@ -1291,6 +1291,12 @@
       "hash": "3d2de7e43cd936a46b428873ff502bba"
     },
     {
+      "name": "SoundDownloader",
+      "file": "SoundDownloader.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/SoundDownloader.lua",
+      "hash": "d58bc50ec7a32cfd252e39af2db56198"
+    },
+    {
       "name": "text",
       "file": "text.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/text.lua",
