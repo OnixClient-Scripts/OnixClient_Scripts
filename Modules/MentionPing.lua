@@ -3,8 +3,6 @@ description = "Makes it so when you get pinged in chat, it will play a sound."
 
 importLib("SoundDownloader")
 
-workingDir = "RoamingState/OnixClient/Scripts/Data/Sounds/"
-
 discordMode = client.settings.addNamelessBool("Use Discord Ping", false)
 respondToHere = client.settings.addNamelessBool("Respond to @here", false)
 
@@ -12,6 +10,8 @@ function postInit()
     downloadSound("https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Data/Sounds/ding.mp3")
     downloadSound("https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Data/Sounds/discord.mp3")
 end
+
+workingDir = "RoamingState/OnixClient/Scripts/Data/Sounds/"
 
 shouldPing = false
 
