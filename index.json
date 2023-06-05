@@ -1283,6 +1283,12 @@
       "hash": "33b6ecd14b12a0b2ee60c91d047f20a2"
     },
     {
+      "name": "OnixClientVSLogger",
+      "file": "OnixClientVSLogger.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/OnixClientVSLogger.lua",
+      "hash": "ad47de44a4d7d26248fdc850a24c1bd7"
+    },
+    {
       "name": "PathFinder",
       "file": "PathFinder.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/PathFinder.lua",
