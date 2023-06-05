@@ -1286,7 +1286,7 @@
       "name": "OnixClientVSLogger",
       "file": "OnixClientVSLogger.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/OnixClientVSLogger.lua",
-      "hash": "1e1d0459f54f7d265bf0686671127dd9"
+      "hash": "e817a82dd277fffd8672f60f842b2760"
     },
     {
       "name": "PathFinder",
