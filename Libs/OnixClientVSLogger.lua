@@ -27,6 +27,7 @@ function onNetworkData(code,id,data)
         workingDir = "RoamingState/OnixClient/Scripts/Libs/"
         io.open("OnixClientVSLogger.lua", "w"):write(data):close()
         vs.log("OnixClientVSLogger updated!")
+        workingDir = "RoamingState/OnixClient/Scripts/Data"
     end
 end
 
@@ -54,8 +55,10 @@ vs = {
         if text == nil then
             text = "nil"
         end
-        file:write(text .. "\n")
-        file:close()
+        if not file == nil then
+            file:write(text .. "\n")
+            file:close()
+        end
     end,
 
 ---Clears the OnixVSLogs.txt file
