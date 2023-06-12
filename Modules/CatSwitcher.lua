@@ -48,3 +48,5 @@ function render(dt)
     --gfx.text(0, 0, status, 0.5)
     gfx.image(0, 0, sizeX, sizeY, "catimage.jpg")
 end
+
+print("[Cat Switcher] this script will probably crash your game!")
