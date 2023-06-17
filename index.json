@@ -1075,6 +1075,17 @@
       "hash": "e1b2e845be9687914719a7c7f733ab70"
     },
     {
+      "name": "Zeqa Autoqueue",
+      "file": "ZeqaAutoqueue.lua",
+      "description": "Automatically queues for you when you win/lose a game.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ZeqaAutoqueue.lua",
+      "libs": [],
+      "commands": [
+        "req"
+      ],
+      "hash": "2de9bdcf38992733e1096bcab5cf22b2"
+    },
+    {
       "name": "Zeqa Chat Debloater",
       "file": "ZeqaDebloater.lua",
       "description": "Removes many annoying messages from Zeqa.net",
