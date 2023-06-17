@@ -141,7 +141,7 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/CatSwitcher.lua",
       "libs": [],
       "commands": [],
-      "hash": "be53d83fda1a938816c6ae92c56b54a4"
+      "hash": "ca3327767cbbc3618f3752fb1d10d5d5"
     },
     {
       "name": "Chat Reverser",
@@ -1064,6 +1064,15 @@
       "libs": [],
       "commands": [],
       "hash": "194307c32c0676551f6ca027ba7fcd80"
+    },
+    {
+      "name": "World Edit",
+      "file": "WorldEdit.lua",
+      "description": "World Edit for bedrock. Type $help for an explanation (The wand isn",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WorldEdit.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "e1b2e845be9687914719a7c7f733ab70"
     },
     {
       "name": "Zeqa Chat Debloater",
