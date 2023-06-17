@@ -648,6 +648,15 @@
       "hash": "7db24eda754547bbf70dc1991d3b1082"
     },
     {
+      "name": "Movable Action Bar",
+      "file": "MovableActionBar.lua",
+      "description": "Allows you to move the action bar around.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MovableActionBar.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "34deca14683669183188a0dfa9b7275d"
+    },
+    {
       "name": "MusicBee Overlay",
       "file": "musicbeeoverlay.lua",
       "description": "Displays current song, artist, album name, and album cover. \\nMusicBee only.",
