@@ -4,17 +4,16 @@ description="Steals peoples skins"
 function stealMySkin()
     local localSkin = player.skin()
     local localUsername = player.name()
-    if localUsername ~= nil then
-        local playerName = string.split(localUsername, "\n")
-        if string.find(playerName[1],"§.") then
-            localUsername = string.gsub(playerName[1],"§.","")
-            if string.find(localUsername,"%[") then
-                localUsername = string.gsub(localUsername," %[.*%]","")
-            end
-        else
-            return localUsername
+    local playerName = string.split(localUsername, "\n")
+    if string.find(playerName[1],"§.") then
+        localUsername = string.gsub(playerName[1],"§.","")
+        if string.find(localUsername,"%[") then
+            localUsername = string.gsub(localUsername," %[.*%]","")
         end
+    else
+        return localUsername
     end
+
     if localSkin ~= nil then
         fs.mkdir("Skinstealer/" .. localUsername)
         print("§aGrabbed your skin!")
@@ -145,27 +144,60 @@ event.listen("MouseInput", function(button,down)
         return true
     end
 end)
+
 function skinsteal()
     if player.facingEntity() then
-        if (player.selectedEntity().type ~= "player" or player.selectedEntity().username == "") and warningMessage.value == false and disableChatMessage.value == false then
-            print("§cCould not steal skin.\nThis could be because it's not a player.")
+        if player.selectedEntity().type ~= "player" and warningMessage.value == false and disableChatMessage.value == false then
+            if client.mcversion:find("1.19.8") then
+                if player.selectedEntity().nametag == "" then
+                    print("§cCould not steal skin.")
+                    print("§cThis could be because it's not a player.")
+                    return
+                elseif player.selectedEntity().username == "" then
+                    print("§cCould not steal skin.")
+                    print("§cThis could be because it's not a player.")
+                    return
+                end
+            end
         else
-            local p = player.selectedEntity()
-            if p.username ~= nil then
-                local playerName = string.split(p.username, "\n")
-                if string.find(playerName[1],"§.") then
-                    username = string.gsub(playerName[1],"§.","")
-                    if string.find(username,"%[") then username = string.gsub(username," %[.*%]","") end
+            local selectedPlayer = player.selectedEntity()
+            if client.mcversion:find("1.19.8") then
+                if selectedPlayer.nametag ~= nil then
+                    local playerName = string.split(selectedPlayer.nametag, "\n")
+                    if string.find(playerName[1],"§.") then
+                        username = string.gsub(playerName[1],"§.","")
+                        if string.find(username,"%[") then username = string.gsub(username," %[.*%]","") end
+                    else
+                        username = selectedPlayer.nametag
+                    end
                 else
-                    username = p.username
+                    playerName = selectedPlayer.type
                 end
             else
-                playerName = p.type
+                if selectedPlayer.username ~= nil then
+                    local playerName = string.split(selectedPlayer.username, "\n")
+                    if string.find(playerName[1],"§.") then
+                        username = string.gsub(playerName[1],"§.","")
+                        if string.find(username,"%[") then username = string.gsub(username," %[.*%]","") end
+                    else
+                        username = selectedPlayer.username
+                    end
+                else
+                    playerName = selectedPlayer.type
+                end
             end
-            if p.skin == nil then return end
-            local skin = p.skin()
+            if selectedPlayer.skin == nil then return end
+            local skin = selectedPlayer.skin()
             if skin ~= nil then
-                fs.mkdir("Skinstealer/" .. username)
+                if fs.exist("Skinstealer/" .. username) == false then
+                    fs.mkdir("Skinstealer/" .. username)
+                else
+                    while fs.exist("Skinstealer/" .. username .. "_" .. i) do
+                        i = i + 1
+                    end
+                    fs.mkdir("Skinstealer/" .. username .. "_" .. i)
+                    username = username .. "_" .. i
+                end
                 if disableChatMessage.value == false and username ~= usernameTest then print("§aStole " .. username .. "'s skin!") usernameTest = username end
                 skin.save("Skinstealer/" .. username .. "/" .. username .. "_skin.png")
                 if skin.hasCape() then
@@ -180,9 +212,9 @@ function skinsteal()
 end
 registerCommand("skinsteal", function(args)
     if args == "" then
-        fs.showFolder("C:/Users/%USERNAME%/AppData/Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/RoamingState/OnixClient/Scripts/Data/Skinstealer")
+        fs.showFolder("Skinstealer")
     elseif args == "--lastStolen" or args == "--lastSteal" then
-        fs.showFolder("C:/Users/%USERNAME%/AppData/Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/RoamingState/OnixClient/Scripts/Data/Skinstealer/" .. username)
+        fs.showFolder("Skinstealer/" .. username)
     elseif args == "help" then
         print("§c§lSkinstealer Help§r\n§aArguments can be added with §r§o§7--[argument]§r.§a\n§lArgs:\n§r§7--lastStolen §a§oOpens the folder of the last stolen skin.")
     elseif args == "--showSettings" then
