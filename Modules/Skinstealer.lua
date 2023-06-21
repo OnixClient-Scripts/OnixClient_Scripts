@@ -192,6 +192,7 @@ function skinsteal()
                 if fs.exist("Skinstealer/" .. username) == false then
                     fs.mkdir("Skinstealer/" .. username)
                 else
+                    local i = 1
                     while fs.exist("Skinstealer/" .. username .. "_" .. i) do
                         i = i + 1
                     end
