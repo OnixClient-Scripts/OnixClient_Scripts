@@ -135,6 +135,15 @@
       "hash": "2d96375b324bb180ab9d31f14e831943"
     },
     {
+      "name": "Breadcrumbs",
+      "file": "Breadcrumbs.lua",
+      "description": "Adds a breadcrumb trail behind you.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Breadcrumbs.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "fc4e17ae46e20d02b7bceb1fb15b4168"
+    },
+    {
       "name": "Cat Switcher",
       "file": "CatSwitcher.lua",
       "description": "xJqms",
