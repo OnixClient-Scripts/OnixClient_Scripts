@@ -265,6 +265,15 @@
       "hash": "11c3710e34007dce7a455f755d7bf4e8"
     },
     {
+      "name": "Enabled Filter",
+      "file": "EnabledFilter.lua",
+      "description": "Only shows enabled modules in the module list.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/EnabledFilter.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "fb4a6c365842bbc6d6a6378e83718ebe"
+    },
+    {
       "name": "Everything Sponge",
       "file": "EverythingSponge.lua",
       "description": "Sponge but it removes everything. Even blocks. Only works on the second sponge place for safety reasons. Made by Naomi.",
