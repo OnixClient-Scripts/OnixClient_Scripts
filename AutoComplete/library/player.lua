@@ -255,20 +255,20 @@ function _acp_AttributeListHolder.name(attribute_name) end
 
 ---Gets the attribute with its id or nil
 ---Attribute ids
----2: Hunger
----3: Saturation
----4: Exhaustion
----5: Level
----6: Experience
----7: Health
----8: Follow Range
----9: Knockback Resistance
----10: Movement Speed
----11: Underwater Speed
----12: Lava Speed
----13: Attack Damage
----14: Absorption
----15: Luck
+---1: Hunger
+---2: Saturation
+---3: Exhaustion
+---4: Level
+---5: Experience
+---6: Health
+---7: Follow Range
+---8: Knockback Resistance
+---9: Movement Speed
+---10: Underwater Speed
+---11: Lava Speed
+---12: Attack Damage
+---13: Absorption
+---14: Luck
 ---@param attribute_id integer The attribute id
 ---@return Attribute|nil attribute Probably the attribute, but it could be nil.
 function _acp_AttributeListHolder.id(attribute_id) end
