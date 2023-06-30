@@ -55,7 +55,8 @@ local formattedGamemodes = {
     DR = "§cDeath Run",
     ARCADE = "§eArcade Hub",
     HUB = "§eHub",
-	PARTY = "§dBlock §9Party"
+	PARTY = "§dBlock §9Party",
+    GRAV = "Gravity"
 }
 formattedGamemodes["BRIDGE-DUOS"] = "§9The §5Bridge§8: Duos"
 formattedGamemodes["SG-DUOS"] = "§3Survival Games§8: Duos"
@@ -118,10 +119,12 @@ function onChat(message, username, type)
         hub = false
         inGame = true
     end
-    if string.find(message, player.name()) and string.find(message, " joined. §8") then
-        client.execute("execute /connection")
-        hub = false
-        inGame = true
+    if string.find(message, " joined. §8") then
+        if string.find(message, player.name()) then
+            client.execute("execute /connection")
+            hub = false
+            inGame = true
+        end
     end
     if string.find(message, "You are connected to server ") then
         lastGamemode = message
@@ -225,36 +228,59 @@ function onChat(message, username, type)
         return
     end
 	-- block party
-	if FullyAuto == true and message:find(player.name()) and message:find("§crock 'n' rolled into the void") then
-		print(player.name() .. " gave you up. " .. player.name() .. " let you down.\n§r§8Queueing into a new game.")
+    if FullyAuto == true then
+        if message:find("§crock 'n' rolled into the void") then
+            if message:find(player.name()) then
+                print(player.name() .. " gave you up. " .. player.name() .. " let you down.\n§r§8Queueing into a new game.")
+                client.execute("execute /q " .. lastGamemode)
+                ShowGamemode.value = false
+                return
+            end
+        end
+    
+        if message:find("§ctook the L!§8") then
+            if message:find(player.name()) then
+                print("The 12th letter of the alphabet is yours.\n§r§8Queueing into a new game.")
+                client.execute("execute /q " .. lastGamemode)
+                ShowGamemode.value = false
+                return
+            end
+        end
+    
+        if message:find("§cain't stayin' alive") then
+            if message:find(player.name()) then
+                print("Ah, ha, ha, ha not staying alive. Not staying alive!\n§r§8Queueing into a new game.")
+                client.execute("execute /q " .. lastGamemode)
+                ShowGamemode.value = false
+                return
+            end
+        end
+    
+        if message:find("§chas two left feet") then
+            if message:find(player.name()) then
+                print("How can you dance?\n§r§8Queueing into a new game.")
+                client.execute("execute /q " .. lastGamemode)
+                ShowGamemode.value = false
+                return
+            end
+        end
+    
+        if message:find("§cfell off the map") then
+            if message:find(player.name()) then
+                print("L ratio.\n§r§8Queueing into a new game.")
+                client.execute("execute /q " .. lastGamemode)
+                ShowGamemode.value = false
+                return
+            end
+        end
+    end
+    -- gravity
+    if FullyAuto == true and message:find("§a§l» §r§eYou finished all maps and came in") then
+        print("Congratulations on finishing all maps!\n§r§8Queueing into a new game.")
         client.execute("execute /q " .. lastGamemode)
         ShowGamemode.value = false
         return
-	end
-	if FullyAuto == true and message:find(player.name()) and message:find("§ctook the L!§8") then
-		print("The 12th letter of the alphabet is yours.\n§r§8Queueing into a new game.")
-		client.execute("execute /q " .. lastGamemode)
-		ShowGamemode.value = false
-		return
-	end
-	if FullyAuto == true and message:find(player.name()) and message:find("§cain't stayin' alive") then
-		print("Ah, ha, ha, ha not staying alive. Not staying alive!\n§r§8Queueing into a new game.")
-		client.execute("execute /q " .. lastGamemode)
-		ShowGamemode.value = false
-		return
-	end
-	if FullyAuto == true and message:find(player.name()) and message:find("§chas two left feet") then
-		print("How can you dance?\n§r§8Queueing into a new game.")
-		client.execute("execute /q " .. lastGamemode)
-		ShowGamemode.value = false
-		return
-	end
-	if FullyAuto == true and message:find(player.name()) and message:find("§cfell off the map") then
-		print("L ratio.\n§r§8Queueing into a new game.")
-		client.execute("execute /q " .. lastGamemode)
-		ShowGamemode.value = false
-		return
-	end
+    end
     -- all
     if FullyAuto == true and string.find(message, "§c§l» §r§c§lGame OVER!") then
         if lastGamemode:find("BRIDGE") ~= nil then
