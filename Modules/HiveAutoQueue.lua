@@ -1,5 +1,5 @@
 name = "Hive Autoqueue"
-description = "Automatically Queue Hive Games. Includes .rq command.\nScript Version: v3.4"
+description = "Automatically Queue Hive Games. Includes .rq command.\nScript Version: v3.6"
 
 -- Made by rosie w/ help from onix cuz he gamer (thx quoty for letting me skid some code <3)
 
