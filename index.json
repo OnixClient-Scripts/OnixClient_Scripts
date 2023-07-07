@@ -416,7 +416,7 @@
     {
       "name": "Hive Autoqueue",
       "file": "HiveAutoQueue.lua",
-      "description": "Automatically Queue Hive Games. Includes .rq command.\\nScript Version: v3.4",
+      "description": "Automatically Queue Hive Games. Includes .rq command.\\nScript Version: v3.6",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutoQueue.lua",
       "libs": [
         "gfx2Colors"
@@ -424,7 +424,7 @@
       "commands": [
         "rq"
       ],
-      "hash": "8e4122c9491369d7fb5a26f591cf0d3b"
+      "hash": "51036113de1cd1d7c43dbe581501ad50"
     },
     {
       "name": "Hive Chat Debloater",
