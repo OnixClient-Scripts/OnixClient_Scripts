@@ -292,6 +292,15 @@
       "hash": "b73e8ce8cb8e98e35bb6531b39ab9e58"
     },
     {
+      "name": "Explosive Crops",
+      "file": "ExplosiveCrops.lua",
+      "description": "Has a random chance of crops exploding when you break them.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ExplosiveCrops.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "6ffd77a40067311ddef38f75b8938178"
+    },
+    {
       "name": "Fake ping display",
       "file": "fakepingdisplay.lua",
       "description": "Show random number instead of ping",
