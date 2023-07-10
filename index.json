@@ -829,6 +829,18 @@
       "hash": "c9eb24a0376cf0a3fa249ff11edcf7f8"
     },
     {
+      "name": "Quick Waypoints",
+      "file": "quickWaypoints.lua",
+      "description": "Waypoints but quick",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/quickWaypoints.lua",
+      "libs": [
+        "vectors",
+        "renderthreeD"
+      ],
+      "commands": [],
+      "hash": "b8c1f20fbbdd62bf4996e3bb5022dd54"
+    },
+    {
       "name": "RenderThreeD library exemples",
       "file": "renderthreeDexemples.lua",
       "description": "Contains all the exemples from RenderThreeD library",
