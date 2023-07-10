@@ -9,7 +9,7 @@
 ```
 
 ```diff
-@@ Discord : Quoty0, Onix86, jqms @@
+@@ Discord : quoty0, onix86, jqms @@
 ```
 
 ```diff
