@@ -25,7 +25,7 @@
 
 ## How to install scripts
 
-### Setup script
+### Setup Script
 
 Use this setup script to get started quickly and easily.
 Press `Win + R` and paste this in:
