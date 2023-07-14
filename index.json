@@ -1279,6 +1279,12 @@
       "hash": "0288cd4aaf198427ea3b7631ef3c3391"
     },
     {
+      "name": "chatTools",
+      "file": "chatTools.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/chatTools.lua",
+      "hash": "ce9b82a0af1c94de077488f83b07e8d1"
+    },
+    {
       "name": "chroma",
       "file": "chroma.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/chroma.lua",
