@@ -1,0 +1,135 @@
+1
+6
+11
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+air
+air
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
+air
+air
+tallgrass
+tallgrass["tall_grass_type" : "default"] 
+white_glazed_terracotta
+white_glazed_terracotta["facing_direction" : 0] 
