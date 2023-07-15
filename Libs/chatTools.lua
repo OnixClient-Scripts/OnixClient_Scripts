@@ -20,7 +20,7 @@
             A value of "nil" will not return a prefix, and will log without a prefix.
 ]]
 
-local colours = {
+colours = {
     black = "§0",
     dark_blue = "§1",
     green = "§2",
@@ -31,7 +31,18 @@ local colours = {
     light_grey = "§7",
     grey = "§8",
     blue = "§9",
+    ocean_blue = "§t",
+    light_purple = "§u",
     light_green = "§a",
+    lighter_grey = "§i",
+    light_orange = "§p",
+    dark_yellow = "§g",
+    red_white = "§h",
+    dark_grey = "§j",
+    brown = "§n",
+    deep_red = "§m",
+    light_cyan = "§s",
+    mid_green = "§q",
     light_blue = "§b",
     red = "§c",
     pink = "§d",
@@ -40,7 +51,18 @@ local colours = {
     random = "§k",
 }
 
+--- Allows you to log to the chat with a colour and format
+--- @param text string The text to log
+--- @param colour string The colour to log the text in
+--- @param format string The format to log the text in
 function log(text, colour, format)
+    if type(text) == "table" then
+        text = tableToJson(text)
+    elseif type(text) == "boolean" then
+        text = text and "true" or "false"
+    elseif type(text) == "nil" then
+        text = "nil"
+    end
     if colour == nil then
         formatted = handleFormat(format, text)
         print(formatted .. colours.white .. text)
@@ -52,7 +74,6 @@ function log(text, colour, format)
             print(formatted .. colours[colour] .. text)
         end
     end
-
 end
 
 function handleFormat(format)
