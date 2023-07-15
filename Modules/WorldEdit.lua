@@ -1,6 +1,78 @@
 name = "World Edit"
 description = "World Edit for bedrock. Type $help for an explanation (The wand isn't an axe, it's a sword). All commands use the \"$\" prefix."
 
+--CHANGLOG
+-- SOUNDS
+-- settings INCLUDING COLOUR CHOOSING OPTONS, AND INCLUDING mute chat IN SETTINGS
+-- BOX FOR MOVING IS SAME SIZE AS TEXT
+-- neW HELP COMMAND 
+-- NO LONGER CASE SENSITIVE
+-- $COUNT COMMAND COUNTS BLOCKS IN SELECTED RANGE
+--$SELNEAR OR $SELECTNEAR SELECTS A CUBE AROUND YOU (20 by 20 by 20)
+--COMMANDS NOW ONLY WORK IF RUN BY THE USER OF THE SCRIPT (so random people cant use your commands and operator to do things)
+
+local clock = os.clock
+function sleep(n)-- seconds
+local t0 = clock()
+while clock() - t0 <= n do end
+end
+
+DiagS = false
+client.settings.addBool("Show Diag","DiagS")
+DiagC = {255,0,0}
+DiagCUI = client.settings.addColor("Diag Color","DiagC")
+
+client.settings.addAir(10)
+
+BoxS = true
+client.settings.addBool("Show Box","BoxS")
+BoxC = {0,255,0}
+BoxCUI = client.settings.addColor("Box Color","BoxC")
+
+client.settings.addAir(10)
+
+MirS = false
+client.settings.addBool("Show Mirror","MirS")
+MirC = {0,0,255}
+MirCUI = client.settings.addColor("Mirror Color", "MirC")
+
+client.settings.addAir(10)
+
+TextS = false
+client.settings.addBool("Show Text", "TextS")
+TextC = {255,255,255}
+TextCUI = client.settings.addColor("Text Color", "TextC")
+
+client.settings.addAir(10)
+
+MuteChat =  true
+client.settings.addBool("Mute Chat","MuteChat")
+ 
+client.settings.addAir(10)
+
+DingS = true
+client.settings.addBool("Ding Sound","DingS")
+WhooshS = true
+client.settings.addBool("Whoosh Sound","WhooshS")
+
+client.settings.addAir(10)
+
+SizeS = true
+client.settings.addBool("Do Size Warning","SizeS")
+AreaV = 5000
+AreaVUI = client.settings.addInt("Area Size Warning","AreaV",500,50000)
+
+client.settings.addAir(10)
+
+MaxDis = 2000
+client.settings.addInt("Max ThruTool Distance","MaxDis",50,10000)
+
+
+
+
+
+
+
 
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                                                     --                          USE $HELP TO GET AN EXPLANATION ON HOW TO USE
@@ -29,13 +101,17 @@ event.listen("MouseInput", function(button, down) --                    SECLECTI
                             zz = math.cos(pit) * math.cos(rot)*-1
                             xx = math.cos(pit) * math.sin(rot)
                             yy = math.sin(pit)*-1
-                        for I = 2, 356, 1 do
+                        for I = 2, MaxDis, 1 do
                                 xxx = math.floor(x+xx*I+0.5)
                                 zzz = math.floor(z+zz*I+0.5)
                                 yyy = math.floor(y+yy*I+0.5)
                                 blockOfDoom = dimension.getBlock(xxx,yyy+1,zzz).name
                                 if  blockOfDoom == "air" or blockOfDoom == "water" then
                                     client.execute("execute tp @s ".. xxx .. " " .. yyy+1 .. " " .. zzz)
+                                    if WhooshS then
+                                        playCustomSound("WEwhoosh.mp3")
+                                    end
+                                    
                                     break
                                     
                                 end
@@ -68,488 +144,618 @@ end)
 --====================================================================================================================================================================================================================================================================================================================================================================================================================================
 
 event.listen("ChatMessageAdded", function(message, username, type, xuid) 
-    if string.sub(message, 1, 1) == "$" then --================================================================================================================FIND ARGUMENTS AND CMDNAME========================================================================================================================================================================================================================================================================================
-        ccc = 0
-        for token in string.gmatch(message, "[^%s]+") do
-            if ccc==0 then
-                cmdname = token
-                
-            end
-            if ccc == 1 then
-                arg1 = token
-            end
-            if ccc == 2 then
-                arg2 = token
-            end
-            if ccc == 3 then
-                arg3 = token
-            end
-            ccc = ccc +1
-        end
-        if xpos1 == nil or xpos2 == nil  then
-            if cmdname == "$thrutool" or cmdname == "$mutechat" or cmdname == "$wand" or cmdname == "$up" or cmdname == "$pos1" or cmdname == "$pos2" or cmdname == "$help" then else
-                print("§eBefore Doing a command, please select an area")
-                goto endOfChatFunc
-            end
-        end
+    CommandDone = false
+    if username == player.name() then
 
-   -- ==========================================================================================================================================================COMMANDS=====================================================================================================================================================================================================================================================
-        
-        if cmdname == "$fill" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - FILL- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            xstep=1
-            if (xpos1 > xpos2) then              --X FIX
-                xstep=-1
+    
+        if string.sub(message, 1, 1) == "$" then --================================================================================================================FIND ARGUMENTS AND CMDNAME========================================================================================================================================================================================================================================================================================
+            ccc = 0
+            for token in string.gmatch(message, "[^%s]+") do
+                if ccc==0 then
+                    cmdname = token
+                    
+                end
+                if ccc == 1 then
+                    arg1 = token
+                end
+                if ccc == 2 then
+                    arg2 = token
+                end
+                if ccc == 3 then
+                    arg3 = token
+                end
+                ccc = ccc +1
             end
-            ystep = 1
-            if (ypos1 > ypos2) then              --YFIX
-                ystep = -1
-            end
-            zstep = 1
-            if (zpos1 > zpos2) then              --ZFIX
-                zstep = -1
-            end
-            for xInSelectedRange = xpos1, xpos2, xstep do
-                for yinSelectedRange = ypos1, ypos2, ystep do
-                    for zinSelectedRange = zpos1, zpos2, zstep do
-                        BLOCKYTHING = blockfiguer(arg1)
-                        client.execute("execute /setblock " .. tostring(xInSelectedRange).. " " ..tostring(yinSelectedRange).. " " .. tostring(zinSelectedRange) .. " " .. BLOCKYTHING)
-                    end
+            cmdname = string.lower(cmdname)
+            if xpos1 == nil or xpos2 == nil  then
+                if cmdname == "$thrutool" or cmdname == "$mutechat" or cmdname == "$wand" or cmdname == "$up" or cmdname == "$pos1" or cmdname == "$pos2" or cmdname == "$help" or cmdname == "$selnear" or cmdname == "$selectnear" then else
+                    print("§eBefore Doing a command, please select an area")
+                    goto endOfChatFunc
                 end
             end
-        end
 
-        if cmdname == "$replace" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - REPLACE -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-            replacewhat = arg1
-            replacewith = arg2
-            
-            print("§aReplacing §f " .. replacewhat .. "§a with §f " .. replacewith)
-            xstep=1
-            if (xpos1 > xpos2) then              --X FIX
-                xstep=-1
-            end
-            ystep = 1
-            if (ypos1 > ypos2) then              --YFIX
-                ystep = -1
-            end
-            zstep = 1
-            if (zpos1 > zpos2) then              --ZFIX
-                zstep = -1
-            end
-            
-            for xInSelectedRange = xpos1, xpos2, xstep do
-                for yinSelectedRange = ypos1, ypos2, ystep do
-                    for zinSelectedRange = zpos1, zpos2, zstep do
-                        if(dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name == replacewhat)then
-                            replacewith = blockfiguer(replacewith)
-                            client.execute("execute /setblock " .. tostring(xInSelectedRange).. " " ..tostring(yinSelectedRange).. " " .. tostring(zinSelectedRange) .. " " .. replacewith)
+    -- ==========================================================================================================================================================COMMANDS=====================================================================================================================================================================================================================================================
+            cmdname = string.lower(cmdname)
+            if cmdname == "$fill" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - FILL- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                if arg1 == nil then
+                    print("§ePlease specify the block you would like to fill")
+                end
+                xstep=1
+                if (xpos1 > xpos2) then              --X FIX
+                    xstep=-1
+                end
+                ystep = 1
+                if (ypos1 > ypos2) then              --YFIX
+                    ystep = -1
+                end
+                zstep = 1
+                if (zpos1 > zpos2) then              --ZFIX
+                    zstep = -1
+                end
+                for xInSelectedRange = xpos1, xpos2, xstep do
+                    for yinSelectedRange = ypos1, ypos2, ystep do
+                        for zinSelectedRange = zpos1, zpos2, zstep do
+                            BLOCKYTHING = blockfiguer(arg1)
+                            client.execute("execute /setblock " .. tostring(xInSelectedRange).. " " ..tostring(yinSelectedRange).. " " .. tostring(zinSelectedRange) .. " " .. BLOCKYTHING)
                         end
                     end
                 end
-            end
-        end
-
-        if cmdname == "$line" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - LINE -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            print("§a Drawing line")
-            xline, yline, zline = player.pposition()
-            yaw, pitch = player.rotation()
-            client.execute("execute /tp " .. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " facing " .. xpos2 .. " " .. ypos2 .. " " .. zpos2)
-            xdif = xpos1-xpos2
-            ydif = ypos1-ypos2
-            zdif = zpos1-zpos2
-            DISTANCE = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
-            if arg2 == nil then
-                arg2 = 1
-            end
-            for countofdis = 1, DISTANCE, arg2 do
-                client.execute("execute /setblock ^ ^ ^" .. countofdis .. " " .. arg1)
-            end
-            client.execute("execute tp " .. xline .. " " .. yline .. " " .. zline .. " " .. yaw .. " " .. pitch)
-        end
-
-        if cmdname == "$mirror" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -MIRROR - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            print("§a Mirroring")
-            if (xpos1 > xpos2) then              --X FIX
-                inbetweenyvariable = xpos1
-                xpos1 = xpos2
-                xpos2 = inbetweenyvariable
-            end
-
-            if (ypos1 > ypos2) then              --YFIX
-                inbetweenyvariable = ypos1
-                ypos1 = ypos2
-                ypos2 = inbetweenyvariable
-            end
-
-            if (zpos1 > zpos2) then              --ZFIX
-                inbetweenyvariable = zpos1
-                zpos1 = zpos2
-                zpos2 = inbetweenyvariable
-            end
-            mirrorLine = 0.5*(xpos1+xpos2)
-            for xInSelectedRange = xpos1, mirrorLine, 1 do
-                for yinSelectedRange = ypos1, ypos2, 1 do
-                    for zinSelectedRange = zpos1, zpos2, 1 do
-                        distnacetomirror = mirrorLine-xInSelectedRange
-                        newx = distnacetomirror+mirrorLine
-                        client.execute("execute /setblock " .. tostring(newx).. " " ..tostring(yinSelectedRange).. " " .. tostring(zinSelectedRange) .. " " .. dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name)    
-                    end
+                if DingS then
+                    playCustomSound("WEding.mp3")
                 end
+                CommandDone = true
             end
-        end
 
-        if cmdname == "$sphere" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  SPHERE - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-            counteryyyyy = 0
-            print("§aMaking a sphere of §f "..arg1)
-            xdif = xpos1-xpos2
-            ydif = ypos1-ypos2
-            zdif = zpos1-zpos2
-            SPHERERAD = math.ceil (math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif))
-            for xa = xpos1-SPHERERAD-1, xpos1+SPHERERAD+1, 1 do
-                for ya = ypos1-SPHERERAD-1, ypos1+SPHERERAD+1, 1 do
-                    for za = zpos1-SPHERERAD-1, zpos1+SPHERERAD+1 , 1 do
-                       -- print (xa .. " ".. ya .. " "..za)
-                        xdif = xa-xpos1
-                        ydif = ya-ypos1
-                        zdif = za-zpos1
-                        MYRAD = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
-                        if arg2 == "true" then   -- FILLING IN SPHERE
-                            if (MYRAD < SPHERERAD) then
-                               client.execute("execute /setblock " .. xa .. " " .. ya .. " " .. za .." " .. arg1)     
-                            end      
-                        else -- surface of sphere
-                            if ((MYRAD < SPHERERAD + 0.55) and  (MYRAD > SPHERERAD - 0.55)) then
-                                client.execute("execute /setblock " .. xa .. " " .. ya .. " " .. za .." " .. arg1)     
-                            end    
+            if cmdname == "$replace" or cmdname == "$rep" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - REPLACE -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+                replacewhat = arg1
+                replacewith = arg2
+                
+                print("§aReplacing §f " .. replacewhat .. "§a with §f " .. replacewith)
+                xstep=1
+                if (xpos1 > xpos2) then              --X FIX
+                    xstep=-1
+                end
+                ystep = 1
+                if (ypos1 > ypos2) then              --YFIX
+                    ystep = -1
+                end
+                zstep = 1
+                if (zpos1 > zpos2) then              --ZFIX
+                    zstep = -1
+                end
+                
+                for xInSelectedRange = xpos1, xpos2, xstep do
+                    for yinSelectedRange = ypos1, ypos2, ystep do
+                        for zinSelectedRange = zpos1, zpos2, zstep do
+                            if(dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name == replacewhat)then
+                                replacewith = blockfiguer(replacewith)
+                                client.execute("execute /setblock " .. tostring(xInSelectedRange).. " " ..tostring(yinSelectedRange).. " " .. tostring(zinSelectedRange) .. " " .. replacewith)
+                            end
                         end
                     end
                 end
-            end       
-        end
-
-        if cmdname == "$circle" then  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - -CIRCLE - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            if arg1 == "x" or arg1 == "y" then else
-                print("No specified axis, assuming x")
-                arg2 = arg1
-                arg1 = "x"
-            end
-            print("§aMaking circle of §f" .. arg2 .. "§a and in the§f " .. arg1 .. " §a plain")
-            xdif = xpos1-xpos2
-            ydif = ypos1-ypos2
-            zdif = zpos1-zpos2
-            CIRCLERAD = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
-            yaw, pitch = player.rotation()
-            x, y, z =player.position()
-            client.execute("tp @s " .. xpos1 .. " " .. ypos1 .. " " .. zpos1)
-           
-            if arg3 == "true" then
-                if (arg1 == "x") then
-                    for rot  = -180, 180, 1 do
-                        client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. rot .. " " .. "0" )
-                        client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2 )
-                    end
-
-                elseif (arg1 == "y") then
-                    for rot  = -180, 180, 1 do
-                        client.execute("execute /tp @s".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. 90  .. " ".. rot )
-                        arg2NEW = blockfiguer(arg2)
-                        client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-                    end
-                    for rot  = -180, 180, 1 do
-                        client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. " -90 " .. rot )
-                        arg2NEW = blockfiguer(arg2)
-                        client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-                    end
-                else
-                    print("§eThis is not a valid input (please put x or y)")
+                if DingS then
+                    playCustomSound("WEding.mp3")
                 end
-                client.execute("execute /tp @s " .. x .. " " .. y .. " " .. z)
-            else
-                if (arg1 == "x") then
-                    for rot  = -180, 180, 1 do
-                        client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. rot .. " " .. "0" )
-                        arg2NEW = blockfiguer(arg2)
-                        client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-                    end
-                
-                elseif (arg1 == "y") then
-                    for rot  = -180, 180, 1 do
-                        client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. 90  .. " ".. rot )
-                        arg2NEW = blockfiguer(arg2)
-                        client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-                        
-                    end
-                    for rot  = -180, 180, 1 do
-                        client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. " -90 " .. rot )
-                        arg2NEW = blockfiguer(arg2)
-                        client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-                    end
-                else
-                    print("§dThis is not a valid input (please put x or y)")
-                end
-            client.execute("execute /tp @s " .. x .. " " .. y .. " " .. z)
+                CommandDone = true
             end
-        end
 
-        if cmdname == "$wall" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - - - - WALL - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            print("§aMaking wall")
-            if arg2 == nil then
-                arg2 = 1
-            end
-            xline, yline, zline = player.pposition()
-            ywall1 = ypos1 
-            yawll2 = ypos2  
-            for yness = math.min(ypos1,ypos2), math.max(ypos2, ypos1), 1 do
-                client.execute("execute /tp " .. xpos1 .. " " .. yness .. " " .. zpos1 .. " facing " .. xpos2 .. " " .. yness .. " " .. zpos2)
+            if cmdname == "$line" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - LINE -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                print("§a Drawing line")
+                xline, yline, zline = player.pposition()
+                yaw, pitch = player.rotation()
+                client.execute("execute /tp " .. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " facing " .. xpos2 .. " " .. ypos2 .. " " .. zpos2)
                 xdif = xpos1-xpos2
-                ydif = 0  -- it 2d idotss
+                ydif = ypos1-ypos2
                 zdif = zpos1-zpos2
                 DISTANCE = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
-                for countofdis = 0, DISTANCE+1, tonumber(arg2) do
-                    NEWARG1 = blockfiguer(arg1)
-                    client.execute("execute /setblock ^ ^ ^" .. countofdis .. " " .. NEWARG1 )
+                if arg2 == nil then
+                    arg2 = 1
                 end
+                for countofdis = 1, DISTANCE, arg2 do
+                    client.execute("execute /setblock ^ ^ ^" .. countofdis .. " " .. arg1)
+                end
+                client.execute("execute tp " .. xline .. " " .. yline .. " " .. zline .. " " .. yaw .. " " .. pitch)
+                if DingS then
+                    playCustomSound("WEding.mp3")
+                end
+                CommandDone = true
             end
-            client.execute("execute tp " .. xline .. " " .. yline .. " " .. zline)
-        end
 
-        if cmdname == "$infinitewater" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - -INFINTE WATER - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            if doinfinitewater == true then
-                doinfinitewater = false
-                print("§cStopped infinitewater")
-            else
-                doinfinitewater = true
-                print("§aStarted infinitewater. Type $infinitewater to stop")
-            end
-        end
+            if cmdname == "$mirror" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -MIRROR - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                print("§a Mirroring")
+                if (xpos1 > xpos2) then              --X FIX
+                    inbetweenyvariable = xpos1
+                    xpos1 = xpos2
+                    xpos2 = inbetweenyvariable
+                end
 
-        if cmdname == "$HUD" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - HUD - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                                                                                              
-            if showhud then
-                showhud = false
-                print("§cShow HUD is now false")
-            else
-                showhud=true
-                print("§aShow HUD is now true")
-            end
-        end
+                if (ypos1 > ypos2) then              --YFIX
+                    inbetweenyvariable = ypos1
+                    ypos1 = ypos2
+                    ypos2 = inbetweenyvariable
+                end
 
-        if cmdname == "$build-up" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- BUILD-UP - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            replacewhat = arg1
-            howhigh = arg2
-            print("§a Building-Up §f" .. replacewhat .." " .. howhigh .. " §ablocks.")
-            if (xpos1 > xpos2) then              --X FIX
-                inbetweenyvariable = xpos1
-                xpos1 = xpos2
-                xpos2 = inbetweenyvariable
+                if (zpos1 > zpos2) then              --ZFIX
+                    inbetweenyvariable = zpos1
+                    zpos1 = zpos2
+                    zpos2 = inbetweenyvariable
+                end
+                mirrorLine = 0.5*(xpos1+xpos2)
+                for xInSelectedRange = xpos1, mirrorLine, 1 do
+                    for yinSelectedRange = ypos1, ypos2, 1 do
+                        for zinSelectedRange = zpos1, zpos2, 1 do
+                            distnacetomirror = mirrorLine-xInSelectedRange
+                            newx = distnacetomirror+mirrorLine
+                            client.execute("execute /setblock " .. tostring(newx).. " " ..tostring(yinSelectedRange).. " " .. tostring(zinSelectedRange) .. " " .. dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name)    
+                        end
+                    end
+                end
+                if DingS then
+                    playCustomSound("WEding.mp3")
+                end
+                CommandDone = true
             end
-            if (ypos1 > ypos2) then              --YFIX
-                inbetweenyvariable = ypos1
-                ypos1 = ypos2
-                ypos2 = inbetweenyvariable
-            end
-            if (zpos1 > zpos2) then              --ZFIX
-                inbetweenyvariable = zpos1
-                zpos1 = zpos2
-                zpos2 = inbetweenyvariable
-            end
-            for xInSelectedRange = xpos1, xpos2, 1 do
-                for yinSelectedRange = ypos2, ypos1, -1 do
-                    for zinSelectedRange = zpos1, zpos2, 1 do
-                        --print("Found block "..dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name)
-                        if(dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name == replacewhat)then
-                            for howhighcount = 1, howhigh, 1 do
-                                strtoexe = "execute /setblock " .. tostring(xInSelectedRange).. " " ..tostring(yinSelectedRange+howhighcount).. " " .. tostring(zinSelectedRange) .. " " .. replacewhat
-                            --  print(strtoexe)
-                                client.execute(strtoexe)
+
+            if cmdname == "$sphere" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  SPHERE - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+                counteryyyyy = 0
+                print("§aMaking a sphere of §f "..arg1)
+                xdif = xpos1-xpos2
+                ydif = ypos1-ypos2
+                zdif = zpos1-zpos2
+                SPHERERAD = math.ceil (math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif))
+                for xa = xpos1-SPHERERAD-1, xpos1+SPHERERAD+1, 1 do
+                    for ya = ypos1-SPHERERAD-1, ypos1+SPHERERAD+1, 1 do
+                        for za = zpos1-SPHERERAD-1, zpos1+SPHERERAD+1 , 1 do
+                        -- print (xa .. " ".. ya .. " "..za)
+                            xdif = xa-xpos1
+                            ydif = ya-ypos1
+                            zdif = za-zpos1
+                            MYRAD = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
+                            if arg2 == "true" then   -- FILLING IN SPHERE
+                                if (MYRAD < SPHERERAD) then
+                                client.execute("execute /setblock " .. xa .. " " .. ya .. " " .. za .." " .. arg1)     
+                                end      
+                            else -- surface of sphere
+                                if ((MYRAD < SPHERERAD + 0.55) and  (MYRAD > SPHERERAD - 0.55)) then
+                                    client.execute("execute /setblock " .. xa .. " " .. ya .. " " .. za .." " .. arg1)     
+                                end    
                             end
                         end
                     end
                 end
+                if DingS then
+                    playCustomSound("WEding.mp3")
+                end     
+                CommandDone = true
             end
-        end
 
-        if cmdname == "$help" then -- -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - HELP  - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            print("Select 2 positions using a wooden sword then type one of the commands to affect that area.\n When the syntax says \"block\" it means either something like \"dirt\" or something like \"50%dirt,50%air\" \n $fill | runs a normal fill command | $fill <block> \n $replace | replaces all of the first argument's block to the second within the selected range | $replace <replacewhat> <replacewith> \n $line | creates a line between the two selected points | $line <block> [width/precision] \n $mirror | mirrors one side of the blue line to the other. Doesn't work with block states| $mirror \n $wall | creates a wall between two points | $wall <block> [width/precision] \n $infinitewater | all non-source water blocks get turned into sources so can spread infinitly in any direction aside from up \n $circle | makes a circle with the radius of the distance between the two selected points (the center being the first) | $circle <x or y> <block> [true/fasle:fill] \n $sphere | makes a sphere with the radius of the distance between the two selected points | $sphere <block> [true/fasle:fill] \n $HUD | toggles the coordinates of the two selected points | $HUD \n $build-up | duplicates all of the specified block up a specified amount of times | $build-up <block> <height> \n $help | i think you already know how to use this one | $help \n $pos1 | sets position 1 to your current coordinates (your feet) | $pos1 \n $pos2 | same as pos1 | $pos2 \n $up | teleports you up a specified amount of blocks upward and places a block below you | $up <height> \n $thrutool | when pressed against a block click and it will teleport you to the other side of the block/s (intended for going in and out of builds without using a door). Limit of 356 blocks | $thrutool\n $copy | Copies the selected area to a file in ..scripts\\data | $copy \n $paste | pastes the file in the file with no rotational changes. !!WARNING!! This function is laggy and doesn't do block states with 1.20 blocks so if your pasting very precisly or large build just use structure blocks | $paste [true/false:skip/keep air]\n $wand | gives you a wooden sword | $wand   ")
-        end
-
-        if cmdname == "$dupespin" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - -DUPESPIN- - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            xstep=1 ---                                  NOT FOR USE NOT FOR USE NOT FOR USE NOT FOR USE NOT FOR USE NOT FOR USE NOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USE  
-            if (xpos1 > xpos2) then              --X FIX
-                xstep=-1
-            end
-            ystep = 1
-            if (ypos1 > ypos2) then              --YFIX
-                ystep = -1
-            end
-            zstep = 1
-            if (zpos1 > zpos2) then              --ZFIX
-                zstep = -1
-            end
-            for xInSelectedRange = xpos1, xpos2, xstep do
-                for yinSelectedRange = ypos1, ypos2, ystep do
-                    for zinSelectedRange = zpos1, zpos2, zstep do
-                        BLOCK = dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange)
-                        if(BLOCK.name == "air" )then else
-                            xdif = xpos1-xInSelectedRange
-                            ydif = 0
-                            zdif = zpos1-zinSelectedRange
-                            CIRCLERAD = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
-                            for rot  = -180, 180, 1 do
-                                client.execute("execute /tp @s ".. xpos1 .. " " .. yinSelectedRange .. " " .. zpos1 .. " ".. rot .. " " .. "0" )
-                                client.execute("execute setblock ^ ^ ^" .. CIRCLERAD .." " .. BLOCK)
-                            end
+            if cmdname == "$circle" then  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - -CIRCLE - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                if arg1 == "x" or arg1 == "y" then else
+                    print("No specified axis, assuming x")
+                    arg2 = arg1
+                    arg1 = "x"
+                end
+                print("§aMaking circle of §f" .. arg2 .. "§a and in the§f " .. arg1 .. " §a plain")
+                xdif = xpos1-xpos2
+                ydif = ypos1-ypos2
+                zdif = zpos1-zpos2
+                CIRCLERAD = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
+                yaw, pitch = player.rotation()
+                x, y, z =player.position()
+                client.execute("tp @s " .. xpos1 .. " " .. ypos1 .. " " .. zpos1)
+            
+                if arg3 == "true" then
+                    if (arg1 == "x") then
+                        for rot  = -180, 180, 1 do
+                            client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. rot .. " " .. "0" )
+                            client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2 )
                         end
+
+                    elseif (arg1 == "y") then
+                        for rot  = -180, 180, 1 do
+                            client.execute("execute /tp @s".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. 90  .. " ".. rot )
+                            arg2NEW = blockfiguer(arg2)
+                            client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
+                        end
+                        for rot  = -180, 180, 1 do
+                            client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. " -90 " .. rot )
+                            arg2NEW = blockfiguer(arg2)
+                            client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
+                        end
+                    else
+                        print("§eThis is not a valid input (please put x or y)")
+                    end
+                    client.execute("execute /tp @s " .. x .. " " .. y .. " " .. z)
+                else
+                    if (arg1 == "x") then
+                        for rot  = -180, 180, 1 do
+                            client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. rot .. " " .. "0" )
+                            arg2NEW = blockfiguer(arg2)
+                            client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
+                        end
+                    
+                    elseif (arg1 == "y") then
+                        for rot  = -180, 180, 1 do
+                            client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. 90  .. " ".. rot )
+                            arg2NEW = blockfiguer(arg2)
+                            client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
+                            
+                        end
+                        for rot  = -180, 180, 1 do
+                            client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. " -90 " .. rot )
+                            arg2NEW = blockfiguer(arg2)
+                            client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
+                        end
+                    else
+                        print("§dThis is not a valid input (please put x or y)")
+                    end
+                client.execute("execute /tp @s " .. x .. " " .. y .. " " .. z)
+                end
+                if DingS then
+                    playCustomSound("WEding.mp3")
+                end
+                CommandDone = true
+            end
+
+            if cmdname == "$wall" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - - - - WALL - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                print("§aMaking wall")
+                if arg2 == nil then
+                    arg2 = 1
+                end
+                xline, yline, zline = player.pposition()
+                ywall1 = ypos1 
+                yawll2 = ypos2  
+                for yness = math.min(ypos1,ypos2), math.max(ypos2, ypos1), 1 do
+                    client.execute("execute /tp " .. xpos1 .. " " .. yness .. " " .. zpos1 .. " facing " .. xpos2 .. " " .. yness .. " " .. zpos2)
+                    xdif = xpos1-xpos2
+                    ydif = 0  -- it 2d idotss
+                    zdif = zpos1-zpos2
+                    DISTANCE = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
+                    for countofdis = 0, DISTANCE+1, tonumber(arg2) do
+                        NEWARG1 = blockfiguer(arg1)
+                        client.execute("execute /setblock ^ ^ ^" .. countofdis .. " " .. NEWARG1 )
                     end
                 end
+                client.execute("execute tp " .. xline .. " " .. yline .. " " .. zline)
+                if DingS then
+                    playCustomSound("WEding.mp3")
+                end
+                CommandDone = true
+
             end
-        end
+
+            if cmdname == "$infinitewater" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - -INFINTE WATER - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                if doinfinitewater == true then
+                    doinfinitewater = false
+                    print("§cStopped infinitewater")
+                else
+                    doinfinitewater = true
+                    print("§aStarted infinitewater. Type $infinitewater to stop")
+                end
+                
+                CommandDone = true
+            end
+
         
-        if cmdname == "$pos1" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - POS1- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            x, y, z = player.position()
-            xpos1 = x
-            ypos1 =y
-            zpos1 =z
-            print(xpos1 .. " " .. ypos1 .. " " .. zpos1 .. "§b has been set as selection point 1")
-        end
 
-        if cmdname == "$pos2" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - POS2-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - 
-            x, y, z = player.position()
-            xpos2 = x
-            ypos2 =y
-            zpos2 =z
-            print(xpos2 .. " " .. ypos2 .. " " .. zpos2 .. "§c has been set as selection point 2")
-        end
-
-        if cmdname == "$up" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  UP -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - 
-            print("§a Done!")
-            if arg1 == nil then
-                print("§ePlease specify an amount of blocks to go up")
-            else
-                client.execute("execute tp @s ~ ~"..arg1 .. " ~")
-                client.execute("execute setblock ~ ~-1 ~ glass")
-                client.execute("execute setblock ~ ~ ~ air")
-                client.execute("execute setblock ~ ~1 ~ air")
-            end
-        end
-
-        if cmdname == "$thrutool" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - THRUTOOL -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  
-            if ThruTool == true then
-                print("§cThruTool is now false")
-                ThruTool = false
-            else
-                print("§aThruTool is now true")
-                ThruTool = true
-            end
-        end
-
-        if cmdname == "$copy" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  COPY -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  
-            if xpos1 > xpos2 then
-                xdif22  = xpos1-xpos2
-            else
-                xdif22  = xpos2-xpos1
-            end
-            if ypos1 > ypos2 then
-                ydif22  = ypos1-ypos2
-            else
-                ydif22  = ypos2-ypos1
-            end
-            if zpos1 > zpos2 then
-                zdif22  = zpos1-zpos2
-            else
-                zdif22  = zpos2-zpos1
-            end
-            xstep=1
-            if (xpos1 > xpos2) then              --X FIX
-                xstep=-1
-            end
-            ystep = 1
-            if (ypos1 > ypos2) then              --YFIX
-                ystep = -1
-            end
-            zstep = 1
-            if (zpos1 > zpos2) then              --ZFIX
-                zstep = -1
-            end
-            ClipboardFile = io.open("WorldEditClipboard.txt","w+")
-            ClipboardFile:write(xdif .. "\n" .. ydif .. "\n" .. zdif .. "\n")
-            for xInSelectedRange = xpos1, xpos2, xstep do
-                for yinSelectedRange = ypos1, ypos2, ystep do
-                    for zinSelectedRange = zpos1, zpos2, zstep do
-                        FoundBlock = dimension.getBlock(xInSelectedRange, yinSelectedRange, zinSelectedRange)
-                        BlockData = FoundBlock.data
-                        BlockName = FoundBlock.name
-                        BlockDataNew = convertData(BlockName,BlockData)
-                        if  ClipboardFile then
-                           ClipboardFile:write(BlockName .."\n".. BlockDataNew.."\n")
+            if cmdname == "$build-up" or cmdname == "$buildup" or cmdname == "$bu" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- BUILD-UP - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                replacewhat = arg1
+                howhigh = arg2
+                print("§a Building-Up §f" .. replacewhat .." " .. howhigh .. " §ablocks.")
+                if (xpos1 > xpos2) then              --X FIX
+                    inbetweenyvariable = xpos1
+                    xpos1 = xpos2
+                    xpos2 = inbetweenyvariable
+                end
+                if (ypos1 > ypos2) then              --YFIX
+                    inbetweenyvariable = ypos1
+                    ypos1 = ypos2
+                    ypos2 = inbetweenyvariable
+                end
+                if (zpos1 > zpos2) then              --ZFIX
+                    inbetweenyvariable = zpos1
+                    zpos1 = zpos2
+                    zpos2 = inbetweenyvariable
+                end
+                for xInSelectedRange = xpos1, xpos2, 1 do
+                    for yinSelectedRange = ypos2, ypos1, -1 do
+                        for zinSelectedRange = zpos1, zpos2, 1 do
+                            --print("Found block "..dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name)
+                            if(dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name == replacewhat)then
+                                for howhighcount = 1, howhigh, 1 do
+                                    strtoexe = "execute /setblock " .. tostring(xInSelectedRange).. " " ..tostring(yinSelectedRange+howhighcount).. " " .. tostring(zinSelectedRange) .. " " .. replacewhat
+                                --  print(strtoexe)
+                                    client.execute(strtoexe)
+                                end
+                            end
                         end
                     end
                 end
+                if DingS then
+                    playCustomSound("WEding.mp3")
+                end
+                CommandDone = true
             end
-            io.close(ClipboardFile)
-            print("§aCopied")
-        end
 
-        if cmdname == "$paste" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  PASTE -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  
-            WorldEditClipboardy = io.open("WorldEditClipboard.txt","r")
-            FileLines = {}
-            counter = 0
-            for line in WorldEditClipboardy:lines() do
-                 FileLines[counter] = line
-                 counter = counter +1 
-            end
-            xdif222 = tonumber(FileLines[0])
-            ydif222 = tonumber(FileLines[1])
-            zdif222 = tonumber(FileLines[2])
-            xstep=1
-            if (xpos1 > xpos2) then              --X FIX
-                xstep = -1
-            end
-            ystep = 1
-            if (ypos1 > ypos2) then              --YFIX
-                ystep = -1
-            end
-            zstep = 1
-            if (zpos1 > zpos2) then              --ZFIX
-                zstep = -1
-            end
-            counter = 3
-            print(xdif222.. " " .. ydif222.. " " .. zdif222)
-            for xInSelectedRange = xpos1, xpos1+xdif222, 1 do
-                for yinSelectedRange = ypos1, ypos1+ydif222, 1 do
-                    for zinSelectedRange = zpos1, zpos1+zdif222, 1 do
-                        CURRENTBLOCK = FileLines[counter]
-                        CURRENTBLOCKDATA = FileLines[counter+1]
-                        if arg1 == "fasle" or nil then
-                            if CURRENTBLOCK == "air" then
-                                goto skip
-                                print("§aSKipping air blocks when copying, not skipping will lag and maybe crash your game alot depending on size.§eTo not skip type $paste true")
-                            end
-                        else
-                            if dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange) == "air" and CURRENTBLOCK == "air" then
-                                goto skip
+            if cmdname == "$help" then -- -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - HELP  - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                --print("Select 2 positions using a wooden sword then type one of the commands to affect that area.\n When the syntax says \"block\" it means either something like \"dirt\" or something like \"50%dirt,50%air\" \n $fill | runs a normal fill command | $fill <block> \n $replace | replaces all of the first argument's block to the second within the selected range | $replace <replacewhat> <replacewith> \n $line | creates a line between the two selected points | $line <block> [width/precision] \n $mirror | mirrors one side of the blue line to the other. Doesn't work with block states| $mirror \n $wall | creates a wall between two points | $wall <block> [width/precision] \n $infinitewater | all non-source water blocks get turned into sources so can spread infinitly in any direction aside from up \n $circle | makes a circle with the radius of the distance between the two selected points (the center being the first) | $circle <x or y> <block> [true/fasle:fill] \n $sphere | makes a sphere with the radius of the distance between the two selected points | $sphere <block> [true/fasle:fill] \n $HUD | toggles the coordinates of the two selected points | $HUD \n $build-up | duplicates all of the specified block up a specified amount of times | $build-up <block> <height> \n $help | i think you already know how to use this one | $help \n $pos1 | sets position 1 to your current coordinates (your feet) | $pos1 \n $pos2 | same as pos1 | $pos2 \n $up | teleports you up a specified amount of blocks upward and places a block below you | $up <height> \n $thrutool | when pressed against a block click and it will teleport you to the other side of the block/s (intended for going in and out of builds without using a door). Limit of 356 blocks | $thrutool\n $copy | Copies the selected area to a file in ..scripts\\data | $copy \n $paste | pastes the file in the file with no rotational changes. !!WARNING!! This function is laggy and doesn't do block states with 1.20 blocks so if your pasting very precisly or large build just use structure blocks | $paste [true/false:skip/keep air]\n $wand | gives you a wooden sword | $wand   ")
+                local keywordColor = "§e"  -- Yellow color for keywords
+                local usageColor = "§a"    -- Green color for usage
+                local dividerColor = "§f"  -- Grey color for dividers
+                
+                print("Select 2 positions using a wooden sword then type one of the commands to affect that area.\n" ..
+                    "When the syntax says \"block\", it means either something like \"dirt\" or something like \"50%dirt,50%air\"\n" ..
+                    dividerColor .. "------------------------------\n" ..
+                    keywordColor .. "$fill§r " .. dividerColor .. "| §7runs a normal fill command " .. dividerColor .. "| §7" .. usageColor .. "$fill§r <block>\n" ..
+                    keywordColor .. "$replace§r " .. dividerColor .. "| §7replaces all of the first argument's block to the second within the selected range " .. dividerColor .. "| §7" .. usageColor .. "$replace§r <replacewhat> <replacewith>\n" ..
+                    keywordColor .. "$line§r " .. dividerColor .. "| §7creates a line between the two selected points " .. dividerColor .. "| §7" .. usageColor .. "$line§r <block> [width/precision]\n" ..
+                    keywordColor .. "$mirror§r " .. dividerColor .. "| §7mirrors one side of the blue line to the other. Doesn't work with block states" .. dividerColor .. "| §7" .. usageColor .. "$mirror§r\n" ..
+                    keywordColor .. "$wall§r " .. dividerColor .. "| §7creates a wall between two points " .. dividerColor .. "| §7" .. usageColor .. "$wall§r <block> [width/precision]\n" ..
+                    keywordColor .. "$infinitewater§r " .. dividerColor .. "| §7all non-source water blocks get turned into sources so can spread infinitely in any direction aside from up\n" ..
+                    dividerColor .. "------------------------------\n" ..
+                    keywordColor .. "$circle§r " .. dividerColor .. "| §7makes a circle with the radius of the distance between the two selected points (the center being the first) " .. dividerColor .. "| §7" .. usageColor .. "$circle§r <x or y> <block> [true/false:fill]\n" ..
+                    keywordColor .. "$sphere§r " .. dividerColor .. "| §7makes a sphere with the radius of the distance between the two selected points " .. dividerColor .. "| §7" .. usageColor .. "$sphere§r <block> [true/false:fill]\n" ..
+                    keywordColor .. "$build-up§r " .. dividerColor .. "| §7duplicates all of the specified block up a specified amount of times " .. dividerColor .. "| §7" .. usageColor .. "$build-up§r <block> <height>\n" ..
+                    keywordColor .. "$help§r " .. dividerColor .. "| §7I think you already know how to use this one " .. dividerColor .. "| §7" .. usageColor .. "$help§r\n" ..
+                    keywordColor .. "$pos1§r " .. dividerColor .. "| §7sets position 1 to your current coordinates (your feet) " .. dividerColor .. "| §7" .. usageColor .. "$pos1§r\n" ..
+                    keywordColor .. "$pos2§r " .. dividerColor .. "| §7same as pos1 " .. dividerColor .. "| §7" .. usageColor .. "$pos2§r\n" ..
+                    keywordColor .. "$up§r " .. dividerColor .. "| §7teleports you up a specified amount of blocks upward and places a block below you " .. dividerColor .. "| §7" .. usageColor .. "$up§r <height>\n" ..
+                    keywordColor .. "$thrutool§r " .. dividerColor .. "| §7when pressed against a block click and it will teleport you to the other side of the block/s (intended for going in and out of builds without using a door). Limit of 356 blocks " .. dividerColor .. "| §7" .. usageColor .. "$thrutool§r\n" ..
+                    dividerColor .. "------------------------------\n" ..
+                    keywordColor .. "$copy§r " .. dividerColor .. "| §7Copies the selected area to a file in ..scripts\\data " .. dividerColor .. "| §7" .. usageColor .. "$copy§r\n" ..
+                    keywordColor .. "$paste§r " .. dividerColor .. "| §7pastes the file in the file with no rotational changes. !!WARNING!! This function is laggy and doesn't work with block states on 1.20 blocks. If you're pasting very precisely or a large build, use structure blocks instead. " .. dividerColor .. "| §7" .. usageColor .. "$paste§r [true/false:skip/keep air]\n" ..
+                    keywordColor .. "$wand§r " .. dividerColor .. "| §7gives you a wooden sword " .. dividerColor .. "| §7" .. usageColor .. "$wand§r")
+                    CommandDone = true
+                end
+
+
+            if cmdname == "$dupespin" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - -DUPESPIN- - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                print("§eThis Command is UNSUPPORED")
+                xstep=1 ---                                  NOT FOR USE NOT FOR USE NOT FOR USE NOT FOR USE NOT FOR USE NOT FOR USE NOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USENOT FOR USE  
+                
+                print("This Command is UNSUPPORED")if (xpos1 > xpos2) then              --X FIX
+                    xstep=-1
+                
+                print("This Command is UNSUPPORED")end
+                ystep = 1
+                if (ypos1 > ypos2) then              --YFIX
+                    ystep = -1
+                end
+                print("This Command is UNSUPPORED")
+                zstep = 1
+                if (zpos1 > zpos2) then              --ZFIX
+                    zstep = -1
+                end
+                print("This Command is UNSUPPORED")
+                for xInSelectedRange = xpos1, xpos2, xstep do
+                    for yinSelectedRange = ypos1, ypos2, ystep do
+                        for zinSelectedRange = zpos1, zpos2, zstep do
+                            BLOCK = dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange)
+                            if(BLOCK.name == "air" )then else
+                                xdif = xpos1-xInSelectedRange
+                                ydif = 0
+                                zdif = zpos1-zinSelectedRange
+                                CIRCLERAD = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
+                                for rot  = -180, 180, 1 do
+                                    client.execute("execute /tp @s ".. xpos1 .. " " .. yinSelectedRange .. " " .. zpos1 .. " ".. rot .. " " .. "0" )
+                                    client.execute("execute setblock ^ ^ ^" .. CIRCLERAD .." " .. BLOCK)
+                                end
                             end
                         end
-                        client.execute("execute /setblock " .. xInSelectedRange .. " " .. yinSelectedRange .. " " .. zinSelectedRange .. " " .. CURRENTBLOCKDATA)
-                        ::skip::
-                        counter = counter + 2
                     end
                 end
+                print("This Command is UNSUPPORED")
             end
-            print("§aPasted")
-        end
-
-        if cmdname == "$mutechat" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  MUTE CHAT -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  
-            if MuteChat == true then
-                MuteChat = false
-                print("§cMuteChat is now false")
-            else
-                MuteChat = true
-                print("§aMuteChat is now true")
+            
+            if cmdname == "$pos1" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - POS1- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                x, y, z = player.position()
+                xpos1 = x
+                ypos1 =y
+                zpos1 =z
+                print(xpos1 .. " " .. ypos1 .. " " .. zpos1 .. "§b has been set as selection point 1")
+                CommandDone = true
+                
             end
-        end
 
-        if cmdname == "$wand" then client.execute("give wooden_sword") end
+            if cmdname == "$pos2" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - POS2-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - 
+                x, y, z = player.position()
+                xpos2 = x
+                ypos2 =y
+                zpos2 =z
+                print(xpos2 .. " " .. ypos2 .. " " .. zpos2 .. "§c has been set as selection point 2")
+                CommandDone = true
+            end
+
+            if cmdname == "$up" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  UP -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - - 
+                print("§a Done!")
+                if arg1 == nil then
+                    print("§ePlease specify an amount of blocks to go up")
+                else
+                    client.execute("execute tp @s ~ ~"..arg1 .. " ~")
+                    client.execute("execute setblock ~ ~-1 ~ glass")
+                    client.execute("execute setblock ~ ~ ~ air")
+                    client.execute("execute setblock ~ ~1 ~ air")
+                end
+                if WhooshS then
+                    playCustomSound("WEwhoosh.mp3")
+                end
+                CommandDone = true
+            end
+
+            if cmdname == "$thrutool" then -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - THRUTOOL -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  
+                if ThruTool == true then
+                    print("§cThruTool is now false")
+                    ThruTool = false
+                else
+                    print("§aThruTool is now true")
+                    ThruTool = true
+                end
+                playCustomSound("WEswitch.mp3")
+                CommandDone = true
+            end
+
+            if cmdname == "$copy" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  COPY -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  
+                if xpos1 > xpos2 then
+                    xdif22  = xpos1-xpos2
+                else
+                    xdif22  = xpos2-xpos1
+                end
+                if ypos1 > ypos2 then
+                    ydif22  = ypos1-ypos2
+                else
+                    ydif22  = ypos2-ypos1
+                end
+                if zpos1 > zpos2 then
+                    zdif22  = zpos1-zpos2
+                else
+                    zdif22  = zpos2-zpos1
+                end
+                xstep=1
+                if (xpos1 > xpos2) then              --X FIX
+                    xstep=-1
+                end
+                ystep = 1
+                if (ypos1 > ypos2) then              --YFIX
+                    ystep = -1
+                end
+                zstep = 1
+                if (zpos1 > zpos2) then              --ZFIX
+                    zstep = -1
+                end
+                ClipboardFile = io.open("WorldEditClipboard.txt","w+")
+                ClipboardFile:write(xdif .. "\n" .. ydif .. "\n" .. zdif .. "\n")
+                for xInSelectedRange = xpos1, xpos2, xstep do
+                    for yinSelectedRange = ypos1, ypos2, ystep do
+                        for zinSelectedRange = zpos1, zpos2, zstep do
+                            FoundBlock = dimension.getBlock(xInSelectedRange, yinSelectedRange, zinSelectedRange)
+                            BlockData = FoundBlock.data
+                            BlockName = FoundBlock.name
+                            BlockDataNew = convertData(BlockName,BlockData)
+                            if  ClipboardFile then
+                            ClipboardFile:write(BlockName .."\n".. BlockDataNew.."\n")
+                            end
+                        end
+                    end
+                end
+                io.close(ClipboardFile)
+                print("§aCopied")
+                if DingS then
+                    playCustomSound("WEding.mp3")
+                end
+                CommandDone = true
+            end
+
+            if cmdname == "$paste" then-- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  PASTE -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  -- - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -- - - - - - - - - - - - - -  
+                WorldEditClipboardy = io.open("WorldEditClipboard.txt","r")
+                FileLines = {}
+                counter = 0
+                for line in WorldEditClipboardy:lines() do
+                    FileLines[counter] = line
+                    counter = counter +1 
+                end
+                xdif222 = tonumber(FileLines[0])
+                ydif222 = tonumber(FileLines[1])
+                zdif222 = tonumber(FileLines[2])
+                xstep=1
+                if (xpos1 > xpos2) then              --X FIX
+                    xstep = -1
+                end
+                ystep = 1
+                if (ypos1 > ypos2) then              --YFIX
+                    ystep = -1
+                end
+                zstep = 1
+                if (zpos1 > zpos2) then              --ZFIX
+                    zstep = -1
+                end
+                counter = 3
+                print(xdif222.. " " .. ydif222.. " " .. zdif222)
+                for xInSelectedRange = xpos1, xpos1+xdif222, 1 do
+                    for yinSelectedRange = ypos1, ypos1+ydif222, 1 do
+                        for zinSelectedRange = zpos1, zpos1+zdif222, 1 do
+                            CURRENTBLOCK = FileLines[counter]
+                            CURRENTBLOCKDATA = FileLines[counter+1]
+                            if arg1 == "fasle" or nil then
+                                if CURRENTBLOCK == "air" then
+                                    goto skip
+                                    print("§aSKipping air blocks when copying, not skipping will lag and maybe crash your game alot depending on size.§eTo not skip type $paste true")
+                                end
+                            else
+                                if dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange) == "air" and CURRENTBLOCK == "air" then
+                                    goto skip
+                                end
+                            end
+                            client.execute("execute /setblock " .. xInSelectedRange .. " " .. yinSelectedRange .. " " .. zinSelectedRange .. " " .. CURRENTBLOCKDATA)
+                            ::skip::
+                            counter = counter + 2
+                        end
+                    end
+                end
+                print("§aPasted")
+                if DingS then
+                    playCustomSound("WEding")
+                end
+                CommandDone = true
+            end
+
+            
+
+            if cmdname == "$wand" then
+                client.execute("execute /give @s wooden_sword")
+                CommandDone = true
+                
+            end
+
+            if cmdname == "$count" then
+                countStartOS = os.time()
+                
+                if xpos1 > xpos2 then
+                    xdif  = xpos1-xpos2 +1
+                else
+                    xdif  = xpos2-xpos1 +1
+                end
+                if ypos1 > ypos2 then
+                    ydif  = ypos1-ypos2 +1
+                else
+                    ydif  = ypos2-ypos1 +1
+                end
+                if zpos1 > zpos2 then
+                    zdif  = zpos1-zpos2 +1
+                else
+                    zdif  = zpos2-zpos1 +1
+                end
+                areaOfSelection = xdif*ydif*zdif
+                
+                print(areaOfSelection .. " blocks are selected")
+                
+                
+                CommandDone = true
+            end
+
+
+            if cmdname == "$selnear" or cmdname == "$selectnear" then
+                x, y, z = player.position()
+                xpos1 = x - 10
+                xpos2 = x +10
+                ypos1 = y - 10
+                ypos2 = y +10
+                zpos1 = z -10
+                zpos2 = z +10
+                CommandDone = true
+                if DingS then
+                    playCustomSound("WEding")
+                end
+            end
+
+            if CommandDone then else
+                print("§e\""..cmdname .. "\" is not a supported command. Do \"$help\" for a list of commands!" )
+            end
+
+        end
+       
     end
-
+    
     if MuteChat then
         if type == 6 then
             return true
@@ -565,33 +771,53 @@ end)
 --================================================================================================================================================================================================================================================================================================================================================================================================
 
 function render(dt) 
-                                                                                                                                        
+    
+    AreaVUI.visible = SizeS
+    DiagCUI.visible = DiagS
+    BoxCUI.visible = BoxS
+    MirCUI.visible = MirS
+    TextCUI.visible = TextS
+    if xpos1 == nil or xpos2 == nil then
+        displayText = "Either Point 1 or Point 2 isn't selected"
+    else
+        displayText = xpos1 .. " " .. ypos1 .. " " .. zpos1 .. "\n" .. xpos2 .. " " .. ypos2 .. " " .. zpos2
+    end
+    if displayText == nil then
+        displayText = "Either Point 1 or Point 2 isn't selected"
+    end
+    local font = gui.font()
+    sizeX = font.width(displayText,3)
+
+    sizeY = font.height *3                                                                                                   
     if xpos1 == nil or xpos2 == nil then else
         if xpos1 > xpos2 then
-            xdif  = xpos1-xpos2
+            xdif  = xpos1-xpos2 +1
         else
-            xdif  = xpos2-xpos1
+            xdif  = xpos2-xpos1 +1
         end
         if ypos1 > ypos2 then
-            ydif  = ypos1-ypos2
+            ydif  = ypos1-ypos2 +1
         else
-            ydif  = ypos2-ypos1
+            ydif  = ypos2-ypos1 +1
         end
         if zpos1 > zpos2 then
-            zdif  = zpos1-zpos2
+            zdif  = zpos1-zpos2 +1
         else
-            zdif  = zpos2-zpos1
+            zdif  = zpos2-zpos1 +1
         end
         areaOfSelection = xdif*ydif*zdif
+        if SizeS then
+            if areaOfSelection > AreaV then
+                MuteChat = true
+                client.execute("execute title @s actionbar A lot of blocks are selected, this could cause unexpected behavior.")
+            end
+        end
         
-        if areaOfSelection > 5000 then
-            MuteChat = true
-            client.execute("execute title @s actionbar A lot of blocks are selected, this could cause unexpected behavior such as crashing, low framerate and freezes.")
+        if TextS then
+            gfx.color(TextC.r,TextC.b,TextC.b)
+            gfx.text(0,0,displayText,3)
         end
-        if showhud == true then
-            gfx.text(0,0,xpos1 .. " " .. ypos1 .. " " .. zpos1 .. "\n" .. xpos2 .. " " .. ypos2 .. " " .. zpos2,3)
-        end
-        --gfx.color(Hud_Font.r, Hud_Font.g, Hud_Font.b)
+        
     end
     --INFINITE WATER
     if doinfinitewater then
@@ -606,30 +832,39 @@ end
 
 function render3d(dt) 
     if xpos1 == nil or xpos2 == nil then else
-        gfx.color(0, 242, 61) -- DIAG LINE
-        gfx.line(xpos1+0.5,ypos1+0.5,zpos1+0.5,xpos2+0.5,ypos2+0.5,zpos2+0.5)
-        gfx.color(0,0,255) -- MIRROR LINE
-        mirrorLine = (xpos1+xpos2)*0.5
-        gfx.line(mirrorLine,ypos1,zpos1,mirrorLine,ypos1,zpos2)
-        gfx.color(255,0,0)
-        xpos1a = math.min(xpos1, xpos2) -- FIX VARS
-        xpos2a = math.max(xpos1, xpos2) + 1
-        ypos1a = math.min(ypos1, ypos2)
-        ypos2a = math.max(ypos1, ypos2) + 1
-        zpos1a = math.min(zpos1, zpos2)
-        zpos2a = math.max(zpos1, zpos2) + 1
-        gfx.line(xpos1a,ypos1a,zpos1a,xpos1a,ypos2a,zpos1a) -- DRAW CUBE
-        gfx.line(xpos1a,ypos1a,zpos1a,xpos2a,ypos1a,zpos1a)
-        gfx.line(xpos1a,ypos1a,zpos1a,xpos1a,ypos1a,zpos2a)
-        gfx.line(xpos2a,ypos1a,zpos1a,xpos2a,ypos2a,zpos1a)
-        gfx.line(xpos2a,ypos1a,zpos1a,xpos2a,ypos1a,zpos2a)
-        gfx.line(xpos1a,ypos2a,zpos1a,xpos1a,ypos2a,zpos2a)
-        gfx.line(xpos1a,ypos2a,zpos1a,xpos2a,ypos2a,zpos1a)
-        gfx.line(xpos1a,ypos1a,zpos2a,xpos2a,ypos1a,zpos2a)
-        gfx.line(xpos1a,ypos1a,zpos2a,xpos1a,ypos2a,zpos2a)
-        gfx.line(xpos2a,ypos1a,zpos2a,xpos2a,ypos2a,zpos2a)
-        gfx.line(xpos2a,ypos2a,zpos1a,xpos2a,ypos2a,zpos2a)
-        gfx.line(xpos1a,ypos2a,zpos2a,xpos2a,ypos2a,zpos2a)
+        if DiagS then
+            gfx.color(DiagC.r,DiagC.g,DiagC.b) -- DIAG LINE
+            gfx.line(xpos1+0.5,ypos1+0.5,zpos1+0.5,xpos2+0.5,ypos2+0.5,zpos2+0.5)
+        end
+
+        if MirS then
+            gfx.color(MirC.r,MirC.g,MirC.b) -- MIRROR LINE
+            mirrorLine = (xpos1+xpos2)*0.5
+            gfx.line(mirrorLine,ypos1,zpos1,mirrorLine,ypos1,zpos2)
+        end
+        
+        if BoxS then
+            gfx.color(BoxC.r,BoxC.g,BoxC.b)
+            xpos1a = math.min(xpos1, xpos2) -- FIX VARS
+            xpos2a = math.max(xpos1, xpos2) + 1
+            ypos1a = math.min(ypos1, ypos2)
+            ypos2a = math.max(ypos1, ypos2) + 1
+            zpos1a = math.min(zpos1, zpos2)
+            zpos2a = math.max(zpos1, zpos2) + 1
+            gfx.line(xpos1a,ypos1a,zpos1a,xpos1a,ypos2a,zpos1a) -- DRAW CUBE
+            gfx.line(xpos1a,ypos1a,zpos1a,xpos2a,ypos1a,zpos1a)
+            gfx.line(xpos1a,ypos1a,zpos1a,xpos1a,ypos1a,zpos2a)
+            gfx.line(xpos2a,ypos1a,zpos1a,xpos2a,ypos2a,zpos1a)
+            gfx.line(xpos2a,ypos1a,zpos1a,xpos2a,ypos1a,zpos2a)
+            gfx.line(xpos1a,ypos2a,zpos1a,xpos1a,ypos2a,zpos2a)
+            gfx.line(xpos1a,ypos2a,zpos1a,xpos2a,ypos2a,zpos1a)
+            gfx.line(xpos1a,ypos1a,zpos2a,xpos2a,ypos1a,zpos2a)
+            gfx.line(xpos1a,ypos1a,zpos2a,xpos1a,ypos2a,zpos2a)
+            gfx.line(xpos2a,ypos1a,zpos2a,xpos2a,ypos2a,zpos2a)
+            gfx.line(xpos2a,ypos2a,zpos1a,xpos2a,ypos2a,zpos2a)
+            gfx.line(xpos1a,ypos2a,zpos2a,xpos2a,ypos2a,zpos2a)
+        end
+        
     end
 end
 
