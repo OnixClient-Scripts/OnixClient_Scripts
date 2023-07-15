@@ -9,7 +9,7 @@
 ```
 
 ```diff
-@@ Discord : Quoty0#3884, Onix86#0001, jqms#6969 @@
+@@ Discord : quoty0, onix86, jqms @@
 ```
 
 ```diff
@@ -25,7 +25,7 @@
 
 ## How to install scripts
 
-### Setup script
+### Setup Script
 
 Use this setup script to get started quickly and easily.
 Press `Win + R` and paste this in:

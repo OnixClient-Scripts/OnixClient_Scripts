@@ -135,13 +135,22 @@
       "hash": "2d96375b324bb180ab9d31f14e831943"
     },
     {
+      "name": "Breadcrumbs",
+      "file": "Breadcrumbs.lua",
+      "description": "Adds a breadcrumb trail behind you.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Breadcrumbs.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "fc4e17ae46e20d02b7bceb1fb15b4168"
+    },
+    {
       "name": "Cat Switcher",
       "file": "CatSwitcher.lua",
       "description": "xJqms",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/CatSwitcher.lua",
       "libs": [],
       "commands": [],
-      "hash": "be53d83fda1a938816c6ae92c56b54a4"
+      "hash": "ca3327767cbbc3618f3752fb1d10d5d5"
     },
     {
       "name": "Chat Reverser",
@@ -256,6 +265,15 @@
       "hash": "11c3710e34007dce7a455f755d7bf4e8"
     },
     {
+      "name": "Enabled Filter",
+      "file": "EnabledFilter.lua",
+      "description": "Only shows enabled modules in the module list.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/EnabledFilter.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "fb4a6c365842bbc6d6a6378e83718ebe"
+    },
+    {
       "name": "Everything Sponge",
       "file": "EverythingSponge.lua",
       "description": "Sponge but it removes everything. Even blocks. Only works on the second sponge place for safety reasons. Made by Naomi.",
@@ -272,6 +290,15 @@
       "libs": [],
       "commands": [],
       "hash": "b73e8ce8cb8e98e35bb6531b39ab9e58"
+    },
+    {
+      "name": "Explosive Crops",
+      "file": "ExplosiveCrops.lua",
+      "description": "Has a random chance of crops exploding when you break them.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ExplosiveCrops.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "6ffd77a40067311ddef38f75b8938178"
     },
     {
       "name": "Fake ping display",
@@ -398,7 +425,7 @@
     {
       "name": "Hive Autoqueue",
       "file": "HiveAutoQueue.lua",
-      "description": "Automatically Queue Hive Games. Includes .rq command.\\nScript Version: v3.4",
+      "description": "Automatically Queue Hive Games. Includes .rq command.\\nScript Version: v3.6",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutoQueue.lua",
       "libs": [
         "gfx2Colors"
@@ -406,7 +433,7 @@
       "commands": [
         "rq"
       ],
-      "hash": "ffb8d6cbc972cf48ae65aed8b3111f00"
+      "hash": "51036113de1cd1d7c43dbe581501ad50"
     },
     {
       "name": "Hive Chat Debloater",
@@ -648,6 +675,15 @@
       "hash": "7db24eda754547bbf70dc1991d3b1082"
     },
     {
+      "name": "Movable Action Bar",
+      "file": "MovableActionBar.lua",
+      "description": "Allows you to move the action bar around.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MovableActionBar.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "34deca14683669183188a0dfa9b7275d"
+    },
+    {
       "name": "MusicBee Overlay",
       "file": "musicbeeoverlay.lua",
       "description": "Displays current song, artist, album name, and album cover. \\nMusicBee only.",
@@ -802,6 +838,18 @@
       "hash": "c9eb24a0376cf0a3fa249ff11edcf7f8"
     },
     {
+      "name": "Quick Waypoints",
+      "file": "quickWaypoints.lua",
+      "description": "Waypoints but quick",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/quickWaypoints.lua",
+      "libs": [
+        "vectors",
+        "renderthreeD"
+      ],
+      "commands": [],
+      "hash": "b8c1f20fbbdd62bf4996e3bb5022dd54"
+    },
+    {
       "name": "RenderThreeD library exemples",
       "file": "renderthreeDexemples.lua",
       "description": "Contains all the exemples from RenderThreeD library",
@@ -898,7 +946,7 @@
       "commands": [
         "skinsteal"
       ],
-      "hash": "0d6cebf3fadef079de37cef0d41dd90a"
+      "hash": "e3bd64288dd4054e347daf56e98736e7"
     },
     {
       "name": "Sphere Generator",
@@ -1066,6 +1114,26 @@
       "hash": "194307c32c0676551f6ca027ba7fcd80"
     },
     {
+      "name": "World Edit",
+      "file": "WorldEdit.lua",
+      "description": "World Edit for bedrock. Type $help for an explanation (The wand isn",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WorldEdit.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "e1b2e845be9687914719a7c7f733ab70"
+    },
+    {
+      "name": "Zeqa Autoqueue",
+      "file": "ZeqaAutoqueue.lua",
+      "description": "Automatically queues for you when you win/lose a game.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ZeqaAutoqueue.lua",
+      "libs": [],
+      "commands": [
+        "req"
+      ],
+      "hash": "2de9bdcf38992733e1096bcab5cf22b2"
+    },
+    {
       "name": "Zeqa Chat Debloater",
       "file": "ZeqaDebloater.lua",
       "description": "Removes many annoying messages from Zeqa.net",
@@ -1209,6 +1277,12 @@
       "file": "charPixel.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/charPixel.lua",
       "hash": "0288cd4aaf198427ea3b7631ef3c3391"
+    },
+    {
+      "name": "chatTools",
+      "file": "chatTools.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/chatTools.lua",
+      "hash": "ce9b82a0af1c94de077488f83b07e8d1"
     },
     {
       "name": "chroma",
@@ -1397,7 +1471,7 @@
       {
         "file": "player.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryplayer.lua",
-        "hash": "6af06b5414362b9c086fe77b2ce16a9a"
+        "hash": "1d29ad4ba51a2bd2f6690ccc399da545"
       },
       {
         "file": "server.lua",
