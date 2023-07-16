@@ -34,12 +34,14 @@ function gfx2.color(r, g, b, a) end
 function gfx2.fillRect(x, y, width, height) end
 
 ---Fills a blurred potentially rounded rectangle
+---Note that if the user disabled blur module background this will not blur anything.
 ---@param x number Position on the X axis
 ---@param y number Position on the Y axis
 ---@param width number Width of the rectangle
 ---@param height number Height of the rectangle
 ---@param opacity number The opacity of the blurred rectangle
 ---@param roundedCornerRadius number The radius of the corners if you want a rounded corner blur
+---@return boolean blurred If the area was blurred or not
 function gfx2.blur(x, y, width, height, opacity, roundedCornerRadius) end
 
 ---Draws a rectangle (outline)
