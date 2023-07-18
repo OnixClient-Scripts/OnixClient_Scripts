@@ -463,17 +463,6 @@
       "hash": "e8351e3c6589ff778daff7ff11caf6bf"
     },
     {
-      "name": "Hive Custom AutoGG",
-      "file": "HiveAutoGG.lua",
-      "description": "AutoGG Reimagined.",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutoGG.lua",
-      "libs": [
-        "DependentBoolean"
-      ],
-      "commands": [],
-      "hash": "705c6562fd9b19b3b9f997667dfea34c"
-    },
-    {
       "name": "Hive Statistic Checker",
       "file": "HiveStatChecker.lua",
       "description": "Allows you to check the statistics of people in-game.",
