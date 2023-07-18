@@ -52,6 +52,14 @@ function vec:mag()
     return math.sqrt(self:magSq())
 end
 
+function vec:set(...)
+    local args = { ... }
+    self.components = args
+    self:updateComponentNames()
+
+    return self
+end
+
 function vec:setMag(magnitude)
     self:normalize():mult(magnitude)
 
@@ -191,7 +199,7 @@ end
 
 function vec:dist(otherVec)
     local leastComponents = math.min(#self.components, #otherVec.components)
-    local output
+    local output = 0
     for i = 1, leastComponents do
         output = output + (self.components[i] - otherVec.components[i]) ^ 2
     end
