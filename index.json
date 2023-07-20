@@ -1085,6 +1085,19 @@
       "hash": "43467e4443d65af7a0b4f2e997c05d91"
     },
     {
+      "name": "Waypoint Ping Tool",
+      "file": "WaypointPingTool.lua",
+      "description": "Allows you to set a waypoint with a customisable keybind.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WaypointPingTool.lua",
+      "libs": [
+        "vectors",
+        "vectors",
+        "renderthreeD"
+      ],
+      "commands": [],
+      "hash": "688279058fd671ca5cfcdbc1a01a6b6b"
+    },
+    {
       "name": "Win Particles",
       "file": "winParticles.lua",
       "description": "Server win particles",
