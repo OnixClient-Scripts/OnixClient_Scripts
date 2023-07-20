@@ -39,7 +39,7 @@ end
 event.listen("MouseInput", function(button, down)
     local inventory = player.inventory()
     local heldItem = inventory.selected
-    if button == 2 and down then
+    if button == 2 and not down then
         if inventory.at(heldItem) then
             if inventory.at(heldItem).name == "sponge" then
                 local facingBlock = player.facingBlock()
