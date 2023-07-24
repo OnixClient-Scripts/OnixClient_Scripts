@@ -77,6 +77,7 @@ event.listen("ConfigurationLoaded", function(data)
 end)
 
 alreadyRequeuing = false
+alreadyRequeuingDodgeList = false
 delayNextRequeue = false
 
 event.listen("TitleChanged", function(text, titleType)
@@ -84,18 +85,23 @@ event.listen("TitleChanged", function(text, titleType)
 		if text:find("§aStarting game in §") then
 			if text:match("§aStarting game in §.§.(%d+)") then
 				local match = text:match("§aStarting game in §.§.(%d+)")
-				if tonumber(match) <= 10 then
-					if delayNextRequeue then
+				if tonumber(match) <= 10 and tonumber(match) >= 5 then
+					if delayNextRequeue and alreadyRequeuing == false then
 						requeue(lastGamemode, "§eAttempting to requeue again!", true)
 						delayNextRequeue = false
 					end
 				end
 				if tonumber(match) <= 5 then
-					delayNextRequeue = false
 					getPlayerStats()
+					if not alreadyRequeuingDodgeList then
+						checkDodgeList()
+					end
+					delayNextRequeue = false
 				end
 			end
-			checkDodgeList()
+			if not alreadyRequeuingDodgeList then
+				checkDodgeList()
+			end
 		end
 	end
 end)
@@ -117,9 +123,13 @@ event.listen("ChatMessageAdded", function(message, username, type, xuid)
 		if message:find(player.name()) then
 			playersChecked = {}
 			alreadyRequeuing = false
+			alreadyRequeuingDodgeList = false
+			delayNextRequeue = false
 			client.execute("execute /connection")
 		end
-		checkDodgeList()
+		if not alreadyRequeuingDodgeList then
+			checkDodgeList()
+		end
 		if levelBool.value == false and prestigeBool.value == false then
 			return
 		else
@@ -227,6 +237,7 @@ function checkDodgeList()
 		local _player = __Player.text.value
 		for _, username in pairs(serverList) do
 			if username == _player and username ~= player.name() then
+				alreadyRequeuingDodgeList = true
 				requeue(lastGamemode, "§r§c" .. _player .. "§r§b is in your game.", true)
 			end
 		end
