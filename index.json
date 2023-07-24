@@ -414,13 +414,13 @@
     {
       "name": "Hive Autododge",
       "file": "HiveAutododge.lua",
-      "description": "Automatically requeue to dodge sweats.",
+      "description": "Automatically requeues your game based on specified parameters.",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutododge.lua",
-      "libs": [],
-      "commands": [
-        "dodge"
+      "libs": [
+        "HiveHelper"
       ],
-      "hash": "cdb871a3c0f88cfc9cb664212988ef9c"
+      "commands": [],
+      "hash": "fc6747518c29a7dabc2ed16ed06e1815"
     },
     {
       "name": "Hive Autoqueue",
