@@ -1335,6 +1335,12 @@
       "hash": "a6cd8d2a77ab746bbe73f223c457d8ee"
     },
     {
+      "name": "HiveHelper",
+      "file": "HiveHelper.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/HiveHelper.lua",
+      "hash": "08961595aa3af613cc3b23739a7e6a44"
+    },
+    {
       "name": "Inventory",
       "file": "Inventory.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Inventory.lua",
