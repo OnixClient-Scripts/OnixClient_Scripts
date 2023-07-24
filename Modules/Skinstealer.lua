@@ -2,28 +2,37 @@ name="Skinstealer"
 description="Steals peoples skins"
 
 function stealMySkin()
-    local localSkin = player.skin()
-    local localUsername = player.name()
-    local playerName = string.split(localUsername, "\n")
-    if string.find(playerName[1],"§.") then
-        localUsername = string.gsub(playerName[1],"§.","")
-        if string.find(localUsername,"%[") then
-            localUsername = string.gsub(localUsername," %[.*%]","")
-        end
-    else
-        return localUsername
-    end
+    local mySkin = player.skin()
+    local myName = player.name()
 
-    if localSkin ~= nil then
-        fs.mkdir("Skinstealer/" .. localUsername)
-        print("§aGrabbed your skin!")
-        localSkin.save("Skinstealer/" .. localUsername .. "/" .. localUsername .. "_skin.png")
-        if localSkin.hasCape() then
-            localSkin.saveCape("Skinstealer/" .. localUsername .. "/" .. localUsername .. "_cape.png")
+    if mySkin ~= nil then
+        if myName ~= nil then
+            local playerName = string.split(myName, "\n")
+            if string.find(playerName[1],"§.") then
+                username = string.gsub(playerName[1],"§.","")
+                if string.find(username,"%[") then username = string.gsub(username," %[.*%]","") end
+            else
+                username = myName
+            end
         end
-        local file = io.open("Skinstealer/" .. localUsername .. "/" .. localUsername .. "_geometry.json","w")
-        file:write(localSkin.geometry())
+        if fs.exist("Skinstealer/" .. username) == false then
+            fs.mkdir("Skinstealer/" .. username)
+        else
+            local i = 1
+            while fs.exist("Skinstealer/" .. username .. "_" .. i) do
+                i = i + 1
+            end
+            fs.mkdir("Skinstealer/" .. username .. "_" .. i)
+            username = username .. "_" .. i
+        end
+        mySkin.save("Skinstealer/" .. myName .. "/" .. myName .. ".png")
+        if mySkin.hasCape() then
+            mySkin.saveCape("Skinstealer/" .. myName .. "/" .. myName .. "_cape.png")
+        end
+        local file = io.open("Skinstealer/" .. username .. "/" .. username .. "_geometry.json","w")
+        file:write(skin.geometry())
         file:close()
+        print("Stole your own skin!")
     end
 end
 function openLastSkin()
@@ -148,43 +157,23 @@ end)
 function skinsteal()
     if player.facingEntity() then
         if player.selectedEntity().type ~= "player" and warningMessage.value == false and disableChatMessage.value == false then
-            if client.mcversion:find("1.19.8") then
-                if player.selectedEntity().nametag == "" then
-                    print("§cCould not steal skin.")
-                    print("§cThis could be because it's not a player.")
-                    return
-                elseif player.selectedEntity().username == "" then
-                    print("§cCould not steal skin.")
-                    print("§cThis could be because it's not a player.")
-                    return
-                end
+            if player.selectedEntity().username == "" then
+                print("§cCould not steal skin.")
+                print("§cThis could be because it's not a player.")
+                return
             end
         else
             local selectedPlayer = player.selectedEntity()
-            if client.mcversion:find("1.19.8") then
-                if selectedPlayer.nametag ~= nil then
-                    local playerName = string.split(selectedPlayer.nametag, "\n")
-                    if string.find(playerName[1],"§.") then
-                        username = string.gsub(playerName[1],"§.","")
-                        if string.find(username,"%[") then username = string.gsub(username," %[.*%]","") end
-                    else
-                        username = selectedPlayer.nametag
-                    end
+            if selectedPlayer.username ~= nil then
+                local playerName = string.split(selectedPlayer.username, "\n")
+                if string.find(playerName[1],"§.") then
+                    username = string.gsub(playerName[1],"§.","")
+                    if string.find(username,"%[") then username = string.gsub(username," %[.*%]","") end
                 else
-                    playerName = selectedPlayer.type
+                    username = string.split(selectedPlayer.username, "\n")[1]
                 end
             else
-                if selectedPlayer.username ~= nil then
-                    local playerName = string.split(selectedPlayer.username, "\n")
-                    if string.find(playerName[1],"§.") then
-                        username = string.gsub(playerName[1],"§.","")
-                        if string.find(username,"%[") then username = string.gsub(username," %[.*%]","") end
-                    else
-                        username = selectedPlayer.username
-                    end
-                else
-                    playerName = selectedPlayer.type
-                end
+                playerName = selectedPlayer.type
             end
             if selectedPlayer.skin == nil then return end
             local skin = selectedPlayer.skin()
