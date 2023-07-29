@@ -56,6 +56,9 @@ function dimension.sound(x, y, z, name) end
 ---@field snow boolean Can it snow in that biome
 ---@field canRain boolean Can it rain in that biome
 
+---@class BiomeColorData
+---@field grass ColorSetting The color of the grass
+---@field water ColorSetting The color of the water 
 
 ---Gets the light levels of these coordinates
 ---The highest between sky and block is the real brightness
@@ -72,6 +75,46 @@ function dimension.getBrightness(x, y, z) end
 ---@param z integer | number The z position
 ---@return Block block The block information
 function dimension.getBlock(x, y, z) end
+
+---Finds a block among the world 
+---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
+---@param name string The name of the block
+---@return integer[][] blockPositions The block information
+function dimension.findBlock(name) end
+
+---Finds a block among the world 
+---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
+---@param name string The name of the block
+---@param blockData integer | number The data of the block
+---@return integer[][] blockPositions The block information
+function dimension.findBlock(name, blockData) end
+
+---Finds a block among the world 
+---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
+---@param name string The name of the block
+---@param blockData integer | number The data of the block
+---@param radius integer | number The radius to search in (will be chunk aligned to then center of the chunk
+---@return integer[][] blockPositions The block information
+function dimension.findBlock(name, blockData, radius) end
+
+---Finds a block among the world 
+---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
+---@param name string The name of the block
+---@param blockData integer | number The data of the block
+---@param radius integer | number The radius to search in (will be chunk aligned to then center of the chunk
+---@param x integer | number The x center position
+---@param y integer | number The y center position
+---@param z integer | number The z center position
+---@return integer[][] blockPositions The block information
+function dimension.findBlock(name, blockData, radius, x, y, z) end
+
+---Finds a block among the world 
+---local x,y,z = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
+---@param x integer | number The x center position
+---@param y integer | number The y center position
+---@param z integer | number The z center position
+---@return BiomeColorData colorData The color of the water and grass at this x,z
+function dimension.getBiomeColor(x, y, z) end
 
 ---Gets the block at these coordinates
 ---@param x integer | number The x position
