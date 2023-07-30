@@ -310,17 +310,6 @@
       "hash": "90c8ac6d72928ecea7d60f11b6c431f7"
     },
     {
-      "name": "FPS booster",
-      "file": "FPS.lua",
-      "description": "boosts your fps",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/FPS.lua",
-      "libs": [
-        "module"
-      ],
-      "commands": [],
-      "hash": "7a645a30b103d541850bd669419a8aac"
-    },
-    {
       "name": "FPS Limiter",
       "file": "fps_limiter.lua",
       "description": "Limit your game",
