@@ -128,7 +128,8 @@ function update(dt)
     end
     local item = player.inventory().at(1)
     local item2 = player.inventory().at(9)
-    if (item ~= nil and item.customName == "§r§bGame Selector§7 [Use]") or (item2 ~= nil and item2.customName == "§r§7» §ePlayer §fSettings§7 «" and gameLobby == false) or hub == true then
+    local item3 = player.inventory().at(5)
+    if (item ~= nil and item.customName == "§r§bGame Selector§7 [Use]") or (item2 ~= nil and item2.customName == "§r§7» §ePlayer §fSettings§7 «" and gameLobby == false) or (item3 ~= nil and item3.customName == "§r§7» §eRegion §fSelector§7 «")or hub == true then
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
         io.output(file)
         io.write("In the Hub")
