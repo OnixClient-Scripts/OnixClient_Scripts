@@ -617,11 +617,9 @@
       "file": "MinecraftRPC.lua",
       "description": "Rich Presence. Intelligently.\\nClosing the launcher when using this is recommended.",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MinecraftRPC.lua",
-      "libs": [
-        "DependentBoolean"
-      ],
+      "libs": [],
       "commands": [],
-      "hash": "1221807c26b5bdfce5997b012c0c1789"
+      "hash": "d7956ebacfc2672c175c7d2beddd624d"
     },
     {
       "name": "Minimap",
