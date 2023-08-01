@@ -1352,6 +1352,12 @@
       "hash": "d13da5bc868bd0272c9db77531d85c4b"
     },
     {
+      "name": "looper",
+      "file": "looper.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/looper.lua",
+      "hash": "a5d35151a01ad44d45f218c3f96b6ade"
+    },
+    {
       "name": "module",
       "file": "module.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/module.lua",
@@ -1437,7 +1443,7 @@
       {
         "file": "events.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryevents.lua",
-        "hash": "934b7dc07dddbdcca0e3c1a0ad34cd32"
+        "hash": "f8d31634969258b6226fecbf75608396"
       },
       {
         "file": "fs.lua",
