@@ -6,7 +6,7 @@ Onix Client scripting is a scripting API that uses Lua to allow you to create/us
 - Onix Client Scripting
 
 ## Setup
-To set up the TypeScript type definitions for Onix Client scripting, follow these steps:
+To set up Onix Client scripting for script usage (go to [placeholder]() for development):
 
 1. Press `Windows Key + R` and paste the following in:
 ```
