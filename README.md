@@ -6,7 +6,7 @@ Onix Client scripting is a scripting API that uses Lua to allow you to create/us
 - Onix Client Scripting
 
 ## Setup
-To set up Onix Client scripting for script usage (go to [placeholder]() for development):
+To set up Onix Client scripting for script usage (go [here](https://github.com/OnixClient-Scripts/OnixClient_Scripts#development) for development):
 
 1. Press `Windows Key + R` and paste the following in:
 ```
@@ -54,4 +54,4 @@ This will set up the whole development environment:
 <br>
 [Lua Tutorial Video](https://www.youtube.com/watch?v=iMacxZQMPXs)
 
-Repo created July 24, 2021
+Repo created `July 24, 2021`.
