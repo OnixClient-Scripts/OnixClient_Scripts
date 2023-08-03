@@ -25,7 +25,7 @@ To use scripts, go to the [Onix Client Script Downloader](https://onixclient.com
 # Development
 
 **Make a pull request if you want to upload your script into the repository.**
-**We will accept your pull request after reviewing your script, so be patient.**
+**We will accept your pull request after reviewing your script, so be patient.**<br>
 If you would like to use TypeScript instead of Lua, please refer to the [experimental compatability layer](https://github.com/OnixClient-Scripts/TS-Compat)!
 
 ## Setup
