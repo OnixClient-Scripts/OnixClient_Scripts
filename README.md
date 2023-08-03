@@ -1,7 +1,6 @@
 # Scripts for Onix Client
 
 ## [Onix Client Discord](https://discord.gg/onixclient)
-
 ## [Scripting Repo](https://onixclient.com/scripting/repo)
 
 ```diff
@@ -13,15 +12,9 @@
 ```
 
 ```diff
-+ Please do pull request if you want to upload your script into the repository.
++ Please pull request if you want to upload your script into the repository.
 + We'll accept your pull request after reviewing your script, so be patient.
 ```
-
-​
-
----
-
-​
 
 ## How to install scripts
 
@@ -55,29 +48,35 @@ explorer.exe %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\Roamin
 
 ### STEP 2
 
-Make 'Scripts' folder and send in chat `.lua reload` to create sub folders.
+Make a `Scripts` folder and send `.lua reload` in Minecraft chat to create required sub folders.
 
 ### STEP 3
 
-Click onto the module or cmd you want from this repo.
+Go to the [Onix Client Script Downloader](https://onixclient.com/scripting/repo)
+- There is a video on this site to help you with the next 2 steps!
 
 ### STEP 4
 
-then click the `raw` button then do ctrl + s then save in the modules/scripts folder, make sure the file extention is .lua and **not** .txt as it is .txt by default so you're gonna need to change it for the scripts to work.
+Download any script you want from there.
 
-## Remember to put the following in chat after adding/editing scripts :
+### STEP 5
+
+Put the script (the `.lua` file into the `Modules` folder in the `Scripts` directory.
+
+## Remember to put the following in chat after adding/editing scripts:
 
 ```
 .lua reload
 ```
 
-This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the cmd in chat.
-You can do .lua autoreload to make it automatically reload when you've edited a script.
+This is because when saving/editing scripts the game won't notice that you've made modifications unless you do the command in chat.
+You can do `.lua autoreload` to make it automatically reload when you've edited a script.
 ​
 ---
 ​
 <br>
 # Useful resources
+If you would like to use TypeScript instead of Lua, please refer to the [compatability layer](https://github.com/OnixClient-Scripts/TS-Compat)!
 ## Documentations
 [Onix Client Scripting Documentation](https://docs.onixclient.com/scripting/main.html)
 <br>
