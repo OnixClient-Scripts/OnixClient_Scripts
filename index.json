@@ -1274,7 +1274,7 @@
       "name": "blockToTexture",
       "file": "blockToTexture.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/blockToTexture.lua",
-      "hash": "d44d2d34fde628a0fa7d18ce60d3663f"
+      "hash": "696086d0b1ce3275b52c854a8c708e16"
     },
     {
       "name": "charPixel",
