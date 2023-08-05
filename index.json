@@ -901,6 +901,15 @@
       "hash": "44dc804ac223d4c2a1ca04fc1ec31c9b"
     },
     {
+      "name": "Scripting UI",
+      "file": "ScriptingUI.lua",
+      "description": "Regular Onix Client UI, but with only scripts shown.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ScriptingUI.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "71b8cee33f6652566fa74c7ba6e67a78"
+    },
+    {
       "name": "Show Blocks",
       "file": "showBlocks.lua",
       "description": "Shows blocks in the world",
