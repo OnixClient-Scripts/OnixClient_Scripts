@@ -39,13 +39,15 @@ end
 event.listen(
     "KeyboardInput",
     function(key, state)
-        if key == openKey.value and state == true then
-            toggleScriptsOn(nil)
-        else
-            toggleScriptsOff(nil)
-        end
-        if key == 9 and state == true then
-            toggleScriptsOff(nil)
+        if not gui.mouseGrabbed() then
+            if key == openKey.value and state == true then
+                toggleScriptsOn(nil)
+            else
+                toggleScriptsOff(nil)
+            end
+            if key == 9 and state == true then
+                toggleScriptsOff(nil)
+            end
         end
     end
 )
