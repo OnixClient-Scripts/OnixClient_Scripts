@@ -15,9 +15,46 @@ function postInit()
         "https://raw.githubusercontent.com/Mojang/bedrock-samples/main/resource_pack/textures/terrain_texture.json",
         "terrain_texture.json"
     )
+
+    if not fs.isdir("textures") then
+        print([[
+§8|§bINFO§8| §cOne of your enabled mods uses the Block to Texture lib, which requires some manual setup. Please follow these steps to use the mod:
+        -If you are NOT using a resource pack:
+            *Go to https://github.com/mojang/bedrock-samples
+            *Click on |< > Code| and "Download ZIP"
+            *Inside the ZIP, navigate to "resource_pack"
+            *Type ".lua path" into Minecraft chat, it should open File Explorer
+            *Copy the "textures" folder from inside "resource_pack" into the "Data" folder of the window that opened after ".lua path"
+
+        -If you ARE using a resource pack that changes all of the games blocks:
+            *Find the resource pack that you are using
+            *If it is a .mcpack, rename the file to end with .zip instead
+            *Inside the zip, find the "textures" folder
+            *Type ".lua path" into Minecraft chat, it should open File Explorer.
+            *Copy the "textures" folder from the resource pack into the "Data" folder of the window that opened after ".lua path"
+            ]])
+    end
 end
 
 function btt.getTexture(x, y, z, face)
+    if not fs.isdir("textures") then
+        print(
+            [[§cA script is currently using the Block to Texture library. For it to work, you must follow these steps:
+    -If you are not using a resource pack:
+        *Go to https://github.com/mojang/bedrock-samples
+        *Click on |< > Code| and "Download ZIP"
+        *Inside the ZIP, navigate to "resource_pack"
+        *Type ".lua path" into Minecraft chat, it should open File Explorer
+        *Copy the "textures" folder from inside "resource_pack" into the "Data" folder of the window that opened after ".lua path"
+
+    -If you are using a resource pack that changes all of the games blocks:
+        *Find the resource pack that you are using
+        *If it is a .mcpack, rename the file to end with .zip instead
+        *Inside the zip, find the "textures" folder
+        *Type ".lua path" into Minecraft chat, it should open File Explorer.
+        *Copy the "textures" folder from the resource pack into the "Data" folder of the window that opened after ".lua path"
+            ]])
+    end
     local blockSelected = dimension.getBlock(x, y, z)
     local blockName = blockSelected.name
     local direction = btt.faceToDirection[face]
@@ -27,7 +64,6 @@ function btt.getTexture(x, y, z, face)
     if btt.toBlocksTranslations[blockName] then
         blockName = btt.toBlocksTranslations[blockName]
     end
-
 
     local textureFrom_blocks
     if btt.blocks[blockName].carried_textures then
