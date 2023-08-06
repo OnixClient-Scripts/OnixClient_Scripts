@@ -466,6 +466,21 @@
       "hash": "ecc80e53dfcf33fc340f316f23a5254c"
     },
     {
+      "name": "HiveAutoParty",
+      "file": "hiveautoparty.lua",
+      "description": "Automatically accepts party invite from added players",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/hiveautoparty.lua",
+      "libs": [
+        "fileUtility"
+      ],
+      "commands": [
+        "addparty",
+        "removeparty",
+        "listparty"
+      ],
+      "hash": "0987b68a4a46f72dfc66e2c0fdbc8dbf"
+    },
+    {
       "name": "HiveWinstreak",
       "file": "hivewinstreak.lua",
       "description": "Winstreak counter for The Hive (Only Skywars, Treasure wars)",
