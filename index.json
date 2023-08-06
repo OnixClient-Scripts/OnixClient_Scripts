@@ -1425,6 +1425,12 @@
       "file": "Wait.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Wait.lua",
       "hash": "8b9d30d7876f0e051a03d9c27083b3ce"
+    },
+    {
+      "name": "zip",
+      "file": "zip.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/zip.lua",
+      "hash": "c405531be66262fad63547d823439e9a"
     }
   ],
   "autocomplete": {
