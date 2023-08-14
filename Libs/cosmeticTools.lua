@@ -1,15 +1,16 @@
 -- Made By O2Flash20 :)
 
+isSupportedVersion = true
 -- checking if the version is supported
-_versionSplit = string.split(client.mcversion, ".")
-_v = {}
-for i = 1, #_versionSplit, 1 do
-    table.insert(_v, tonumber(_versionSplit[i]))
-end
-isSupportedVersion = false
-if _v[1] <= 1 and _v[2] <= 19 and _v[3] <= 41 then
-    isSupportedVersion = true
-end
+-- _versionSplit = string.split(client.mcversion, ".")
+-- _v = {}
+-- for i = 1, #_versionSplit, 1 do
+--     table.insert(_v, tonumber(_versionSplit[i]))
+-- end
+-- isSupportedVersion = false
+-- if _v[1] <= 1 and _v[2] <= 19 and _v[3] <= 41 then
+--     isSupportedVersion = true
+-- end
 --
 
 shadingEnabled = false
@@ -88,7 +89,7 @@ end
 
 -- updates player position and such
 function updateCosmeticTools()
-    px, py, pz = player.pposition()
+    px, py, pz = player.forwardPosition(0)
     pYaw, pPitch = player.rotation()
 
     if isSupportedVersion then bodyYaw = player.bodyRotation() else bodyYaw = pYaw end
@@ -324,7 +325,9 @@ function Object:attachAsCape()
 
     -- if the cape will be falling quickly, ease-out interpolate instead of linear
     if dotProduct3D(velocity, oldVelocity) < 0.65 and vecLenSqu(oldVelocity) > vecLenSqu(velocity)
-    then percentageOfNewVelocity = EastInOut(percentageOfNewVelocity) end
+    then
+        percentageOfNewVelocity = EastInOut(percentageOfNewVelocity)
+    end
 
     vI[1] = ((1 - percentageOfNewVelocity) * oldVelocity[1]) + (percentageOfNewVelocity * velocity[1])
     vI[2] = ((1 - percentageOfNewVelocity) * oldVelocity[2]) + (percentageOfNewVelocity * velocity[2])
@@ -354,7 +357,7 @@ function Object:attachAsCape()
     self:rotateCustom(
         0, 0, -0.15,
         math.clamp(
-            math.clamp(vI[3] * 0.8, 0, math.rad(75)) - --forward movement
+            math.clamp(vI[3] * 0.8, 0, math.rad(75)) -  --forward movement
             ((vI[2] * 0.2) * useVerticalVelocity * 3) - --vertical movement
             math.abs(vI[3] * math.rad(capeRoll) * 0.4), -- side to side movement
             math.rad(5),
@@ -441,24 +444,50 @@ function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottom
     -- if it's a string, convert it to a Texture, if it doesnt exist, use frontTex
     if type(frontTex) == "table" then tF = frontTex else tF = { frontTex, { { 0, 0 }, { 1, 1 } } } end
 
-    if backTex == nil then tBa = tF -- backTex wasn't defined, make it tF
-    else if type(backTex) == "table" then tBa = backTex else tBa = { backTex, { { 0, 0 }, { 1, 1 } } } -- If it's a table (a Texture), use that, else, treat backTex as a link and make it a Texture
+    if backTex == nil then
+        tBa =
+            tF -- backTex wasn't defined, make it tF
+    else
+        if type(backTex) == "table" then
+            tBa = backTex
+        else
+            tBa = { backTex, { { 0, 0 }, { 1, 1 } } } -- If it's a table (a Texture), use that, else, treat backTex as a link and make it a Texture
         end
     end
-    if leftTex == nil then tL = tF
-    else if type(leftTex) == "table" then tL = leftTex else tL = { leftTex, { { 0, 0 }, { 1, 1 } } }
+    if leftTex == nil then
+        tL = tF
+    else
+        if type(leftTex) == "table" then
+            tL = leftTex
+        else
+            tL = { leftTex, { { 0, 0 }, { 1, 1 } } }
         end
     end
-    if rightTex == nil then tR = tF
-    else if type(rightTex) == "table" then tR = rightTex else tR = { rightTex, { { 0, 0 }, { 1, 1 } } }
+    if rightTex == nil then
+        tR = tF
+    else
+        if type(rightTex) == "table" then
+            tR = rightTex
+        else
+            tR = { rightTex, { { 0, 0 }, { 1, 1 } } }
         end
     end
-    if topTex == nil then tT = tF
-    else if type(topTex) == "table" then tT = topTex else tT = { topTex, { { 0, 0 }, { 1, 1 } } }
+    if topTex == nil then
+        tT = tF
+    else
+        if type(topTex) == "table" then
+            tT = topTex
+        else
+            tT = { topTex, { { 0, 0 }, { 1, 1 } } }
         end
     end
-    if bottomTex == nil then tBo = tF
-    else if type(bottomTex) == "table" then tBo = bottomTex else tBo = { bottomTex, { { 0, 0 }, { 1, 1 } } }
+    if bottomTex == nil then
+        tBo = tF
+    else
+        if type(bottomTex) == "table" then
+            tBo = bottomTex
+        else
+            tBo = { bottomTex, { { 0, 0 }, { 1, 1 } } }
         end
     end
 
@@ -537,10 +566,10 @@ function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottom
         tF[1]
     )
     gfx.tquad(
-        vertices[2][1], vertices[2][2], vertices[2][3], tBo[2][1][1], tBo[2][2][2],
-        vertices[6][1], vertices[6][2], vertices[6][3], tBo[2][2][1], tBo[2][2][2],
-        vertices[5][1], vertices[5][2], vertices[5][3], tBo[2][2][1], tBo[2][1][2],
-        vertices[1][1], vertices[1][2], vertices[1][3], tBo[2][1][1], tBo[2][1][2],
+        vertices[2][1], vertices[2][2], vertices[2][3], tBo[2][1][1], tBo[2][1][2],
+        vertices[6][1], vertices[6][2], vertices[6][3], tBo[2][2][1], tBo[2][1][2],
+        vertices[5][1], vertices[5][2], vertices[5][3], tBo[2][2][1], tBo[2][2][2],
+        vertices[1][1], vertices[1][2], vertices[1][3], tBo[2][1][1], tBo[2][2][2],
         tBo[1]
     )
     gfx.tquad(
@@ -558,10 +587,10 @@ function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottom
         tL[1]
     )
     gfx.tquad(
-        vertices[7][1], vertices[7][2], vertices[7][3], tT[2][2][1], tT[2][2][2],
-        vertices[8][1], vertices[8][2], vertices[8][3], tT[2][2][1], tT[2][1][2],
-        vertices[4][1], vertices[4][2], vertices[4][3], tT[2][1][1], tT[2][1][2],
-        vertices[3][1], vertices[3][2], vertices[3][3], tT[2][1][1], tT[2][2][2],
+        vertices[7][1], vertices[7][2], vertices[7][3], tT[2][2][1], tT[2][1][2],
+        vertices[8][1], vertices[8][2], vertices[8][3], tT[2][1][1], tT[2][1][2],
+        vertices[4][1], vertices[4][2], vertices[4][3], tT[2][1][1], tT[2][2][2],
+        vertices[3][1], vertices[3][2], vertices[3][3], tT[2][2][1], tT[2][2][2],
         tT[1]
     )
 end
@@ -921,9 +950,9 @@ function Sphere:render(color)
             for y = 1, #thisFace - 1, 1 do
                 if x > 1 then
                     local triangle = {
-                        { thisFace[y][x][1], thisFace[y][x][2], thisFace[y][x][3] },
+                        { thisFace[y][x][1],         thisFace[y][x][2],         thisFace[y][x][3] },
                         { thisFace[y + 1][x - 1][1], thisFace[y + 1][x - 1][2], thisFace[y + 1][x - 1][3] },
-                        { thisFace[y + 1][x][1], thisFace[y + 1][x][2], thisFace[y + 1][x][3] }
+                        { thisFace[y + 1][x][1],     thisFace[y + 1][x][2],     thisFace[y + 1][x][3] }
                     }
                     Sphere.renderTriangle(triangle, color)
                 end
@@ -931,13 +960,12 @@ function Sphere:render(color)
                     local triangle = {
                         { thisFace[y + 1][x][1], thisFace[y + 1][x][2], thisFace[y + 1][x][3] },
                         { thisFace[y][x + 1][1], thisFace[y][x + 1][2], thisFace[y][x + 1][3] },
-                        { thisFace[y][x][1], thisFace[y][x][2], thisFace[y][x][3] }
+                        { thisFace[y][x][1],     thisFace[y][x][2],     thisFace[y][x][3] }
                     }
                     Sphere.renderTriangle(triangle, color)
                 end
             end
         end
-
     end
 end
 
@@ -1018,9 +1046,9 @@ function Sphere:renderTexture(texture)
             for y = 1, #thisFace - 1, 1 do
                 if x > 1 then
                     local triangle = {
-                        { thisFace[y][x][1], thisFace[y][x][2], thisFace[y][x][3] },
+                        { thisFace[y][x][1],         thisFace[y][x][2],         thisFace[y][x][3] },
                         { thisFace[y + 1][x - 1][1], thisFace[y + 1][x - 1][2], thisFace[y + 1][x - 1][3] },
-                        { thisFace[y + 1][x][1], thisFace[y + 1][x][2], thisFace[y + 1][x][3] }
+                        { thisFace[y + 1][x][1],     thisFace[y + 1][x][2],     thisFace[y + 1][x][3] }
                     }
                     -- Sphere.renderTriangle(triangle, color)
                     gfx.ttriangle(
@@ -1043,7 +1071,7 @@ function Sphere:renderTexture(texture)
                     local triangle = {
                         { thisFace[y + 1][x][1], thisFace[y + 1][x][2], thisFace[y + 1][x][3] },
                         { thisFace[y][x + 1][1], thisFace[y][x + 1][2], thisFace[y][x + 1][3] },
-                        { thisFace[y][x][1], thisFace[y][x][2], thisFace[y][x][3] }
+                        { thisFace[y][x][1],     thisFace[y][x][2],     thisFace[y][x][3] }
                     }
                     -- Sphere.renderTriangle(triangle, color)
                     gfx.ttriangle(
@@ -1064,16 +1092,11 @@ function Sphere:renderTexture(texture)
                 end
             end
         end
-
     end
 end
 
 --[[
     DOCUMENTATION:
-
-    IMPORTANT:
-    ATTACHASCAPE() AND ATTACHTOBODY() DO NOT WORK ON VERSIONS 1.19.50+
-    ANY MOD USING THESE WILL NOT WORK
 
     updateCosmeticTools()
         Updates the player's positions and rotations to be used by other functions. For the best result, run this function at the start of render3d()
@@ -1200,7 +1223,7 @@ end
                 Renders the cube into the world with specified textures on each side.
                 frontTex, backTex, leftTex, rightTex, topTex, bottomTex can be strings to a texture file or a Texture. If one is not defined, it will default to whatever frontTex is
                 scaleHorizontal and scaleVertical are controls to scale the textures on the cube. These values can be in the range (0-1) with 0 making the texture stretched and 1 being the default value.
-                :renderTexture("textures/blocks/planks_oak") is valid. It will make all sides the oak planks texture and both the horizontal and verticle scales will be 1. 
+                :renderTexture("textures/blocks/planks_oak") is valid. It will make all sides the oak planks texture and both the horizontal and verticle scales will be 1.
 
 
     Sphere:
@@ -1212,7 +1235,7 @@ end
                 Sets the detail level of the Sphere. If detail is not specified, it will default to Normal.
                 Low detail looks bad but is great for performance, Normal detail is a mix of performance and smoothness, and Insane is terrible for performance but looks very smooth.
             :setStretch(x, y, z)
-                Stretches the Sphere to make it an ellipsoid. 
+                Stretches the Sphere to make it an ellipsoid.
                 For example:
                     setStretch(1, 1, 1) is a perfect sphere
                     setStretch(1, 2, 1) is a sphere stretched vertically
