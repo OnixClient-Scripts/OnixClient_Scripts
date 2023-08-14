@@ -1255,12 +1255,39 @@
     {
       "name": "World Edit",
       "file": "WorldEdit.lua",
-      "description": "World Edit for bedrock. Type $help for an explanation (The wand isn",
+      "description": "World Edit for bedrock. Type .help for an explanation (The wand isn",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WorldEdit.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "fc3f2204cc8126ee0fdc136452468ac7",
-      "lastUpdated": "2023-07-15T16:39:10.000Z"
+      "libs": [
+        "auxToState"
+      ],
+      "commands": [
+        "WEhelp",
+        "fill",
+        "replace",
+        "rep",
+        "line",
+        "mirror",
+        "mir",
+        "wall",
+        "infinitewater",
+        "infwater",
+        "circle",
+        "sphere",
+        "buildup",
+        "build-up",
+        "bu",
+        "pos1",
+        "pos2",
+        "up",
+        "thrutool",
+        "copy",
+        "paste",
+        "count",
+        "wand",
+        "selnear"
+      ],
+      "hash": "1fbfc6d0c3d03ec5979cf23e23b967dc",
+      "lastUpdated": "2023-08-14T20:01:17.446Z"
     },
     {
       "name": "Zeqa Autoqueue",
@@ -1431,6 +1458,13 @@
       "lastUpdated": "2022-08-29T09:41:19.000Z"
     },
     {
+      "name": "auxToState",
+      "file": "auxToState.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/auxToState.lua",
+      "hash": "46766733f980ad8c9133bf3aeea292ae",
+      "lastUpdated": "2023-08-14T20:01:17.454Z"
+    },
+    {
       "name": "blockToTexture",
       "file": "blockToTexture.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/blockToTexture.lua",
@@ -1464,6 +1498,13 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/cosmeticTools.lua",
       "hash": "81c0562ecbd8e337bf067dc86a7cde49",
       "lastUpdated": "2023-08-14T15:59:03.000Z"
+    },
+    {
+      "name": "curl-error-codes",
+      "file": "curl-error-codes.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/curl-error-codes.lua",
+      "hash": "b3f5be3bd8119230a31b10b8800c9e80",
+      "lastUpdated": "2023-08-14T20:01:17.454Z"
     },
     {
       "name": "DependentBoolean",
@@ -1590,6 +1631,13 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/translator.lua",
       "hash": "19cbd349f9c9c41c79c8edec2c4baad7",
       "lastUpdated": "2022-05-17T19:48:23.000Z"
+    },
+    {
+      "name": "ts-things",
+      "file": "ts-things.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/ts-things.lua",
+      "hash": "9cc9d9f069f17bb41a70c8ce83ea764f",
+      "lastUpdated": "2023-08-14T20:01:17.455Z"
     },
     {
       "name": "uiLib",
