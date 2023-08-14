@@ -514,6 +514,17 @@
       "hash": "3d506362592c98c64f0d1c88d1e009ad"
     },
     {
+      "name": "Immersive First Person",
+      "file": "ImmersiveFirstPerson.lua",
+      "description": "Look at yourself and see... yourself",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ImmersiveFirstPerson.lua",
+      "libs": [
+        "cosmeticTools"
+      ],
+      "commands": [],
+      "hash": "42511300b7ef7aabcd495bebada5cd4f"
+    },
+    {
       "name": "Input Example",
       "file": "inputexample.lua",
       "description": "Keyboard, Mouse input example module script",
