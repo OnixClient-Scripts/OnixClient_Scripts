@@ -1313,7 +1313,7 @@
       "name": "cosmeticTools",
       "file": "cosmeticTools.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/cosmeticTools.lua",
-      "hash": "44f373eb0c884f2205421c90805353ea"
+      "hash": "81c0562ecbd8e337bf067dc86a7cde49"
     },
     {
       "name": "DependentBoolean",
