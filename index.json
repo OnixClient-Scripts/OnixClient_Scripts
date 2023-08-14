@@ -567,6 +567,17 @@
       "lastUpdated": "2023-08-14T16:14:36.526Z"
     },
     {
+      "name": "Immersive First Person",
+      "file": "ImmersiveFirstPerson.lua",
+      "description": "Look at yourself and see... yourself",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ImmersiveFirstPerson.lua",
+      "libs": [
+        "cosmeticTools"
+      ],
+      "commands": [],
+      "hash": "42511300b7ef7aabcd495bebada5cd4f"
+    },
+    {
       "name": "Input Example",
       "file": "inputexample.lua",
       "description": "Keyboard, Mouse input example module script",
