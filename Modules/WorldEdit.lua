@@ -1,5 +1,5 @@
 name = "World Edit"
-description = "World Edit for bedrock. Type .help for an explanation (The wand isn't an axe, it's a sword). All commands use the \".\" prefix."
+description = "World Edit for bedrock. Type .WEhelp for an explanation (The wand isn't an axe, it's a sword). All commands use the \".\" prefix."
 
   
 
@@ -52,8 +52,7 @@ client.settings.stopCategory()
 
 client.settings.addAir(10)
 
-
-SizeS = true
+SizeS = false
 client.settings.addBool("Do Size Warning","SizeS")
 AreaV = 5000
 AreaVUI = client.settings.addInt("Area Size Warning","AreaV",500,50000)
@@ -167,7 +166,7 @@ registerCommand("selnear",function (arguments)
     selnearcmd(arguments)
 end)
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                                    --                          USE .HELP TO GET AN EXPLANATION ON HOW TO USE
+                                                    --                          USE .WEhelp TO GET AN EXPLANATION ON HOW TO USE
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 positionX = 50
 positionY = 50
@@ -193,7 +192,7 @@ event.listen("MouseInput", function(button, down) --                    SECLECTI
                             zz = math.cos(pit) * math.cos(rot)*-1
                             xx = math.cos(pit) * math.sin(rot)
                             yy = math.sin(pit)*-1
-                        for I = 2, 356, 1 do
+                            for I = 2, 356, 1 do
                                 xxx = math.floor(x+xx*I+0.5)
                                 zzz = math.floor(z+zz*I+0.5)
                                 yyy = math.floor(y+yy*I+0.5) 
@@ -207,24 +206,29 @@ event.listen("MouseInput", function(button, down) --                    SECLECTI
                                     break
                                     
                                 end
-                        end
+                            end
                         else
                             if button == 1 then       --                                    LEFT MB
                                 xpos1 = xface
                                 ypos1 = yface
                                 zpos1 = zface
+                                
+                                
                                 if not MuteSel then
                                     print(xpos1 .. " " .. ypos1 .. " " .. zpos1 .. "§b has been set as selection point 1")
                                 end
+                                do return true end
                                 
                             end
                             if button == 2 then                                          -- RIGHT MB
+                                
                                 xpos2 = xface
                                 ypos2 = yface
                                 zpos2 = zface
                                 if not MuteSel then
                                     print(xpos2 .. " " .. ypos2 .. " " .. zpos2 .. "§c has been set as selection point 2")
                                 end
+                                do return true end
                             end
                         end
                     end
@@ -592,7 +596,7 @@ function helpcmd(args)
     keywordColor .. ".circle§r " .. dividerColor .. "| §7makes a circle with the radius of the distance between the two selected points (the center being the first) " .. dividerColor .. "| §7" .. usageColor .. ".circle§r <x or y> <block> [true/false:fill]\n" ..
     keywordColor .. ".sphere§r " .. dividerColor .. "| §7makes a sphere with the radius of the distance between the two selected points " .. dividerColor .. "| §7" .. usageColor .. ".sphere§r <block> [true/false:fill]\n" ..
     keywordColor .. ".build-up§r " .. dividerColor .. "| §7duplicates all of the specified block up a specified amount of times " .. dividerColor .. "| §7" .. usageColor .. ".build-up§r <block> <height>\n" ..
-    keywordColor .. ".help§r " .. dividerColor .. "| §7I think you already know how to use this one " .. dividerColor .. "| §7" .. usageColor .. ".help§r\n" ..
+    keywordColor .. ".WEhelp§r " .. dividerColor .. "| §7I think you already know how to use this one " .. dividerColor .. "| §7" .. usageColor .. ".WEhelp§r\n" ..
     keywordColor .. ".pos1§r " .. dividerColor .. "| §7sets position 1 to your current coordinates (your feet) " .. dividerColor .. "| §7" .. usageColor .. ".pos1§r\n" ..
     keywordColor .. ".pos2§r " .. dividerColor .. "| §7same as pos1 " .. dividerColor .. "| §7" .. usageColor .. ".pos2§r\n" ..
     keywordColor .. ".up§r " .. dividerColor .. "| §7teleports you up a specified amount of blocks upward and places a block below you " .. dividerColor .. "| §7" .. usageColor .. ".up§r <height>\n" ..
@@ -805,7 +809,12 @@ end
 
 
 function wandcmd(args)
-    client.execute("give wooden_sword 1 1 {\"Damage\":0,\"display\":{\"Name\":\"§l§5World Edit Wand §e§kkk\"},\"ench\":[{\"id\":22s,\"lvl\":10s}]}")
+    if server.ip() == "" then
+        client.execute("give wooden_sword 1 1 {\"Damage\":0,\"display\":{\"Name\":\"§l§5World Edit Wand §e§kkk\"},\"ench\":[{\"id\":22s,\"lvl\":10s}]}")
+    else
+        client.execute("execute /give @s wooden_sword")
+    end
+    
 end 
 
 function countcmd(args)
@@ -885,6 +894,7 @@ end
 --================================================================================================================================================================================================================================================================================================================================================================================================
 
 function render(dt) 
+ 
     AreaVUI.visible = SizeS
     DiagCUI.visible = DiagS
     BoxCUI.visible = BoxS
@@ -1045,6 +1055,7 @@ event.listen("ChatMessageAdded", function(message, username, type, xuid)
     if string.sub (message,0,1) == "." then
         print("The World Edit Commands prefix has been changed to  a full stop/period (.)")
     end
+    
     if MuteFill then
         if type == 6 then
             return true
