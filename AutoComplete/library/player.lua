@@ -33,6 +33,15 @@ function _acp__Player_Skin.saveCape(FilePath) end
 ---@return string geometry Json skin geometry
 function _acp__Player_Skin.geometry() end
 
+---Gets you the skin geometry name
+---@return string geometryName skin geometry name
+function _acp__Player_Skin.geometryName() end
+
+---Gets you the skin default geometry name
+---@return string defaultGeometryName default skin geometry name
+function _acp__Player_Skin.defaultGeometryName() end
+
+
 ---Gets the skin texture as a gfx2 texture dont have to write to disk 
 ---this function is slow, well faster than disk but as its convenient to call it every frame, DONT
 ---@return Gfx2Texture texture The skins gfx2 texture
@@ -42,6 +51,87 @@ function _acp__Player_Skin.texture() end
 ---this function is slow, well faster than disk but as its convenient to call it every frame, DONT
 ---@return Gfx2Texture texture The skins gfx2 texture
 function _acp__Player_Skin.capeTexture() end
+
+---@class PlayerSkin : Skin
+local _acp__Player_PlayerSkin = {}
+
+---Changes the skin of the player
+---@param skinTextureOrFilepath string|Gfx2Texture The skin texture or the path to the skin texture.
+function _acp__Player_PlayerSkin.setSkin(skinTextureOrFilepath) end
+
+---Changes the cape of the player
+---@param capeTextureOrFilepath string|Gfx2Texture|nil The cape texture or the path to the cape texture, nil to remove the cape.
+function _acp__Player_PlayerSkin.setCape(capeTextureOrFilepath) end
+
+---Changes the geometry of the player
+---@param geometry string The geometry data of the player
+---@param geometryName string The name of the geometry among the geometryData
+---@param defaultGeometryName string The name of the default geometry 
+function _acp__Player_PlayerSkin.setGeometry(geometry, defaultGeometryName, geometryName) end
+
+---Changes the skin and cape of the player
+---@param skinTextureOrFilepath string|Gfx2Texture The skin texture or the path to the skin texture.
+---@param capeTextureOrFilepath string|Gfx2Texture|nil The cape texture or the path to the cape texture, nil to remove the cape.
+function _acp__Player_PlayerSkin.setSkinCape(skinTextureOrFilepath, capeTextureOrFilepath) end
+
+---Changes the skin the cape and the geometry of the player.
+---@param skinTextureOrFilepath string|Gfx2Texture The skin texture or the path to the skin texture.
+---@param capeTextureOrFilepath string|Gfx2Texture|nil The cape texture or the path to the cape texture, nil to remove the cape.
+---@param geometry string|nil The geometry data of the player
+---@param geometryName string|nil The name of the geometry among the geometryData
+function _acp__Player_PlayerSkin.setSkinCapeGeometry(skinTextureOrFilepath, capeTextureOrFilepath, geometry, defaultGeometryName, geometryName) end
+
+---Changes the skin the cape and the geometry of the player aswell as the id of the skin.
+---@param id string The skin id
+---@param fullId string the full string id
+---@param skinTextureOrFilepath string|Gfx2Texture The skin texture or the path to the skin texture.
+---@param capeTextureOrFilepath string|Gfx2Texture|nil The cape texture or the path to the cape texture, nil to remove the cape.
+---@param geometry string|nil The geometry data of the player
+---@param geometryName string|nil The name of the geometry among the geometryData
+function _acp__Player_PlayerSkin.setSkinCapeGeometryId(id, fullId, skinTextureOrFilepath, capeTextureOrFilepath, geometry, defaultGeometryName, geometryName) end
+
+
+---Changes the skin of the player
+---@param skinTextureOrFilepath string|Gfx2Texture The skin texture or the path to the skin texture.
+---@param isLocal boolean If the skin change is client sided or a proper skin change (server sided)
+function _acp__Player_PlayerSkin.setSkin(skinTextureOrFilepath, isLocal) end
+
+---Changes the cape of the player
+---@param capeTextureOrFilepath string|Gfx2Texture The cape texture or the path to the cape texture.
+---@param isLocal boolean If the cape change is client sided or a proper cape change (server sided)
+function _acp__Player_PlayerSkin.setCape(capeTextureOrFilepath, isLocal) end
+
+---Changes the geometry of the player
+---@param geometry string The geometry data of the player
+---@param geometryName string The name of the geometry among the geometryData
+---@param isLocal boolean If the geometry change is client sided or a proper geometry change (server sided)
+function _acp__Player_PlayerSkin.setGeometry(geometry, defaultGeometryName, geometryName, isLocal) end
+
+---Changes the skin and cape of the player
+---@param skinTextureOrFilepath string|Gfx2Texture The skin texture or the path to the skin texture.
+---@param capeTextureOrFilepath string|Gfx2Texture|nil The cape texture or the path to the cape texture, nil to remove the cape.
+---@param isLocal boolean If the skin and cape change is client sided or a proper skin and cape change (server sided)
+function _acp__Player_PlayerSkin.setSkinCape(skinTextureOrFilepath, capeTextureOrFilepath, isLocal) end
+
+---Changes the skin the cape and the geometry of the player.
+---@param skinTextureOrFilepath string|Gfx2Texture The skin texture or the path to the skin texture.
+---@param capeTextureOrFilepath string|Gfx2Texture|nil The cape texture or the path to the cape texture, nil to remove the cape.
+---@param geometry string|nil The geometry data of the player
+---@param geometryName string|nil The name of the geometry among the geometryData
+---@param isLocal boolean If the skin cape and geometry change is client sided or a proper skin cape and geometry change (server sided)
+function _acp__Player_PlayerSkin.setSkinCapeGeometry(skinTextureOrFilepath, capeTextureOrFilepath, geometry, defaultGeometryName, geometryName, isLocal) end
+
+---Changes the skin the cape and the geometry of the player aswell as the id of the skin.
+---@param id string The skin id
+---@param fullId string the full string id
+---@param skinTextureOrFilepath string|Gfx2Texture The skin texture or the path to the skin texture.
+---@param capeTextureOrFilepath string|Gfx2Texture|nil The cape texture or the path to the cape texture, nil to remove the cape.
+---@param geometry string|nil The geometry data of the player
+---@param geometryName string|nil The name of the geometry among the geometryData
+---@param isLocal boolean If the skin cape geometry and id change is client sided or a proper skin cape geometry and id change (server sided)
+function _acp__Player_PlayerSkin.setSkinCapeGeometryId(id, fullId, skinTextureOrFilepath, capeTextureOrFilepath, geometry, defaultGeometryName, geometryName, isLocal) end
+
+
 
 
 
@@ -394,5 +484,5 @@ function player.inventory() end
 
 
 ---Gets the player skin
----@return Skin skin The user's current skin
+---@return PlayerSkin skin The user's current skin
 function player.skin() end
