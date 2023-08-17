@@ -105,6 +105,13 @@ function client.settings.addEnum(name, variableName, enumValues) end
 function client.settings.addNamelessEnum(name, defaultValue, enumValues) end
 
 
+--- https://github.com/OnixClient-Scripts/OnixClient_Scripts/blob/master/Modules/CustomSettingExample.lua
+--- Adds an instance of a custom setting
+---@param name string The name of this setting instance in the UI
+---@param CustomSettingTypeId integer The type of this custom setting given by client.settings.registerCustomRenderer
+---@param defaultValue integer Custom settings act like ints in scripting. This is the default value of this setting.
+---@return Setting setting The setting that was added
+function client.settings.addCustom(name, CustomSettingTypeId, defaultValue) end
 
 
 
@@ -164,6 +171,22 @@ function client.settings.addNamelessCategory(name) end
 ---@param name string The name of this category
 ---@param SettingCount integer How many settings to include in this category
 function client.settings.addNamelessCategory(name, SettingCount) end
+
+
+--- https://github.com/OnixClient-Scripts/OnixClient_Scripts/blob/master/Modules/CustomSettingExample.lua
+--- Adds a custom renderer for custom settings
+---@param getHeightCallback function|fun():number A function that returns the height of the custom setting.
+---@param renderCallback function|fun(setting: Setting, width: number, height: number, mouseX: number, mouseY: number, didClick: boolean, mouseButton: integer, lmbDown: boolean, rmbDown: boolean, mouseInside: boolean) A function that renders the custom setting.
+---@return integer CustomSettingTypeId The type id of the custom setting. This is used in client.settings.addCustom to create an instance.
+function client.settings.registerCustomRenderer(getHeightCallback, renderCallback) end
+
+--- https://github.com/OnixClient-Scripts/OnixClient_Scripts/blob/master/Modules/CustomSettingExample.lua
+--- Replaces a renderer for a setting, custom setting types might change for the client but non custom ones should remain the same.
+---@param SettingType integer The type of the setting to replace, you can replace client setting types using this.
+---@param getHeightCallback function|fun():number A function that returns the height of the custom setting.
+---@param renderCallback function|fun(setting: Setting, width: number, height: number, mouseX: number, mouseY: number, didClick: boolean, mouseButton: integer, lmbDown: boolean, rmbDown: boolean, mouseInside: boolean) A function that renders the custom setting.
+---@return integer CustomSettingTypeId The type id of the custom setting. This is used in client.settings.addCustom to create an instance.
+function client.settings.registerCustomRendererOverride(SettingType, getHeightCallback, renderCallback) end
 
 
 
