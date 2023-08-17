@@ -122,7 +122,7 @@ const oldIndex = require("../../index.json");
       return {
         file: acFile,
         url:
-          "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library" +
+          "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/" +
           acFile,
         hash: acHash,
         lastUpdated: acLastUpdated,
