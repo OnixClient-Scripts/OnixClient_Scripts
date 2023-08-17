@@ -185,6 +185,7 @@ function client.getConfigManager(scripting) end
 ---@field name string The name of the module
 ---@field description string The description of the module
 ---@field isVisual boolean if the module is a VisualModule
+---@field isTextual boolean if the module is a TextualModule
 ---@field isScript boolean if the module is a ScriptingModule
 ---@field visible boolean if the module is visible in the clickgui
 ---@field enabled boolean [you can set] if the module is enabled
@@ -208,6 +209,8 @@ function _acp__Module_.removeSetting(setting) end
 ---@field size Vector2 The size of the module
 ---@field pos Vector2 The position of the module
 
+---@class TextualModule : VisualModule
+---@field text string The text of the module
 
 
 
