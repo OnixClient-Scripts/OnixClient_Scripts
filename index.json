@@ -307,10 +307,12 @@
       "file": "DebugMenuPlus.lua",
       "description": "Addition to \\",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/DebugMenuPlus.lua",
-      "libs": [],
+      "libs": [
+        "Utils"
+      ],
       "commands": [],
-      "hash": "e2295a243c1b0af27741e3e247c86ff8",
-      "lastUpdated": "2023-08-18T21:05:16.332Z"
+      "hash": "032825a7478e2f43f46ed4e53826f67a",
+      "lastUpdated": "2023-08-18T21:30:54.302Z"
     },
     {
       "name": "Enabled Filter",
