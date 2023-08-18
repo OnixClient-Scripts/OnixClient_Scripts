@@ -1294,10 +1294,13 @@
         "paste",
         "count",
         "wand",
-        "selnear"
+        "selnear",
+        "rot",
+        "rotate",
+        "findstate"
       ],
-      "hash": "22b2ce886e7b900762de662ddc4a9f9e",
-      "lastUpdated": "2023-08-15T14:08:53.381Z"
+      "hash": "db990fde6b91d8e3ea9d2b7466448638",
+      "lastUpdated": "2023-08-18T20:24:04.357Z"
     },
     {
       "name": "Zeqa Autoqueue",
