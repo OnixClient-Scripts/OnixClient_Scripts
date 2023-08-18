@@ -1,10 +1,33 @@
 name = "World Edit"
 description = "World Edit for bedrock. Type .WEhelp for an explanation (The wand isn't an axe, it's a sword). All commands use the \".\" prefix."
 
-  
+--if selected.name == "stick" then                  
+--  print("hi")
+--  xface, yface, zface = player.selectedPos()
+--  selectedblock = dimension.getBlock(xface,yface,zface)
+--  SELBLOCKNAME = selectedblock.name
+--  SELBLOCKDATA = selectedblock.data
+--  if button == 2 then
+--      NEWBLOCKDATA = SELBLOCKDATA+1
+--  else
+--      NEWBLOCKDATA = SELBLOCKDATA-1
+--  end
+--  NEWBLOCKSTATE = convertAux(SELBLOCKNAME,NEWBLOCKDATA)
+--  print(SELBLOCKDATA .. " " .. NEWBLOCKDATA .. " " .. SELBLOCKNAME )
+--  if NEWBLOCKSTATE == nil then
+--     print("§eNo more block states, you can use left or right click to send it back/forward")
+--    else
+--        client.execute("execute setblock " .. xface .. " " .. yface .. " " .. zface .. " " .. SELBLOCKNAME .. " " .. NEWBLOCKSTATE)
+--    end
+--    print (NEWBLOCKSTATE)
+--    do return true end
+--end
 
 
 importLib("auxToState.lua")
+
+
+
 client.settings.addAir(10)
 DiagS = false
 client.settings.addBool("Show Diag","DiagS")
@@ -56,6 +79,14 @@ SizeS = false
 client.settings.addBool("Do Size Warning","SizeS")
 AreaV = 5000
 AreaVUI = client.settings.addInt("Area Size Warning","AreaV",500,50000)
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--                                                                                                                                                               REGISTER COMMANDS 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 --help
@@ -165,6 +196,20 @@ end)
 registerCommand("selnear",function (arguments)
     selnearcmd(arguments)
 end)
+
+--rotate
+registerCommand("rot", function (arguments)
+    rotatecmd(arguments)
+end)
+
+registerCommand("rotate", function (arguments)
+    rotatecmd(arguments)
+end)
+
+--findstate
+registerCommand("findstate",function (arguments)
+    debugstick(arguments)
+end)
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                                                     --                          USE .WEhelp TO GET AN EXPLANATION ON HOW TO USE
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -208,6 +253,9 @@ event.listen("MouseInput", function(button, down) --                    SECLECTI
                                 end
                             end
                         else
+
+
+
                             if button == 1 then       --                                    LEFT MB
                                 xpos1 = xface
                                 ypos1 = yface
@@ -231,6 +279,13 @@ event.listen("MouseInput", function(button, down) --                    SECLECTI
                                 do return true end
                             end
                         end
+                    elseif selected.name == "stick" then
+
+                        if button == 1 and down == true then debugstick(false); do return true end end
+                        if button == 2 and down == true then debugstick(true ); do return true end end
+                            
+                        
+                        
                     end
                 end
                 
@@ -241,6 +296,11 @@ event.listen("MouseInput", function(button, down) --                    SECLECTI
 end) 
 
 
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--                                                                                                                                                          ACTUAL COMMANDS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function fillcmd(args)
     arg = splitSpace(args)
     xstep=1
@@ -344,7 +404,7 @@ function linecmd(args)
     end
 end
 
-function mircmd(args)
+function OLDmircmd(args)
     arg = splitSpace(args)
     arg1 = arg[1]
     arg2 = arg[2]
@@ -702,55 +762,10 @@ end
 
 function copycmd(args)
     arg = splitSpace(args)
-    arg1 = arg[1]
-    arg2 = arg[2]
-    if xpos1 > xpos2 then
-        xdif22  = xpos1-xpos2
-    else
-        xdif22  = xpos2-xpos1
-    end
-    if ypos1 > ypos2 then
-        ydif22  = ypos1-ypos2
-    else
-        ydif22  = ypos2-ypos1
-    end
-    if zpos1 > zpos2 then
-        zdif22  = zpos1-zpos2
-    else
-        zdif22  = zpos2-zpos1
-    end
-    xstep=1
-    if (xpos1 > xpos2) then              --X FIX
-        xstep=-1
-    end
-    ystep = 1
-    if (ypos1 > ypos2) then              --YFIX
-        ystep = -1
-    end
-    zstep = 1
-    if (zpos1 > zpos2) then              --ZFIX
-        zstep = -1
-    end
-    ClipboardFile = io.open("WorldEditClipboard.txt","w+")
-    ClipboardFile:write(xdif .. "\n" .. ydif .. "\n" .. zdif .. "\n")
-    ClipboardFile:write(xstep .. "\n" .. ystep .. "\n" .. zstep .. "\n")
-    for xInSelectedRange = xpos1, xpos2, xstep do
-        for yinSelectedRange = ypos1, ypos2, ystep do
-            for zinSelectedRange = zpos1, zpos2, zstep do
-                FoundBlock = dimension.getBlock(xInSelectedRange, yinSelectedRange, zinSelectedRange)
-                BlockData = FoundBlock.data
-                BlockName = FoundBlock.name
-                BlockDataNew = convertAux(BlockName,BlockData)
-                if  ClipboardFile then
-                    if BlockDataNew == nil then
-                        BlockDataNew = ""
-                    end
-                    ClipboardFile:write(BlockName .."\n".. BlockName .. " " .. BlockDataNew.."\n")
-                end
-            end
-        end
-    end
-    io.close(ClipboardFile)
+    
+    client.execute("execute structure save worldEditClipboard " .. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. xpos2 .." " .. ypos2 .. " " .. zpos2)
+
+
     if not MuteSucess then
         print("§aCopied")
     end
@@ -760,44 +775,19 @@ function copycmd(args)
 end
 
 function pastecmd (args)
-    WorldEditClipboardy = io.open("WorldEditClipboard.txt","r")
-    FileLines = {}
-    counter = 0
-    for line in WorldEditClipboardy:lines() do
-        FileLines[counter] = line
-        counter = counter +1 
-    end
-    xdif222 = tonumber(FileLines[0])
-    ydif222 = tonumber(FileLines[1])
-    zdif222 = tonumber(FileLines[2])
-    xstep = tonumber(FileLines[3])
-    ystep = tonumber(FileLines[4])
-    zstep = tonumber(FileLines[5])
+
+    arg = splitSpace(args)
+
+    if arg[1] == nil then arg[1] = "0_degrees" end
+    if arg[2] == nil then arg[2] = "none" end
+    if arg[3] == nil then arg[3] = " " end
+    if arg[4] == nil then arg[4] = " " end
+    if arg[1] == "0" then arg[1] = "0_degrees" end
+    if arg[1] == "90" then arg[1] = "90_degrees" end
+    if arg[1] == "180" then arg[1] = "180_degrees" end
+    if arg[1] == "270" then arg[1] = "270_degrees" end
     
-    counter = 5
-    --print(xdif222.. " " .. ydif222.. " " .. zdif222)
-    for xInSelectedRange = xpos1, xpos1+(xdif222*xstep)-xstep, xstep do
-        for yinSelectedRange = ypos1, ypos1+(ydif222*ystep)-ystep, ystep do
-            for zinSelectedRange = zpos1, zpos1+(zdif222*zstep)-zstep, zstep do
-                CURRENTBLOCK = FileLines[counter]
-                CURRENTBLOCKDATA = FileLines[counter+1]
-                if arg1 == "false" or nil then
-                    if CURRENTBLOCK == "air" then
-                        goto skip
-                        print("§aSKipping air blocks when copying, not skipping will lag and maybe crash your game a lot depending on size. §eTo not skip type .paste true")
-                    end
-                else
-                    if dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange) == "air" and CURRENTBLOCK == "air" then
-                        goto skip
-                    end
-                end
-                
-                client.execute("execute /setblock " .. xInSelectedRange .. " " .. yinSelectedRange .. " " .. zinSelectedRange ..  " " ..CURRENTBLOCKDATA)
-                ::skip::
-                counter = counter + 2
-            end
-        end
-    end
+    client.execute("execute /structure load worldEditClipboard " .. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. arg[1] .. " " .. arg[2] .. " " ..arg[3] .. " " ..  arg[4])
     if not MuteSucess then
         print("§aPasted")
     end
@@ -887,6 +877,107 @@ function selnearcmd(args)
 end
 
 
+function rotatecmd(args)
+    arg = splitSpace(args)
+    
+    client.execute("execute /structure save rotatorClip " .. dothething())
+
+    client.execute("execute /fill " .. dothething() .. " air")
+
+    if arg[1] == "0" then arg[1] = "0_degrees" end
+    if arg[1] == "90" then arg[1] = "90_degrees" end
+    if arg[1] == "180" then arg[1] = "180_degrees" end
+    if arg[1] == "270" then arg[1] = "270_degrees" end
+
+
+
+    if arg[2] == "weird" then
+        xpastepos = xpos1
+        ypastepos = ypos1
+        zpastepos = zpos1
+    else
+        xpastepos = math.min(xpos1,xpos2)
+        ypastepos = math.min(ypos1,ypos2)
+        zpastepos = math.min(zpos1,zpos2)
+    end
+    
+    client.execute("execute /structure load rotatorClip "..xpastepos .. " "..ypastepos .. " " .. zpastepos .." " .. arg[1])
+
+end
+
+
+
+
+
+
+
+function mircmd(args)
+    arg = splitSpace(args)
+    
+    client.execute("execute /structure save rotatorClip " .. dothething())
+
+    client.execute("execute /fill " .. dothething() .. " air")
+
+
+
+
+    if arg[2] == "weird" then
+        xpastepos = xpos1
+        ypastepos = ypos1
+        zpastepos = zpos1
+    else
+        xpastepos = math.min(xpos1,xpos2)
+        ypastepos = math.min(ypos1,ypos2)
+        zpastepos = math.min(zpos1,zpos2)
+    end
+    
+    client.execute("execute /structure load rotatorClip "..xpastepos .. " "..ypastepos .. " " .. zpastepos .." 0_degrees" .. " "..arg[1])
+
+end
+
+
+function debugstick(args)
+    xlpos,ylpos,zlpos = player.selectedPos()
+    mhm = findBlockState(xlpos,ylpos,zlpos)
+    increaseblockstate = args
+    --print("found answer = " .. THINGTORETURN) too soon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    
+end
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--                                                                                                                                                                              COMING SOON
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --================================================================================================================================================================================================================================================================================================================================================================================================                                                                            
@@ -894,7 +985,7 @@ end
 --================================================================================================================================================================================================================================================================================================================================================================================================
 
 function render(dt) 
- 
+    
     AreaVUI.visible = SizeS
     DiagCUI.visible = DiagS
     BoxCUI.visible = BoxS
@@ -1052,13 +1143,85 @@ end
 
 
 event.listen("ChatMessageAdded", function(message, username, type, xuid)
-    if string.sub (message,0,1) == "." then
+    if string.sub (message,0,10) == "." then
         print("The World Edit Commands prefix has been changed to  a full stop/period (.)")
     end
+
     
+    
+    --if cqnter4 == nil then cqnter4 = 0 end
+    --print("hi")
+    --print (string.sub(message,5,11))
+    --cqnter4 = cqnter4 + 1
+    if string.sub(message,5,11) == "he bloc" then   
+        cqntr3 = cqntr3 + 1 
+       --print("here" .. " " .. cqntr3)
+       do return true end
+    end
+    if string.sub(message,1,10) == "Successful" then
+        
+        
+        THINGTORETURN = cqntr3
+
+        --print("YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+        --print("the block is ..... " .. orderofexecuting[THINGTORETURN])
+
+
+        if increaseblockstate then
+            blocktosetstate = orderofexecuting[THINGTORETURN+1]
+            
+        else 
+            blocktosetstate = orderofexecuting[THINGTORETURN+-1]
+        end
+        if blocktosetstate == nil then blocktosetstate = orderofexecuting[0] end
+        selblockx, selblocky, selblockz = player.selectedPos()
+        Blockyyy = dimension.getBlock(selblockx,selblocky,selblockz)
+        blockNameyyy = Blockyy.name
+
+        client.execute("execute /setblock " .. selblockx .. " " .. selblocky .. " " .. selblockz .. " " .. blockNameyyy .. " " .. blocktosetstate)
+
+        cqntr3 = 0
+
+        do return true end
+    end
+
+
     if MuteFill then
         if type == 6 then
             return true
         end
     end
+    
 end)
+
+
+function dothething()
+    return(xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. xpos2 .. " " .. ypos2 .. " " .. zpos2)
+end
+
+
+function findBlockState(xstate,ystate,zstate)
+    
+    
+    Blockyy = dimension.getBlock(xstate,ystate,zstate)
+    blockNameyy = Blockyy.name
+    notnilplease = true
+    cqnter = 0
+    cqntr3 = 0
+    orderofexecuting = {}
+    chatOrders = {}
+
+    --While loop 
+    while notnilplease do
+        
+        thingyyface = convertAux(blockNameyy,cqnter)
+        if thingyyface == nil then break end
+        --print("execute /testforblock ".. xstate .. " " .. ystate .. " " .. zstate .. " ".. blockNameyy .." " .. thingyyface)
+        client.execute("execute /testforblock ".. xstate .. " " .. ystate .. " " .. zstate .. " ".. blockNameyy .." " .. thingyyface)
+        orderofexecuting[cqnter] = thingyyface
+        cqnter = cqnter + 1
+    end
+   
+    
+    
+end
