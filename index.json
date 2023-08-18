@@ -1622,6 +1622,13 @@
       "lastUpdated": "2022-03-09T17:10:33.000Z"
     },
     {
+      "name": "scripting-repo",
+      "file": "scripting-repo.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/scripting-repo.lua",
+      "hash": "a57d41790efc3bac60a99d92a007fb7c",
+      "lastUpdated": "2023-08-18T11:50:23.626Z"
+    },
+    {
       "name": "SoundDownloader",
       "file": "SoundDownloader.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/SoundDownloader.lua",
