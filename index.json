@@ -283,6 +283,16 @@
       "lastUpdated": "2022-01-28T21:15:53.000Z"
     },
     {
+      "name": "Custom Setting Example",
+      "file": "CustomSettingExample.lua",
+      "description": "This is an example of a custom setting.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/CustomSettingExample.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "faf1495c3cc8b6700edac9445e8849b6",
+      "lastUpdated": "2023-08-18T09:54:31.374Z"
+    },
+    {
       "name": "Death Coordinates",
       "file": "deathcoordinates.lua",
       "description": "Show player death coordinates",
@@ -1047,14 +1057,14 @@
     {
       "name": "Skinstealer",
       "file": "Skinstealer.lua",
-      "description": "Steals peoples skins",
+      "description": "Steals peoples skins.",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Skinstealer.lua",
       "libs": [],
       "commands": [
         "skinsteal"
       ],
-      "hash": "baaed6c8ed6db047649a4f7d746d4748",
-      "lastUpdated": "2023-07-24T19:04:19.000Z"
+      "hash": "2232799ff8cc0d25916ff3943504daf4",
+      "lastUpdated": "2023-08-18T09:54:31.377Z"
     },
     {
       "name": "Sphere Generator",
@@ -1647,6 +1657,13 @@
       "lastUpdated": "2023-08-14T18:05:00.408Z"
     },
     {
+      "name": "Utils",
+      "file": "Utils.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Utils.lua",
+      "hash": "51d3842a101bcd6cca6c0de74935f013",
+      "lastUpdated": "2023-08-18T09:54:31.392Z"
+    },
+    {
       "name": "vectors",
       "file": "vectors.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/vectors.lua",
@@ -1678,73 +1695,73 @@
     "library": [
       {
         "file": "client_settings.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryclient_settings.lua",
-        "hash": "042afbad75ce245113556ea0d8d28440",
-        "lastUpdated": "2023-01-27T23:07:45.000Z"
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/client_settings.lua",
+        "hash": "0375d197e76abf26459f4e4cac75c127",
+        "lastUpdated": "2023-08-18T09:54:31.395Z"
       },
       {
         "file": "client.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryclient.lua",
-        "hash": "d0523ad89b427591a99db6a30e49f474",
-        "lastUpdated": "2023-01-24T10:51:06.000Z"
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/client.lua",
+        "hash": "185b022e26136891a4db33269b5fc622",
+        "lastUpdated": "2023-08-18T09:54:31.395Z"
       },
       {
         "file": "dimension.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarydimension.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/dimension.lua",
         "hash": "6905ca1877642fffbfddafb658091d62",
         "lastUpdated": "2023-07-29T14:51:27.000Z"
       },
       {
         "file": "events.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryevents.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/events.lua",
         "hash": "f8d31634969258b6226fecbf75608396",
         "lastUpdated": "2023-08-01T13:47:22.000Z"
       },
       {
         "file": "fs.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryfs.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/fs.lua",
         "hash": "26652d5c57d15a2dfc72e755ad1a1232",
         "lastUpdated": "2023-02-07T20:31:32.000Z"
       },
       {
         "file": "gfx.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarygfx.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/gfx.lua",
         "hash": "212fed8c5e84a130f63f38a161adee84",
         "lastUpdated": "2022-12-21T18:09:57.000Z"
       },
       {
         "file": "gfx2.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarygfx2.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/gfx2.lua",
         "hash": "1dfbe09e02906bc0fdcbef49267278ed",
         "lastUpdated": "2023-08-14T18:05:00.410Z"
       },
       {
         "file": "globals.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryglobals.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/globals.lua",
         "hash": "995343a7e716898eaa49b5b71fdfc961",
         "lastUpdated": "2023-05-22T01:11:04.000Z"
       },
       {
         "file": "gui.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarygui.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/gui.lua",
         "hash": "0f9a398fda656fe7aa490d0842e86460",
         "lastUpdated": "2022-11-25T02:29:58.000Z"
       },
       {
         "file": "network.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/librarynetwork.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/network.lua",
         "hash": "36ef74b725843b139bf2b585c8312729",
         "lastUpdated": "2023-08-14T18:05:00.410Z"
       },
       {
         "file": "player.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryplayer.lua",
-        "hash": "1d29ad4ba51a2bd2f6690ccc399da545",
-        "lastUpdated": "2023-06-28T17:11:09.000Z"
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/player.lua",
+        "hash": "70845ce81790e43b77993a11003f4a6c",
+        "lastUpdated": "2023-08-18T09:54:31.396Z"
       },
       {
         "file": "server.lua",
-        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/libraryserver.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/server.lua",
         "hash": "ef48454601e1612e13f7aacfb021cc68",
         "lastUpdated": "2023-03-22T15:28:39.000Z"
       }
