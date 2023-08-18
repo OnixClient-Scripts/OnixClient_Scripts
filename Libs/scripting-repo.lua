@@ -1,4 +1,5 @@
-
+-- This script was originally written in TypeScript.
+-- By Tom (discord: @s.amat) (aka jerry)
 -- Console object
 local console = {
   log = function(...)
@@ -27,7 +28,6 @@ local console = {
   end,
 }
 -- End of Console object
--- This script was originally written in TypeScript.
 -- Lua Library inline imports
 local function __TS__Class(self)
     local c = {prototype = {}}
@@ -309,7 +309,7 @@ do
             __TS__StringReplace(url, REPO_URL, ""),
             1
         )
-        console.log("Downloading...", {filePath = filePath, url = url})
+        --console.log("Downloading...", {filePath = filePath, url = url})
         network.fileget(filePath, url, id)
         workingDir = oldDir
         return
