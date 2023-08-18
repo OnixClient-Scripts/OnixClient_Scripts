@@ -63,6 +63,7 @@ mouseSettingsAir = client.settings.addAir(5)
 client.settings.addCategory("Clone Settings")
 cloneSkin = client.settings.addNamelessBool("Clone Skin", false)
 dontStealSkinWhenCloning = client.settings.addNamelessBool("Don't Steal Skin When Cloning", false)
+beLocal = client.settings.addNamelessBool("Local Only", false)
 client.settings.addAir(5)
 
 client.settings.addCategory("Misc Settings")
@@ -95,8 +96,9 @@ end
 function cloneSkinFunc()
     local selectedSkin = player.selectedEntity().skin()
     local skin = player.skin()
+    local isLocal = beLocal.value
 
-    skin.setSkinCapeGeometry(selectedSkin.texture(), selectedSkin.capeTexture(), selectedSkin.geometry(), selectedSkin.defaultGeometryName(), selectedSkin.geometryName())
+    skin.setSkinCapeGeometry(selectedSkin.texture(), selectedSkin.capeTexture(), selectedSkin.geometry(), selectedSkin.defaultGeometryName(), selectedSkin.geometryName(), isLocal)
 end
 
 function update()
