@@ -127,6 +127,16 @@
       "lastUpdated": "2022-05-02T23:18:20.000Z"
     },
     {
+      "name": "Block Warning",
+      "file": "BlockWarning.lua",
+      "description": "Displays a warning when you are low on blocks",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/BlockWarning.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "68b86b801d4e146fb196255814d27b0e",
+      "lastUpdated": "2023-08-18T21:33:00.394Z"
+    },
+    {
       "name": "Blood screen",
       "file": "blood screen.lua",
       "description": "Darkens your screen when low on health",
