@@ -1625,8 +1625,8 @@
       "name": "scripting-repo",
       "file": "scripting-repo.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/scripting-repo.lua",
-      "hash": "a57d41790efc3bac60a99d92a007fb7c",
-      "lastUpdated": "2023-08-18T11:50:23.626Z"
+      "hash": "15e8d0482487fc108d21e006d8bc186c",
+      "lastUpdated": "2023-08-18T12:02:58.381Z"
     },
     {
       "name": "SoundDownloader",
