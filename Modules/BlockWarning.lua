@@ -9,7 +9,7 @@ sizeY = 24
 client.settings.addTitle("Warning Settings")
 client.settings.addAir(5)
 client.settings.addInfo("The warning will be triggered when you have the specified amount of blocks left")
-warning = client.settings.addNamelessInt("Blocks  Left:", 1, 64, 10)
+warning = client.settings.addNamelessInt("Blocks Left:", 1, 64, 10)
 
 function render(dt)
     local inventory = player.inventory()
@@ -24,7 +24,6 @@ function render(dt)
             if count <= warning.value then
                 gfx.color(255, 18, 18)
                 gfx.text(0, 0, "⚠", 3)
-            
             end
         end
     end
