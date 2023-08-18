@@ -426,6 +426,10 @@ function _acp_Inventory.armor() end
 ---@return Item|nil offhand The item in the offhand
 function _acp_Inventory.offhand() end
 
+---The item in the main hand
+---@return Item|nil handItem The item in the main hand
+function _acp_Inventory.selectedItem() end
+
 
 ---The item in slot or nil
 ---@param slot integer The inventory slot
