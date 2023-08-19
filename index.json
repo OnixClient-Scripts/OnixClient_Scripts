@@ -1448,15 +1448,6 @@
       "lastUpdated": "2022-03-11T10:03:53.000Z"
     },
     {
-      "name": "rq",
-      "file": "HiveRequeue.lua",
-      "description": "Requeues Hive Games",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/HiveRequeue.lua",
-      "libs": [],
-      "hash": "c370c9f51ad34c05ce5b7f3844b3de8f",
-      "lastUpdated": "2022-05-09T20:59:18.000Z"
-    },
-    {
       "name": "sleep",
       "file": "sleep.lua",
       "description": "sleep for <arg>ms",
