@@ -1,3 +1,7 @@
+--[[
+    Made by: Zeuroux
+    aka: Nya-chan
+]]--
 name = "Beacon Range"
 description = "Shows the range of beacon"
 
@@ -21,6 +25,7 @@ acceptable_blocks = {
 }
 
 function render3d()
+    if player.gamemode() ~= 0 then return end
     gfx.renderBehind(renderBehind.value)
     gfx.color(color.r, color.g, color.b, color.a)
     ppx, ppy, ppz = player.pposition()
