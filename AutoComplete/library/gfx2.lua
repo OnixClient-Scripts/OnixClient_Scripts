@@ -15,10 +15,12 @@ function _acp__gfx2Render_Target_:clear() end
 
 ---Saves the content of the render target to a file
 ---@param filepath string The path to save the file to
+---@return boolean saved If the file was saved or not
 function _acp__gfx2Render_Target_:save(filepath) end
 ---Saves the content of the render target to a file
 ---@param filepath string The path to save the file to
 ---@param toClipboardAswell boolean If it should also copy the image to the clipboard (default false)
+---@return boolean saved If the file was saved or not
 function _acp__gfx2Render_Target_:save(filepath, toClipboardAswell) end
 
 
