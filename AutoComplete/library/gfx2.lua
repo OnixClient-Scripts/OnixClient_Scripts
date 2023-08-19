@@ -10,6 +10,19 @@ local _acp__gfx2Render_Target_ = {}
 ---@param height integer The new height of the render target
 function _acp__gfx2Render_Target_:resize(width, height) end
 
+---Clears the render target to the active gfx2.color
+function _acp__gfx2Render_Target_:clear() end
+
+---Saves the content of the render target to a file
+---@param filepath string The path to save the file to
+---@return boolean saved If the file was saved or not
+function _acp__gfx2Render_Target_:save(filepath) end
+---Saves the content of the render target to a file
+---@param filepath string The path to save the file to
+---@param toClipboardAswell boolean If it should also copy the image to the clipboard (default false)
+---@return boolean saved If the file was saved or not
+function _acp__gfx2Render_Target_:save(filepath, toClipboardAswell) end
+
 
 ---@class Gfx2CpuRenderTarget : Gfx2RenderTarget
 ---@field cpuTexture Gfx2Texture Please cache this as it needs to extract and copy the entire thing 
