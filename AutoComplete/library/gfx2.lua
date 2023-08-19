@@ -294,3 +294,24 @@ function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSi
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 ---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
 function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY, opacity, isLinear) end
+
+
+
+
+
+---@class Gfx2CpuRenderTarget
+---@field width integer The width of the render target
+---@field height integer The height of the render target
+---@field cpuTexture Gfx2Texture Please cache this as it needs to extract and copy the entire thing 
+
+---Creates a cpu render target, you can basically use most gfx2 things on it.
+---Except that you can then save it to disk or do whatever you want with the texture cpu or gpu side
+---@param width integer The width of the render target
+---@param height integer The height of the render target
+---@return Gfx2CpuRenderTarget target The created render target
+function gfx2.createCpuRenderTarget(width, height) end
+
+---Choses which render target to use
+---Chosing nil will result in going back to gpu and mc
+---@param target nil|Gfx2CpuRenderTarget The render target to use
+function gfx2.bindCpuRenderTarget(target) end
