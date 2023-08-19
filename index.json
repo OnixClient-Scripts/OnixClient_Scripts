@@ -1779,8 +1779,8 @@
       {
         "file": "player.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/player.lua",
-        "hash": "e7d99d4b0607b884471a204672670f4c",
-        "lastUpdated": "2023-08-18T21:59:38.667Z"
+        "hash": "a94368f28b4efb6d807ecea406425d7b",
+        "lastUpdated": "2023-08-19T21:14:41.646Z"
       },
       {
         "file": "server.lua",
