@@ -136,6 +136,13 @@ function gfx.loadTexture(filepath) end
 function gfx.loadImage(filepath) end
 
 
+---Uploads a Gfx2Texture into gfx to later be used by gfx.image
+---You can then do gfx.image with the filepath you used here and it should render the texture
+---@param filepath string Which filepath is it being uploaded as
+---@param texture Gfx2Texture The texture to upload
+function gfx.uploadImage(filepath, texture) end
+
+
 ---Renders an Image 
 ---@param x number The position X
 ---@param y number The position Y
