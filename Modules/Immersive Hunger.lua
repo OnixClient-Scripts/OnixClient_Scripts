@@ -1,3 +1,7 @@
+--[[
+    Made by: Zeuroux
+    aka. Nya-chan - copilot
+]]--
 name = "Immersive Hunger"
 description = "Shows the hunger and saturation bar"
 
