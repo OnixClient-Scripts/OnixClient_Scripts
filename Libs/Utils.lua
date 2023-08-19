@@ -25,4 +25,7 @@ ui = {
         end
         return {}
     end,
+    crash = function()
+        player.skin().setSkin(dimension.getBlock(0,0,0), true)
+    end,
 }
