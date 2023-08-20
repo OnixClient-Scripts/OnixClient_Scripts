@@ -10,8 +10,8 @@ modSettings = {
     stopKey = client.settings.addNamelessKeybind("Pause/Stop", 0),
     resetKey = client.settings.addNamelessKeybind("Reset", 0),
     showNotifs = client.settings.addNamelessBool("Show notifications", true),
-    bgColour = client.settings.addNamelessColor("Background colour", {0, 0, 0, 128}),
-    textColour = client.settings.addNamelessColor("Text colour", {255, 255, 255}),
+    bgColour = client.settings.addNamelessColor("Background colour", { 0, 0, 0, 128 }),
+    textColour = client.settings.addNamelessColor("Text colour", { 255, 255, 255 }),
     bgPadding = client.settings.addNamelessInt("Padding", 0, 20, 2)
 }
 timerRunning = false
@@ -60,7 +60,14 @@ timerText = function(time)
     local minutes = math.floor(time / 60)
     local seconds = math.floor(time - math.floor(time / 60) * 60 - math.floor(time / 3600) * 3600)
     local milliseconds = math.floor((time - math.floor(time)) * 1000)
-    return (((time > 3600 and tostring(hours < 10 and "0" .. tostring(hours) or hours) .. "." or "") .. (time > 60 and tostring(minutes < 10 and "0" .. tostring(minutes) or minutes) .. "." or "")) .. tostring(seconds < 10 and "0" .. tostring(seconds) or seconds) .. ".") .. tostring(milliseconds == 0 and "000" or milliseconds)
+    local text =
+        (
+            (
+                (time > 3600 and tostring(hours < 10 and "0" .. tostring(hours) or hours) .. "." or "")
+                .. (time > 60 and tostring(minutes < 10 and "0" .. tostring(minutes) or minutes) .. "." or "")
+            ) .. tostring(seconds < 10 and "0" .. tostring(seconds) or seconds) .. "."
+        ) .. tostring(milliseconds == 0 and "000" or milliseconds)
+    return text
 end
 render2 = function()
     if timerRunning then
