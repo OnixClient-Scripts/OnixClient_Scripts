@@ -107,6 +107,16 @@
       "lastUpdated": "2022-09-05T16:07:32.000Z"
     },
     {
+      "name": "Beacon Range",
+      "file": "BeaconRange.lua",
+      "description": "Shows the range of beacon",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/BeaconRange.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "708d1669f36f97b488e96eab77e58109",
+      "lastUpdated": "2023-08-20T12:16:08.285Z"
+    },
+    {
       "name": "Better Coordinates",
       "file": "coords.lua",
       "description": "A customizable coordinates module",
@@ -611,6 +621,16 @@
       "lastUpdated": "2023-08-14T16:02:45.000Z"
     },
     {
+      "name": "Immersive Hunger",
+      "file": "Immersive Hunger.lua",
+      "description": "Shows the hunger and saturation bar",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Immersive Hunger.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "d2c02dd767c62503279f7faf2af07cf9",
+      "lastUpdated": "2023-08-20T12:16:08.286Z"
+    },
+    {
       "name": "Input Example",
       "file": "inputexample.lua",
       "description": "Keyboard, Mouse input example module script",
@@ -1087,6 +1107,18 @@
       ],
       "hash": "e363a8d421127ec49c58cd2eb2920fd2",
       "lastUpdated": "2023-08-18T12:57:31.908Z"
+    },
+    {
+      "name": "Slime Chunk",
+      "file": "Slime Chunk.lua",
+      "description": "Shows the slime chunks",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Slime Chunk.lua",
+      "libs": [
+        "looper"
+      ],
+      "commands": [],
+      "hash": "c64a51a86353f360dc6f06094f812abe",
+      "lastUpdated": "2023-08-20T12:16:08.288Z"
     },
     {
       "name": "Sphere Generator",
