@@ -632,13 +632,13 @@
     },
     {
       "name": "Immersive Hunger",
-      "file": "Immersive Hunger.lua",
+      "file": "ImmersiveHunger.lua",
       "description": "Shows the hunger and saturation bar",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Immersive Hunger.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ImmersiveHunger.lua",
       "libs": [],
       "commands": [],
-      "hash": "d2c02dd767c62503279f7faf2af07cf9",
-      "lastUpdated": "2023-08-20T12:16:08.286Z"
+      "hash": "d7f8cca900147a982bdf67e873a30483",
+      "lastUpdated": "2023-08-20T22:12:39.246Z"
     },
     {
       "name": "Input Example",
