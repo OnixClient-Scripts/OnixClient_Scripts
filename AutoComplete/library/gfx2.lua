@@ -355,3 +355,30 @@ function gfx2.createRenderTarget(width, height) end
 ---Chosing nil will result in going back to default/normal
 ---@param target nil|Gfx2RenderTarget The render target to use
 function gfx2.bindRenderTarget(target) end
+
+---Pushes a clipping rectangle, you cannot draw outside of these
+---If you need to do that again you may consider poping the clipping rectangle
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the clipping rectangle
+---@param height number Height of the clipping rectangle
+function gfx2.pushClipArea(x, y, width, height) end
+
+---Pops the last pushed clipping rectangle
+function gfx2.popClipArea() end
+---Pops the last pushed clipping rectangle
+---@param amount integer How many clipping rectangles to pop (you cant pop enough to crash so to reset just put a high number)
+function gfx2.popClipArea(amount) end
+
+---Pushes a transformation
+---@param matrices table The transformation matrices typed parameter
+function gfx2.pushTransformation(matrices) end
+
+---Pops the last pushed transformation
+function gfx2.popTransformation() end
+---Pops the last pushed transformation
+---@param amount integer How many transformations to pop (you cant pop enough to crash so to reset just put a high number)
+function gfx2.popTransformation(amount) end
+
+
+
