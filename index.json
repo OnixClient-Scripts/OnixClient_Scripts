@@ -1631,6 +1631,13 @@
       "lastUpdated": "2023-04-02T23:52:30.000Z"
     },
     {
+      "name": "key-codes",
+      "file": "key-codes.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/key-codes.lua",
+      "hash": "af4ab2177700d8ecb405bc71ea594a95",
+      "lastUpdated": "2023-08-21T11:41:40.276Z"
+    },
+    {
       "name": "keyconverter",
       "file": "keyconverter.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/keyconverter.lua",
