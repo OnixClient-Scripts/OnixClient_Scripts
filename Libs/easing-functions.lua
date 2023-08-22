@@ -117,9 +117,14 @@ easingsFunctions = {
         return x < 0.5 and (1 - bounceOut(1 - 2 * x)) / 2 or (1 + bounceOut(2 * x - 1)) / 2
     end
 }
+
+---Interpolate using easing functions
+---@param a number
+---@param b number
+---@param time number
+---@param func fun(t:number):number easingsFunctions.someFunc
+---@return number
 function interpolate(a, b, time, func)
-    if type(func) == "string" then
-        func = easingsFunctions[func]
-    end
     return a + (b - a) * func(time)
 end
+
