@@ -1592,6 +1592,13 @@
       "lastUpdated": "2022-06-28T16:13:20.000Z"
     },
     {
+      "name": "easing-functions",
+      "file": "easing-functions.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/easing-functions.lua",
+      "hash": "5797a1583e1d4630a61307dcb3c83d03",
+      "lastUpdated": "2023-08-22T12:09:05.826Z"
+    },
+    {
       "name": "fileUtility",
       "file": "fileUtility.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/fileUtility.lua",
