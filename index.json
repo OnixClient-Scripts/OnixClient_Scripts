@@ -1543,6 +1543,13 @@
       "lastUpdated": "2023-08-14T20:01:17.454Z"
     },
     {
+      "name": "better-notifications",
+      "file": "better-notifications.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/better-notifications.lua",
+      "hash": "17fd76e46a99854263787bb94a930ece",
+      "lastUpdated": "2023-08-23T18:27:35.156Z"
+    },
+    {
       "name": "blockToTexture",
       "file": "blockToTexture.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/blockToTexture.lua",
