@@ -1267,6 +1267,18 @@
       "lastUpdated": "2023-08-14T18:05:00.395Z"
     },
     {
+      "name": "UI Gui Scale",
+      "file": "UIGuiScale.lua",
+      "description": "Allows you to change the GUI scale of the client UI, separated from the game GUI scale.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/UIGuiScale.lua",
+      "libs": [
+        "Utils"
+      ],
+      "commands": [],
+      "hash": "2bd6c68bdac59daf64b69e8078049481",
+      "lastUpdated": "2023-08-24T19:02:24.413Z"
+    },
+    {
       "name": "Video player",
       "file": "video.lua",
       "description": "can play videos",
