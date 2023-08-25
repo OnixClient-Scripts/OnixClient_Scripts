@@ -1558,8 +1558,8 @@
       "name": "better-notifications",
       "file": "better-notifications.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/better-notifications.lua",
-      "hash": "17fd76e46a99854263787bb94a930ece",
-      "lastUpdated": "2023-08-23T18:27:35.156Z"
+      "hash": "6f2474b34f568bb7035c4a93fd00233a",
+      "lastUpdated": "2023-08-25T00:23:02.624Z"
     },
     {
       "name": "blockToTexture",
