@@ -8,27 +8,19 @@ importLib("easing-functions")
 local function clamp(x, low, high) return (x < low) and low or (x > high) and high or x end
 
 ----- Might move this to its own lib later on -----
-local startTimes = {}
----Animate GFX things. Use inside `render2`.
----@param name string A unique ID to identify the rectangle
+---Animate the translation of GFX things. Use inside `render2`. Provide the start time yourself.
+---@param startTime number The time the animation started.
 ---@param startPos { x: number, y: number } The initial position of the rectangle
 ---@param endPos { x: number, y: number } The final position of the rectangle
 ---@param content fun(x: number, y: number):nil Content to animate. x and y are absolute position, 0, 0 is relative top left.
 ---@param duration? number Duration of the animation in seconds (default is 1 second)
----@param easeFunc? (fun(x: number):number) Ease in/out function for the animation (default is linear)
-local function animate(name, startPos, endPos, content, duration, easeFunc)
-  -- 1 second by default
-  if not duration then duration = 1 end
-  -- linear by default
-  if not easeFunc then easeFunc = function (x) return x end end
+---@param easeFunc? fun(x: number):number Ease in/out function for the animation (default is linear)
+function animateTranslate(startTime, startPos, endPos, content, duration, easeFunc)
+  duration = duration or 1
+  easeFunc = easeFunc or function (x) return x end
+  if os.clock() - startTime > duration then return end
 
-  -- Start the animation
-  if not startTimes[name] then startTimes[name] = os.clock() end
-
-  -- Return if the animation is done
-  if os.clock() - startTimes[name] > duration then return end
-
-  local t = clamp((os.clock() - startTimes[name]) / duration, 0, 1)
+  local t = clamp((os.clock() - startTime) / duration, 0, 1)
   local x = interpolate(startPos.x, endPos.x, t, easeFunc)
   local y = interpolate(startPos.y, endPos.y, t, easeFunc)
 
@@ -136,8 +128,8 @@ function renderNotifications()
     --3 = close
     local type = (os.clock() - notif.start < 1) and 1 or (os.clock() - notif.start < notif.duration and 2 or 3)
 
-    animate(
-      "notif-" .. type .. "-" .. notif.id,
+    animateTranslate(
+      type == 1 and notif.start or (type == 2 and notif.start + 1 or notif.start + notif.duration),
       type == 1 and { x = gui.width() + 10, y = notifPos.y } or table.clone(notifPos),
       type == 3 and { x = gui.width() + 10, y = notifPos.y } or table.clone(notifPos),
       notifContent, type == 2 and notif.duration + 1 or 1,
