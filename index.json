@@ -355,6 +355,18 @@
       "lastUpdated": "2023-08-18T21:30:54.302Z"
     },
     {
+      "name": "Double Click Prevent Disabler",
+      "file": "DCPreventDisabler.lua",
+      "description": "Disables Double Click Prevent when not on Zeqa or CubeCraft.",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/DCPreventDisabler.lua",
+      "libs": [
+        "Utils"
+      ],
+      "commands": [],
+      "hash": "e9f03809df6e902048a60a24723d9704",
+      "lastUpdated": "2023-08-25T23:01:35.371Z"
+    },
+    {
       "name": "Enabled Filter",
       "file": "EnabledFilter.lua",
       "description": "Only shows enabled modules in the module list.",
