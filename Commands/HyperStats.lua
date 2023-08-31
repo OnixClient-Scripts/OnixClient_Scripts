@@ -1,9 +1,9 @@
-command = "stats"
+command = "hyperstats"
 help_message = "Adds the ability to check stats on Hyperlands"
 
 function execute(name)
     if name == "" then
-        print("§l§4Requires a gamertag .stats [gamertag]")
+        print("§l§4Requires a gamertag .hyperstats [gamertag]")
         return
     end
 
