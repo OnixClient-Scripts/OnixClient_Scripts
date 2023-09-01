@@ -1479,6 +1479,15 @@
       "lastUpdated": "2023-08-14T18:05:00.404Z"
     },
     {
+      "name": "hyperstats",
+      "file": "HyperStats.lua",
+      "description": "Adds the ability to check stats on Hyperlands",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Commands/HyperStats.lua",
+      "libs": [],
+      "hash": "e576820f871c4cc3dc00dd38f2b3074e",
+      "lastUpdated": "2023-09-01T12:02:01.879Z"
+    },
+    {
       "name": "inv",
       "file": "inv.lua",
       "description": "sends current inventory, or count an item",
