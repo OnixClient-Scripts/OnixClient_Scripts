@@ -61,6 +61,7 @@ function fs.directories(path) end
 
 
 
+
 ---@class Stats
 ---@field size integer Size of the file in bytes
 ---@field readtime integer The last time the file was accessed (unix time)
