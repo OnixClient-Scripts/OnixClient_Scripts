@@ -30,6 +30,38 @@ function tableToJson(Table) end
 ---@return table jsonTable The lua table made from the json string
 function jsonToTable(JSON) end
 
+---Puts json into a file
+---@param FilePath string The file path to save to
+---@param JSON string The JSON string to convert into a table
+---@return boolean saved if it was saved to the file or not
+function jsonToFile(FilePath, JSON) end
+
+---Puts json into a file
+---@param FilePath string The file path to save to
+---@param JSON string The JSON string to convert into a table
+---@param pretty boolean make a nicely formatted string
+---@return boolean saved if it was saved to the file or not
+function jsonToFile(FilePath, JSON, pretty) end
+
+---Puts json into a file
+---@param FilePath string The file path to save to
+---@param JSON string The JSON string to convert into a table
+---@param pretty boolean make a nicely formatted string
+---@param compressionType string|"lzma"|"deflate"|"bzip2"|"store"|"none" The compression type to use
+---@param compressionLevel integer|0|1|2|3|4|5|6|7|8|9 The compression level to use 1 to 9
+---@return boolean saved if it was saved to the file or not
+function jsonToFile(FilePath, JSON, pretty, compressionType, compressionLevel) end
+
+---Reads json from a file
+---@param FilePath string The file path to read from
+---@return string|nil jsonStr The json string read from the file
+function jsonFromFile(FilePath) end
+
+---Reads json from a file
+---@param FilePath string The file path to read from
+---@param isCompressed boolean If the file is compressed or not
+---@return string|nil jsonStr The json string read from the file
+function jsonFromFile(FilePath, isCompressed) end
 
 ---Sends data to all modules via the LocalDataReceived event
 ---You should uniquely identify the messages that you want via the uuid parameter
