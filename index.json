@@ -1868,8 +1868,8 @@
       {
         "file": "globals.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/globals.lua",
-        "hash": "995343a7e716898eaa49b5b71fdfc961",
-        "lastUpdated": "2023-05-22T01:11:04.000Z"
+        "hash": "4a1379ddf8db3ebc0c64d8afbc53d8b8",
+        "lastUpdated": "2023-09-07T17:08:19.729Z"
       },
       {
         "file": "gui.lua",
