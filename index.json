@@ -1575,6 +1575,13 @@
   ],
   "libs": [
     {
+      "name": "animate",
+      "file": "animate.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/animate.lua",
+      "hash": "68f01ddad959a06b4f384e0798ae49f9",
+      "lastUpdated": "2023-09-14T22:20:30.317Z"
+    },
+    {
       "name": "AreaSearcher",
       "file": "AreaSearcher.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/AreaSearcher.lua",
