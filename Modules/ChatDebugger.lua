@@ -26,10 +26,9 @@ event.listen("ChatMessageAdded", onChat)
 registerCommand("copy", function(arg)
     if copy == true then
         if tonumber(arg) then
-            if count < tonumber(arg) then
+            if count <= tonumber(arg) then
                 print("Couldn't copy message " .. arg)
             else
-                print(chatlog[tonumber(arg)])
                 if chatlog[tonumber(arg)] ~= nil then
                     setClipboard(chatlog[tonumber(arg)])
                     print("Copied to Clipboard!")
