@@ -209,6 +209,18 @@
       "lastUpdated": "2023-06-12T23:42:40.000Z"
     },
     {
+      "name": "Chat Debugger",
+      "description": "Shows every chat info in chat",
+      "file": "ChatDebugger.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ChatDebugger.lua",
+      "libs": [],
+      "commands": [
+        "copy"
+      ],
+      "hash": "2c229253ab269f6efdf915906d40a960",
+      "lastUpdated": "2023-09-14T11:33:43.519Z"
+    },
+    {
       "name": "Chat Reverser",
       "description": "Reverses chat (works properly in singleplayer and hive)",
       "file": "chatReverser.lua",
