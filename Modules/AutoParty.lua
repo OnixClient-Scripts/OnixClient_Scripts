@@ -21,6 +21,7 @@ function loadPlayerList()
 end
 loadPlayerList()
 
+--[[
 function countComma(str)
     local count = 0
     local index = 1
@@ -34,6 +35,7 @@ function countComma(str)
     end
     return count
 end
+]]
 
 local function isEmpty(arg)
   return arg == nil or arg == ''
