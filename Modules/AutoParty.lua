@@ -1,12 +1,12 @@
-name = "HiveAutoParty"
+name = "AutoParty"
 description = "Automatically accepts party invite from added players"
 
 --[[
-    The Hive auto party accepter
+    Auto party accepter for The Hive and Cubecraft
     made by Quoty0
 ]]
 
-commandUsage = "HiveAutoParty command usage\n\n.addparty <player_name> - Add player to player list\n.removeparty <player_name> - Remove player from player list\n.listparty - Show player list"
+commandUsage = "AutoParty command usage\n\n.addparty <player_name> - Add player to player list\n.removeparty <player_name> - Remove player from player list\n.listparty - Show player list"
 client.settings.addInfo("commandUsage")
 
 ImportedLib = importLib("fileUtility.lua")
@@ -42,10 +42,21 @@ end
 function onChat(msg, user, type)
     local ip = server.ip()
     local playerName = ""
-    if ip == "geo.hivebedrock.network" or ip == "jp.hivebedrock.network" or ip == "sg.hivebedrock.network" or ip == "fr.hivebedrock.network" or ip == "ca.hivebedrock.network" then
+    -- if ip == "geo.hivebedrock.network" or ip == "jp.hivebedrock.network" or ip == "sg.hivebedrock.network" or ip == "fr.hivebedrock.network" or ip == "ca.hivebedrock.network" then
+    if string.find(ip, "hivebedrock.network") then
         if string.find(msg, " wants you to join their party!") and type == 2 then
 		    playerName = string.gsub(msg, "§b wants you to join their party!", "")
 			playerName = string.gsub(playerName, "§b§a", "")
+			playerName = string.lower(playerName)
+			if string.find(string.lower(playerList), playerName) then
+                client.execute("execute /party accept " .. playerName)
+			end
+		end
+    end
+    if string.find(ip, "cubecraft.net") then
+        if string.find(msg, "You have received a party invite from ") and type == 2 then
+		    playerName = string.gsub(msg, "§r§a!", "")
+			playerName = string.gsub(playerName, "§r§aYou have received a party invite from §r§b", "")
 			playerName = string.lower(playerName)
 			if string.find(string.lower(playerList), playerName) then
                 client.execute("execute /party accept " .. playerName)
