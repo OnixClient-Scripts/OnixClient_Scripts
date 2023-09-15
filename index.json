@@ -117,6 +117,22 @@
       "lastUpdated": "2022-09-05T16:07:32.000Z"
     },
     {
+      "name": "AutoParty",
+      "description": "Automatically accepts party invite from added players",
+      "file": "AutoParty.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/AutoParty.lua",
+      "libs": [
+        "fileUtility"
+      ],
+      "commands": [
+        "addparty",
+        "removeparty",
+        "listparty"
+      ],
+      "hash": "7bef186d15de18f055298a6d04842d0d",
+      "lastUpdated": "2023-09-15T03:27:06.511Z"
+    },
+    {
       "name": "Beacon Range",
       "description": "Shows the range of beacon",
       "file": "BeaconRange.lua",
@@ -600,22 +616,6 @@
       ],
       "hash": "ecc80e53dfcf33fc340f316f23a5254c",
       "lastUpdated": "2023-02-07T22:31:12.000Z"
-    },
-    {
-      "name": "HiveAutoParty",
-      "description": "Automatically accepts party invite from added players",
-      "file": "hiveautoparty.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/hiveautoparty.lua",
-      "libs": [
-        "fileUtility"
-      ],
-      "commands": [
-        "addparty",
-        "removeparty",
-        "listparty"
-      ],
-      "hash": "0987b68a4a46f72dfc66e2c0fdbc8dbf",
-      "lastUpdated": "2023-09-05T22:17:05.164Z"
     },
     {
       "name": "HiveWinstreak",
