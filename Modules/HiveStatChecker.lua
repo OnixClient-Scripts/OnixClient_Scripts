@@ -180,7 +180,7 @@ function onNetworkData(code, netGamemode, data)
                 print("§4Deaths: §e" .. result["deaths"])
                 print("§6Treasures Destroyed: §e" .. result["treasure_destroyed"])
                 print("§eK§cD§eR: §e" .. math.floor((result["kills"] / result["deaths"])*100)/100)
-                print("§3Prestige: §e" .. result["prestige"])
+                if result["prestige"] ~= nil then print("§3Prestige: §e" .. result["prestige"]) end
                 print("§bFirst Played: §e" .. epochToDate(result["first_played"]))
             elseif netGamemode == "sky" then
                 local level = math.floor(10*(calculateLevel(netGamemode, result["xp"])))/10
