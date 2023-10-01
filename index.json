@@ -547,18 +547,6 @@
       "lastUpdated": "2022-11-09T18:36:05.000Z"
     },
     {
-      "name": "Hive Autododge",
-      "description": "Automatically requeues your game based on specified parameters.",
-      "file": "HiveAutododge.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutododge.lua",
-      "libs": [
-        "HiveHelper"
-      ],
-      "commands": [],
-      "hash": "4c209710fcae75c92d2c52302b706f17",
-      "lastUpdated": "2023-07-24T20:05:29.000Z"
-    },
-    {
       "name": "Hive Autoqueue",
       "description": "Automatically Queue Hive Games. Includes .rq command.\\nScript Version: v3.6",
       "file": "HiveAutoQueue.lua",
