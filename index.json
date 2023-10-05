@@ -784,8 +784,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MinecraftRPC.lua",
       "libs": [],
       "commands": [],
-      "hash": "514bf858db94c5178a5f314c70a3f5ac",
-      "lastUpdated": "2023-07-30T18:19:57.000Z"
+      "hash": "356b51ba6bb2d5c8d2b0cb18ca7c6b93",
+      "lastUpdated": "2023-10-05T18:56:46.698Z"
     },
     {
       "name": "Minimap",
