@@ -8,7 +8,9 @@ requires MinecraftRPCHelper.exe (can be found on the repo)
 exe source:
 https://github.com/jqms/MinecraftRPC
 ]] --
+
 function downloadRPC()
+    client.notification("Downloading latest exe...")
     workingDir = "RoamingState/OnixClient/Scripts/"
 	fs.mkdir("Extras")
 	workingDir = "RoamingState/OnixClient/Scripts/Extras"
@@ -44,9 +46,16 @@ displayRankStatus = client.settings.addNamelessBool("Display Rank Status?", true
 displayOpponent = client.settings.addNamelessBool("Display Opponent?", true)
 client.settings.addAir(5)
 
+client.settings.addCategory("Hive Settings")
+displayLevel = client.settings.addNamelessBool("Display Level? (Hive Only)", true)
+client.settings.addAir(5)
+
 client.settings.addCategory("Miscellaneous Settings")
 client.settings.addFunction("Open Exe", "openFolder", "Open")
-displayLevel = client.settings.addNamelessBool("Display Level? (Hive Only)", true)
+client.settings.addAir(2)
+client.settings.addFunction("Download Latest Exe", "downloadRPC", "Download")
+client.settings.addInfo("Make sure to close the exe before attempting to update it.")
+
 
 
 
@@ -110,19 +119,7 @@ function tablelen(tbl)
     return a
 end
 
-function update(dt)
-    local username = player.name()
-    if displayUsername.value == true then
-        local file = io.open("RPC/RPCHelperUsername.txt", "w")
-        io.output(file)
-        io.write("As " .. username)
-        io.close(file)
-    elseif displayUsername.value == false then
-        local file = io.open("RPC/RPCHelperUsername.txt", "w")
-        io.output(file)
-        io.write("")
-        io.close(file)
-    end
+function updateButOutsideOfItSoICanAddTheAFKThingBecauseImLazy()
     if formattedGamemode == nil then
         formattedGamemode = "Unknown"
     end
@@ -186,6 +183,35 @@ function update(dt)
             local percentage = math.floor(xp * 100)
             globalLevel = percentage .. "%"
         end
+    end
+end
+
+lastKeyboardInput = os.clock()
+
+event.listen("KeyboardInput", function(key, down)
+    lastKeyboardInput = os.clock()
+end)
+
+function update()
+    local username = player.name()
+    if displayUsername.value == true then
+        local file = io.open("RPC/RPCHelperUsername.txt", "w")
+        io.output(file)
+        io.write("As " .. username)
+        io.close(file)
+    elseif displayUsername.value == false then
+        local file = io.open("RPC/RPCHelperUsername.txt", "w")
+        io.output(file)
+        io.write("")
+        io.close(file)
+    end
+    if lastKeyboardInput + 600 < os.clock() then
+        local file = io.open("RPC/RPCHelperGamemode.txt", "w")
+        io.output(file)
+        io.write("Currently AFK")
+        io.close(file)
+    else
+        updateButOutsideOfItSoICanAddTheAFKThingBecauseImLazy()
     end
 end
 
@@ -307,3 +333,7 @@ function onChat(message, username, type)
     end
 end
 event.listen("ChatMessageAdded", onChat)
+
+function onNetworkData(code,id,data)
+    local a,b,c = 1,2,3
+end
