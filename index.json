@@ -329,6 +329,18 @@
       "lastUpdated": "2022-12-05T14:27:43.000Z"
     },
     {
+      "name": "Crash Hotkey",
+      "description": "Crashes your game on a specifified hotkey.",
+      "file": "CrashHotkey.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/CrashHotkey.lua",
+      "libs": [
+        "Utils"
+      ],
+      "commands": [],
+      "hash": "1a9b6dbf341aafb1df63bcc4f9276a6b",
+      "lastUpdated": "2023-10-12T07:14:21.932Z"
+    },
+    {
       "name": "custom chat",
       "description": "Custom chat by MCBE Craft",
       "file": "custom chat.lua",
