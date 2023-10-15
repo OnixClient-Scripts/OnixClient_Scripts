@@ -262,8 +262,10 @@ function onChat(message, username, type)
     end
     if server.ip():find("zeqa") then
         --zeqa
-        if player.inventory().at(8).displayName:find("§gShop §fMenu§7") then
-            hub = true
+        if player.inventory().at(8) ~= nil then
+            if player.inventory().at(8).displayName:find("§gShop §fMenu§7") then
+                hub = true
+            end
         end
         if string.find(message,"ZEQA§. » §r§7You have joined the queue for") then
             hub = false
