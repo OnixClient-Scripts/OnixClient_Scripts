@@ -262,22 +262,25 @@ function onChat(message, username, type)
     end
     if server.ip():find("zeqa") then
         --zeqa
-        if string.find(message,"§eZEQA§8 » §r§7You have joined the queue for") then
+        if player.inventory().at(8).displayName:find("§gShop §fMenu§7") then
+            hub = true
+        end
+        if string.find(message,"ZEQA§. » §r§7You have joined the queue for") then
             hub = false
-            formattedGamemode = message:match("§eZEQA§8 » §r§7You have joined the queue for (.*)"):gsub("§.", "")
+            formattedGamemode = message:match("ZEQA§. » §r§7You have joined the queue for (.*)"):gsub("§.", "")
             if displayRankStatus.value == false then
                 formattedGamemode = formattedGamemode:gsub("Ranked ", ""):gsub("Unranked ", "")
             end
             lastGamemode = formattedGamemode
             gameLobby = true
         end
-        if string.find(message,"§eZEQA§8 » §r§7You have left the queue for") then
+        if string.find(message,"ZEQA§. » §r§7You have left the queue for") then
             gameLobby = false
             hub = true
         end
-        if message:match("§eZEQA§8 » §r§7Found a §f(.-)§7 match against §c.-") then
-            gamemode = message:match("§eZEQA§8 » §r§7Found a §f(.-)§7 match against §c.-")
-            opponent = message:gsub("§eZEQA§8 » §r§7Found a §f.-§7 match against §c", ""):gsub("§.", "")
+        if message:match("ZEQA§. » §r§7Found a §f(.-)§7 match against §c.-") then
+            gamemode = message:match("ZEQA§. » §r§7Found a §f(.-)§7 match against §c.-")
+            opponent = message:gsub("ZEQA§. » §r§7Found a §f.-§7 match against §c", ""):gsub("§.", "")
             if gamemode then
                 if displayRankStatus.value == false then
                     gamemode = gamemode:gsub("Ranked ", ""):gsub("Unranked ", "")
@@ -299,9 +302,7 @@ function onChat(message, username, type)
     end
     if string.find(message, "You are connected to server ") then
         hub = false
-        lastGamemode = message
-        lastGamemode = string.sub(message, 29)
-        lastGamemode = string.match(lastGamemode, "[%a-]*")
+        lastGamemode = message:sub(29):match("[%a-]*")
         local gamemode = lastGamemode
         if string.find(gamemode, "-") then
             gamemode = string.sub(gamemode, 1, string.find(gamemode, "-") - 1)
