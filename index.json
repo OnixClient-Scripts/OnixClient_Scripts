@@ -21,6 +21,16 @@
       "lastUpdated": "2023-09-05T22:17:05.163Z"
     },
     {
+      "name": "AFK Grayscale",
+      "description": "Makes your skin grayscale when you're AFK.",
+      "file": "AFKGrayscale.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/AFKGrayscale.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "a0c84a6984bac7b759d2b9ec55843235",
+      "lastUpdated": "2023-10-22T22:14:49.199Z"
+    },
+    {
       "name": "amogus",
       "description": "a lil amogus fren on your screen!",
       "file": "amogus.lua",
