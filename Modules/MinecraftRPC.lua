@@ -78,7 +78,8 @@ local formattedGamemodes = {
     HUB = "Hub",
     REPLAY = "Replay",
     PARTY = "Block Party",
-    GRAV = "Gravity"
+    GRAV = "Gravity",
+    GI = "Ghost Invasion"
 }
 formattedGamemodes["BRIDGE-DUOS"] = "The Bridge: Duos"
 formattedGamemodes["SG-DUOS"] = "Survival Games: Duos"
