@@ -19,6 +19,14 @@ function gfx.color(r, g, b) end
 ---@param b number blue
 function gfx.tcolor(r, g, b) end
 
+---Sets the texture drawing color, values range from 0 to 255
+---Gfx texture drawing functions will tint using this color
+---@param r number red
+---@param g number green
+---@param b number blue
+---@param a number Opacity
+function gfx.tcolor(r, g, b, a) end
+
 ---Sets if the 3D rendering should render trough blocks
 ---@param phaseTroughBlocks boolean red
 ---@return nil
@@ -433,6 +441,51 @@ function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3
 ---@param bothSides boolean Should render both sides (would be visible from only one side if set to false)
 function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, x_4, y_4, z_4, uvx_4, uvy_4, texturePath, bothSides) end
 
+
+---Changes the lighting parameters for future gfx calls (3d only)
+---@param AreaStartX number The starting X position of the area
+---@param AreaStartY number The starting Y position of the area
+---@param AreaStartZ number The starting Z position of the area
+---@param AreaEndX number The ending X position of the area
+---@param AreaEndY number The ending Y position of the area
+---@param AreaEndZ number The ending Z position of the area
+---@return nil
+function gfx.setupLights(AreaStartX, AreaStartY, AreaStartZ, AreaEndX, AreaEndY, AreaEndZ) end
+
+---Changes the lighting parameters for future gfx calls (3d only)
+---@param AreaStartX number The starting X position of the area
+---@param AreaStartY number The starting Y position of the area
+---@param AreaStartZ number The starting Z position of the area
+---@param AreaEndX number The ending X position of the area
+---@param AreaEndY number The ending Y position of the area
+---@param AreaEndZ number The ending Z position of the area
+---@param minimumBrightness integer The minimum brightness
+function gfx.setupLights(AreaStartX, AreaStartY, AreaStartZ, AreaEndX, AreaEndY, AreaEndZ, minimumBrightness) end
+
+---Changes the lighting parameters for future gfx calls (3d only)
+---@param AreaStartX number The starting X position of the area
+---@param AreaStartY number The starting Y position of the area
+---@param AreaStartZ number The starting Z position of the area
+---@param AreaEndX number The ending X position of the area
+---@param AreaEndY number The ending Y position of the area
+---@param AreaEndZ number The ending Z position of the area
+---@param CenterX number The center X of the area, you can uncenter it if it gives an effect you prefer
+---@param CenterY number The center Y of the area, you can uncenter it if it gives an effect you prefer
+---@param CenterZ number The center Z of the area, you can uncenter it if it gives an effect you prefer
+function gfx.setupLights(AreaStartX, AreaStartY, AreaStartZ, AreaEndX, AreaEndY, AreaEndZ, CenterX, CenterY, CenterZ) end
+
+---Changes the lighting parameters for future gfx calls (3d only)
+---@param AreaStartX number The starting X position of the area
+---@param AreaStartY number The starting Y position of the area
+---@param AreaStartZ number The starting Z position of the area
+---@param AreaEndX number The ending X position of the area
+---@param AreaEndY number The ending Y position of the area
+---@param AreaEndZ number The ending Z position of the area
+---@param CenterX number The center X of the area, you can uncenter it if it gives an effect you prefer
+---@param CenterY number The center Y of the area, you can uncenter it if it gives an effect you prefer
+---@param CenterZ number The center Z of the area, you can uncenter it if it gives an effect you prefer
+---@param minimumBrightness integer The minimum brightness
+function gfx.setupLights(AreaStartX, AreaStartY, AreaStartZ, AreaEndX, AreaEndY, AreaEndZ, CenterX, CenterY, CenterZ, minimumBrightness) end
 
 
 ---@param filepath string Filepath to the .obj file
