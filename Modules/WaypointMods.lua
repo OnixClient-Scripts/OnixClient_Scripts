@@ -31,7 +31,7 @@ waypointColors = {}
 ---@param sy number y size of the cube
 ---@param sz number z size of the cube
 ---@return nil
-function gfx.cubexyz(x, y, z, sx, sy, sz)
+function cubexyz(x, y, z, sx, sy, sz)
 	gfx.quad(x, y, z, x + sx, y, z, x + sx, y + sy, z, x, y + sy, z, true)
 	gfx.quad(x, y, z + sz, x + sx, y, z + sz, x + sx, y + sy, z + sz, x, y + sy, z + sz, true)
 	gfx.quad(x, y, z, x, y, z + sz, x, y + sy, z + sz, x, y + sy, z, true)
@@ -99,7 +99,7 @@ function render3d()
 					{ 3, os.clock() * 2, 0, 0, 1 },
 					{ 2, waypointX + size / 2, -64, waypointZ + size / 2 }
 				)
-				gfx.cubexyz(0, 0, 0, size, 384, size)
+				cubexyz(0, 0, 0, size, 384, size)
 				gfx.color(69, 45, 87, 0)
 				gfx.popTransformation(69)
 			end

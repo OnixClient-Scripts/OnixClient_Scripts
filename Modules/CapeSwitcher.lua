@@ -10,6 +10,7 @@ for _, setting in pairs(selfmod.settings) do
     end
 end
 client.settings.addAir(-10)
+isLocal = client.settings.addNamelessBool("Force", false)
 
 fs.mkdir("Cosmetics")
 workingDir = "RoamingState/OnixClient/Scripts/Data/Cosmetics/"
@@ -97,7 +98,7 @@ end
 ---@param cape Cape
 function setCape(cape)
     if plsapplycape == false then return end
-    player.skin().setCape(cape.path, false)
+    player.skin().setCape(cape.path, isLocal.value)
     selectedCapePath = cape.path
     selectedCape = cape
 end

@@ -36,8 +36,9 @@ local formattedGamemodes = {
     ARCADE = "§eArcade Hub",
     HUB = "§eHub",
 	PARTY = "§dBlock §9Party",
-    GRAV = "Gravity"
+    GRAV = "§uGravity"
 }
+
 formattedGamemodes["BRIDGE-DUOS"] = "§9The §5Bridge§8: Duos"
 formattedGamemodes["SG-DUOS"] = "§3Survival Games§8: Duos"
 formattedGamemodes["WARS-DUOS"] = "§6Treasure Wars§8: Duos"
@@ -263,6 +264,7 @@ event.listen("KeyboardInput", function(key, down)
 end)
 
 function requeue(game, message, sendRequeue)
+    if server.ip():find("zeqa") then return end
     if message ~= nil then
         print(message)
     end
@@ -270,7 +272,7 @@ function requeue(game, message, sendRequeue)
         sendRequeue = false
     end
     if sendRequeue == true then
-        print("\n§r§8Queueing into a new game.")
+        print("§r§8Queueing into a new game.")
     end
 	client.execute("execute /q " .. game)
 end

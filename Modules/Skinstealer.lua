@@ -30,7 +30,7 @@ function stealMySkin()
             mySkin.saveCape("Skinstealer/" .. myName .. "/" .. myName .. "_cape.png")
         end
         local file = io.open("Skinstealer/" .. username .. "/" .. username .. "_geometry.json","w")
-        file:write(skin.geometry())
+        file:write(mySkin.geometry())
         file:close()
         print("Stole your own skin!")
     end
@@ -61,7 +61,7 @@ client.settings.addInfo("mouseButtonInfo").scale = 0.9
 mouseSettingsAir = client.settings.addAir(5)
 
 client.settings.addCategory("Clone Settings")
-cloneSkin = client.settings.addNamelessBool("Clone Skin", false)
+cloneSkinKey = client.settings.addNamelessKeybind("Clone Skin Key", 0)
 dontStealSkinWhenCloning = client.settings.addNamelessBool("Don't Steal Skin When Cloning", false)
 beLocal = client.settings.addNamelessBool("Local Only", false)
 client.settings.addAir(5)
@@ -118,6 +118,9 @@ function update()
 end
 event.listen("KeyboardInput", function(key,down)
     if gui.mouseGrabbed() == true then return end
+    if key == cloneSkinKey.value and down and player.facingEntity() and player.selectedEntity().type == "player" then
+        cloneSkinFunc()
+    end
     if key == skinstealKey.value and down then
         skinsteal()
     end
@@ -147,9 +150,6 @@ function skinsteal()
                 return
             end
         else
-            if cloneSkin.value then
-                cloneSkinFunc()
-            end
             if dontStealSkinWhenCloning.value then return end
             local selectedPlayer = player.selectedEntity()
             if selectedPlayer.username ~= nil then

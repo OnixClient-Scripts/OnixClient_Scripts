@@ -1,36 +1,32 @@
+-- This script was originally written in TypeScript.
+-- Lua Library inline imports
+local function __TS__StringIncludes(self, searchString, position)
+    if not position then
+        position = 1
+    else
+        position = position + 1
+    end
+    local index = string.find(self, searchString, position, true)
+    return index ~= nil
+end
+-- End of Lua Library inline imports
 name = "Mention Ping"
-description = "Makes it so when you get pinged in chat, it will play a sound."
-
-importLib("SoundDownloader")
-
+description = "Plays a sound when you are mentioned in chat."
+workingDir = "RoamingState/OnixClient/Scripts/Data/Sounds"
 discordMode = client.settings.addNamelessBool("Use Discord Ping", false)
 respondToHere = client.settings.addNamelessBool("Respond to @here", false)
-
-function postInit()
-    downloadSound("https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Data/Sounds/ding.mp3")
-    downloadSound("https://github.com/OnixClient-Scripts/OnixClient_Scripts/raw/master/Data/Sounds/discord.mp3")
-end
-
-workingDir = "RoamingState/OnixClient/Scripts/Data/Sounds/"
-
-shouldPing = false
-
-event.listen("ChatMessageAdded", function(message, username, type, xuid)
-    if respondToHere.value then
-        if message:find("@here") then
-            shouldPing = true
+event.listen(
+    "ChatMessageAdded",
+    function(message, username, ____type)
+        if respondToHere.value and __TS__StringIncludes(message, "@here") or __TS__StringIncludes(
+            message,
+            "@" .. player.name()
+        ) then
+            if discordMode.value then
+                playCustomSound("discord.mp3")
+            else
+                playCustomSound("ding.mp3")
+            end
         end
     end
-    if message:find("@" .. player.name()) then
-        shouldPing = true
-    end
-
-    if shouldPing then
-        if discordMode.value then
-            playCustomSound("discord.mp3")
-        else
-            playCustomSound("ding.mp3")
-        end
-        shouldPing = false
-    end
-end)
+)
