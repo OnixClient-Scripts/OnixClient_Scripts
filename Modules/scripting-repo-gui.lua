@@ -471,7 +471,18 @@ event.listen("MouseInput", function(button, down)
       --notification("mod info scroll", tostring(modInfoScroll))
     end
   end
+  if (button == 5) and down then
+    if menuContentState == "module" then
+      menuContentState = "main"
+      menuContentUpdateStart = os.clock()
 
+      return true
+    end
+
+    handleMenu(false)
+
+    return true
+  end
   return true
 end)
 --#endregion
@@ -613,7 +624,7 @@ local function blur()
     )
   elseif inMenu then opacity = 0.75 end
 
-  gfx2.blur(0, 0, gui.width(), gui.height(), opacity, 0)
+  gfx2.blur(0, 0, gui.width(), gui.height(), opacity*255, 0)
 end
 
 local function sidebar(x, y, width, height)
@@ -653,6 +664,7 @@ local function sidebar(x, y, width, height)
     -- User info
     local nameW, nameH = gfx2.textSize(player.name(), 1.2)
     gfx2.color(gui.theme().text)
+    gfx2.cdrawImage(x + 9, y + height - 27, 18, 18, player.skin().texture(), 40, 8, 8, 8)
     gfx2.cdrawImage(x + 10, y + height - 26, 16, 16, player.skin().texture(), 8, 8, 8, 8)
     gfx2.text(x + 31, y + height - 26 + (8 - nameH / 2), player.name(), 1.2)
 
