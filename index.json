@@ -1128,6 +1128,22 @@
       "lastUpdated": "2022-01-16T15:20:39.000Z"
     },
     {
+      "name": "Scripting Repo GUI",
+      "description": "A GUI for installing/uninstalling/updating scripts from the OnixClient-Scripts/OnixClient_Scripts repository. By Tom16 (aka Jerry)",
+      "file": "scripting-repo-gui.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/scripting-repo-gui.lua",
+      "libs": [
+        "better-notifications",
+        "easing-functions",
+        "scripting-repo",
+        "key-codes",
+        "animate"
+      ],
+      "commands": [],
+      "hash": "356b3ad07aaf15043bdc24b9eb2696b6",
+      "lastUpdated": "2023-10-30T15:20:43.172Z"
+    },
+    {
       "name": "Scripting UI",
       "description": "Regular Onix Client UI, but with only scripts shown.",
       "file": "ScriptingUI.lua",
