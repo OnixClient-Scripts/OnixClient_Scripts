@@ -1564,8 +1564,8 @@ function render2()
 
   renderNotifications()
 
-  gfx2.color(gui.theme().text)
-  gfx2.text(0, 40, mouseDown and "Mouse DOWN" or "Mouse UP", 1.3)
+  --gfx2.color(gui.theme().text)
+  --gfx2.text(0, 40, mouseDown and "Mouse DOWN" or "Mouse UP", 1.3)
 end
 
 function update()
@@ -1601,7 +1601,7 @@ function firstTimeLoad()
 end
 
 function onEnable()
-  print("§aUI Loaded.§r")
+  --print("§aUI Loaded.§r")
 
   if not fs.exist("Data/ScriptingRepoUI") then firstTimeLoad() goto firsttime end
 

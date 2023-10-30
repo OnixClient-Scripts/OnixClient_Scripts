@@ -1,33 +1,4 @@
 -- This script was originally written in TypeScript.
--- By Tom (discord: @s.amat) (aka jerry)
--- Console object
-local console = {
-  log = function(...)
-    local str = ""
-    for _, v in ipairs({ ... }) do
-      if type(v) == "table" then v = tableToJson(v, true) end
-      str = str .. " " .. tostring(v)
-    end
-    print("§8[§7" .. name .. "§8]§r" .. str)
-  end,
-  warn = function(...)
-    local str = ""
-    for _, v in ipairs({ ... }) do
-      if type(v) == "table" then v = tableToJson(v, true) end
-      str = str .. " " .. tostring(v)
-    end
-    print("§8[§7" .. name .. "§8]§r§e" .. str .. "§r")
-  end,
-  error = function(...)
-    local str = ""
-    for _, v in ipairs({ ... }) do
-      if type(v) == "table" then v = tableToJson(v, true) end
-      str = str .. " " .. tostring(v)
-    end
-    print("§8[§7" .. name .. "§8]§r§c" .. str .. "§r")
-  end,
-}
--- End of Console object
 -- Lua Library inline imports
 local function __TS__Class(self)
     local c = {prototype = {}}
@@ -309,7 +280,6 @@ do
             __TS__StringReplace(url, REPO_URL, ""),
             1
         )
-        --console.log("Downloading...", {filePath = filePath, url = url})
         network.fileget(filePath, url, id)
         workingDir = oldDir
         return
@@ -455,6 +425,22 @@ do
                 return scriptingRepo.downloadScript(acData.url, callback)
             end
         )
+    end
+    --- Download a data file from the repo's Data folder to your local Data folder.
+    -- 
+    -- @param filePath The relative path of the file from Data in the repo - e.g. "MyScript/abcd.png" = "Data/MyScript/abcd.png".
+    -- @param callback Function called when the data file is finished downloading.
+    function scriptingRepo.downloadDataFile(filePath, callback)
+        local id = "download-data-" .. tostring(math.random())
+        networkListeners:set(
+            id,
+            function(data, code) return callback(filePath) end
+        )
+        local oldDir = workingDir
+        workingDir = "RoamingState/OnixClient/Scripts/Data"
+        network.fileget(filePath, (REPO_URL .. "/Data/") .. filePath, id)
+        workingDir = oldDir
+        return
     end
     --- Call this function inside onNetworkData(), to call callbacks from other functions.
     -- e.g.
