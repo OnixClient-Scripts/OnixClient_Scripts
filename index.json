@@ -1140,8 +1140,8 @@
         "animate"
       ],
       "commands": [],
-      "hash": "356b3ad07aaf15043bdc24b9eb2696b6",
-      "lastUpdated": "2023-10-30T15:20:43.172Z"
+      "hash": "de33a00eecb6d3ae1fcb0e26bc48367b",
+      "lastUpdated": "2023-10-30T15:33:54.276Z"
     },
     {
       "name": "Scripting UI",
@@ -1793,8 +1793,8 @@
       "name": "scripting-repo",
       "file": "scripting-repo.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/scripting-repo.lua",
-      "hash": "15e8d0482487fc108d21e006d8bc186c",
-      "lastUpdated": "2023-08-18T12:02:58.381Z"
+      "hash": "6619077cbd43d35a3b6bfe5fba111ec7",
+      "lastUpdated": "2023-10-30T15:33:54.286Z"
     },
     {
       "name": "SoundDownloader",
