@@ -28,15 +28,30 @@ function update()
         MaxYVelocity = 2.7
         GravityAcceleration = 0.05
         AirDrag = 0.99
-    else
-        MaxXVelocity = 3.87
+    elseif server.ip():find("zeqa") then
+        MaxXVelocity = 3.95
         MaxYVelocity = 3.55
-        GravityAcceleration = 0.025
+        GravityAcceleration = 0.095
+        AirDrag = 0.99
+    elseif server.ip():find("hive") then
+        MaxXVelocity = 2.9
+        MaxYVelocity = 2.7
+        GravityAcceleration = 0.05
+        AirDrag = 0.99
+    else
+        -- MaxXVelocity = 3.87
+        -- MaxYVelocity = 3.55
+        -- GravityAcceleration = 0.025
+        -- AirDrag = 0.99
+        MaxXVelocity = 2.55
+        MaxYVelocity = 2.8
+        GravityAcceleration = 0.05
         AirDrag = 0.99
     end
 end
 
 function render3d()
+    if player.inventory().selectedItem() == nil or player.inventory().selectedItem().name ~= "bow" then return end
     px, py, pz = player.pposition()
     rx, ry = player.rotation()
 
