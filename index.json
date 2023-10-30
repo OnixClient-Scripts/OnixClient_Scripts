@@ -221,8 +221,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/CapeSwitcher.lua",
       "libs": [],
       "commands": [],
-      "hash": "bf6faa7d0b87237cdfcc882b68d7aa7f",
-      "lastUpdated": "2023-08-21T16:12:46.405Z"
+      "hash": "0afeb1f7c0e1b5ea043358f819864c39",
+      "lastUpdated": "2023-10-30T15:44:40.086Z"
     },
     {
       "name": "Cat Switcher",
@@ -579,8 +579,8 @@
       "commands": [
         "rq"
       ],
-      "hash": "51036113de1cd1d7c43dbe581501ad50",
-      "lastUpdated": "2023-07-07T17:14:45.000Z"
+      "hash": "33aa15028c8d76c60fb92feac5e2ac53",
+      "lastUpdated": "2023-10-30T15:44:40.086Z"
     },
     {
       "name": "Hive Chat Debloater",
@@ -609,8 +609,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveCSCodeCopier.lua",
       "libs": [],
       "commands": [],
-      "hash": "e8351e3c6589ff778daff7ff11caf6bf",
-      "lastUpdated": "2023-05-23T23:13:42.000Z"
+      "hash": "57a63c817d2de64e8a0acf0f3f60b05a",
+      "lastUpdated": "2023-10-30T15:44:40.086Z"
     },
     {
       "name": "Hive Statistic Checker",
@@ -764,8 +764,8 @@
         "SoundDownloader"
       ],
       "commands": [],
-      "hash": "653549bd04b49200578ee86c2fbb36ae",
-      "lastUpdated": "2023-05-29T20:02:37.000Z"
+      "hash": "30dd58f3d3acb2a84570db0bc54cebc6",
+      "lastUpdated": "2023-10-30T15:44:40.087Z"
     },
     {
       "name": "Logger",
@@ -779,15 +779,13 @@
     },
     {
       "name": "Mention Ping",
-      "description": "Makes it so when you get pinged in chat, it will play a sound.",
+      "description": "Plays a sound when you are mentioned in chat.",
       "file": "MentionPing.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MentionPing.lua",
-      "libs": [
-        "SoundDownloader"
-      ],
+      "libs": [],
       "commands": [],
-      "hash": "68e3c06387f9139b08b1a8ce63b6ba87",
-      "lastUpdated": "2023-05-29T19:57:20.000Z"
+      "hash": "37fbbed0228034295dd1bad27fe30626",
+      "lastUpdated": "2023-10-30T15:44:40.087Z"
     },
     {
       "name": "Middle Click Tools",
@@ -1176,8 +1174,8 @@
       "commands": [
         "skinsteal"
       ],
-      "hash": "e363a8d421127ec49c58cd2eb2920fd2",
-      "lastUpdated": "2023-08-18T12:57:31.908Z"
+      "hash": "71da758dcd12b995d07ace56c961f8ec",
+      "lastUpdated": "2023-10-30T15:44:40.089Z"
     },
     {
       "name": "Slime Chunk",
@@ -1362,8 +1360,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WaypointMods.lua",
       "libs": [],
       "commands": [],
-      "hash": "43467e4443d65af7a0b4f2e997c05d91",
-      "lastUpdated": "2023-01-12T23:57:33.000Z"
+      "hash": "ba64dc2b0eb93ca1adc2aab32e0245f7",
+      "lastUpdated": "2023-10-30T15:44:40.089Z"
     },
     {
       "name": "Waypoint Ping Tool",
