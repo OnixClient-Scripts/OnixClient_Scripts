@@ -24,6 +24,7 @@ importLib("animate.lua")
 
 local settings = {
   openKey = client.settings.addNamelessKeybind("Open", KeyCodes.KeyJ),
+  sendNotifs = client.settings.addNamelessBool("Send notifications for available updates, successfull installations, etc.", true),
 }
 
 --#region Variables
@@ -186,6 +187,7 @@ local function clamp(num, low, high) return num < low and low or (num > high and
 local function tableFind(table, fn) for k, v in pairs(table) do if fn(v, k, table) then return v end end end
 local function tableLen(table) local len = 0 for _,_ in pairs(table) do len = len + 1 end return len end
 local function tableEvery(table, fun) local res = true for i, v in pairs(table) do if not fun(v, i, table) then res = false break end end return res end
+local function notif(...) if settings.sendNotifs.value then notification(...) end end
 
 local function outOfDate(module)
   if not INSTALLED_MODULES[module.file] then return false end
@@ -1107,7 +1109,7 @@ local function menu(x, y, width, height)
         if updateHover and mouseDown then
           mouseDown = false
 
-          notification(
+          notif(
             (isOutOfSync and "Resynchronizing" or "Updating") .. " module...",
             (isOutOfSync and "Resynchronizing" or "Updating") .. " module " .. menuSelectedModule.file .. "..."
           )
@@ -1132,7 +1134,7 @@ local function menu(x, y, width, height)
         if installHover and mouseDown then
           mouseDown = false
 
-          notification("Installing module...", "Installing module " .. menuSelectedModule.file .. "...")
+          notif("Installing module...", "Installing module " .. menuSelectedModule.file .. "...")
 
           scriptingRepo.downloadScript(menuSelectedModule.url, function ()
             saveState("install")
@@ -1512,7 +1514,7 @@ local function hoveringbuttons(x, y, width, height)
         mouseDown = false
         isUpdating = true
         startUpdatingTime = os.clock()
-        notification("Updating modules", "Updating " .. tableLen(outdatedModules) .. " modules...")
+        notif("Updating modules", "Updating " .. tableLen(outdatedModules) .. " modules...")
         updateAllModules()
       end
     end
@@ -1600,7 +1602,7 @@ function firstTimeLoad()
   -- Download icons
   for key, file in pairs(IMAGE_FILES) do
     if not fs.exist("Data/ScriptingRepoUI/" .. file) then
-      notification("Downloading asset", "Downloading image " .. file .. ". This should only need to happen once.")
+      notif("Downloading asset", "Downloading image " .. file .. ". This should only need to happen once.")
       scriptingRepo.downloadDataFile(
         "ScriptingRepoUI/" .. file,
         function () IMAGES[key] = gfx2.loadImage("Data/ScriptingRepoUI/" .. file) end
@@ -1653,23 +1655,23 @@ function onEnable()
       end)
 
       if state.installType == "install" then
-        notification("Module installed", "Successfully installed module " .. state.selectedModule)
+        notif("Module installed", "Successfully installed module " .. state.selectedModule)
         searchBarContent = chars(state.searchContent)
 
       elseif state.installType == "uninstall" then
-        notification("Module uninstalled", "Successfully uninstalled " .. state.selectedModule)
+        notif("Module uninstalled", "Successfully uninstalled " .. state.selectedModule)
         searchBarContent = chars(state.searchContent)
 
       elseif state.installType == "update" then
-        notification("Module updated", "Successfully updated " .. state.selectedModule)
+        notif("Module updated", "Successfully updated " .. state.selectedModule)
         searchBarContent = chars(state.searchContent)
 
       elseif state.installType == "resync" then
-        notification("Module synchronized", "Successfully synchronized " .. state.selectedModule)
+        notif("Module synchronized", "Successfully synchronized " .. state.selectedModule)
         searchBarContent = chars(state.searchContent)
 
       elseif state.installType == "update-all" then
-        notification("Modules updated", "Updated all outdated modules.")
+        notif("Modules updated", "Updated all outdated modules.")
         searchBarContent = chars(state.searchContent)
         state.modFilter = "installed"
 
@@ -1690,7 +1692,7 @@ function onEnable()
 
   fetchRepoModules(function ()
     local outdated = tableLen(outdatedModules)
-    if outdated > 0 then notification("Script Updates Available", "You have " .. outdated .. " updates available. Install them through the GUI.") end
+    if outdated > 0 then notif("Script Updates Available", "You have " .. outdated .. " updates available. Install them through the GUI.") end
   end)
 end
 
