@@ -17,34 +17,6 @@ RemoveMisc = true
 RemoveCosm = true
 Staff = true
 
-function Debloat()
-    RemoveLogin = true
-    RemovePSA = true
-    RemoveJoin = true
-    RemoveCombat = true
-    RemoveMisc = true
-    RemoveCosm = true
-    Staff = true
-    client.settings.send()
-end
-
-function Bloat()
-    RemoveLogin = false
-    RemovePSA = false
-    RemoveJoin = false
-    RemoveCombat = false
-    RemoveMisc = false
-    RemoveCosm = false
-    Staff = false
-    client.settings.send()
-end
-
-
-client.settings.addAir(5)
-client.settings.addFunction("Enable All", "Debloat", "Debloat")
-client.settings.addFunction("Disable All", "Bloat", "Bloat")
-client.settings.addAir(5)
-
 category = client.settings.addNamelessCategory("Chat Debloater")
 --LOGIN--
 client.settings.addBool("Remove on login messages.", "RemoveLogin")
@@ -70,6 +42,12 @@ client.settings.addAir(5)
 client.settings.addBool("Remove cosmetic related messages.", "RemoveMisc")
 client.settings.addInfo("(Apply: Cape, Artifact, Projectile, Killphrase, Pot, Tag, Nick)")
 client.settings.addAir(5)
+--AllServerMessages--
+allServerMessages = client.settings.addNamelessBool("Remove all server messages.", false)
+client.settings.addInfo("(Zeqa »)")
+client.settings.addAir(5)
+--AllNonPlayerMessages--
+allNonPlayerMessages = client.settings.addNamelessBool("Remove all non-player messages.", false)
 
 removeLoginMessages = {
     "to open chat",
@@ -93,9 +71,9 @@ RemoveMiscMessages = {
 }
 RemoveCosmMessages = {
     " has obtained ",
-    "§eZEQA§8 » §r§7Applying ",
-    "§eZEQA§8 » §r§7You have successfully changed ",
-    "§eZEQA§8 » §r§aSuccessfully edited"
+    "ZEQA » Applying ",
+    "ZEQA » You have successfully changed ",
+    "ZEQA » Successfully edited"
 }
 RemovePsaMessages = {
     "Join our Discord Server for more updates!",
@@ -106,55 +84,71 @@ RemovePsaMessages = {
 
 -------------------------------------------
 event.listen("ChatMessageAdded", function(message, username, type, xuid)
-    message1 = message:gsub("§.", "")
-    --Login--
-    if RemoveLogin then
-        for i,v in pairs(removeLoginMessages) do
-            if message1:find(v) then
+    if server.ip():find("zeqa") then
+        message1 = message:gsub("§.", "")
+        --Login--
+        if RemoveLogin then
+            for i,v in pairs(removeLoginMessages) do
+                if message1:find(v) then
+                    return true
+                end
+            end
+        end
+
+        --PSA--
+        if RemovePSA then
+            for i,v in pairs(RemovePsaMessages) do
+                if message:find(v) then
+                    return true
+                end
+            end
+        end
+
+        --Join & Leave--
+        if RemoveJoin then
+            if message:match("§8]§. ") then
                 return true
             end
         end
-    end
 
-    --PSA--
-    if RemovePSA then
-        for i,v in pairs(RemovePsaMessages) do
-            if message:find(v) then
+        --Combat--
+        if RemoveCombat then
+            for i,v in pairs(RemoveCombatMessages) do
+                if message1:find(v) then
+                    return true
+                end
+            end
+        end
+
+        --Misc--
+        if RemoveMisc then
+            for i,v in pairs(RemoveMiscMessages) do
+                if message1:find(v) then
+                    return true
+                end
+            end
+        end
+
+        --Cosm--
+        if RemoveCosm then
+            for i,v in pairs(RemoveCosmMessages) do
+                if message:find(v) then
+                    return true
+                end
+            end
+        end
+
+        if allServerMessages.value then
+            if message:lower():find("zeqa » ") then
                 return true
             end
         end
-    end
 
-    --Join & Leave--
-    if RemoveJoin then
-        if message:match("§8]§. ") then
-            return true
-        end
-    end
-
-    --Combat--
-    if RemoveCombat then
-        for i,v in pairs(RemoveCombatMessages) do
-            if message1:find(v) then
-                return true
-            end
-        end
-    end
-
-    --Misc--
-    if RemoveMisc then
-        for i,v in pairs(RemoveMiscMessages) do
-            if message1:find(v) then
-                return true
-            end
-        end
-    end
-
-    --Cosm--
-    if RemoveCosm then
-        for i,v in pairs(RemoveCosmMessages) do
-            if message:find(v) then
-                return true
+        if allNonPlayerMessages.value then
+            for i,v in pairs(server.players()) do
+                if message:find(v) == false then
+                    return true
+                end
             end
         end
     end
