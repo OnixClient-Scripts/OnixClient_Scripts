@@ -61,9 +61,12 @@ emojiToUnicode = {
 }
 
 event.listen("ChatMessageAdded", function(message, username, type, xuid)
-    for emoji, unicode in pairs(emojiToUnicode) do
-        message = message:gsub(emoji, unicode)
-    end
-    print(message)
-    return true
+	if server.ip():find("zeqa") == false then return end
+	if message:find("§6To §g") or message:find("§6From §g") then
+		for emoji, unicode in pairs(emojiToUnicode) do
+			message = message:gsub(emoji, unicode)
+		end
+		print(message)
+		return true
+	end
 end)
