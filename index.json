@@ -1458,6 +1458,16 @@
       "commands": [],
       "hash": "2b73530159bad1fc2780d9a0246abd6d",
       "lastUpdated": "2023-11-03T01:22:24.423Z"
+    },
+    {
+      "name": "Zeqa Emotes Everywhere",
+      "description": "Makes Zeqa's emotes work everywhere.",
+      "file": "ZeqaEmotesEverywhere.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ZeqaEmotesEverywhere.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "89755524f0110f34af46a61547e58158",
+      "lastUpdated": "2023-11-05T16:09:59.584Z"
     }
   ],
   "commands": [
