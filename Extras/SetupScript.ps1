@@ -1,9 +1,12 @@
 
 #close vscode
 Stop-Process -Force -Name "Code" -ErrorAction SilentlyContinue
+Stop-Process -Force -Name "VSCodium" -ErrorAction SilentlyContinue
 
 #make sure it is installed / we have the code command
-if ((Get-Command -Name "code" -ErrorAction SilentlyContinue) -eq $null) {
+$hasCodeCommand = (Get-Command -Name "code" -ErrorAction SilentlyContinue) -eq $null
+$hasCodiumCommand = (Get-Command -Name "codium" -ErrorAction SilentlyContinue) -eq $null
+if ($hasCodeCommand == $false -and $hasCodiumCommand == $false) {
     Write-Host "It seems like you do not have Visual Studio Code installed, a link to it has been opened." -ForegroundColor Red
     Start-Process "https://code.visualstudio.com/download"
     Pause
@@ -41,6 +44,13 @@ $onixClientScriptsFolder = "$($onixClientFolder)\Scripts"
 if (!(Test-Path -Path $onixClientScriptsFolder -PathType Container)) {
    New-Item -ItemType Directory -path $onixClientScriptsFolder | Out-Null
 }
+#create scripts folder
+$onixClientScriptsVscodeFolder = "$($onixClientFolder)\Scripts\.vscode"
+if (!(Test-Path -Path $onixClientScriptsVscodeFolder -PathType Container)) {
+   New-Item -ItemType Directory -path $onixClientScriptsVscodeFolder | Out-Null
+}
+
+
 #create scripts folder
 $onixClientScriptsTempFolder = "$($onixClientScriptsFolder)\Temp"
 if (!(Test-Path -Path $onixClientScriptsTempFolder -PathType Container)) {
@@ -89,27 +99,47 @@ Write-Host
 #install vscode extensions
 $extensions =
     "sumneko.lua"
-    
-Invoke-Expression "code --list-extensions" -OutVariable output | Out-Null
-$installed = $output -split "\s"
 
-Write-Host "Installing Visual Studio Code extensions..."
-foreach ($extension in $extensions) {
-    if ($installed.Contains($extension)) {
-        Write-Host "  - "$extension " is already installed." -ForegroundColor Gray
-    } else {
-        Write-Host "  - Installing" $extension "..." -ForegroundColor White
-        code --install-extension $extension | Out-Null
+if ($hasCodeCommand) {
+    Invoke-Expression "code --list-extensions" -OutVariable output | Out-Null
+    $installed = $output -split "\s"
+
+    
+    Write-Host "Installing Visual Studio Code extensions..."
+    foreach ($extension in $extensions) {
+        if ($installed.Contains($extension)) {
+            Write-Host "  - "$extension " is already installed." -ForegroundColor Gray
+        } else {
+            Write-Host "  - Installing" $extension "..." -ForegroundColor White
+            code --install-extension $extension | Out-Null
+        }
     }
+    Write-Host "Visual Studio Code extensions have been installed" -ForegroundColor Green
+    Write-Host
 }
-Write-Host "Visual Studio Code extensions have been installed" -ForegroundColor Green
-Write-Host
+if ($hasCodiumCommand) {
+    Invoke-Expression "codium --list-extensions" -OutVariable output | Out-Null
+    $installed = $output -split "\s"
+
+    Write-Host "Installing VSCodium extensions..."
+    foreach ($extension in $extensions) {
+        if ($installed.Contains($extension)) {
+            Write-Host "  - "$extension " is already installed." -ForegroundColor Gray
+        } else {
+            Write-Host "  - Installing" $extension "..." -ForegroundColor White
+            code --install-extension $extension | Out-Null
+        }
+    }
+    Write-Host "VSCodium extensions have been installed" -ForegroundColor Green
+    Write-Host
+}
+
 
 
 
 #configure vscode extensions
-Write-Host "Configuring Visual Studio Code Extensions..."
-$settingsJsonPath = "$($env:APPDATA)\Code\User\settings.json"
+Write-Host "Configuring Extensions..."
+$settingsJsonPath = "$($onixClientScriptsVscodeFolder)\settings.json"
 try {
     $settings = (Get-Content -Path $settingsJsonPath -ErrorAction SilentlyContinue) | ConvertFrom-Json
     if ($settings -eq $null) { #when file is empty
@@ -118,7 +148,7 @@ try {
     Add-Member -InputObject $settings -Name "Lua.workspace.library" -Value @( "$($onixClientScriptsFolder)\AutoComplete" ) -MemberType NoteProperty -Force
     $settings = ($settings | ConvertTo-Json)
     Out-File -FilePath $settingsJsonPath -Encoding ascii -InputObject "$($settings)"
-    Write-Host "Visual Studio Code extensions have been configured" -ForegroundColor Green
+    Write-Host "Extensions have been configured" -ForegroundColor Green
 } catch {
     Write-Host "Could not set the autocomplete directory" -ForegroundColor Red
     Pause
@@ -126,7 +156,12 @@ try {
 }
 Write-Host
 
-Write-Host "Opening Visual studio in the Scripts workspace"
-Start-Process -FilePath "code" -ArgumentList $onixClientScriptsFolder -WindowStyle Hidden
+if ($hasCodiumCommand -eq $false) {
+    Write-Host "Opening VSCodium in the Scripts workspace"
+    Start-Process -FilePath "codium" -ArgumentList $onixClientScriptsFolder -WindowStyle Hidden
+} else {
+    Write-Host "Opening Visual Studio Code in the Scripts workspace"
+    Start-Process -FilePath "code" -ArgumentList $onixClientScriptsFolder -WindowStyle Hidden
+}
 
 
