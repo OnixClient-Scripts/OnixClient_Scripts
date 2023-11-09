@@ -100,7 +100,7 @@ Write-Host
 $extensions =
     "sumneko.lua"
 
-if ($hasCodeCommand) {
+if ($hasCodeCommand -eq $false) {
     Invoke-Expression "code --list-extensions" -OutVariable output | Out-Null
     $installed = $output -split "\s"
 
@@ -117,7 +117,7 @@ if ($hasCodeCommand) {
     Write-Host "Visual Studio Code extensions have been installed" -ForegroundColor Green
     Write-Host
 }
-if ($hasCodiumCommand) {
+if ($hasCodiumCommand -eq $false) {
     Invoke-Expression "codium --list-extensions" -OutVariable output | Out-Null
     $installed = $output -split "\s"
 
@@ -127,7 +127,7 @@ if ($hasCodiumCommand) {
             Write-Host "  - "$extension " is already installed." -ForegroundColor Gray
         } else {
             Write-Host "  - Installing" $extension "..." -ForegroundColor White
-            code --install-extension $extension | Out-Null
+            codium --install-extension $extension | Out-Null
         }
     }
     Write-Host "VSCodium extensions have been installed" -ForegroundColor Green
