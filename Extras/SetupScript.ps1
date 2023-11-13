@@ -146,6 +146,7 @@ try {
         $settings = "{}" | ConvertFrom-Json
     }
     Add-Member -InputObject $settings -Name "Lua.workspace.library" -Value @( "$($onixClientScriptsFolder)\AutoComplete" ) -MemberType NoteProperty -Force
+    Add-Member -InputObject $settings -Name "Lua.diagnostics.disable" -Value @( "lowercase-global" ) -MemberType NoteProperty -Force
     $settings = ($settings | ConvertTo-Json)
     Out-File -FilePath $settingsJsonPath -Encoding ascii -InputObject "$($settings)"
     Write-Host "Extensions have been configured" -ForegroundColor Green
