@@ -507,6 +507,89 @@ function gfx.objRender(mesh) end
 function gfx.objRender(mesh, texture) end
 
 
+---@class JsonGeometry
+---@field name string
+
+---Loads minecraft geometries from json
+---@param geometryJson string The geometry json string, you can get from a file with: jsonFromFile
+---@return JsonGeometry[] geometries
+---@return string error
+function gfx.geometryLoad(geometryJson) end
+
+---Loads minecraft geometries from json
+---@param geometryJson string The geometry json string, you can get from a file with: jsonFromFile
+---@param desiredGeometry string The name of the desired geometry.
+---@return JsonGeometry geometry
+---@return string error
+function gfx.geometryLoad(geometryJson, desiredGeometry) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+function gfx.geometryRender(model, texture) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+function gfx.geometryRender(model, texture, x, y, z) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+---@param rotationX number The rotation X
+---@param rotationY number The rotation Y
+---@param rotationZ number The rotation Z
+function gfx.geometryRender(model, texture, x, y, z, rotationX, rotationY, rotationZ) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+---@param rotationX number The rotation X
+---@param rotationY number The rotation Y
+---@param rotationZ number The rotation Z
+---@param lightEmission integer The light emission (0-15)
+function gfx.geometryRender(model, texture, x, y, z, rotationX, rotationY, rotationZ, lightEmission) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+---@param rotationX number The rotation X
+---@param rotationY number The rotation Y
+---@param rotationZ number The rotation Z
+---@param lightEmission integer The light emission (0-15)
+---@param scaleX number The scale X
+---@param scaleY number The scale Y
+---@param scaleZ number The scale Z
+function gfx.geometryRender(model, texture, x, y, z, rotationX, rotationY, rotationZ, lightEmission, scaleX, scaleY, scaleZ) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+---@param rotationX number The rotation X
+---@param rotationY number The rotation Y
+---@param rotationZ number The rotation Z
+---@param lightEmission integer The light emission (0-15)
+---@param scaleX number The scale X
+---@param scaleY number The scale Y
+---@param scaleZ number The scale Z
+---@param renderInsideFaces boolean Should render the inside faces
+function gfx.geometryRender(model, texture, x, y, z, rotationX, rotationY, rotationZ, lightEmission, scaleX, scaleY, scaleZ, renderInsideFaces) end
+
 ---Pushes transformation(s)
 ---@param transformations table
 function gfx.pushTransformation(transformations) end
