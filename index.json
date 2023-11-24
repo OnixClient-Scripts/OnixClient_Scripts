@@ -579,8 +579,8 @@
       "commands": [
         "rq"
       ],
-      "hash": "33aa15028c8d76c60fb92feac5e2ac53",
-      "lastUpdated": "2023-10-30T15:44:40.086Z"
+      "hash": "2835f7fd056cc5dc41022af4af8cb93f",
+      "lastUpdated": "2023-11-24T19:03:07.932Z"
     },
     {
       "name": "Hive Chat Debloater",
@@ -804,8 +804,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MinecraftRPC.lua",
       "libs": [],
       "commands": [],
-      "hash": "e6a2d2e5ba0dd8426820e4169c1ee3a5",
-      "lastUpdated": "2023-10-22T14:34:00.656Z"
+      "hash": "01ec91779d73bd467ea55404eb2d86f2",
+      "lastUpdated": "2023-11-24T19:03:07.933Z"
     },
     {
       "name": "Minimap",
