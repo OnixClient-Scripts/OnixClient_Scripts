@@ -1,6 +1,5 @@
 name = "Minecraft RPC"
 description = "Rich Presence. Intelligently.\nClosing the launcher when using this is recommended."
-
 --[[
 made by rosie (credits: son, onix)
 requires MinecraftRPCHelper.exe (can be found on the repo)
@@ -308,9 +307,9 @@ function onChat(message, username, type)
         hub = false
         gameLobby = false
     end
-    if string.find(message, "You are connected to server ") then
+    if string.find(message, "You are connected to server name ") then
         hub = false
-        lastGamemode = message:sub(29):match("[%a-]*")
+        lastGamemode = message:sub(34):match("[%a-]*")
         local gamemode = lastGamemode
         if string.find(gamemode, "-") then
             gamemode = string.sub(gamemode, 1, string.find(gamemode, "-") - 1)
@@ -321,7 +320,6 @@ function onChat(message, username, type)
     if formattedGamemodes[lastGamemode] then
         formattedGamemode = formattedGamemodes[lastGamemode]
     end
-
     if string.find(message, " joined. §8") and string.find(message, player.name()) then
         hub = false
         client.execute("execute /connection")
@@ -332,6 +330,12 @@ function onChat(message, username, type)
         return true
     end
     if string.find(message, "You are connected to server ") then
+        return true
+    end
+    if message:find("You are connected to public IP ") then
+        return true
+    end
+    if message:find("You are connected to internal IP ") then
         return true
     end
     if string.find(message, "§cYou're issuing commands too quickly, try again later.") then

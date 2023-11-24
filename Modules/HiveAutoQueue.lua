@@ -101,10 +101,8 @@ function onChat(message, username, type)
             inGame = true
         end
     end
-    if string.find(message, "You are connected to server ") then
-        lastGamemode = message
-        lastGamemode = string.sub(message, 29)
-        lastGamemode = string.match(lastGamemode, "[%a-]*")
+    if string.find(message, "You are connected to server name ") then
+        lastGamemode = message:sub(34):match("[%a-]*")
     end
 
     -- hide the /connection message
@@ -112,6 +110,12 @@ function onChat(message, username, type)
         return true
     end
     if string.find(message, "You are connected to server ") then
+        return true
+    end
+    if message:find("You are connected to public IP ") then
+        return true
+    end
+    if message:find("You are connected to internal IP ") then
         return true
     end
     if string.find(message, "§cYou're issuing commands too quickly, try again later.") then
