@@ -47,6 +47,22 @@ function gfx.color(r, g, b, a) end
 ---@return number z
 function gfx.origin() end
 
+---Gets screen position from world position
+---Getting nil means that the position is not on screen
+---@param x number The world position X
+---@param y number The world position Y
+---@param z number The world position Z
+---@return number|nil x The screen position X
+---@return number|nil y The screen position Y
+function gfx.worldToScreen(x, y, z) end
+
+---Gets screen position from world position and gives you a table of number with a size of 2
+---Getting nil means that the position is not on screen
+---@param x number The world position X
+---@param y number The world position Y
+---@param z number The world position Z
+---@return number[]|nil x The screen position X
+function gfx.worldToScreen2(x, y, z) end
 
 ---Renders a rectangle 
 ---@param x number The position X
