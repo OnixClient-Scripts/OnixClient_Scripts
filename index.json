@@ -137,10 +137,11 @@
       "commands": [
         "addparty",
         "removeparty",
-        "listparty"
+        "listparty",
+        "clearparty"
       ],
-      "hash": "121181939720c12c5a20bdda19a82d20",
-      "lastUpdated": "2023-09-15T05:02:12.096Z"
+      "hash": "0633e88e08f90cab5bb66429ac0541b7",
+      "lastUpdated": "2023-12-10T19:03:50.740Z"
     },
     {
       "name": "Beacon Range",
