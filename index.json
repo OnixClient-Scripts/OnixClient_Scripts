@@ -464,8 +464,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/fakepingdisplay.lua",
       "libs": [],
       "commands": [],
-      "hash": "90c8ac6d72928ecea7d60f11b6c431f7",
-      "lastUpdated": "2022-01-16T15:20:39.000Z"
+      "hash": "6865afa0fe9c0a411866b6994354ea76",
+      "lastUpdated": "2023-12-14T15:24:44.457Z"
     },
     {
       "name": "FPS Limiter",
