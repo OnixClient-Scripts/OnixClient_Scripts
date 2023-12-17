@@ -111,7 +111,7 @@ event.listen("ChatMessageAdded", onChat)
 function addPlayer(arg)
     local isPlayerFound = false
     for i = 1, #players do
-        if players[i] == arg then
+        if string.lower(players[i]) == string.lower(arg) then
             print("§aPlayer " .. arg .. " is already in player list")
             isPlayerFound = true
             break
@@ -127,7 +127,7 @@ end
 function removePlayer(arg)
     local isPlayerFound = false
     for i = 1, #players do
-        if players[i] == arg then
+        if string.lower(players[i]) == string.lower(arg) then
             players[i] = nil
             print("§aPlayer " .. arg .. " is removed from the player list")
             isPlayerFound = true
