@@ -47,13 +47,34 @@ function gfx2.color(colorTable) end
 ---@param g number 0-255 color code
 ---@param b number 0-255 color code
 function gfx2.color(r, g, b) end
-
 ---Changes the color of what will be rendered
 ---@param r number 0-255 color code
 ---@param g number 0-255 color code
 ---@param b number 0-255 color code
----@param a number 0-255 color code
-function gfx2.color(r, g, b, a) end
+---@param opacity number 0-255 color code
+function gfx2.color(r, g, b, opacity) end
+
+---Changes the tint color of images that will be rendered
+---@param setting Setting client color(pls or u crash) setting
+function gfx2.tcolor(setting) end
+
+---Changes the tint color of images that will be rendered
+---@param colorTable ColorSetting
+function gfx2.tcolor(colorTable) end
+
+---Changes the tint color of images that will be rendered
+---@param r number 0-255 color code
+---@param g number 0-255 color code
+---@param b number 0-255 color code
+function gfx2.tcolor(r, g, b) end
+
+---Changes the tint color of images that will be rendered
+---@param r number 0-255 color code
+---@param g number 0-255 color code
+---@param b number 0-255 color code
+---@param opacity number 0-255 color code
+function gfx2.tcolor(r, g, b, opacity) end
+
 
 
 ---Gives you the size of the current render target
