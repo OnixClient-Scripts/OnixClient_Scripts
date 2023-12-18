@@ -457,6 +457,18 @@ function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3
 ---@param bothSides boolean Should render both sides (would be visible from only one side if set to false)
 function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, x_4, y_4, z_4, uvx_4, uvy_4, texturePath, bothSides) end
 
+---Renders a lot of textured quads
+---This allows it to do it much quicker as it batches it instead of having one draw call per texture quad like tquad
+---You can use parts of a texture with uv to have more textures in one draw
+---You should sort the quads by color and texture to call this function less times, but with as much data as possible each time.
+---quads is a table of table containing 20 numbers
+---you have 4 corners, each corner has 5 numbers (x, y, z, uvx, uvy)
+---exemple order: top left, bottom left, bottom right, top right
+---@param quads number[][] The quads to render
+---@param texturePath string the texture file (starting with "textures" will be taken from the resource pack otherwise data folder)
+---@param bothSides boolean|nil Should render both sides (would be visible from only one side if set to false/nil)
+function gfx.tquadbatch(quads, texturePath, bothSides) end
+
 
 ---Changes the lighting parameters for future gfx calls (3d only)
 ---@param AreaStartX number The starting X position of the area
