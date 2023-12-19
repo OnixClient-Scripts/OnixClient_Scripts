@@ -1944,6 +1944,12 @@
         "lastUpdated": "2023-08-19T21:14:41.646Z"
       },
       {
+        "file": "re.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/re.lua",
+        "hash": "11f233bb1f72a66d185010bdd0aa3aef",
+        "lastUpdated": "2023-12-19T15:45:29.041Z"
+      },
+      {
         "file": "server.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/server.lua",
         "hash": "ef48454601e1612e13f7aacfb021cc68",
