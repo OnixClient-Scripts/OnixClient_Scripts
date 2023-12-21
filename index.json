@@ -384,6 +384,16 @@
       "lastUpdated": "2023-09-05T22:17:05.159Z"
     },
     {
+      "name": "Daylight Cycle Speed Changer",
+      "description": "Changes the speed of the day/night cycle. 1 is normal speed.",
+      "file": "timeSpeed.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/timeSpeed.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "95c0de87f4195512bbb63a8a01865490",
+      "lastUpdated": "2023-12-21T21:59:18.138Z"
+    },
+    {
       "name": "Death Coordinates",
       "description": "Show player death coordinates",
       "file": "deathcoordinates.lua",
