@@ -1770,8 +1770,8 @@
       "name": "logger",
       "file": "logger.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/logger.lua",
-      "hash": "d13da5bc868bd0272c9db77531d85c4b",
-      "lastUpdated": "2022-08-23T16:49:30.000Z"
+      "hash": "3e934d5867a73c156b48593c508b22c1",
+      "lastUpdated": "2023-12-23T02:05:53.502Z"
     },
     {
       "name": "looper",
