@@ -25,6 +25,7 @@ function toString(input)
     return tostring(input)
 end
 
-function log(message)
-    sendLocalData("logMessage", toString(message))
+function log(...)
+    local message = toString({ ... })
+    sendLocalData("logMessage", string.sub(message, 2, #message - 1))
 end
