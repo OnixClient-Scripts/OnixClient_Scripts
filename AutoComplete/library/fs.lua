@@ -4,6 +4,7 @@
 fs = {}
 
 
+
 ---Checks if a file exist
 ---@param path string The path from Scripts/Data
 ---@return boolean exists If the file exists
