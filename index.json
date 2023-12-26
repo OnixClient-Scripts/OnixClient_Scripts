@@ -1189,16 +1189,14 @@
       "lastUpdated": "2023-10-30T15:44:40.089Z"
     },
     {
-      "name": "Slime Chunk",
-      "description": "Shows the slime chunks",
-      "file": "Slime Chunk.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Slime Chunk.lua",
-      "libs": [
-        "looper"
-      ],
+      "name": "Slime Chunk Finder",
+      "description": "Why not?",
+      "file": "SlimeChunkFinder.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/SlimeChunkFinder.lua",
+      "libs": [],
       "commands": [],
-      "hash": "c64a51a86353f360dc6f06094f812abe",
-      "lastUpdated": "2023-08-20T12:16:08.288Z"
+      "hash": "fb76ad04f34bb79d0b84d5e9d2ed69f8",
+      "lastUpdated": "2023-12-26T13:53:46.375Z"
     },
     {
       "name": "Sphere Generator",
