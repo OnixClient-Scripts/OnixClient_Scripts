@@ -216,6 +216,19 @@
       "lastUpdated": "2023-06-21T13:52:13.000Z"
     },
     {
+      "name": "Camera Effects",
+      "description": "Adds auto exposure and lens flares to the game.",
+      "file": "cameraEffects.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/cameraEffects.lua",
+      "libs": [
+        "vectors",
+        "scripting-repo"
+      ],
+      "commands": [],
+      "hash": "a8638a0b5187d5851916f00a69e581a9",
+      "lastUpdated": "2023-12-28T02:58:46.471Z"
+    },
+    {
       "name": "Cape Switcher",
       "description": "Lets you swap and manage your capes, directly from inside the game! (Doesn't apply on join).",
       "file": "CapeSwitcher.lua",
