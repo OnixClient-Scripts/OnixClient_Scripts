@@ -50,9 +50,14 @@ function onEnable()
     brightnessSetting, contrastSetting = findSettings()
     ppx, ppy, ppz = player.pposition()
     px, py, pz = player.position()
+end
 
-    scriptingRepo.downloadDataFile("cameraEffects/squareFlare.png")
-    scriptingRepo.downloadDataFile("cameraEffects/sunFlares.png")
+function postInit()
+    if not fs.isdir("cameraEffects") then
+        fs.mkdir("cameraEffects")
+        scriptingRepo.downloadDataFile("cameraEffects/squareFlare.png")
+        scriptingRepo.downloadDataFile("cameraEffects/sunFlares.png")
+    end
 end
 
 function onNetworkData(code, identifier, data)
