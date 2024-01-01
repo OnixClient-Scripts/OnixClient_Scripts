@@ -37,18 +37,23 @@ end
 ---@param s number size of the cube
 ---@param t number thickness of the frame
 ---@return nil
-function cubeframe(x,y,z,s,t)
-    
-    cubexyz(x,y,z,s/16/(t/16/16)*(t/5.30),s/16/(t/16),s/16/(t/16)) --base x
-    cubexyz(x,y,z,s/16/(t/16),s/16/(t/16),s/16/(t/16/16)*(t/5.30)) --base z
-    cubexyz(x,y,z,s/16/(t/16),s/16/(t/16/16)*(t/5.30),s/16/(t/16)) --base y
-    cubexyz(x,y,z+s*3,s/16/(t/16/16)*(t/5.30),s/16/(t/16),s/16/(t/16)) --pillar 1
-    cubexyz(x+s*3,y,z,s/16/(t/16),s/16/(t/16),s/16/(t/16/16)*(t/5.30)) --pillar 2
-    cubexyz(x+s*3,y,z,s/16/(t/16),s/16/(t/16/16)*(t/5.30),s/16/(t/16)) --pillar 3
-    cubexyz(x,y,z+s*3,s/16/(t/16),s/16/(t/16/16)*(t/5.30),s/16/(t/16)) --bottom x
-    cubexyz(x+s*3,y,z+s*3,s/16/(t/16),s/16/(t/16/16)*(t/5.30),s/16/(t/16)) --bottom z
-    cubexyz(x,y+s*3,z,s/16/(t/16/16)*(t/5.30),s/16/(t/16),s/16/(t/16)) --top x
-    cubexyz(x,y+s*3,z,s/16/(t/16),s/16/(t/16),s/16/(t/16/16)*(t/5.30)) --top z
-    cubexyz(x,y+s*3,z+s*3,s/16/(t/16/16)*(t/5.30),s/16/(t/16),s/16/(t/16)) --top x 2
-    cubexyz(x+s*3,y+s*3,z,s/16/(t/16),s/16/(t/16),s/16/(t/16/16)*(t/5.30)) --top z 2
+function cubeframe(x, y, z, s, t)
+    x = x - (s-1) /2
+    y = y - (s-1) /2
+    z = z - (s-1) /2
+    cubexyz(x + s - t, y, z, t, s, t)-- right front edge
+    cubexyz(x + s - t, y, z + s - t, t, s, t) -- right back edge
+
+    cubexyz(x, y, z, t, s, t)-- left front edge
+    cubexyz(x, y, z + s - t, t, s, t)-- left back edge
+
+    cubexyz(x, y + s - t, z, s, t, t)-- top front edge
+    cubexyz(x, y + s - t, z + s - t, s, t, t)-- top back edge
+    cubexyz(x, y + s - t, z, t, t, s)-- top left edge
+    cubexyz(x + s - t, y + s - t, z, t, t, s)-- top right edge
+
+    cubexyz(x, y, z, s, t, t) -- bottom front edge
+    cubexyz(x, y, z + s - t, s, t, t) -- bottom back edge
+    cubexyz(x, y, z, t, t, s)-- bottom left edge
+    cubexyz(x + s - t, y, z, t, t, s)-- bottom right edge
 end
