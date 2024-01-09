@@ -1,4 +1,3 @@
--- made by O2Flash20
 name = "Logger"
 description = "Logs things better"
 
@@ -18,17 +17,16 @@ client.settings.addFloat("Text Scale", "tScale", 0, 5)
 showNumber = true
 client.settings.addBool("Show log number", "showNumber")
 
-backColor = { 51, 51, 51 }
-client.settings.addColor("Background Color", "backColor")
+backColorSetting = client.settings.addNamelessColor("Background Color", { 51, 51, 51, 255 })
 
-foreColor = { 255, 255, 255 }
-client.settings.addColor("Foreground Color", "foreColor")
+foreColorSetting = client.settings.addNamelessColor("Foreground Color", { 255, 255, 255, 255 })
 
 font = gui.font()
 function render()
     sizeX = (wRatio) * 500
     sizeY = (-wRatio + 1) * 500
 
+    backColor = backColorSetting.value
     gfx.color(backColor.r, backColor.g, backColor.b, backColor.a)
     gfx.rect(0, 0, sizeX, sizeY)
 
@@ -47,8 +45,9 @@ function render()
     end
 
     start = 250
+    foreColor = foreColorSetting.value
+    gfx.color(foreColor.r, foreColor.g, foreColor.b, foreColor.a)
     for i = 1, #logs, 1 do
-        gfx.color(foreColor.r, foreColor.g, foreColor.b, foreColor.a)
         gfx.text(0, (i - 1) * (font.height + 3) * tScale, logs[i], tScale)
     end
 end
