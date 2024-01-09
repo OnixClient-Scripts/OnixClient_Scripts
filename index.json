@@ -798,8 +798,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/loggerUI.lua",
       "libs": [],
       "commands": [],
-      "hash": "46642b9969a299818276df595c09ac84",
-      "lastUpdated": "2022-08-23T16:50:28.000Z"
+      "hash": "6bf805a0f9e35eb35456eb98cda49a49",
+      "lastUpdated": "2024-01-09T17:07:08.470Z"
     },
     {
       "name": "Mention Ping",
