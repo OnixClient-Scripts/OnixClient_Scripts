@@ -413,6 +413,80 @@ local _acp_Enchants = {}
 ---@field boots Item|nil the item on the feets
 
 
+---@class ModyfiableInventory
+---@field lastHoverSlotValue integer The last hover slot value
+---@field lastHoverSlotName string The last hover slot name
+local _acp__ModyfiableInventory = {}
+
+---Gets the item in the slot for a container
+---@return Item|nil item The item in the slot
+function _acp__ModyfiableInventory.at(container, slot) end
+
+---Gets the position of the container block if any
+---@return integer|nil x The X position of the container block
+---@return integer|nil y The Y position of the container block
+---@return integer|nil z The Z position of the container block
+function _acp__ModyfiableInventory.blockpos() end
+
+---Gets the entity unique id if any
+---@return integer|nil entity The entity unique id
+function _acp__ModyfiableInventory.entity() end
+
+---Takes all the items from the selected slot (as if you left clicked an item)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.takeAll(container, slot) end
+
+---Takes half the items from the selected slot (as if you right clicked an item)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.takeHalf(container, slot) end
+
+---Places all the items from the selected slot (as if you left clicked an item)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.placeAll(container, slot) end
+
+---Places one item from the selected slot (as if you right clicked an item)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.placeOne(container, slot) end
+
+---Drops all the items from the selected slot (as if you pressed ctrl+Q)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.dropAll(container, slot) end
+
+---Drops one item from the selected slot (as if you pressed Q)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.dropOne(container, slot) end
+
+---Sends an item flying from a slot to another
+---@param fromContainer string The container name to send from
+---@param fromSlot integer The slot to send from
+---@param toContainer string The container name to send to
+---@param toSlot integer The slot to send to
+function _acp__ModyfiableInventory.sendFlyingItem(fromContainer, fromSlot, toContainer, toSlot) end
+
+---Sends an item flying from a slot to another
+---@param fromContainer string The container name to send from
+---@param fromSlot integer The slot to send from
+---@param toContainer string The container name to send to
+---@param toSlot integer The slot to send to
+---@param item Item|integer The item to send flying
+function _acp__ModyfiableInventory.sendFlyingItem(fromContainer, fromSlot, toContainer, toSlot, item) end
+
+
+
+
+
+
+
+
+
+
+
 
 ---@class Inventory
 ---@field size integer The size of the inventory
@@ -430,6 +504,11 @@ function _acp_Inventory.offhand() end
 ---The item in the main hand
 ---@return Item|nil handItem The item in the main hand
 function _acp_Inventory.selectedItem() end
+
+---The item in the main hand
+---@return ModyfiableInventory|nil modify The item in the main hand
+function _acp_Inventory.modify() end
+
 
 
 ---The item in slot or nil
