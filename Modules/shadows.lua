@@ -27,10 +27,14 @@ blockQueueMax = 3000
 
 raycastOffset = radius * 1e-3
 
-function postInit()
+function onEnable()
     if not fs.exist("shadowTiles.png") then
         scriptingRepo.downloadDataFile("shadowTiles.png")
     end
+end
+
+function onNetworkData(code, id, data)
+
 end
 
 function setQuality()
@@ -487,7 +491,7 @@ function checkBlockFromQueue()
             end
         end
     end
-    if yPosBlock then             --****----------- Good one
+    if yPosBlock then
         local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
 
         local numQuadsInShadow = {}
