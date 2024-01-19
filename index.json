@@ -1176,6 +1176,18 @@
       "lastUpdated": "2023-09-05T22:17:05.162Z"
     },
     {
+      "name": "Shadows",
+      "description": "Real Time Shadows?!??!",
+      "file": "shadows.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/shadows.lua",
+      "libs": [
+        "scripting-repo"
+      ],
+      "commands": [],
+      "hash": "38cb3b37c02f4b948c5fa521abc1f7c4",
+      "lastUpdated": "2024-01-19T00:50:58.716Z"
+    },
+    {
       "name": "Show Blocks",
       "description": "Shows blocks in the world",
       "file": "showBlocks.lua",
