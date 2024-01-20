@@ -91,7 +91,7 @@ function update()
         lastQualitySetting = qualitySetting.value
     end
 
-    if dimension.time() > 0.25 and dimension.time() < 0.75 then return end
+    if (dimension.time() > 0.25 and dimension.time() < 0.75) or dimension.id() == 1 then return end
 
     px, py, pz = player.position()
 
@@ -192,7 +192,7 @@ quadsToRender = {}
 function render3d(dt)
     if radius == nil then return end --in case this runs before the settings are defined
 
-    if dimension.time() > 0.25 and dimension.time() < 0.75 then return end
+    if (dimension.time() > 0.25 and dimension.time() < 0.75) or dimension.id() == 1 then return end
 
     if #blockCheckQueue > blockQueueMax then
         local newQueue = {}
