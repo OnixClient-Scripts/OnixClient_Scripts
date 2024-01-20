@@ -69,7 +69,7 @@ timeSinceUpdate = 0
 i = 0
 changeSlowness = 3
 function update()
-    if dimension.id() ~= 1 then return end
+    if dimension.id() ~= 0 then return end
 
     changeSlowness = math.floor(timeSetting.value * 10)
     i = i + 1
@@ -100,7 +100,7 @@ end
 thisBrightness = 1
 thisContrast = 1
 function render(dt)
-    if dimension.id() ~= 1 then
+    if dimension.id() ~= 0 then
         brightnessSetting.value = 1
         contrastSetting.value = 0
         return
