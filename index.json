@@ -1024,6 +1024,16 @@
       "lastUpdated": "2022-08-29T09:41:19.000Z"
     },
     {
+      "name": "Projectile Trajectory",
+      "description": "Shows you where your projectiles will hit",
+      "file": "projectileTrajectory.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/projectileTrajectory.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "c8bbf4b836ca63029ad5650f30d9aee4",
+      "lastUpdated": "2024-01-20T02:46:18.954Z"
+    },
+    {
       "name": "PvP Helper",
       "description": "A mod that can help you improve your PvP.",
       "file": "PvPHelper.lua",
