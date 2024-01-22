@@ -1079,6 +1079,16 @@
       "lastUpdated": "2023-07-10T23:48:38.000Z"
     },
     {
+      "name": "Redstone Power Display",
+      "description": "Shows you the power of nearby redstone.",
+      "file": "redstonePowerDisplay.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/redstonePowerDisplay.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "b8a684e80a0f61406c78242941682da5",
+      "lastUpdated": "2024-01-22T00:45:42.443Z"
+    },
+    {
       "name": "RenderThreeD library exemples",
       "description": "Contains all the exemples from RenderThreeD library",
       "file": "renderthreeDexemples.lua",
