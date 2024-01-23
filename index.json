@@ -1408,6 +1408,16 @@
       "lastUpdated": "2022-07-26T23:27:30.000Z"
     },
     {
+      "name": "Waypoint Hotkey",
+      "description": "Allows you to create a waypoint on a hotkey.",
+      "file": "WaypointHotkey.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WaypointHotkey.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "7457325c1fe9ee95ba4943366149ed08",
+      "lastUpdated": "2024-01-23T20:12:22.588Z"
+    },
+    {
       "name": "Waypoint Mods",
       "description": "Mods for waypoints",
       "file": "WaypointMods.lua",
