@@ -5,6 +5,116 @@
 event = {}
 
 
+---@class ModalFormRequestCustomFormContentLabel
+---@field text string
+
+---@class ModalFormRequestCustomFormContentInput
+---@field text string
+---@field placeholder string
+---@field default string
+
+---@class ModalFormRequestCustomFormContentDropdown
+---@field text string
+---@field options string[]
+---@field default integer
+
+---@class ModalFormRequestCustomFormContentSlider
+---@field text string
+---@field min integer
+---@field max integer
+---@field value integer
+
+---@class ModalFormRequestCustomFormContentStepSlider
+---@field text string
+---@field steps string[]
+---@field default integer
+
+---@class ModalFormRequestCustomFormContentToggle
+---@field text string
+---@field default boolean
+
+---@class ModalFormRequestCustomFormContent
+---@field type string|"label"|"input"|"dropdown"|"slider"|"step_slider"|"toggle"
+---@field label ModalFormRequestCustomFormContentLabel
+---@field input ModalFormRequestCustomFormContentInput
+---@field dropdown ModalFormRequestCustomFormContentDropdown
+---@field slider ModalFormRequestCustomFormContentSlider
+---@field stepSlider ModalFormRequestCustomFormContentStepSlider
+---@field toggle ModalFormRequestCustomFormContentToggle
+
+
+
+
+---@class ModalFormRequestCustomForm
+---@field title string
+---@field content ModalFormRequestCustomFormContent[]
+
+---@class ModalFormRequestModal
+---@field title string
+---@field content string
+---@field button1 string
+---@field button2 string
+
+---@class ModalFormRequestFormImage
+---@field type string|"path"|"url"
+---@field data string
+
+---@class ModalFormRequestFormButton
+---@field text string
+---@field image ModalFormRequestFormImage|nil
+
+---@class ModalFormRequestForm
+---@field title string
+---@field content string
+---@field buttons ModalFormRequestFormButton[]
+
+
+
+---@class ModalFormRequest
+---@field type string|"custom_form"|"form"|"modal"
+---@field customForm ModalFormRequestCustomForm|nil
+---@field form ModalFormRequestForm|nil
+---@field modal ModalFormRequestModal|nil
+
+
+---@class ModalFormReplyer_CustomForm
+---@field canReply boolean Whether the form can be replied to, false when already replied or event was not canceled
+local _acp__ModalFormReplyer_CustomForm_ = {}
+---Sets the value of a control in the custom form, invalid values will result in errors
+---@param index integer The index of the control to reply to
+---@param value string|integer|boolean|nil The value to reply with
+function _acp__ModalFormReplyer_CustomForm_:replyTo(index, value) end
+---Sends the form
+function _acp__ModalFormReplyer_CustomForm_:reply() end
+---Closes the form without replying
+function _acp__ModalFormReplyer_CustomForm_:cancel() end
+
+---@class ModalFormReplyer_Form
+---@field canReply boolean Whether the form can be replied to, false when already replied or event was not canceled
+local _acp__ModalFormReplyer_Form_ = {}
+---Clicks the button at the specified index
+---@param index integer The index of the button to click
+function _acp__ModalFormReplyer_Form_:reply(index) end
+---Closes the form without clicking anything
+function _acp__ModalFormReplyer_Form_:cancel() end
+
+---@class ModalFormReplyer_Modal
+---@field canReply boolean Whether the form can be replied to, false when already replied or event was not canceled
+local _acp__ModalFormReplyer_Modal_ = {}
+---Clicks the button 1 or two
+---@param isButton1 boolean Whether to click button 1 or 2
+function _acp__ModalFormReplyer_Modal_:reply(isButton1) end
+---Closes the form without clicking anything
+function _acp__ModalFormReplyer_Modal_:cancel() end
+
+---@class ModalFormReplyer
+---@field customForm ModalFormReplyer_CustomForm|nil
+---@field form ModalFormReplyer_Form|nil
+---@field modal ModalFormReplyer_Modal|nil
+
+
+
+
 ---Binds an event to a function
 ---Here are the events you can listen to
 ---This will be called everytime the user presses a key.
@@ -77,7 +187,7 @@ event = {}
 ---event.listen("TitleChanged", function(text, titleType)
 ---    
 ---end)
----@param eventName string | '"KeyboardInput", function(key, down)\n\t\nend' | '"MouseInput", function(button, down)\n\t\nend' | '"ChatMessageAdded", function(message, username, type, xuid)\n\t\nend' | '"LocalDataReceived", function(uuid, content)\n\t\nend' | '"ConfigurationSaved", function()\n\tlocal data = {}\n\t\n\treturn data\nend' | '"ConfigurationLoaded", function(data)\n\t\nend' | '"LocalServerUpdate", function()\n\t\nend' | '"BlockChanged", function(x, y, z, newBlock, oldBlock)\n\t\nend' | '"TitleChanged", function(text, titleType)\n\t\nend'|'"InventoryTick", function()\n\t\nend' Name of the event to listen to
+---@param eventName string | '"KeyboardInput", function(key, down)\n\t\nend' | '"MouseInput", function(button, down)\n\t\nend' | '"ChatMessageAdded", function(message, username, type, xuid)\n\t\nend' | '"LocalDataReceived", function(uuid, content)\n\t\nend' | '"ConfigurationSaved", function()\n\tlocal data = {}\n\t\n\treturn data\nend' | '"ConfigurationLoaded", function(data)\n\t\nend' | '"LocalServerUpdate", function()\n\t\nend' | '"BlockChanged", function(x, y, z, newBlock, oldBlock)\n\t\nend' | '"TitleChanged", function(text, titleType)\n\t\nend'|'"InventoryTick", function()\n\t\nend'|'"ModalRequested", function (ARG1, ARG2)\n\t--use these (autocomplete)\n\t---@type ModalFormRequest\n\tlocal request = ARG1\n\t---@type ModalFormReplyer\n\tlocal response = ARG2\n\t\nend' Name of the event to listen to
 ---@param handler function Function that will handle the event
 ---@return nil
 function event.listen(eventName, handler) end
