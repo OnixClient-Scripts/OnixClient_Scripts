@@ -442,6 +442,12 @@ function _acp__ModyfiableInventory.takeAll(container, slot) end
 ---@param slot integer The slot to take from
 function _acp__ModyfiableInventory.takeHalf(container, slot) end
 
+---Sends the item somewhere else if possible (same as shift+click)
+---@param container string The container name
+---@param slot integer The slot to take from
+---@param amount integer|nil The amount to transfer (defaults to the whole stack)
+function _acp__ModyfiableInventory.autoPlace(container, slot, amount) end
+
 ---Places all the items from the selected slot (as if you left clicked an item)
 ---@param container string The container name
 ---@param slot integer The slot to take from
