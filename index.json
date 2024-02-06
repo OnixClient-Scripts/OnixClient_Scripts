@@ -760,6 +760,16 @@
       "lastUpdated": "2022-08-29T09:41:19.000Z"
     },
     {
+      "name": "Java View Bobbing",
+      "description": "Makes the view bobbing like in Java Edition.",
+      "file": "JavaViewBobbing.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/JavaViewBobbing.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "95824b70e4c3de3253f76ca712f472cb",
+      "lastUpdated": "2024-02-06T23:42:33.308Z"
+    },
+    {
       "name": "Keyboard Displayer",
       "description": "Show what Keyboard keys you have pressed",
       "file": "KeyboardDisplayer.lua",
