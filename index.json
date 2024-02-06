@@ -154,6 +154,16 @@
       "lastUpdated": "2023-08-20T12:16:08.285Z"
     },
     {
+      "name": "Better Camera",
+      "description": "Overhauls the camera!",
+      "file": "BetterCamera.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/BetterCamera.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "e478db97fb393a1614bc3c3f6bcb10cb",
+      "lastUpdated": "2024-02-06T23:43:56.760Z"
+    },
+    {
       "name": "Better Coordinates",
       "description": "A customizable coordinates module",
       "file": "coords.lua",
@@ -689,15 +699,16 @@
     },
     {
       "name": "Immersive First Person",
-      "description": "Look at yourself and see... yourself",
+      "description": "Look at yourself.. to see yourself..",
       "file": "ImmersiveFirstPerson.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ImmersiveFirstPerson.lua",
       "libs": [
-        "cosmeticTools"
+        "cosmeticTools",
+        "Utils"
       ],
       "commands": [],
-      "hash": "42511300b7ef7aabcd495bebada5cd4f",
-      "lastUpdated": "2023-08-14T16:02:45.000Z"
+      "hash": "831a32011a4c9624bf282201f327d75a",
+      "lastUpdated": "2024-02-06T23:43:56.762Z"
     },
     {
       "name": "Immersive Hunger",
@@ -768,6 +779,16 @@
       "commands": [],
       "hash": "95824b70e4c3de3253f76ca712f472cb",
       "lastUpdated": "2024-02-06T23:42:33.308Z"
+    },
+    {
+      "name": "Jetpack Joyride",
+      "description": "Simple Jetpack Joyride clone.",
+      "file": "JetpackJoyride.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/JetpackJoyride.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "432fe0d5b8fccdf7608fc63cfabba482",
+      "lastUpdated": "2024-02-06T23:43:56.762Z"
     },
     {
       "name": "Keyboard Displayer",
