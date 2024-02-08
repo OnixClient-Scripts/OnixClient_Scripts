@@ -419,6 +419,8 @@ local _acp_Enchants = {}
 local _acp__ModyfiableInventory = {}
 
 ---Gets the item in the slot for a container
+---@param container string The container name
+---@param slot integer The slot to get from
 ---@return Item|nil item The item in the slot
 function _acp__ModyfiableInventory.at(container, slot) end
 
