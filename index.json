@@ -1805,6 +1805,13 @@
       "lastUpdated": "2023-09-05T22:17:05.172Z"
     },
     {
+      "name": "freecamHelper",
+      "file": "freecamHelper.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/freecamHelper.lua",
+      "hash": "ac918e340c692a911c24d2bfd2b97810",
+      "lastUpdated": "2024-02-11T01:07:09.431Z"
+    },
+    {
       "name": "functionsPlusPlus",
       "file": "functionsPlusPlus.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/functionsPlusPlus.lua",
