@@ -1962,8 +1962,8 @@
       "name": "vectors",
       "file": "vectors.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/vectors.lua",
-      "hash": "623d21b7aa3a89756d129c32f01209db",
-      "lastUpdated": "2023-08-01T01:17:26.000Z"
+      "hash": "d76b02d3d1b6c77a20cb617c3cad825f",
+      "lastUpdated": "2024-02-11T01:12:38.206Z"
     },
     {
       "name": "Wait",
