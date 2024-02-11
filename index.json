@@ -1512,6 +1512,8 @@
       ],
       "commands": [
         "WEhelp",
+        "wehelp",
+        "WeHelp",
         "fill",
         "replace",
         "rep",
@@ -1537,10 +1539,11 @@
         "selnear",
         "rot",
         "rotate",
-        "findstate"
+        "findstate",
+        "undo"
       ],
-      "hash": "db990fde6b91d8e3ea9d2b7466448638",
-      "lastUpdated": "2023-08-18T20:24:04.357Z"
+      "hash": "40e321e64d8aef5319b992493580b53e",
+      "lastUpdated": "2024-02-11T01:15:26.077Z"
     },
     {
       "name": "Zeqa Autoqueue",
