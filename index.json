@@ -331,6 +331,16 @@
       "lastUpdated": "2023-05-23T17:05:20.000Z"
     },
     {
+      "name": "Click To Ten",
+      "description": "Click to ten and then crash.",
+      "file": "ClickToTen.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ClickToTen.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "dd7de21edde6711590654b53787e54a3",
+      "lastUpdated": "2024-02-11T00:10:46.442Z"
+    },
+    {
       "name": "Copy Last Message",
       "description": "Allows you to copy the last messsage sent in chat",
       "file": "CopyLastMessage.lua",
