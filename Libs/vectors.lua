@@ -106,8 +106,24 @@ function vec:sub(otherVec)
     return self
 end
 
+-- creates a copy of a table, removing the reference to the original
+function deepCopy(orig)
+    local copy
+    if type(orig) == 'table' then
+        copy = {}
+        for key, value in pairs(orig) do
+            copy[deepCopy(key)] = deepCopy(value)
+        end
+        setmetatable(copy, deepCopy(getmetatable(orig)))
+    else
+        copy = orig
+    end
+    return copy
+end
+
 function vec:copy()
-    newVec = vec:new(self.components)
+    local c = deepCopy(self.components)
+    newVec = vec:new(c)
     return newVec
 end
 
