@@ -1263,6 +1263,18 @@
       "lastUpdated": "2023-09-05T22:17:05.165Z"
     },
     {
+      "name": "Shulker display",
+      "description": "Show a shulker box's contents in your inventory",
+      "file": "shulker-display.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/shulker-display.lua",
+      "libs": [
+        "key-codes"
+      ],
+      "commands": [],
+      "hash": "fa34bd5388189a4f4dfe647f824b4b99",
+      "lastUpdated": "2024-02-13T17:35:47.754Z"
+    },
+    {
       "name": "Skinstealer",
       "description": "Steals peoples skins.",
       "file": "Skinstealer.lua",
