@@ -1,14 +1,15 @@
-name = "Shulker display"
-description = "Show a shulker box's contents in your inventory"
+name = "Inventory Tweaks"
+description = "Multiple tweaks for using your inventory, including shulker display"
 
 --[[
-  Version: 1.0.0
+  Version: 1.1.0
   By: Tom16
 ]]
 
 importLib("key-codes.lua")
 
 --[[
+  renamed to inv tweaks because add more tweaks to the same script
   smol shulker contents viewer script that took waaaaaay too long to release
   originally used mouse coordinates to locate currently hovered inv slots
   thank onix for the better api via inventory.modify
@@ -22,41 +23,86 @@ importLib("key-codes.lua")
 
 renderEverywhere = true
 
-local settings = {
-  client.settings.addAir(2),
+Settings = {
+  client.settings.addCategory("Shulker Display"),
 
   client.settings.addInfo("Tint the background of the contents hover to the dye colour of the viewed shulker box."),
-  colouredShulkers = client.settings.addNamelessBool("Coloured shulkers", true),
+  colouredShulkers = client.settings.addNamelessBool("Coloured Shulkers", true),
 
   client.settings.addAir(2),
 
-  client.settings.addInfo("Assign a button to toggle between views (Full view and condensed item count view)"),
+  client.settings.addInfo("Assign a button to toggle between views (Full View and condensed Item Count view)."),
   ---@diagnostic disable-next-line: undefined-global
-  toggleView = client.settings.addNamelessKeybind("Toggle view", KeyCodes.LeftShift),
-  defaultView = client.settings.addNamelessEnum("Default view", 2, {{ 1, "Item count" }, { 2, "Full view" }}),
-  countView = client.settings.addNamelessEnum("Count format", 1, {{ 1, "Total items" }, { 2, "Total stacks (rounded up)" }, { 3, "Total stacks (rounded down)" }}),
+  toggleView = client.settings.addNamelessKeybind("Toggle View", KeyCodes.Shift),
+  defaultView = client.settings.addNamelessEnum("Default View", 2, { { 1, "Item Count" }, { 2, "Full View" } }),
 
-  client.settings.addInfo("This only applies to the condensed item count view."),
+  client.settings.addAir(2),
 
-  client.settings.addCategory("Examples"),
-  client.settings.addInfo("Total items: 2 stacks and 23 will show 151."),
-  client.settings.addInfo("Total stacks (rounded up): 2 stacks and 23 will show 3."),
-  client.settings.addInfo("Total stacks (rounded down): 2 stacks and 23 will show 2."),
+  client.settings.addInfo("This only applies to the condensed Item Count view."),
+  countView = client.settings.addNamelessEnum("Count Format", 1, { { 1, "Total Items" }, { 2, "Total Stacks (Rounded Up)" }, { 3, "Total Stacks (Rounded Down)" } }),
+
+  client.settings.addInfo("Total Items: 2 stacks and 23 will show '151'."),
+  client.settings.addInfo("Total Stacks (Rounded Up): 2 stacks and 23 will show '3s'."),
+  client.settings.addInfo("Total Stacks (Rounded Down): 2 stacks and 23 will show '2s'."),
+
+  client.settings.addAir(5),
+
   client.settings.stopCategory(),
+  client.settings.addCategory("Miscellaneous Tweaks"),
+
+  craftingShift = client.settings.addNamelessBool("Shift Click Crafting", true),
+  client.settings.addInfo("Shift-click items from your inventory into crafting tables."),
+
+  client.settings.addAir(2),
+
+  dragMouse = client.settings.addNamelessBool("Drag Over Items", true),
+  client.settings.addInfo("Drag your mouse over multiple slots while holding shift to move them all."),
+
+  client.settings.addAir(2),
+
+  scrollItems = client.settings.addNamelessBool("Scroll Items", true),
+  client.settings.addInfo("Use your scroll wheel to move a specific amount of items from a slot."),
+
+  client.settings.stopCategory()
 }
 
 MX, MY = gui.mousex, gui.mousey
 local toggleView = false
-
-function mouseIn(x, y, w, h)
-  return (x <= MX() and MX() < x + w) and (y <= MY() and MY() < y + h)
-end
 
 function screenIs(...)
   for _, s in ipairs({ ... }) do if gui.screen() == s then return true end end
   return false
 end
 
+-- might be missing some inv screens
+local SHULKER_SUPPORTED_SCREENS = {
+  "inventory_screen",
+  "crafting_screen",
+  "small_chest_screen",
+  "ender_chest_screen",
+  "barrel_screen",
+  "shulker_box_screen",
+  "large_chest_screen",
+  "furnace_screen",
+  "blast_furnace_screen",
+  "smoker_screen",
+  "dropper_screen",
+  "dispenser_screen",
+  "hopper_screen",
+  "anvil_screen",
+  "loom_screen",
+  "enchanting_screen",
+  "cartography_screen",
+  "beacon_screen",
+  "trade_screen",
+  "horse_screen",
+  "brewing_stand_screen",
+  "smithing_table_screen",
+  "grindstone_screen",
+  "stonecutter_screen"
+}
+
+--#region Shulker display
 local shulkerItem = (function ()
   return function(item)
     if not item then return end
@@ -136,9 +182,9 @@ local renderShulker = (function ()
     if count == 1 then return end
     local countText = tostring(count)
 
-    if settings.countView.value == 2 then
+    if Settings.countView.value == 2 then
       countText = tostring((count + 63) // 64) .. "s"
-    elseif settings.countView.value == 3 then
+    elseif Settings.countView.value == 3 then
       local stacks = count // 64
       countText = stacks == 0 and tostring(count) or (tostring(stacks) .. "s")
     end
@@ -217,7 +263,7 @@ local renderShulker = (function ()
     local renderLeft = bgX + bgW > gui.width()
     if renderLeft then bgX = MX() - bgW - 11 end
 
-    if shulker.colour and settings.colouredShulkers.value then
+    if shulker.colour and Settings.colouredShulkers.value then
       local hex = tonumber(COLOURS[shulker.colour], 16)
       local r, g, b = (hex >> 16) & 0xff, (hex >> 8) & 0xff, hex & 0xff
 
@@ -235,44 +281,138 @@ local renderShulker = (function ()
     end
   end
 end)()
+--#endregion
 
--- might be missing some inv screens
-local SUPPORTED_SCREENS = {
-  "inventory_screen",
-  "crafting_screen",
-  "small_chest_screen",
-  "ender_chest_screen",
-  "barrel_screen",
-  "shulker_box_screen",
-  "large_chest_screen",
-  "furnace_screen",
-  "blast_furnace_screen",
-  "smoker_screen",
-  "dropper_screen",
-  "dispenser_screen",
-  "hopper_screen",
-  "anvil_screen",
-  "loom_screen",
-  "enchanting_screen",
-  "cartography_screen",
-  "beacon_screen",
-  "trade_screen",
-  "horse_screen",
-  "brewing_stand_screen",
-  "smithing_table_screen",
-  "grindstone_screen",
-  "stonecutter_screen"
+--#region Misc tweaks
+local craftingShift = (function ()
+  ---@diagnostic disable: undefined-global
+
+  -- Shiftclick items into the crafting grid when in a crafting table
+
+  ---@param inv ModyfiableInventory
+  local function onTick(inv)
+    if not Settings.craftingShift.value then return end
+    if not inv then return end
+
+    if
+      inv.lastHoverSlotName == "crafting_input_items" or not KeyStates.shift or
+      gui.screen() ~= "crafting_screen" or not KeyStates.lmb or
+      inv.at(inv.lastHoverSlotName, inv.lastHoverSlotValue) == nil
+    then return end
+
+    for i = 1, 9 do
+      local cItem = inv.at("crafting_input_items", i)
+      if cItem ~= nil then goto cont end
+
+      inv.sendFlyingItem(inv.lastHoverSlotName, inv.lastHoverSlotValue, "crafting_input_items", i)
+      inv.takeAll(inv.lastHoverSlotName, inv.lastHoverSlotValue)
+      inv.placeAll("crafting_input_items", i)
+
+      ::cont::
+    end
+  end
+
+  return {
+    onTick = onTick,
+  }
+end)()
+local dragMouse = (function ()
+  ---@diagnostic disable: undefined-global
+
+  -- Drag your mouse over multiple slots while holding shift
+  -- to automatically move items from all slots into container
+
+  -- bug - when you shiftclick from creative menu, it gives two stacks
+
+  local lastSlot = {"", 0}
+
+  ---@param inv ModyfiableInventory
+  local function onTick(inv)
+    if not Settings.dragMouse.value then return end
+    if not inv then return end
+    if not KeyStates.shift or not KeyStates.lmb then return end
+
+    if lastSlot[1] == inv.lastHoverSlotName and lastSlot[2] == inv.lastHoverSlotValue then return end
+
+    lastSlot = { inv.lastHoverSlotName, inv.lastHoverSlotValue }
+
+    inv.autoPlace(inv.lastHoverSlotName, inv.lastHoverSlotValue)
+  end
+
+  return {
+    onTick = onTick,
+  }
+end)()
+local scrollItems = (function ()
+  ---@diagnostic disable: undefined-global
+
+  -- Use your scroll wheel to move a few items from a slot at a time
+  -- TODO: scroll the other way to pull them back
+  -- for that I can't use autoplace, need to move items manually
+
+  local scroll = {
+    hasScrolled = false,
+    down = true,
+  }
+
+  ---@param inv ModyfiableInventory
+  local function onTick(inv)
+    if not Settings.scrollItems.value then return end
+    if not inv then return end
+
+    if
+      scroll.hasScrolled and scroll.down and
+      inv.at(inv.lastHoverSlotName, inv.lastHoverSlotValue) ~= nil
+    then
+      inv.autoPlace(inv.lastHoverSlotName, inv.lastHoverSlotValue, 1)
+    end
+
+    scroll.hasScrolled = false
+  end
+
+  local function onMouse(btn, down)
+    if btn ~= 4 then return end
+
+    scroll.hasScrolled = true
+    scroll.down = down
+  end
+
+  return {
+    onTick = onTick,
+    onMouse = onMouse,
+  }
+end)()
+--#endregion
+
+KeyStates = {
+  lmb = false,
+  rmb = false,
+  shift = false,
 }
 
 event.listen("KeyboardInput", function(key, down)
-  if key == settings.toggleView.value then toggleView = down end
+  ---@diagnostic disable-next-line: undefined-global
+  if key == KeyCodes.Shift then KeyStates.shift = down end
+  if key == Settings.toggleView.value then toggleView = down end
+end)
+
+event.listen("MouseInput", function(btn, down)
+  if btn == 1 then KeyStates.lmb = down
+  elseif btn == 2 then KeyStates.rmb = down
+  end
+
+  scrollItems.onMouse(btn, down)
 end)
 
 local currentShulker = nil
 event.listen("InventoryTick", function()
   currentShulker = nil
-
   local inv = player.inventory().modify()
+
+  craftingShift.onTick(inv)
+  dragMouse.onTick(inv)
+  scrollItems.onTick(inv)
+
   if not inv then return end
 
   -- small problem - if you dont hover another slot, as this is LAST hover
@@ -283,7 +423,7 @@ event.listen("InventoryTick", function()
 end)
 
 function render()
-  if currentShulker == nil or not screenIs(table.unpack(SUPPORTED_SCREENS)) then return end
+  if currentShulker == nil or not screenIs(table.unpack(SHULKER_SUPPORTED_SCREENS)) then return end
 
-  renderShulker(currentShulker, toggleView == (settings.defaultView.value == 2))
+  renderShulker(currentShulker, toggleView == (Settings.defaultView.value == 2))
 end
