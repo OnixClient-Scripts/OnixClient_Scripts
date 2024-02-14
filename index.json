@@ -771,6 +771,18 @@
       "lastUpdated": "2022-01-14T13:58:27.000Z"
     },
     {
+      "name": "Inventory Tweaks",
+      "description": "Multiple tweaks for using your inventory, including shulker display",
+      "file": "inventory-tweaks.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/inventory-tweaks.lua",
+      "libs": [
+        "key-codes"
+      ],
+      "commands": [],
+      "hash": "8cd6b44bb97b9b70fc9c2a576f1fdf60",
+      "lastUpdated": "2024-02-14T19:07:19.665Z"
+    },
+    {
       "name": "Item Counter",
       "description": "gives the amount of iron ingot, gold ingot, diamond, and emerald",
       "file": "itemcounter.lua",
@@ -1261,18 +1273,6 @@
       ],
       "hash": "a1c0ff5b6df970768243d1effe4a3c63",
       "lastUpdated": "2023-09-05T22:17:05.165Z"
-    },
-    {
-      "name": "Shulker display",
-      "description": "Show a shulker box's contents in your inventory",
-      "file": "shulker-display.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/shulker-display.lua",
-      "libs": [
-        "key-codes"
-      ],
-      "commands": [],
-      "hash": "fa34bd5388189a4f4dfe647f824b4b99",
-      "lastUpdated": "2024-02-13T17:35:47.754Z"
     },
     {
       "name": "Skinstealer",
