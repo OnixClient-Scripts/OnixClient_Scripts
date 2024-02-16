@@ -26,3 +26,4 @@ function keyboard(key, isDown)
         end
     end
 end
+event.listen("KeyboardInput", keyboard)
