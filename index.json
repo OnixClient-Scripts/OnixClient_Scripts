@@ -845,6 +845,16 @@
       "lastUpdated": "2023-10-30T15:44:40.087Z"
     },
     {
+      "name": "Left Hand",
+      "description": "Moves the left hand to the left side of the screen.",
+      "file": "LeftHand.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/LeftHand.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "9a2a32d431f7b527719bfeb2b384c592",
+      "lastUpdated": "2024-02-18T15:10:34.497Z"
+    },
+    {
       "name": "Logger",
       "description": "Logs things better",
       "file": "loggerUI.lua",
