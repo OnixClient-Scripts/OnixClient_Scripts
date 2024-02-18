@@ -2,7 +2,7 @@ name = "Inventory Tweaks"
 description = "Multiple tweaks for using your inventory, including shulker display"
 
 --[[
-  Version: 1.1.0
+  Version: 1.2.0
   By: Tom16
 ]]
 
@@ -57,6 +57,14 @@ Settings = {
 
   dragMouse = client.settings.addNamelessBool("Drag Over Items", true),
   client.settings.addInfo("Drag your mouse over multiple slots while holding shift to move them all."),
+
+  client.settings.addAir(2),
+
+  dragDrop = client.settings.addNamelessBool("Drag Drop Items", true),
+  ---@diagnostic disable-next-line: undefined-global
+  dropKey = client.settings.addNamelessKeybind("Drop Key", KeyCodes.KeyQ),
+  requireRightClickForDragDrop = client.settings.addNamelessBool("Require Right Click", true),
+  client.settings.addInfo("Drag your mouse over multiple slots while holding your drop key to drop them all."),
 
   client.settings.addAir(2),
 
@@ -343,6 +351,32 @@ local dragMouse = (function ()
     onTick = onTick,
   }
 end)()
+local dragDrop = (function ()
+  ---@diagnostic disable: undefined-global
+
+  -- Drag your mouse over multiple slots while holding your drop key
+  -- to drop them all
+
+  local lastSlot = { "", 0 }
+
+  ---@param inv ModyfiableInventory
+  local function onTick(inv)
+    if not Settings.dragDrop.value then return end
+    if not inv then return end
+    if not KeyStates.drop then return end
+    if Settings.requireRightClickForDragDrop.value and not KeyStates.rmb then return end
+
+    if lastSlot[1] == inv.lastHoverSlotName and lastSlot[2] == inv.lastHoverSlotValue then return end
+
+    lastSlot = { inv.lastHoverSlotName, inv.lastHoverSlotValue }
+
+    inv.dropAll(inv.lastHoverSlotName, inv.lastHoverSlotValue)
+  end
+
+  return {
+    onTick = onTick,
+  }
+end)()
 local scrollItems = (function ()
   ---@diagnostic disable: undefined-global
 
@@ -388,15 +422,21 @@ KeyStates = {
   lmb = false,
   rmb = false,
   shift = false,
+  drop = false,
 }
 
 event.listen("KeyboardInput", function(key, down)
+  if gui.screen() == "hud_screen" then return end
+
   ---@diagnostic disable-next-line: undefined-global
   if key == KeyCodes.Shift then KeyStates.shift = down end
   if key == Settings.toggleView.value then toggleView = down end
+  if key == Settings.dropKey.value then KeyStates.drop = down end
 end)
 
 event.listen("MouseInput", function(btn, down)
+  if gui.screen() == "hud_screen" then return end
+
   if btn == 1 then KeyStates.lmb = down
   elseif btn == 2 then KeyStates.rmb = down
   end
@@ -411,6 +451,7 @@ event.listen("InventoryTick", function()
 
   craftingShift.onTick(inv)
   dragMouse.onTick(inv)
+  dragDrop.onTick(inv)
   scrollItems.onTick(inv)
 
   if not inv then return end
