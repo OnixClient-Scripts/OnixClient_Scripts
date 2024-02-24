@@ -905,6 +905,30 @@
       "lastUpdated": "2021-08-21T10:29:45.000Z"
     },
     {
+      "name": "Minimap v2",
+      "description": "A map of blocks around you. Slow but has a lot of features.",
+      "file": "minimap2.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/minimap2.lua",
+      "libs": [
+        "MinimapBlockTools"
+      ],
+      "commands": [],
+      "hash": "15e1000c87d28b638d8eda4376f4631b",
+      "lastUpdated": "2024-02-24T20:58:40.443Z"
+    },
+    {
+      "name": "Minimap v3",
+      "description": "Much quicker than Minimap v2, but not as pretty-looking.",
+      "file": "minimap3.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/minimap3.lua",
+      "libs": [
+        "MinimapBlockTools"
+      ],
+      "commands": [],
+      "hash": "acd245242d89a0e4b547fcb6359f7b64",
+      "lastUpdated": "2024-02-24T20:58:40.443Z"
+    },
+    {
       "name": "Mining mod",
       "description": "Usefull infos and stats for mining",
       "file": "miningmod.lua",
