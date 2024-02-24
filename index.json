@@ -226,6 +226,18 @@
       "lastUpdated": "2023-06-21T13:52:13.000Z"
     },
     {
+      "name": "Camera Animations",
+      "description": "A camera animation system, only works in creative mode and is still buggy.",
+      "file": "cameraAnimations.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/cameraAnimations.lua",
+      "libs": [
+        "freecamHelper"
+      ],
+      "commands": [],
+      "hash": "90f8edfe5fe00a703b9c94dfc4a215a6",
+      "lastUpdated": "2024-02-24T21:16:47.972Z"
+    },
+    {
       "name": "Camera Effects",
       "description": "Adds auto exposure and lens flares to the game.",
       "file": "cameraEffects.lua",
