@@ -203,7 +203,7 @@ end
 
 function vec:cross(otherVec)
     if #self.components == 3 and #otherVec.components == 3 then
-        local x = self.y * otherVec.z - self.z - otherVec.y
+        local x = self.y * otherVec.z - self.z * otherVec.y
         local y = self.z * otherVec.x - self.x * otherVec.z
         local z = self.x * otherVec.y - self.y * otherVec.x
 
@@ -354,6 +354,7 @@ Properties of a Vector:
     __.x  the first component of a vector
     __.y  the second component of a vector
     __.z  the third component of a vector
+    __.w  the fourth component of a vector
 
     __.r  the first component of a vector
     __.g  the second component of a vector
