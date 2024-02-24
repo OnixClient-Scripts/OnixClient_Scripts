@@ -14,9 +14,6 @@ skipNonStackable = true
 minimumCountToShow = 1
 itemInHandOnTop = true
 handItemOnly = false
-textColor = {255,255,255}
-backColor = {0,0,0,127}
-
 
 client.settings.addBool("Skip non-stackable Items", "skipNonStackable")
 client.settings.addInt("Minimum Amount to Show", "minimumCountToShow", 1, 128)
@@ -26,8 +23,8 @@ client.settings.addBool("Hand Item on Top", "itemInHandOnTop")
 client.settings.addBool("Hand Item Only", "handItemOnly")
 
 client.settings.addAir(10)
-client.settings.addColor("Text Color", "textColor")
-client.settings.addColor("Background Color", "backColor")
+textColor = client.settings.addNamelessColor("Text Color", {255,255,255, 127})
+backColor = client.settings.addNamelessColor("Background Color", {0, 0, 0, 127})
 
 function render()
     local inventory = player.inventory()
@@ -102,13 +99,13 @@ function render()
     if (handItemOnly == true and inventory.at(inventory.selected) == nil) then return end
 
     --background
-    gfx.color(backColor.r, backColor.g, backColor.b, backColor.a)
+    gfx.color(backColor.value.r, backColor.value.g, backColor.value.b, backColor.value.a)
     gfx.rect(0,0, sizeX, sizeY)
 
     --render the module
     yval = 2
     yjump = 10
-    gfx.color(textColor.r, textColor.g, textColor.b, textColor.a)
+    gfx.color(textColor.value.r, textColor.value.g, textColor.value.b, textColor.value.a)
     for name, item in pairs(items) do
         if item.count >= minimumCountToShow then 
             gfx.item(1, yval, item.location, 0.69)
