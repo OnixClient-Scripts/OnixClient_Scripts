@@ -25,6 +25,8 @@ client.settings.addBool("Hand Item Only", "handItemOnly")
 client.settings.addAir(10)
 textColor = client.settings.addNamelessColor("Text Color", {255,255,255, 127})
 backColor = client.settings.addNamelessColor("Background Color", {0, 0, 0, 127})
+roundedCornerRadius = client.settings.addNamelessFloat("Roundness ^('_')^", 0, 10, 2)
+roundedCornerQuality = client.settings.addNamelessFloat("Triangleness <><><><>", 1, 15, 5)
 
 function render()
     local inventory = player.inventory()
@@ -99,13 +101,13 @@ function render()
     if (handItemOnly == true and inventory.at(inventory.selected) == nil) then return end
 
     --background
-    gfx.color(backColor.value.r, backColor.value.g, backColor.value.b, backColor.value.a)
-    gfx.rect(0,0, sizeX, sizeY)
+    gfx.color(backColor)
+    gfx.roundRect(0,0, sizeX, sizeY, roundedCornerRadius.value, roundedCornerQuality.value)
 
     --render the module
     yval = 2
     yjump = 10
-    gfx.color(textColor.value.r, textColor.value.g, textColor.value.b, textColor.value.a)
+    gfx.color(textColor)
     for name, item in pairs(items) do
         if item.count >= minimumCountToShow then 
             gfx.item(1, yval, item.location, 0.69)
