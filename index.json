@@ -767,8 +767,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/inventoryItemCounter.lua",
       "libs": [],
       "commands": [],
-      "hash": "45b2e7c71c9fb95a211514af3a7ef42b",
-      "lastUpdated": "2022-01-14T13:58:27.000Z"
+      "hash": "d5706d78095dc4097acc0ba308f65d94",
+      "lastUpdated": "2024-02-24T20:59:37.815Z"
     },
     {
       "name": "Inventory Tweaks",
