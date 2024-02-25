@@ -19,6 +19,9 @@ function render(timeSinceUpdate)
 end
 
 function render2(timeSinceUpdate)
+    if offHandItem == nil then
+        return
+    end
     if (offHandName == "filled_map") then
         local maxTextWidth = gfx2.textSize(offHandItem.displayName)
         gfx2.color(backgroundColorSetting)
