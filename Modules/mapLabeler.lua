@@ -15,14 +15,13 @@ backgroundColorSetting = client.settings.addNamelessColor("Background Color", {2
 function render(timeSinceUpdate)
     inventory = player.inventory()
     offHandItem = inventory.offhand()
-    offHandName = offHandItem.name
 end
 
 function render2(timeSinceUpdate)
     if offHandItem == nil then
         return
     end
-    if (offHandName == "filled_map") then
+    if (offHandItem.name == "filled_map") then
         local maxTextWidth = gfx2.textSize(offHandItem.displayName)
         gfx2.color(backgroundColorSetting)
         sizeX = maxTextWidth * 1.2
