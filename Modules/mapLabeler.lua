@@ -12,11 +12,13 @@ sizeY = 10
 textColorSetting = client.settings.addNamelessColor("Text Color", {0, 0, 0})
 backgroundColorSetting = client.settings.addNamelessColor("Background Color", {255, 255, 255, 128})
 
-
-function render2(timeSinceUpdate)
+function render(timeSinceUpdate)
     inventory = player.inventory()
     offHandItem = inventory.offhand()
     offHandName = offHandItem.name
+end
+
+function render2(timeSinceUpdate)
     if (offHandName == "filled_map") then
         local maxTextWidth = gfx2.textSize(offHandItem.displayName)
         gfx2.color(backgroundColorSetting)
