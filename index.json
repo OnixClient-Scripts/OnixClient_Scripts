@@ -720,6 +720,21 @@
       "lastUpdated": "2023-05-18T00:36:58.000Z"
     },
     {
+      "name": "Image Generator",
+      "description": "Change the image file \\\"toBuild.png\\\" to the image and then change the size settings",
+      "file": "imageBuilder.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/imageBuilder.lua",
+      "libs": [
+        "BlockRGB"
+      ],
+      "commands": [
+        "build",
+        "buildCoords"
+      ],
+      "hash": "a22e3237d13c96dca89ac20d567cbb9f",
+      "lastUpdated": "2024-02-25T16:30:03.515Z"
+    },
+    {
       "name": "Immersive First Person",
       "description": "Look at yourself.. to see yourself..",
       "file": "ImmersiveFirstPerson.lua",
@@ -1801,6 +1816,13 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/better-notifications.lua",
       "hash": "6f2474b34f568bb7035c4a93fd00233a",
       "lastUpdated": "2023-08-25T00:23:02.624Z"
+    },
+    {
+      "name": "BlockRGB",
+      "file": "BlockRGB.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/BlockRGB.lua",
+      "hash": "f55dedf337770814d09b131b0fcead40",
+      "lastUpdated": "2024-02-25T16:30:03.522Z"
     },
     {
       "name": "blockToTexture",
