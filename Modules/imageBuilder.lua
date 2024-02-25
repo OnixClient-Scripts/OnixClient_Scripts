@@ -16,11 +16,11 @@ imageHeightSet = client.settings.addInt("Image Height","imageHeight",1,500)
 imageWidth = 600
 -- client.settings.addInfo("Image width (updates when you close and reopen)")
 -- abc = client.settings.addInfo("imageWidth")
-
+img = gfx2.loadImage("toBuild.png") -- loads the img
 
 -- client.settings.addKeybind("Build key","buildKey")
 
-imgg = gfx2.loadImage("toBuild.png")
+
 
 registerCommand("build",function ()
     
@@ -60,8 +60,8 @@ end)
 
 function render(dt)
         
-    imageScale = imageHeight/imgg.height
-    imageWidth = imageScale * imgg.width
+    imageScale = imageHeight/img.height
+    imageWidth = imageScale * img.width
     
-    client.settings.reload()
+    -- client.settings.reload()
 end
