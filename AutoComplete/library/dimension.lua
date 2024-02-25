@@ -109,6 +109,13 @@ function dimension.findBlock(name, blockData, radius) end
 ---@return integer[][] blockPositions The block information
 function dimension.findBlock(name, blockData, radius, x, y, z) end
 
+---Gives you the height of the the block that would be chosen by the game to generate map data
+---This is pretty much the height of the world but chests or glass or torches arent included
+---@param x integer | number The x position
+---@param z integer | number The z position
+---@return integer y The height of the world
+function dimension.getMapHeight(x, z) end
+
 ---Finds a block among the world 
 ---local x,y,z = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param x integer | number The x center position
