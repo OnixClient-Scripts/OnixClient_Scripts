@@ -47,8 +47,21 @@ for i=0, mapImageChunkSize do
 end
 
 
+
 function render(timeSinceUpdate)
     if chunk_cache == nil then chunk_cache = ChunkCache.new() end
+end
+
+-- Make the Drawing 0 indexed in top right?
+
+function drawChunkImage(chunkX, chunkZ, image, gridSize)
+    local posX = chunkX * ( sizeX / gridSize)
+    local posY = chunkZ * ( sizeY / gridSize)
+    if image ~= nil then
+        gfx2.drawImage(posX, posY, sizeX, sizeY, image)
+        return true
+    end
+    return false
 end
 
 function render2(timeSinceUpdate)
@@ -57,6 +70,13 @@ function render2(timeSinceUpdate)
     local pChunkX, pChunkZ = coordToChunkCoord(playerX, playerZ)
     local chunk_image = ChunkCache.createChunkImage(chunk_cache, pChunkX, pChunkZ)
     local chunk_radius = chunkRadiusSetting.value
+
+    for dx=-1 * chunk_radius, chunk_radius do
+        for dz=-1 * chunk_radius, chunk_radius do
+            local cur_image = ChunkCache.createChunkImage(chunk_cache, pChunkX + dx, pChunkZ + dz)
+            drawChunkImage(dx + chunk_radius, dz + chunk_radius, cur_image, chunk_radius)
+        end
+    end
 
     if chunk_image ~= nil then
         gfx2.color(255, 255, 255)
