@@ -1,4 +1,4 @@
-name="Skin editor"
+name="In-Game Skin editor"
 description = "In Game! Changes your a png file for a skin when you tell it to"
 
 importLib("BlockRGB.lua")
