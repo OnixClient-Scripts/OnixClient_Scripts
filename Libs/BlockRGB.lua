@@ -13,13 +13,13 @@ function RGBtoBlock (r,g,b) -- Gives the best block for the rgb (made for the sk
         BLOCKNAME[4] = "minecraft:ancient_debris";	BLOCKR[4] = -25000000;	BLOCKG[4] = 25;	BLOCKB[4] = 25;
         BLOCKNAME[5] = "minecraft:andesite";	BLOCKR[5] = 112;	BLOCKG[5] = 112;	BLOCKB[5] = 112;
         BLOCKNAME[6] = "minecraft:azalea_leaves";	BLOCKR[6] = 0;	BLOCKG[6] = 124;	BLOCKB[6] = 0;
-        BLOCKNAME[7] = "minecraft:bamboo_block";	BLOCKR[7] = 229;	BLOCKG[7] = 229;	BLOCKB[7] = 51;
+        -- BLOCKNAME[7] = "minecraft:bamboo_block";	BLOCKR[7] = 229;	BLOCKG[7] = 229;	BLOCKB[7] = 51;
         BLOCKNAME[8] = "minecraft:barrel";	BLOCKR[8] = 143;	BLOCKG[8] = 119;	BLOCKB[8] = 72;
         --BLOCKNAME[9] = "minecraft:basalt";	BLOCKR[9] = 26;	BLOCKG[9] = 26;	BLOCKB[9] = 25;
         --BLOCKNAME[10] = "minecraft:beacon";	BLOCKR[10] = 92;	BLOCKG[10] = 219;	BLOCKB[10] = 213;
         BLOCKNAME[11] = "minecraft:bedrock";	BLOCKR[11] = 112;	BLOCKG[11] = 112;	BLOCKB[11] = 112;
-        BLOCKNAME[12] = "minecraft:bee_nest";	BLOCKR[12] = 229;	BLOCKG[12] = 229;	BLOCKB[12] = 51;
-        BLOCKNAME[13] = "minecraft:beehive";	BLOCKR[13] = 143;	BLOCKG[13] = 119;	BLOCKB[13] = 72;
+        -- BLOCKNAME[12] = "minecraft:bee_nest";	BLOCKR[12] = 229;	BLOCKG[12] = 229;	BLOCKB[12] = 51;
+        -- BLOCKNAME[13] = "minecraft:beehive";	BLOCKR[13] = 143;	BLOCKG[13] = 119;	BLOCKB[13] = 72;
         BLOCKNAME[14] = "minecraft:birch_planks";	BLOCKR[14] = 247;	BLOCKG[14] = 233;	BLOCKB[14] = 163;
         BLOCKNAME[15] = "minecraft:black_concrete";	BLOCKR[15] = 0;	BLOCKG[15] = 0;	BLOCKB[15] = 0; -- modified
         BLOCKNAME[16] = "minecraft:black_terracotta";	BLOCKR[16] = 37;	BLOCKG[16] = 22;	BLOCKB[16] = 16;
@@ -40,7 +40,7 @@ function RGBtoBlock (r,g,b) -- Gives the best block for the rgb (made for the sk
         BLOCKNAME[31] = "minecraft:cherry_planks";	BLOCKR[31] = 209;	BLOCKG[31] = 177;	BLOCKB[31] = 161;
         BLOCKNAME[32] = "minecraft:cherry_wood";	BLOCKR[32] = 57;	BLOCKG[32] = 41;	BLOCKB[32] = 35;
         BLOCKNAME[33] = "minecraft:chiseled_deepslate";	BLOCKR[33] = 100;	BLOCKG[33] = 100;	BLOCKB[33] = 100;
-        BLOCKNAME[34] = "minecraft:chiseled_nether_bricks";	BLOCKR[34] = 112;	BLOCKG[34] = 2;	BLOCKB[34] = 0;
+        BLOCKNAME[34] = "minecraft:chiseled_nether_bricks";	BLOCKR[34] = 41;	BLOCKG[34] = 21;	BLOCKB[34] = 25;
         BLOCKNAME[35] = "minecraft:chiseled_polished_blackstone";	BLOCKR[35] = 25;	BLOCKG[35] = 25;	BLOCKB[35] = 25;
         BLOCKNAME[36] = "minecraft:clay";	BLOCKR[36] = 164;	BLOCKG[36] = 168;	BLOCKB[36] = 184;
         BLOCKNAME[37] = "minecraft:coal_block";	BLOCKR[37] = 25;	BLOCKG[37] = 25;	BLOCKB[37] = 25;
@@ -82,7 +82,7 @@ function RGBtoBlock (r,g,b) -- Gives the best block for the rgb (made for the sk
         BLOCKNAME[73] = "minecraft:gray_terracotta";	BLOCKR[73] = 57;	BLOCKG[73] = 41;	BLOCKB[73] = 35;
         BLOCKNAME[74] = "minecraft:green_concrete";	BLOCKR[74] = 102;	BLOCKG[74] = 127;	BLOCKB[74] = 51;
         BLOCKNAME[75] = "minecraft:green_terracotta";	BLOCKR[75] = 76;	BLOCKG[75] = 82;	BLOCKB[75] = 42;
-        BLOCKNAME[76] = "minecraft:hardened_clay";	BLOCKR[76] = 216;	BLOCKG[76] = 127;	BLOCKB[76] = 51;
+        BLOCKNAME[76] = "minecraft:hardened_clay";	BLOCKR[76] = 151;	BLOCKG[76] = 83;	BLOCKB[76] = 59;
         BLOCKNAME[77] = "minecraft:hay_block";	BLOCKR[77] = 229;	BLOCKG[77] = 229;	BLOCKB[77] = 51;
         BLOCKNAME[78] = "minecraft:honeycomb_block";	BLOCKR[78] = 216;	BLOCKG[78] = 127;	BLOCKB[78] = 51;
         BLOCKNAME[79] = "minecraft:ice";	BLOCKR[79] = 160;	BLOCKG[79] = 160;	BLOCKB[79] = 255;
@@ -98,7 +98,7 @@ function RGBtoBlock (r,g,b) -- Gives the best block for the rgb (made for the sk
         BLOCKNAME[89] = "minecraft:loom";	BLOCKR[89] = 143;	BLOCKG[89] = 119;	BLOCKB[89] = 72;
         BLOCKNAME[90] = "minecraft:magenta_concrete";	BLOCKR[90] = 178;	BLOCKG[90] = 76;	BLOCKB[90] = 216;
         BLOCKNAME[91] = "minecraft:magenta_terracotta";	BLOCKR[91] = 149;	BLOCKG[91] = 87;	BLOCKB[91] = 108;
-        BLOCKNAME[92] = "minecraft:magma";	BLOCKR[92] = 112;	BLOCKG[92] = 2;	BLOCKB[92] = 0;
+        BLOCKNAME[92] = "minecraft:magma";	BLOCKR[92] = 255;	BLOCKG[92] = 126;	BLOCKB[92] = 0;
         BLOCKNAME[93] = "minecraft:mangrove_planks";	BLOCKR[93] = 153;	BLOCKG[93] = 51;	BLOCKB[93] = 51;
         BLOCKNAME[94] = "minecraft:mangrove_wood";	BLOCKR[94] = 153;	BLOCKG[94] = 51;	BLOCKB[94] = 51;
         BLOCKNAME[95] = "minecraft:melon_block";	BLOCKR[95] = 127;	BLOCKG[95] = 204;	BLOCKB[95] = 25;
@@ -150,7 +150,7 @@ function RGBtoBlock (r,g,b) -- Gives the best block for the rgb (made for the sk
         BLOCKNAME[141] = "minecraft:sponge";	BLOCKR[141] = 229;	BLOCKG[141] = 229;	BLOCKB[141] = 51;
         BLOCKNAME[142] = "minecraft:spruce_planks";	BLOCKR[142] = 129;	BLOCKG[142] = 86;	BLOCKB[142] = 49;
         BLOCKNAME[143] = "minecraft:stripped_acacia_log";	BLOCKR[143] = 216;	BLOCKG[143] = 127;	BLOCKB[143] = 51;
-        BLOCKNAME[144] = "minecraft:stripped_bamboo_block";	BLOCKR[144] = 229;	BLOCKG[144] = 229;	BLOCKB[144] = 51;
+        -- BLOCKNAME[144] = "minecraft:stripped_bamboo_block";	BLOCKR[144] = 229;	BLOCKG[144] = 229;	BLOCKB[144] = 51;
         BLOCKNAME[145] = "minecraft:stripped_birch_log";	BLOCKR[145] = 247;	BLOCKG[145] = 233;	BLOCKB[145] = 163;
         BLOCKNAME[146] = "minecraft:stripped_cherry_log";	BLOCKR[146] = 209;	BLOCKG[146] = 177;	BLOCKB[146] = 161;
         BLOCKNAME[147] = "minecraft:stripped_cherry_wood";	BLOCKR[147] = 160;	BLOCKG[147] = 77;	BLOCKB[147] = 78;
@@ -184,6 +184,7 @@ function RGBtoBlock (r,g,b) -- Gives the best block for the rgb (made for the sk
     end
 
     for x = 0, 174 do
+        
         if BLOCKNAME[x] == nil then else
             dist = math.sqrt((BLOCKR[x]-r)^2 + (BLOCKG[x]-g)^2 + (BLOCKB[x]-b)^2) 
             if dist < minDist  then
@@ -229,7 +230,7 @@ function blockToRGB(searchFor)
         BLOCKrgbBLOCK[23] = "minecraft:azalea_leaves"	BLOCKrgbR[23] = 0	BLOCKrgbG[23] = 124	BLOCKrgbB[23] = 0
         BLOCKrgbBLOCK[24] = "minecraft:azalea_leaves_flowered"	BLOCKrgbR[24] = 0	BLOCKrgbG[24] = 124	BLOCKrgbB[24] = 0
         BLOCKrgbBLOCK[25] = "minecraft:bamboo"	BLOCKrgbR[25] = 0	BLOCKrgbG[25] = 0	BLOCKrgbB[25] = 0
-        BLOCKrgbBLOCK[26] = "minecraft:bamboo_block"	BLOCKrgbR[26] = 229	BLOCKrgbG[26] = 229	BLOCKrgbB[26] = 51
+        BLOCKrgbBLOCK[26] = "minecraft:bamboo_block"	BLOCKrgbR[26] = 165	BLOCKrgbG[26] = 168	BLOCKrgbB[26] = 56
         BLOCKrgbBLOCK[27] = "minecraft:bamboo_button"	BLOCKrgbR[27] = 0	BLOCKrgbG[27] = 0	BLOCKrgbB[27] = 0
         BLOCKrgbBLOCK[28] = "minecraft:bamboo_door"	BLOCKrgbR[28] = 229	BLOCKrgbG[28] = 229	BLOCKrgbB[28] = 51
         BLOCKrgbBLOCK[29] = "minecraft:bamboo_double_slab"	BLOCKrgbR[29] = 229	BLOCKrgbG[29] = 229	BLOCKrgbB[29] = 51
@@ -280,7 +281,7 @@ function blockToRGB(searchFor)
         BLOCKrgbBLOCK[74] = "minecraft:black_shulker_box"	BLOCKrgbR[74] = 25	BLOCKrgbG[74] = 25	BLOCKrgbB[74] = 25
         BLOCKrgbBLOCK[75] = "minecraft:black_stained_glass"	BLOCKrgbR[75] = 25	BLOCKrgbG[75] = 25	BLOCKrgbB[75] = 25
         BLOCKrgbBLOCK[76] = "minecraft:black_stained_glass_pane"	BLOCKrgbR[76] = 0	BLOCKrgbG[76] = 0	BLOCKrgbB[76] = 0
-        BLOCKrgbBLOCK[77] = "minecraft:black_terracotta"	BLOCKrgbR[77] = 37	BLOCKrgbG[77] = 22	BLOCKrgbB[77] = 16
+        BLOCKrgbBLOCK[77] = "minecraft:black_terracotta"	BLOCKrgbR[77] = 38	BLOCKrgbG[77] = 23	BLOCKrgbB[77] = 22
         BLOCKrgbBLOCK[78] = "minecraft:black_wool"	BLOCKrgbR[78] = 25	BLOCKrgbG[78] = 25	BLOCKrgbB[78] = 25
         BLOCKrgbBLOCK[79] = "minecraft:blackstone"	BLOCKrgbR[79] = 25	BLOCKrgbG[79] = 25	BLOCKrgbB[79] = 25
         BLOCKrgbBLOCK[80] = "minecraft:blackstone_double_slab"	BLOCKrgbR[80] = 25	BLOCKrgbG[80] = 25	BLOCKrgbB[80] = 25
@@ -302,7 +303,7 @@ function blockToRGB(searchFor)
         BLOCKrgbBLOCK[96] = "minecraft:blue_wool"	BLOCKrgbR[96] = 51	BLOCKrgbG[96] = 76	BLOCKrgbB[96] = 178
         BLOCKrgbBLOCK[97] = "minecraft:bone_block"	BLOCKrgbR[97] = 247	BLOCKrgbG[97] = 233	BLOCKrgbB[97] = 163
         BLOCKrgbBLOCK[98] = "minecraft:bookshelf"	BLOCKrgbR[98] = 143	BLOCKrgbG[98] = 119	BLOCKrgbB[98] = 72
-        --BLOCKrgbBLOCK[99] = "minecraft:border_block"	BLOCKrgbR[99] = 255	BLOCKrgbG[99] = 0	BLOCKrgbB[99] = 0
+        BLOCKrgbBLOCK[99] = "minecraft:border_block"	BLOCKrgbR[99] = 255	BLOCKrgbG[99] = 0	BLOCKrgbB[99] = 0
         BLOCKrgbBLOCK[100] = "minecraft:brain_coral"	BLOCKrgbR[100] = 76	BLOCKrgbG[100] = 76	BLOCKrgbB[100] = 76
         BLOCKrgbBLOCK[101] = "minecraft:brewing_stand"	BLOCKrgbR[101] = 167	BLOCKrgbG[101] = 167	BLOCKrgbB[101] = 167
         BLOCKrgbBLOCK[102] = "minecraft:brick_block"	BLOCKrgbR[102] = 153	BLOCKrgbG[102] = 51	BLOCKrgbB[102] = 51
@@ -318,7 +319,7 @@ function blockToRGB(searchFor)
         BLOCKrgbBLOCK[112] = "minecraft:brown_shulker_box"	BLOCKrgbR[112] = 102	BLOCKrgbG[112] = 76	BLOCKrgbB[112] = 51
         BLOCKrgbBLOCK[113] = "minecraft:brown_stained_glass"	BLOCKrgbR[113] = 102	BLOCKrgbG[113] = 76	BLOCKrgbB[113] = 51
         BLOCKrgbBLOCK[114] = "minecraft:brown_stained_glass_pane"	BLOCKrgbR[114] = 0	BLOCKrgbG[114] = 0	BLOCKrgbB[114] = 0
-        BLOCKrgbBLOCK[115] = "minecraft:brown_terracotta"	BLOCKrgbR[115] = 76	BLOCKrgbG[115] = 50	BLOCKrgbB[115] = 35
+        BLOCKrgbBLOCK[115] = "minecraft:brown_terracotta"	BLOCKrgbR[115] = 60	BLOCKrgbG[115] = 38	BLOCKrgbB[115] = 29
         BLOCKrgbBLOCK[116] = "minecraft:brown_wool"	BLOCKrgbR[116] = 102	BLOCKrgbG[116] = 76	BLOCKrgbB[116] = 51
         BLOCKrgbBLOCK[117] = "minecraft:bubble_column"	BLOCKrgbR[117] = 0	BLOCKrgbG[117] = 0	BLOCKrgbB[117] = 0
         BLOCKrgbBLOCK[118] = "minecraft:bubble_coral"	BLOCKrgbR[118] = 76	BLOCKrgbG[118] = 76	BLOCKrgbB[118] = 76
@@ -363,7 +364,7 @@ function blockToRGB(searchFor)
         BLOCKrgbBLOCK[157] = "minecraft:chiseled_bookshelf"	BLOCKrgbR[157] = 143	BLOCKrgbG[157] = 119	BLOCKrgbB[157] = 72
         BLOCKrgbBLOCK[158] = "minecraft:chiseled_copper"	BLOCKrgbR[158] = 0	BLOCKrgbG[158] = 0	BLOCKrgbB[158] = 0
         BLOCKrgbBLOCK[159] = "minecraft:chiseled_deepslate"	BLOCKrgbR[159] = 100	BLOCKrgbG[159] = 100	BLOCKrgbB[159] = 100
-        BLOCKrgbBLOCK[160] = "minecraft:chiseled_nether_bricks"	BLOCKrgbR[160] = 112	BLOCKrgbG[160] = 2	BLOCKrgbB[160] = 0
+        BLOCKrgbBLOCK[160] = "minecraft:chiseled_nether_bricks"	BLOCKrgbR[160] = 41	BLOCKrgbG[160] = 21	BLOCKrgbB[160] = 25 -- adjusted
         BLOCKrgbBLOCK[161] = "minecraft:chiseled_polished_blackstone"	BLOCKrgbR[161] = 25	BLOCKrgbG[161] = 25	BLOCKrgbB[161] = 25
         BLOCKrgbBLOCK[162] = "minecraft:chiseled_tuff"	BLOCKrgbR[162] = 0	BLOCKrgbG[162] = 0	BLOCKrgbB[162] = 0
         BLOCKrgbBLOCK[163] = "minecraft:chiseled_tuff_bricks"	BLOCKrgbR[163] = 0	BLOCKrgbG[163] = 0	BLOCKrgbB[163] = 0
