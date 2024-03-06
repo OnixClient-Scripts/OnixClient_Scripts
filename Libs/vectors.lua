@@ -248,8 +248,7 @@ function vec:dir()
     end
 
     if self:dimensions() == 3 then
-        local pitch = math.atan(self.y ^ 2, (self.x ^ 2 + self.z ^ 2))
-        if self.y < 0 then pitch = -pitch end
+        local pitch = math.atan(self.y, math.sqrt((self.x ^ 2 + self.z ^ 2)))
         local yaw = math.atan(self.z, self.x)
         return { yaw, pitch }
     end
@@ -285,12 +284,9 @@ function vec:rotate(yaw, pitch)
     end
 
     if self:dimensions() == 3 then
-        newY = self.y * math.cos(pitch) - self.z * math.sin(pitch)
-        newZ = self.y * math.sin(pitch) + self.z * math.cos(pitch)
-
-        newX = self.z * math.sin(yaw) + self.x * math.cos(yaw)
-        newZ = self.z * math.cos(yaw) - self.x * math.sin(yaw)
-        self:set(newX, newY, newZ)
+        local previousRot = self:dir()
+        if previousRot[1] < 0 then pitch = -pitch end --past "straight up", increasing pitch means going back down
+        self:setDir(previousRot[1] + yaw, previousRot[2] + pitch)
     end
 
     self:updateComponentNames()
