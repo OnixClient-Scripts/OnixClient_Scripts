@@ -758,6 +758,21 @@
       "lastUpdated": "2023-08-20T22:12:39.246Z"
     },
     {
+      "name": "In Game Skin editor",
+      "description": "In Game! Changes your a png file for a skin when you tell it to",
+      "file": "In-GameSkinEditor.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/In-GameSkinEditor.lua",
+      "libs": [
+        "BlockRGB"
+      ],
+      "commands": [
+        "loadSkin",
+        "saveSkin"
+      ],
+      "hash": "5f460477bdbe34c3e10c2b0ba7187221",
+      "lastUpdated": "2024-03-06T14:41:48.342Z"
+    },
+    {
       "name": "Input Example",
       "description": "Keyboard, Mouse input example module script",
       "file": "inputexample.lua",
@@ -890,6 +905,16 @@
       "commands": [],
       "hash": "6bf805a0f9e35eb35456eb98cda49a49",
       "lastUpdated": "2024-01-09T17:07:08.470Z"
+    },
+    {
+      "name": "Map Labeler",
+      "description": "Labels Maps in game with their names",
+      "file": "mapLabeler.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/mapLabeler.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "6a1fa9bc587e3d1c8ae401d41b560c14",
+      "lastUpdated": "2024-03-06T14:41:48.344Z"
     },
     {
       "name": "Mention Ping",
@@ -1790,6 +1815,13 @@
   ],
   "libs": [
     {
+      "name": "anetwork",
+      "file": "anetwork.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/anetwork.lua",
+      "hash": "1b11c47ac208c3b5f69f5ba3b9fa2041",
+      "lastUpdated": "2024-03-06T14:41:48.351Z"
+    },
+    {
       "name": "animate",
       "file": "animate.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/animate.lua",
@@ -1821,8 +1853,8 @@
       "name": "BlockRGB",
       "file": "BlockRGB.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/BlockRGB.lua",
-      "hash": "f55dedf337770814d09b131b0fcead40",
-      "lastUpdated": "2024-02-25T16:30:03.522Z"
+      "hash": "737ce37f08120d2b1caff0ca1d255838",
+      "lastUpdated": "2024-03-06T14:41:48.351Z"
     },
     {
       "name": "blockToTexture",
@@ -2045,8 +2077,8 @@
       "name": "vectors",
       "file": "vectors.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/vectors.lua",
-      "hash": "1d160b2fa3f9babd7a2e564bd5e4d5d3",
-      "lastUpdated": "2024-02-24T21:06:31.296Z"
+      "hash": "12957e149c7cc42785ca306237e0fc0f",
+      "lastUpdated": "2024-03-06T14:41:48.352Z"
     },
     {
       "name": "Wait",
