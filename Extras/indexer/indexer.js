@@ -1,6 +1,6 @@
 // Made by Tom16 to generate index.json
 
-const { readdir, readFile, writeFile } = require("fs/promises");
+const { readdir, readFile, writeFile, stat } = require("fs/promises");
 const crypto = require("crypto");
 const path = require("path");
 
@@ -85,10 +85,15 @@ const oldIndex = require("../../index.json");
   );
 
   // Libs
+  // 
   const libs = await readdir(path.join(__dirname, "../../Libs"));
   const libIndex = await Promise.all(
     libs.map(async (libFile) => {
       const oldLib = oldIndex.libs.find((x) => x.file === libFile);
+
+      // temp, ill add this later but its here to make sure it still works if theres a folder before i code it
+      if (stat(path.join(__dirname, "../../Libs", libFile)).isDirectory()) return;
+
       const libContent = await readFile(path.join(__dirname, "../../Libs", libFile));
 
       const libHash = crypto.createHash("md5").update(libContent).digest().toString("hex");
@@ -101,7 +106,7 @@ const oldIndex = require("../../index.json");
         hash: libHash,
         lastUpdated: libLastUpdated,
       };
-    })
+    }).filter(x => x)
   );
 
   //autocomplete
