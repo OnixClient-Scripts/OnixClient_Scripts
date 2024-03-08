@@ -92,7 +92,7 @@ const oldIndex = require("../../index.json");
       const oldLib = oldIndex.libs.find((x) => x.file === libFile);
 
       // temp, ill add this later but its here to make sure it still works if theres a folder before i code it
-      if (stat(path.join(__dirname, "../../Libs", libFile)).isDirectory()) return;
+      if ((await stat(path.join(__dirname, "../../Libs", libFile))).isDirectory()) return;
 
       const libContent = await readFile(path.join(__dirname, "../../Libs", libFile));
 
