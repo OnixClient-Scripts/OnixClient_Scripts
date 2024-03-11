@@ -2180,6 +2180,18 @@
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/server.lua",
         "hash": "ef48454601e1612e13f7aacfb021cc68",
         "lastUpdated": "2023-03-22T15:28:39.000Z"
+      },
+      {
+        "file": "snetwork.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/snetwork.lua",
+        "hash": "09c2e7cbf0585957a3150297a090896b",
+        "lastUpdated": "2024-03-11T15:39:37.069Z"
+      },
+      {
+        "file": "threading.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/threading.lua",
+        "hash": "27be7a1ec92670dcec55d228c317c5dd",
+        "lastUpdated": "2024-03-11T15:39:37.069Z"
       }
     ]
   }
