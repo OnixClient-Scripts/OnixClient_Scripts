@@ -44,7 +44,7 @@ $onixClientScriptsFolder = "$($onixClientFolder)\Scripts"
 if (!(Test-Path -Path $onixClientScriptsFolder -PathType Container)) {
    New-Item -ItemType Directory -path $onixClientScriptsFolder | Out-Null
 }
-#create scripts folder
+#create .vscode folder
 $onixClientScriptsVscodeFolder = "$($onixClientFolder)\Scripts\.vscode"
 if (!(Test-Path -Path $onixClientScriptsVscodeFolder -PathType Container)) {
    New-Item -ItemType Directory -path $onixClientScriptsVscodeFolder | Out-Null
@@ -147,6 +147,7 @@ try {
     }
     Add-Member -InputObject $settings -Name "Lua.workspace.library" -Value @( "$($onixClientScriptsFolder)\AutoComplete" ) -MemberType NoteProperty -Force
     Add-Member -InputObject $settings -Name "Lua.diagnostics.disable" -Value @( "lowercase-global" ) -MemberType NoteProperty -Force
+    Add-Member -InputObject $a -Name "files.associations" -Value (ConvertTo-Json '{"*.lua", "lua"}') -MemberType NoteProperty -Force
     $settings = ($settings | ConvertTo-Json)
     Out-File -FilePath $settingsJsonPath -Encoding ascii -InputObject "$($settings)"
     Write-Host "Extensions have been configured" -ForegroundColor Green
