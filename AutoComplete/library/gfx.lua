@@ -154,6 +154,11 @@ function gfx.item(x, y, itemLocation, scale, renderDecorations) end
 ---@return string GfxTexture The texture (not actually a string but its for the autocomplete to not have yellow lines)
 function gfx.loadTexture(filepath) end
 
+---Loads a gfx texture from texture pack root
+---@param filepath string --if starting with textures/ will take from the game's pack, otherwise will be from Data
+---@return Gfx2Texture texture  The gfx2 texture
+function gfx.extractTexture(filepath) end
+
 ---Loads a gfx image from Scripts/Data
 ---@param filepath string
 ---@return string GfxTexture the image (not actually a string but its for the autocomplete to not have yellow lines)
