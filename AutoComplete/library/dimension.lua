@@ -158,6 +158,17 @@ function dimension.getBiome(x, y, z) end
 function dimension.getMapColor(x,y,z) end
 
 
+---Gets the world as a mcstructure
+---@param startX integer The x start position
+---@param startY integer The y start position
+---@param startZ integer The z start position
+---@param endX integer The x end position
+---@param endY integer The y end position
+---@param endZ integer The z end position
+---@return McStructure structure The structure built from the world
+function dimension.mcstructure(startX, startY, startZ, endX, endY, endZ) end
+
+
 ---@class RaycastInfo
 ---@field x integer The x position of the hit block
 ---@field y integer The y position of the hit block
