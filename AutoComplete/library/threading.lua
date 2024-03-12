@@ -110,6 +110,16 @@ function __acp_ThreadingBlockGetter:getBiome(x, y, z) end
 ---@return integer a The opacity part of the color
 function __acp_ThreadingBlockGetter:getMapColor(x,y,z) end
 
+---Gets the world as a mcstructure
+---@param startX integer The x start position
+---@param startY integer The y start position
+---@param startZ integer The z start position
+---@param endX integer The x end position
+---@param endY integer The y end position
+---@param endZ integer The z end position
+---@return McStructure structure The structure built from the world
+function __acp_ThreadingBlockGetter:mcstructure(startX, startY, startZ, endX, endY, endZ) end
+
 
 ---Casts a ray in the world between two points
 ---Traces a line in the world hoping or not to hit a block
