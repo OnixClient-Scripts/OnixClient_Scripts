@@ -2158,6 +2158,12 @@
         "lastUpdated": "2022-11-25T02:29:58.000Z"
       },
       {
+        "file": "mcstructure.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/mcstructure.lua",
+        "hash": "fdf9f92640c8a18c71f5907353cd314d",
+        "lastUpdated": "2024-03-12T17:57:51.751Z"
+      },
+      {
         "file": "network.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/network.lua",
         "hash": "36ef74b725843b139bf2b585c8312729",
