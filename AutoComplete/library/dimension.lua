@@ -47,7 +47,10 @@ function dimension.sound(x, y, z, name) end
 ---@field id integer The numerical identifier of the block (changes with versions)
 ---@field data integer The data of the block: example the color of the wool in a /setblock
 ---@field name string The name that would be used in /setblock
----@field state table The block state
+---@field state table The block state nbt
+---@field statestr table the block state nbt that contains str/strf members at every level
+---@field statenbtstr string The block state nbt as a string
+---@field statenbtstrf string The block state nbt as a formatted string
 ---@field hash integer Unique hash for the block (not including state)
 
 ---@class Biome
