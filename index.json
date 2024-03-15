@@ -961,12 +961,10 @@
       "description": "A map of blocks around you. Slow but has a lot of features.",
       "file": "minimap2.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/minimap2.lua",
-      "libs": [
-        "MinimapBlockTools"
-      ],
+      "libs": [],
       "commands": [],
-      "hash": "15e1000c87d28b638d8eda4376f4631b",
-      "lastUpdated": "2024-02-24T20:58:40.443Z"
+      "hash": "1f9937607ae5c616242fda180138a7cf",
+      "lastUpdated": "2024-03-15T23:58:08.481Z"
     },
     {
       "name": "Minimap v3",
