@@ -1,8 +1,6 @@
 name = "Minimap v3"
 description = "Much quicker than Minimap v2, but not as pretty-looking."
 
-importLib("MinimapBlockTools.lua")
-
 sizeX = 100
 sizeY = 100
 positionX = 0
@@ -16,8 +14,6 @@ client.settings.addInt("Height", "checkLimit", 0, 100)
 worldMap = {}
 firstFrame = true
 function render(deltaTime)
-    UpdateMapTools()
-
     px, py, pz = player.position() --GLOBAL
     drawColor = { 0, 0, 0 }
 
@@ -133,14 +129,15 @@ function getBlock(x, z)
     end
 
     if worldMap[x] then
-        worldMap[x][z] = getColor(dimension.getBlock(x, yLevel, z))
+        worldMap[x][z] = getColorTable(x, yLevel, z)
     else
         local zArray = {}
-        zArray[z] = getColor(dimension.getBlock(x, yLevel, z))
+        zArray[z] = getColorTable(x, yLevel, z)
         worldMap[x] = zArray
     end
 end
 
-function getColor(block)
-    return getMapColorId(block.id, block.data)
+function getColorTable(x, y, z)
+    local r, g, b = dimension.getMapColor(x, y, z)
+    return { r, g, b }
 end
