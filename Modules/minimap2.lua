@@ -16,10 +16,6 @@ client.settings.addInt("Map Height", "checkLimit", 0, 50)
 client.settings.addInt("Refresh Delay", "checkFrequency", 1, 50)
 client.settings.addBool("Light Display", "lightEnabled")
 
-log = ""
-
-importLib("MinimapBlockTools.lua")
-
 -- Arrays for the map
 colourMap = {}
 mapRects = {}
@@ -27,8 +23,6 @@ mapRects = {}
 loops = 0
 inWater = false
 function update()
-    UpdateMapTools()
-
     gridSize = gridR * 2
 
     -- Frame rate limiter
@@ -115,7 +109,6 @@ function update()
                     end
                 end
 
-                -- lava glow lichen tuff
                 if block == "tuff" or block == "glow_lichen" or block == "lava" or block == "deepslate" or
                     block == "tallgrass" or block == "torch" or block == "wheat" or block == "grass" or block == "kelp"
                     or block == "grass_path" or block == "sand" or block == "gravel" or block == "seagrass" or
@@ -123,12 +116,8 @@ function update()
                     block == "leaves" then
                     r, g, b = getRBG(block)
                 else
-                    color = getMapColorName(block, blockdata)
-                    r = color[1]
-                    g = color[2]
-                    b = color[3]
+                    r, g, b = dimension.getMapColor(px + (i - gridSize / 2), ySearch - 1, pz + (j - gridSize / 2))
                 end
-                -- r, g, b = getRBG(block)
 
                 -- Darkening the squares depending on light levels
                 if lightEnabled then
@@ -224,10 +213,6 @@ function render()
 
     directionTriangle(math.rad(yaw + 90), 13, ((gridSize / 2) * sizeX / gridSize) - sizeX / gridSize / 2,
         (gridSize / 2) * sizeX / gridSize - sizeX / gridSize / 2)
-
-    -- "log" for debugging
-    gfx.color(255, 255, 255)
-    gfx.text(5, 5, log, 3)
 end
 
 -- Color values
