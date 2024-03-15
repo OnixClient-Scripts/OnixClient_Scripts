@@ -201,7 +201,7 @@ local __acp_Thread = {}
 ---Only the function is sent over, not the environment or the global variables.
 ---Make sure to send over the things you need either as params or messages
 ---tableToJson and jsonToTable support sending lua functions
----@param func function The function to be executed by the thread.
+---@param func fun(params: string, thread: Thread, blockGetter: ThreadingBlockGetter) The function to be executed by the thread.
 ---@param arguments string|nil The optional arguments to be passed to the function.
 ---@param createBlockGetter boolean|nil If true, a blockGetter will be created for the thread. (default: false)
 ---@return Thread thread The newly created thread.
