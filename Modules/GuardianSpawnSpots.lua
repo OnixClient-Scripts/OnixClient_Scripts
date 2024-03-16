@@ -1,23 +1,35 @@
 --[[
     Made by: Zeyrox1090/Zeuroux/Blueberry#5784
     Version: 1.5
-    Instructions: 
+    Instructions:
         1. Go to a ocean monument
         2. Go to the center of the monument(the one with the highest block)
         3. Press the keybind to set the center chunk coordinates
         4. The spawn pillars will be rendered
-]]--
+]]
+--
 
 name = "Guardian Spawn Spots"
 description = "Finds the area where guardians spawns in ocean monuments"
 
-color = {0, 255, 0}
+color = { 0, 255, 0 }
 client.settings.addCategory("Center Chunk Coordinates")
 px = client.settings.addNamelessTextbox("X:", "0")
 pz = client.settings.addNamelessTextbox("Z:", "0")
 keybind = client.settings.addNamelessKeybind("Set Center Chunk Coords:", 0x52)
 client.settings.addColor("Spawn Pillar Color", "color")
+
+client.settings.addInfo(
+    "Instructions: \n" ..
+    "\t1. Go to an ocean monument \n" ..
+    "\t2. Go to the center of the monument(the one with the highest block) \n" ..
+    "\t3. Press the keybind to set the center chunk coordinates \n" ..
+    "\t4. The spawn pillars will be rendered"
+)
+
 function render3d()
+    px_, py_, pz_ = player.position()
+
     local cx = math.floor(px.value / 16) * 16 + 8
     local cz = math.floor(pz.value / 16) * 16 + 8
     local spacing = { 13.5, 16, 16, 16, 13 }
@@ -41,8 +53,8 @@ end)
 
 function cubexyz(x, y, z, sx, sy, sz)
     gfx.color(color.r, color.g, color.b)
-    local cx, cy, cz = x + sx/2, y + sy/2, z + sz/2
-    local vx, vy, vz = cx - px_, cy - py_ -2, cz - pz_
+    local cx, cy, cz = x + sx / 2, y + sy / 2, z + sz / 2
+    local vx, vy, vz = cx - px_, cy - py_ - 2, cz - pz_
     local dot_x1 = vx * -1
     local dot_x2 = vx
     local dot_y1 = vy * -1
