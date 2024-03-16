@@ -1,4 +1,4 @@
-name="custom chat"
+name = "Custom Chat"
 description = "Custom chat by MCBE Craft"
 
 --[[
@@ -31,23 +31,19 @@ client.settings.addKeybind("Client command prefix", "dotKey")
 
 --color background
 client.settings.addAir(5)
-backgroundColor = {1, 1, 1, 127}
-client.settings.addColor("Background color", "backgroundColor")
+backgroundColor = client.settings.addNamelessColor("Background color", { 1, 1, 1, 127 })
 
 --color chatbox
 client.settings.addAir(5)
-chatboxColor = {1, 1, 1, 127}
-client.settings.addColor("Chatbox color", "chatboxColor")
+chatboxColor = client.settings.addNamelessColor("Chatbox color", { 1, 1, 1, 127 })
 
 --color cursor
 client.settings.addAir(5)
-cursorColor = {1, 1, 1, 200}
-client.settings.addColor("Cursor color", "cursorColor")
+cursorColor = client.settings.addNamelessColor("Cursor color", { 1, 1, 1, 200 })
 
 --color text
 client.settings.addAir(5)
-textColor = {254, 254, 254, 254}
-client.settings.addColor("Text color", "textColor")
+textColor = client.settings.addNamelessColor("Text color", { 255, 255, 255, 255 })
 
 --clear content on close
 client.settings.addAir(5)
@@ -109,12 +105,13 @@ end
 local chat = {}
 local Ownchat = {}
 local writeShow = false
-local alphabet = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
-local numbers = {")", "!", "@", "#", "$", "%", "^", "&", "*", "("}
-local sidekeys = {";", "=", ",", "-", ".", "/", "`"}
-local sidekeysShift = {":", "+", "<", "_", ">", "?", "~"}
-local sideKeys200 = {"[", "\\", "]", "'"}
-local sideKeys200Shift = {"{", "|", "}", "\""}
+local alphabet = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+    "u", "v", "w", "x", "y", "z" }
+local numbers = { ")", "!", "@", "#", "$", "%", "^", "&", "*", "(" }
+local sidekeys = { ";", "=", ",", "-", ".", "/", "`" }
+local sidekeysShift = { ":", "+", "<", "_", ">", "?", "~" }
+local sideKeys200 = { "[", "\\", "]", "'" }
+local sideKeys200Shift = { "{", "|", "}", "\"" }
 local toSend = ""
 local holdCtrl = false
 local holdShift = false
@@ -125,7 +122,7 @@ local cursorPos = 0
 local selectionPos = 0
 local fading = fadeDefault
 local chatMessagePos = 0
-local contentPath = {"discordChatBridge\\DiscordChatMessages.txt", "discordChatBridge\\MCChatMessages.txt"}
+local contentPath = { "discordChatBridge\\DiscordChatMessages.txt", "discordChatBridge\\MCChatMessages.txt" }
 local discordMessage = ""
 local content = discordMessage
 local mouseClicked = false
@@ -167,15 +164,25 @@ function render(deltaTime)
         end
     end
     if (AlwaysShowChat and fading > 0) or writeShow then
-        gfx.color(backgroundColor.r, backgroundColor.g, backgroundColor.b, math.floor(backgroundColor.a * (fading/fadeDefault)))
+        gfx.color(
+            backgroundColor.value.r,
+            backgroundColor.value.g,
+            backgroundColor.value.b,
+            math.floor(backgroundColor.value.a * (fading / fadeDefault))
+        )
         gfx.rect(0, 0, sizeX, sizeY)
-        gfx.color(textColor.r, textColor.g, textColor.b, math.floor(textColor.a * (fading/fadeDefault)))
+        gfx.color(
+            textColor.value.r,
+            textColor.value.g,
+            textColor.value.b,
+            math.floor(textColor.value.a * (fading / fadeDefault))
+        )
         for i = 0, 8, 1 do
             if chat[i] ~= nil then
                 if chat[i + chatMessagePos][1] ~= "" then
-                    gfx.text(5, 10*i - 8, chat[i + chatMessagePos][1] .. ": " .. chat[i + chatMessagePos][2])
+                    gfx.text(5, 10 * i - 8, chat[i + chatMessagePos][1] .. ": " .. chat[i + chatMessagePos][2])
                 else
-                    gfx.text(5, 10*i - 8, chat[i + chatMessagePos][2])
+                    gfx.text(5, 10 * i - 8, chat[i + chatMessagePos][2])
                 end
             end
         end
@@ -183,7 +190,12 @@ function render(deltaTime)
     if writeShow then
         holdChatTimer = holdChatTimerDefault
         fading = fadeDefault
-        gfx.color(chatboxColor.r, chatboxColor.g, chatboxColor.b, chatboxColor.a)
+        gfx.color(
+            chatboxColor.value.r,
+            chatboxColor.value.g,
+            chatboxColor.value.b,
+            chatboxColor.value.a
+        )
         gfx.rect(0, 87, sizeX, sizeY - 87)
         if #chat > 8 then
             local sizeScroll = 87 / (#chat / 8)
@@ -200,15 +212,29 @@ function render(deltaTime)
                 end
             end
         end
-        gfx.color(textColor.r, textColor.g, textColor.b, textColor.a)
+        gfx.color(
+            textColor.value.r,
+            textColor.value.g,
+            textColor.value.b,
+            textColor.value.a
+        )
         gfx.text(5, 89, toSend)
-        gfx.color(cursorColor.r, cursorColor.g, cursorColor.b, cursorColor.a)
+        gfx.color(
+            cursorColor.value.r,
+            cursorColor.value.g,
+            cursorColor.value.b,
+            cursorColor.value.a
+        )
         font = gui.font()
         if showCur < 0.5 then
             if cursorPos <= selectionPos then
-                gfx.rect(font.width(string.sub(toSend, 1, cursorPos)) + 5, 88, 0 - (font.width(string.sub(toSend, 1, cursorPos)) + 5) + (font.width(string.sub(toSend, 1, selectionPos)) + 6), 11)
+                gfx.rect(font.width(string.sub(toSend, 1, cursorPos)) + 5, 88,
+                    0 - (font.width(string.sub(toSend, 1, cursorPos)) + 5) +
+                    (font.width(string.sub(toSend, 1, selectionPos)) + 6), 11)
             else
-                gfx.rect(font.width(string.sub(toSend, 1, selectionPos)) + 5, 88, 0 - (font.width(string.sub(toSend, 1, selectionPos)) + 5) + (font.width(string.sub(toSend, 1, cursorPos)) + 6), 11)
+                gfx.rect(font.width(string.sub(toSend, 1, selectionPos)) + 5, 88,
+                    0 - (font.width(string.sub(toSend, 1, selectionPos)) + 5) +
+                    (font.width(string.sub(toSend, 1, cursorPos)) + 6), 11)
             end
         end
     elseif holdChatTimer <= 0 and fading > 0 then
@@ -216,17 +242,19 @@ function render(deltaTime)
     end
 end
 
-
-
-
 --events
 
 function onChat(message, username, type)
     if (#message + #username - 2 * (countChar(message, "§") + countChar(message, "Â") + countChar(username, "§"))) * (gui.font().width("a")) > sizeX then
-        table.insert(chat, {username, string.sub(message, 1, ((sizeX - gui.font().width(username .. ": ")) // gui.font().width("a")) + 2 * (countChar(message, "§") + countChar(message, "Â") + countChar(username, "§")) - 2) .. "-"})
-        addMessage(string.sub(message, (sizeX - gui.font().width(username .. ": ")) // gui.font().width("a") + 2 * (countChar(message, "§") + countChar(message, "Â") + countChar(username, "§")) - 1, #message))
+        table.insert(chat,
+            { username, string.sub(message, 1,
+                ((sizeX - gui.font().width(username .. ": ")) // gui.font().width("a")) +
+                2 * (countChar(message, "§") + countChar(message, "Â") + countChar(username, "§")) - 2) .. "-" })
+        addMessage(string.sub(message,
+            (sizeX - gui.font().width(username .. ": ")) // gui.font().width("a") +
+            2 * (countChar(message, "§") + countChar(message, "Â") + countChar(username, "§")) - 1, #message))
     else
-        table.insert(chat, {username, message})
+        table.insert(chat, { username, message })
     end
     if #chat > 8 then
         chatMessagePos = #chat - 8
@@ -235,17 +263,21 @@ function onChat(message, username, type)
     fading = fadeDefault
     return true
 end
+
 event.listen("ChatMessageAdded", onChat)
 
 function addMessage(m)
     if gui.font().width(m) + 5 > sizeX then
-        table.insert(chat, {"", string.sub(m, 1, sizeX // gui.font().width("a") - 2 + 2 * (countChar(m, "§") + countChar(m, "Â") + countChar(username, "§"))) .. "-"})
-        addMessage(string.sub(m, sizeX // gui.font().width("a") + 2 * (countChar(m, "§") + countChar(m, "Â") + countChar(m, "§")) - 1, #m))
+        table.insert(chat,
+            { "", string.sub(m, 1,
+                sizeX // gui.font().width("a") - 2 +
+                2 * (countChar(m, "§") + countChar(m, "Â") + countChar(username, "§"))) .. "-" })
+        addMessage(string.sub(m,
+            sizeX // gui.font().width("a") + 2 * (countChar(m, "§") + countChar(m, "Â") + countChar(m, "§")) - 1, #m))
     else
-        table.insert(chat, {"", m})
+        table.insert(chat, { "", m })
     end
 end
-
 
 function onKey(key, down)
     if not writeShow and down and (key == chatKey or key == 191) and not gui.mouseGrabbed() then
@@ -282,9 +314,10 @@ function onKey(key, down)
             end
         end
     end
-    
+
     return writeShow
 end
+
 event.listen("KeyboardInput", onKey)
 
 function onMouse(button, down)
@@ -295,7 +328,7 @@ function onMouse(button, down)
             mouseClicked = down
         end
         if button == 1 and mX >= positionX and mX <= (positionX + sizeX) and mY >= positionY and mY <= (positionY + sizeY) then
-            
+
         elseif not down and button == 1 then
             exitChat()
         elseif button == 4 then
@@ -312,6 +345,7 @@ function onMouse(button, down)
         return true
     end
 end
+
 event.listen("MouseInput", onMouse)
 
 
@@ -606,6 +640,6 @@ function countChar(s, c)
     if s == nil or s == "" then
         return 0
     end
-    local _,n = s:gsub(c,"")
+    local _, n = s:gsub(c, "")
     return n
 end
