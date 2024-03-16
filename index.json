@@ -583,16 +583,6 @@
       "lastUpdated": "2024-03-16T17:45:14.480Z"
     },
     {
-      "name": "guiscale",
-      "description": "changes and save your custom guiscale",
-      "file": "guiscale.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/guiscale.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "12b22d56fd6d3a74751be34c7236b1d6",
-      "lastUpdated": "2022-01-16T15:20:39.000Z"
-    },
-    {
       "name": "Half Life 2 GUI",
       "description": "Recreates the HalfLife 2 GUI, Based on the HalfLife 2 Episode 2 HUD",
       "file": "half_life_2_gui.lua",
