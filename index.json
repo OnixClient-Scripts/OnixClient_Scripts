@@ -815,16 +815,6 @@
       "lastUpdated": "2024-02-18T14:30:06.524Z"
     },
     {
-      "name": "Item Counter",
-      "description": "gives the amount of iron ingot, gold ingot, diamond, and emerald",
-      "file": "itemcounter.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/itemcounter.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "de94e04d49ee03f082b96ac87404ce6c",
-      "lastUpdated": "2022-08-29T09:41:19.000Z"
-    },
-    {
       "name": "Java View Bobbing",
       "description": "Makes the view bobbing like in Java Edition.",
       "file": "JavaViewBobbing.lua",
@@ -1167,6 +1157,16 @@
       "commands": [],
       "hash": "979ae932386137fed7ce39bb96230c5e",
       "lastUpdated": "2023-02-19T22:17:08.000Z"
+    },
+    {
+      "name": "PvP Valuable Item Counter",
+      "description": "gives the amount of iron ingot, gold ingot, diamond, and emerald",
+      "file": "itemcounter.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/itemcounter.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "af43bbc87db2fa5f7507bdd2b41485bc",
+      "lastUpdated": "2024-03-16T21:43:08.420Z"
     },
     {
       "name": "Pyramid Generator",
