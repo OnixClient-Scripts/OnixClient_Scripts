@@ -18,8 +18,6 @@ positionY = 80
 sizeX = 40
 sizeY = 30
 scale = 1
-color = {255,255,255,255}
-background_color = {0,0,0,128}
 client.settings.addAir(2.5)
 client.settings.addTitle("Vanilla Features")
 client.settings.addBool("Display on same line?", "sameLine")
@@ -34,99 +32,99 @@ client.settings.addBool("Universal coordinates?", "universal")
 client.settings.addBool("Translate coordinates?", "translator")
 client.settings.addAir(2.5)
 client.settings.addTitle("Theme Settings")
-client.settings.addColor("Text Color", "color")
-client.settings.addColor("Background Color", "background_color")
+tColor = client.settings.addNamelessColor("Text Color", { 255, 255, 255, 255 })
+tGb = client.settings.addNamelessColor("Background Color", { 51, 51, 51, 255 })
 client.settings.addAir(2.5)
 --Dimension Settings (Dimension 1 is the Nether)
 function render(deltaTime)
-   local player_x, player_y, player_z = player.position()
-	if (dimension.id() == 1) and universal == true then
-        	player_x = math.floor(player_x * 8)
-        	player_z = math.floor(player_z * 8)
-	end
-	if (dimension.id() == 1) and translator == true then
-		player_x = math.floor(player_x * 8)
-        	player_z = math.floor(player_z * 8)
-	end
-	if (dimension.id() ~= 1) and translator == true then
-		player_x = math.floor(player_x / 8)
-		player_z = math.floor(player_z / 8)
-	end
---Module Display
-   if showXYZ == true and colored == true and position == true then 
-		textP = "Position:"
-		textX = "§aX§r: "
-		textY = "§cY§r: "
-		textZ = "§bZ§r: "
-end
-   if showXYZ == true and colored == false and position == false then 
-  		textX = "X: "
-		textY = "Y: "
-		textZ = "Z: "
-end
-   if showXYZ == true and colored == true and position == false then 
-		textX = "§aX§r: "
-		textY = "§cY§r: "
-		textZ = "§bZ§r: "
-end
-   if showXYZ == true and colored == false and position == true then 
-		textP = "Position:"
-  		textX = "X: "
-		textY = "Y: "
-		textZ = "Z: "
-end
-   if showXYZ == false and position == false then 
-  		textX = ""
-		textY = ""
-		textZ = ""
-end
-   if showXYZ == false and position == true then 
-		textP = "Position:"
-  		textX = ""
-		textY = ""
-		textZ = ""
-end
-   if sameLine == true and position == false then
-		sizeX = 20
-		sizeY = 8
-		local text = textX .. player_x .. " " .. textY .. player_y .. " " .. textZ .. player_z
-		local font = gui.font()
-		gfx.color(background_color.r, background_color.g, background_color.b, background_color.a)
-		sizeX = font.width(text, 1) + 3
-		gfx.rect(0, 0, sizeX, 8)
-		gfx.color(color.r, color.g, color.b, color.a)
-		gfx.text(1, 0, text)
-end
-   if sameLine == true and position == true then
-		sizeX = 20
-		sizeY = 8
-		local text = textP .. " " .. textX .. player_x .. " " .. textY .. player_y .. " " .. textZ .. player_z
-		local font = gui.font()
-		gfx.color(background_color.r, background_color.g, background_color.b, background_color.a)
-		sizeX = font.width(text, 1) + 3
-		gfx.rect(0, 0, sizeX, 8)
-		gfx.color(color.r, color.g, color.b, color.a)
-		gfx.text(1, 0, text)
-end
-   if sameLine == false and position == false then
-		sizeX = 61
-		sizeY = 30
-		gfx.color(background_color.r, background_color.g, background_color.b, background_color.a)
-		gfx.rect(0, 0, 61, 30)
-		gfx.color(color.r, color.g, color.b, color.a)		
-		gfx.text(1,3, textX .. player_x)
-		gfx.text(1,11, textY .. player_y) 
-		gfx.text(1,19, textZ .. player_z)
-end
-   if sameLine == false and position == true then
-		sizeX = 61
-		sizeY = 35
-		gfx.color(background_color.r, background_color.g, background_color.b, background_color.a)
-		gfx.rect(0, 0, 61, 35)
-		gfx.color(color.r, color.g, color.b, color.a)
-		gfx.text(1,3, textP)	
-		gfx.text(1,11, textX .. player_x)
-		gfx.text(1,19, textY .. player_y) 
-		gfx.text(1,27, textZ .. player_z)
-end
+    local player_x, player_y, player_z = player.position()
+    if (dimension.id() == 1) and universal == true then
+        player_x = math.floor(player_x * 8)
+        player_z = math.floor(player_z * 8)
+    end
+    if (dimension.id() == 1) and translator == true then
+        player_x = math.floor(player_x * 8)
+        player_z = math.floor(player_z * 8)
+    end
+    if (dimension.id() ~= 1) and translator == true then
+        player_x = math.floor(player_x / 8)
+        player_z = math.floor(player_z / 8)
+    end
+    --Module Display
+    if showXYZ == true and colored == true and position == true then
+        textP = "Position:"
+        textX = "§aX§r: "
+        textY = "§cY§r: "
+        textZ = "§bZ§r: "
+    end
+    if showXYZ == true and colored == false and position == false then
+        textX = "X: "
+        textY = "Y: "
+        textZ = "Z: "
+    end
+    if showXYZ == true and colored == true and position == false then
+        textX = "§aX§r: "
+        textY = "§cY§r: "
+        textZ = "§bZ§r: "
+    end
+    if showXYZ == true and colored == false and position == true then
+        textP = "Position:"
+        textX = "X: "
+        textY = "Y: "
+        textZ = "Z: "
+    end
+    if showXYZ == false and position == false then
+        textX = ""
+        textY = ""
+        textZ = ""
+    end
+    if showXYZ == false and position == true then
+        textP = "Position:"
+        textX = ""
+        textY = ""
+        textZ = ""
+    end
+    if sameLine == true and position == false then
+        sizeX = 20
+        sizeY = 8
+        local text = textX .. player_x .. " " .. textY .. player_y .. " " .. textZ .. player_z
+        local font = gui.font()
+        gfx.color(tGb.value.r, tGb.value.g, tGb.value.b, tGb.value.a)
+        sizeX = font.width(text, 1) + 3
+        gfx.rect(0, 0, sizeX, 8)
+        gfx.color(tColor.value.r, tColor.value.g, tColor.value.b, tColor.value.a)
+        gfx.text(1, 0, text)
+    end
+    if sameLine == true and position == true then
+        sizeX = 20
+        sizeY = 8
+        local text = textP .. " " .. textX .. player_x .. " " .. textY .. player_y .. " " .. textZ .. player_z
+        local font = gui.font()
+        gfx.color(tGb.value.r, tGb.value.g, tGb.value.b, tGb.value.a)
+        sizeX = font.width(text, 1) + 3
+        gfx.rect(0, 0, sizeX, 8)
+        gfx.color(tColor.value.r, tColor.value.g, tColor.value.b, tColor.value.a)
+        gfx.text(1, 0, text)
+    end
+    if sameLine == false and position == false then
+        sizeX = 61
+        sizeY = 30
+        gfx.color(tGb.value.r, tGb.value.g, tGb.value.b, tGb.value.a)
+        gfx.rect(0, 0, 61, 30)
+        gfx.color(tColor.value.r, tColor.value.g, tColor.value.b, tColor.value.a)
+        gfx.text(1, 3, textX .. player_x)
+        gfx.text(1, 11, textY .. player_y)
+        gfx.text(1, 19, textZ .. player_z)
+    end
+    if sameLine == false and position == true then
+        sizeX = 61
+        sizeY = 35
+        gfx.color(tGb.value.r, tGb.value.g, tGb.value.b, tGb.value.a)
+        gfx.rect(0, 0, 61, 35)
+        gfx.color(tColor.value.r, tColor.value.g, tColor.value.b, tColor.value.a)
+        gfx.text(1, 3, textP)
+        gfx.text(1, 11, textX .. player_x)
+        gfx.text(1, 19, textY .. player_y)
+        gfx.text(1, 27, textZ .. player_z)
+    end
 end
