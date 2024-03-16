@@ -579,8 +579,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/GuardianSpawnSpots.lua",
       "libs": [],
       "commands": [],
-      "hash": "fb742a987ee9829bb4c4d0da798298fb",
-      "lastUpdated": "2023-04-07T11:29:59.000Z"
+      "hash": "747ac5d7f2447d2817625912d50cfb11",
+      "lastUpdated": "2024-03-16T17:45:14.480Z"
     },
     {
       "name": "guiscale",
