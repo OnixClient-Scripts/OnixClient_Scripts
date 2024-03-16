@@ -385,7 +385,7 @@
       "lastUpdated": "2023-10-12T07:14:21.932Z"
     },
     {
-      "name": "custom chat",
+      "name": "Custom Chat",
       "description": "Custom chat by MCBE Craft",
       "file": "custom chat.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/custom chat.lua",
@@ -393,8 +393,8 @@
         "fileUtility"
       ],
       "commands": [],
-      "hash": "0e4c393864a87dc8a3fb53d6e8324446",
-      "lastUpdated": "2022-08-29T09:45:28.000Z"
+      "hash": "e31a0c0dc53ea6641054be1c260de31b",
+      "lastUpdated": "2024-03-16T16:31:09.011Z"
     },
     {
       "name": "Custom Message",
