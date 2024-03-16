@@ -7,6 +7,9 @@ description = "Look at yourself.. to see yourself.."
 importLib("cosmeticTools")
 importLib("Utils")
 
+client.settings.addInfo("For the best experience, enable Hide Hand in Minecraft's Video settings.")
+client.settings.addInfo("Doesn't work will all block and any items sorry :(")
+
 function postInit()
     player.skin().save("IFP_skin.png")
     SkinSource = Texture:newSource("IFP_skin.png", 64, 64)
@@ -146,7 +149,7 @@ function render3d(dt)
     local slot = player.inventory().selected
     local item = player.inventory().at(slot) or nil
     if item ~= nil then
-        itemToRender = "textures/blocks/" .. item.name .. ".png"
+        itemToRender = "textures/blocks/" .. item.name
     end
 
     t = t + dt
