@@ -1,4 +1,4 @@
-name="Booster Timer"
+name="Hive Booster Timer"
 description = "Shows how long you have left on your boost. The command is .boosterinfo\nVersion 1.1.0"
 positionX = 0
 positionY = 0
