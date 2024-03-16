@@ -204,18 +204,6 @@
       "lastUpdated": "2022-05-17T19:45:57.000Z"
     },
     {
-      "name": "Booster Timer",
-      "description": "Shows how long you have left on your boost. The command is .boosterinfo\\nVersion 1.1.0",
-      "file": "BoosterTimer.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/BoosterTimer.lua",
-      "libs": [],
-      "commands": [
-        "boosterinfo"
-      ],
-      "hash": "2d96375b324bb180ab9d31f14e831943",
-      "lastUpdated": "2022-10-14T21:22:04.000Z"
-    },
-    {
       "name": "Breadcrumbs",
       "description": "Adds a breadcrumb trail behind you.",
       "file": "Breadcrumbs.lua",
@@ -637,6 +625,18 @@
       ],
       "hash": "2835f7fd056cc5dc41022af4af8cb93f",
       "lastUpdated": "2023-11-24T19:03:07.932Z"
+    },
+    {
+      "name": "Hive Booster Timer",
+      "description": "Shows how long you have left on your boost. The command is .boosterinfo\\nVersion 1.1.0",
+      "file": "BoosterTimer.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/BoosterTimer.lua",
+      "libs": [],
+      "commands": [
+        "boosterinfo"
+      ],
+      "hash": "491014aac3bc5a57586340db7911a56b",
+      "lastUpdated": "2024-03-16T13:28:53.549Z"
     },
     {
       "name": "Hive Chat Debloater",
