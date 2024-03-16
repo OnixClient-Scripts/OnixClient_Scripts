@@ -779,8 +779,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/invenRender.lua",
       "libs": [],
       "commands": [],
-      "hash": "1a759192872c74bc6ca872b832a35f37",
-      "lastUpdated": "2022-12-06T14:28:39.000Z"
+      "hash": "550f27b116419c9c1deb298346e17cfc",
+      "lastUpdated": "2024-03-16T21:15:57.429Z"
     },
     {
       "name": "Inventory Display Lite",
