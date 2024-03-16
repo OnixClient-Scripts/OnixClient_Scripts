@@ -21,10 +21,7 @@ hideOnUnknown = false
 
 client.settings.addBool("Display current biome?", "showBiome")
 client.settings.addBool("Display current dimension?", "showDimension")
-client.settings.addBool(
-    "Do not display biome if it is unknown\n\nI manually put in all the biomes with their colors,\ndo you want to disable show biome if I\nhaven't added the biome yet?",
-    "hideOnUnknown"
-)
+client.settings.addBool("Do not display biome if it is unknown", "hideOnUnknown")
 
 positionX = 100
 positionY = 100
