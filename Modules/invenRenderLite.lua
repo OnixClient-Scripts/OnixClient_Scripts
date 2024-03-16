@@ -10,8 +10,7 @@ Lock = true
 client.settings.addBool("Lock the position of the module?", "Lock")
 
 client.settings.addAir(8)
-bgColor = {0, 0, 0, 50}
-client.settings.addColor('Background Color?', 'bgColor')
+bgColor = client.settings.addNamelessColor('Background Color?', { 0, 0, 0, 50 })
 
 inventory = player.inventory()
 invenRender = {}
@@ -35,11 +34,11 @@ function slotRender()
 end
 
 function render(dt)
-    scale = 1 --scale never changes
+    scale = 1            --scale never changes
     if Lock == true then --Locks to the top center (if u resize a lot)
         positionX, positionY = gui.width() / 2 - 88, -4
     end
-    gfx.color(bgColor.r, bgColor.g, bgColor.b, bgColor.a)
+    gfx.color(bgColor.value.r, bgColor.value.g, bgColor.value.b, bgColor.value.a)
     gfx.roundRect(0, 0, sizeX, sizeY, 5, 10)
 
     if inventory ~= nil then
@@ -47,7 +46,7 @@ function render(dt)
             local item = inventory.at(slotloop)
             if item ~= nil then
                 slot = slotloop
-               slotRender()
+                slotRender()
             end
         end
     end
