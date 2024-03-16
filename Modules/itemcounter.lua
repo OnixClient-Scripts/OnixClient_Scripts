@@ -1,4 +1,4 @@
-name = "Item Counter"
+name = "PvP Valuable Item Counter"
 description = "gives the amount of iron ingot, gold ingot, diamond, and emerald"
 
 --[[
@@ -18,8 +18,8 @@ goldPath = "textures/items/gold_ingot"
 diamondPath = "textures/items/diamond"
 emeraldPath = "textures/items/emerald"
 
-TextColor = {255,255,255,255}
-BackColor = {0,0,0,128}
+TextColor = { 255, 255, 255, 255 }
+BackColor = { 0, 0, 0, 128 }
 client.settings.addColor("Text Color", "TextColor")
 client.settings.addColor("Background Color", "BackColor")
 
@@ -41,7 +41,7 @@ function render(deltaTime)
     local selected = inventory.at(inventory.selected)
 
     if ((selected ~= nil)) then
-        for i=1,inventory.size do
+        for i = 1, inventory.size do
             local slot = inventory.at(i)
             if (slot ~= nil) then
                 if (slot.name == ironId) then
