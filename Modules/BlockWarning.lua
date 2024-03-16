@@ -6,7 +6,9 @@ sizeY = 24
 positionX = 50
 positionY = 50
 
-client.settings.addAir(5)
+client.settings.addAir(10)
+client.settings.addTitle("Works only for stone on Hive and wool elsewhere!")
+client.settings.addAir(10)
 client.settings.addCategory("Warning Settings")
 client.settings.addInfo("The warning will be triggered when you have the specified amount of blocks left")
 warning = client.settings.addNamelessInt("Blocks Left:", 1, 64, 10)
