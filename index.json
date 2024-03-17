@@ -1129,16 +1129,6 @@
       "lastUpdated": "2022-03-11T10:05:16.000Z"
     },
     {
-      "name": "Projectile Counter",
-      "description": "gives the amout of Projectiles",
-      "file": "projectilecounter.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/projectilecounter.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "b5cf48ac6b9b615798f59967a1474bf0",
-      "lastUpdated": "2022-08-29T09:41:19.000Z"
-    },
-    {
       "name": "Projectile Trajectory",
       "description": "Shows you where your projectiles will hit",
       "file": "projectileTrajectory.lua",
@@ -1367,6 +1357,16 @@
       "commands": [],
       "hash": "fb76ad04f34bb79d0b84d5e9d2ed69f8",
       "lastUpdated": "2023-12-26T13:53:46.375Z"
+    },
+    {
+      "name": "Snowball and Egg Counter",
+      "description": "Gives the amout of projectiles",
+      "file": "projectilecounter.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/projectilecounter.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "f25b49eb4690a50b71790b6b2844fb25",
+      "lastUpdated": "2024-03-17T22:27:39.368Z"
     },
     {
       "name": "Sphere Generator",
