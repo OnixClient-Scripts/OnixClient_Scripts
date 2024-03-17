@@ -3,18 +3,22 @@
     Version: 1.0
     Instructions:
         1. Go to an outpost look at the chest on the top floor then press the keybind(R by default)
-]]--
+]]
+--
 
 name = "Pillager Spawn Spots"
 description = "Finds the area where pillagers spawns in pillager outposts"
 
-color = { 0, 255, 0 }
+client.settings.addInfo(
+    "Instructions: Go to an outpost look at the chest on the top floor then press the keybind(R by default)"
+)
+
 client.settings.addCategory("Outpost Coordinates")
-cx = client.settings.addNamelessTextbox("X:", "0")
-cz = client.settings.addNamelessTextbox("Z:", "0")
-cy = client.settings.addNamelessTextbox("Y:", "0")
+cx      = client.settings.addNamelessTextbox("X:", "0")
+cz      = client.settings.addNamelessTextbox("Z:", "0")
+cy      = client.settings.addNamelessTextbox("Y:", "0")
 keybind = client.settings.addNamelessKeybind("Set Outpost Coords:", 0x52)
-client.settings.addColor("Spawn Pillar Color", "color")
+color   = client.settings.addNamelessColor("Spawn Pillar Color", { 0, 255, 0 })
 
 function render3d()
     local sx = math.floor(cx.value / 16) * 16 + 8
@@ -43,7 +47,7 @@ event.listen("KeyboardInput", function(key, down)
 end)
 function cubexyz(x, y, z, sx, sy, sz)
     px_, py_, pz_ = player.position()
-    gfx.color(color.r, color.g, color.b)
+    gfx.color(color.value.r, color.value.g, color.value.b)
     local cx, cy, cz = x + sx / 2, y + sy / 2, z + sz / 2
     local vx, vy, vz = cx - px_, cy - py_ - 2, cz - pz_
     local dot_x1 = vx * -1
