@@ -888,13 +888,13 @@
     },
     {
       "name": "Map Labeler",
-      "description": "Labels Maps in game with their names",
+      "description": "Labels a map that you have in your offhand with its name",
       "file": "mapLabeler.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/mapLabeler.lua",
       "libs": [],
       "commands": [],
-      "hash": "6a1fa9bc587e3d1c8ae401d41b560c14",
-      "lastUpdated": "2024-03-06T14:41:48.344Z"
+      "hash": "30e38295df60447d3bb4966aa9be51be",
+      "lastUpdated": "2024-03-17T01:16:41.218Z"
     },
     {
       "name": "Mention Ping",
