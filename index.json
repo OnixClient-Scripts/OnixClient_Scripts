@@ -674,7 +674,7 @@
       "lastUpdated": "2023-09-19T11:48:18.144Z"
     },
     {
-      "name": "HiveWinstreak",
+      "name": "Hive Winstreak Counter",
       "description": "Winstreak counter for The Hive (Only Skywars, Treasure wars)",
       "file": "hivewinstreak.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/hivewinstreak.lua",
@@ -686,8 +686,8 @@
         "addstreak",
         "setstreak"
       ],
-      "hash": "b8a58e9fd88b9831941c45035be240f0",
-      "lastUpdated": "2023-09-05T22:17:05.164Z"
+      "hash": "0bf25c18600189ba3371f6458bb1138b",
+      "lastUpdated": "2024-03-17T01:08:57.119Z"
     },
     {
       "name": "HyperlandsAutoQueue",
