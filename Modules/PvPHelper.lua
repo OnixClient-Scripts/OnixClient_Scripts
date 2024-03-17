@@ -20,14 +20,14 @@ end
 
 function render3d()
     px, py, pz = player.pposition()
-    if player.getFlag(1) then py = py - 0.125 end
+    if player.getFlag(1) then py = py - 0.35 end
 
     entity = player.selectedEntity()
     if entity and entity.type == "player" then
         -- hitbox
         if showHitbox.value then
             gfx.renderBehind(true)
-            gfx.color(hitboxColor.r, hitboxColor.g, hitboxColor.b, hitboxColor.a)
+            gfx.color(hitboxColor.value.r, hitboxColor.value.g, hitboxColor.value.b, hitboxColor.value.a)
             cubexyz(entity.ppx - 0.3, entity.ppy - 1.62, entity.ppz - 0.3, 0.6, 1.8, 0.6)
         end
 
@@ -40,14 +40,14 @@ function render3d()
             if targetIndicator.value then
                 gfx.color(indicatorColor[1], indicatorColor[2], indicatorColor[3])
             else
-                gfx.color(targetColor.r, targetColor.g, targetColor.b, targetColor.a)
+                gfx.color(targetColor.value.r, targetColor.value.g, targetColor.value.b, targetColor.value.a)
             end
             xyzCross(pointX, pointY, pointZ, crossSize)
         end
 
         -- eye line
         if showEyeline.value then
-            gfx.color(eyelineColor.r, eyelineColor.g, eyelineColor.b, eyelineColor.a)
+            gfx.color(eyelineColor.value.r, eyelineColor.value.g, eyelineColor.value.b, eyelineColor.value.a)
             cubexyz(entity.ppx - 0.325, entity.ppy - 0.03, entity.ppz - 0.325, 0.65, 0.06, 0.65)
         end
     end
@@ -68,22 +68,23 @@ function render2()
             )
 
             if distToPlayer <= 0.4 then
-                indicatorColor = { comboIndicatorDanger.r, comboIndicatorDanger.g, comboIndicatorDanger.b }
+                indicatorColor = { comboIndicatorDanger.value.r, comboIndicatorDanger.value.g, comboIndicatorDanger
+                    .value.b }
                 break
             end
 
             if distToPlayer > 6 then
-                indicatorColor = { comboIndicatorGood.r, comboIndicatorGood.g, comboIndicatorGood.b }
+                indicatorColor = { comboIndicatorGood.value.r, comboIndicatorGood.value.g, comboIndicatorGood.value.b }
                 break
             end
         end
 
         if not targetIndicator.value then
             gfx2.color(
-                comboIndicatorBorderColor.r,
-                comboIndicatorBorderColor.g,
-                comboIndicatorBorderColor.b,
-                comboIndicatorBorderColor.a
+                comboIndicatorBorderColor.value.r,
+                comboIndicatorBorderColor.value.g,
+                comboIndicatorBorderColor.value.b,
+                comboIndicatorBorderColor.value.a
             )
             gfx2.drawRoundRect(0, 0, 10, 10, comboIndicatorRoundness, 2)
 
@@ -190,7 +191,7 @@ end
 
 function raycastFromPlayer(playerX, playerY, playerZ, playerPitch, playerYaw, maxDistance)
     playerPitch = math.rad(playerPitch)
-    playerYaw = math.rad( -playerYaw)
+    playerYaw = math.rad(-playerYaw)
 
     y = -maxDistance * math.sin(playerPitch)
     z = maxDistance * math.cos(playerPitch)
@@ -203,26 +204,20 @@ end
 --SETTINGS
 client.settings.addAir(6)
 
-targetColor = { 255, 0, 0 }
-client.settings.addColor("Target Color", "targetColor")
+targetColor = client.settings.addNamelessColor("Target Color", { 255, 0, 0 })
 crossSize = 0.6
 client.settings.addFloat("Target Size", "crossSize", 0.1, 2)
 
 client.settings.addAir(6)
 
-hitboxColor = { 0, 200, 255, 15 }
-client.settings.addColor("Hitbox Color", "hitboxColor")
-eyelineColor = { 0, 0, 120 }
-client.settings.addColor("Eye Line Color", "eyelineColor")
+hitboxColor = client.settings.addNamelessColor("Hitbox Color", { 0, 200, 255, 15 })
+eyelineColor = client.settings.addNamelessColor("Eye Line Color", { 0, 0, 120 })
 
 client.settings.addAir(6)
 
-comboIndicatorGood = { 0, 255, 0 }
-client.settings.addColor("Combo Indicator: Good", "comboIndicatorGood")
-comboIndicatorDanger = { 255, 0, 0 }
-client.settings.addColor("Combo Indicator: Danger", "comboIndicatorDanger")
-comboIndicatorBorderColor = { 0, 0, 0 }
-client.settings.addColor("Combo Indicator: Border", "comboIndicatorBorderColor")
+comboIndicatorGood = client.settings.addNamelessColor("Combo Indicator: Good", { 0, 255, 0 })
+comboIndicatorDanger = client.settings.addNamelessColor("Combo Indicator: Danger", { 255, 0, 0 })
+comboIndicatorBorderColor = client.settings.addNamelessColor("Combo Indicator: Border", { 0, 0, 0 })
 comboIndicatorRoundness = 2
 client.settings.addFloat("Combo Indicator: Roundness", "comboIndicatorRoundness", 0, 5)
 
