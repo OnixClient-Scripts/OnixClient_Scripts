@@ -3,10 +3,10 @@ description = "gives the amout of saturation"
 
 positionX = 50
 positionY = 50
-atlasPath = "textures/gui/icons.png"
---imagePathFull = "hunger_full.png"
---imagePathHalf = "hunger_half.png"
---imagePathEmpty = "hunger_empty.png"
+atlasPath = "textures/gui/icons"
+--imagePathFull = "hunger_full"
+--imagePathHalf = "hunger_half"
+--imagePathEmpty = "hunger_empty"
 
 --[[
     Original module made by MCBE Craft
