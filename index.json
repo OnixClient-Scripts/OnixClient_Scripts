@@ -593,6 +593,16 @@
       "lastUpdated": "2023-05-22T05:53:36.000Z"
     },
     {
+      "name": "Held Item Counter",
+      "description": "Gives the amount of the selected item you have in your inventory",
+      "file": "quantity.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/quantity.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "a4daf41af43dbca6d1e3d3aad5fb0fb4",
+      "lastUpdated": "2024-03-17T23:16:04.776Z"
+    },
+    {
       "name": "Hit Particles",
       "description": "",
       "file": "HitParticles.lua",
@@ -1169,16 +1179,6 @@
       ],
       "hash": "f74c24d1aa2b4d5c3bfbd8f3c494dd6c",
       "lastUpdated": "2024-03-17T23:13:06.429Z"
-    },
-    {
-      "name": "Quantity",
-      "description": "gives the amount of the selected item you have in your inventory",
-      "file": "quantity.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/quantity.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "c9eb24a0376cf0a3fa249ff11edcf7f8",
-      "lastUpdated": "2023-09-05T22:17:05.165Z"
     },
     {
       "name": "Quick Waypoints",
