@@ -9,6 +9,8 @@ importLib("renderthreeD")
 keybind = 0x56
 client.settings.addKeybind("Add/Remove Waypoint", "keybind")
 
+client.settings.addInfo("Waypoints mod needs to be enabled!")
+
 event.listen("KeyboardInput", function(button, down)
     if button == keybind and down then
         buttonPressed()
