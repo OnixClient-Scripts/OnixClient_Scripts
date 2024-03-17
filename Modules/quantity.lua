@@ -1,5 +1,5 @@
-name = "Quantity"
-description = "gives the amount of the selected item you have in your inventory"
+name = "Held Item Counter"
+description = "Gives the amount of the selected item you have in your inventory"
 
 --[[
     Quantity Module Script
@@ -13,12 +13,10 @@ sizeX = 30
 sizeY = 16
 
 client.settings.addAir(5)
-backgroundColor = {0, 0, 0, 127}
-client.settings.addColor("Text color", "backgroundColor")
+backgroundColor = client.settings.addNamelessColor("Text color", { 0, 0, 0, 127 })
 
 client.settings.addAir(5)
-textColor = {254, 254, 254, 254}
-client.settings.addColor("Text color", "textColor")
+textColor = client.settings.addNamelessColor("Text color", { 254, 254, 254, 254 })
 
 
 function render(deltaTime)
@@ -28,7 +26,7 @@ function render(deltaTime)
         local selected = inventory.at(selectedPos)
         if (selected ~= nil) then
             local amount = selected.count
-            for i=1,inventory.size do
+            for i = 1, inventory.size do
                 local slot = inventory.at(i)
                 if (slot ~= nil and slot.id == selected.id and slot.location ~= selected.location) then
                     amount = amount + slot.count
@@ -44,9 +42,9 @@ function render(deltaTime)
                 local font = gui.font()
                 local text = selected.name .. ": " .. amount
                 sizeX = font.width(text) + 17
-                gfx.color(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a)
+                gfx.color(backgroundColor.value.r, backgroundColor.value.g, backgroundColor.value.b, backgroundColor.value.a)
                 gfx.rect(0, 0, sizeX, sizeY)
-                gfx.color(textColor.r, textColor.g, textColor.b, textColor.a)
+                gfx.color(textColor.value.r, textColor.value.g, textColor.value.b, textColor.value.a)
                 gfx.item(0, 0, selected.location, 1)
                 gfx.text(17, 4, text)
             end
