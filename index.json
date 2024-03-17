@@ -1235,8 +1235,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/saturationdisplay.lua",
       "libs": [],
       "commands": [],
-      "hash": "68afb1955525cc0e80ec465a55eb68f2",
-      "lastUpdated": "2022-01-16T15:20:39.000Z"
+      "hash": "52c95f2d82083f94d068097c2914c5cc",
+      "lastUpdated": "2024-03-17T23:27:25.747Z"
     },
     {
       "name": "schematic",
