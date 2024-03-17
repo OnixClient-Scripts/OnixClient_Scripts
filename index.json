@@ -1216,8 +1216,8 @@
       "lastUpdated": "2023-09-05T22:17:05.165Z"
     },
     {
-      "name": "reply",
-      "description": "allows you to reply to /msg",
+      "name": "Reply",
+      "description": "Allows you to reply to /msg",
       "file": "reply.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/reply.lua",
       "libs": [],
@@ -1225,8 +1225,8 @@
         "r",
         "reply"
       ],
-      "hash": "6400afd3bb95c641b51320f2bd29cd43",
-      "lastUpdated": "2023-09-05T22:17:05.165Z"
+      "hash": "de9196ca8938b5ad3f4a01610dfba95c",
+      "lastUpdated": "2024-03-17T23:25:10.708Z"
     },
     {
       "name": "Saturation display",
