@@ -1,12 +1,12 @@
-name = "Projectile Counter"
-description = "gives the amout of Projectiles"
+name = "Snowball and Egg Counter"
+description = "Gives the amout of projectiles"
 
 --[[
     Projectile Counter Module Script
 	
 	made by MCBE Craft
 	edited by Prathpro17
-    improved by Onix86
+    	improved by Onix86
 ]]
 
 
@@ -15,11 +15,8 @@ positionY = 490
 sizeX = 30
 sizeY = 10
 
-TextColor = {255,255,255,255}
-BackgroundColor = {0,0,0,128}
-
-client.settings.addColor("Text Color", "TextColor")
-client.settings.addColor("Background Color", "BackgroundColor")
+TextColor = client.settings.addNamelessColor("Text Color", { 255, 255, 255, 255 })
+BackgroundColor = client.settings.addNamelessColor("Background Color", { 0, 0, 0, 128 })
 
 snowballId = "snowball"
 eggId = "egg"
@@ -33,7 +30,7 @@ function render(deltaTime)
     local eggCount = 0
     local selected = inventory.at(inventory.selected)
     local itemLocation = -1
-    for i=1,inventory.size do
+    for i = 1, inventory.size do
         local slot = inventory.at(i)
         if (slot ~= nil and slot.name == snowballId) then
             snowballCount = snowballCount + slot.count
@@ -57,11 +54,11 @@ function render(deltaTime)
         local font = gui.font()
         local text = " Projectiles: " .. snowballCount + eggCount
 
-        gfx.color(BackgroundColor.r,BackgroundColor.g,BackgroundColor.b,BackgroundColor.a)
+        gfx.color(BackgroundColor.value.r, BackgroundColor.value.g, BackgroundColor.value.b, BackgroundColor.value.a)
         sizeX = 14 + font.width(text)
         gfx.rect(0, 0, sizeX, 10)
 
-        gfx.color(TextColor.r,TextColor.g,TextColor.b,TextColor.a)
+        gfx.color(TextColor.value.r, TextColor.value.g, TextColor.value.b, TextColor.value.a)
         gfx.text(12, 5 - (font.height / 2), text, 1)
         if snowballCount < eggCount then
             gfx.texture(0, 0, 10, 10, textureEGGPath)
