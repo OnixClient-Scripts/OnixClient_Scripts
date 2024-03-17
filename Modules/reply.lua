@@ -1,10 +1,12 @@
-name = "reply"
-description = "allows you to reply to /msg"
+name = "Reply"
+description = "Allows you to reply to /msg"
 
 
 --[[
     By MCBE Craft
 ]]
+
+client.settings.addTitle("Reply with the command .r or .reply")
 
 local replying
 
