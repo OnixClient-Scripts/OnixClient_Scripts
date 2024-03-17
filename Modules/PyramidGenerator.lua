@@ -1,6 +1,9 @@
 name = "Pyramid Generator"
 description = "Generates a pyramid."
 
+client.settings.addTitle("Instructions: Use the command \".pyramid [size] [block name]\"")
+client.settings.addTitle("Works only in creative mode")
+
 function generatePyramidRelativeToPlayer(size, material)
     -- Get the player's current position
     local x, y, z = player.position()
