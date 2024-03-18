@@ -21,8 +21,6 @@ end
 displayBox = client.settings.addNamelessBool("Display Box", true)
 client.settings.addInfo("Displays a box around the selected player.")
 hitboxColor = client.settings.addNamelessColor("Hitbox Color", {r = 255, g = 255, b = 255, a = 25})
-client.settings.addAir(5)
-renderOnTheLeft = client.settings.addNamelessBool("Render On The Left", false)
 
 workingDir = "RoamingState/OnixClient/Scripts/Data/TargetHUD"
 fs.mkdir("Skins")
