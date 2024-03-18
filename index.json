@@ -184,6 +184,20 @@
       "lastUpdated": "2022-05-02T23:18:20.000Z"
     },
     {
+      "name": "Block Finder",
+      "description": "Shows blocks in the world",
+      "file": "showBlocks.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/showBlocks.lua",
+      "libs": [
+        "renderthreeD"
+      ],
+      "commands": [
+        "findBlock"
+      ],
+      "hash": "9e6a9985e1f6a86134ede2115175e3a5",
+      "lastUpdated": "2024-03-18T00:04:30.698Z"
+    },
+    {
       "name": "Block Warning",
       "description": "Displays a warning when you are low on blocks.",
       "file": "BlockWarning.lua",
@@ -1321,20 +1335,6 @@
       "commands": [],
       "hash": "c9cf85a48c72974004ab20e6e769a9f9",
       "lastUpdated": "2024-01-20T02:57:10.283Z"
-    },
-    {
-      "name": "Show Blocks",
-      "description": "Shows blocks in the world",
-      "file": "showBlocks.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/showBlocks.lua",
-      "libs": [
-        "renderthreeD"
-      ],
-      "commands": [
-        "findBlock"
-      ],
-      "hash": "a1c0ff5b6df970768243d1effe4a3c63",
-      "lastUpdated": "2023-09-05T22:17:05.165Z"
     },
     {
       "name": "Skinstealer",
