@@ -3,8 +3,12 @@ description = "Generates a sphere."
 
 blockCount = 0
 
+client.settings.addInfo(
+    "Instructions: use the command .sphere [radius] [block] OR .hsphere [radius] [thickness] [block]"
+)
+
 function generateSphere(radius, material)
-    local x,y,z = player.position()
+    local x, y, z = player.position()
     local sx = x - radius
     local sy = y - radius
     local sz = z - radius
@@ -12,10 +16,10 @@ function generateSphere(radius, material)
     local ey = y + radius
     local ez = z + radius
 
-    for px=sx,ex do
-        for py=sy,ey do
-            for pz=sz,ez do
-                if math.sqrt((px-x)^2 + (py-y)^2 + (pz-z)^2) <= radius then
+    for px = sx, ex do
+        for py = sy, ey do
+            for pz = sz, ez do
+                if math.sqrt((px - x) ^ 2 + (py - y) ^ 2 + (pz - z) ^ 2) <= radius then
                     client.execute("execute /setblock " .. px .. " " .. py .. " " .. pz .. " " .. material)
                     blockCount = blockCount + 1
                 end
@@ -25,7 +29,7 @@ function generateSphere(radius, material)
 end
 
 function generateHollowSphere(radius, thickness, material)
-    local x,y,z = player.position()
+    local x, y, z = player.position()
     local sx = x - radius
     local sy = y - radius
     local sz = z - radius
@@ -33,10 +37,10 @@ function generateHollowSphere(radius, thickness, material)
     local ey = y + radius
     local ez = z + radius
 
-    for px=sx,ex do
-        for py=sy,ey do
-            for pz=sz,ez do
-                local distance = math.sqrt((px-x)^2 + (py-y)^2 + (pz-z)^2)
+    for px = sx, ex do
+        for py = sy, ey do
+            for pz = sz, ez do
+                local distance = math.sqrt((px - x) ^ 2 + (py - y) ^ 2 + (pz - z) ^ 2)
                 if distance <= radius and distance >= radius - thickness then
                     client.execute("execute /setblock " .. px .. " " .. py .. " " .. pz .. " " .. material)
                     blockCount = blockCount + 1
@@ -45,7 +49,6 @@ function generateHollowSphere(radius, thickness, material)
         end
     end
 end
-
 
 registerCommand("sphere", function(args)
     blockCount = 0
