@@ -1,0 +1,149 @@
+2048: good
+Accurate stopwatch: Text and background flashes
+Advanced Coordinates: Good
+AFK Grayscale: Going grayscale makes you invisible
+Amogus: Doesnt work
+Anti-Interact: Right clicking with a sword crashes the game when "Block Right Clicking When Holding Sword" is enabled
+AreaSearcherExemple: Good
+Armor Damage Reduction Viewer/Armoria: Good
+Arraylist: Good
+Arrow Counter (arrowcounter.lua): Good, but also a default mod
+Arrow Trajectory: Good (but Projectile Trajectory is better except for on Hive)
+AutoParty: idk
+Beacon Range: Good
+Better Camera: Good but freaks out sometimes
+Better Hunger: Bad, pretty sure the attributes dont work
+Cinematic Black Bar: Good
+Block Warning: Works only for wool and stone on Hive for some reason, the warning icon is a "?" now
+Blood Screen: Requires image in Data, broken because player.attributes().name("minecraft:health").min and .max are swapped
+Hive Booster Timer: DIDNT TRY IT
+Breadcrumbs: Good (but the smoothness of the line is excessive and could cause low frame rates for low-end devices)
+Camera Animations: Causes random errors sometimes, possibly crashes, unfinished but works
+Camera Effects: Good
+Cape Switcher: Clicking on a cape crashes you
+Cat Switcher: Good
+Chat Debugger: Good
+ChatLogger: Good
+Chat Reverser: Good
+Chest Visualizer: Works sometimes
+Circle Tool: Good
+Click Limiter: Good
+Click To Ten: Sure
+Better Coordinates: Good
+Copy Last Message: Good
+Cosmetics: Good
+Cosmetics v2 Example: Good (but just an example of what you can do with the lib)
+Crash Hotkey: Good
+Custom Message: Good but kinda useless because it just asks you to edit its code
+Custom Chat: Good. exe for Discord bridge is gone?
+Custom Setting Example: Good
+Double Click Prevent Disbler: DIDNT TRY IT
+Death Coordinates: Good
+Debug Menu Plus: Good
+Enabled Filter: Good
+Everything Sponge: Placing a block crashes the game
+Exemple: Good
+Explosive Crops: Good
+Fake ping display: Good
+FPS Limiter: Good
+Funny fps thing: Broken because of health attribute
+Gamemode Switcher: Doesnt work with spectator mode
+Gamemode Hotkey: Good
+Guardian Spawn Spots: Good
+Galaxite Tweaks: DIDNT TRY IT
+Half Life 2 GUI: Most likely causing random crashes
+Hit particles: Good
+Hive Autoqueue: Doesnt work after 1.20.60
+Hive Chat Replacer: DIDNT TRY IT (should work unless hive messages were changed)
+Hive CS Code Copier: DIDNT TRY IT
+Hive Chat Debloater: Lowers frame rate
+Hive Statistic Checker: Good
+Hive Winstreak: Good
+Hyperlands Auto Queue: DIDNT TRY IT
+Ice Boat: Good
+Anti Slab Interact: Not needed anymore
+Image Generator: Good but blocks don't fill when they're too far away (AN IMPROVED VERSION EXISTS I THINK)
+Immersive First Person: Good but some blocks and all items can't show their texture. The outer layer doesn't render. You puch when clicking in menus.
+Immersive Hunger: Crashes when holding food
+In Game Skin Editor: Good, but it's fundamentally flawed because there aren't enough blocks to represent all colors
+Input Example: Good
+Inventory Display: Good
+Inventory Display Lite: Good
+Inventory Tweaks: Takes your helmet off when you open your inventory, takes 2 items when you control click in creative menu
+Inventory Item Counter: Goood
+PvP Valuable Item Counter/itemcounter: Good
+Java View Bobbing: Good but freaks out sometimes
+Jetpack Joyride: Music doesnt work and clicking to go up is an issue because it blocks clicks and makes you punch things
+Keyboard Displayer: Good
+Kill Aura: Good
+Kill Ding: Doesnt work for at least Skywars Solo (works on Hive only)
+Left Hand: Makes blocks render inside out
+Logger: Good
+Map Labeler: Good
+Mention Ping: Good, requires things in Data
+Middle Click Tools: Skin stealing works, friend and party doesn't work on Hive or Cubecraft at least
+Minecraft RPC: DIDNT TRY IT (+requires external exe)
+Minimap: Good, but v2 and v3 are better
+Minimap v2: Good
+Minimap v3: Good
+Mining mod: Good
+More Keystrokes: simply not working
+More Keystrokes Numpad Version: simply not working
+Movable Action Bar: IDK what the action bar is
+MusicBee Overlay: DIDNT TRY IT
+nethercoordinatetranslator: Good
+Note Block Note Visuals: Only ever shows the note F#
+Offhand slot display: Good
+Pack Downloader: DIDNT TRY IT
+Particle Mod: Named color setting glitch, essentially the same as "Hit particles"
+Pillager Spawn Spots: Probably good
+Ping Display: DIDNT TRY IT (requires external exe), copy of a default mod
+Plasmic ClickGUI: Broken, creates a ton of errors
+PlayerInfo: Some text overlaps, all the player's attributes don't work
+Pong: Good (sometimes flickers/disappears)
+Prefix module: Works with a command
+Snowball and Egg Counter: Good
+Projectile Trajectory: Good
+PvPHelper: Good
+Pyramid Generator: Good
+Held Item Counter: Good
+Quick Waypoints: Good
+Redstone Power Display: Good
+RenderThreeD library exemples: Good
+Reply: Good
+Saturation display: Good
+schematic: MinimapBlockTools lib is gone so it doesnt work
+scope: Doesnt do anything, needs an image in Data
+screendarker: Good
+Scripting Repo GUI: Good (just some jank)
+Scripting UI: Once you enable it in a session, normal mods dont show up even when disabled
+Shadows: Good
+Block Finder: Good but kinda cheaty
+Skinstealer: Good
+Slime Chunk Finder: Good
+Sphere Generator: Good
+Toggle Sprint Indicator: Not needed
+Structure Spawn Spots: No instructions on where to set coord
+Stopwatch: A default mod
+Sudoku: Good
+Suicide Hotkey: Good
+susUI/Among UI: Works but literally why
+tabGUI: Some mods dont fit on the screen anymore lol, could maybe use instructions (you need to use the arrow keys)
+Target HUD: Good
+TestLuaMod: Good
+Tetrizz: Good
+timeSpeed/Daylight Cycle Speed Changer: Good
+Toxic Helper: No idea what it does
+TW Resource Counter: Crashes
+UI Gui Scale: No idea what this does
+Video player: DIDNT TRY IT, literally a 14 minute how to video
+Waila: A default mod
+Waypoint Hotkey: Good
+Waypoint Mods: Good
+Waypoint Ping Tool: Same as Quick Waypoints (I think there's also supposed to be the feature of sharing waypoints with others but idk if that works)
+Win Particles: Not working
+Wordle: Doesnt appear in-game?
+World Edit: Good
+Zeqa Autoqueue: DIDNT TRY IT
+Zeqa Chat Debloater: DIDNT TRY IT
+Zeqa Emotes Everywhere: Doesnt work

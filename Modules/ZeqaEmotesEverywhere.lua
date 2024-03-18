@@ -1,5 +1,5 @@
 name = "Zeqa Emotes Everywhere"
-description = "Makes Zeqa's emotes work everywhere."
+description = "Makes Zeqa's emotes work everywhere. Works with the /msg command."
 
 emojiToUnicode = {
 	[":kiss:"] = "",

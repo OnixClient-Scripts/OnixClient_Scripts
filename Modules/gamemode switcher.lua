@@ -20,11 +20,11 @@ client.settings.addColor("Background color", "backgroundColor")
 library = importLib("keyconverter.lua")
 
 local keyHeld = false
-local atlasPath = "textures/gui/gui2.png"
+local atlasPath = "textures/gui/gui2"
 local posX = 100
 local posY = 100
 local gamemodes = {"Survival Mode", "Creative Mode", "Adventure Mode"}
-local gamemodeIcons = {"textures/items/iron_sword.png", "textures/blocks/grass_side_carried.png", "textures/items/map_empty.png"}
+local gamemodeIcons = {"textures/items/iron_sword", "textures/blocks/grass_side_carried", "textures/items/map_empty"}
 local gamemodeCommands = {"execute /gamemode s", "execute /gamemode c", "execute /gamemode a"}
 local gamemode = 0
 
