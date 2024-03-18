@@ -1438,8 +1438,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/TargetHUD.lua",
       "libs": [],
       "commands": [],
-      "hash": "cb227c6a85448a183565f8aa65d92682",
-      "lastUpdated": "2023-04-07T11:29:59.000Z"
+      "hash": "4a1f4e753013c09bcdb68221e102397a",
+      "lastUpdated": "2024-03-18T21:36:36.814Z"
     },
     {
       "name": "TestLuaMod",
