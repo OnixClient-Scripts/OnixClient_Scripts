@@ -217,6 +217,7 @@ function gfx2.textSize(text) end
 ---@class Gfx2Texture
 ---@field width integer The width of the texture
 ---@field height integer The height of the texture
+---@field stringForm string The height of the texture
 local _acp__Gfx2Texture_ = {}
 
 ---Gets the color of a pixel in the texture
@@ -264,6 +265,11 @@ function gfx2.loadImage(width, height, Base64Texture) end
 ---@param filepath string The path relative to the Scripts/Data folder
 ---@return Gfx2Texture|nil texture The loaded texture or nil
 function gfx2.loadImage(filepath) end
+
+---Loads the texture from its string representation
+---@param stringForm string The string representation of the texture
+---@return Gfx2Texture texture The loaded texture
+function gfx2.loadImageFromStringForm(stringForm) end
 
 ---Loads a texture from a url, great for things that render images that changes
 ---Note that while the texture is loading, drawing it will draw a gfx2.color() colored rectangle
