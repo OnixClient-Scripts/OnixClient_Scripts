@@ -727,6 +727,16 @@
       "lastUpdated": "2023-10-30T15:44:40.087Z"
     },
     {
+      "name": "Minecraft RPC",
+      "description": "Rich Presence. Intelligently.\\nClosing the launcher when using this is recommended.",
+      "file": "MinecraftRPC.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/MinecraftRPC.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "01ec91779d73bd467ea55404eb2d86f2",
+      "lastUpdated": "2024-03-21T22:08:19.391Z"
+    },
+    {
       "name": "Minimap",
       "description": "shows a map of blocks around you",
       "file": "minimap.lua",
