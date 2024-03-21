@@ -2,6 +2,7 @@
 --- Object to easily use key codes
 -- I got them from https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 -- There are a few left out, namely the OEM-specific keys and unassigned/undefined/reserved keys.
+---@enum KeyCodes
 KeyCodes = {
     MouseLeft = 1,
     MouseRight = 2,
