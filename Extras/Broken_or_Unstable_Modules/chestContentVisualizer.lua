@@ -40,14 +40,14 @@ local cookTimes = {
 function postInit()
     for k, _ in pairs(uiSize) do
         if not fs.exist("ui/" .. k .. ".png") then
-            print("no " .. k)
+            -- print("no " .. k)
             network.fileget("ui/" .. k .. ".png", "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Data/ui/" .. k .. ".png", "image")
         end
     end
 end
 
 function onNetworkData(code, id, data)
-    print("code: " .. code .. " id: " .. id .. " data: " .. data)
+    -- print("code: " .. code .. " id: " .. id .. " data: " .. data)
 end
 
 function render(dt)
