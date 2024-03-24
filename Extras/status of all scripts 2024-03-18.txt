@@ -65,7 +65,7 @@ Anti Slab Interact: Not needed anymore
 Image Generator: Good but blocks don't fill when they're too far away (AN IMPROVED VERSION EXISTS I THINK)
 Immersive First Person: Good but some blocks and all items can't show their texture. The outer layer doesn't render. You puch when clicking in menus.
 Immersive Hunger: Crashes when holding food
-In Game Skin Editor: Good, but it's fundamentally flawed because there aren't enough blocks to represent all colors
+In Game Skin Editor: Good, but it's fundamentally flawed because there aren't enough blocks to represent all colors. Tutorial: https://www.youtube.com/watch?v=cGYhkwQ7624.
 Input Example: Good
 Inventory Display: Good
 Inventory Display Lite: Good
