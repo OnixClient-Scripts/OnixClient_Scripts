@@ -1,4 +1,4 @@
-name="Gamemode Switcher"
+name = "Gamemode Switcher"
 description = "Gamemode Switcher by MCBE Craft allows you to switch gamemode\nlike on java"
 
 --[[
@@ -14,8 +14,7 @@ nextKey = 0x73 --F4
 client.settings.addKeybind("Hold key to change gamemode", "nextKey")
 
 client.settings.addAir(5)
-backgroundColor = {0, 0, 0, 127}
-client.settings.addColor("Background color", "backgroundColor")
+backgroundColor = client.settings.addNamelessColor("Background color", { 0, 0, 0, 127 })
 
 library = importLib("keyconverter.lua")
 
@@ -23,29 +22,28 @@ local keyHeld = false
 local atlasPath = "textures/gui/gui2"
 local posX = 100
 local posY = 100
-local gamemodes = {"Survival Mode", "Creative Mode", "Adventure Mode"}
-local gamemodeIcons = {"textures/items/iron_sword", "textures/blocks/grass_side_carried", "textures/items/map_empty"}
-local gamemodeCommands = {"execute /gamemode s", "execute /gamemode c", "execute /gamemode a"}
+local gamemodes = { "Survival Mode", "Creative Mode", "Adventure Mode" }
+local gamemodeIcons = { "textures/items/iron_sword", "textures/blocks/grass_side_carried", "textures/items/map_empty" }
+local gamemodeCommands = { "execute /gamemode s", "execute /gamemode c", "execute /gamemode a" }
 local gamemode = 0
 
 function render(dt)
     if keyHeld then
         posX = gui.width() / 2 - 41
         posY = gui.height() / 2 - 52
-        gfx.color(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a)
+        gfx.color(backgroundColor.value.r, backgroundColor.value.g, backgroundColor.value.b, backgroundColor.value.a)
         gfx.roundRect(posX, posY, 82, 74, 5, 5)
         gfx.roundRect(posX, posY, 82, 20, 5, 5)
-        --gfx.color(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a * 2)
         for i = 0, 2, 1 do
-            gfx.ctexture(posX + 4 + i*26, posY + 28, 11, 22, atlasPath, 0, 0, 0.04296874999, 0.08593749999)
-            gfx.ctexture(posX + 15 + i*26, posY + 28, 11, 22, atlasPath, 0.66796875, 0, 0.04296874999, 0.08593749999)
+            gfx.ctexture(posX + 4 + i * 26, posY + 28, 11, 22, atlasPath, 0, 0, 0.04296874999, 0.08593749999)
+            gfx.ctexture(posX + 15 + i * 26, posY + 28, 11, 22, atlasPath, 0.66796875, 0, 0.04296874999, 0.08593749999)
         end
         gfx.fimage()
-        gfx.ctexture(posX + 4 + gamemode*26, posY + 28, 11, 22, atlasPath, 0, 0, 0.04296874999, 0.08593749999)
-        gfx.ctexture(posX + 15 + gamemode*26, posY + 28, 11, 22, atlasPath, 0.66796875, 0, 0.04296874999, 0.08593749999)
+        gfx.ctexture(posX + 4 + gamemode * 26, posY + 28, 11, 22, atlasPath, 0, 0, 0.04296874999, 0.08593749999)
+        gfx.ctexture(posX + 15 + gamemode * 26, posY + 28, 11, 22, atlasPath, 0.66796875, 0, 0.04296874999, 0.08593749999)
         gfx.cfimage(255, 255, 0, 255)
         for i = 0, 2, 1 do
-            gfx.texture(posX + 8 + i*26, posY + 32, 14, 14, gamemodeIcons[i + 1])
+            gfx.texture(posX + 8 + i * 26, posY + 32, 14, 14, gamemodeIcons[i + 1])
         end
         gfx.color(255, 255, 255, 255)
         local text = gamemodes[gamemode + 1]
@@ -58,11 +56,10 @@ function render(dt)
     end
 end
 
-
 event.listen("KeyboardInput", function(key, down)
     if key == holdKey then
         keyHeld = down
-        if not down and gamemode ~= mcToGamemode(player.gamemode())  then
+        if not down and gamemode ~= mcToGamemode(player.gamemode()) then
             client.execute(gamemodeCommands[gamemode + 1])
         end
         gamemode = mcToGamemode(player.gamemode())
@@ -88,4 +85,3 @@ function mcToGamemode(gm)
         return gm
     end
 end
-
