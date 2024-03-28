@@ -177,6 +177,15 @@ function _acp_BinaryFile:writeString(Text) end
 ---@param Text string the text to put in the file
 function _acp_BinaryFile:writeBigString(Text) end
 
+---Writes text to the file and includes the null character at the end
+---@param Text string the text to put in the file
+function _acp_BinaryFile:writeUtf8StringWithNull(Text) end
+
+---Writes text to the file and includes the null character at the end
+---Note: This is affected by the current endianness (:setLittleEndian)
+---@param Text string the text to put in the file
+function _acp_BinaryFile:writeUtf16StringWithNull(Text) end
+
 ---Writes Data to the file
 ---@param Data userdata the data to put in the file
 function _acp_BinaryFile:writeRaw(Data) end
@@ -198,6 +207,22 @@ function _acp_BinaryFile:writeStream(Stream, Begin, End) end
 ---@param Begin integer|nil Where to start reading from the stream, nil will be 0 you can use :tell() to get the current position
 ---@param End integer|nil Where to stop reading from the stream, nil will be the end of the stream
 function _acp_BinaryFile:writeStream(Stream, Begin, End) end
+
+---Writes an image inside a file
+---@param Image Gfx2Texture the image to put in the file
+function _acp_BinaryFile:writeImage(Image) end
+
+---Writes an image inside a file
+---@param Image Gfx2Texture the image to put in the file
+---@param isJpg boolean|nil If the image should be written as a jpg, if nil or false it will be written as a png
+function _acp_BinaryFile:writeImage(Image, isJpg) end
+
+---Writes an image inside a file
+---@param Image Gfx2Texture the image to put in the file
+---@param isJpg boolean|nil If the image should be written as a jpg, if nil or false it will be written as a png
+---@param jpgQuality integer|nil The quality of the jpg, 1 is the worst quality and 100 is the best quality
+function _acp_BinaryFile:writeImage(Image, isJpg, jpgQuality) end
+
 
 
 
@@ -261,6 +286,15 @@ function _acp_BinaryFile:readString() end
 ---@return string Text The text that was read
 function _acp_BinaryFile:readBigString() end
 
+---Reads text from the file until a null character is found (0)
+---@return string Text The text that was read
+function _acp_BinaryFile:readStringUtf8UntilNull() end
+
+---Reads text from the file until a null character is found (0)
+---Note: This is affected by the current endianness (:setLittleEndian)
+---@return string Text The text that was read
+function _acp_BinaryFile:readStringUtf16UntilNull() end
+
 ---Reads Data from the file
 ---@param bytesToRead integer How many bytes to read
 ---@return userdata Data The data that was read
@@ -280,6 +314,11 @@ function _acp_BinaryFile:readStream(bytesToRead) end
 ---@return BinaryFile|nil Stream The stream that was read
 function _acp_BinaryFile:readStream(bytesToRead, compressionType, compressionLevel, compressionHeader, isOutputStream) end
 
+
+---Parses an image from the stream and returns the image data in a Gfx2Texture
+---@param bytesToRead integer|nil How many bytes to read, nil would be everything ahead (:size() - :tell())
+---@return Gfx2Texture|nil Texture The texture that was read
+function _acp_BinaryFile:parseImage(bytesToRead) end
 
 ---Opens a file to read/write data
 ---@param path string The path from Scripts/Data
