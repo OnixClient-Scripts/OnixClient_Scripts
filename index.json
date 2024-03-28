@@ -1608,6 +1608,12 @@
     },
     "library": [
       {
+        "file": "audio_player.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/audio_player.lua",
+        "hash": "189409757f292541b945b0887826cc7d",
+        "lastUpdated": "2024-03-28T16:47:37.492Z"
+      },
+      {
         "file": "client_settings.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/client_settings.lua",
         "hash": "0375d197e76abf26459f4e4cac75c127",
