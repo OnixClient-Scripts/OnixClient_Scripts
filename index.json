@@ -1326,6 +1326,13 @@
   ],
   "libs": [
     {
+      "name": "anetwork",
+      "file": "anetwork.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/anetwork.lua",
+      "hash": "4f8487995a2c04d0e0630c5ffa733e05",
+      "lastUpdated": "2024-03-30T19:50:25.736Z"
+    },
+    {
       "name": "animate",
       "file": "animate.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/animate.lua",
