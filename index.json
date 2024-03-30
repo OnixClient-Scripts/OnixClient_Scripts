@@ -1707,8 +1707,8 @@
       {
         "file": "snetwork.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/snetwork.lua",
-        "hash": "09c2e7cbf0585957a3150297a090896b",
-        "lastUpdated": "2024-03-11T15:39:37.069Z"
+        "hash": "016686d91f8f975b0d9543c04c23a13b",
+        "lastUpdated": "2024-03-30T19:41:58.047Z"
       },
       {
         "file": "threading.lua",
