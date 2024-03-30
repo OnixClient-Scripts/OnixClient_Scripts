@@ -395,7 +395,7 @@ function id3.parse_id3v1(file)
         local title = file:read(30)
         local artist = file:read(30)
         local album = file:read(30)
-        local year = math.floor(tonumber(file:read(4)))
+        local year = math.floor(tonumber(file:read(4)) or 0)
         local comment = file:read(30)
         local genre = file:readUByte()
         return {
