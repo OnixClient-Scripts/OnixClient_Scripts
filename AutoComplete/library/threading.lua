@@ -207,6 +207,10 @@ local __acp_Thread = {}
 ---@return Thread thread The newly created thread.
 function CreateThread(func, arguments, createBlockGetter) end
 
+---Tells you if you should close that thread ASAP before its killed
+--- if this is true no time to waste and you should close the thread
+function __acp_Thread:shouldExit() end
+
 ---Waits for the thread to finish. (creator only)
 ---Yous should probably never use this, as it will block the current thread.
 function __acp_Thread:join() end
