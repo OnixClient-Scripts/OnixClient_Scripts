@@ -5,9 +5,14 @@
 ---@field body string
 ---@field headers table<string, string>
 
+---@class HttpFileContent
+---@field type string|"file"|"string" The type of the file content.
+---@field data string The data of the file.
+---@field name string The name of the file.
 
 ---@class snetwork
 snetwork = {}
+
 
 ---Performs a GET web request synchronously.
 ---@param url string The URL to request.
@@ -32,9 +37,10 @@ function snetwork.fileget(url, saveFilePath, headers, progressCallback) end
 ---@param headers nil|table<string, string> A table of headers to send with the request.
 ---@param method nil|string|"POST"|"PUT"|"PATCH" The HTTP method to use for the request.
 ---@param progressCallback nil|fun(downloadDone:integer, downloadTotal:integer, uploadDone:integer, uploadTotal:integer) A function which will be called whenever progress is made on the request.
+---@param files HttpFileContent[]|nil A table of files to send with the request.
 ---@return HttpResponse|nil response The response from the server.
 ---@return string|"OK" error The error message if the request failed.
-function snetwork.post(url, body, headers, method, progressCallback) end
+function snetwork.post(url, body, headers, method, progressCallback, files) end
 
 ---Performs a POST web request synchronously.
 ---@param url string The URL to request.
@@ -42,9 +48,10 @@ function snetwork.post(url, body, headers, method, progressCallback) end
 ---@param headers nil|table<string, string> A table of headers to send with the request.
 ---@param method nil|string|"POST"|"PUT"|"PATCH" The HTTP method to use for the request.
 ---@param progressCallback nil|fun(downloadDone:integer, downloadTotal:integer, uploadDone:integer, uploadTotal:integer) A function which will be called whenever progress is made on the request.
+---@param files HttpFileContent[]|nil A table of files to send with the request.
 ---@return HttpResponse|nil response The response from the server.
 ---@return string|"OK" error The error message if the request failed.
-function snetwork.postfile(url, filepathToBody, headers, method, progressCallback) end
+function snetwork.postfile(url, filepathToBody, headers, method, progressCallback, files) end
 
 
 ---Performs a POST web request synchronously.
@@ -54,9 +61,10 @@ function snetwork.postfile(url, filepathToBody, headers, method, progressCallbac
 ---@param headers nil|table<string, string> A table of headers to send with the request.
 ---@param method nil|string|"POST"|"PUT"|"PATCH" The HTTP method to use for the request.
 ---@param progressCallback nil|fun(downloadDone:integer, downloadTotal:integer, uploadDone:integer, uploadTotal:integer) A function which will be called whenever progress is made on the request.
+---@param files HttpFileContent[]|nil A table of files to send with the request.
 ---@return HttpResponse|nil response The response from the server.
 ---@return string|"OK" error The error message if the request failed.
-function snetwork.filepost(url, saveFilepath, body, headers, method, progressCallback) end
+function snetwork.filepost(url, saveFilepath, body, headers, method, progressCallback, files) end
 
 ---Performs a POST web request synchronously.
 ---@param url string The URL to request.
@@ -65,6 +73,7 @@ function snetwork.filepost(url, saveFilepath, body, headers, method, progressCal
 ---@param headers nil|table<string, string> A table of headers to send with the request.
 ---@param method nil|string|"POST"|"PUT"|"PATCH" The HTTP method to use for the request.
 ---@param progressCallback nil|fun(downloadDone:integer, downloadTotal:integer, uploadDone:integer, uploadTotal:integer) A function which will be called whenever progress is made on the request.
+---@param files HttpFileContent[]|nil A table of files to send with the request.
 ---@return HttpResponse|nil response The response from the server.
 ---@return string|"OK" error The error message if the request failed.
-function snetwork.filepostfile(url, saveFilepath, filepathToBody, headers, method, progressCallback) end
+function snetwork.filepostfile(url, saveFilepath, filepathToBody, headers, method, progressCallback, files) end
