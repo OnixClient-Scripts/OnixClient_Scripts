@@ -1466,6 +1466,13 @@
       "lastUpdated": "2023-07-24T17:02:10.000Z"
     },
     {
+      "name": "id3_parser",
+      "file": "id3_parser.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/id3_parser.lua",
+      "hash": "15863dc66b2725427463adbec41ba4c0",
+      "lastUpdated": "2024-03-30T04:12:28.655Z"
+    },
+    {
       "name": "ida3_parser",
       "file": "ida3_parser.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/ida3_parser.lua",
