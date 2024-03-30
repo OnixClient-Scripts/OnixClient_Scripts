@@ -1473,13 +1473,6 @@
       "lastUpdated": "2024-03-30T04:12:28.655Z"
     },
     {
-      "name": "ida3_parser",
-      "file": "ida3_parser.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/ida3_parser.lua",
-      "hash": "6d8c74594273efd38ec0fded35ab5dba",
-      "lastUpdated": "2024-03-28T16:58:41.964Z"
-    },
-    {
       "name": "Inventory",
       "file": "Inventory.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/Inventory.lua",
