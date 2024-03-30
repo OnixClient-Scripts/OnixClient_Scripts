@@ -43,7 +43,7 @@ end
 
 ---@param file BinaryFile
 ---@param segSize integer
-function id3v2_extract_text_frame(file, segSize)
+function id3.id3v2_extract_text_frame(file, segSize)
     local filepos = file:tell()
     local encoding = file:readUByte()
     local text = id3.id3v2_read_string_with_encoding(file, encoding)
@@ -65,6 +65,8 @@ end
 ---@field artist string The artist of the song
 ---@field album string The album of the song
 ---@field track string The track number of the song
+---@field year integer|nil The year of the song
+---@field genre string|nil The genre of the song
 ---@field comments TitleComment[] The comments of the song
 ---@field image TitleImageCover|nil DO NOT USE
 ---@field gfx_image Gfx2Texture|nil DO NOT USE
@@ -132,19 +134,32 @@ function id3.parse_id3v2(file)
         local frame_flags = file:readUShort()
         -- Process frames
         if frame_id == "TIT2" then
-            tag_data.title = id3v2_extract_text_frame(file, frame_size)
+            tag_data.title = id3.id3v2_extract_text_frame(file, frame_size)
         elseif frame_id == "TPE1" then
-            tag_data.artist = id3v2_extract_text_frame(file, frame_size)
+            tag_data.artist = id3.id3v2_extract_text_frame(file, frame_size)
         elseif frame_id == "TALB" then
-            tag_data.album = id3v2_extract_text_frame(file, frame_size)
+            tag_data.album = id3.id3v2_extract_text_frame(file, frame_size)
         elseif frame_id == "TYER" then
-            tag_data.year = id3v2_extract_text_frame(file, frame_size)
+            tag_data.year = id3.id3v2_extract_text_frame(file, frame_size)
         elseif frame_id == "TRCK" then
-            tag_data.track = id3v2_extract_text_frame(file, frame_size)
+            tag_data.track = id3.id3v2_extract_text_frame(file, frame_size)
             local slashPos = tag_data.track:find("/")
             if slashPos then
                 tag_data.track = tag_data.track:sub(1, slashPos-1)
             end
+        elseif frame_id == "TCON" then
+            tag_data.genre = id3.id3v2_extract_text_frame(file, frame_size)
+        elseif frame_id == "TDRC" then
+            local t = id3.id3v2_extract_text_frame(file, frame_size)
+            local dashPos = t:find("-")
+            if dashPos then
+                tag_data.year = math.floor(tonumber(t:sub(1, dashPos-1)) or 0)
+                if tag_data.year == 0 then
+                    tag_data.year = nil
+                end
+            end
+        elseif frame_id == "TLEN" then
+            tag_data.length = tonumber(id3.id3v2_extract_text_frame(file, frame_size))
         elseif frame_id == "COMM" then
             local encoding = file:readUByte()
             local language = file:read(3)
@@ -380,7 +395,7 @@ function id3.parse_id3v1(file)
         local title = file:read(30)
         local artist = file:read(30)
         local album = file:read(30)
-        local year = file:read(4)
+        local year = math.floor(tonumber(file:read(4)))
         local comment = file:read(30)
         local genre = file:readUByte()
         return {
