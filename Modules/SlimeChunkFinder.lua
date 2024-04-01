@@ -24,18 +24,10 @@ function setContains(set, table)
         end
     end
 end
-
 function update()
-    if #ct + #notct > 1000 then
-        ct = {}
-        notct = {}
-    end
-
+    if #ct + #notct > 1000 then ct, notct = {}, {} end
     px, _, pz = player.pposition()
-    if px + pz ~= 0 then
-        cx, cz = math.floor(px / 16), math.floor(pz / 16)
-    end
-
+    cx, cz = math.floor(px / 16), math.floor(pz / 16)
     offset = minimapmode.value and math.floor(24 / minimapchunksize.value) or rd.value
     for i = cx - offset, cx + offset do
         for j = cz - offset, cz + offset do
@@ -50,7 +42,6 @@ function update()
         end
     end
 end
-
 function render3d()
     px, _, pz = player.pposition()
     if not _3dmode.value then return end
@@ -63,7 +54,6 @@ function render3d()
         end
     end
 end
-
 function render2(dt)
     px, _, pz = player.pposition()
     if not minimapmode.value then return end
@@ -97,7 +87,6 @@ function render2(dt)
     size_ = playerarrowsize.value
     gfx2.fillTriangle(e, e + size_, e - size_, e - size_, e + size_, e - size_)
 end
-
 function chunk_border(x, y, z, sex, sy, sz)
     line = lines.value
     for i = 0, sex, line do
@@ -116,15 +105,10 @@ end
 
 function slime(m)
     m = toSigned32Bit(math.imul(m[1], 0x1f1f1f1f) ~ m[2])
-    function f(x, y)
-        return math.imul(x ~ unsignedRightShift(x, 30), 0x6c078965) + y
-    end
-
+    function f(x, y) return math.imul(x ~ unsignedRightShift(x, 30), 0x6c078965) + y end
     a = toSigned32Bit(m & 0x80000000) | toSigned32Bit(f(m, 1) & 0x7fffffff)
     m = toSigned32Bit(f(m, 1))
-    for i = 2, 397 do
-        m = toSigned32Bit(f(m, i))
-    end
+    for i = 2, 397 do m = toSigned32Bit(f(m, i)) end
     t = { 0, 0x9908b0df }
     m = toSigned32Bit(m ~ unsignedRightShift(a, 1) ~ t[(a & 1) + 1])
     m = toSigned32Bit(m ~ unsignedRightShift(m, 11))
@@ -133,11 +117,8 @@ function slime(m)
     m = toSigned32Bit(m ~ unsignedRightShift(m, 18))
     return ((unsignedRightShift(m, 0) % 10) == 0)
 end
-
 function unsignedRightShift(value, shift) return math.floor((value % 2 ^ 32) / (2 ^ shift)) end
-
 function toSigned32Bit(unsignedValue) return (unsignedValue % 0x100000000 + 0x80000000) % 0x100000000 - 0x80000000 end
-
 function math.imul(x, y)
     function ToInt32(x) return x & 0xffffffff end
     result = ToInt32(ToInt32(x) * ToInt32(y))
