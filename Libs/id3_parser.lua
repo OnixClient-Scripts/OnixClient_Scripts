@@ -414,10 +414,12 @@ function id3.parse_id3v1(file)
 end
 
 ---Parses the ID3 tag from the file/filename
----@param file BinaryFile|string|nil
+---@param file BinaryFile|string|nil The file or filepath to parse the ID3 tag from
+---@param parseImage boolean|nil If true, the image will be parsed and stored in the returned object
 ---@return TitleInformation|nil info The parsed ID3 tag if present
-function id3.parse(file)
+function id3.parse(file, parseImage)
     if file == nil then return nil end
+    if parseImage == nil then parseImage = true end
     local closeFile = false
     if type(file) == "string" then
         file = fs.open(file, "r")
@@ -431,9 +433,11 @@ function id3.parse(file)
         if fileInfo == nil then
             if closeFile then file:close() end
             return nil
-        else
+        elseif parseImage then
             fileInfo.gfx_image = fileInfo:getImage(file)
             if closeFile then file:close() end
+            return fileInfo
+        else
             return fileInfo
         end
 end
