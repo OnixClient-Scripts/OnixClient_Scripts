@@ -1476,8 +1476,8 @@
       "name": "id3_parser",
       "file": "id3_parser.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/id3_parser.lua",
-      "hash": "bfb4ff5a9feb29c8b63711546db1b3ed",
-      "lastUpdated": "2024-03-30T19:50:01.590Z"
+      "hash": "1822d45639a9521b61a38735fd82f171",
+      "lastUpdated": "2024-04-04T16:58:47.168Z"
     },
     {
       "name": "Inventory",
