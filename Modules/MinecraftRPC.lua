@@ -55,9 +55,6 @@ client.settings.addAir(2)
 client.settings.addFunction("Download Latest Exe", "downloadRPC", "Download")
 client.settings.addInfo("Make sure to close the exe before attempting to update it.")
 
-
-
-
 displayPercentage = {}
 -- client.settings.addNamelessBool("Display Percentage? (Hive Only)", true)
 
@@ -78,13 +75,18 @@ local formattedGamemodes = {
     REPLAY = "Replay",
     PARTY = "Block Party",
     GRAV = "Gravity",
-    GI = "Ghost Invasion"
+    GI = "Ghost Invasion",
+    BED = "Bedwars",
 }
 formattedGamemodes["BRIDGE-DUOS"] = "The Bridge: Duos"
 formattedGamemodes["SG-DUOS"] = "Survival Games: Duos"
 formattedGamemodes["WARS-DUOS"] = "Treasure Wars: Duos"
 formattedGamemodes["WARS-SQUADS"] = "Treasure Wars: Squads"
 formattedGamemodes["WARS-MEGA"] = "Treasure Wars: Mega"
+formattedGamemodes["BED-DUOS"] = "Bedwars: Duos"
+formattedGamemodes["BED-TRIOS"] = "Bedwars: Trios"
+formattedGamemodes["BED-SQUADS"] = "Bedwars: Squads"
+formattedGamemodes["BED-MEGA"] = "Bedwars: Mega"
 formattedGamemodes["SKY-DUOS"] = "Skywars: Duos"
 formattedGamemodes["SKY-TRIOS"] = "Skywars: Trios"
 formattedGamemodes["SKY-SQUADS"] = "Skywars: Squads"
@@ -98,18 +100,58 @@ formattedGamemodes["BUILDX-DUOS"] = "Just Build: Extended, Duos"
 globalLevel = ""
 globalGamemode = ""
 
-local GAME_XP = {
-    wars={150,52},
-    dr={200,42},
-    hide={100},
-    murder={100, 82},
-    sg={150},
-    sky={150, 52},
-    build={100},
-    ground={150},
-    drop={150, 22},
-    ctf={150}
-}
+onInventoryChange = function()
+    if server.ip():find("zeqa") then
+        if player.inventory().at(8) ~= nil then
+            if player.inventory().at(8).displayName:find("§gShop §fMenu§7") then
+                hub = true
+            end
+        end
+    end
+end
+
+lastInventoryState = {}
+currentInventoryState = {}
+
+function table.compare(table1, table2)
+    if #table1 ~= #table2 then
+        return false
+    end
+    for key, value in pairs(table1) do
+        if table2[key] ~= value then
+            return false
+        end
+    end
+    for key, value in pairs(table2) do
+        if table1[key] ~= value then
+            return false
+        end
+    end
+    return true
+end
+
+function checkInventoryChange()
+    for i = 1, 36 do
+        currentInventoryState[i] = player.inventory().at(i) ~= nil and player.inventory().at(i).count
+    end
+
+    if table.compare(currentInventoryState, lastInventoryState) == false then
+        lastInventoryState = currentInventoryState
+        onInventoryChange()
+        currentInventoryState = {}
+    end
+end
+
+function render3d()
+    checkInventoryChange()
+end
+
+function postInit()
+    for i = 1, 36 do
+        currentInventoryState[i] = player.inventory().at(i) ~= nil and player.inventory().at(i).count
+        lastInventoryState[i] = player.inventory().at(i) ~= nil and player.inventory().at(i).count
+    end
+end
 
 function tablelen(tbl)
     local a = 0
@@ -130,6 +172,11 @@ function updateButOutsideOfItSoICanAddTheAFKThingBecauseImLazy()
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
         io.output(file)
         io.write("In Skywars Microhub")
+        io.close(file)
+    elseif (item3 ~= nil and item3.displayName == "§r§aYour BedWars Locker§7 [Use]") then
+        local file = io.open("RPC/RPCHelperGamemode.txt", "w")
+        io.output(file)
+        io.write("In Bedwars Microhub")
         io.close(file)
     elseif (item ~= nil and item.customName == "§r§bGame Selector§7 [Use]") or (item2 ~= nil and item2.customName == "§r§7» §ePlayer §fSettings§7 «" and gameLobby == false) or (item3 ~= nil and item3.customName == "§r§7» §eRegion §fSelector§7 «") or hub == true then
         local file = io.open("RPC/RPCHelperGamemode.txt", "w")
@@ -158,7 +205,11 @@ function updateButOutsideOfItSoICanAddTheAFKThingBecauseImLazy()
         else
             local file = io.open("RPC/RPCHelperGamemode.txt", "w")
             io.output(file)
-            io.write("Playing " .. formattedGamemode)
+            if server.ip():find("zeqa") and tostring(server.port()):find("19132") then
+                io.write(formattedGamemode)
+            else
+                io.write("Playing " .. formattedGamemode)
+            end
             io.close(file)
         end
     elseif lastGamemode ~= nil and gameLobby == true then
@@ -197,12 +248,25 @@ event.listen("KeyboardInput", function(key, down)
     lastKeyboardInput = os.clock()
 end)
 
+isQueuingFFA = false
 function update()
     local username = player.name()
     if displayUsername.value == true then
         local file = io.open("RPC/RPCHelperUsername.txt", "w")
         io.output(file)
-        io.write("As " .. username)
+        if server.ip():find("zeqa") then
+            local region = string.upper(server.ip():match("([^.]+)"))
+            if server.port() == 19132 then
+                formattedGamemode = "In The Lobby"
+                io.write("As " .. username)
+            else
+                local serverNumber = tostring(server.port()):gsub("1000", "")
+                region = region:gsub("ZEQA", "NA")
+                io.write("As " .. username .. " (".. region .. serverNumber .. ")")
+            end
+        else
+            io.write("As " .. username)
+        end
         io.close(file)
     elseif displayUsername.value == false then
         local file = io.open("RPC/RPCHelperUsername.txt", "w")
@@ -222,7 +286,7 @@ end
 
 opponent = ""
 
-function onChat(message, username, type)
+event.listen("ChatMessageAdded", function(message, username, type)
     if server.ip():find("galaxite") then
         if string.find(message, "§aWelcome to Galaxite") then
             hub = true
@@ -267,11 +331,7 @@ function onChat(message, username, type)
     end
     if server.ip():find("zeqa") then
         --zeqa
-        if player.inventory().at(8) ~= nil then
-            if player.inventory().at(8).displayName:find("§gShop §fMenu§7") then
-                hub = true
-            end
-        end
+
         if string.find(message,"ZEQA§. » §r§7You have joined the queue for") then
             hub = false
             formattedGamemode = message:match("ZEQA§. » §r§7You have joined the queue for (.*)"):gsub("§.", "")
@@ -320,7 +380,7 @@ function onChat(message, username, type)
     if formattedGamemodes[lastGamemode] then
         formattedGamemode = formattedGamemodes[lastGamemode]
     end
-    if string.find(message, " joined. §8") and string.find(message, player.name()) then
+    if string.find(message, " joined. §8") then
         hub = false
         client.execute("execute /connection")
         gameLobby = true
@@ -329,7 +389,7 @@ function onChat(message, username, type)
     if string.find(message, "You are connected to proxy ") then
         return true
     end
-    if string.find(message, "You are connected to server ") then
+    if string.find(message, "You are connected to server name ") then
         return true
     end
     if message:find("You are connected to public IP ") then
@@ -344,9 +404,77 @@ function onChat(message, username, type)
     if string.find(message, "§cUnknown command. Sorry!") then
         return true
     end
-end
-event.listen("ChatMessageAdded", onChat)
+end)
+
+ffaList = {
+    ["nodebuff"] = "NoDebuff",
+    ["sumo"] = "Sumo",
+    ["combo"] = "Combo",
+    ["fist"] = "Fist",
+    ["knock"] = "Knock",
+    ["oitc"] = "OITC",
+    ["build"] = "Build",
+    ["uch"] = "BuildUHC",
+    ["res"] = "Resistance",
+    ["archer"] = "Archer",
+    ["killphrase"] = "Wrath"
+}
+trainingList = {"Block-In", "Clutch", "Reduce"}
+botList = {"Easy Bot", "Medium Bot", "Hard Bot"}
 
 function onNetworkData(code,id,data)
     local a,b,c = 1,2,3
 end
+
+globalModalRequestData = {}
+ZeqaButtonSelected = -1
+
+function stringtohex(utf8str)
+    local str = utf8str:gsub(".", function(c)
+        return string.format("%02X", string.byte(c))
+    end)
+    return str
+end
+
+function hextostring(hex)
+    local str = hex:gsub("..", function(cc)
+        return string.char(tonumber(cc, 16))
+    end)
+    return str
+end
+isTheCorrectModalFormThatIRequireAtThisMomentOfTime = false
+event.listen("ModalRequested", function (ARG1, ARG2)
+    --use these (autocomplete)
+    ---@type ModalFormRequest
+    local request = ARG1
+    ---@type ModalFormReplyer
+    local response = ARG2
+    globalModalRequestData = {}
+    if request.type == "form" then
+        isTheCorrectModalFormThatIRequireAtThisMomentOfTime = request.form.title:find(hextostring("C2A76AEE8D85EE8D91EE8D84EE8D842020EE8D85EE8D8EEE8D912020EE8D80EE8D8BEE8D8B"))
+        if isTheCorrectModalFormThatIRequireAtThisMomentOfTime then
+            globalModalRequestData = request
+        end
+    end
+end)
+
+event.listen("UNDOCUMENTEDModalResponse", function(response)
+    if globalModalRequestData ~= nil then
+        ---@type ModalFormRequest
+        local balls = globalModalRequestData
+        if isTheCorrectModalFormThatIRequireAtThisMomentOfTime then
+            for i, buttons in pairs(balls.form.buttons) do
+                if response[1] == i-1 then
+                    hub = false
+                    inGame = true
+                    isQueuingFFA = true
+                    -- print(buttons.image.data)
+                    local currentGamemode = ffaList[buttons.image.data:gsub("zeqa/textures/ui/gm/", ""):gsub("zeqa/textures/ui/more/", ""):gsub(".png", "")] or "Unknown"
+                    currentGamemode = currentGamemode .. " FFA"
+                    formattedGamemode = currentGamemode
+                    lastGamemode = currentGamemode
+                end
+            end
+        end
+    end
+end)
