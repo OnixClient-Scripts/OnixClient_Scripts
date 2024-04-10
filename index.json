@@ -1048,6 +1048,16 @@
       "lastUpdated": "2022-06-06T11:27:51.000Z"
     },
     {
+      "name": "Sword Block Animation",
+      "description": "Adds the sword blocking animation. It doesn't do anything except look cool.",
+      "file": "swordBlock.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/swordBlock.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "ac2c4f9f1b9eec6b5a000c166058af3e",
+      "lastUpdated": "2024-04-10T00:09:35.021Z"
+    },
+    {
       "name": "Target HUD",
       "description": "Displays a HUD with the target's name, distance, head.",
       "file": "TargetHUD.lua",
