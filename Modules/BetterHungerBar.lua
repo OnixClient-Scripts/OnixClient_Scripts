@@ -15,7 +15,7 @@ function render()
         local o_saturation = player.attributes().name("minecraft:player.saturation").value
         local saturation = math.floor(o_saturation)
         local hunger = player.attributes().name("minecraft:player.hunger").value
-        if food[not item and "" or item.name] then
+        if food[item and item.name or ""] then
             e_saturation = math.floor(math.min(o_saturation + food[item.name].saturation, hunger + food[item.name].hunger))
             e_hunger = hunger + food[item.name].hunger
         end
