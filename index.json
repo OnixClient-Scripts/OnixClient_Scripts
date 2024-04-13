@@ -819,18 +819,6 @@
       "lastUpdated": "2024-03-17T15:32:01.655Z"
     },
     {
-      "name": "Pack Downloader",
-      "description": "Allows you to download and install texture packs from the web, directly inside the game.",
-      "file": "PackDownloader.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/PackDownloader.lua",
-      "libs": [],
-      "commands": [
-        "pack"
-      ],
-      "hash": "ab6670c5ff6b5f5a2bf56cecab598987",
-      "lastUpdated": "2024-03-17T01:48:13.321Z"
-    },
-    {
       "name": "Pillager Spawn Spots",
       "description": "Finds the area where pillagers spawns in pillager outposts",
       "file": "PillagerSpawnSpots.lua",
