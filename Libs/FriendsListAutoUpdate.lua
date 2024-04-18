@@ -110,6 +110,7 @@ networking = {
                     ["skin_data"] = player.skin().texture().stringForm
                 }
                 anetwork.post(APIPath .. "/ack", tableToJson(data), {"Content-Type: application/json"}, networking.ack.callback, "POST")
+                networking.getCurrentVersion()
             end
         end,
         callback = function(response, error)
