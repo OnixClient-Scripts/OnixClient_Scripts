@@ -98,6 +98,7 @@ networking = {
         if jsonToTable(response.body)["version"] > currentVersion then
             notificationSystem.sendNotification("Friends List", "There is a new version of the Friends List available. (" .. jsonToTable(response.body)["version"] .. ")\nPlease update to the latest version.\n\nThe link has been copied to your clipboard.")
             setClipboard("https://onixclient.com/scripting/repo?search=friends+list")
+            client.execute("lua reload")
         end
     end,
     ack = {
