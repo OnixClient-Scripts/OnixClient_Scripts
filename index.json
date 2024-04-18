@@ -1436,6 +1436,13 @@
       "lastUpdated": "2024-02-11T01:07:09.431Z"
     },
     {
+      "name": "FriendsListAutoUpdate",
+      "file": "FriendsListAutoUpdate.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/FriendsListAutoUpdate.lua",
+      "hash": "2f9724544cf8cc43c17511120fac899f",
+      "lastUpdated": "2024-04-18T16:48:06.255Z"
+    },
+    {
       "name": "functionsPlusPlus",
       "file": "functionsPlusPlus.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/functionsPlusPlus.lua",
