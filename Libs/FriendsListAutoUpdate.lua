@@ -1,4 +1,4 @@
-currentVersion = "1.0.2"
+currentVersion = "1.0.3"
 
 importLib("anetwork")
 importLib("renderthreeD")
@@ -98,7 +98,8 @@ networking = {
         if jsonToTable(response.body)["version"] > currentVersion then
             notificationSystem.sendNotification("Friends List", "There is a new version of the Friends List available. (" .. jsonToTable(response.body)["version"] .. ")\nPlease update to the latest version.\n\nThe link has been copied to your clipboard.")
             setClipboard("https://onixclient.com/scripting/repo?search=friends+list")
-            client.execute("lua reload")
+            notificationSystem.sendNotification("Friends List", "Disabled until updated.")
+            client.settings.addAir(0).parent.enabled = false
         end
     end,
     ack = {
