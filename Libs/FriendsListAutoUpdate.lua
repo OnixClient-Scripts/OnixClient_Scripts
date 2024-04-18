@@ -43,7 +43,7 @@ function getSkinDataFromImage(image)
     return skinData
 end
 playerName = "Unknown"
-function _onEnable()
+function onEnable()
     anetwork.Initialise(16)
     skinTexture = player.skin().texture()
     attemptToCreateImage = true
@@ -934,7 +934,7 @@ function setStatus(status)
     playerData.status = status
 end
 
-function _update(dt)
+function update(dt)
     if os.clock() - lastRequestTime > 5 and hasSentFirstPlayerRequest then
         lastRequestTime = os.clock()
         -- if lastInputTime and os.clock() - lastInputTime > 60 then
