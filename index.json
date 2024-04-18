@@ -114,6 +114,16 @@
       "lastUpdated": "2024-03-16T15:57:32.829Z"
     },
     {
+      "name": "Better Hunger Bar",
+      "description": "a script similar to appleskin mod in java",
+      "file": "BetterHungerBar.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/BetterHungerBar.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "06a9a4e8d6baec1d4126836fcefd9e6c",
+      "lastUpdated": "2024-04-18T17:17:50.941Z"
+    },
+    {
       "name": "Block Finder",
       "description": "Shows blocks in the world",
       "file": "showBlocks.lua",
