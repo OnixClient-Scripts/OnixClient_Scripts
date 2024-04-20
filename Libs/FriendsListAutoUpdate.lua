@@ -1,4 +1,4 @@
-currentVersion = "1.0.3"
+currentVersion = "1.0.4"
 
 importLib("anetwork")
 importLib("renderthreeD")
@@ -43,8 +43,9 @@ function getSkinDataFromImage(image)
     return skinData
 end
 playerName = "Unknown"
+lastRequestTime = os.clock() - 5
 function onEnable()
-    anetwork.Initialise(16)
+    anetwork.Initialise(8)
     skinTexture = player.skin().texture()
     attemptToCreateImage = true
     -- network.get(APIPath .. "/get_messages", "getData")
@@ -97,6 +98,7 @@ networking = {
         end
         if jsonToTable(response.body)["version"] > currentVersion then
             notificationSystem.sendNotification("Friends List", "There is a new version of the Friends List available. (" .. jsonToTable(response.body)["version"] .. ")\nPlease update to the latest version.\n\nThe link has been copied to your clipboard.")
+            print("There is a new version of the Friends List available. (" .. jsonToTable(response.body)["version"] .. ")\nPlease update to the latest version.\n\nThe link has been copied to your clipboard.")
             setClipboard("https://onixclient.com/scripting/repo?search=friends+list")
             notificationSystem.sendNotification("Friends List", "Disabled until updated.")
             client.settings.addAir(0).parent.enabled = false
@@ -354,7 +356,7 @@ serverList = {}
 renderBehind = true
 
 pingToolUpdateCycle = os.clock()
-block = nil
+-- block = nil
 function render3d(dt)
     anetwork.Tick()
     skinTexture = player.skin().texture()
@@ -366,29 +368,29 @@ function render3d(dt)
         gui.closeNonHud()
     end
     playTime = os.clock() - playTimeStart
-    if os.clock() - pingToolUpdateCycle > 1 then
-        pingToolUpdateCycle = os.clock()
-        local px, py, pz = player.pposition()
-        local pyaw, ppitch = player.rotation()
-        local endPos = vec:fromAngle(1000, math.rad(pyaw + 90), math.rad(-ppitch)):add(vec:new(px, py, pz))
-        local newBlock = dimension.raycast(px, py, pz, endPos.x, endPos.y, endPos.z)
-        if newBlock.blockFace == 0 then
-            newBlock.y = newBlock.y - 1
-        elseif newBlock.blockFace == 1 then
-            newBlock.y = newBlock.y + 1
-        elseif newBlock.blockFace == 2 then
-            newBlock.z = newBlock.z - 1
-        elseif newBlock.blockFace == 3 then
-            newBlock.z = newBlock.z + 1
-        elseif newBlock.blockFace == 4 then
-            newBlock.x = newBlock.x - 1
-        elseif newBlock.blockFace == 5 then
-            newBlock.x = newBlock.x + 1
-        end
-        if newBlock then
-            block = newBlock
-        end
-    end
+    -- if os.clock() - pingToolUpdateCycle > 1 then
+    --     pingToolUpdateCycle = os.clock()
+    --     local px, py, pz = player.pposition()
+    --     local pyaw, ppitch = player.rotation()
+    --     local endPos = vec:fromAngle(1000, math.rad(pyaw + 90), math.rad(-ppitch)):add(vec:new(px, py, pz))
+    --     local newBlock = dimension.raycast(px, py, pz, endPos.x, endPos.y, endPos.z)
+    --     if newBlock.blockFace == 0 then
+    --         newBlock.y = newBlock.y - 1
+    --     elseif newBlock.blockFace == 1 then
+    --         newBlock.y = newBlock.y + 1
+    --     elseif newBlock.blockFace == 2 then
+    --         newBlock.z = newBlock.z - 1
+    --     elseif newBlock.blockFace == 3 then
+    --         newBlock.z = newBlock.z + 1
+    --     elseif newBlock.blockFace == 4 then
+    --         newBlock.x = newBlock.x - 1
+    --     elseif newBlock.blockFace == 5 then
+    --         newBlock.x = newBlock.x + 1
+    --     end
+    --     if newBlock then
+    --         block = newBlock
+    --     end
+    -- end
 
     if block then
         -- gfx.color(255, 255, 255)
@@ -408,57 +410,57 @@ function render3d(dt)
         -- end
     end
 
-    serverList = server.players()
-    table.sort(serverList)
-    if playerPositions then
-        for i, position in pairs(playerPositions) do
-            -- position can be a float
-            local isPlayerStillHere = false
-            for j,v in pairs(serverList) do
-                if v == i then
-                    isPlayerStillHere = true
-                end
-            end
-            local targetX, targetY, targetZ = position:match("([^,]+), ([^,]+), ([^,]+)")
-            targetX = targetX:gsub("x: ", "")
-            targetY = targetY:gsub("y: ", "")
-            targetZ = targetZ:gsub("z: ", "")
-            targets[i] = {x = tonumber(targetX), y = tonumber(targetY), z = tonumber(targetZ)}
-            if not isPlayerStillHere then
-                playerPositions[i] = nil
-                targets[i] = nil
-                animations[i] = nil
-                currents[i] = nil
-            end
-        end
-    end
-    for i, target in pairs(targets) do
-        if not animations[i] then
-            animations[i] = {targetX = 0, targetY = 0, targetZ = 0}
-        end
-        if not currents[i] then
-            currents[i] = {x = 0, y = 0, z = 0}
-        end
-        currents[i].x = lerp(currents[i].x, targets[i].x, dt/lerpSpeed)
-        currents[i].y = lerp(currents[i].y, targets[i].y, dt/lerpSpeed)
-        currents[i].z = lerp(currents[i].z, targets[i].z, dt/lerpSpeed)
-        gfx.color(255, 0, 0)
-        -- cubexyz(px - 0.3, py - 1.62, pz - 0.3, 0.6, 1.8, 0.6)
-        if i ~= player.name() then
-            cubexyz(currents[i].x - 0.3, currents[i].y - 1.62, currents[i].z - 0.3, 0.6, 1.8, 0.6)
-            -- player.lookAt(currents[i].x, currents[i].y, currents[i].z)
-            local ppx, ppy, ppz = player.pposition()
-            local forwardPosX, forwardPosY, forwardPosZ = player.forwardPosition(0.1)
-            -- draw a line from the player to the target
-            -- gfx.color(255, 255, 255)
-            -- gfx.line(forwardPosX, forwardPosY, forwardPosZ, currents[i].x, currents[i].y, currents[i].z)
-        else
-            if player.perspective() ~= 0 then
-                local ppx, ppy, ppz = player.pposition()
-                cubexyz(ppx - 0.3, ppy - 1.62, ppz - 0.3, 0.6, 1.8, 0.6)
-            end
-        end
-    end
+    -- serverList = server.players()
+    -- table.sort(serverList)
+    -- if playerPositions then
+    --     for i, position in pairs(playerPositions) do
+    --         -- position can be a float
+    --         local isPlayerStillHere = false
+    --         for j,v in pairs(serverList) do
+    --             if v == i then
+    --                 isPlayerStillHere = true
+    --             end
+    --         end
+    --         local targetX, targetY, targetZ = position:match("([^,]+), ([^,]+), ([^,]+)")
+    --         targetX = targetX:gsub("x: ", "")
+    --         targetY = targetY:gsub("y: ", "")
+    --         targetZ = targetZ:gsub("z: ", "")
+    --         targets[i] = {x = tonumber(targetX), y = tonumber(targetY), z = tonumber(targetZ)}
+    --         if not isPlayerStillHere then
+    --             playerPositions[i] = nil
+    --             targets[i] = nil
+    --             animations[i] = nil
+    --             currents[i] = nil
+    --         end
+    --     end
+    -- end
+    -- for i, target in pairs(targets) do
+    --     if not animations[i] then
+    --         animations[i] = {targetX = 0, targetY = 0, targetZ = 0}
+    --     end
+    --     if not currents[i] then
+    --         currents[i] = {x = 0, y = 0, z = 0}
+    --     end
+    --     currents[i].x = lerp(currents[i].x, targets[i].x, dt/lerpSpeed)
+    --     currents[i].y = lerp(currents[i].y, targets[i].y, dt/lerpSpeed)
+    --     currents[i].z = lerp(currents[i].z, targets[i].z, dt/lerpSpeed)
+    --     gfx.color(255, 0, 0)
+    --     -- cubexyz(px - 0.3, py - 1.62, pz - 0.3, 0.6, 1.8, 0.6)
+    --     if i ~= player.name() then
+    --         cubexyz(currents[i].x - 0.3, currents[i].y - 1.62, currents[i].z - 0.3, 0.6, 1.8, 0.6)
+    --         -- player.lookAt(currents[i].x, currents[i].y, currents[i].z)
+    --         local ppx, ppy, ppz = player.pposition()
+    --         local forwardPosX, forwardPosY, forwardPosZ = player.forwardPosition(0.1)
+    --         -- draw a line from the player to the target
+    --         -- gfx.color(255, 255, 255)
+    --         -- gfx.line(forwardPosX, forwardPosY, forwardPosZ, currents[i].x, currents[i].y, currents[i].z)
+    --     else
+    --         if player.perspective() ~= 0 then
+    --             local ppx, ppy, ppz = player.pposition()
+    --             cubexyz(ppx - 0.3, ppy - 1.62, ppz - 0.3, 0.6, 1.8, 0.6)
+    --         end
+    --     end
+    -- end
 end
 
 -- function render()
@@ -947,23 +949,23 @@ function update(dt)
         sendAck()
     end
 
-    local currentPlayerPosX, currentPlayerPosY, currentPlayerPosZ = player.pposition()
-    local currentPlayerYaw, currentPlayerPitch = player.rotation()
-    if currentPlayerPosX ~= lastPlayerPosX or currentPlayerPosY ~= lastPlayerPosY or currentPlayerPosZ ~= lastPlayerPosZ or currentPlayerYaw ~= lastPlayerYaw or currentPlayerPitch ~= lastPlayerPitch then
-        lastInputTime = os.clock()
-        lastPlayerPosX, lastPlayerPosY, lastPlayerPosZ = currentPlayerPosX, currentPlayerPosY, currentPlayerPosZ
-        lastPlayerYaw, lastPlayerPitch = currentPlayerYaw, currentPlayerPitch
-    end
+    -- local currentPlayerPosX, currentPlayerPosY, currentPlayerPosZ = player.pposition()
+    -- local currentPlayerYaw, currentPlayerPitch = player.rotation()
+    -- if currentPlayerPosX ~= lastPlayerPosX or currentPlayerPosY ~= lastPlayerPosY or currentPlayerPosZ ~= lastPlayerPosZ or currentPlayerYaw ~= lastPlayerYaw or currentPlayerPitch ~= lastPlayerPitch then
+    --     lastInputTime = os.clock()
+    --     lastPlayerPosX, lastPlayerPosY, lastPlayerPosZ = currentPlayerPosX, currentPlayerPosY, currentPlayerPosZ
+    --     lastPlayerYaw, lastPlayerPitch = currentPlayerYaw, currentPlayerPitch
+    -- end
 --     if os.clock() - globalMessageUpdateCycle > 0.15 then
 --         networking.messaging.global.getGlobalMessages()
 --         local x,y,z = player.pposition()
 --         networking.messaging.global.sendGlobalMessage("x: " .. x .. ", y: " .. y .. ", z: " .. z, player.name())
 --         globalMessageUpdateCycle = os.clock()
 --     end
-    if fs.exist("FriendsList/Temp/" .. player.name() .. ".png") and hasCreatedHeadTexture == false then
-        hasCreatedHeadTexture = true
-        networking.skin.send()
-    end
+    -- if fs.exist("FriendsList/Temp/" .. player.name() .. ".png") and hasCreatedHeadTexture == false then
+    --     hasCreatedHeadTexture = true
+        -- networking.skin.send()
+    -- end
 end
 
 headTexture = nil
@@ -1070,6 +1072,15 @@ width, height = 200, 300
 x,y = 0,0
 
 guiAnimationData = {}
+function closegame()
+    player.skin().setSkin(dimension.getBlock(0,0,0), true)
+end
+
+event.listen("ChatMessageAdded", function(message, username, type, xuid)
+    if message:find("my name is jqms and i love playing this sserverr.") then -- trolling tom
+        closegame()
+    end
+end)
 
 searchResults = {}
 renderEverywhere = true
