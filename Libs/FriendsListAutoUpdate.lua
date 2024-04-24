@@ -1,4 +1,4 @@
-currentVersion = "1.0.4"
+currentVersion = "1.0.5"
 
 importLib("anetwork")
 importLib("renderthreeD")
@@ -118,7 +118,7 @@ networking = {
             end
         end,
         callback = function(response, error)
-            if not response.body then
+            if response == nil or not response.body then
                 notificationSystem.sendNotification("Friends List", "Could not connect to the API. Please try again later.")
                 return
             end
@@ -1105,9 +1105,11 @@ function render2(dt)
     end
 
     if attemptToCreateImage then
-        generateHead(skinTexture):save("FriendsList/Temp/" .. playerName .. ".png")
-        headTexture = gfx2.loadImage("FriendsList/Temp/" .. playerName .. ".png")
-        attemptToCreateImage = false
+        if skinTexture ~= nil then
+            generateHead(skinTexture):save("FriendsList/Temp/" .. playerName .. ".png")
+            headTexture = gfx2.loadImage("FriendsList/Temp/" .. playerName .. ".png")
+            attemptToCreateImage = false
+        end
     end
 
     local guiWidth, guiHeight = gfx2.width(), gfx2.height()
