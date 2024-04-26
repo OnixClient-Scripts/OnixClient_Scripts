@@ -45,18 +45,18 @@ local _acp__Scoreboard_z = {}
 ---@return DisplayObjective objective The display objective
 function _acp__Scoreboard_z.getDisplayObjective(place) end
 
----Gives you the display objective for that location
+---Gives you the objective for that name
 ---Note: that its not it's not guaranteed you will get anything beyond the display ones.
 ---@param name string The name of the objective (not the display name)
 ---@return Objective|nil objective The objective or nil if it was not found
 function _acp__Scoreboard_z.getObjective(name) end
 
----Gives you the display objective for that location
+---Gives you all the objectives in the server
 ---Note: that its not it's not guaranteed you will get anything beyond the display ones.
 ---@return Objective[] objectives The objectives
 function _acp__Scoreboard_z.getObjectives() end
 
----Gives you the display objective for that location
+---Gives you the name of every objective in the server
 ---Note: that its not it's not guaranteed you will get anything beyond the display ones.
 ---@return string[] objectives The objective names
 function _acp__Scoreboard_z.getObjectiveNames() end
@@ -64,3 +64,21 @@ function _acp__Scoreboard_z.getObjectiveNames() end
 --Gets you the server scoreboard
 ---@return Scoreboard scoreboard The scoreboard
 function server.scoreboard() end
+
+
+---@class RealmWorld
+---@field id integer the id of the realm
+---@field name string The name of the realm
+---@field description string The description of the realm
+---@field ownerXuid string The xuid of the owner of the realm
+---@field clubId string The xuid of the owner of the realm
+
+---Gives you the realm world
+---@return RealmWorld|nil realm The realm world you are in or nil if you are not in a realm
+function server.realmWorld() end
+
+---Tells you if you are in a realm
+function server.isRealm() end
+
+---Tells you if you could be in a realm (aka on latest supported version or minor update)
+function server.couldBeInRealm() end
