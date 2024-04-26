@@ -1645,8 +1645,8 @@
       {
         "file": "client_settings.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/client_settings.lua",
-        "hash": "0375d197e76abf26459f4e4cac75c127",
-        "lastUpdated": "2023-08-18T09:54:31.395Z"
+        "hash": "e251c3cf7138c8b0b036f082f8747a63",
+        "lastUpdated": "2024-04-26T15:44:25.096Z"
       },
       {
         "file": "client.lua",
