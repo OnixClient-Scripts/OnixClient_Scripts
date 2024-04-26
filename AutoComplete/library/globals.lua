@@ -14,7 +14,7 @@ function setClipboard(newClipboardContent) end
 function importLib(libraryName) end
 
 
----Converts a lua table to a json string
+---Converts a lua table to a json string possibly pretty
 ---@param Table table The table to convert into JSON
 ---@param pretty boolean make a nicely formatted string
 ---@return string jsonStr The json string converted from the table
@@ -57,7 +57,7 @@ function jsonToFile(FilePath, JSON, pretty, compressionType, compressionLevel) e
 ---@return string|nil jsonStr The json string read from the file
 function jsonFromFile(FilePath) end
 
----Reads json from a file
+---Reads json from a file with potential compression
 ---@param FilePath string The file path to read from
 ---@param isCompressed boolean If the file is compressed or not
 ---@return string|nil jsonStr The json string read from the file
@@ -123,7 +123,7 @@ function itemFromNbt(ItemNBT) end
 ---@param translationKey string The key to translate (you can check in vanilla text files ex: gui.yes)
 ---@return string translated The translated string or the translation key
 function getTranslatedMessage(translationKey) end
----Returns the translated message/text (for minecraft)
+---Returns the translated message/text (for minecraft) with params
 ---@param translationKey string The key to translate (you can check in vanilla text files ex: gui.yes)
 ---@param params string[] The params the key takes (like a name or number things like that)
 ---@return string translated The translated string or the translation key
