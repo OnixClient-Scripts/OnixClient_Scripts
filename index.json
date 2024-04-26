@@ -1657,8 +1657,8 @@
       {
         "file": "dimension.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/dimension.lua",
-        "hash": "b69a4c79579f8ce73be67fb7d05c6628",
-        "lastUpdated": "2024-04-26T15:56:51.962Z"
+        "hash": "aff916b630689761aa0423e838a91c9b",
+        "lastUpdated": "2024-04-26T17:04:57.076Z"
       },
       {
         "file": "events.lua",
