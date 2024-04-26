@@ -17,7 +17,7 @@ function _acp__gfx2Render_Target_:clear() end
 ---@param filepath string The path to save the file to
 ---@return boolean saved If the file was saved or not
 function _acp__gfx2Render_Target_:save(filepath) end
----Saves the content of the render target to a file
+---Saves the content of the render target to a file and potentially to clipboard after
 ---@param filepath string The path to save the file to
 ---@param toClipboardAswell boolean If it should also copy the image to the clipboard (default false)
 ---@return boolean saved If the file was saved or not
@@ -34,11 +34,11 @@ function _acp__gfx2Render_Target_:save(filepath, toClipboardAswell) end
 ---@class gfx2
 gfx2 = {}
 
----Changes the color of what will be rendered
+---Changes the color of what will be rendered using a setting
 ---@param setting Setting client color(pls or u crash) setting
 function gfx2.color(setting) end
 
----Changes the color of what will be rendered
+---Changes the color of what will be rendered using a ColorSetting table
 ---@param colorTable ColorSetting
 function gfx2.color(colorTable) end
 
@@ -47,18 +47,18 @@ function gfx2.color(colorTable) end
 ---@param g number 0-255 color code
 ---@param b number 0-255 color code
 function gfx2.color(r, g, b) end
----Changes the color of what will be rendered
+---Changes the color of what will be rendered with opacity
 ---@param r number 0-255 color code
 ---@param g number 0-255 color code
 ---@param b number 0-255 color code
 ---@param opacity number 0-255 color code
 function gfx2.color(r, g, b, opacity) end
 
----Changes the tint color of images that will be rendered
+---Changes the tint color of images that will be rendered using a setting
 ---@param setting Setting client color(pls or u crash) setting
 function gfx2.tcolor(setting) end
 
----Changes the tint color of images that will be rendered
+---Changes the tint color of images that will be rendered using a ColorSetting table
 ---@param colorTable ColorSetting
 function gfx2.tcolor(colorTable) end
 
@@ -68,7 +68,7 @@ function gfx2.tcolor(colorTable) end
 ---@param b number 0-255 color code
 function gfx2.tcolor(r, g, b) end
 
----Changes the tint color of images that will be rendered
+---Changes the tint color of images that will be rendered with opacity
 ---@param r number 0-255 color code
 ---@param g number 0-255 color code
 ---@param b number 0-255 color code
@@ -77,12 +77,12 @@ function gfx2.tcolor(r, g, b, opacity) end
 
 
 
----Gives you the size of the current render target
----@return integer width
+---Gives you the width of the current render target
+---@return integer width the width of the current render target
 function gfx2.width() end
 
----Gives you the size of the current render target
----@return integer height
+---Gives you the height of the current render target
+---@return integer height the height of the current render target
 function gfx2.height() end
 
 
@@ -104,7 +104,7 @@ function gfx2.fillRect(x, y, width, height) end
 ---@return boolean blurred If the area was blurred or not
 function gfx2.blur(x, y, width, height, opacity, roundedCornerRadius) end
 
----Draws a rectangle (outline)
+---Draws the outline of a rectangle (outline)
 ---@param x number Position on the X axis
 ---@param y number Position on the Y axis
 ---@param width number Width of the rectangle
@@ -130,7 +130,7 @@ function gfx2.fillRoundRect(x, y, width, height, radius) end
 function gfx2.drawRoundRect(x, y, width, height, radius, lineWidth) end
 
 
----Fills an elipse (circle but possibly wider)
+---Fills a circle since you do not have a radiusY 
 ---@param centerX number The X axis center position of the elipse
 ---@param centerY number The Y axis center position of the elipse
 ---@param radius number How big is the circle 
@@ -169,21 +169,21 @@ function gfx2.drawLine(Point1X, Point1Y, Point2X, Point2Y, Width) end
 ---Fills a quad
 ---@param TopLeftX number X axis posiiton of the top left point
 ---@param TopLeftY number Y axis posiiton of the top left point
----@param TopRightX number X axis posiiton of the top left point
----@param TopRightY number Y axis posiiton of the top left point
+---@param TopRightX number X axis posiiton of the top right point
+---@param TopRightY number Y axis posiiton of the top right point
 ---@param BottomLeftX number X axis posiiton of the top left point
 ---@param BottomLeftY number Y axis posiiton of the top left point
----@param BottomRightX number X axis posiiton of the top left point
----@param BottomRightY number Y axis posiiton of the top left point
+---@param BottomRightX number X axis posiiton of the top right point
+---@param BottomRightY number Y axis posiiton of the top right point
 function gfx2.fillQuad(TopLeftX, TopLeftY, TopRightX, TopRightY, BottomLeftX, BottomLeftY, BottomRightX, BottomRightY) end
 
 ---Fills a triangle
 ---@param TrianglePoint1X number X axis posiiton of the top left point
 ---@param TrianglePoint1Y number Y axis posiiton of the top left point
----@param TrianglePoint2X number X axis posiiton of the top left point
----@param TrianglePoint2Y number Y axis posiiton of the top left point
----@param TrianglePoint3X number X axis posiiton of the top left point
----@param TrianglePoint3Y number Y axis posiiton of the top left point
+---@param TrianglePoint2X number X axis posiiton of the bottom left point
+---@param TrianglePoint2Y number Y axis posiiton of the bottom left point
+---@param TrianglePoint3X number X axis posiiton of the bottom right point
+---@param TrianglePoint3Y number Y axis posiiton of the bottom right point
 function gfx2.fillTriangle(TrianglePoint1X, TrianglePoint1Y, TrianglePoint2X, TrianglePoint2Y, TrianglePoint3X, TrianglePoint3Y) end
 
 
@@ -193,31 +193,31 @@ function gfx2.fillTriangle(TrianglePoint1X, TrianglePoint1Y, TrianglePoint2X, Tr
 ---@param text string The text to be rendered on the Minecraft: Bedrock Edition Screen
 function gfx2.text(x, y, text) end
 
----Renders text on the Minecraft: Bedrock Edition Screen
+---Renders text on the Minecraft: Bedrock Edition Screen with scale
 ---@param x number X axis posiiton of the text
 ---@param y number Y axis posiiton of the text
 ---@param text string The text to be rendered on the Minecraft: Bedrock Edition Screen
----@param scale number the scale(size) of the text
+---@param scale number the scale(size) of the text (2 makes it twice as big)
 function gfx2.text(x, y, text, scale) end
 
----Gets the size of text on (Can be used outside of render2)
+---Gets the size of text on (Can be used outside of render2) with scale
 ---@param text string The text to measure
----@param scale number the scale(size) of the text
----@return number width
----@return number height
+---@param scale number the scale(size) of the text (2 makes it twice as big)
+---@return number width the width of the text
+---@return number height the height of the text
 function gfx2.textSize(text, scale) end
 
 ---Gets the size of text (Can be used outside of render2)
 ---@param text string The text to measure
----@return number width
----@return number height
+---@return number width the width of the text
+---@return number height the height of the text
 function gfx2.textSize(text) end
 
 
 ---@class Gfx2Texture
 ---@field width integer The width of the texture
 ---@field height integer The height of the texture
----@field stringForm string The height of the texture
+---@field stringForm string The string representation of the texture
 local _acp__Gfx2Texture_ = {}
 
 ---Gets the color of a pixel in the texture
@@ -235,7 +235,7 @@ function _acp__Gfx2Texture_:getPixel(x, y) end
 ---@diagnostic disable-next-line: duplicate-set-field
 function _acp__Gfx2Texture_:setPixel(x, y, r, g, b) end
 
----Sets the color of a pixel in the texture, you must unload if you used it for changes to apply
+---Sets the color of a pixel in the texture, you must unload if you used it for changes to apply with opacity
 ---@param x integer X position of the pixel to get
 ---@param y integer Y position of the pixel to get
 ---@param r integer new red color value (0-255)
@@ -255,13 +255,13 @@ function _acp__Gfx2Texture_:unload() end
 
 
 ---Loads a texture from base64 text (can be used outside of render2)
----@param width integer
----@param height integer
+---@param width integer the width of the texture
+---@param height integer the height of the texture
 ---@param Base64Texture string The texture itself, convert with https://cdn.discordapp.com/attachments/877878499749289984/1029113574406242405/ImgToBase64.exe
 ---@return Gfx2Texture|nil texture The loaded texture or nil
 function gfx2.loadImage(width, height, Base64Texture) end
 
----Loads a texture from base64 text (can be used outside of render2)
+---Loads a texture from a file (can be used outside of render2)
 ---@param filepath string The path relative to the Scripts/Data folder
 ---@return Gfx2Texture|nil texture The loaded texture or nil
 function gfx2.loadImage(filepath) end
@@ -286,8 +286,8 @@ function gfx2.loadImageFromUrl(url) end
 function gfx2.loadImageFromUrl(url, headers) end
 
 ---Creates a texture with the specified width and height
----@param width integer
----@param height integer
+---@param width integer the width of the texture
+---@param height integer the height of the texture
 ---@return Gfx2Texture|nil texture The created texture or nil
 function gfx2.createImage(width, height) end
 
@@ -301,7 +301,7 @@ function gfx2.createImage(width, height) end
 ---@param image Gfx2Texture|Gfx2GpuRenderTarget image to render
 function gfx2.drawImage(x, y, width, height, image) end
 
----Renders an image to the Minecraft: Bedrock Edition Screen
+---Renders an image to the Minecraft: Bedrock Edition Screen with different opacity
 ---@param x number The position on the x axis
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
@@ -310,7 +310,7 @@ function gfx2.drawImage(x, y, width, height, image) end
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 function gfx2.drawImage(x, y, width, height, image, opacity) end
 
----Renders an image to the Minecraft: Bedrock Edition Screen
+---Renders an image to the Minecraft: Bedrock Edition Screen with different opacity or scaling method
 ---@param x number The position on the x axis
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
@@ -393,7 +393,7 @@ function gfx2.pushClipArea(x, y, width, height) end
 
 ---Pops the last pushed clipping rectangle
 function gfx2.popClipArea() end
----Pops the last pushed clipping rectangle
+---Pops the last pushed clipping rectangle but specified amount
 ---@param amount integer How many clipping rectangles to pop (you cant pop enough to crash so to reset just put a high number)
 function gfx2.popClipArea(amount) end
 
@@ -403,7 +403,7 @@ function gfx2.pushTransformation(matrices) end
 
 ---Pops the last pushed transformation
 function gfx2.popTransformation() end
----Pops the last pushed transformation
+---Pops the last pushed transformation but specified amount
 ---@param amount integer How many transformations to pop (you cant pop enough to crash so to reset just put a high number)
 function gfx2.popTransformation(amount) end
 
