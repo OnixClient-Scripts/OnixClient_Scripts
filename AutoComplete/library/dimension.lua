@@ -83,7 +83,7 @@ function dimension.getBlock(x, y, z) end
 ---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
----@return integer[][] blockPositions The block information
+---@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
 function dimension.findBlock(name) end
 
 ---Finds a block among the world with data
@@ -93,7 +93,7 @@ function dimension.findBlock(name) end
 ---@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
 function dimension.findBlock(name, blockData) end
 
----Finds a block among the world 
+---Finds a block among the world with a radius
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
@@ -101,7 +101,7 @@ function dimension.findBlock(name, blockData) end
 ---@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
 function dimension.findBlock(name, blockData, radius) end
 
----Finds a block among the world 
+---Finds a block among the world with a radius and a center
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
