@@ -36,14 +36,14 @@ function __acp_ThreadingBlockGetter:getBlock(x, y, z) end
 ---@return integer[][] blockPositions The block information
 function __acp_ThreadingBlockGetter:findBlock(name) end
 
----Finds a block among the world 
+---Finds a block among the world with data
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
 ---@return integer[][] blockPositions The block information
 function __acp_ThreadingBlockGetter:findBlock(name, blockData) end
 
----Finds a block among the world 
+---Finds a block among the world with data and a radius
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
@@ -51,7 +51,7 @@ function __acp_ThreadingBlockGetter:findBlock(name, blockData) end
 ---@return integer[][] blockPositions The block information
 function __acp_ThreadingBlockGetter:findBlock(name, blockData, radius) end
 
----Finds a block among the world 
+---Finds a block among the world with data, radius and center
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
@@ -69,22 +69,21 @@ function __acp_ThreadingBlockGetter:findBlock(name, blockData, radius, x, y, z) 
 ---@return integer y The height of the world
 function __acp_ThreadingBlockGetter:getMapHeight(x, z) end
 
----Finds a block among the world 
----local x,y,z = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
+---Gets the color of the water and grass at these coordinates
 ---@param x integer | number The x center position
 ---@param y integer | number The y center position
 ---@param z integer | number The z center position
 ---@return BiomeColorData colorData The color of the water and grass at this x,z
 function __acp_ThreadingBlockGetter:getBiomeColor(x, y, z) end
 
----Gets the block at these coordinates
+---Gets the block entity nbt at these coordinates
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
 ---@return table blockEntity The NBT of the block entity
 function __acp_ThreadingBlockGetter:getBlockEntity(x, y, z) end
 
----Gets the block entity nbt at these coordinates
+---Gets the block entity nbt at these coordinates potentially on the server side
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
@@ -207,19 +206,20 @@ local __acp_Thread = {}
 ---@return Thread thread The newly created thread.
 function CreateThread(func, arguments, createBlockGetter) end
 
----Tells you if you should close that thread ASAP before its killed
+---Tells you if you should close that thread ASAP before its killed, check before and after big operations
 --- if this is true no time to waste and you should close the thread
+---@return boolean shouldExit Tells you if you should close the thread
 function __acp_Thread:shouldExit() end
 
----Waits for the thread to finish. (creator only)
+---Waits for the thread to finish. (finish in this context means the function is done executing and the thread has been destroyed)(creator only)
 ---Yous should probably never use this, as it will block the current thread.
 function __acp_Thread:join() end
 
---- Makes the thread sleep for the specified amount of time. (thread only)
+--- Makes the thread sleep for the specified amount of time. (will wait for that time doing nothing) (thread only)
 ---@param ms integer The amount of time to sleep in milliseconds.
 function __acp_Thread:sleep(ms) end
 
----Returns true if the thread is alive, false otherwise. (creator only)
+---Returns true if the thread is alive, false otherwise. (alive means stll running code) (creator only)
 function __acp_Thread:isAlive() end
 
 ---Returns true if there a new message, false otherwise. (shared)
@@ -242,7 +242,7 @@ function __acp_Thread:peekMessage() end
 ---@param message string The message to add to the queue.
 function __acp_Thread:pushMessage(message) end
 
----Adds a message to the queue. (shared)
+---Tells you if you are in a world as threads can execute outside of a world (and you cannot use functions that expect you to be in a world) (thread only)
 ---@return boolean isInWorld Tells you if you are in a world, do not access inapropriate things when outside a world!
 function __acp_Thread:isInWorld() end
 
