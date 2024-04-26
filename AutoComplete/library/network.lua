@@ -13,7 +13,7 @@ network = {}
 function network.get(url, identifier) end
 
 
----Does a web request to the specified url
+---Does a web request to the specified url with headers
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -34,7 +34,7 @@ function network.get(url, identifier, headers) end
 ---@param identifier string Will be the second parameter of onNetworkData (can be anything u want, allows you to identify what data you received)
 function network.fileget(filepath, url, identifier) end
 
----Does a web request to the specified url and stores the result in the file, data will be filepath
+---Does a web request to the specified url and headers and stores the result in the file, data will be filepath
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -58,7 +58,7 @@ function network.fileget(filepath, url, identifier, headers) end
 ---@param data string What data to post
 function network.post(url, identifier, data) end
 
----Does a web request to the specified url
+---Does a web request to the specified url with headers
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -81,7 +81,7 @@ function network.post(url, identifier, headers, data) end
 ---@param data string What data to post
 function network.filepost(filepath, url, identifier, data) end
 
----Does a web request to the specified url and stores the result in the file, data will be filepath
+---Does a web request to the specified url and headers and stores the result in the file, data will be filepath
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -107,7 +107,7 @@ function network.filepost(filepath, url, identifier, headers, data) end
 ---@param data string What data to delete
 function network.delete(url, identifier, data) end
 
----Does a web request to the specified url
+---Does a web request to the specified url and headers
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -130,7 +130,7 @@ function network.delete(url, identifier, headers, data) end
 ---@param data string What data to delete
 function network.filedelete(filepath, url, identifier, data) end
 
----Does a web request to the specified url and stores the result in the file, data will be filepath
+---Does a web request to the specified url and headers and stores the result in the file, data will be filepath
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -157,7 +157,7 @@ function network.filedelete(filepath, url, identifier, headers, data) end
 ---@param data string What data to patch
 function network.patch(url, identifier, data) end
 
----Does a web request to the specified url
+---Does a web request to the specified url with headers
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -180,7 +180,7 @@ function network.patch(url, identifier, headers, data) end
 ---@param data string What data to patch
 function network.filepatch(filepath, url, identifier, data) end
 
----Does a web request to the specified url and stores the result in the file, data will be filepath
+---Does a web request to the specified url and headers and stores the result in the file, data will be filepath
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -207,7 +207,7 @@ function network.filepatch(filepath, url, identifier, headers, data) end
 ---@param data string What data to put
 function network.put(url, identifier, data) end
 
----Does a web request to the specified url
+---Does a web request to the specified url with headers
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
@@ -230,7 +230,7 @@ function network.put(url, identifier, headers, data) end
 ---@param data string What data to put
 function network.fileput(filepath, url, identifier, data) end
 
----Does a web request to the specified url and stores the result in the file, data will be filepath
+---Does a web request to the specified url and headers and stores the result in the file, data will be filepath
 ---You will receive the data in the onNetworkData callback
 ---function onNetworkData(code, identifier, data)
 ---
