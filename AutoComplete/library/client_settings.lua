@@ -15,7 +15,7 @@ function client.settings.addAir(space) end
 ---@return Setting setting The setting that was added
 function client.settings.addInfo(variableName) end
 
----Adds text in the UI, you can change the content of the variable and the UI will display the changes
+---Adds larger text in the UI, you can change the content of the variable and the UI will display the changes
 ---@param variableName string The name of the global variable that contains the setting value or just the text to display
 ---@return Setting setting The setting that was added
 function client.settings.addTitle(variableName) end
@@ -65,13 +65,13 @@ function client.settings.addFunction(name, variableName, buttonName) end
 
 ---Adds a textbox in the UI
 ---@param name string The name of the setting in the UI
----@param variableName string The name of the global variable that contains the setting value  (a function to be executed when clicked)
+---@param variableName string The name of the global variable that contains the setting value
 ---@return Setting setting The setting that was added
 function client.settings.addTextbox(name, variableName) end
 
----Adds a textbox in the UI
+---Adds a textbox in the UI with a maximum amount of letters
 ---@param name string The name of the setting in the UI
----@param variableName string The name of the global variable that contains the setting value  (a function to be executed when clicked)
+---@param variableName string The name of the global variable that contains the setting value
 ---@param maxCharacters integer The maximum amount of letters in the textbox
 ---@return Setting setting The setting that was added
 function client.settings.addTextbox(name, variableName, maxCharacters) end
@@ -81,7 +81,7 @@ function client.settings.addTextbox(name, variableName, maxCharacters) end
 ---@return Setting setting The setting that was added
 function client.settings.addCategory(name) end
 
----Adds a category in the UI
+---Adds a category in the UI with a specified amount of settings included
 ---@param name string The name of the setting in the UI
 ---@param settingCount integer The maximum amount of letters in the textbox
 ---@return Setting setting The setting that was added
@@ -191,7 +191,7 @@ function client.settings.registerCustomRendererOverride(SettingType, getHeightCa
 
 
 
----Sends setting value from the script to the client
+---Sends setting value from the script to the client and maybe only the invisible settings
 ---If you change one of the settings yourself it may not apply, this will make it apply
 ---@param invisbleSettingsOnly boolean The name of the setting in the UI
 ---@return nil
