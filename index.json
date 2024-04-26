@@ -1693,8 +1693,8 @@
       {
         "file": "gui.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/gui.lua",
-        "hash": "0f9a398fda656fe7aa490d0842e86460",
-        "lastUpdated": "2022-11-25T02:29:58.000Z"
+        "hash": "506e615cdc77f4b7f1bf500a9d02b3f9",
+        "lastUpdated": "2024-04-26T16:16:30.245Z"
       },
       {
         "file": "mcstructure.lua",
