@@ -86,11 +86,11 @@ function dimension.getBlock(x, y, z) end
 ---@return integer[][] blockPositions The block information
 function dimension.findBlock(name) end
 
----Finds a block among the world 
+---Finds a block among the world with data
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
----@return integer[][] blockPositions The block information
+---@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
 function dimension.findBlock(name, blockData) end
 
 ---Finds a block among the world 
@@ -98,7 +98,7 @@ function dimension.findBlock(name, blockData) end
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
 ---@param radius integer | number The radius to search in (will be chunk aligned to then center of the chunk
----@return integer[][] blockPositions The block information
+---@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
 function dimension.findBlock(name, blockData, radius) end
 
 ---Finds a block among the world 
@@ -109,7 +109,7 @@ function dimension.findBlock(name, blockData, radius) end
 ---@param x integer | number The x center position
 ---@param y integer | number The y center position
 ---@param z integer | number The z center position
----@return integer[][] blockPositions The block information
+---@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
 function dimension.findBlock(name, blockData, radius, x, y, z) end
 
 ---Gives you the height of the the block that would be chosen by the game to generate map data
@@ -119,22 +119,21 @@ function dimension.findBlock(name, blockData, radius, x, y, z) end
 ---@return integer y The height of the world
 function dimension.getMapHeight(x, z) end
 
----Finds a block among the world 
----local x,y,z = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
+---Gets the color of the water and grass at these coordinates
 ---@param x integer | number The x center position
 ---@param y integer | number The y center position
 ---@param z integer | number The z center position
 ---@return BiomeColorData colorData The color of the water and grass at this x,z
 function dimension.getBiomeColor(x, y, z) end
 
----Gets the block at these coordinates
+---Gets the block entity nbt at these coordinates
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
 ---@return table blockEntity The NBT of the block entity
 function dimension.getBlockEntity(x, y, z) end
 
----Gets the block entity nbt at these coordinates
+---Gets the block entity nbt at these coordinates and potentially on the server side
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
