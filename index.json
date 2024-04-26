@@ -1705,8 +1705,8 @@
       {
         "file": "network.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/network.lua",
-        "hash": "36ef74b725843b139bf2b585c8312729",
-        "lastUpdated": "2023-09-05T22:17:05.175Z"
+        "hash": "4cd958a0a1e506a03a4f1b622d8e5abb",
+        "lastUpdated": "2024-04-26T16:32:08.196Z"
       },
       {
         "file": "player.lua",
