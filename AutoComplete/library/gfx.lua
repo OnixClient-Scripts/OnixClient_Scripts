@@ -114,20 +114,20 @@ function gfx.circle(x, y, radius, quality) end
 ---@param text string The text to render
 function gfx.text(x, y, text) end
 
----Renders Text
+---Renders Text with scale
 ---@param x number The position X
 ---@param y number The position Y
 ---@param text string The text to render
 ---@param scale number The scale of the text (2x will be two times as big)
 function gfx.text(x, y, text, scale) end
 
----Renders an Item 
+---Renders an Item from its location
 ---@param x number The position X
 ---@param y number The position Y
 ---@param itemLocation number Get it from an item in the player's inventory, dont guess it
 function gfx.item(x, y, itemLocation) end
 
----Renders an Item 
+---Renders an Item  from an item
 ---@param x number The position X
 ---@param y number The position Y
 ---@param item Item The item to render
