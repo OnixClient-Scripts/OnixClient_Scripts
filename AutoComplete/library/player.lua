@@ -135,56 +135,68 @@ function _acp__Player_PlayerSkin.setSkinCapeGeometryId(id, fullId, skinTextureOr
 
 
 
-
 ---@class player
 player = {}
 
----The current gamemode of the player
+---Returns the current gamemode of the player
 ---0 = Survival
 ---1 = Creative
 ---2 = Adventure
 ---3 = SurvivalViewer
 ---4 = CreativeViewer
 ---5 = Default
+---6 = spectator (1.19.60+ if i remember correctly)
 ---@return integer gamemode The player's current gamemode
 function player.gamemode() end
 
----The position of the player
----@return integer x The player's current position
----@return integer y The player's current position
----@return integer z The player's current position
+---Returns the position of the player in integer coordinates
+---@return integer x The player's current x position
+---@return integer y The player's current y position
+---@return integer z The player's current z position
 function player.position() end
 
-
----The precise position of the player
----@return number x The player's current precise position
----@return number y The player's current precise position
----@return number z The player's current precise position
+---Returns the precise position of the player in floating point coordinates
+---@return number x The player's current precise x position
+---@return number y The player's current precise y position
+---@return number z The player's current precise z position
 function player.pposition() end
 
----The position at a chosen distance from the player
----@param distance number How much distance in front of the player to go?
----@return number x The position at distance of the player
----@return number y The position at distance of the player
----@return number z The position at distance of the player
+---Returns the raw position of the player in floating point coordinates, not interpolated bound to ticks, will look jittery if rendered directly
+---@return number x The player's current precise x position
+---@return number y The player's current precise y position
+---@return number z The player's current precise z position
+---@return number x The player's previous precise x position
+---@return number y The player's previous precise y position
+---@return number z The player's previous precise z position
+function player.rawposition() end
+
+---Returns the velocity of the player in floating point coordinates
+---@return number vx The player's current velocity along the x-axis
+---@return number vy The player's current velocity along the y-axis
+---@return number vz The player's current velocity along the z-axis
+function player.velocity() end
+
+---Returns the position at a chosen distance from the player
+---@param distance number The distance in front of the player
+---@return number x The x position at the specified distance from the player
+---@return number y The y position at the specified distance from the player
+---@return number z The z position at the specified distance from the player
 function player.forwardPosition(distance) end
 
-
----The coordinates of the block that has the outline for the player
----You can check if there is one in the first place with player.facingBlock()
----@return integer x Selected block position
----@return integer y Selected block position
----@return integer z Selected block position
+---Returns the coordinates of the block that the player is currently selecting
+---Use player.facingBlock() to check if a block is being selected
+---@return integer x The x position of the selected block
+---@return integer y The y position of the selected block
+---@return integer z The z position of the selected block
 function player.selectedPos() end
 
----The block face of the currently selected block
----You can check if there is one in the first place with player.facingBlock()
----@return integer selectedFace The face of the block the user is currently looking at
+---Returns the face of the currently selected block
+---Use player.facingBlock() to check if a block is being selected
+---@return integer selectedFace The face of the block the player is currently looking at
 function player.selectedFace() end
 
-
----The progress for the selected block to be broken (0.0 to 1.0)
----@return number progress The progress
+---Returns the progress for the selected block to be broken (0.0 to 1.0)
+---@return number progress The progress of block breaking
 function player.breakProgress() end
 
 ---@class SelectedEntityInfo
@@ -197,62 +209,65 @@ function player.breakProgress() end
 ---@field x integer The X position of the entity
 ---@field y integer The Y position of the entity
 ---@field z integer The Z position of the entity
----@field ppx integer The precise X position of the entity
----@field ppy integer The precise Y position of the entity
----@field ppz integer The precise Z position of the entity
+---@field ppx number The precise X position of the entity
+---@field ppy number The precise Y position of the entity
+---@field ppz number The precise Z position of the entity
 ---@field vx integer The X velocity of the entity
 ---@field vy integer The Y velocity of the entity
 ---@field vz integer The Z velocity of the entity
 local _acp__SelectedEntityInfo_Skin = {}
----The player skin
+
+---Returns the player skin
 ---@return Skin skin
 function _acp__SelectedEntityInfo_Skin.skin() end
 
-
----The entity the user is currently looking at
----You can check if there is one in the first place with player.facingEntity()
----@return SelectedEntityInfo entity The entity the user is looking at
+---Returns the entity the player is currently looking at
+---Use player.facingEntity() to check if an entity is being looked at
+---@return SelectedEntityInfo entity The entity the player is looking at
 function player.selectedEntity() end
 
-
----Where the raytrace hit, example: you look at a block far away, where on that block are you looking at
----@return number x The precise X position of the selected block
----@return number y The precise Y position of the selected block
----@return number z The precise Z position of the selected block
+---Returns the precise position where the player's gaze intersects a block
+---@return number x The precise X position of the intersection
+---@return number y The precise Y position of the intersection
+---@return number z The precise Z position of the intersection
 function player.lookingPos() end
 
----Where the player looks at
+---Returns the direction the player is looking at
 ---@return number yaw The current yaw rotation
 ---@return number pitch The current pitch rotation
 function player.rotation() end
 
----Where the players body looks at
+---Returns the direction the player's body is facing
 ---@return number yaw The current yaw rotation
 function player.bodyRotation() end
 
----What perspective the player is in 
+---Returns the player's current perspective 
 ---0 == First Person(first person, third person back, third person front)
 ---1 == Third Person Back
 ---2 == Third Person Front
----@return integer perspective The perspective
+---@return integer perspective The current perspective
 function player.perspective() end
 
-
----If the player is currently facing an entity within reach
+---Checks if the player is currently facing an entity within reach
 ---@return boolean facingEntity Whether the player is looking at an entity or not
 function player.facingEntity() end
 
----If the player is currently facing a block within reach
+---Checks if the player is currently facing a block within reach
 ---@return boolean facingBlock Whether the player is looking at a block or not
 function player.facingBlock() end
 
----The xbox pro gamering tag
----@return string xboxName The xbox username of the user
+---Returns the Xbox username of the player
+---@return string xboxName The Xbox username of the player
 function player.name() end
 
----empty without server modification(s)
----@return string nametag The nametag of the user
+---Returns the nametag of the player
+---@return string nametag The nametag of the player
 function player.nametag() end
+
+---Returns the hurt time of the player
+---@return integer hurttime The time the player has been hurt (in ticks)
+---@return integer hurttimeduration The duration of the player's hurt time (in ticks)
+function player.hurttime() end
 
 
 ---Returns if  true if the flag is true...
@@ -388,113 +403,104 @@ function player.attributes() end
 ---@field name string The name (like in /enchant) ex: sharpness
 local _acp_Enchants = {}
 
-
 ---@class Item
----@field count integer The amount of items in this stack
----@field location integer dont touch this dont guess it use it when referencing an item to client functions
----@field id integer The runtime numerical identifier of the item, will change often use for runtime only
----@field blockid integer The runtime numerical identifier of the block assosiated with the item, will change often use for runtime only
----@field name string The name of the item  ex: diamond_sword
----@field blockname string The name of the block assosiated with the item  ex: carrots
----@field blockstate table The state of the block assosiated with the item
----@field maxStackCount integer The maximum amount of this item that can be stacked
+---@field count integer The quantity of items in this stack
+---@field location integer This is used when referencing an item to client functions. Do not modify or guess its value.
+---@field id integer The runtime numerical identifier of the item. This value changes often and should be used for runtime only.
+---@field blockid integer The runtime numerical identifier of the block associated with the item. This value changes often and should be used for runtime only.
+---@field name string The name of the item, e.g., "diamond_sword"
+---@field blockname string The name of the block associated with the item, e.g., "carrots"
+---@field blockstate table The state of the block associated with the item
+---@field maxStackCount integer The maximum quantity of this item that can be stacked
 ---@field maxDamage integer The maximum durability of an item
----@field durability integer The amount of damage applied to that item
----@field data integer The data of the item, like in /give with dye and things like that
----@field customName string The name (ex: from anvils)
----@field enchant Enchants[] The item's enchantements
----@field displayName string The item's display name (the one that would show above hotbar)
-
+---@field durability integer The current durability of the item
+---@field data integer The data of the item, similar to the /give command with dye and other items
+---@field customName string The custom name of the item, e.g., from anvils
+---@field enchant Enchants[] The item's enchantments
+---@field displayName string The item's display name (the one that would show above the hotbar)
 
 ---@class InventoryArmor 
----@field helmet Item|nil the item on the head
----@field chestplate Item|nil the item on the torso
----@field leggings Item|nil the item on the legs
----@field boots Item|nil the item on the feets
-
+---@field helmet Item|nil The item equipped on the head
+---@field chestplate Item|nil The item equipped on the torso
+---@field leggings Item|nil The item equipped on the legs
+---@field boots Item|nil The item equipped on the feet
 
 ---@class ModyfiableInventory
----@field lastHoverSlotValue integer The last hover slot value
----@field lastHoverSlotName string The last hover slot name
+---@field lastHoverSlotValue integer The last hovered slot value
+---@field lastHoverSlotName string The last hovered slot name
 local _acp__ModyfiableInventory = {}
 
----If items can be placed and taken from the container (false for searchbar and stuff like that)
+---Determines if items can be placed and taken from the container. Returns false for search bars and similar containers.
 ---@param container string The container name
 ---@return boolean shouldIgnore If the container should be ignored
 function _acp__ModyfiableInventory.shouldIgnore(container) end
 
----Gets the item in the slot for a container
+---Gets the item in the specified slot for a container
 ---@param container string The container name
----@param slot integer The slot to get from
+---@param slot integer The slot to get the item from
 ---@return Item|nil item The item in the slot
 function _acp__ModyfiableInventory.at(container, slot) end
 
----Gets the position of the container block if any
+---Gets the position of the container block, if any
 ---@return integer|nil x The X position of the container block
 ---@return integer|nil y The Y position of the container block
 ---@return integer|nil z The Z position of the container block
 function _acp__ModyfiableInventory.blockpos() end
 
----Gets the entity unique id if any
+---Gets the unique id of the entity, if any
 ---@return integer|nil entity The entity unique id
 function _acp__ModyfiableInventory.entity() end
 
----Takes all the items from the selected slot (as if you left clicked an item)
+---Takes all the items from the specified slot (as if you left-clicked an item)
 ---@param container string The container name
 ---@param slot integer The slot to take from
 function _acp__ModyfiableInventory.takeAll(container, slot) end
 
----Takes half the items from the selected slot (as if you right clicked an item)
+---Takes half the items from the specified slot (as if you right-clicked an item)
 ---@param container string The container name
 ---@param slot integer The slot to take from
 function _acp__ModyfiableInventory.takeHalf(container, slot) end
 
----Sends the item somewhere else if possible (same as shift+click)
+---Transfers the item to another location if possible (same as shift+click)
 ---@param container string The container name
 ---@param slot integer The slot to take from
 ---@param amount integer|nil The amount to transfer (defaults to the whole stack)
 function _acp__ModyfiableInventory.autoPlace(container, slot, amount) end
 
----Places all the items from the selected slot (as if you left clicked an item)
+---Places all the items from the specified slot (as if you left-clicked an item)
 ---@param container string The container name
----@param slot integer The slot to take from
+---@param slot integer The slot to place items in
 function _acp__ModyfiableInventory.placeAll(container, slot) end
 
----Places one item from the selected slot (as if you right clicked an item)
+---Places one item from the specified slot (as if you right-clicked an item)
 ---@param container string The container name
----@param slot integer The slot to take from
+---@param slot integer The slot to place item in
 function _acp__ModyfiableInventory.placeOne(container, slot) end
 
----Drops all the items from the selected slot (as if you pressed ctrl+Q)
+---Drops all the items from the specified slot (as if you pressed ctrl+Q)
 ---@param container string The container name
----@param slot integer The slot to take from
+---@param slot integer The slot to drop items from
 function _acp__ModyfiableInventory.dropAll(container, slot) end
 
----Drops one item from the selected slot (as if you pressed Q)
+---Drops one item from the specified slot (as if you pressed Q)
 ---@param container string The container name
----@param slot integer The slot to take from
+---@param slot integer The slot to drop item from
 function _acp__ModyfiableInventory.dropOne(container, slot) end
 
----Sends an item flying from a slot to another
+---Transfers an item from one slot to another
 ---@param fromContainer string The container name to send from
 ---@param fromSlot integer The slot to send from
 ---@param toContainer string The container name to send to
 ---@param toSlot integer The slot to send to
 function _acp__ModyfiableInventory.sendFlyingItem(fromContainer, fromSlot, toContainer, toSlot) end
 
----Sends an item flying from a slot to another
+---Transfers a specific item from one slot to another
 ---@param fromContainer string The container name to send from
 ---@param fromSlot integer The slot to send from
 ---@param toContainer string The container name to send to
 ---@param toSlot integer The slot to send to
----@param item Item|integer The item to send flying
+---@param item Item|integer The item to transfer
 function _acp__ModyfiableInventory.sendFlyingItem(fromContainer, fromSlot, toContainer, toSlot, item) end
-
-
-
-
-
-
 
 
 
@@ -506,33 +512,30 @@ function _acp__ModyfiableInventory.sendFlyingItem(fromContainer, fromSlot, toCon
 ---@field selected integer The selected slot in the inventory (hotbar)
 local _acp_Inventory = {}
 
----The armor inventory
----@return InventoryArmor armorInventory The armor the player is wearing
+---Returns the armor inventory
+---@return InventoryArmor armorInventory The armor the player is currently wearing
 function _acp_Inventory.armor() end
 
----The item in the second hand
----@return Item|nil offhand The item in the offhand
+---Returns the item in the second hand
+---@return Item|nil offhand The item in the offhand, nil if empty
 function _acp_Inventory.offhand() end
 
----The item in the main hand
----@return Item|nil handItem The item in the main hand
+---Returns the item in the main hand
+---@return Item|nil handItem The item in the main hand, nil if empty
 function _acp_Inventory.selectedItem() end
 
----The item in the main hand
----@return ModyfiableInventory|nil modify The item in the main hand
+---Returns a modifiable version of the inventory
+---@return ModyfiableInventory|nil modify The modifiable inventory, nil if not modifiable
 function _acp_Inventory.modify() end
 
-
-
----The item in slot or nil
+---Returns the item in the specified slot or nil if the slot is empty
 ---@param slot integer The inventory slot
----@return Item|nil item The item if present otherwise nil for air
+---@return Item|nil item The item in the specified slot, nil if the slot is empty
 function _acp_Inventory.at(slot) end
 
----Changes the player's slot
----@param slot integer Which slot should be the selected slot now?
+---Changes the player's selected slot
+---@param slot integer The slot to be selected
 function _acp_Inventory.setSelectedSlot(slot) end
-
 
 --- Which slot to access, slots are listed below
 --- 1 = Inventory Holding 
@@ -568,18 +571,15 @@ function _acp_Inventory.setSelectedSlot(slot) end
 --- 40 = Crafting 3x3 Input 8
 --- 41 = Crafting 3x3 Input 9
 --- 51 = CreatedItemOutput
----@param slot integer
----@return Item|nil
+---Returns the item in the specified UI slot or nil if the slot is empty
+---@param slot integer The UI slot
+---@return Item|nil The item in the specified UI slot, nil if the slot is empty
 function _acp_Inventory.ui(slot) end
 
----Gets the contents of the players inventory
----@return Inventory inventory The player's inventory
+---Returns the player's inventory
+---@return Inventory The player's inventory
 function player.inventory() end
 
-
-
-
-
----Gets the player skin
----@return PlayerSkin skin The user's current skin
+---Returns the player's current skin
+---@return PlayerSkin The user's current skin
 function player.skin() end
