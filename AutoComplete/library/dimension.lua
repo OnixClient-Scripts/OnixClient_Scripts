@@ -39,8 +39,8 @@ function dimension.isRaining() end
 function dimension.sound(x, y, z, name) end
 
 ---@class LightPair
----@field blockLight integer The light level caused by torches and stuff
----@field skyLight integer The light level of the environement (will not adapt to time)
+---@field block integer The light level caused by torches and stuff
+---@field sky integer The light level of the environement (will not adapt to time)
 
 
 ---@class Block
