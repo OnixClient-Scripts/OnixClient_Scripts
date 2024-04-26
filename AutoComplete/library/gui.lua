@@ -25,7 +25,7 @@ function gui.setGrab(grabbed) end
 ---The position of the mouse on the X axis (left to right)
 ---@return number mouseX The position of the mouse on the X axis
 function gui.mousex() end
----The position of the mouse on the Y axis (left to right)
+---The position of the mouse on the Y axis (top to bottom)
 ---@return number mouseY The position of the mouse on the Y axis
 function gui.mousey() end
 
@@ -88,19 +88,21 @@ local _acp_theme = {}
 
 ---@class Font
 ---@field isMinecrafttia boolean Is the minecraft blocky font in use
----@field height number the height of one char
----@field wrap number the height of one line
+---@field height number the height of one char. For gfx2/render2 use gfx2.textSize
+---@field wrap number the height of one line. For gfx2/render2 use gfx2.textSize
 local _acp_font = {}
 
 ---Returns the size of the text
+---For gfx2/render2 use gfx2.textSize
 ---@param text string The text to get the size of
 ---@return number widthOfText The width of the input text
 ---@diagnostic disable-next-line: duplicate-set-field
 function _acp_font.width(text) end
 
----Returns the size of the text
+---Returns the size of the text with scale
+---For gfx2/render2 use gfx2.textSize
 ---@param text string The text to get the size of
----@param scale number The scale
+---@param scale number The scale (2 means 2x as large)
 ---@return number widthOfText The width of the input text
 ---@diagnostic disable-next-line: duplicate-set-field
 function _acp_font.width(text, scale) end
