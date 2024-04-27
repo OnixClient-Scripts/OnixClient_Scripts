@@ -1723,8 +1723,8 @@
       {
         "file": "server.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/server.lua",
-        "hash": "e525d17e07e0ed25b292f228175f20cf",
-        "lastUpdated": "2024-04-26T16:45:46.598Z"
+        "hash": "9ec516a176334dfd9bf93820efa54b3c",
+        "lastUpdated": "2024-04-27T23:23:46.327Z"
       },
       {
         "file": "snetwork.lua",
