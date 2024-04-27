@@ -16,6 +16,15 @@ function server.ip() end
 ---@return integer port The current server port
 function server.port() end
 
+---If the server is the integrated server (when you host a world in singleplayer)
+---@return boolean isIntegrated If the server is integrated
+function server.isIntegrated() end
+
+---The server's ping
+---@param average boolean|nil If you want the average ping (defaults to false)
+---@return integer ping The server's ping
+function server.ping(average) end
+
 ---The name of the world (whats in top right in pause screen)
 ---@return string name The world name
 function server.worldName() end
@@ -45,18 +54,18 @@ local _acp__Scoreboard_z = {}
 ---@return DisplayObjective objective The display objective
 function _acp__Scoreboard_z.getDisplayObjective(place) end
 
----Gives you the objective for that name
+---Gives you the display objective for that location
 ---Note: that its not it's not guaranteed you will get anything beyond the display ones.
 ---@param name string The name of the objective (not the display name)
 ---@return Objective|nil objective The objective or nil if it was not found
 function _acp__Scoreboard_z.getObjective(name) end
 
----Gives you all the objectives in the server
+---Gives you the display objective for that location
 ---Note: that its not it's not guaranteed you will get anything beyond the display ones.
 ---@return Objective[] objectives The objectives
 function _acp__Scoreboard_z.getObjectives() end
 
----Gives you the name of every objective in the server
+---Gives you the display objective for that location
 ---Note: that its not it's not guaranteed you will get anything beyond the display ones.
 ---@return string[] objectives The objective names
 function _acp__Scoreboard_z.getObjectiveNames() end
@@ -64,21 +73,3 @@ function _acp__Scoreboard_z.getObjectiveNames() end
 --Gets you the server scoreboard
 ---@return Scoreboard scoreboard The scoreboard
 function server.scoreboard() end
-
-
----@class RealmWorld
----@field id integer the id of the realm
----@field name string The name of the realm
----@field description string The description of the realm
----@field ownerXuid string The xuid of the owner of the realm
----@field clubId string The xuid of the owner of the realm
-
----Gives you the realm world
----@return RealmWorld|nil realm The realm world you are in or nil if you are not in a realm
-function server.realmWorld() end
-
----Tells you if you are in a realm
-function server.isRealm() end
-
----Tells you if you could be in a realm (aka on latest supported version or minor update)
-function server.couldBeInRealm() end
