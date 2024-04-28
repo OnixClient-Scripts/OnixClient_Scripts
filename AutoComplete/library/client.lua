@@ -45,7 +45,7 @@ function _acp__Waypoints_.get() end
 ---@param name string The name of the waypoint
 function _acp__Waypoints_.add(x, y, z, name) end
 
----Adds a waypoint with a dimension id (overworld 0, nether 1, overworld 2)
+---Adds a waypoint
 ---@param x integer The x position of the new waypoint
 ---@param y integer The y position of the new waypoint
 ---@param z integer The z position of the new waypoint
@@ -120,7 +120,7 @@ function _acp__ConfigManager_:list() end
 function _acp__ConfigManager_:delete(config) end
 
 ---Creates a new config with default settings on everything
----@param config ClientConfig The config to create
+---@param config ClientConfig Deletes a config
 function _acp__ConfigManager_:new(config) end
 
 ---Saves the current config to a config
@@ -135,7 +135,7 @@ function _acp__ConfigManager_:load(config) end
 ---@return ConfigManager configManager The client config manager
 function client.getConfigManager() end
 
----Gets the config manager that can do various config things that could be for scripting
+---Gets the config manager that can do various config things
 ---@param scripting boolean (default: false) Get the scripting version of the Config Manager?
 ---@return ConfigManager configManager The client config manager
 function client.getConfigManager(scripting) end
@@ -172,7 +172,7 @@ function client.getConfigManager(scripting) end
 ---@field max integer|number|Vector2|nil Maximum value of the setting
 ---@field scale number The scale of info settings
 ---@field parent Module the parent module
----@field enumValues table[] table of tables, e.g. { {integerValue, uiName}, {otherIntValue, uiName} }
+---@field enumValues table[] table of tables, e.g. { {value, name}, {value2, name2} }
 
 
 
@@ -183,6 +183,7 @@ function client.getConfigManager(scripting) end
 
 ---@class Module
 ---@field name string The name of the module
+---@field saveName string The name used to save/load this Setting, no spaces
 ---@field description string The description of the module
 ---@field isVisual boolean if the module is a VisualModule
 ---@field isTextual boolean if the module is a TextualModule
@@ -201,7 +202,7 @@ function _acp__Module_.removeSetting(setting) end
 ---@field size Vector2 The size of the module
 ---@field pos Vector2 The position of the module
 ---@field relativepos Vector2 The relative position of the module (relative from anchor position)
----@field anchor integer 0 = Invalid, 1 = Top Left, 2 = Top Right, 3 = Bottom Left, 4 = Bottom Right
+---@field anchor 0 = Invalid, 1 = Top Left, 2 = Top Right, 3 = Bottom Left, 4 = Bottom Right
 
 ---@class ScriptingModule : Module
 ---@field movable boolean If the module is movable
@@ -216,7 +217,7 @@ function _acp__Module_.removeSetting(setting) end
 
 
 ---Gets a list of all the modules in the client
----@return Module[] | VisualModule[] | ScriptingModule[] Could be any mix of those 3 types
+---@return Module[] | VisualModule[] | ScriptingModule[]
 function client.modules() end
 
 
