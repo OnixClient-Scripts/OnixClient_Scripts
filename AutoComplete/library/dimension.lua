@@ -39,8 +39,8 @@ function dimension.isRaining() end
 function dimension.sound(x, y, z, name) end
 
 ---@class LightPair
----@field block integer The light level caused by torches and stuff
----@field sky integer The light level of the environement (will not adapt to time)
+---@field blockLight integer The light level caused by torches and stuff
+---@field skyLight integer The light level of the environement (will not adapt to time)
 
 
 ---@class Block
@@ -57,6 +57,7 @@ function dimension.sound(x, y, z, name) end
 ---@field id integer The numerical identifier of the biome (might change with versions)
 ---@field name string The name of the biome
 ---@field temperature number The temperature of the biome
+---@field humidity number The humidity of the biome
 ---@field snow boolean Can it snow in that biome
 ---@field canRain boolean Can it rain in that biome
 
@@ -83,25 +84,25 @@ function dimension.getBlock(x, y, z) end
 ---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
----@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
+---@return integer[][] blockPositions The block information
 function dimension.findBlock(name) end
 
----Finds a block among the world with data
+---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
----@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
+---@return integer[][] blockPositions The block information
 function dimension.findBlock(name, blockData) end
 
----Finds a block among the world with a radius
+---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
 ---@param radius integer | number The radius to search in (will be chunk aligned to then center of the chunk
----@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
+---@return integer[][] blockPositions The block information
 function dimension.findBlock(name, blockData, radius) end
 
----Finds a block among the world with a radius and a center
+---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
@@ -109,7 +110,7 @@ function dimension.findBlock(name, blockData, radius) end
 ---@param x integer | number The x center position
 ---@param y integer | number The y center position
 ---@param z integer | number The z center position
----@return integer[][] blockPositions table of integer[] of 3 representing x,y,z
+---@return integer[][] blockPositions The block information
 function dimension.findBlock(name, blockData, radius, x, y, z) end
 
 ---Gives you the height of the the block that would be chosen by the game to generate map data
@@ -119,21 +120,22 @@ function dimension.findBlock(name, blockData, radius, x, y, z) end
 ---@return integer y The height of the world
 function dimension.getMapHeight(x, z) end
 
----Gets the color of the water and grass at these coordinates
+---Finds a block among the world 
+---local x,y,z = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param x integer | number The x center position
 ---@param y integer | number The y center position
 ---@param z integer | number The z center position
 ---@return BiomeColorData colorData The color of the water and grass at this x,z
 function dimension.getBiomeColor(x, y, z) end
 
----Gets the block entity nbt at these coordinates
+---Gets the block at these coordinates
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
 ---@return table blockEntity The NBT of the block entity
 function dimension.getBlockEntity(x, y, z) end
 
----Gets the block entity nbt at these coordinates and potentially on the server side
+---Gets the block entity nbt at these coordinates
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
