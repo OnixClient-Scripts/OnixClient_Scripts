@@ -393,6 +393,19 @@
       "lastUpdated": "2023-12-14T15:24:44.457Z"
     },
     {
+      "name": "Fall Trajectory",
+      "description": "Shows you where you'll fall",
+      "file": "fallTrajectory.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/fallTrajectory.lua",
+      "libs": [
+        "PlayerPhysics",
+        "vectors"
+      ],
+      "commands": [],
+      "hash": "7d1d5387b35ae70a3da4bd4accf76aff",
+      "lastUpdated": "2024-04-29T22:53:23.912Z"
+    },
+    {
       "name": "FPS Limiter",
       "description": "Limit your game's fps",
       "file": "fps_limiter.lua",
