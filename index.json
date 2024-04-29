@@ -398,12 +398,12 @@
       "file": "fallTrajectory.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/fallTrajectory.lua",
       "libs": [
-        "PlayerPhysics",
+        "playerPhysics",
         "vectors"
       ],
       "commands": [],
-      "hash": "7d1d5387b35ae70a3da4bd4accf76aff",
-      "lastUpdated": "2024-04-29T22:53:23.912Z"
+      "hash": "a473d80e8e443e52505a9cb6bcf1c278",
+      "lastUpdated": "2024-04-29T23:10:26.500Z"
     },
     {
       "name": "FPS Limiter",
