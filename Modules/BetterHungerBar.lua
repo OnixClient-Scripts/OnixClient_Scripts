@@ -5,11 +5,11 @@ fade_speed = client.settings.addNamelessFloat("Fade Speed", 0, 10, 3)
 color = client.settings.addNamelessColor("Saturation Color", {255, 255, 0})
 prioritize_cake = client.settings.addNamelessBool("Prioritize Cake", true)
 Icons = "textures/gui/icons"
-positionX = gui.width() / 2 + 82
-positionY = gui.height() - 41
 
 function render()
     if (player.gamemode() ~= 1) then
+        positionX = gui.width() / 2 + 82
+        positionY = gui.height() - 41
         local e_saturation, e_hunger = 0, 0
         local item = player.inventory().selectedItem()
         local o_saturation = player.attributes().name("minecraft:player.saturation").value
