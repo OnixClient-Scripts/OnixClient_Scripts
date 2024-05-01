@@ -7,7 +7,7 @@ prioritize_cake = client.settings.addNamelessBool("Prioritize Cake", true)
 Icons = "textures/gui/icons"
 
 function render()
-    if (player.gamemode() == 2) then
+    if (player.gamemode() ~= 1) then
         positionX = gui.width() / 2 + 82
         positionY = gui.height() - 41
         local e_saturation, e_hunger = 0, 0
