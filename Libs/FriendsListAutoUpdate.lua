@@ -1,4 +1,4 @@
-currentVersion = "1.0.5"
+currentVersion = "1.0.6"
 
 importLib("anetwork")
 importLib("renderthreeD")
@@ -38,6 +38,19 @@ end
 
 firstTimeSendingMessagesNotification = true
 
+
+knownServers = {
+    ["onixclient.com"] = "Onix Client SMP",
+    ["zeqa"] = "Zeqa",
+    ["hive"] = "The Hive",
+    ["mineplex"] = "Mineplex",
+    ["cubecraft"] = "CubeCraft",
+    ["lifeboat"] = "Lifeboat",
+    ["galaxite"] = "Galaxite",
+    ["nethergames"] = "NetherGames",
+    ["mineville"] = "Mineville",
+}
+
 function getSkinDataFromImage(image)
     local skinData = {}
     return skinData
@@ -74,6 +87,13 @@ registerCommand("sendMessageAs", function (args)
     networking.messaging.sendAs(message, recipient, sender)
 end)
 
+registerCommand("get_all_online_users", function()
+    networking.getAllOnlineUsers()
+end)
+registerCommand("get_total_user_count", function()
+    networking.getTotalUserCount()
+end)
+
 messagesList = {}
 totalGetMessageCallbackCount = 0
 
@@ -86,6 +106,7 @@ end
 
 playerPositions = {}
 APIPath = "85.215.122.227:29345"
+-- APIPath = "127.0.0.1:5000"
 networking = {
     getCurrentVersion = function()
         anetwork.get(APIPath .. "/version", {}, networking.getCurrentVersionCallback)
@@ -104,6 +125,19 @@ networking = {
             client.settings.addAir(0).parent.enabled = false
         end
     end,
+    getAllOnlineUsers = function()
+        anetwork.get(APIPath .. "/get_all_online_users", {}, networking.getAllOnlineUsersCallback)
+    end,
+    getAllOnlineUsersCallback = function(response, error)
+        if not response then return end
+    end,
+    getTotalUserCount = function()
+        anetwork.get(APIPath .. "/get_total_user_count", {}, networking.getTotalUserCountCallback)
+    end,
+    getTotalUserCountCallback = function(response, error)
+        if not response then return end
+        print(response.body)
+    end,
     ack = {
         send = function()
             for i = 1, 1 do
@@ -111,7 +145,8 @@ networking = {
                     ["sender"] = player.name(),
                     ["status"] = playerData.status,
                     ["custom_status"] = playerData.customStatus,
-                    ["skin_data"] = player.skin().texture().stringForm
+                    ["skin_data"] = player.skin().texture().stringForm,
+                    ["current_server"] = server.ip()
                 }
                 anetwork.post(APIPath .. "/ack", tableToJson(data), {"Content-Type: application/json"}, networking.ack.callback, "POST")
                 networking.getCurrentVersion()
