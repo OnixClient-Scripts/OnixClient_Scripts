@@ -36,13 +36,14 @@ timeMax = 20
 function render3d()
     shouldDrawTarget = false
     local selectedItem = player.inventory().selectedItem()
-    if selectedItem == nil or not (selectedItem.id == 425 or selectedItem.id == 393 or selectedItem.id == 377 or selectedItem.id == 303 or selectedItem.id == 583) then return end
+    if selectedItem == nil or not (selectedItem.name == "ender_pearl" or selectedItem.name == "snowball" or selectedItem.name == "egg" or selectedItem.name == "bow" or selectedItem.name == "crossbow") then return end
 
     local px, py, pz = player.forwardPosition(0.001)
     local pyaw, ppitch = player.rotation()
 
     local points = {}
-    if selectedItem.id == 377 or selectedItem.id == 393 then --smowball and eggs
+
+    if selectedItem.name == "snowball" or selectedItem.name == "egg" then --smowball and eggs
         INITIALVEL = 30
         GRAVACC = 11.5
         TERMVEL = 54.5
@@ -67,7 +68,8 @@ function render3d()
 
             lastX, lastY, lastZ = x, y, z
         end
-    elseif selectedItem.id == 425 then --ender pearls
+    elseif selectedItem.name == "ender_pearl" then --ender pearls
+        log("hi")
         INITIALVEL = 45
         GRAVACC = 22
         local lastX, lastY, lastZ = nil, nil, nil
@@ -91,7 +93,7 @@ function render3d()
 
             lastX, lastY, lastZ = x, y, z
         end
-    elseif selectedItem.id == 303 or selectedItem.id == 583 then --bow and crossbow
+    elseif selectedItem.name == "bow" or selectedItem.name == "crossbow" then --bow and crossbow
         INITIALVEL = 83.6
         GRAVACC = 11.5
         TERMVEL = 54.5
@@ -118,7 +120,7 @@ function render3d()
     end
 
     ::drawLine::
-    if selectedItem.id == 425 or selectedItem.id == 393 or selectedItem.id == 377 or selectedItem.id == 303 or selectedItem.id == 583 then
+    if selectedItem.name == "ender_pearl" or selectedItem.name == "snowball" or selectedItem.name == "egg" or selectedItem.name == "bow" or selectedItem.name == "crossbow" then
         gfx.color(col.value.r, col.value.g, col.value.b, col.value.a)
         for i = 1, #points - 1, 1 do
             gfx.line(
