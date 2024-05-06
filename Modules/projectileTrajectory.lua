@@ -69,7 +69,6 @@ function render3d()
             lastX, lastY, lastZ = x, y, z
         end
     elseif selectedItem.name == "ender_pearl" then --ender pearls
-        log("hi")
         INITIALVEL = 45
         GRAVACC = 22
         local lastX, lastY, lastZ = nil, nil, nil
