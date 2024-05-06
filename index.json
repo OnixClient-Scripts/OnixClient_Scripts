@@ -587,6 +587,21 @@
     {
       "name": "Image Generator",
       "description": "Change the image file \\\"toBuild.png\\\" to the image and then change the size settings",
+      "file": "ImageBuilder.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ImageBuilder.lua",
+      "libs": [
+        "BlockRGB"
+      ],
+      "commands": [
+        "build",
+        "buildCoords"
+      ],
+      "hash": "c04753b47e37b1f358c034f9bc95a8e3",
+      "lastUpdated": "2024-05-06T15:47:49.974Z"
+    },
+    {
+      "name": "Image Generator",
+      "description": "Change the image file \\\"toBuild.png\\\" to the image and then change the size settings",
       "file": "imageBuilder.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/imageBuilder.lua",
       "libs": [
