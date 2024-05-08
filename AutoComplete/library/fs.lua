@@ -71,7 +71,7 @@ function fs.directories(path) end
 
 
 ---Gets information about a file
----@path string The path from Scripts/Data
+---@param path string The path from Scripts/Data
 ---@return Stats stats The file informtion
 function fs.stats(path) end
 
