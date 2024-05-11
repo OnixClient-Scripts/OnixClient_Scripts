@@ -565,6 +565,16 @@
       "lastUpdated": "2024-03-17T01:08:57.119Z"
     },
     {
+      "name": "Hotbar Armour HUD",
+      "description": "Armour HUD and offhand slot next to the hotbar.",
+      "file": "hotbar-armour-hud.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/hotbar-armour-hud.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "b8a62d42f85cbffa2d9f4770dc729d45",
+      "lastUpdated": "2024-05-11T08:56:19.095Z"
+    },
+    {
       "name": "HyperlandsAutoQueue",
       "description": "Auto Queues any gamemode in hyperlands",
       "file": "HyperlandsAutoQueue.lua",
