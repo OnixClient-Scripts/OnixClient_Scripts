@@ -610,21 +610,6 @@
       "lastUpdated": "2024-05-06T15:47:49.974Z"
     },
     {
-      "name": "Image Generator",
-      "description": "Change the image file \\\"toBuild.png\\\" to the image and then change the size settings",
-      "file": "imageBuilder.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/imageBuilder.lua",
-      "libs": [
-        "BlockRGB"
-      ],
-      "commands": [
-        "build",
-        "buildCoords"
-      ],
-      "hash": "a22e3237d13c96dca89ac20d567cbb9f",
-      "lastUpdated": "2024-02-25T16:30:03.515Z"
-    },
-    {
       "name": "Immersive First Person",
       "description": "Look at yourself.. to see yourself..",
       "file": "ImmersiveFirstPerson.lua",
