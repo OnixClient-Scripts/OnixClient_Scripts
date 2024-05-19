@@ -3,7 +3,7 @@
 name = "Fall Trajectory"
 description = "Shows you where you'll fall"
 
-importLib("PlayerPhysics")
+importLib("playerPhysics")
 importLib("vectors")
 
 topCol = client.settings.addNamelessColor("Will land on block color", { 255, 255, 255, 255 })
