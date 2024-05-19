@@ -1,5 +1,5 @@
 name="NGTools"
-description="Improvements for the Nethergames server"
+description="Improvements for the Nethergames server. By Lioncat6"
 
 --importLib("DependentBoolean")
 
