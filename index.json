@@ -905,6 +905,16 @@
       "lastUpdated": "2024-03-17T22:13:08.149Z"
     },
     {
+      "name": "Player Info",
+      "description": "Shows player information",
+      "file": "playerinfo.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/playerinfo.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "8fbcaaf6aced1cd5544e614a05240d70",
+      "lastUpdated": "2024-05-20T17:23:52.412Z"
+    },
+    {
       "name": "Pong",
       "description": "Pong",
       "file": "Pong.lua",
