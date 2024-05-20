@@ -3,6 +3,8 @@ description = "Adds the sword blocking animation. It doesn't do anything except 
 
 cancelHit = client.settings.addNamelessBool("Disallow hitting while blocking", true)
 
+client.settings.addTitle([[THE MODULE "VIEW MODEL" NEEDS TO BE ENABLED FOR THIS MOD TO WORK]])
+
 function getModByInternalName(name)
     for _, mod in pairs(client.modules()) do
         if mod.saveName == name then
