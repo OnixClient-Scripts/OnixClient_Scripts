@@ -1,5 +1,5 @@
-name = "PlayerInfo"
-description = "Show player information"
+name = "Player Info"
+description = "Shows player information"
 
 positionX = 20
 positionY = 80
@@ -37,11 +37,11 @@ function render(deltaTime)
     local blockName = block.name
     local attribs = player.attributes()
     local health = attribs.id(7).value
-    local food = attribs.id(2).value
-    local saturation = attribs.id(3).value
+    local food = attribs.id(1).value
+    local saturation = attribs.id(2).value
     local font = gui.font()
 	local gamemode = player.gamemode()
-    
+
     if gamemode == 0 then
         gamemode_string = "Survival"
     elseif gamemode == 1 then
@@ -65,15 +65,15 @@ function render(deltaTime)
     gfx.text(1, 11, " Y: " .. player_y, 0.7)
     gfx.text(1, 19, " Z: " .. player_z, 0.7)
 
-    gfx.text(26, 3, " Player: " .. name, 0.7)
+    gfx.text(28, 3, " Player: " .. name, 0.7)
 
-    gfx.text(26, 11, " Gamemode: " .. gamemode_string, 0.7)
+    gfx.text(28, 11, " Gamemode: " .. gamemode_string, 0.7)
 
-    gfx.text(26, 19, " Biome: " .. biomeName, 0.7)
+    gfx.text(28, 19, " Biome: " .. biomeName, 0.7)
 
-    gfx.text(26, 28, " Facing Block: " .. blockName, 0.7)
-    gfx.text(26, 35, " Facing Block ID: " .. blockId, 0.7)
-    gfx.text(26, 42, " Facing Block Data: " .. blockData, 0.7)
+    gfx.text(28, 28, " Facing Block: " .. blockName, 0.7)
+    gfx.text(28, 35, " Facing Block ID: " .. blockId, 0.7)
+    gfx.text(28, 42, " Facing Block Data: " .. blockData, 0.7)
 
     gfx.text(1, 26, " H: " .. health, 0.7)
     gfx.text(1, 34, " F: " .. food, 0.7)
