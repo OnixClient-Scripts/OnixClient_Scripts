@@ -1,3 +1,4 @@
+--1.0.1
 name="NGTools"
 description="Improvements for the Nethergames server. By Lioncat6"
 
@@ -5,21 +6,28 @@ description="Improvements for the Nethergames server. By Lioncat6"
 
 --vars
 NGToolsPrefix = "§f[§l§eN§6G§bTools§r§f]§r "
-version = "1.0.0"
+version = "1.0.1"
 currentLocation = "----"
 --winning = true
 handledWhereAmI = false
 currentServerID  = ""
 lastServerID = ""
 
+function reloadLua()
+    client.execute("lua reload")
+end
+
 --settings
 client.settings.addTitle("NGTools • Version " .. version .. " • Lioncat6")
 client.settings.addAir(5)
 client.settings.addTitle("Global Settings (Require Reload):")
+client.settings.addFunction("Reload Plugin", "reloadLua", "Reload")
 registerAll = false
 client.settings.addBool("Attempt to register all subcommands independently (May cause conflicts)", "registerAll")
 hidePrefix = false
 client.settings.addBool("Hide [NGTools] prefix from messages", "hidePrefix")
+checkUpdates = true
+client.settings.addBool("Check for updates on load", "checkUpdates")
 
 client.settings.addAir(5)
 client.settings.addCategory("Location Message")
@@ -62,7 +70,6 @@ psKdr = true
 client.settings.addBool("K/DR", "psKdr")
 client.settings.addInfo("More Coming Soon!")
 
-
 client.settings.addAir(5)
 playerMute = true
 client.settings.addCategory("Local Player Mute")
@@ -70,6 +77,7 @@ client.settings.addInfo("Locally hide chat messages from players")
 client.settings.addBool("Enable", "playerMute")
 client.settings.addInfo("Muted Players. Separated by \";;\". Use .ng mute <player> to quick add")
 muteList = client.settings.addNamelessTextbox("Muted Players:", "")
+client.settings.addInfo("")
 showMuteMsg = true
 client.settings.addBool("Show \'Message Muted\' message in chat", "showMuteMsg")
 
@@ -96,7 +104,6 @@ client.settings.addBool("Hide game instructions", "cdGameInstructions")
 
 
 
-
 --reset vars
 function postInit()
     --if server.ip():find("nethergames")  then
@@ -114,6 +121,9 @@ function postInit()
         if hidePrefix == true then
             NGToolsPrefix = ""
         end
+        if checkUpdates == true then
+            updateCheck()
+        end
         function update(dt)
             if server.ip():find("nethergames") then
                 checkGamemode()
@@ -123,6 +133,11 @@ function postInit()
     --    registerCommand("ngtools", wrongServer)
     --    registerCommand("ng", wrongServer)
     --end
+end
+
+--Check github repo for updates
+function updateCheck()
+    network.get("https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/NGTools.lua", "cUpdate")
 end
 
 --sigfigs :3
@@ -289,10 +304,10 @@ function chatListen(message, username, type)
             end
         end
         if playerMute == true then
-            local players = {}
-            local msg = message:gsub("§.", "")
+            local msg = message
             for playerName in muteList.value:gmatch("[^;;]+") do
-                if msg:find(playerName:match("^%s*(.-)%s*$")) and msg:find("»") then
+                local rawname = playerName:match("^%s*(.-)%s*$") :gsub("§.", "") 
+                if (msg:find(rawname .. " §r§l»§r") or msg:find(rawname .. ": ") or msg:find("§e" .. rawname)) and (msg:find("§r§l»§r") or msg:find("§7Dead Chat > "))then
                     if showMuteMsg == true then
                         print(NGToolsPrefix .. "§4Muted Message from " .. playerName)
                     end
@@ -431,6 +446,24 @@ function onNetworkData(code, identifier, data)
                 return true
             end
         end
+    --receive update check
+    elseif identifier == "cUpdate" then
+        if code == 0 then
+            local lines = {}
+            for line in data:gmatch("[^\n]+") do
+                table.insert(lines, line)
+                break -- we only need 1 line lol (why bother do the whole thing?)
+            end
+            local firstLine = lines[1]
+            local serverVersion = firstLine:gsub("%-%-", ""):gsub("\n", "")
+            if serverVersion ~= version then
+                print(NGToolsPrefix .. "§eA new update is available! §f(".. serverVersion .."§f > " ..version .. "§f)")
+                print("Copied download link to clipboard.")
+                setClipboard("https://onixclient.com/scripting/repo?search=ngtools")
+                client.notification("A new update is available! (".. serverVersion .." > " ..version .. ")")
+            end
+            
+        end
     else
         local dataTable = {}
         dataTable = jsonToTable(data)
@@ -528,11 +561,15 @@ end
 
 function autoCompleteName(Uname)
     for x, name in pairs( server.players()) do
-        if string.lower(name):find(string.lower(Uname)) and not name:find("\"") then
-            return "\"" .. name:gsub("§.", "") .. "\""
+        if string.lower(name):find(string.lower(Uname)) then
+            if not name:find("\"") then
+                return "\"" .. name:gsub("§.", "") .. "\"", true
+            else
+                return Uname, true
+            end
         end
     end
-    return Uname
+    return Uname, false
 end
 
 function fetchOnlinePlayers()
@@ -540,26 +577,45 @@ function fetchOnlinePlayers()
 end
 
 function copyServerID()
-    setClipboard(currentServerID:gsub("§.", ""))
+    local rawId = currentServerID:gsub("§.", "")
+    setClipboard(rawId)
     print(currentServerID)
     print(NGToolsPrefix .. "Copied Server ID!")
     client.notification("Copied Server ID!")
 end
 
+function copyUname(name)
+    local uname, autocompleted = autoCompleteName(name)
+    local playername = uname:gsub("\"", "")
+    local rawName = playername:gsub(".§", "")
+    print("§e" .. playername)
+    if autocompleted == false then
+        print("§o§4Warning: §3User does not exist in current server")
+    end
+    print(NGToolsPrefix .. "Copied username!")
+    setClipboard(rawName)
+    client.notification("Copied username!")
+end
+
 function addMute(Uname)
-    name = autoCompleteName(Uname:gsub("§.", "")) :gsub("\"", "")
+    local name, autocompleted = autoCompleteName(Uname:gsub("§.", "")) 
+    local playername = name:gsub("\"", "")
+    if autocompleted == false then
+        print("§o§4Warning: §3User does not exist in current server")
+    end
     if muteList.value ~= "" then
-        muteList.value = muteList.value .. ";;" .. name
+        muteList.value = muteList.value .. ";;" .. playername
     else 
-        muteList.value = muteList.value .. name
+        muteList.value = muteList.value .. playername
     end
     client.settings.send()
-    print(NGToolsPrefix .. "Added §l§2" .. name .. "§r to mute list!")
+    print(NGToolsPrefix .. "Added §l§2" .. playername .. "§r to mute list!")
 end
 
 function printHelp()
     print("§6----- " .. NGToolsPrefix .. "§6Commands " .. "§6-----")
     print("§b.ng§r §6serverid§7 - Copy the current ID of the server you're playing on to the clipboard")
+    print("§b.ng§r §6uname <username>§7 - Copy targeted player's username to the clipboard")
     print("§b.ng§r §6mute <username>§7 - Add to the player mute list")
     --print("§b.ng§r §6unmute <username>§7 - Remove from the player mute list")
     print("§b.ng§r §6online§7 - Shows online player count")
@@ -568,6 +624,7 @@ function printHelp()
     --print("§b.ng§r §6fullstats <username>§7 - Fetch player's §lfull§r§7 stats")
     --print("§b.ng§r §6gstats <username> <gamemode> §7 - Fetch player's stats for the specified gamemode. Uses current game if not specified.")
     print("§b.ng§r §6info <username>§7 - Fetch player's account information")
+    print("§b.ng§r §6update §7 - Check for updates on github")
     if registerAll == true then
         print("§b.ng §8is not required since all commands are registered!")
     end
@@ -578,11 +635,13 @@ end
 --For registering Subcommands independently
 function registerAllCommands()
     registerCommand("serverid", scServerid)
+    registerCommand("uname", scUname)
     registerCommand("mute", scMute)
     registerCommand("online", scOnline)
     registerCommand("kdr", scKdr)
     registerCommand("stats", scStats)
     registerCommand("info", scInfo)
+    registerCommand("update", scUpdate)
 end
 
 function scServerid(data)
@@ -590,6 +649,13 @@ function scServerid(data)
         data = " " .. data
     end
     ng("serverid" .. data)
+end
+
+function scUname(data)
+    if data then
+        data = " " .. data
+    end
+    ng("uname" .. data)
 end
 
 function scMute(data)
@@ -626,6 +692,13 @@ function scInfo(data)
         data = " " .. data
     end
     ng("info" .. data)
+end
+
+function scUpdate(data)
+    if data then
+        data = " " .. data
+    end
+    ng("update" .. data)
 end
 
 --------------------------
@@ -677,6 +750,13 @@ function ng(data)
                 cmdData[2] = player.name():gsub("§.", "")
             end
             fetchBasicInfo(cmdData[2])
+        elseif cmd == "uname" then
+            if cmdData[2] == nil then
+                cmdData[2] = player.name():gsub("§.", "")
+            end
+            copyUname(cmdData[2])
+        elseif cmd == "update" then
+            updateCheck()
         else
             print(NGToolsPrefix .. "Command not found: ".. cmd .. "!")
             printHelp()
