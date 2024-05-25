@@ -873,14 +873,16 @@
         "ngtools",
         "ng",
         "serverid",
+        "uname",
         "mute",
         "online",
         "kdr",
         "stats",
-        "info"
+        "info",
+        "update"
       ],
-      "hash": "e9744624653ace40b9818ef07b0bca3c",
-      "lastUpdated": "2024-05-20T17:15:05.166Z"
+      "hash": "2fe19faff9ec95a0e9647e787cfb3e9e",
+      "lastUpdated": "2024-05-25T13:28:54.261Z"
     },
     {
       "name": "Offhand slot display",
