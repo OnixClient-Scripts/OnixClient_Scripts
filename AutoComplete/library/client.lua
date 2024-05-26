@@ -174,6 +174,7 @@ function client.getConfigManager(scripting) end
 ---@field scale number The scale of info settings
 ---@field parent Module the parent module
 ---@field enumValues table[] table of tables, e.g. { {value, name}, {value2, name2} }
+---@field textbox Textbox The textbox of the setting
 
 
 
