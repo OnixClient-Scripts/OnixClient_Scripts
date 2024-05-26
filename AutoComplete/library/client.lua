@@ -159,6 +159,7 @@ function client.getConfigManager(scripting) end
 ---@field alphaVisible boolean alphaVisible Should the opacity slider be availible
 ---@field rainbow boolean Is this color rainbow
 ---@field rainbowSpeed number The speed of the rainbow effect (default=0.003)
+---@field finishedPicking boolean If the user is done picking the color
 
 
 ---@class Setting
