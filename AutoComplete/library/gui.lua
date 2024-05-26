@@ -64,6 +64,13 @@ function gui.theme() end
 ---@return Font font The current font
 function gui.font() end
 
+--- Creates a new textbox
+---@param text string|nil The text in the textbox
+---@param placeholder string|nil The placeholder text in the textbox
+---@param maxLength integer|nil The maximum length of the textbox
+---@return Textbox textbox The new textbox
+function gui.newTextbox(text, placeholder, maxLength) end
+
 
 ---Shows a color picker (you can use the setting.value.finishedPicking to know when the user is done)
 ---@param setting Setting|nil The setting to show the color picker for, if none provided one will be created.
@@ -115,3 +122,44 @@ function _acp_font.width(text) end
 ---@return number widthOfText The width of the input text
 ---@diagnostic disable-next-line: duplicate-set-field
 function _acp_font.width(text, scale) end
+
+
+---@class Textbox
+---@field text string The text in the textbox
+---@field displayText string The display text in the textbox (readonly)
+---@field placeholder string The placeholder text in the textbox
+---@field number integer|number The number in the textbox (best to use with isNumeric)
+---@field allowDecimal boolean If the textbox allows decimals (does not set isNumeric for you)
+---@field isNumeric boolean If the textbox only allows numbers
+---@field isHex boolean If the textbox allows hex numbers (does not set isNumeric for you)
+---@field isPassword boolean If the textbox is a password field
+---@field maxLength integer The maximum length of the textbox
+---@field cursor integer The position of the cursor in the textbox
+---@field focused boolean If the textbox is focused
+---@field isEmpty boolean If the textbox is empty (readonly)
+---@field new boolean If the text has changed since the last time you checked new, reading it will set it to false (readonly)
+---@field confirmed boolean If the user pressed enter, reading it will set it to false (readonly)
+---@field validity string|"valid"|"invalid"|"none" The validity of the textbox content
+---@field hasSelection boolean If the textbox has a selection (readonly)
+---@field selectionStart integer The start of the selection, check hasSelection first (readonly)
+---@field selectionStop integer The end of the selection, check hasSelection first (readonly)
+local __acp_Textbox__amongus_ = {}
+---Sets the textbox text to ""
+function __acp_Textbox__amongus_:clear() end
+---Removes the active selection
+function __acp_Textbox__amongus_:clearSelection() end
+---Deletes the text of the selection aswell as the selection
+function __acp_Textbox__amongus_:deleteSelection() end
+--- Changes where the selection is
+function __acp_Textbox__amongus_:setSelection(start, stop) end
+
+--- Renders the textbox somewhere
+---@param positionX number The x position of the textbox
+---@param positionY number The y position of the textbox
+---@param sizeX number The x size of the textbox
+---@param sizeY number The y size of the textbox
+---@param carret string|"normal"|"show"|"hide"|nil The carret visibility, normal is visible when focused, show is always visible, hide is never visible
+---@param textColor ColorSetting|iColor|integer[]|Setting|nil The color of the text, if nil will be the theme.text
+---@param backColor ColorSetting|iColor|integer[]|Setting|nil The color of the background, if nil will be the theme.windowBackground
+---@param outlineColor ColorSetting|iColor|integer[]|Setting|nil The color of the outline, if nil will be the theme.outline
+function __acp_Textbox__amongus_:render(positionX, positionY, sizeX, sizeY, carret, textColor, backColor, outlineColor) end
