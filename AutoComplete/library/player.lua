@@ -401,6 +401,7 @@ function player.attributes() end
 ---@field id integer The numerical identifier ex: 9
 ---@field level integer the level, ex: 1
 ---@field name string The name (like in /enchant) ex: sharpness
+---@field display string The translated display name ex: Sharpness
 local _acp_Enchants = {}
 
 ---@class Item
@@ -419,7 +420,7 @@ local _acp_Enchants = {}
 ---@field enchant Enchants[] The item's enchantments
 ---@field displayName string The item's display name (the one that would show above the hotbar)
 ---@field creativeCategory integer The creative category of the item (0=all,1=construction,2=nature,3=equipment,4=items,5=itemscommandonly,6=undefined)
-
+---@field lore string[] The lore of the item (or its description)
 ---@class InventoryArmor 
 ---@field helmet Item|nil The item equipped on the head
 ---@field chestplate Item|nil The item equipped on the torso
