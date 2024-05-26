@@ -418,6 +418,7 @@ local _acp_Enchants = {}
 ---@field customName string The custom name of the item, e.g., from anvils
 ---@field enchant Enchants[] The item's enchantments
 ---@field displayName string The item's display name (the one that would show above the hotbar)
+---@field creativeCategory integer The creative category of the item (0=all,1=construction,2=nature,3=equipment,4=items,5=itemscommandonly,6=undefined)
 
 ---@class InventoryArmor 
 ---@field helmet Item|nil The item equipped on the head
