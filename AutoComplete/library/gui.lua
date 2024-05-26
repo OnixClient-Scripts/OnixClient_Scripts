@@ -65,6 +65,15 @@ function gui.theme() end
 function gui.font() end
 
 
+---Shows a color picker (you can use the setting.value.finishedPicking to know when the user is done)
+---@param setting Setting|nil The setting to show the color picker for, if none provided one will be created.
+---@param positionX number|nil The center x position to open the color picker from, if not provided it will be 0
+---@param positionY number|nil The center y position to open the color picker from, if not provided it will be 0
+---@param yOffset number|nil The y distance between the position and the color picker, if not provided it will be 10
+---@return Setting colorSetting The setting the user is currently picking
+function gui.showColorPicker(setting, positionX, positionY, yOffset) end
+
+
 ---@class iColor
 ---@field r integer
 ---@field g integer
