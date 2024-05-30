@@ -81,6 +81,16 @@ function gui.newTextbox(text, placeholder, maxLength) end
 function gui.showColorPicker(setting, positionX, positionY, yOffset) end
 
 
+---@class KeyPickingDialogData
+---@field key integer The key picked by the user
+---@field picked boolean If the user is done picking
+---@field canceled boolean If the user canceled the picking (aka pressed escape)
+
+---Shows a key picker (you can use the KeyPickingDialogData to get the result if not giving a setting)
+---@param setting Setting|nil The setting to show the key picker for, if none provided the value will only be in the KeyPickingDialogData
+---@return KeyPickingDialogData keyData The data of the key picking
+function gui.showKeyPicker(setting) end
+
 ---@class iColor
 ---@field r integer
 ---@field g integer
