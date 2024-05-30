@@ -319,6 +319,16 @@
       "lastUpdated": "2023-09-05T22:17:05.159Z"
     },
     {
+      "name": "Custom Text Overlay",
+      "description": "Displays the text of your choice to the screen.",
+      "file": "customTextOverlay.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/customTextOverlay.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "3c6b914ea575842436c3a97a2c80e6df",
+      "lastUpdated": "2024-05-30T21:56:48.914Z"
+    },
+    {
       "name": "Daylight Cycle Speed Changer",
       "description": "Changes the speed of the day/night cycle. 1 is normal speed.",
       "file": "timeSpeed.lua",
