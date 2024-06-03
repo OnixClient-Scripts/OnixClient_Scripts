@@ -1,17 +1,22 @@
---1.0.1
+--1.0.2
 name="NGTools"
-description="Improvements for the Nethergames server. By Lioncat6"
+description="Improvements for the Nethergames server. By Lioncat6 • Version 1.0.2"
 
 --importLib("DependentBoolean")
 
 --vars
 NGToolsPrefix = "§f[§l§eN§6G§bTools§r§f]§r "
-version = "1.0.1"
+version = "1.0.2"
 currentLocation = "----"
 --winning = true
 handledWhereAmI = false
 currentServerID  = ""
 lastServerID = ""
+replyIGN = ""
+realNameTable = {}
+realNameNickName = ""
+handledWhisper = false
+
 
 function reloadLua()
     client.execute("lua reload")
@@ -110,6 +115,8 @@ function postInit()
         currentLocation = "---"
         winning = true
         handledWhereAmI = false
+        handledWhisper = ""
+        realNameNickName = ""
         currentServerID = ""
         lastServerID = ""
         event.listen("ChatMessageAdded", chatListen)
@@ -307,7 +314,7 @@ function chatListen(message, username, type)
             local msg = message
             for playerName in muteList.value:gmatch("[^;;]+") do
                 local rawname = playerName:match("^%s*(.-)%s*$") :gsub("§.", "") 
-                if (msg:find(rawname .. " §r§l»§r") or msg:find(rawname .. ": ") or msg:find("§e" .. rawname)) and (msg:find("§r§l»§r") or msg:find("§7Dead Chat > "))then
+                if (msg:find(rawname .. " §r§l»§r") or msg:find(rawname .. ": ") or msg:find("§e" .. rawname) or msg:find("§b§r§f" .. rawname)) and (msg:find("§r§l»§r") or msg:find("§7Dead Chat > ") or msg:find("§r§b whispered to you:"))then
                     if showMuteMsg == true then
                         print(NGToolsPrefix .. "§4Muted Message from " .. playerName)
                     end
@@ -351,6 +358,21 @@ function chatListen(message, username, type)
                 end
             end
         end
+        if message:find("§r§b whispered to you:") then
+            replyIGN = message:match("§r§f(.-)§r§b whispered to you:")
+        end
+        if message:find("§bYou whispered to §r§f") then
+            replyIGN = message:match("§bYou whispered to §r§f(.-)§r§b:")
+        end
+        if handledWhisper == true then
+            if message:find("§r§bYou whispered to") then
+                realNameTable[realNameNickName] = message:match("§bYou whispered to §r§f(.-)§r§b:")
+            end
+            if message:find("§c does not accept direct messages from you") then
+                realNameTable[realNameNickName] = message:match("§b(.-)§c does not accept direct messages from you.")
+            end
+            handledWhisper = false
+        end
     end
 end
 
@@ -362,13 +384,29 @@ function format_seconds(minutes)
     return string.format("%dW %dD %dH %dM", weeks, days, hours, remaining_minutes)
 end
 
+function findGameKey(gameList, targetKey)
+    for _, game in ipairs(gameList) do
+        if game.gameKey == targetKey then
+            return game
+        end
+    end
+
+    -- If not found, create a default game entry
+    return {
+        gameKey = targetKey,
+        gameKeyFriendly = "Unknown Game",
+        current = 0,
+        best = 0
+    }
+end
+
+
 function onNetworkData(code, identifier, data)
     if identifier == "basicStats" or identifier == "basicInfo" then
         local dataTable = {}
         dataTable = jsonToTable(data)
         if not data:find("does not have any stats") then
             statsData = dataTable
-            print()
             if statsData ~= nil and statsData["name"] ~= nil  then
                 if identifier == "basicStats" then
                     print("§6----- " .. NGToolsPrefix .. "§2§l" .. statsData["name"] .. "\'s §r§3Player Stats " .. "§6-----")
@@ -379,7 +417,8 @@ function onNetworkData(code, identifier, data)
                     print("§l§cLosses: §f" ..statsData["losses"])
                     print("§l§aW/LR: §f" .. statsData["wlr"])
                     print("§l§4Credits: §f" .. statsData["credits"])
-                    print("§l§dPlaytime: §f" ..format_seconds(statsData["extraNested"]["online"]["time"]))
+                    print("§l§3Crate Keys: §f" .. statsData["crateKeys"])
+                    print("§l§dPlaytime: §f" ..format_seconds(statsData["extraNested"]["online"]["time"]) .. " §7(" .. math.floor(statsData["extraNested"]["online"]["time"] / 60) .. " hours)")
                     print("§6-----                 " .. string.rep("  ", string.len(statsData["name"])) .. "                §6-----")
                 elseif  identifier == "basicInfo" then
                     print("§6----- " .. NGToolsPrefix .. "§2§l" .. statsData["name"] .. "\'s §r§ePlayer Info " .. "§6-----")
@@ -418,7 +457,7 @@ function onNetworkData(code, identifier, data)
                     end
                     print("§l§6Last Location: §f" .. statsData["lastServer"])
                     
-                    print("§l§dPlaytime: §f" ..format_seconds(statsData["extraNested"]["online"]["time"]))
+                    print("§l§dPlaytime: §f" ..format_seconds(statsData["extraNested"]["online"]["time"]).. " §7(" .. math.floor(statsData["extraNested"]["online"]["time"] / 60) .. " hours)")
                     local fjyear, fjmonth, fjday, fjhour, fjmin, fjsec = statsData["firstJoin"]:match("(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)")
                     local daysAgo = (os.time() - os.time{year=fjyear, month=fjmonth, day=fjday, hour=fjhour, min=fjmin, sec=fjsec}) // 86400
                     if daysAgo < 1 then
@@ -464,6 +503,210 @@ function onNetworkData(code, identifier, data)
             end
             
         end
+    elseif identifier:find("gameStats") then
+        local dataTable = {}
+        dataTable = jsonToTable(data)
+        local statsData = dataTable["extra"]
+        if statsData ~= nil and dataTable["name"] ~= nil then
+            if identifier == "gameStatsbedwars" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§cBedwars Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["bwKills"])
+                        print("§l§4Deaths: §f" ..statsData["bwDeaths"])
+                        print("§l§eFinal Kills: §f" .. statsData["bwFinalKills"])
+                        print("§l§aK/DR: §f" .. statsData["bwKills"] / statsData["bwDeaths"])
+                        print("§l§2Wins: §f" ..statsData["bwWins"])
+                        print("§l§cBeds Broken: §f" ..statsData["bwBedsBroken"])
+                        local bw_doublesTable = findGameKey(dataTable["winStreaks"], "bw_doubles")
+                        print("§l§dDoubles Streak: §f" .. bw_doublesTable["current"] .. " / " .. bw_doublesTable["best"])
+                        local bw_soloTable = findGameKey(dataTable["winStreaks"], "bw_solo")
+                        print("§l§dSolo Streak: §f" .. bw_soloTable["current"] .. " / " .. bw_soloTable["best"])
+                        local bw_squadsTable = findGameKey(dataTable["winStreaks"], "bw_squads")
+                        print("§l§dSquads Streak: §f" .. bw_squadsTable["current"] .. " / " .. bw_squadsTable["best"])
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                 §6-----")
+            elseif identifier == "gameStatsskywars" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§6Skywars Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["swKills"])
+                        print("§l§4Deaths: §f" ..statsData["swDeaths"])
+                        print("§l§eK/DR: §f" .. statsData["swKills"] / statsData["swDeaths"])
+                        print("§l§2Wins: §f" ..statsData["swWins"])
+                        print("§l§cLosses: §f" ..statsData["swLosses"])
+                        print("§l§aW/LR: §f" .. statsData["swWins"] / statsData["swLosses"])
+                        local sw_doublesTable = findGameKey(dataTable["winStreaks"], "sw_doubles")
+                        print("§l§dDoubles Streak: §f" .. sw_doublesTable["current"] .. " / " .. sw_doublesTable["best"])
+                        local sw_soloTable = findGameKey(dataTable["winStreaks"], "sw_solo")
+                        print("§l§dSolo Streak: §f" .. sw_soloTable["current"] .. " / " .. sw_soloTable["best"])
+                        local sw_1v1Table = findGameKey(dataTable["winStreaks"], "sw_1v1")
+                        print("§l§d1v1 Streak: §f" .. sw_1v1Table["current"] .. " / " .. sw_1v1Table["best"])
+                        local sw_2v2Table = findGameKey(dataTable["winStreaks"], "sw_2v2")
+                        print("§l§d2v2 Streak: §f" .. sw_2v2Table["current"] .. " / " .. sw_2v2Table["best"])
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                 §6-----")
+            elseif identifier == "gameStatsbridge" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§1The Bridge Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["tbKills"])
+                        print("§l§4Deaths: §f" ..statsData["tbDeaths"])
+                        print("§l§eK/DR: §f" .. statsData["tbKills"] / statsData["tbDeaths"])
+                        print("§l§2Wins: §f" ..statsData["tbWins"])
+                        print("§l§cLosses: §f" ..statsData["tbLosses"])
+                        print("§l§aW/LR: §f" .. statsData["tbWins"] / statsData["tbLosses"])
+                        print("§l§3Goals: §f" .. statsData["tbGoals"])
+                        local tb_doublesTable = findGameKey(dataTable["winStreaks"], "tb_doubles")
+                        print("§l§dDoubles Streak: §f" .. tb_doublesTable["current"] .. " / " .. tb_doublesTable["best"])
+                        local tb_soloTable = findGameKey(dataTable["winStreaks"], "tb_solo")
+                        print("§l§dSolo Streak: §f" .. tb_soloTable["current"] .. " / " .. tb_soloTable["best"])
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                   §6-----")
+            elseif identifier == "gameStatsfactions" then
+                statsData = dataTable["factionData"]
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§dFactions Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["kills"])
+                        print("§l§aKill Streak: §f" ..statsData["streak"] ..  " / " ..  statsData["bestStreak"] )
+                        print("§l§cBounty: §f" ..statsData["bounty"])
+                        print("§l§3Balance: §f" .. statsData["coins"] )
+                        if statsData["faction"] ~= 0 and statsData["faction"] ~= nil then
+                            print("§l§6Faction: §o§n" .. statsData["faction"]["name"] )
+                        end
+                        local fjyear, fjmonth, fjday, fjhour, fjmin, fjsec = statsData["registerDate"]:match("(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)")
+                        local daysAgo = (os.time() - os.time{year=fjyear, month=fjmonth, day=fjday, hour=fjhour, min=fjmin, sec=fjsec}) // 86400
+                        if daysAgo < 1 then
+                            print("§l§dRegistration Date: §f" .. statsData["registerDate"] .. " §7(Today)§r")
+                        else
+                            print("§l§dRegistration Date: §f" .. statsData["registerDate"] .. " §7(" .. daysAgo .. " days ago)§r")
+                        end
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                 §6-----")
+            elseif identifier == "gameStatssurvivalgames" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§6Survival Games Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["sgKills"])
+                        print("§l§4Deaths: §f" ..statsData["sgDeaths"])
+                        print("§l§eK/DR: §f" .. statsData["sgKills"] / statsData["sgDeaths"])
+                        print("§l§2Wins: §f" ..statsData["sgWins"])
+                        local sg_soloTable = findGameKey(dataTable["winStreaks"], "sg_solo")
+                        print("§l§dSolo Streak: §f" .. sg_soloTable["current"] .. " / " .. sg_soloTable["best"])
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                   §6-----")
+            elseif identifier == "gameStatsuhc" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§6UHC Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["uhcKills"])
+                        print("§l§4Deaths: §f" ..statsData["uhcDeaths"])
+                        print("§l§eK/DR: §f" .. statsData["uhcKills"] / statsData["uhcDeaths"])
+                        print("§l§2Wins: §f" ..statsData["uhcWins"])
+                        local sg_soloTable = findGameKey(dataTable["winStreaks"], "sg_solo")
+                        print("§l§dSolo Streak: §f" .. sg_soloTable["current"] .. " / " .. sg_soloTable["best"])
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "            §6-----")
+            elseif identifier == "gameStatsduels" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§fDuels Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["duelsKills"])
+                        print("§l§4Deaths: §f" ..statsData["duelsDeaths"])
+                        print("§l§eK/DR: §f" .. statsData["duelsKills"] / statsData["duelsDeaths"])
+                        print("§l§2Wins: §f" ..statsData["duelsWins"])
+                        print("§l§cLosses: §f" ..statsData["duelsLosses"])
+                        print("§l§aW/LR: §f" .. statsData["duelsWins"] / statsData["duelsLosses"])
+                        local duels_doublesTable = findGameKey(dataTable["winStreaks"], "duels_doubles")
+                        print("§l§dDoubles Streak: §f" .. duels_doublesTable["current"] .. " / " .. duels_doublesTable["best"])
+                        local duels_soloTable = findGameKey(dataTable["winStreaks"], "duels_solo")
+                        print("§l§dSolo Streak: §f" .. duels_soloTable["current"] .. " / " .. duels_soloTable["best"])
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "               §6-----")
+            elseif identifier == "gameStatsmurdermystery" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§eMurder Mystery Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["mmKills"])
+                        print("§l§4Deaths: §f" ..statsData["mmDeaths"])
+                        print("§l§eK/DR: §f" .. statsData["mmKills"] / statsData["mmDeaths"])
+                        print("§l§2Wins: §f" ..statsData["mmWins"])
+                        print("§l§cBow Kills: §f" ..statsData["mmBowKills"])
+                        print("§l§aKnife Kills: §f" .. statsData["mmKnifeKills"])
+                        print("§l§3Knife Throw Kills: §f" .. statsData["mmThrowKnifeKills"])
+                        local mm_clasicTable = findGameKey(dataTable["winStreaks"], "mm_classic")
+                        print("§l§dClassic Streak: §f" .. mm_clasicTable["current"] .. " / " .. mm_clasicTable["best"])
+                        local mm_infectionTable = findGameKey(dataTable["winStreaks"], "mm_infection")
+                        print("§l§dInfection Streak: §f" .. mm_infectionTable["current"] .. " / " .. mm_infectionTable["best"])
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                      §6-----")
+            elseif identifier == "gameStatsconquests" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§cConquests Stats " .. "§6-----")
+                        print("§l§5Kills: §f" .. statsData["cqKills"])
+                        print("§l§4Deaths: §f" ..statsData["cqDeaths"])
+                        print("§l§eK/DR: §f" .. statsData["cqKills"] / statsData["cqDeaths"])
+                        print("§l§2Wins: §f" ..statsData["cqWins"])
+                        --print("§l§cLosses: §f" ..statsData["tbLosses"])
+                        --print("§l§aW/LR: §f" .. statsData["tbWins"] / statsData["tbLosses"])
+                        print("§l§3Flags Captured: §f" .. statsData["cqFlagsCaptured"])
+                        print("§l§cFlags Returned: §f" ..statsData["cqFlagsReturned"])
+                        
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                   §6-----")
+            elseif identifier == "gameStatsmommasays" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§4Momma Says Stats " .. "§6-----")
+                        print("§l§5Successes: §f" .. statsData["msSuccesses"])
+                        print("§l§4Fails: §f" ..statsData["msFails"])
+                        print("§l§2Wins: §f" ..statsData["msWins"])
+                        
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                      §6-----")
+            elseif identifier == "gameStatssoccer" then
+                        print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§4Soccer Stats " .. "§6-----")
+                        print("§l§aGoals: §f" .. statsData["scGoals"])
+                        print("§l§2Wins: §f" ..statsData["scWins"])
+                        
+                        print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                §6-----")
+            end
+        else
+            if data:find("does not have any stats") then
+                print(NGToolsPrefix .. "Player has no recorded statistics!")
+
+            elseif data:find("Unknown Player") then
+                print(NGToolsPrefix .. "A player by this username does not exist on the server!")
+            else 
+                if code == 0 then
+                    print(NGToolsPrefix .. "Fetch Error: " .. data)
+                else
+                    -- code 2 = spaces in url
+                    print(NGToolsPrefix .. "Fetch Error: " .. "code " .. code)
+                end
+            end
+            return true
+        end
+    elseif identifier == "punishments" then
+        local dataTable = {}
+        dataTable = jsonToTable(data)
+        local punishmentData = dataTable["punishmentsNew"]
+        if punishmentData ~= nil and dataTable["name"] ~= nil then
+            if #punishmentData > 0 then
+                print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§cPunishments §7(" .. #punishmentData .. ") §6-----")
+                for x, dat in pairs(punishmentData) do
+                    if x>1 then 
+                        print("§6-----")
+                    end
+                    if dat["type"] == "MUTE" then
+                        if dat["active"] == true then
+                            print("§l§cMuted Until: §f"..tostring(os.date("%c", dat["validUntil"])):gsub("  ", " ") .. " §7(In " .. math.floor((dat["validUntil"] - os.time()) / 86400) .. " days)")
+                        else
+                            print("§l§cMute §f- §7Expired")
+                        end
+                    else
+                        if dat["active"] == true then
+                            print("§l§cBanned Until: §f".. tostring(os.date("%c", dat["validUntil"])):gsub("  ", " ") .. " §7(In " .. math.floor((dat["validUntil"] - os.time()) / 86400) .. " days)")
+                        else
+                            print("§l§cBan §f- §7Expired")
+                        end
+                    end
+                    print("§e§lReason: §f" .. dat["reason"])
+                    print("§l§3Duration: §f" .. tostring(os.date("%c", dat["issuedAt"])):gsub("  ", " ") .. " §f- " .. tostring(os.date("%c", dat["validUntil"])):gsub("  ", " ") .. " §7(" .. math.floor((dat["validUntil"] - dat["issuedAt"]) / 86400) .. " days)")
+                    print("§2§lID: §f" .. dat["id"])
+                end
+                print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"]) + string.len(#punishmentData)) .. "                §6-----")
+            else
+                print(NGToolsPrefix .. "Player has no punishments.")
+            end
+        else
+            if data:find("does not have any stats") then
+                print(NGToolsPrefix .. "Player has no recorded statistics!")
+
+            elseif data:find("Unknown Player") then
+                print(NGToolsPrefix .. "A player by this username does not exist on the server!")
+            else 
+                if code == 0 then
+                    print(NGToolsPrefix .. "Fetch Error: " .. data)
+                else
+                    -- code 2 = spaces in url
+                    print(NGToolsPrefix .. "Fetch Error: " .. "code " .. code)
+                end
+            end
+            return true
+        end
     else
         local dataTable = {}
         dataTable = jsonToTable(data)
@@ -485,11 +728,15 @@ function onNetworkData(code, identifier, data)
                     indexedData = 0
                     
                 else 
-                    if code == 0 then
-                        print(NGToolsPrefix .. "Fetch Error: " .. data)
-                    else
-                        -- code 2 = spaces in url
-                        print(NGToolsPrefix .. "Fetch Error: " .. "code " .. code)
+                    if data:find("Unknown Player") then
+                        print(NGToolsPrefix .. "A player by this username does not exist on the server!")
+                    else 
+                        if code == 0 then
+                            print(NGToolsPrefix .. "Fetch Error: " .. data)
+                        else
+                            -- code 2 = spaces in url
+                            print(NGToolsPrefix .. "Fetch Error: " .. "code " .. code)
+                        end
                     end
                     indexedData = "err"
                 end
@@ -531,6 +778,11 @@ function onNetworkData(code, identifier, data)
     end
 end
 
+function findRealName(Uname)
+    client.execute("execute /w " .. Uname .. " .")
+    handledWhisper = true
+end
+
 function fetchPlayerStats(Uname, index, BeforeMsg, AfterMsg)
     htmlName = Uname:gsub(" ", "%%20")
     network.get("https://api.ngmc.co/v1/players/"..htmlName, index .. "||" .. BeforeMsg .. "||" ..  AfterMsg)
@@ -552,11 +804,25 @@ function fetchBasicStats(Uname)
     network.get("https://api.ngmc.co/v1/players/"..htmlName, "basicStats")
 end
 
+function fetchGameStats(Uname, mode)
+print(NGToolsPrefix .. "Fetching...")
+name = autoCompleteName(Uname) :gsub("\"", "")
+htmlName = name:gsub(" ", "%%20")
+network.get("https://api.ngmc.co/v1/players/"..htmlName .. "?withWinStreaks=true" , "gameStats" .. mode)
+end
+
 function fetchBasicInfo(Uname)
     print(NGToolsPrefix .. "Fetching...")
     name = autoCompleteName(Uname) :gsub("\"", "")
     htmlName = name:gsub(" ", "%%20")
     network.get("https://api.ngmc.co/v1/players/"..htmlName, "basicInfo")
+end
+
+function fetchPunishments(Uname)
+    print(NGToolsPrefix .. "Fetching...")
+    name = autoCompleteName(Uname) :gsub("\"", "")
+    htmlName = name:gsub(" ", "%%20")
+    network.get("https://api.ngmc.co/v1/players/"..htmlName, "punishments")
 end
 
 function autoCompleteName(Uname)
@@ -622,13 +888,20 @@ function printHelp()
     print("§b.ng§r §6kdr <username>§7 - Fetch player's K/DR")
     print("§b.ng§r §6stats <username>§7 - Fetch player's basic stats")
     --print("§b.ng§r §6fullstats <username>§7 - Fetch player's §lfull§r§7 stats")
-    --print("§b.ng§r §6gstats <username> <gamemode> §7 - Fetch player's stats for the specified gamemode. Uses current game if not specified.")
+    print("§b.ng§r §6gstats <username> <gamemode> §7 - Fetch player's stats for the specified gamemode. Uses current game if not specified.")
+    print("§b.ng§r §6punishments <username>§7 - Fetch player's punishments")
     print("§b.ng§r §6info <username>§7 - Fetch player's account information")
     print("§b.ng§r §6update §7 - Check for updates on github")
+    print("§b.ng§r §6reply <message> §7 - Reply to the latest in-game direct message")
+    print("§b.ng§r §6r <message> §7 - Reply to the latest in-game direct message")
     if registerAll == true then
         print("§b.ng §8is not required since all commands are registered!")
     end
     print("§6-----                            §6-----")
+end
+
+function replyMsg(message) 
+    client.execute("execute /w " .. replyIGN .. " " .. message)
 end
 
 --------------------------
@@ -640,8 +913,12 @@ function registerAllCommands()
     registerCommand("online", scOnline)
     registerCommand("kdr", scKdr)
     registerCommand("stats", scStats)
+    registerCommand("gstats", scGStats)
+    registerCommand("punishments", scPunishments)
     registerCommand("info", scInfo)
     registerCommand("update", scUpdate)
+    registerCommand("reply", scReply)
+    registerCommand("r", scReply)
 end
 
 function scServerid(data)
@@ -687,6 +964,20 @@ function scStats(data)
     ng("stats" .. data)
 end
 
+function scGStats(data)
+    if data then
+        data = " " .. data
+    end
+    ng("gstats" .. data)
+end
+
+function scPunishments(data)
+    if data then
+        data = " " .. data
+    end
+    ng("punishments" .. data)
+end
+
 function scInfo(data)
     if data then
         data = " " .. data
@@ -699,6 +990,13 @@ function scUpdate(data)
         data = " " .. data
     end
     ng("update" .. data)
+end
+
+function scReply(data)
+    if data then
+        data = " " .. data
+    end
+    ng("reply" .. data)
 end
 
 --------------------------
@@ -745,6 +1043,37 @@ function ng(data)
                 cmdData[2] = player.name():gsub("§.", "")
             end
             fetchBasicStats(cmdData[2])
+        elseif cmd == "gstats" then
+            if cmdData[2] == nil then
+                cmdData[2] = player.name():gsub("§.", "")
+            end
+            if cmdData[3] == nil then
+                cmdData[3] = currentLocation
+                if currentLocation == "lobby" then
+                    print(NGToolsPrefix .. "This command doesn't work in the lobby! Please specify a gamemode or start playing a game!")
+                    for x, mode in pairs(locationsScoreboard) do
+                        if mode ~= "lobby" and mode ~= "creative" and mode ~= "skyblock" then
+                            print("§6" .. mode)
+                        end
+                    end
+                else
+                    fetchGameStats(cmdData[2], cmdData[3])
+                end
+            else
+                for x, mode in pairs(locationsScoreboard) do
+                    if string.lower(cmdData[3]) == string.lower(mode) and mode ~= "lobby" and mode ~= "creative" and mode ~= "skyblock" then
+                        fetchGameStats(cmdData[2], string.lower(cmdData[3]))
+                        return
+                    end
+                end
+                print(NGToolsPrefix .. "Please enter a valid game mode!")
+                for x, mode in pairs(locationsScoreboard) do
+                    if mode ~= "lobby" and mode ~= "creative" and mode ~= "skyblock" then
+                        print("§6" .. mode)
+                    end
+                end
+            end
+            
         elseif cmd == "info" then
             if cmdData[2] == nil then
                 cmdData[2] = player.name():gsub("§.", "")
@@ -755,8 +1084,19 @@ function ng(data)
                 cmdData[2] = player.name():gsub("§.", "")
             end
             copyUname(cmdData[2])
+        elseif cmd == "punishments" then
+            if cmdData[2] == nil then
+                cmdData[2] = player.name():gsub("§.", "")
+            end
+            fetchPunishments(cmdData[2])
         elseif cmd == "update" then
             updateCheck()
+        elseif cmd == "reply" then
+            local msg = ""
+            if #cmdData >= 2 then
+                msg = table.concat(cmdData, " ", 2)
+            end
+            replyMsg(msg)
         else
             print(NGToolsPrefix .. "Command not found: ".. cmd .. "!")
             printHelp()
