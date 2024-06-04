@@ -556,6 +556,7 @@ function onNetworkData(code, identifier, data)
                         print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                   §6-----")
             elseif identifier == "gameStatsfactions" then
                 statsData = dataTable["factionData"]
+                if statsData ~= nil then
                         print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§dFactions Stats " .. "§6-----")
                         print("§l§5Kills: §f" .. statsData["kills"])
                         print("§l§aKill Streak: §f" ..statsData["streak"] ..  " / " ..  statsData["bestStreak"] )
@@ -572,6 +573,9 @@ function onNetworkData(code, identifier, data)
                             print("§l§dRegistration Date: §f" .. statsData["registerDate"] .. " §7(" .. daysAgo .. " days ago)§r")
                         end
                         print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                 §6-----")
+                    else
+                        print(NGToolsPrefix ..  "Player has no factions statistics!")
+                    end
             elseif identifier == "gameStatssurvivalgames" then
                         print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§6Survival Games Stats " .. "§6-----")
                         print("§l§5Kills: §f" .. statsData["sgKills"])
