@@ -812,7 +812,7 @@ function fetchGameStats(Uname, mode)
 print(NGToolsPrefix .. "Fetching...")
 name = autoCompleteName(Uname) :gsub("\"", "")
 htmlName = name:gsub(" ", "%%20")
-network.get("https://api.ngmc.co/v1/players/"..htmlName .. "?withWinStreaks=true" , "gameStats" .. mode)
+network.get("https://api.ngmc.co/v1/players/"..htmlName .. "?withWinStreaks=true" , "gameStats" .. string.lower(mode))
 end
 
 function fetchBasicInfo(Uname)
