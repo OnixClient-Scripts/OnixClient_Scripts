@@ -75,6 +75,10 @@ function gfx2.tcolor(r, g, b) end
 ---@param opacity number 0-255 color code
 function gfx2.tcolor(r, g, b, opacity) end
 
+--- Changes the color symbol processing state to know if you want to support them or not.
+---@param shouldProcessColorCodes boolean Should the color codes be processed (aka should they change color)
+---@param shouldShowColorSymbol boolean|nil Should the color symbol be shown (when processed only)
+function gfx2.setColorSymbolState(shouldProcessColorCodes, shouldShowColorSymbol) end
 
 
 ---Gives you the width of the current render target
@@ -362,6 +366,35 @@ function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSi
 function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY, opacity, isLinear) end
 
 
+---Renders a texture (same as in normal gfx, its the game's textures e.g. texture/ui/title)
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the image to render
+---@param height number Height of the image to render
+---@param texture string path to render (path from the root of a texture path, you can also use it as you'd use gfx.image)
+---@param opacity number|nil Opactity at which to render the image at (0.0 to 1.0)
+function gfx2.drawTexture(x, y, width, height, texture, opacity) end
+
+
+---Renders a texture with uv (same as in normal gfx, its the game's textures e.g. texture/ui/title)
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the image to render
+---@param height number Height of the image to render
+---@param texture string path to render (path from the root of a texture path, you can also use it as you'd use gfx.image)
+---@param srcStartUvX number Where in the source should we start taking the image inputs normalized 0 - 1
+---@param srcStartUvY number Where in the source should we start taking the image inputs normalized 0 - 1
+---@param srcSizeUvX number what size in the source image are we taking inputs normalized 0 - 1
+---@param srcSizeUvY number what size in the source image are we taking inputs normalized 0 - 1
+---@param opacity number|nil Opactity at which to render the image at (0.0 to 1.0)
+function gfx2.cdrawTexture(x, y, width, height, texture, srcStartUvX, srcStartUvY, srcSizeUvX, srcSizeUvY, opacity) end
+
+---Dumps a texture from the game to a file (more capable than extract texture)
+---@param texture string The texture to dump
+---@param outputPath string The path to save the file to
+---@param copyToClipboard boolean|nil If it should also copy the image to the clipboard (default false)
+---@return boolean saved If the file was saved or not
+function gfx2.dumpTexture(texture, outputPath, copyToClipboard) end
 
 
 
