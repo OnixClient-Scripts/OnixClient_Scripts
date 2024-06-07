@@ -27,6 +27,9 @@ function gfx.tcolor(r, g, b) end
 ---@param a number Opacity
 function gfx.tcolor(r, g, b, a) end
 
+---Sets if you want the color symbol to be visible (§ and its color character, by default you do not see it
+function gfx.setShowColorSymbols(showColorSymbols) end
+
 ---Sets if the 3D rendering should render trough blocks
 ---@param phaseTroughBlocks boolean red
 ---@return nil
@@ -224,7 +227,8 @@ function gfx.unloadimage(filepath) end
 ---@param width number The Width of the rectangle to render the image in
 ---@param height number The Height of the rectangle to render the image in
 ---@param effectId integer you can get it from player.effects()'s effects
-function gfx.effect(x, y, width, height, effectId) end
+---@param useLegacyIcons boolean|nil Should use the old icons (defaults to false).
+function gfx.effect(x, y, width, height, effectId, useLegacyIcons) end
 
 
 
