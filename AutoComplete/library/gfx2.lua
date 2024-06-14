@@ -440,5 +440,10 @@ function gfx2.popTransformation() end
 ---@param amount integer How many transformations to pop (you cant pop enough to crash so to reset just put a high number)
 function gfx2.popTransformation(amount) end
 
+---Saves a screenshot of the currently bound render target to disk and potentially to clipboard after
+---@param filepath string The path to save the file to
+---@param clipboard boolean If it should also copy the image to the clipboard (default false)
+---@return boolean saved If the file was saved or not
+function gfx2.saveScreenshot(filepath, clipboard) end
 
 
