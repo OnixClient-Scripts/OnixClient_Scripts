@@ -444,6 +444,6 @@ function gfx2.popTransformation(amount) end
 ---@param filepath string The path to save the file to
 ---@param clipboard boolean If it should also copy the image to the clipboard (default false)
 ---@return boolean saved If the file was saved or not
-function gfx2.saveScreenshot(filepath, clipboard) end
+function gfx2.takeScreenshot(filepath, clipboard) end
 
 
