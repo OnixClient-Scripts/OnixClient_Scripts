@@ -50,6 +50,16 @@ function gfx.color(r, g, b, a) end
 ---@return number z
 function gfx.origin() end
 
+---The distance to the projection plane if it was 2 units long in that dimension
+---@return number x
+---@return number y
+function gfx.projectionDistances() end
+
+---The current horizontal and vertical field of view. With no zoom or other effects on the camera, fovY (vertical) should be the same as the fov in setting and game effects.
+---@return number fovX
+---@return number fovY
+function gfx.fov() end
+
 ---Gets screen position from world position
 ---Getting nil means that the position is not on screen
 ---@param x number The world position X
