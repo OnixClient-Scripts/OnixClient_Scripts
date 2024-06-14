@@ -199,6 +199,10 @@ function player.selectedFace() end
 ---@return number progress The progress of block breaking
 function player.breakProgress() end
 
+---Returns the player's current FOV
+---@return number fov The player's current FOV
+function player.fov() end
+
 ---@class SelectedEntityInfo
 ---@field type string The type of entity, example "player"
 ---@field fullType string The full type of entity, example "minecraft:player"
