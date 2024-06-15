@@ -42,6 +42,9 @@ function gui.showScreen(name) end
 ---@return string screenName The name of the current screen
 function gui.screen() end
 
+---Closes the current minecraft screen if it is not the hud as that would be problematic
+function gui.closeNonHud() end
+
 ---Plays the click sound (the one in minecraft when u clicc button)
 ---Will not work on 1.18.30+
 function gui.clickSound() end
