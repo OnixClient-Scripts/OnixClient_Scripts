@@ -203,6 +203,10 @@ function player.breakProgress() end
 ---@return number fov The player's current FOV
 function player.fov() end
 
+---Returns the player's current molang variables
+---@return table vars The player's molang variables
+function player.molangVariables() end
+
 ---@class SelectedEntityInfo
 ---@field type string The type of entity, example "player"
 ---@field fullType string The full type of entity, example "minecraft:player"
@@ -219,6 +223,7 @@ function player.fov() end
 ---@field vx integer The X velocity of the entity
 ---@field vy integer The Y velocity of the entity
 ---@field vz integer The Z velocity of the entity
+---@field molangVariables table The molang variables of the entity.
 local _acp__SelectedEntityInfo_Skin = {}
 
 ---Returns the player skin
