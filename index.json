@@ -720,6 +720,16 @@
       "lastUpdated": "2024-02-18T14:30:06.524Z"
     },
     {
+      "name": "Inventory Viewer",
+      "description": "check the item in your inventory.",
+      "file": "inventoryviewer.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/inventoryviewer.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "46f4654b80558ebf84bd3acbf466c8c4",
+      "lastUpdated": "2024-06-28T11:52:53.725Z"
+    },
+    {
       "name": "Java View Bobbing",
       "description": "Makes the view bobbing like in Java Edition.",
       "file": "JavaViewBobbing.lua",
