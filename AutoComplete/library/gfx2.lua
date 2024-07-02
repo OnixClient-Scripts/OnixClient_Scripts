@@ -394,7 +394,7 @@ function gfx2.cdrawTexture(x, y, width, height, texture, srcStartUvX, srcStartUv
 ---@param outputPath string The path to save the file to
 ---@param copyToClipboard boolean|nil If it should also copy the image to the clipboard (default false)
 ---@return boolean saved If the file was saved or not
-function gfx2.dumpTextureToFile(texture, outputPath, copyToClipboard) endcSizeUvX, srcSizeUvY, opacity) end
+function gfx2.dumpTextureToFile(texture, outputPath, copyToClipboard) end
 
 ---Dumps a texture from the game to a Gfx2Texture (more capable than extract texture)
 ---@param texture string The texture to dump
