@@ -1,12 +1,12 @@
---1.0.2
+--1.0.3
 name="NGTools"
-description="Improvements for the Nethergames server. By Lioncat6 • Version 1.0.2"
+description="Improvements for the Nethergames server. By Lioncat6 • Version 1.0.3"
 
 --importLib("DependentBoolean")
 
 --vars
 NGToolsPrefix = "§f[§l§eN§6G§bTools§r§f]§r "
-version = "1.0.2"
+version = "1.0.3"
 currentLocation = "----"
 --winning = true
 handledWhereAmI = false
@@ -16,7 +16,8 @@ replyIGN = ""
 realNameTable = {}
 realNameNickName = ""
 handledWhisper = false
-
+handledGuildModal = false
+handledGuildMebers = false
 
 function reloadLua()
     client.execute("lua reload")
@@ -65,6 +66,22 @@ client.settings.addCategory("Vote helper")
 client.settings.addInfo("Detects when you run /vote and automatically copies the url to your clipboard")
 voteHelper = false
 client.settings.addBool("Enable", "voteHelper")
+
+client.settings.addAir(5)
+client.settings.addCategory("Middle Click")
+client.settings.addInfo("Do various actions when middle clicking on a player")
+middleClick = false
+client.settings.addBool("Enable", "middleClick")
+middleClickMode = client.settings.addNamelessEnum("Mode", 1, {
+     {1, "Player Stats (.stats)"},
+     {2, "Player Game Stats (.gstats)"},
+     {3, "Player Info (.info)"},
+     {4, "Add Friend (/friend)"},
+     {5, "Invite to Party (/party)"},
+     {6, "Copy Username (.uname)"},
+     {7, "View Bio (.bio)"},
+     {8, "View Punishments (.punishments)"},
+    })
 
 client.settings.addAir(5)
 client.settings.addCategory("Player Stats")
@@ -119,7 +136,8 @@ function postInit()
         realNameNickName = ""
         currentServerID = ""
         lastServerID = ""
-        event.listen("ChatMessageAdded", chatListen)
+        event.listen("ChatMessageAdded", chatHandler)
+        event.listen("MouseInput", clickHandler)
         registerCommand("ngtools", ng)
         registerCommand("ng", ng)
         if registerAll == true then
@@ -191,7 +209,7 @@ locationsDisplay["mommaSays"] = "§4Momma Says"
 locationsDisplay["lobby"] = "§bLobby"
 
 --Gamemode Tracking
-function checkGamemode()   
+function checkGamemode()
     local scoreboard = server.scoreboard()
     local sidebar = scoreboard.getDisplayObjective("sidebar")
     if sidebar then
@@ -206,7 +224,7 @@ function checkGamemode()
                             handledWhereAmI = true
                             client.execute("execute /whereami")
                         end
-                        
+
                     end
                 end
             end
@@ -243,6 +261,42 @@ function handleDispLocation()
     end
 end
 
+function isFacingPlayer()
+    if player.facingEntity() and player.selectedEntity().type == "player" and player.selectedEntity().username ~= nil and player.selectedEntity().username ~= "" then
+        return true
+    else
+        return false
+    end
+end
+
+function clickHandler(button, press)
+    if middleClick == true then
+        if button == 3 and press == false then
+            if isFacingPlayer() then
+                local uname = player.selectedEntity().username
+                local mode = middleClickMode.value
+                if mode == 1 then
+                    client.execute("stats " .. uname)
+                elseif mode == 2 then
+                    client.execute("gstats " .. uname)
+                elseif mode == 3 then
+                    client.execute("info " .. uname)
+                elseif mode == 4 then
+                    client.execute("execute /friend " .. uname)
+                elseif mode == 5 then
+                    client.execute("execute /party " .. uname)
+                elseif mode == 6 then
+                    client.execute("uname " .. uname)
+                elseif mode == 7 then
+                    client.execute("bio " .. uname)
+                elseif mode == 8 then
+                    client.execute("punishments " .. uname)
+                end
+            end
+        end
+    end
+end
+
 gameInstructionsText = {
     --Skywars
     "§e§lGather resources and equipment on your island",
@@ -263,9 +317,16 @@ gameInstructionsText = {
     "§e§lUpgrade yourself and your team by collecting",
     "§e§lIron, Gold, Emerald and Diamond from the generators",
     "§e§lto access powerful upgrades.",
+    --Momma Says
+    "§e§lFollow the instructions to gain points.",
+    "§e§lThe player with the most points wins!",
+    --Soccer
+    "§e§lPass the ball between teammates.",
+    "§e§lGet it down the field to the goal.",
+    "§e§lThe team with the most goals at the end wins!"
 }
 
-function chatListen(message, username, type)
+function chatHandler(message, username, type)
     if server.ip():find("nethergames") then
         if playerStats == true then
             if message:find(" §ehas joined") and not message:find(":")  then
@@ -301,19 +362,19 @@ function chatListen(message, username, type)
                 currentLocation = ""
             end
         end
-    
+
         if voteHelper == true then
             if message:find("You haven't voted yet today.") then
                 print(NGToolsPrefix .. "Copied voting site url!")
                 client.notification("Copied voting site url!")
                 setClipboard("https://minecraftpocket-servers.com/server/36864/vote")
-            
+
             end
         end
         if playerMute == true then
             local msg = message
             for playerName in muteList.value:gmatch("[^;;]+") do
-                local rawname = playerName:match("^%s*(.-)%s*$") :gsub("§.", "") 
+                local rawname = playerName:match("^%s*(.-)%s*$") :gsub("§.", "")
                 if (msg:find(rawname .. " §r§l»§r") or msg:find(rawname .. ": ") or msg:find("§e" .. rawname) or msg:find("§b§r§f" .. rawname)) and (msg:find("§r§l»§r") or msg:find("§7Dead Chat > ") or msg:find("§r§b whispered to you:"))then
                     if showMuteMsg == true then
                         print(NGToolsPrefix .. "§4Muted Message from " .. playerName)
@@ -327,30 +388,36 @@ function chatListen(message, username, type)
                 if currentLocation == "lobby" and message:find("§aWelcome to §eNether§6Games§a!") then
                     return true
                 end
-            elseif cdAnnouncement == true then
+            end
+            if cdAnnouncement == true then
                 if currentLocation == "lobby" and message:find("§o§l§eN§6G§r§7:") then
                     return true
                 end
-            elseif cdJoinLeaveLobby == true then
+            end
+            if cdJoinLeaveLobby == true then
                 if currentLocation == "lobby" and message:find("§6 has joined the server!") then
                     return true
                 end
-            elseif cdJoinLeaveGame == true then
+            end
+            if cdJoinLeaveGame == true then
                 if currentLocation ~= "lobby" and (message:find("§ehas joined (§b") or message:find("§ehas quit!") ) then
                     return true
                 end
-            elseif cdJoinLeaveFriend == true then
+            end
+            if cdJoinLeaveFriend == true then
                 if message:find("§aFriend > ") and (message:find("§e left") or message:find("§e joined") ) then
                     return true
                 end
-            elseif cdJoinLeaveGuild == true then
+            end
+            if cdJoinLeaveGuild == true then
                 if message:find("§2Guild >") and message:find("§e joined.")  then
                     return true
                 end
                 if message:find("§2Guild >") and message:find("§e left.")  then
                     return true
                 end
-            elseif cdGameInstructions == true then
+            end
+            if cdGameInstructions == true then
                 for x, text in pairs( gameInstructionsText) do
                     if message:find(text) then
                         return true
@@ -456,7 +523,7 @@ function onNetworkData(code, identifier, data)
                         print("§l§2Last Seen: §f" .. statsData["lastSeen"] .. " ago (§cCurrently Offline§f)")
                     end
                     print("§l§6Last Location: §f" .. statsData["lastServer"])
-                    
+
                     print("§l§dPlaytime: §f" ..format_seconds(statsData["extraNested"]["online"]["time"]).. " §7(" .. math.floor(statsData["extraNested"]["online"]["time"] / 60) .. " hours)")
                     local fjyear, fjmonth, fjday, fjhour, fjmin, fjsec = statsData["firstJoin"]:match("(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)")
                     local daysAgo = (os.time() - os.time{year=fjyear, month=fjmonth, day=fjday, hour=fjhour, min=fjmin, sec=fjsec}) // 86400
@@ -465,7 +532,7 @@ function onNetworkData(code, identifier, data)
                     else
                         print("§l§3First Join: §f" .. statsData["firstJoin"] .. " §7(" .. daysAgo .. " days ago)§r")
                     end
-                    
+
                     print("§6-----                 " .. string.rep("  ", string.len(statsData["name"])) .. "              §6-----")
                 end
             else
@@ -474,7 +541,7 @@ function onNetworkData(code, identifier, data)
 
                 elseif data:find("Unknown Player") then
                     print(NGToolsPrefix .. "A player by this username does not exist on the server!")
-                else 
+                else
                     if code == 0 then
                         print(NGToolsPrefix .. "Fetch Error: " .. data)
                     else
@@ -501,7 +568,7 @@ function onNetworkData(code, identifier, data)
                 setClipboard("https://onixclient.com/scripting/repo?search=ngtools")
                 client.notification("A new update is available! (".. serverVersion .." > " ..version .. ")")
             end
-            
+
         end
     elseif identifier:find("gameStats") then
         local dataTable = {}
@@ -631,20 +698,20 @@ function onNetworkData(code, identifier, data)
                         --print("§l§aW/LR: §f" .. statsData["tbWins"] / statsData["tbLosses"])
                         print("§l§3Flags Captured: §f" .. statsData["cqFlagsCaptured"])
                         print("§l§cFlags Returned: §f" ..statsData["cqFlagsReturned"])
-                        
+
                         print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                   §6-----")
             elseif identifier == "gameStatsmommasays" then
                         print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§4Momma Says Stats " .. "§6-----")
                         print("§l§5Successes: §f" .. statsData["msSuccesses"])
                         print("§l§4Fails: §f" ..statsData["msFails"])
                         print("§l§2Wins: §f" ..statsData["msWins"])
-                        
+
                         print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                      §6-----")
             elseif identifier == "gameStatssoccer" then
                         print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§4Soccer Stats " .. "§6-----")
                         print("§l§aGoals: §f" .. statsData["scGoals"])
                         print("§l§2Wins: §f" ..statsData["scWins"])
-                        
+
                         print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                §6-----")
             end
         else
@@ -653,7 +720,7 @@ function onNetworkData(code, identifier, data)
 
             elseif data:find("Unknown Player") then
                 print(NGToolsPrefix .. "A player by this username does not exist on the server!")
-            else 
+            else
                 if code == 0 then
                     print(NGToolsPrefix .. "Fetch Error: " .. data)
                 else
@@ -671,7 +738,7 @@ function onNetworkData(code, identifier, data)
             if #punishmentData > 0 then
                 print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§cPunishments §7(" .. #punishmentData .. ") §6-----")
                 for x, dat in pairs(punishmentData) do
-                    if x>1 then 
+                    if x>1 then
                         print("§6-----")
                     end
                     if dat["type"] == "MUTE" then
@@ -701,7 +768,33 @@ function onNetworkData(code, identifier, data)
 
             elseif data:find("Unknown Player") then
                 print(NGToolsPrefix .. "A player by this username does not exist on the server!")
-            else 
+            else
+                if code == 0 then
+                    print(NGToolsPrefix .. "Fetch Error: " .. data)
+                else
+                    -- code 2 = spaces in url
+                    print(NGToolsPrefix .. "Fetch Error: " .. "code " .. code)
+                end
+            end
+            return true
+        end
+    elseif identifier == "playerBio" then
+        local dataTable = {}
+        dataTable = jsonToTable(data)
+        if dataTable["name"] ~= nil and dataTable["bio"] ~= nil then
+            if dataTable["bio"] ~= " "  and dataTable["bio"] ~= "" then
+                print(NGToolsPrefix .. "§l§2" ..dataTable["name"].. "'s §r§fBio: " )
+                print(dataTable["bio"])
+            else
+                print(NGToolsPrefix .. "Player has no bio.")
+            end
+        else
+            if data:find("does not have any stats") then
+                print(NGToolsPrefix .. "Player has no recorded statistics!")
+
+            elseif data:find("Unknown Player") then
+                print(NGToolsPrefix .. "A player by this username does not exist on the server!")
+            else
                 if code == 0 then
                     print(NGToolsPrefix .. "Fetch Error: " .. data)
                 else
@@ -730,11 +823,11 @@ function onNetworkData(code, identifier, data)
             else
                 if data:find("does not have any stats") then
                     indexedData = 0
-                    
-                else 
+
+                else
                     if data:find("Unknown Player") then
                         print(NGToolsPrefix .. "A player by this username does not exist on the server!")
-                    else 
+                    else
                         if code == 0 then
                             print(NGToolsPrefix .. "Fetch Error: " .. data)
                         else
@@ -822,6 +915,13 @@ function fetchBasicInfo(Uname)
     network.get("https://api.ngmc.co/v1/players/"..htmlName, "basicInfo")
 end
 
+function fetchPlayerBio(Uname)
+    print(NGToolsPrefix .. "Fetching...")
+    name = autoCompleteName(Uname) :gsub("\"", "")
+    htmlName = name:gsub(" ", "%%20")
+    network.get("https://api.ngmc.co/v1/players/"..htmlName, "playerBio")
+end
+
 function fetchPunishments(Uname)
     print(NGToolsPrefix .. "Fetching...")
     name = autoCompleteName(Uname) :gsub("\"", "")
@@ -868,14 +968,14 @@ function copyUname(name)
 end
 
 function addMute(Uname)
-    local name, autocompleted = autoCompleteName(Uname:gsub("§.", "")) 
+    local name, autocompleted = autoCompleteName(Uname:gsub("§.", ""))
     local playername = name:gsub("\"", "")
     if autocompleted == false then
         print("§o§4Warning: §3User does not exist in current server")
     end
     if muteList.value ~= "" then
         muteList.value = muteList.value .. ";;" .. playername
-    else 
+    else
         muteList.value = muteList.value .. playername
     end
     client.settings.send()
@@ -895,6 +995,7 @@ function printHelp()
     print("§b.ng§r §6gstats <username> <gamemode> §7 - Fetch player's stats for the specified gamemode. Uses current game if not specified.")
     print("§b.ng§r §6punishments <username>§7 - Fetch player's punishments")
     print("§b.ng§r §6info <username>§7 - Fetch player's account information")
+    print("§b.ng§r §6bio <username>§7 - Fetch player's bio")
     print("§b.ng§r §6update §7 - Check for updates on github")
     print("§b.ng§r §6reply <message> §7 - Reply to the latest in-game direct message")
     print("§b.ng§r §6r <message> §7 - Reply to the latest in-game direct message")
@@ -904,7 +1005,7 @@ function printHelp()
     print("§6-----                            §6-----")
 end
 
-function replyMsg(message) 
+function replyMsg(message)
     client.execute("execute /w " .. replyIGN .. " " .. message)
 end
 
@@ -920,6 +1021,7 @@ function registerAllCommands()
     registerCommand("gstats", scGStats)
     registerCommand("punishments", scPunishments)
     registerCommand("info", scInfo)
+    registerCommand("bio", scBio)
     registerCommand("update", scUpdate)
     registerCommand("reply", scReply)
     registerCommand("r", scReply)
@@ -987,6 +1089,13 @@ function scInfo(data)
         data = " " .. data
     end
     ng("info" .. data)
+end
+
+function scBio(data)
+    if data then
+        data = " " .. data
+    end
+    ng("bio" .. data)
 end
 
 function scUpdate(data)
@@ -1077,12 +1186,17 @@ function ng(data)
                     end
                 end
             end
-            
+
         elseif cmd == "info" then
             if cmdData[2] == nil then
                 cmdData[2] = player.name():gsub("§.", "")
             end
             fetchBasicInfo(cmdData[2])
+        elseif cmd == "bio" then
+            if cmdData[2] == nil then
+                cmdData[2] = player.name():gsub("§.", "")
+            end
+            fetchPlayerBio(cmdData[2])
         elseif cmd == "uname" then
             if cmdData[2] == nil then
                 cmdData[2] = player.name():gsub("§.", "")
