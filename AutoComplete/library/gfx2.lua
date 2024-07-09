@@ -254,6 +254,10 @@ function _acp__Gfx2Texture_:setPixel(x, y, r, g, b ,a) end
 ---@return boolean saved Did the texture successfully save
 function _acp__Gfx2Texture_:save(path) end
 
+---Blurs the texture, you may want to run this in another thread
+---@param radius integer The radius of the blur
+function _acp__Gfx2Texture_:blur(radius) end
+
 ---Unloads the texture when you no longer need it or to reload its content
 function _acp__Gfx2Texture_:unload() end
 
