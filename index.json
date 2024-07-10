@@ -678,6 +678,16 @@
       "lastUpdated": "2022-03-17T08:29:13.000Z"
     },
     {
+      "name": "Intel Arc Sky Fixer",
+      "description": "Fixes the sky being black every now and then on Intel Arc GPUs.",
+      "file": "ArcSkyFixer.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ArcSkyFixer.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "651e9c8dc8379534fd769a67aa66e05a",
+      "lastUpdated": "2024-07-10T20:22:08.236Z"
+    },
+    {
       "name": "Inventory Display",
       "description": "Renders a custom inventory module!",
       "file": "invenRender.lua",
