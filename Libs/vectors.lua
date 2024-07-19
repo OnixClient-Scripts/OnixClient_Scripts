@@ -277,6 +277,7 @@ function vec:setDir(yaw, pitch)
     return self
 end
 
+-- might not actually work sometimes, better to use rotatePitch rotateRoll
 function vec:rotate(yaw, pitch)
     if self:dimensions() == 2 then
         local previousRot = self:dir()
@@ -287,6 +288,66 @@ function vec:rotate(yaw, pitch)
         local previousRot = self:dir()
         if previousRot[1] < 0 then pitch = -pitch end --past "straight up", increasing pitch means going back down
         self:setDir(previousRot[1] + yaw, previousRot[2] + pitch)
+    end
+
+    self:updateComponentNames()
+    return self
+end
+
+function vec:rotatePitch(angle)
+    if self:dimensions() == 2 then
+        self:set(
+            self.x * math.cos(angle) - self.y * math.sin(angle),
+            self.x * math.sin(angle) + self.y * math.cos(angle)
+        )
+    end
+
+    if self:dimensions() == 3 then
+        self:set(
+            self.x,
+            self.y * math.cos(angle) - self.z * math.sin(angle),
+            self.y * math.sin(angle) + self.z * math.cos(angle)
+        )
+    end
+
+    self:updateComponentNames()
+    return self
+end
+
+function vec:rotateYaw(angle)
+    if self:dimensions() == 2 then
+        self:set(
+            self.x * math.cos(angle) - self.y * math.sin(angle),
+            self.x * math.sin(angle) + self.y * math.cos(angle)
+        )
+    end
+
+    if self:dimensions() == 3 then
+        self:set(
+            self.x * math.cos(angle) + self.z * math.sin(angle),
+            self.y,
+            -self.x * math.sin(angle) + self.z * math.cos(angle)
+        )
+    end
+
+    self:updateComponentNames()
+    return self
+end
+
+function vec:rotateRoll(angle)
+    if self:dimensions() == 2 then
+        self:set(
+            self.x * math.cos(angle) - self.y * math.sin(angle),
+            self.x * math.sin(angle) + self.y * math.cos(angle)
+        )
+    end
+
+    if self:dimensions() == 3 then
+        self:set(
+            self.x * math.cos(angle) - self.y * math.sin(angle),
+            self.x * math.sin(angle) - self.y * math.cos(angle),
+            self.z
+        )
     end
 
     self:updateComponentNames()
@@ -467,8 +528,21 @@ Modifying a Vector:
         For a 2d vector, only use the yaw parameter.
 
     __:rotate(yaw, pitch) --> self
+        !IT'S SOMETIMES BUGGY, USE THE ROTATION FUNCTIONS BELOW INSTEAD
         Rotates a vector.
         For a 2d vector, only use the yaw parameter.
+
+    --:rotatePitch(angle) --> self
+        Rotates 3d a vector along the x-axis.
+        If the vector is 2d, it rotates it on the only axis possible.
+
+     --:rotateYaw(angle) --> self
+        Rotates 3d a vector along the y-axis.
+        If the vector is 2d, it rotates it on the only axis possible.
+
+    --:rotateRoll(angle) --> self
+        Rotates 3d a vector along the z-axis.
+        If the vector is 2d, it rotates it on the only axis possible.
 
     __:setComponent(component, value)
         Sets a component of the vector.
