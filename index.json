@@ -1773,8 +1773,8 @@
       {
         "file": "events.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/events.lua",
-        "hash": "375bc244d7547382dde7310025060dd6",
-        "lastUpdated": "2024-01-27T23:47:54.974Z"
+        "hash": "2ed1974ef7c0958faa92fae86137c74a",
+        "lastUpdated": "2024-07-20T20:40:06.795Z"
       },
       {
         "file": "fs.lua",
