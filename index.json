@@ -488,6 +488,16 @@
       "lastUpdated": "2024-03-27T21:22:19.721Z"
     },
     {
+      "name": "Green Screen",
+      "description": "Displays a green screen on the selected coords.",
+      "file": "GreenScreen.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/GreenScreen.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "0ed32ae3d0d9bf8b04b69bfe4e9499e6",
+      "lastUpdated": "2024-07-24T23:08:02.941Z"
+    },
+    {
       "name": "Guardian Spawn Spots",
       "description": "Finds the area where guardians spawns in ocean monuments",
       "file": "GuardianSpawnSpots.lua",
