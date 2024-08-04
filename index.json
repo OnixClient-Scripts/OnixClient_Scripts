@@ -1730,8 +1730,8 @@
       "name": "vectors",
       "file": "vectors.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/vectors.lua",
-      "hash": "901063290f3bfeb199c0e90e137701be",
-      "lastUpdated": "2024-07-19T19:50:40.371Z"
+      "hash": "5f952c631eaf4f29bd18bb9fc398846e",
+      "lastUpdated": "2024-08-04T14:39:12.761Z"
     },
     {
       "name": "Wait",
