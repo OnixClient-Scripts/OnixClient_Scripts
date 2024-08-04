@@ -381,10 +381,12 @@ function vec:lerp(otherVec, amount)
 
     local leastComponents = math.min(#self.components, #otherVec.components)
     for i = 1, leastComponents, 1 do
-        table.insert(components, self.components[i] * amount + otherVec.components[i] * (1 - amount))
+        table.insert(components, self.components[i] * (1-amount) + otherVec.components[i] * amount)
     end
 
-    return newVec:set(components)
+    newVec.components = components
+    newVec:updateComponentNames()
+    return newVec
 end
 
 function vec:equals(otherVec)
@@ -508,7 +510,7 @@ Advanced Math with Vectors:
     __:lerp(otherVec, amount) --> vec
         Linearly interpolates between two vectors.
         amount can be [0, 1]
-        amount = 0: 100% the first vector
+        amount = 0: 100% the first vector (the "self")
         amount = 1: 100% the second vector
         amount = 0.5: halfway between both vectors
 
