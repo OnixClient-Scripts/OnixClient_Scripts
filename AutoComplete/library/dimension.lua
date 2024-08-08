@@ -31,12 +31,13 @@ function dimension.time() end
 function dimension.isRaining() end
 
 ---Plays a sound at these coordinates
----Will not work on 1.18.30+
+---@param name string any minecraft sounds: https://www.digminecraft.com/lists/sound_list_pe.php
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
----@param name string any minecraft sounds: https://www.digminecraft.com/lists/sound_list_pe.php
-function dimension.sound(x, y, z, name) end
+---@param volume number|nil The volume of the sound
+---@param pitch number|nil The pitch of the sound
+function dimension.sound(name, x, y, z, volume, pitch) end
 
 ---@class LightPair
 ---@field blockLight integer The light level caused by torches and stuff
