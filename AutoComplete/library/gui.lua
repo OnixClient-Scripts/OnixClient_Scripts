@@ -50,16 +50,15 @@ function gui.closeNonHud() end
 function gui.hudHidden() end
 
 ---Plays the click sound (the one in minecraft when u clicc button)
----Will not work on 1.18.30+
 function gui.clickSound() end
 
 ---Plays a sound on the ui (will not go away if you move)
----Will not work on 1.18.30+
 ---@param name string any minecraft sounds: https://www.digminecraft.com/lists/sound_list_pe.php
-function gui.sound(name) end
+---@param volume number|nil The volume of the sound
+---@param pitch number|nil The pitch of the sound
+function gui.sound(name, volume, pitch) end
 
 ---Stops all sound that are playing
----Will not work on 1.18.30+
 function gui.stopallsound() end
 
 
