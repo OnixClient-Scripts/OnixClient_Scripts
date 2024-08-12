@@ -1211,6 +1211,19 @@
       "lastUpdated": "2023-02-06T21:58:24.000Z"
     },
     {
+      "name": "The Watcher",
+      "description": "He watches you... always watching...",
+      "file": "theWatcher.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/theWatcher.lua",
+      "libs": [
+        "anetwork",
+        "vectors"
+      ],
+      "commands": [],
+      "hash": "5cfdc85d49d0f978f7bc2c24964a1a30",
+      "lastUpdated": "2024-08-12T20:31:21.737Z"
+    },
+    {
       "name": "Waypoint Hotkey",
       "description": "Allows you to create a waypoint on a hotkey.",
       "file": "WaypointHotkey.lua",
