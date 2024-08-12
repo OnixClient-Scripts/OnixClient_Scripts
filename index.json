@@ -800,6 +800,18 @@
       "lastUpdated": "2024-03-17T01:16:41.218Z"
     },
     {
+      "name": "Measurer",
+      "description": "Measures distances in the world.",
+      "file": "measurer.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/measurer.lua",
+      "libs": [
+        "vectors"
+      ],
+      "commands": [],
+      "hash": "7a3e83cf353beab3c8b96b977f26d5c4",
+      "lastUpdated": "2024-08-12T18:33:56.085Z"
+    },
+    {
       "name": "Mention Ping",
       "description": "Plays a sound when you are mentioned in chat.",
       "file": "MentionPing.lua",
