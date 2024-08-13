@@ -124,6 +124,19 @@
       "lastUpdated": "2024-05-01T13:57:42.505Z"
     },
     {
+      "name": "Birds",
+      "description": "Adds birds that fly around in your world.",
+      "file": "birds.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/birds.lua",
+      "libs": [
+        "vectors",
+        "anetwork"
+      ],
+      "commands": [],
+      "hash": "e6650dfe39ea19ee364e50aaf2273a40",
+      "lastUpdated": "2024-08-13T14:21:06.659Z"
+    },
+    {
       "name": "Block Finder",
       "description": "Shows blocks in the world",
       "file": "showBlocks.lua",
