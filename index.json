@@ -779,6 +779,16 @@
       "lastUpdated": "2024-02-18T15:10:34.497Z"
     },
     {
+      "name": "Live stream testing",
+      "description": "A very unstable prototype of one of those things that tells you your chat when livestreeaming. when you find a bug tell it to me in #development in the discord",
+      "file": "liveChat.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/liveChat.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "6a94f88986998baff3f4625f59366efb",
+      "lastUpdated": "2024-09-18T00:31:12.401Z"
+    },
+    {
       "name": "Logger",
       "description": "Logs things better",
       "file": "loggerUI.lua",
