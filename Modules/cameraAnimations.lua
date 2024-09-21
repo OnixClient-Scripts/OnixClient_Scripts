@@ -134,14 +134,14 @@ function render3d(dt)
             -- *MAYBE?
             drawPlayerHead(
                 PATHPOINTS[i][1], PATHPOINTS[i][2], PATHPOINTS[i][3],
-                math.rad(-PATHPOINTS[i][5]), -math.rad(PATHPOINTS[i][4] + 180), 0.25
+                math.rad(-PATHPOINTS[i][5]), -math.rad(PATHPOINTS[i][4] + 180), math.rad(PATHPOINTS[i][6]), 0.25
             )
         end
 
         for i = 1, #keyframes do
             drawPlayerHead(
                 keyframes[i].position[1], keyframes[i].position[2], keyframes[i].position[3],
-                math.rad(-keyframes[i].rotation[2]), -math.rad(keyframes[i].rotation[1] + 180), 0.75
+                math.rad(-keyframes[i].rotation[2]), -math.rad(keyframes[i].rotation[1] + 180), math.rad(keyframes[i].rotation[3]), 0.75
             )
         end
     else
@@ -201,9 +201,16 @@ function render3d(dt)
             PATHPOINTS[math.floor(smoothedTimeIndex)][5], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][5]
         )
 
+        local currentRoll = map(
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][6], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][6]
+        )
+
         freecam["isOffsetMode"].value = false
         freecam.setPosition(currentX, currentY, currentZ)
         freecam.setRotation(-currentPitch, -currentYaw + 180, 0)
+        rollSetting.value = currentRoll
     end
 end
 
@@ -219,10 +226,10 @@ function createKeyFrame()
         end
     end
 
-    -- wrap yaw around because -1 degree == 359 degrees
+    -- wrap yaw & roll around because -1 degree == 359 degrees
     if #keyframes > 0 then
-        local lastYaw = keyframes[#keyframes].rotation[1]
 
+        local lastYaw = keyframes[#keyframes].rotation[1]
         if math.abs(yaw - lastYaw) > 180 then
             if yaw > lastYaw then
                 while math.abs(yaw - lastYaw) > 180 do
@@ -235,11 +242,25 @@ function createKeyFrame()
                 end
             end
         end
+
+        local lastRoll = keyframes[#keyframes].rotation[3]
+        if math.abs(roll - lastRoll) > 180 then
+            if roll > lastRoll then
+                while math.abs(roll - lastRoll) > 180 do
+                    roll = roll - 360
+                end
+            end
+            if roll < lastRoll then
+                while math.abs(roll - lastRoll) > 180 do
+                    roll = roll + 360
+                end
+            end
+        end
     end
 
     table.insert(keyframes, {
         position = { px, py, pz },
-        rotation = { yaw, pitch },
+        rotation = { yaw, pitch, roll },
         time = currentTime
     })
 
@@ -344,6 +365,7 @@ function saveKeyframes()
 
         saveFile:writeFloat(key.rotation[1])
         saveFile:writeFloat(key.rotation[2])
+        saveFile:writeFloat(key.rotation[3])
 
         saveFile:writeFloat(key.time)
     end
@@ -377,11 +399,12 @@ function readKeyframes()
         local z = saveFile:readFloat()
         local yaw = saveFile:readFloat()
         local pitch = saveFile:readFloat()
+        local roll = saveFile:readFloat()
         local time = saveFile:readFloat()
 
         table.insert(tempKeyframes, {
             position = { x, y, z },
-            rotation = { yaw, pitch },
+            rotation = { yaw, pitch, roll },
             time = time
         })
     end
@@ -392,13 +415,29 @@ function readKeyframes()
 end
 
 client.settings.addFunction("Load File", "readKeyframes", "Load")
+
+-- _______________________________________________________________________________
+
+client.settings.addAir(10)
+
+client.settings.addTitle("Camera Controls")
+
+rollLeftKey = 89
+client.settings.addKeybind("Roll left: ", "rollLeftKey")
+
+rollRightKey = 85
+client.settings.addKeybind("Roll right: ", "rollRightKey")
+
+resetRollKey = 73
+client.settings.addKeybind("Reset roll: ", "resetRollKey")
+
 -- _______________________________________________________________________________
 
 client.settings.addAir(10)
 
 keyframes = {}
 
-client.settings.addTitle("Keybinds")
+client.settings.addTitle("Timeline Controls")
 
 teleportToKey = 0x37
 client.settings.addKeybind("Teleport to spot on timeline: ", "teleportToKey")
@@ -413,6 +452,12 @@ setKeyframeKey = 0x30
 client.settings.addKeybind("Create/Delete keyframe: ", "setKeyframeKey")
 
 event.listen("KeyboardInput", function(key, down)
+
+    -- roll controls
+    if key == rollLeftKey then shouldRollLeft = down end
+    if key == rollRightKey then shouldRollRight = down end
+    if key == resetRollKey and down then rollSetting.value = 0 end
+
     -- create keyframe
     if key == setKeyframeKey and down then
         if selectedKeyframe ~= 0 then
@@ -510,6 +555,11 @@ event.listen("KeyboardInput", function(key, down)
             math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
             PATHPOINTS[math.floor(smoothedTimeIndex)][5], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][5]
         )
+        local currentRoll = map(
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][6], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][6]
+        )
 
 
         -- teleport to that spot on the timeline
@@ -521,6 +571,7 @@ event.listen("KeyboardInput", function(key, down)
             .. currentYaw .. " "
             .. currentPitch
         )
+        rollSetting.value = currentRoll
 
         if doTeleportStatus then setStatus("Teleported", 2) end
     end
@@ -569,9 +620,11 @@ TIMEPATHPOINTS = {}
 PATHPOINTS = {}
 
 lastKeyframes = {}
+
 function update(dt)
     px, py, pz = player.pposition()
     yaw, pitch = player.rotation()
+    roll = rollSetting.value
 
     -- time to update the path?
     if (lastKeyframes ~= keyframes and #keyframes >= 2) or CURVEALPHA ~= lastCURVEALPHA or CURVETENSION ~= lastCURVETENSION then
@@ -656,8 +709,21 @@ function update(dt)
             , #pitches - 3, 1 / APPROXIMATIONRESOLUTION
         )
 
+        local rolls = {}
+        for i = 1, #keyframes do
+            table.insert(rolls, keyframes[i].rotation[3])
+            if i == 1 then table.insert(rolls, keyframes[i].rotation[3] - 1) end
+            if i == #keyframes then table.insert(rolls, keyframes[i].rotation[3] + 1) end
+        end
+        local rollPath = approximateCurve(
+            function(x)
+                return catmullRomSpline1D(rolls, x, CURVEALPHA, CURVETENSION)
+            end
+            , #rolls - 3, 1 / APPROXIMATIONRESOLUTION
+        )
+
         for i = 1, #xPath do
-            table.insert(PATHPOINTS, { xPath[i], yPath[i], zPath[i], yawPath[i], pitchPath[i] })
+            table.insert(PATHPOINTS, { xPath[i], yPath[i], zPath[i], yawPath[i], pitchPath[i], rollPath[i] })
         end
     end
 
@@ -715,19 +781,25 @@ function approximateCurve(curveFunction, max, delta)
     return points
 end
 
-function render()
+function render(dt)
     if unload then
         gfx.unloadimage("skin.png")
         unload = false
     end
+
+    if shouldRollLeft then rollSetting.value = rollSetting.value + 25*dt end
+    if shouldRollRight then rollSetting.value = rollSetting.value - 25*dt end
 end
 
 function postInit()
     unload = true
     player.skin().save("skin.png")
+
+    -- get the setting to let the mod roll the camera
+    rollSetting = getSettingFromMod(getModByInternalName("module.rotatable_screen.name"), "module.rotatable_screen.setting.angle.name")
 end
 
-function drawPlayerHead(x, y, z, pitch, yaw, scale)
+function drawPlayerHead(x, y, z, pitch, yaw, roll, scale)
     local s = scale / 2
     local vertices = {
         { -s, -s, -s },
@@ -742,7 +814,7 @@ function drawPlayerHead(x, y, z, pitch, yaw, scale)
 
     local verticesRotated = {}
     for i, vertex in pairs(vertices) do
-        local vertexRotated = rotatePoint(vertex[1], vertex[2], vertex[3], 0, 0, 0, pitch, yaw, 0)
+        local vertexRotated = rotatePoint(vertex[1], vertex[2], vertex[3], 0, 0, 0, pitch, yaw, roll)
         table.insert(verticesRotated, { vertexRotated[1] + x, vertexRotated[2] + y, vertexRotated[3] + z })
     end
     vertices = verticesRotated
@@ -839,6 +911,23 @@ end
 -- maps a value from one range to another
 function map(value, min1, max1, min2, max2)
     return (value - min1) * ((max2 - min2) / (max1 - min1)) + min2
+end
+
+-- these two functions are thanks to jqms
+function getModByInternalName(name)
+    for _, mod in pairs(client.modules()) do
+        if mod.saveName == name then
+            return mod
+        end
+    end
+end
+
+function getSettingFromMod(mod, saveName)
+    for _, setting in pairs(mod.settings) do
+        if setting.saveName == saveName then
+            return setting
+        end
+    end
 end
 
 --[[
