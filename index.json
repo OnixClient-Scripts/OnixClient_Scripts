@@ -573,6 +573,16 @@
       "lastUpdated": "2023-10-30T15:44:40.086Z"
     },
     {
+      "name": "Hive Quick Invite",
+      "description": "Quickly invite players to your friends list or party by clicking them while holding the item when in hub.",
+      "file": "HiveQuickInvite.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveQuickInvite.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "44af5a7e7a064e9426566b19680f0b92",
+      "lastUpdated": "2024-10-10T22:06:38.039Z"
+    },
+    {
       "name": "Hive Statistic Checker",
       "description": "Allows you to check the statistics of people in-game.",
       "file": "HiveStatChecker.lua",
