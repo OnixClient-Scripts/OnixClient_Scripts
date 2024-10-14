@@ -541,6 +541,20 @@
       "lastUpdated": "2022-11-09T18:36:05.000Z"
     },
     {
+      "name": "Hive Autoqueue",
+      "description": "Automatically Queue Hive Games. Includes .rq command.\\nScript Version: v3.6",
+      "file": "HiveAutoQueue.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveAutoQueue.lua",
+      "libs": [
+        "gfx2Colors"
+      ],
+      "commands": [
+        "rq"
+      ],
+      "hash": "3ef33380a4a2c2979c594bb4b28cb3f1",
+      "lastUpdated": "2024-10-14T15:30:00.966Z"
+    },
+    {
       "name": "Hive Booster Timer",
       "description": "Shows how long you have left on your boost. The command is .boosterinfo\\nVersion 1.1.0",
       "file": "BoosterTimer.lua",
