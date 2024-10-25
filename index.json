@@ -124,6 +124,19 @@
       "lastUpdated": "2024-05-01T13:57:42.505Z"
     },
     {
+      "name": "Birds",
+      "description": "Adds birds that fly around in your world.",
+      "file": "birds.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/birds.lua",
+      "libs": [
+        "vectors",
+        "anetwork"
+      ],
+      "commands": [],
+      "hash": "e6650dfe39ea19ee364e50aaf2273a40",
+      "lastUpdated": "2024-08-13T14:21:06.659Z"
+    },
+    {
       "name": "Block Finder",
       "description": "Shows blocks in the world",
       "file": "showBlocks.lua",
@@ -156,8 +169,8 @@
         "freecamHelper"
       ],
       "commands": [],
-      "hash": "90f8edfe5fe00a703b9c94dfc4a215a6",
-      "lastUpdated": "2024-02-24T21:16:47.972Z"
+      "hash": "9c138fd938e9d7d98bd6e4dd635a997d",
+      "lastUpdated": "2024-09-21T18:15:27.186Z"
     },
     {
       "name": "Camera Effects",
@@ -488,6 +501,16 @@
       "lastUpdated": "2024-03-27T21:22:19.721Z"
     },
     {
+      "name": "Green Screen",
+      "description": "Displays a green screen on the selected coords.",
+      "file": "GreenScreen.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/GreenScreen.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "0ed32ae3d0d9bf8b04b69bfe4e9499e6",
+      "lastUpdated": "2024-07-24T23:08:02.941Z"
+    },
+    {
       "name": "Guardian Spawn Spots",
       "description": "Finds the area where guardians spawns in ocean monuments",
       "file": "GuardianSpawnSpots.lua",
@@ -528,8 +551,8 @@
       "commands": [
         "rq"
       ],
-      "hash": "2835f7fd056cc5dc41022af4af8cb93f",
-      "lastUpdated": "2023-11-24T19:03:07.932Z"
+      "hash": "3ef33380a4a2c2979c594bb4b28cb3f1",
+      "lastUpdated": "2024-10-14T15:30:00.966Z"
     },
     {
       "name": "Hive Booster Timer",
@@ -562,6 +585,16 @@
       "commands": [],
       "hash": "57a63c817d2de64e8a0acf0f3f60b05a",
       "lastUpdated": "2023-10-30T15:44:40.086Z"
+    },
+    {
+      "name": "Hive Quick Invite",
+      "description": "Quickly invite players to your friends list or party by clicking them while holding the item when in hub.",
+      "file": "HiveQuickInvite.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveQuickInvite.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "44af5a7e7a064e9426566b19680f0b92",
+      "lastUpdated": "2024-10-10T22:06:38.039Z"
     },
     {
       "name": "Hive Statistic Checker",
@@ -678,6 +711,16 @@
       "lastUpdated": "2022-03-17T08:29:13.000Z"
     },
     {
+      "name": "Intel Arc Sky Fixer",
+      "description": "Fixes the sky being black every now and then on Intel Arc GPUs.",
+      "file": "ArcSkyFixer.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ArcSkyFixer.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "918712c6849904e87159d32bf3e6f44d",
+      "lastUpdated": "2024-07-11T00:56:42.030Z"
+    },
+    {
       "name": "Inventory Display",
       "description": "Renders a custom inventory module!",
       "file": "invenRender.lua",
@@ -770,6 +813,16 @@
       "lastUpdated": "2024-02-18T15:10:34.497Z"
     },
     {
+      "name": "Live stream testing",
+      "description": "A very unstable prototype of one of those things that tells you your chat when livestreeaming. when you find a bug tell it to me in #development in the discord",
+      "file": "liveChat.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/liveChat.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "6a94f88986998baff3f4625f59366efb",
+      "lastUpdated": "2024-09-18T00:31:12.401Z"
+    },
+    {
       "name": "Logger",
       "description": "Logs things better",
       "file": "loggerUI.lua",
@@ -788,6 +841,18 @@
       "commands": [],
       "hash": "30e38295df60447d3bb4966aa9be51be",
       "lastUpdated": "2024-03-17T01:16:41.218Z"
+    },
+    {
+      "name": "Measurer",
+      "description": "Measures distances in the world.",
+      "file": "measurer.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/measurer.lua",
+      "libs": [
+        "vectors"
+      ],
+      "commands": [],
+      "hash": "7a3e83cf353beab3c8b96b977f26d5c4",
+      "lastUpdated": "2024-08-12T18:33:56.085Z"
     },
     {
       "name": "Mention Ping",
@@ -881,7 +946,7 @@
     },
     {
       "name": "NGTools",
-      "description": "Improvements for the Nethergames server. By Lioncat6 • Version 1.0.2",
+      "description": "Improvements for the Nethergames server. By Lioncat6 • Version 1.0.3",
       "file": "NGTools.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/NGTools.lua",
       "libs": [
@@ -901,12 +966,13 @@
         "gstats",
         "punishments",
         "info",
+        "bio",
         "update",
         "reply",
         "r"
       ],
-      "hash": "d58b9f9941294fd7d2c9d8b50b561595",
-      "lastUpdated": "2024-06-08T14:09:44.569Z"
+      "hash": "c210b1896877fdd4873e2ae348f6634b",
+      "lastUpdated": "2024-07-09T21:30:41.548Z"
     },
     {
       "name": "Offhand slot display",
@@ -1186,6 +1252,19 @@
       "commands": [],
       "hash": "73cd57adfeb6d7e2fc7f01a670af8871",
       "lastUpdated": "2023-02-06T21:58:24.000Z"
+    },
+    {
+      "name": "The Watcher",
+      "description": "He watches you... always watching...",
+      "file": "theWatcher.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/theWatcher.lua",
+      "libs": [
+        "anetwork",
+        "vectors"
+      ],
+      "commands": [],
+      "hash": "5cfdc85d49d0f978f7bc2c24964a1a30",
+      "lastUpdated": "2024-08-12T20:31:21.737Z"
     },
     {
       "name": "Waypoint Hotkey",
@@ -1719,8 +1798,8 @@
       "name": "vectors",
       "file": "vectors.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/vectors.lua",
-      "hash": "12957e149c7cc42785ca306237e0fc0f",
-      "lastUpdated": "2024-03-06T14:41:48.352Z"
+      "hash": "5f952c631eaf4f29bd18bb9fc398846e",
+      "lastUpdated": "2024-08-04T14:39:12.761Z"
     },
     {
       "name": "Wait",
@@ -1766,14 +1845,14 @@
       {
         "file": "dimension.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/dimension.lua",
-        "hash": "321b8da7662465ab0b4ecf4ced5e4254",
-        "lastUpdated": "2024-04-28T01:12:50.573Z"
+        "hash": "d7920a68b630582bdd8f9dc4565ec502",
+        "lastUpdated": "2024-08-08T19:12:47.798Z"
       },
       {
         "file": "events.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/events.lua",
-        "hash": "375bc244d7547382dde7310025060dd6",
-        "lastUpdated": "2024-01-27T23:47:54.974Z"
+        "hash": "2ed1974ef7c0958faa92fae86137c74a",
+        "lastUpdated": "2024-07-20T20:40:06.795Z"
       },
       {
         "file": "fs.lua",
@@ -1790,8 +1869,8 @@
       {
         "file": "gfx2.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/gfx2.lua",
-        "hash": "fe2e95925f8e0e95dc0bdf4817ca2247",
-        "lastUpdated": "2024-06-25T01:24:47.671Z"
+        "hash": "630aa50fb2de8c84e0477e82c4642d0a",
+        "lastUpdated": "2024-07-10T14:22:56.982Z"
       },
       {
         "file": "globals.lua",
@@ -1802,8 +1881,8 @@
       {
         "file": "gui.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/gui.lua",
-        "hash": "59fcb68503d57276d356b080eabd3d7f",
-        "lastUpdated": "2024-06-15T02:19:31.869Z"
+        "hash": "272659fc39f3ef44530d1615af4189c8",
+        "lastUpdated": "2024-08-08T19:10:02.045Z"
       },
       {
         "file": "mcstructure.lua",
@@ -1820,8 +1899,8 @@
       {
         "file": "player.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/player.lua",
-        "hash": "6072e0ee95f58561ae11a2fb8444a12d",
-        "lastUpdated": "2024-06-25T01:27:10.478Z"
+        "hash": "deb14b8876cfb047e908c50b42bf29c9",
+        "lastUpdated": "2024-07-03T00:58:33.912Z"
       },
       {
         "file": "re.lua",

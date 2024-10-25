@@ -202,6 +202,8 @@ function player.breakProgress() end
 ---Returns the player's current FOV
 ---@return number fov The player's current FOV
 function player.fov() end
+---@param fov number The FOV to set
+function player.fov(fov) end
 
 ---Returns the player's current molang variables
 ---@return table vars The player's molang variables

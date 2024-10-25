@@ -31,12 +31,13 @@ function dimension.time() end
 function dimension.isRaining() end
 
 ---Plays a sound at these coordinates
----Will not work on 1.18.30+
+---@param name string any minecraft sounds: https://www.digminecraft.com/lists/sound_list_pe.php
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
----@param name string any minecraft sounds: https://www.digminecraft.com/lists/sound_list_pe.php
-function dimension.sound(x, y, z, name) end
+---@param volume number|nil The volume of the sound
+---@param pitch number|nil The pitch of the sound
+function dimension.sound(name, x, y, z, volume, pitch) end
 
 ---@class LightPair
 ---@field blockLight integer The light level caused by torches and stuff
@@ -150,6 +151,39 @@ function dimension.getBlockEntity(x, y, z, getServerSideEntity) end
 ---@return Biome biome The biome information
 function dimension.getBiome(x, y, z) end
 
+---Gets a table with all runtime blocks in the world
+---@param serverSided boolean|nil (default: false) Should we get the server one (likely unstable outside of the LocalServerUpdate event)
+---@return Block[] blocks The blocks in the world
+function dimension.getRuntimeBlocks(serverSided) end
+
+---Gets the amount of all runtime blocks in the world
+---@param serverSided boolean|nil (default: false) Should we get the server one (likely unstable outside of the LocalServerUpdate event)
+---@return integer blockCount The amount of runtime blocks in the world
+function dimension.getRuntimeBlocksSize(serverSided) end
+
+---Gets a runtime block in the world with its index
+---@param index integer The index of the block
+---@param serverSided boolean|nil (default: false) Should we get the server one (likely unstable outside of the LocalServerUpdate event)
+---@return Block block The runtime block
+function dimension.getRuntimeBlocksAt(index, serverSided) end
+
+---Gets a runtime block by its name, you should include the namespace in this one e.g. minecraft:stone
+---@param name string The name of the block
+---@param data integer|number|nil The data of the block (can change rotation, color and more, for different states go through the whole list), defaults to 0
+---@param serverSided boolean|nil (default: false) Should we get the server one (likely unstable outside of the LocalServerUpdate event)
+---@return Block|nil block The runtime block or nil if not found
+function dimension.getRuntimeBlock(name, data, serverSided) end
+
+---Sets a block in the server world, for use with the LocalServerUpdate event
+---@param x integer | number The x position
+---@param y integer | number The y position
+---@param z integer | number The z position
+---@param block Block The block userdata, get it from getRuntimeBlock(s) or dimension.getBlock
+---@param updateMode integer|nil (default: 3) 
+---@return boolean success If the block was set, this could return true but fail, this only checks if you are in a local world
+function dimension.setBlock(x, y, z, block, updateMode) end
+
+
 
 ---Gets the color that would show on a minecraft map
 ---@param x integer | number The x position
@@ -163,6 +197,7 @@ function dimension.getMapColor(x,y,z) end
 
 
 ---Gets the world as a mcstructure
+---Seems pretty broken be careful.
 ---@param startX integer The x start position
 ---@param startY integer The y start position
 ---@param startZ integer The z start position

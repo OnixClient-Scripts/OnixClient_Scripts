@@ -153,6 +153,12 @@ function _acp__ModalFormReplyer_Modal_:cancel() end
 ---event.listen("ChatMessageAdded", function(message, username, type, xuid)
 ---    
 ---end)
+---This will be called everytime a chat message is requested to be sent
+---You can cancel this event by returning true and it won't send the message
+---You can modify the message by returning true and client.execute("say " .. message)
+---event.listen("ChatMessageRequest", function(message)
+---
+---end)
 ---
 ---This will get called everytime any script calls "sendLocalData"
 ---Generally you want to filter them to make sure it is the one you want
@@ -182,12 +188,17 @@ function _acp__ModalFormReplyer_Modal_:cancel() end
 ---    
 ---end)
 ---
+---This will be called every client tick (~20 times per second)
+---event.listen("Tick", function()
+---
+---end)
+---
 ---This will be called when a subtitle changes
 ---titleType can be the following: "clear", "reset", "title", "subtitle", "actionbar", "titleraw", "subtitleraw", "actionbarraw"
 ---event.listen("TitleChanged", function(text, titleType)
 ---    
 ---end)
----@param eventName string | '"KeyboardInput", function(key, down)\n\t\nend' | '"MouseInput", function(button, down)\n\t\nend' | '"ChatMessageAdded", function(message, username, type, xuid)\n\t\nend' | '"LocalDataReceived", function(uuid, content)\n\t\nend' | '"ConfigurationSaved", function()\n\tlocal data = {}\n\t\n\treturn data\nend' | '"ConfigurationLoaded", function(data)\n\t\nend' | '"LocalServerUpdate", function()\n\t\nend' | '"BlockChanged", function(x, y, z, newBlock, oldBlock)\n\t\nend' | '"TitleChanged", function(text, titleType)\n\t\nend'|'"InventoryTick", function()\n\t\nend'|'"ModalRequested", function (ARG1, ARG2)\n\t--use these (autocomplete)\n\t---@type ModalFormRequest\n\tlocal request = ARG1\n\t---@type ModalFormReplyer\n\tlocal response = ARG2\n\t\nend' Name of the event to listen to
+---@param eventName string | '"KeyboardInput", function(key, down)\n\t\nend' | '"MouseInput", function(button, down)\n\t\nend' | '"ChatMessageAdded", function(message, username, type, xuid)\n\t\nend' | '"ChatMessageRequest", function(message)\n\t\nend' | '"Tick", function()\n\t\nend' | '"LocalDataReceived", function(uuid, content)\n\t\nend' | '"ConfigurationSaved", function()\n\tlocal data = {}\n\t\n\treturn data\nend' | '"ConfigurationLoaded", function(data)\n\t\nend' | '"LocalServerUpdate", function()\n\t\nend' | '"BlockChanged", function(x, y, z, newBlock, oldBlock)\n\t\nend' | '"TitleChanged", function(text, titleType)\n\t\nend'|'"InventoryTick", function()\n\t\nend'|'"ModalRequested", function (ARG1, ARG2)\n\t--use these (autocomplete)\n\t---@type ModalFormRequest\n\tlocal request = ARG1\n\t---@type ModalFormReplyer\n\tlocal response = ARG2\n\t\nend' Name of the event to listen to
 ---@param handler function Function that will handle the event
 ---@return nil
 function event.listen(eventName, handler) end

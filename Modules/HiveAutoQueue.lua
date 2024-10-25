@@ -73,18 +73,18 @@ function update()
             inGame = true
         end
     end
-    local scoreboard = server.scoreboard()
-    local sidebar = scoreboard.getDisplayObjective("sidebar")
-    if sidebar then
-        local scores = sidebar.scores
-        for i, v in pairs(scores) do
-            if v.name:find(" §7Custom") then
-                inCS = true
-            else
-                inCS = false
-            end
-        end
-    end
+    -- local scoreboard = server.scoreboard()
+    -- local sidebar = scoreboard.getDisplayObjective("sidebar")
+    -- if sidebar then
+    --     local scores = sidebar.scores
+    --     for i, v in pairs(scores) do
+    --         if v.name:find(" §7Custom") then
+    --             inCS = true
+    --         else
+    --             inCS = false
+    --         end
+    --     end
+    -- end
 end
 
 function onChat(message, username, type)

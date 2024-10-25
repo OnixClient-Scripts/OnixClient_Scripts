@@ -254,6 +254,14 @@ function _acp__Gfx2Texture_:setPixel(x, y, r, g, b ,a) end
 ---@return boolean saved Did the texture successfully save
 function _acp__Gfx2Texture_:save(path) end
 
+---Clones the texture
+---@return Gfx2Texture copy The cloned texture
+function _acp__Gfx2Texture_:clone() end
+
+---Blurs the texture, you may want to run this in another thread
+---@param radius integer The radius of the blur
+function _acp__Gfx2Texture_:blur(radius) end
+
 ---Unloads the texture when you no longer need it or to reload its content
 function _acp__Gfx2Texture_:unload() end
 
@@ -394,7 +402,7 @@ function gfx2.cdrawTexture(x, y, width, height, texture, srcStartUvX, srcStartUv
 ---@param outputPath string The path to save the file to
 ---@param copyToClipboard boolean|nil If it should also copy the image to the clipboard (default false)
 ---@return boolean saved If the file was saved or not
-function gfx2.dumpTextureToFile(texture, outputPath, copyToClipboard) endcSizeUvX, srcSizeUvY, opacity) end
+function gfx2.dumpTextureToFile(texture, outputPath, copyToClipboard) end
 
 ---Dumps a texture from the game to a Gfx2Texture (more capable than extract texture)
 ---@param texture string The texture to dump
