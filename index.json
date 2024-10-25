@@ -1301,6 +1301,16 @@
       "lastUpdated": "2023-07-20T19:06:51.000Z"
     },
     {
+      "name": "WHAT",
+      "description": "WHAT",
+      "file": "WHAT.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WHAT.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "9bf1e56848d038678d1a9fd72fd32a7b",
+      "lastUpdated": "2024-10-25T12:11:48.877Z"
+    },
+    {
       "name": "World Edit",
       "description": "World Edit for bedrock. Type .WEhelp for an explanation (The wand isn't an axe, it's a sword). All commands use the \\\".\\\" prefix.",
       "file": "WorldEdit.lua",
