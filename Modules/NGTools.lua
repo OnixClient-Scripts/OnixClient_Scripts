@@ -1,12 +1,12 @@
---1.0.3
+--1.0.4
 name="NGTools"
-description="Improvements for the Nethergames server. By Lioncat6 • Version 1.0.3"
+description="Improvements for the Nethergames server. By Lioncat6 • Version 1.0.4"
 
 --importLib("DependentBoolean")
 
 --vars
 NGToolsPrefix = "§f[§l§eN§6G§bTools§r§f]§r "
-version = "1.0.3"
+version = "1.0.4"
 currentLocation = "----"
 --winning = true
 handledWhereAmI = false
@@ -589,6 +589,10 @@ function onNetworkData(code, identifier, data)
                         print("§l§dSolo Streak: §f" .. bw_soloTable["current"] .. " / " .. bw_soloTable["best"])
                         local bw_squadsTable = findGameKey(dataTable["winStreaks"], "bw_squads")
                         print("§l§dSquads Streak: §f" .. bw_squadsTable["current"] .. " / " .. bw_squadsTable["best"])
+                        local bw_1v1Table = findGameKey(dataTable["winStreaks"], "bw_1v1")
+                        print("§l§d1v1 Streak: §f" .. bw_1v1Table["current"] .. " / " .. bw_1v1Table["best"])
+                        local bw_2v2Table = findGameKey(dataTable["winStreaks"], "bw_2v2")
+                        print("§l§d2v2 Streak: §f" .. bw_2v2Table["current"] .. " / " .. bw_2v2Table["best"])
                         print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "                 §6-----")
             elseif identifier == "gameStatsskywars" then
                         print("§6----- " .. NGToolsPrefix .. "§2§l" .. dataTable["name"] .. "\'s §r§6Skywars Stats " .. "§6-----")
@@ -658,7 +662,7 @@ function onNetworkData(code, identifier, data)
                         print("§l§4Deaths: §f" ..statsData["uhcDeaths"])
                         print("§l§eK/DR: §f" .. statsData["uhcKills"] / statsData["uhcDeaths"])
                         print("§l§2Wins: §f" ..statsData["uhcWins"])
-                        local sg_soloTable = findGameKey(dataTable["winStreaks"], "sg_solo")
+                        local sg_soloTable = findGameKey(dataTable["winStreaks"], "uhc_solo")
                         print("§l§dSolo Streak: §f" .. sg_soloTable["current"] .. " / " .. sg_soloTable["best"])
                         print("§6-----                 " .. string.rep("  ", string.len(dataTable["name"])) .. "            §6-----")
             elseif identifier == "gameStatsduels" then
@@ -818,7 +822,7 @@ function onNetworkData(code, identifier, data)
         local indexedData
         indexedTable = dataTable
         for object in indexes:gmatch("[^ ]+") do
-            if indexedTable ~= nil and indexedTable["name"] ~= nil  then
+            if indexedTable ~= nil then
                 indexedTable = indexedTable[object:match("^%s*(.-)%s*$")]
             else
                 if data:find("does not have any stats") then
