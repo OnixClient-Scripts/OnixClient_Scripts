@@ -763,6 +763,16 @@
       "lastUpdated": "2024-02-18T14:30:06.524Z"
     },
     {
+      "name": "Inventory Viewer",
+      "description": "check the item in your inventory.",
+      "file": "inventoryviewer.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/inventoryviewer.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "46f4654b80558ebf84bd3acbf466c8c4",
+      "lastUpdated": "2024-06-28T11:52:53.725Z"
+    },
+    {
       "name": "Java View Bobbing",
       "description": "Makes the view bobbing like in Java Edition.",
       "file": "JavaViewBobbing.lua",
@@ -1289,6 +1299,16 @@
       "commands": [],
       "hash": "688279058fd671ca5cfcdbc1a01a6b6b",
       "lastUpdated": "2023-07-20T19:06:51.000Z"
+    },
+    {
+      "name": "WHAT",
+      "description": "WHAT",
+      "file": "WHAT.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WHAT.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "9bf1e56848d038678d1a9fd72fd32a7b",
+      "lastUpdated": "2024-10-25T12:11:48.877Z"
     },
     {
       "name": "World Edit",
