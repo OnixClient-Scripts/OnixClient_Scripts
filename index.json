@@ -946,7 +946,7 @@
     },
     {
       "name": "NGTools",
-      "description": "Improvements for the Nethergames server. By Lioncat6 • Version 1.0.3",
+      "description": "Improvements for the Nethergames server. By Lioncat6 • Version 1.0.4",
       "file": "NGTools.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/NGTools.lua",
       "libs": [
@@ -971,8 +971,8 @@
         "reply",
         "r"
       ],
-      "hash": "c210b1896877fdd4873e2ae348f6634b",
-      "lastUpdated": "2024-07-09T21:30:41.548Z"
+      "hash": "6ae15976e8e5f2b02042003ef5cd2abe",
+      "lastUpdated": "2024-11-07T00:27:45.564Z"
     },
     {
       "name": "Offhand slot display",
