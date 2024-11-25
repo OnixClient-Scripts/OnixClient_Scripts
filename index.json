@@ -567,6 +567,16 @@
       "lastUpdated": "2024-03-16T13:28:53.549Z"
     },
     {
+      "name": "Hive Chat Friend List",
+      "description": "Shows your friends in chat",
+      "file": "HiveChatFriendList.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveChatFriendList.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "122872d77a9eb414da6cb633fa49f2f4",
+      "lastUpdated": "2024-11-25T17:35:39.467Z"
+    },
+    {
       "name": "Hive Chat Replacer",
       "description": "Replaces Hive bloat chat messages with awesome Onix Client messages.",
       "file": "HiveChatReplacer.lua",
