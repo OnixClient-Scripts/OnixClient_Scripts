@@ -45,7 +45,7 @@ function onModalRequested(arg1, arg2)
 
   local language = client.language()
   if not containsKeyword(language, supportedLangs) then
-    print("§c[!]§rChat Friend List supports English or Japanese.")
+    print("§c[!]§r Chat Friend List supports English or Japanese.")
     client.execute("toggle off script" .. name)
     return
   end
@@ -109,7 +109,6 @@ function onMouseInput(button, down)
   end
   if isEnabledOnPartyItem.value and holdItem.name == "hivehub:party" then
     client.execute("execute /p list")
-    isModuleRequest = true
     return true
   end
 end
