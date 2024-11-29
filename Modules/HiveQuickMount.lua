@@ -23,7 +23,7 @@ client.settings.addInfo("While this module is enabled, you can't open hub cosmet
 mountId = client.settings.addNamelessEnum("Mount Name", 1, mounts)
 customMountName = client.settings.addNamelessTextbox("Mount Name", "")
 client.settings.addAir(1)
-sneakingDisable = client.settings.addNamelessBool("Disabled while sneaking", false)
+sneakingDisable = client.settings.addNamelessBool("Disable while sneaking", false)
 
 function getTableItemByNumber(table, index)
   for _, item in ipairs(table) do
