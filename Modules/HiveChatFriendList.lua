@@ -6,9 +6,10 @@ commandTrigger = client.settings.addNamelessTextbox("Trigger Command", "/f")
 client.settings.addCategory("Display Settings", 2)
 isCompactModeEnabled = client.settings.addNamelessBool("Compact Mode", true)
 showOffline = client.settings.addNamelessBool("Show Offline", false)
-client.settings.addCategory("Miscellaneous Settings", 2)
+client.settings.addCategory("Miscellaneous Settings", 3)
 isEnabledOnFriendItem = client.settings.addNamelessBool("Enable on friend item", false)
 isEnabledOnPartyItem = client.settings.addNamelessBool("Enable on party item", false)
+isEnabledJoinHub = client.settings.addNamelessBool("Show list when joining hub", false)
 
 supportedLangs = { "en", "ja" }
 offlineStatuses = { "Last Seen", "Offline", "オフライン", "前回の参加" }
@@ -16,6 +17,8 @@ friendTitleKeywords = { "Friends", "フレンド" }
 friendTitleStatusKeywords = { "Online ", "Remote ", "Offline", "オンライン ", "リモート ", "オフライン" }
 
 isModuleRequest = false
+lastHubSendTime = 0
+alreadyHubSended = false
 
 function containsKeyword(text, keywords)
   for _, keyword in ipairs(keywords) do
@@ -35,6 +38,31 @@ end
 
 function formatCompactRegion(text)
   return text:gsub("North America", "NA"):gsub("Asia", "AS"):gsub("Europe", "EU")
+end
+
+function update()
+  if not server.ip():find("hive") then
+    lastHubSendTime = 0
+    alreadyHubSended = false
+  end
+end
+
+function render(dt)
+  if not isEnabledJoinHub.value then return end
+  local item = player.inventory().at(1)
+  if item and item.name == "hivehub:compass" then
+    if alreadyHubSended then return end
+
+    if lastHubSendTime >= 3 and not alreadyHubSended then
+      isModuleRequest = true
+      alreadyHubSended = true;
+      client.execute("execute /f ")
+    end
+    lastHubSendTime = lastHubSendTime + dt
+  else
+    lastHubSendTime = 0
+    alreadyHubSended = false
+  end
 end
 
 function onModalRequested(arg1, arg2)
