@@ -75,7 +75,7 @@ function sendLocalData(uuid, data) end
 ---You dont need a command file but it does not show in .help
 ---@param Command string The text after .  ex: .lol would be "lol"
 ---@param OnExecuted fun(arguments:string):nil Function to execute when the command is executed, same as the command files
----@param OnIntellisense fun(intellisense:string):nil Function to execute when the command is being typed in the chat for autocomplete
+---@param OnIntellisense fun(intellisense:IntellisenseHelper):nil Function to execute when the command is being typed in the chat for autocomplete
 function registerCommand(Command, OnExecuted, OnIntellisense) end
   
   
