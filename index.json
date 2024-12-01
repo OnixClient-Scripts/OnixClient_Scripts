@@ -573,8 +573,8 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveChatFriendList.lua",
       "libs": [],
       "commands": [],
-      "hash": "122872d77a9eb414da6cb633fa49f2f4",
-      "lastUpdated": "2024-11-25T17:35:39.467Z"
+      "hash": "44309bdd2cdf30905f58780ccf380906",
+      "lastUpdated": "2024-12-01T02:43:49.641Z"
     },
     {
       "name": "Hive Chat Replacer",
@@ -605,6 +605,16 @@
       "commands": [],
       "hash": "44af5a7e7a064e9426566b19680f0b92",
       "lastUpdated": "2024-10-10T22:06:38.039Z"
+    },
+    {
+      "name": "Hive Quick Mount",
+      "description": "Hive Quick Mount",
+      "file": "HiveQuickMount.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/HiveQuickMount.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "7efc64bd3bc57166ea1426753e2d6f62",
+      "lastUpdated": "2024-12-01T02:43:49.641Z"
     },
     {
       "name": "Hive Statistic Checker",
