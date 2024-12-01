@@ -1873,6 +1873,12 @@
         "lastUpdated": "2024-05-26T02:48:16.392Z"
       },
       {
+        "file": "commands.lua",
+        "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/commands.lua",
+        "hash": "0b608537f0fc6aaaed11fb03e2933868",
+        "lastUpdated": "2024-12-01T02:59:39.943Z"
+      },
+      {
         "file": "dimension.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/dimension.lua",
         "hash": "d7920a68b630582bdd8f9dc4565ec502",
