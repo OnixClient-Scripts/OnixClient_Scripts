@@ -1,6 +1,5 @@
 ---@meta
 
---[[]
 
 ---@class IntellisenseHelper
 local __acp_IntellisenseHelper = {}
@@ -136,4 +135,3 @@ function __acp_CommandOverload:matchSoftEnum(parameterName, typeName, options, o
 ---Ends the overload
 function __acp_CommandOverload:endOverload() end
 
-]]
