@@ -935,6 +935,20 @@
       "lastUpdated": "2024-03-17T01:28:29.443Z"
     },
     {
+      "name": "Modern Commands Examples",
+      "description": "A mod containing example commands for the new command system",
+      "file": "ModernCommandsExamples.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/ModernCommandsExamples.lua",
+      "libs": [],
+      "commands": [
+        "exampleseparated",
+        "exampleseparated2",
+        "exampleseparated3"
+      ],
+      "hash": "e6da52b3fb6ce5bd19c536b89b9f9121",
+      "lastUpdated": "2024-12-02T04:04:00.792Z"
+    },
+    {
       "name": "Movable Action Bar",
       "description": "Allows you to move the action bar around.",
       "file": "MovableActionBar.lua",
