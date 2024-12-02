@@ -1,6 +1,5 @@
 ---@meta
 
-
 ---@class IntellisenseHelper
 local __acp_IntellisenseHelper = {}
 
@@ -55,6 +54,15 @@ function __acp_CommandOverload:addDisplayParameter(parameterName, typeName, isOp
 ---@param score integer The score to add
 function __acp_CommandOverload:addScore(score) end
 
+---Creates a backup of the input that can be restored later
+---Useful to backtrack if something fails or you want to try something else
+---@return userdata backup The backup data
+function __acp_CommandOverload:backupInput() end
+
+---Restores the input to a previous state
+---@param backup userdata The backup data
+function __acp_CommandOverload:restoreInput(backup) end
+
 ---Adds a tab option to the overload
 ---@param rawValue string The raw value of the tab option
 ---@param displayValue string? The display value of the tab option
@@ -84,10 +92,17 @@ function __acp_CommandOverload:matchInt(parameterName, optional) end
 function __acp_CommandOverload:matchFloat(parameterName, optional) end
 
 ---Matches a string in the input
+---An empty string is valid so make sure to check for that if it is not for you.
 ---@param parameterName string The name of the argument
 ---@param optional boolean? Whether the match is optional
 ---@return string? value The matched string or nil
 function __acp_CommandOverload:matchString(parameterName, optional) end
+
+---Matches a path, this allows you to have seperate overload depending on if this string is matched
+---So that you can have different overloads depending on the content of a parameter
+---@param expectedContent string The required content to select this overload
+---@param parameterName string? The name of the argument, if important to display, generally it wont be
+function __acp_CommandOverload:matchPath(expectedContent, parameterName) end
 
 ---Matches a boolean in the input
 ---@param parameterName string The name of the argument
@@ -125,6 +140,7 @@ function __acp_CommandOverload:matchEnum(parameterName, typeName, options, optio
 
 ---Matches a soft enum in the input, a soft enum accepts string values that are not amongst the options
 ---if parameterName is "" then typeName will be displayed alone
+---An empty string is valid so make sure to check for that if it is not for you.
 ---@param parameterName string The name of the argument
 ---@param typeName string The replacement string
 ---@param options table The options for the soft enum
@@ -134,4 +150,3 @@ function __acp_CommandOverload:matchSoftEnum(parameterName, typeName, options, o
 
 ---Ends the overload
 function __acp_CommandOverload:endOverload() end
-
