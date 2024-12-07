@@ -1,4 +1,4 @@
---1.0.5
+--1.0.6
 name               = "NGTools"
 description        = "Improvements for the Nethergames server. By Lioncat6 • Version 1.0.5"
 
@@ -6,7 +6,7 @@ description        = "Improvements for the Nethergames server. By Lioncat6 • V
 
 --vars
 NGToolsPrefix      = "§f[§l§eN§6G§bTools§r§f]§r "
-version            = "1.0.5"
+version            = "1.0.6"
 currentLocation    = "----"
 --winning = true
 handledWhereAmI    = false
@@ -40,7 +40,8 @@ client.settings.addAir(5)
 client.settings.addTitle("Global Settings (Require Reload):")
 client.settings.addFunction("Reload Script", "reloadLua", "Reload")
 registerAll = false
-client.settings.addBool("[Deprecated] Attempt to register all subcommands independently (May cause conflicts)",
+client.settings.addInfo("This removes the requirement to use .ng before any NGTools command!")
+client.settings.addBool("Register all subcommands independently (May cause conflicts)",
     "registerAll")
 hidePrefix = false
 client.settings.addBool("Hide [NGTools] prefix from messages", "hidePrefix")
@@ -165,8 +166,6 @@ function postInit()
     event.listen("ChatMessageAdded", chatHandler)
     event.listen("MouseInput", clickHandler)
     event.listen("TitleChanged", titleHandler)
-    --registerCommand("ngtools", ng, nil, NGToolsPrefix .. "Master Command")
-    --registerCommand("ng", ng, nil, NGToolsPrefix .. "Master Command")
     if registerAll == true then
         registerAllCommands()
     end
@@ -181,11 +180,6 @@ function postInit()
             checkGamemode()
         end
     end
-
-    --else
-    --    registerCommand("ngtools", wrongServer)
-    --    registerCommand("ng", wrongServer)
-    --end
 end
 
 function titleHandler(text, type)
@@ -336,21 +330,21 @@ function clickHandler(button, press)
                 local uname = player.selectedEntity().username
                 local mode = middleClickMode.value
                 if mode == 1 then
-                    client.execute("stats " .. uname)
+                    client.execute("ng stats " .. uname)
                 elseif mode == 2 then
-                    client.execute("gstats " .. uname)
+                    client.execute("ng gstats " .. uname)
                 elseif mode == 3 then
-                    client.execute("info " .. uname)
+                    client.execute("ng info " .. uname)
                 elseif mode == 4 then
                     client.execute("execute /friend " .. uname)
                 elseif mode == 5 then
                     client.execute("execute /party " .. uname)
                 elseif mode == 6 then
-                    client.execute("uname " .. uname)
+                    client.execute("ng uname " .. uname)
                 elseif mode == 7 then
-                    client.execute("bio " .. uname)
+                    client.execute("ng bio " .. uname)
                 elseif mode == 8 then
-                    client.execute("punishments " .. uname)
+                    client.execute("ng punishments " .. uname)
                 end
             end
         end
@@ -661,6 +655,8 @@ function onNetworkData(code, identifier, data)
                 print("Copied download link to clipboard.")
                 setClipboard("https://onixclient.com/scripting/repo?search=ngtools")
                 client.notification("A new update is available! (" .. serverVersion .. " > " .. version .. ")")
+            else 
+                client.notification("§aNGTools is up to date! ".. version)
             end
         end
     elseif identifier:find("gameStats") then
@@ -1153,114 +1149,6 @@ function replyMsg(message)
     client.execute("execute /w " .. replyIGN .. " " .. message)
 end
 
---------------------------
---For registering Subcommands independently
-function registerAllCommands()
-    if server.ip():find("nethergames") then
-        registerCommand("serverid", scServerid, nil,
-            NGToolsPrefix .. "§7Copy the current ID of the server you're playing on to the clipboard")
-        registerCommand("uname", scUname, nil, NGToolsPrefix .. "§7Copy targeted player's username to the clipboard")
-        registerCommand("mute", scMute, nil, NGToolsPrefix .. "§7Add to the player mute list")
-        registerCommand("online", scOnline, nil, NGToolsPrefix .. "§7Shows online player count")
-        registerCommand("kdr", scKdr, nil, NGToolsPrefix .. "§7Fetch player's K/DR")
-        registerCommand("stats", scStats, nil, NGToolsPrefix .. "§7Fetch player's basic stats")
-        registerCommand("gstats", scGStats, nil,
-            NGToolsPrefix .. "§7Fetch player's stats for the specified gamemode. Uses current game if not specified.")
-        registerCommand("punishments", scPunishments, nil, NGToolsPrefix .. "§7Fetch player's punishments")
-        registerCommand("info", scInfo, nil, NGToolsPrefix .. "§7Fetch player's account information")
-        registerCommand("bio", scBio, nil, NGToolsPrefix .. "§7Fetch player's bio")
-        registerCommand("update", scUpdate, nil, NGToolsPrefix .. "§7Check for updates on github")
-        registerCommand("reply", scReply, nil, NGToolsPrefix .. "§7Reply to the latest in-game direct message")
-        registerCommand("r", scReply, nil, NGToolsPrefix .. "§7Reply to the latest in-game direct message")
-    end
-end
-
-function scServerid(data)
-    if data then
-        data = " " .. data
-    end
-    ng("serverid" .. data)
-end
-
-function scUname(data)
-    if data then
-        data = " " .. data
-    end
-    ng("uname" .. data)
-end
-
-function scMute(data)
-    if data then
-        data = " " .. data
-    end
-    ng("mute" .. data)
-end
-
-function scOnline(data)
-    if data then
-        data = " " .. data
-    end
-    ng("online" .. data)
-end
-
-function scKdr(data)
-    if data then
-        data = " " .. data
-    end
-    ng("kdr" .. data)
-end
-
-function scStats(data)
-    if data then
-        data = " " .. data
-    end
-    ng("stats" .. data)
-end
-
-function scGStats(data)
-    if data then
-        data = " " .. data
-    end
-    ng("gstats" .. data)
-end
-
-function scPunishments(data)
-    if data then
-        data = " " .. data
-    end
-    ng("punishments" .. data)
-end
-
-function scInfo(data)
-    if data then
-        data = " " .. data
-    end
-    ng("info" .. data)
-end
-
-function scBio(data)
-    if data then
-        data = " " .. data
-    end
-    ng("bio" .. data)
-end
-
-function scUpdate(data)
-    if data then
-        data = " " .. data
-    end
-    ng("update" .. data)
-end
-
-function scReply(data)
-    if data then
-        data = " " .. data
-    end
-    ng("reply" .. data)
-end
-
---------------------------
-
 function getLineCount(text)
     local _, count = string.gsub(text, "\n", "")
     return count + 1
@@ -1286,118 +1174,6 @@ function render()
     end
 end
 
---------------------------
-
-function ng(data)
-    if server.ip():find("nethergames") then
-        local cmdData = {}
-        local in_quotes = false
-        local currentString = ""
-        for object in data:gmatch("[^ ]+") do
-            if object:find("^\"") and not object:find("\"$") then
-                in_quotes = true
-                currentString = currentString .. object
-            elseif in_quotes == true and object:find("\"$") and not object:find("^\"") then
-                in_quotes = false
-                table.insert(cmdData, currentString .. " " .. object)
-                currentString = ""
-            elseif in_quotes == true then
-                currentString = currentString .. " " .. object
-            else
-                table.insert(cmdData, object)
-            end
-        end
-        cmd = cmdData[1]
-        if cmd == "" or cmd == nil then
-            printHelp()
-        elseif cmd == "serverid" then
-            copyServerID()
-        elseif cmd == "kdr" then
-            if cmdData[2] == nil then
-                cmdData[2] = player.name():gsub("§.", "")
-            end
-            fetchKdr(cmdData[2])
-        elseif cmd == "mute" then
-            if cmdData[2] == nil then
-                print(NGToolsPrefix .. "Please enter a target player!")
-                return true
-            end
-            addMute(cmdData[2])
-        elseif cmd == "online" then
-            fetchOnlinePlayers()
-        elseif cmd == "stats" then
-            if cmdData[2] == nil then
-                cmdData[2] = player.name():gsub("§.", "")
-            end
-            fetchBasicStats(cmdData[2])
-        elseif cmd == "gstats" then
-            if cmdData[2] == nil then
-                cmdData[2] = player.name():gsub("§.", "")
-            end
-            if cmdData[3] == nil then
-                cmdData[3] = currentLocation
-                if currentLocation == "lobby" then
-                    print(NGToolsPrefix ..
-                        "This command doesn't work in the lobby! Please specify a gamemode or start playing a game!")
-                    for x, mode in pairs(locationsScoreboard) do
-                        if mode ~= "lobby" and mode ~= "creative" and mode ~= "skyblock" then
-                            print("§6" .. mode)
-                        end
-                    end
-                else
-                    fetchGameStats(cmdData[2], cmdData[3])
-                end
-            else
-                for x, mode in pairs(locationsScoreboard) do
-                    if string.lower(cmdData[3]) == string.lower(mode) and mode ~= "lobby" and mode ~= "creative" and mode ~= "skyblock" then
-                        fetchGameStats(cmdData[2], string.lower(cmdData[3]))
-                        return
-                    end
-                end
-                print(NGToolsPrefix .. "Please enter a valid game mode!")
-                for x, mode in pairs(locationsScoreboard) do
-                    if mode ~= "lobby" and mode ~= "creative" and mode ~= "skyblock" then
-                        print("§6" .. mode)
-                    end
-                end
-            end
-        elseif cmd == "info" then
-            if cmdData[2] == nil then
-                cmdData[2] = player.name():gsub("§.", "")
-            end
-            fetchBasicInfo(cmdData[2])
-        elseif cmd == "bio" then
-            if cmdData[2] == nil then
-                cmdData[2] = player.name():gsub("§.", "")
-            end
-            fetchPlayerBio(cmdData[2])
-        elseif cmd == "uname" then
-            if cmdData[2] == nil then
-                cmdData[2] = player.name():gsub("§.", "")
-            end
-            copyUname(cmdData[2])
-        elseif cmd == "punishments" then
-            if cmdData[2] == nil then
-                cmdData[2] = player.name():gsub("§.", "")
-            end
-            fetchPunishments(cmdData[2])
-        elseif cmd == "update" then
-            updateCheck()
-        elseif cmd == "reply" then
-            local msg = ""
-            if #cmdData >= 2 then
-                msg = table.concat(cmdData, " ", 2)
-            end
-            replyMsg(msg)
-        else
-            print(NGToolsPrefix .. "Command not found: " .. cmd .. "!")
-            printHelp()
-        end
-    else
-        wrongServer()
-    end
-end
-
 -- Function to clean player names
 local function cleanPlayerNames(players)
     local cleanedPlayers = {}
@@ -1406,6 +1182,224 @@ local function cleanPlayerNames(players)
     end
     return cleanedPlayers
 end
+
+-- command handling functions
+
+local function handleServerId()
+    copyServerID()
+end
+
+local function handleKdr(playerNameKdr)
+    local playerName = playerNameKdr or player.name():gsub("§.", "")
+    fetchKdr(playerName)
+end
+
+local function handleMute(targetMute)
+    if targetMute == nil or targetMute == "" then
+        print("§cPlease specify a target player to mute!")
+    else
+        addMute(targetMute)
+    end
+end
+
+local function handleUname(playNameUname)
+    if playNameUname ~= nil then
+        copyUname(playNameUname)
+    else
+        copyUname(player.name():gsub("§.", ""))
+    end
+end
+
+local function handleOnline()
+    fetchOnlinePlayers()
+end
+
+local function handleStats(playerNameStats)
+    local playerName = playerNameStats or player.name():gsub("§.", "")
+    fetchBasicStats(playerName)
+end
+
+local function handleGStats(playerNameGStats, gameModeGStats, currentLocation)
+    local playerName = playerNameGStats or player.name():gsub("§.", "")
+    local gameMode = gameModeGStats or currentLocation
+    if gameMode == "lobby" then
+        print("§cThis command doesn't work in the lobby! Specify a game mode or start playing.")
+    else
+        fetchGameStats(playerName, gameMode)
+    end
+end
+
+local function handleInfo(playerNameInfo)
+    local playerName = playerNameInfo or player.name():gsub("§.", "")
+    fetchBasicInfo(playerName)
+end
+
+local function handleBio(playerNameBio)
+    local playerName = playerNameBio or player.name():gsub("§.", "")
+    fetchPlayerBio(playerName)
+end
+
+local function handleUpdate()
+    updateCheck()
+end
+
+local function handleReply(messageReply)
+    if messageReply == nil or messageReply == "" then
+        print("§cPlease specify a message to reply with!")
+    else
+        replyMsg(messageReply)
+    end
+end
+
+local function handleR(messageR)
+    if messageR == nil or messageR == "" then
+        print("§cPlease specify a message to reply with!")
+    else
+        replyMsg(messageR)
+    end
+end
+
+local function handleHelp()
+    printHelp()
+end
+
+local function handlePunishments(playerNamePunishments)
+    if playerNamePunishments == nil then
+        fetchPunishments(playerNamePunishments)
+    else 
+        fetchPunishments(player.name():gsub("§.", ""))
+    end
+    
+end
+--------------------------
+--For registering Subcommands independently
+-- Register all commands with intellisense
+function registerAllCommands()
+    if server.ip():find("nethergames") then
+        registerCommand("serverid", function(arguments)
+            handleServerId()
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+        end, NGToolsPrefix .. "§7Copy the current ID of the server you're playing on to the clipboard")
+
+        registerCommand("uname", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local playNameUname = parser:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()))
+            handleUname(playNameUname)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()))
+        end, NGToolsPrefix .. "§7Copy targeted player's username to the clipboard")
+
+        registerCommand("mute", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local targetMute = parser:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()))
+            handleMute(targetMute)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()))
+        end, NGToolsPrefix .. "§7Add to the player mute list")
+
+        registerCommand("online", function(arguments)
+            handleOnline()
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+        end, NGToolsPrefix .. "§7Shows online player count")
+
+        registerCommand("kdr", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local playerNameKdr = parser:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+            handleKdr(playerNameKdr)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+        end, NGToolsPrefix .. "§7Fetch player's K/DR")
+
+        registerCommand("stats", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local playerNameStats = parser:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+            handleStats(playerNameStats)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+        end, NGToolsPrefix .. "§7Fetch player's basic stats")
+
+        registerCommand("gstats", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local playerNameGStats = parser:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()),
+                true)
+            local gameModeGStats = parser:matchEnum("gameMode", "string", validLocations, true)
+            handleGStats(playerNameGStats, gameModeGStats, currentLocation)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+            overload:matchEnum("gameMode", "string", validLocations, true)
+        end, NGToolsPrefix .. "§7Fetch player's stats for the specified gamemode. Uses current game if not specified.")
+
+        registerCommand("punishments", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local playerNameInfo = parser:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+            handlePunishments(playerNameInfo)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+        end, NGToolsPrefix .. "§7Fetch player's punishments")
+
+        registerCommand("info", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local playerNameInfo = parser:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+            handleInfo(playerNameInfo)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+        end, NGToolsPrefix .. "§7Fetch player's account information")
+
+        registerCommand("bio", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local playerNameBio = parser:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+            handleBio(playerNameBio)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true)
+        end, NGToolsPrefix .. "§7Fetch player's bio")
+
+        registerCommand("update", function(arguments)
+            handleUpdate()
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+        end, NGToolsPrefix .. "§7Check for updates on github")
+
+        registerCommand("reply", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local messageReply = parser:matchString("message")
+            handleReply(messageReply)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchString("message")
+        end, NGToolsPrefix .. "§7Reply to the latest in-game direct message")
+
+        registerCommand("r", function(arguments)
+            local intellisenseHelper = MakeIntellisenseHelper(arguments)
+            local parser = intellisenseHelper:addOverload()
+            local messageR = parser:matchString("message")
+            handleR(messageR)
+        end, function(intellisense)
+            local overload = intellisense:addOverload()
+            overload:matchString("message")
+        end, NGToolsPrefix .. "§7Reply to the latest in-game direct message")
+    end
+end
+
+--------------------------
 
 function ngtools(intellisense, isExecuted)
     -- Define all overloads for subcommands
@@ -1418,7 +1412,11 @@ function ngtools(intellisense, isExecuted)
 
     local overloadMute = intellisense:addOverload()
     local isMute = overloadMute:matchPath("mute")
-    local playerNameKdr = overloadMute:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players())) -- Optional player name
+    local targetMute = overloadMute:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players())) -- Optional player name
+
+    local overloadUname = intellisense:addOverload()
+    local isUname = overloadUname:matchPath("uname")
+    local playNameUname = overloadUname:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players())) -- Optional player name
 
     local overloadOnline = intellisense:addOverload()
     local isOnline = overloadOnline:matchPath("online")
@@ -1427,11 +1425,15 @@ function ngtools(intellisense, isExecuted)
     local isStats = overloadStats:matchPath("stats")
     local playerNameStats = overloadStats:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true) -- Optional player name
 
+    local overloadPunishments = intellisense:addOverload()
+    local isPunishments = overloadStats:matchPath("punishments")
+    local playerNamePunishments = overloadPunishments:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()), true) -- Optional player name
+
     local overloadGStats = intellisense:addOverload()
     local isGStats = overloadGStats:matchPath("gstats")
     local playerNameGStats = overloadGStats:matchSoftEnum("playerName", "string", cleanPlayerNames(server.players()),
-        true)                                                                                                               -- Optional player name
-    local gameModeGStats = overloadGStats:matchEnum("gameMode", "string", validLocations, true)                             -- Optional game mode
+        true)                                                                                   -- Optional player name
+    local gameModeGStats = overloadGStats:matchEnum("gameMode", "string", validLocations, true) -- Optional game mode
 
     local overloadInfo = intellisense:addOverload()
     local isInfo = overloadInfo:matchPath("info")
@@ -1457,51 +1459,33 @@ function ngtools(intellisense, isExecuted)
 
     if isExecuted then
         if isServerId then
-            copyServerID()
+            handleServerId()
         elseif isKdr then
-            local playerName = playerNameKdr or player.name():gsub("§.", "")
-            fetchKdr(playerName)
+            handleKdr(playerNameKdr)
         elseif isMute then
-            if targetMute == nil or targetMute == "" then
-                print("§cPlease specify a target player to mute!")
-            else
-                addMute(targetMute)
-            end
+            handleMute(targetMute)
+        elseif isUname then
+            handleUname(playNameUname)
         elseif isOnline then
-            fetchOnlinePlayers()
+            handleOnline()
         elseif isStats then
-            local playerName = playerNameStats or player.name():gsub("§.", "")
-            fetchBasicStats(playerName)
+            handleStats(playerNameStats)
         elseif isGStats then
-            local playerName = playerNameGStats or player.name():gsub("§.", "")
-            local gameMode = gameModeGStats or currentLocation
-            if gameMode == "lobby" then
-                print("§cThis command doesn't work in the lobby! Specify a game mode or start playing.")
-            else
-                fetchGameStats(playerName, gameMode)
-            end
+            handleGStats(playerNameGStats, gameModeGStats, currentLocation)
         elseif isInfo then
-            local playerName = playerNameInfo or player.name():gsub("§.", "")
-            fetchBasicInfo(playerName)
+            handleInfo(playerNameInfo)
         elseif isBio then
-            local playerName = playerNameBio or player.name():gsub("§.", "")
-            fetchPlayerBio(playerName)
+            handleBio(playerNameBio)
         elseif isUpdate then
-            updateCheck()
+            handleUpdate()
         elseif isReply then
-            if messageReply == nil or messageReply == "" then
-                print("§cPlease specify a message to reply with!")
-            else
-                replyMsg(messageReply)
-            end
+            handleReply(messageReply)
         elseif isR then
-            if messageR == nil or messageR == "" then
-                print("§cPlease specify a message to reply with!")
-            else
-                replyMsg(messageReply)
-            end
+            handleR(messageR)
         elseif isHelp then
-            printHelp()
+            handleHelp()
+        elseif isPunishments then
+            handlePunishments(playerNamePunishments)
         else
             print("§cUnknown subcommand! Type `§7.ngtools help§c` for help.")
         end
