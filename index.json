@@ -987,10 +987,6 @@
         "DependentBoolean"
       ],
       "commands": [
-        "ngtools",
-        "ng",
-        "ngtools",
-        "ng",
         "serverid",
         "uname",
         "mute",
@@ -1005,8 +1001,8 @@
         "reply",
         "r"
       ],
-      "hash": "332d46c3e5b5a2f2fff4d1b5989dd5a8",
-      "lastUpdated": "2024-12-05T16:16:42.119Z"
+      "hash": "ddb401bca3db932851e1a88575f51d18",
+      "lastUpdated": "2024-12-07T01:56:52.592Z"
     },
     {
       "name": "Offhand slot display",
