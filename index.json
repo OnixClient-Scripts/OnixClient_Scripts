@@ -1297,6 +1297,21 @@
       "lastUpdated": "2024-08-12T20:31:21.737Z"
     },
     {
+      "name": "Voxeliser",
+      "description": "Has the command 'load model' which takes in a .obj file with one texture file (no materials) and places it in minecraft",
+      "file": "voxelize.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/voxelize.lua",
+      "libs": [
+        "BlockRGB",
+        "geometryLib"
+      ],
+      "commands": [
+        "loadModel"
+      ],
+      "hash": "ecffa597daaac10c2524592ca05dce52",
+      "lastUpdated": "2024-12-20T23:18:50.497Z"
+    },
+    {
       "name": "Waypoint Hotkey",
       "description": "Allows you to create a waypoint on a hotkey.",
       "file": "WaypointHotkey.lua",
@@ -1679,6 +1694,13 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/functionsPlusPlus.lua",
       "hash": "ee94646955b56c57a9638ab8a61baacd",
       "lastUpdated": "2023-01-15T12:55:52.000Z"
+    },
+    {
+      "name": "geometryLib",
+      "file": "geometryLib.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/geometryLib.lua",
+      "hash": "de465d0e5f3dd0e17134516df00e8bd0",
+      "lastUpdated": "2024-12-20T23:18:50.505Z"
     },
     {
       "name": "gfx2Colors",
