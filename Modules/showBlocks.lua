@@ -2,7 +2,7 @@ name = "Block Finder"
 description = "Shows blocks in the world"
 
 --[[
-    by MCBE Craft
+    by MCBE Craft + jqms (i converted it to findBlock)
 ]]
 
 fileLib2 = importLib("renderthreeD.lua")
@@ -18,8 +18,9 @@ client.settings.addAir(5)
 radius = 50
 client.settings.addInt("Finding block radius", "radius", 5, 200)
 
+blockPos = {}
+---@diagnostic disable-next-line: missing-parameter
 registerCommand("findBlock", function(arguments)
-    blockPos = {}
     if (arguments == "") then
         return
     end
@@ -32,28 +33,13 @@ registerCommand("findBlock", function(arguments)
         end
     end
 
-    local x, y, z = player.position()
-    local sx = x - radius
-    local sy = y - radius
-    local sz = z - radius
-    local ex = sx + (2 * radius)
-    local ey = 100
-    local ez = sz + (2 * radius)
-
     local text = ""
 
-    for px = sx, ex do
-        for py = sy, ey do
-            for pz = sz, ez do
-                local block = dimension.getBlock(px, py, pz)
-                if (string.match(block.name:lower(), args[1]:lower()) or block.id == tonumber(args[1]) and block.id ~= 0) then
-                    text = text .. (block.name .. ": " .. px .. " " .. py .. " " .. pz .. "\n")
-                    table.insert(blockPos, { px, py, pz })
-                end
-            end
-        end
+    local worldBlocks = dimension.findBlock(arguments, 0, radius or 50)
+    for i, block in ipairs(worldBlocks) do
+        text = text .. (arguments .. ": " .. block[1] .. " " .. block[2] .. " " .. block[3] .. "\n")
+        table.insert(blockPos, { block[1], block[2], block[3] })
     end
-    print(text)
 end)
 
 function render3d(dt)
