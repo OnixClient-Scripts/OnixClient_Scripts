@@ -35,7 +35,7 @@ registerCommand("findBlock", function(arguments)
 
     local text = ""
 
-    local worldBlocks = dimension.findBlock(arguments, 0, radius or 50)
+    local worldBlocks = dimension.findBlock(arguments, -1, radius or 50)
     for i, block in ipairs(worldBlocks) do
         text = text .. (arguments .. ": " .. block[1] .. " " .. block[2] .. " " .. block[3] .. "\n")
         table.insert(blockPos, { block[1], block[2], block[3] })
