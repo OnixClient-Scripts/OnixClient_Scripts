@@ -1979,8 +1979,8 @@
       {
         "file": "server.lua",
         "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/AutoComplete/library/server.lua",
-        "hash": "053378ef987fae82cb632f63c8cfc625",
-        "lastUpdated": "2025-03-24T01:51:43.269Z"
+        "hash": "7c3e7285150dce9cdd2be95b6f9d66a1",
+        "lastUpdated": "2025-03-24T01:57:32.275Z"
       },
       {
         "file": "snetwork.lua",
