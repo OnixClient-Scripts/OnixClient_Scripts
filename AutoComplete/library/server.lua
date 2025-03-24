@@ -30,6 +30,26 @@ function server.ping(average) end
 function server.worldName() end
 
 
+---If you are currently in a realm server
+---@return boolean isRealm If you are in a realm server
+function server.isRealm() end
+
+---If you could be in a realm server (basically are you on latest)
+---@return boolean couldBeInRealm If you could in a realm server
+function server.couldBeInRealm() end
+
+---@class RealmWorld
+---@field id integer The realm id
+---@field name string The realm name
+---@field description string The realm description
+---@field ownerXuid string The realm owner xuid
+---@field clubId string The realm club id
+
+---The realm information
+---@return RealmWorld? realm The realm information
+function server.realmWolrld() end
+
+
 ---The name of everyone in the pause menu
 ---example of usage:
 ---for _, playerName in pairs(server.players()) do
