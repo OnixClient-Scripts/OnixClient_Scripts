@@ -46,7 +46,7 @@ function server.couldBeInRealm() end
 ---@field clubId string The realm club id
 
 ---The realm information
----@return RealmWorld? realm The realm information
+---@return RealmWorld|nil realm The realm information
 function server.realmWolrld() end
 
 
