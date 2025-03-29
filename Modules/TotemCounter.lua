@@ -49,7 +49,13 @@ function render()
         if insideforsomereason.value then
             gfx.color(bgc)
             gfx.rect(0, 0, 12, 12)
-            gfx.color(textc)
+            if color.value and totemCount <= 3 then
+                gfx.color(255, 85, 85)
+            elseif color.value and (totemCount == 4 or totemCount == 5) then
+                gfx.color(255, 170, 0)
+            elseif color.value and totemCount >= 6 then
+                gfx.color(85, 255, 85)
+            end
             gfx.texture(0, 0, 12, 12, totemPath)
             gfx.text(5, 6, tostring(totemCount), texts.value)
         else
