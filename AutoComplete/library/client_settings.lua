@@ -207,3 +207,8 @@ function client.settings.send() end
 ---Close to useless
 ---@return nil
 function client.settings.reload() end
+
+
+---Refreshes the onix menu to show removed or added settings
+---@return nil
+function client.settings.refreshUi() end
