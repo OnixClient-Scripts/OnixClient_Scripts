@@ -14,7 +14,6 @@ sizeY = 12
 
 totemPath = "textures/items/totem"
 
-TextColor = { 255, 255, 255, 255 }
 texts = client.settings.addNamelessFloat("Text Size", 0.1, 10, 0.50)
 textc = client.settings.addNamelessColor("Text color", { 255, 255, 255, 255 })
 bgc = client.settings.addNamelessColor("Background color", { 0, 0, 0, 127 })
