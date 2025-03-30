@@ -239,6 +239,13 @@ function _acp__Gfx2Texture_:getPixel(x, y) end
 ---@diagnostic disable-next-line: duplicate-set-field
 function _acp__Gfx2Texture_:setPixel(x, y, r, g, b) end
 
+---Sets all the pixels in the table at once
+---The table must be in the format of {r, g, b, a} and be the size of width * height * 4
+---The values must be between 0 and 255
+---You must unload the texture for the changes to apply
+---@param pixels integer[] The table of pixels to set
+function _acp__Gfx2Texture_:setPixelsFromTable(pixels) end
+
 ---Sets the color of a pixel in the texture, you must unload if you used it for changes to apply with opacity
 ---@param x integer X position of the pixel to get
 ---@param y integer Y position of the pixel to get
