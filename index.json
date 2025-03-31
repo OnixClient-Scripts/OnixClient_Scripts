@@ -1307,6 +1307,16 @@
       "lastUpdated": "2024-08-12T20:31:21.737Z"
     },
     {
+      "name": "Totem Counter",
+      "description": "Counts how many totems you have in your inventory.",
+      "file": "TotemCounter.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/TotemCounter.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "0970f0e5698c722e5cdcacf39619f0ca",
+      "lastUpdated": "2025-03-31T16:18:19.680Z"
+    },
+    {
       "name": "Voxeliser",
       "description": "Has the command 'load model' which takes in a .obj file with one texture file (no materials) and places it in minecraft",
       "file": "voxelize.lua",
