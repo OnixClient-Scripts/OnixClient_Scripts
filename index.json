@@ -45,6 +45,16 @@
       "lastUpdated": "2022-12-06T14:28:39.000Z"
     },
     {
+      "name": "Armor Display",
+      "description": "Displays armor items beside the hotbar",
+      "file": "armor display.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/armor display.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "50d9c9ef225b5b7b078a2404d2d86062",
+      "lastUpdated": "2025-03-31T16:17:29.026Z"
+    },
+    {
       "name": "Arraylist",
       "description": "Shows what module is enabled",
       "file": "arraylist.lua",
