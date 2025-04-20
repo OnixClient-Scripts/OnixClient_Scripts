@@ -396,6 +396,16 @@
       "lastUpdated": "2023-08-25T23:01:35.371Z"
     },
     {
+      "name": "Emptydark",
+      "description": "Makes the surrounding environment darker. Allows you to see less clearly in The End, Nether, and at night.",
+      "file": "emptydark.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/emptydark.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "fbf8c61e337bc11732529129d59dd70b",
+      "lastUpdated": "2025-04-20T14:44:23.129Z"
+    },
+    {
       "name": "Enabled Filter",
       "description": "Only shows enabled modules in the module list.",
       "file": "EnabledFilter.lua",
