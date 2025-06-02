@@ -4,10 +4,10 @@ description = "World Edit for bedrock. Type .WEhelp for an explanation (The wand
 
 
 --                                                      wedit for onix made by @Janjre (github name) mc username = HusdhedCandle753
--- For prereleases and stuff go on this repo: https://github.com/Janjre/NewWorldedit/tree/main
 
 
-
+importLib("auxToState.lua")
+importLib("blockList.lua")
 
 
 
@@ -19,8 +19,8 @@ function sleep(n)  -- seconds
    end
 end
 
+brushes = {}
 
-importLib("auxToState.lua")
 xBlockList = {}
 yBlockList = {}
 zBlockList = {}
@@ -28,8 +28,7 @@ blockBlockList = {}
 rndBlockList = {}
 counterBlockNotList = 0
 
-
-client.settings.addAir(10)
+client.settings.addCategory("Rendering")
 DiagS = false
 client.settings.addBool("Show Diag","DiagS")
 DiagC = {255,0,0}
@@ -56,7 +55,31 @@ client.settings.addBool("Show Text", "TextS")
 TextC = {255,255,255}
 TextCUI = client.settings.addColor("Text Color", "TextC")
 
+client.settings.stopCategory()
+
 client.settings.addAir(10)
+
+client.settings.addCategory("Brushes")
+
+function loadBrush()
+    brushesJson = jsonFromFile("brushes.json")
+    if brushesJson == nil then print("§eNo brushes have been saved") return end
+    brushes = jsonToTable(brushesJson)
+end
+
+function saveBrush()
+    local file = io.open("brushes.json", "w")
+    brushesJson = tableToJson(brushes)
+    io.open("brushes.json", "w"):write(brushesJson):close()
+end
+
+client.settings.addFunction("Load Brushes", "loadBrush", "Load")
+client.settings.addFunction("Save Brushes", "saveBrush", "Save")
+client.settings.stopCategory()
+
+client.settings.addAir(10)
+
+muteWarnings = client.settings.addNamelessBool("Mute warnings",false)
 
 MuteFill =  true
 MuteSel = false
@@ -88,202 +111,468 @@ AreaVUI = client.settings.addInt("Area Size Warning","AreaV",500,50000)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+function blankIntellisense() end
 
 --help
 registerCommand("WEhelp", function(arguments)
    
     helpcmd(arguments)
     
-end)
+end,blankIntellisense,"Shows the help menu")
 
 registerCommand("wehelp", function(arguments)
 
     helpcmd(arguments)
 
-end)
+end,blankIntellisense,"Shows the help menu")
 
 registerCommand("WeHelp", function(arguments)
 
     helpcmd(arguments)
 
-end)
+end,   blankIntellisense,"Shows the help menu")
 
 --fill
 registerCommand("fill", function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    fillcmd(arguments)
-end
-end)
+    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local block = parser:matchEnum("block","block",allBlocks)
+    
 
---replace
-registerCommand("replace",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    repalcecmd(arguments)
-end
-end)
-registerCommand("rep",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    repalcecmd(arguments)
-end
-end)
+    fillcmd(arguments)
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("block","block",allBlocks)
+
+
+end, "Fills in the selected area with the specified block")
+
+registerCommand("replace", function (arguments)
+    if xpos1  == nil or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local block1 = parser:matchEnum("replace what","block",allBlocks)
+    if block1 == nil then
+        print("§cblock1 is required!")
+        return
+    end
+    local block2 = parser:matchEnum("replace with","block",allBlocks)
+
+    local invert = parser:matchBool("invert",true)
+    if invert == nil then invert = false end
+
+    replacecmd(arguments)
+
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("replace what","block",allBlocks)
+    overload:matchEnum("replace with","block",allBlocks)
+    local invert = overload:matchBool("invert",true)
+
+end, "Replaces all of one block in your selected range with another")
+
 
 --line
-registerCommand("line",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
+registerCommand("line", function (arguments)
+    if xpos1  == nil or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local block = parser:matchEnum("block","block",allBlocks)
+
     linecmd(arguments)
-end
-end)
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("block","block",allBlocks)
+end, "Creates a line between the two selected points")
 
 --mirror
-registerCommand("mirror",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
+registerCommand("mirror", function (arguments)
+    if xpos1 == nil  or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local axis = parser:matchEnum("axis","axis",{"x","xz","z"})
+    if axis == nil then
+        print("§caxis is required!")
+        return
+    end
     mircmd(arguments)
-end
-end)
-registerCommand("mir",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    mircmd(arguments)
-end
-end)
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("axis","axis",{"x","xz","z"})
 
+end, "Mirrors your selection unstable")
 --wall
-registerCommand("wall",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
+registerCommand("wall", function (arguments)
+    if xpos1  == nil  or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local block = parser:matchEnum("block","block",allBlocks)
+   
     wallcmd(arguments)
-end
-end)
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("block","block",allBlocks)
+
+end, "This is an example of a separated command")
 
 -- infwater
 registerCommand("infinitewater",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    infwatercmd(arguments)
-end
-end)
-registerCommand("infwater",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    infwatercmd(arguments)
-end
-end)
+    if xpos1 == nil == nil  or xpos2 == nil then print("§ePlease select an area before running this command") else
+         infwatercmd(arguments)
+    end
+end,blankIntellisense,"Makes all water blocks in the selected area sources")
 
---circle 
-registerCommand("circle",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    circlecmd(arguments)
-end
-end)
+
+--circle come back to 
+registerCommand("circle", function (arguments)
+    if xpos1 == nil  or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local plane = parser:matchEnum("plane", "plane", {"xz", "yz","xy"})
+    if plane == nil then
+        print("§caxis is required!")
+        return
+    end
+    
+    local block = parser:matchEnum("block","block",allBlocks)
+    
+    local fill = parser:matchBool("fill",true)
+    if fill == nil then fill = true end
+
+    circlecmd(plane,string.split(arguments," ")[2],fill)
+
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("plane", "plane", {"xz", "yz","xy"})
+    overload:matchEnum("block","block",allBlocks)
+    overload:matchBool("fill",true)
+end, "Makes a circle with the specified block and axis")
 
 --sphere
-registerCommand("sphere",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    spherecmd(arguments)
-end
-end)
+registerCommand("sphere", function (arguments)
+    if xpos1  == nil or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local block = parser:matchEnum("block","block",allBlocks)
+    local fill = parser:matchBool("fill",true)
+    if fill == nil then fill = true end
+    spherecmd(string.split(arguments," ")[1],fill)
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("block","block",allBlocks)
+    overload:matchBool("fill",true)
+end, "Makes a sphere with the specified block")
 
 --buildup
-registerCommand("buildup",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    bucmd(arguments)
-end
-end)
-registerCommand("build-up",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    bucmd(arguments)
-end
-end)
 
-registerCommand("bu",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
+
+
+registerCommand("buildup", function (arguments)
+    if xpos1  == nil or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local block = parser:matchEnum("block","block",allBlocks)
+    if block == nil then
+        print("§cblock is required!")
+        return
+    end
+    local height = parser:matchInt("height")
+    if height == nil then
+        print("§cheight is required!")
+        return
+    end
+
     bucmd(arguments)
-end
-end)
+
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("block","block",allBlocks)
+    overload:matchInt("height")
+
+end, "This is an example of a separated command")
+
+
 
 --pos1 and pos2
 registerCommand("pos1",function (arguments)
     
     pos1cmd(arguments)
 
-end)
+end, blankIntellisense, "Sets the first position")
 registerCommand("pos2",function (arguments)
     
     pos2cmd(arguments)
 
-end)
+end, blankIntellisense, "Sets the second position")
 
 --up
-registerCommand("up",function (arguments)
-    
+registerCommand("up", function (arguments)
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local height = parser:matchInt("height")
+    if height == nil then
+        print("§cHeight is required!")
+        return
+    end
     upcmd(arguments)
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchInt("height")
 
-end)
+end, "This is an example of a separated command")
 
 --thrutool
 registerCommand("thrutool",function (arguments)
     
     thrutoolcmd(arguments)
 
-end)
+end, blankIntellisense, "Toggles the through tool")
 
 --copy
 registerCommand("copy",function (arguments)
     if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    copycmd(arguments)
-end
-end)
+        copycmd(arguments)
+    end
+end,blankIntellisense,"Copies the selected area")
 
 --paste 
 registerCommand("paste",function (arguments)
     if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
     pastecmd(arguments)
 end
-end)
+end, blankIntellisense, "Pastes the copied area")
 
 --count
 registerCommand("count",function (arguments)
+    local intellisense = MakeIntellisenseHelper(arguments)
+    local parser = intellisense:addOverload()
+    parser:matchEnum("block","block",allBlocks)
     if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    countcmd(arguments)
-end
-end)
+        countcmd(arguments)
+    end
+end, function(intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("block","block",allBlocks)
+end, "Counts the blocks in the selected area")
 
 --wand
 registerCommand("wand",function (arguments)
     
     wandcmd(arguments)
 
-end)
+end,blankIntellisense, "Gives you the wand")
 
 --selnear
-registerCommand("selnear",function (arguments)
-    
+registerCommand("selnear", function (arguments)
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local radius = parser:matchInt("radius")
+    if radius == nil then
+        print("§cradius is required!")
+        return
+    end
     selnearcmd(arguments)
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchInt("radius")
 
-end)
+end, "This is an example of a separated command")
 
 --rotate
-registerCommand("rot", function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    rotatecmd(arguments)
-end
-end)
-
 registerCommand("rotate", function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    rotatecmd(arguments)
-end
-end)
+    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local angle = parser:matchEnum("angle","angle",{"0_degrees","90_degrees","180_degrees","270_degrees"})
+    if angle == nil then
+        print("§cAngle is required!")
+        return
+    end
 
---findstate
-registerCommand("findstate",function (arguments)
-    if xpos1 == nil or xpos2 == nil then print("§ePlease select an area before running this command") else
-    debugstick(arguments)
-end
-end)
+    rotatecmd(arguments )
+
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("angle","angle",{"0_degrees","90_degrees","180_degrees","270_degrees"})
+
+end, "Rotates your selection (unstable)")
+
+registerCommand("rot", function (arguments)
+    if xpos1 ==nil or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    local angle = parser:matchEnum("angle","angle",{"0_degrees","90_degrees","180_degrees","270_degrees"})
+    if angle == nil then
+        print("§cAngle is required!")
+        return
+    end
+    rotatecmd(arguments)
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("angle","angle",{"0_degrees","90_degrees","180_degrees","270_degrees"})
+
+end, "Rotates your selection (unstable)")
+
 -- undo
-registerCommand("undo",function (arguments)
+-- registerCommand("undo",function (arguments)
     
-    undocmd()
+--     undocmd()
     
-end)
+-- end)
+
+registerCommand("copyAlongSel",function (arguments)
+    if xpos1 ==nil or xpos2 == nil then print("§ePlease select an area before running this command") return end
+    cpAlongSel(arguments)
+end,blankIntellisense,"Copies the selected area into every block in your selected area")
+
+
+registerCommand("addBrush", function (arguments)
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    
+    local block = parser:matchEnum("block","block",allBlocksAndClipboard)
+    if block == nil then
+        if string.find(string.split(arguments," ")[1],"%%") == nil then
+            print("§cblock is required!")
+            return
+        end 
+    end
+    local size = parser:matchInt("size")
+    if size == nil then
+        if block == "clipboard" then size = -1 else
+            print("§csize is required!")
+            return
+        end
+    end
+    local mask = parser:matchEnum("mask","block",allBlocks,true)
+    if mask == nil then
+        mask = "none"
+    end
+
+    for n = 1,#brushes do
+        if brushes[n].item == player.inventory().selectedItem().name then
+            table.remove(brushes, n)
+            break
+        end
+    end
+    table.insert(brushes, {item = player.inventory().selectedItem().name, block = string.split(arguments," ")[1], size = size,mask = mask})
+    print("§aAdded brush")
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchEnum("block","block",allBlocks)   
+    overload:matchInt("size")
+    overload:matchEnum("mask","block",allBlocks,true)
+
+    local overload2 = intellisense:addOverload()
+    overload2:matchEnum("clipboard","clipboard",{"clipboard"})
+end, "Adds a brush. When you click holding the item your holding when you run the command it will make a sphere of the specified block with the specified size at the clicked position")  
+
+
+
+registerCommand("removeBrush", function (arguments)
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+
+
+    brushItems = {}
+    for i = 1, #brushes do
+        table.insert(brushItems, brushes[i].item)
+    end
+
+    local item = parser:matchEnum("brush","brush name",brushItems,true)
+    if item == nil then
+        if player.inventory().selectedItem() == nil then
+            print("§cItem is required! You must either hold the item or specify it")
+            return
+        end
+        item = player.inventory().selectedItem().name 
+    end
+
+    for n = 1,#brushes do
+        if brushes[n].item == item then
+            table.remove(brushes, n)
+        end
+    end
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+    brushItems = {}
+    for i = 1, #brushes do
+        table.insert(brushItems, brushes[i].item)
+    end
+
+    local item = overload:matchEnum("brush","brush name",brushItems,true)
+
+end, "Removes a brush")
+
+registerCommand("listBrushes", function (arguments)
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+    
+    for n = 1,#brushes do
+        print(brushes[n].item .. " - block: " .. brushes[n].block .. "  size: " .. brushes[n].size .. "  mask: " .. brushes[n].mask)
+    end
+end,
+function (intellisense)
+    local overload = intellisense:addOverload()
+
+end, "Lists all of your brushes")
+
+registerCommand("clearBrushes", function (arguments)
+    brushes = {}
+    print("§aCleared brushes")
+end,blankIntellisense,"Clears all of your brushes")
+
+registerCommand("move",function(arguments)
+    local intellisenseHelper = MakeIntellisenseHelper(arguments)
+    local parser = intellisenseHelper:addOverload()
+
+    local x = parser:matchInt("x")
+    if x == nil then
+        print("§cx is required!")
+        return
+    end
+    local y = parser:matchInt("y")
+    if y == nil then
+        print("§cy is required!")
+        return
+    end
+    local z = parser:matchInt("z")
+    if z == nil then
+        print("§cz is required!")
+        return
+    end
+
+    xpos1 = xpos1 + x
+    xpos2 = xpos2 + x
+    ypos1 = ypos1 + y
+    ypos2 = ypos2 + y
+    zpos1 = zpos1 + z
+    zpos2 = zpos2 + z
+end,function (intellisense)
+    local overload = intellisense:addOverload()
+    overload:matchInt("x")
+    overload:matchInt("y")
+    overload:matchInt("z")
+end, "Moves the selected area by the specified amount")
+
+
+brushes = {}
+
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                                                     --                          USE .WEhelp TO GET AN EXPLANATION ON HOW TO USE
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -293,146 +582,104 @@ sizeX = 180
 sizeY = 50
 
 event.listen("MouseInput", function(button, down) --                    SECLECTION
-    --sekectedSlot = player.inventory().selected()
-    cancelMMB  = false
-
-    if player.facingBlock() then
-        if button == 1 and not player.getFlag(1) then lmbDown = down end
-        if button == 2 and not player.getFlag(1) then rmbDown = down end
-        if button == 2 and player.getFlag(1) then  mmbDownUp = down end 
-        if button == 1 and player.getFlag(1) then  mmbDownDown = down end 
-    
-
-    
-    
-    
-
-        if gui.mouseGrabbed() == false then
-            if down then
-                TimesDONE = 0
-                checkingEffects = true
-                client.execute("execute /gamemode spectator @s[hasitem={item=wooden_sword,location=slot.weapon.mainhand}]")
-            end
-        end
-        
+    if gui.mouseGrabbed() or down then
+        return
     end
-
-end) 
-
-
-function woodSwordClick()
-
-
+    if down then return end
     xface, yface, zface = player.selectedPos()
-
-    
-    if ThruTool == true then
-        x,y,z = player.position()
-        rotdeg, pitchdeg = player.rotation()
+    if player.inventory().selectedItem() == nil then return end
+    if player.inventory().selectedItem().name=="wooden_sword" then
         
-        rot = math.rad(player.rotation()-180)
-        pit = math.rad(pitchdeg)
-        zz = math.cos(pit) * math.cos(rot)*-1
-        xx = math.cos(pit) * math.sin(rot)
-        yy = math.sin(pit)*-1
-        for I = 2, 356, 1 do
-            xxx = math.floor(x+xx*I+0.5)
-            zzz = math.floor(z+zz*I+0.5)
-            yyy = math.floor(y+yy*I+0.5) 
-            blockOfDoom = dimension.getBlock(xxx,yyy+1,zzz).name
-            if  blockOfDoom == "air" or blockOfDoom == "water" then
-                client.execute("execute tp @s ".. xxx .. " " .. yyy+1 .. " " .. zzz)
-                if WhooshS then
-                    playCustomSound("WEwhoosh.mp3")
+        if player.facingBlock() == false then return end
+        
+        
+        if ThruTool == true then
+            
+            for I = 3, 356, 1 do
+                xxx,yyy,zzz = player.forwardPosition(I) 
+                local blockOfDoom = dimension.getBlock(math.floor(xxx),math.floor(yyy+1),math.floor(zzz)).name
+                if  blockOfDoom == "air" or blockOfDoom == "water" then
+                    client.execute("execute tp @s ".. xxx .. " " .. yyy+1 .. " " .. zzz)
+                    if WhooshS then
+                        playCustomSound("WEwhoosh.mp3")
+                    end
+                    
+                    break
+                    
                 end
-                
-                break
-                
             end
-        end
-    else
+        else
+            
         
-    
 
-        if lmbDown then       --                                    LEFT MB
-            xpos1 = xface
-            ypos1 = yface
-            zpos1 = zface
-            
-            
-            if not MuteSel then
-                print(xpos1 .. " " .. ypos1 .. " " .. zpos1 .. "§b has been set as selection point 1")
-            end
-            do return true end 
-        end
-
-        if rmbDown then                                          -- RIGHT MB
-            xpos2 = xface
-            ypos2 = yface
-            zpos2 = zface
-            if not MuteSel then
-                print(xpos2 .. " " .. ypos2 .. " " .. zpos2 .. "§c has been set as selection point 2")
-            end
-            do return true end
-        end
-
-        if mmbDownUp then
-            cancelMMB =true
-            doit = true
-            xface, yface, zface = player.selectedPos()
-            selectedblock = dimension.getBlock(xface,yface,zface)
-            SELBLOCKNAME = selectedblock.name
-            SELBLOCKDATA = selectedblock.data
-            NEWBLOCKDATA = SELBLOCKDATA+1
-            
-            NEWBLOCKSTATE = convertAux(SELBLOCKNAME,NEWBLOCKDATA)
-            --  print(SELBLOCKDATA .. " " .. NEWBLOCKDATA .. " " .. SELBLOCKNAME )
-
-            if NEWBLOCKSTATE == nil then NEWBLOCKSTATE = convertAux(SELBLOCKNAME,0) end
-            if NEWBLOCKSTATE == nil then client.execute("execute title @s actionbar §cThis block doesn't have any block states (this wont work on 1.20 blocks, fixing that soon but it takes a while)"); doit = false end
-
-            if doit == true then
-                client.execute("execute setblock " .. xface .. " " .. yface .. " " .. zface .. " " .. SELBLOCKNAME .. " " .. NEWBLOCKSTATE)
-                client.execute("execute title @s actionbar §a Block state changed to: §f".. NEWBLOCKSTATE)
-            end
+            if button == 1 then       --                                    LEFT MB
+                xpos1 = xface
+                ypos1 = yface
+                zpos1 = zface
                 
-            
-            --player.inventory().setSelectedSlot(sekectedSlot)
-            --    print (NEWBLOCKSTATE)
-            
-        end
-        if mmbDownDown then
-            cancelMMB =true
-            doit = true
-            xface, yface, zface = player.selectedPos()
-            selectedblock = dimension.getBlock(xface,yface,zface)
-            SELBLOCKNAME = selectedblock.name
-            SELBLOCKDATA = selectedblock.data
-            NEWBLOCKDATA = SELBLOCKDATA-1
-            
-            NEWBLOCKSTATE = convertAux(SELBLOCKNAME,NEWBLOCKDATA)
-            --  print(SELBLOCKDATA .. " " .. NEWBLOCKDATA .. " " .. SELBLOCKNAME )
-
-            if NEWBLOCKSTATE == nil then NEWBLOCKSTATE = convertAux(SELBLOCKNAME,0) end
-            if NEWBLOCKSTATE == nil then client.execute("execute title @s actionbar §cThis block doesn't have any block states (this wont work on 1.20 blocks, fixing that soon but it takes a while)"); doit = false end
-
-            if doit == true then
-                client.execute("execute setblock " .. xface .. " " .. yface .. " " .. zface .. " " .. SELBLOCKNAME .. " " .. NEWBLOCKSTATE)
-                client.execute("execute title @s actionbar §a Block state changed to: §f".. NEWBLOCKSTATE)
-            end
                 
-            
-            --player.inventory().setSelectedSlot(sekectedSlot)
-            --    print (NEWBLOCKSTATE)
-            
+                if not MuteSel then
+                    print(xpos1 .. " " .. ypos1 .. " " .. zpos1 .. "§b has been set as selection point 1")
+                end
+                do return true end 
+            end
+
+            if button == 2 then                                          -- RIGHT MB
+                xpos2 = xface
+                ypos2 = yface
+                zpos2 = zface
+                if not MuteSel then
+                    print(xpos2 .. " " .. ypos2 .. " " .. zpos2 .. "§c has been set as selection point 2")
+                end
+                do return true end
+            end
         end
     end
-end
+    if button ==1 then else return end
+    for n = 1,  #brushes do
+        local block = brushes[n].block
+        local size = brushes[n].size
+        local item = brushes[n].item
+        local mask = brushes[n].mask
+        if player.inventory().selectedItem().name == item then 
+            for j = 2, 100 do
+                
+                local xx, yy, zz = player.forwardPosition(j)
+                if dimension.getBlock(math.floor(xx), math.floor(yy), math.floor(zz)).name == "air" then else
+                
+                    if block == "clipboard" then
+                        client.execute("execute structure load worldEditClipboard " .. xx .. " " .. yy +1 .. " " .. zz)
+                        return
+                    end
+                
+                    for k = -size, size do
+                        for l = -size, size do
+                            for m = -size, size do
+                                if math.sqrt(k*k + l*l + m*m) <= size then
+                                    local newBlock = blockfiguer(block)
+                                    
+                                    if dimension.getBlock(math.floor(xx) + k, math.floor(yy) + l, math.floor(zz) + m).name == mask or mask == "none" then
+                                        client.execute("execute /setblock " .. xx + k .. " " .. yy + l .. " " .. zz + m .. " " .. newBlock)
+                                    
+                                    end
+                                 
+                                end
+                            end
+                        end
+                    end
+                    break
+                end
+            end
+        end
+
+        
+    end
+end)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --                                                                                                                                                          ACTUAL COMMANDS
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function fillcmd(args)
+function fillcmd(args,override)
     curRndBlockNotList = math.random()
     arg = splitSpace(args)
     xstep=1
@@ -447,6 +694,20 @@ function fillcmd(args)
     if (zpos1 > zpos2) then              --ZFIX
         zstep = -1
     end
+    if not muteWarnings.value then
+        
+        if not override then
+            if math.abs((xpos2 - xpos1) * (ypos2 - ypos1) * (zpos2 - zpos1)) > 1000 then
+            
+                print("§eThis is a very big area (" .. tostring((xpos2 - xpos1) * (ypos2 - ypos1) * (zpos2 - zpos1)) .. " blocks). Are you sure you want to continue? You can remove this message in settings. yes/no")
+                askForConfirm = {true, args}
+                return
+                
+            end
+        end
+    end
+
+
     for xInSelectedRange = xpos1, xpos2, xstep do
         for yinSelectedRange = ypos1, ypos2, ystep do
             for zinSelectedRange = zpos1, zpos2, zstep do
@@ -462,10 +723,10 @@ function fillcmd(args)
     if not MuteSucess then
         print("§aFilled area with §r".. arg[1])
     end
-    printblocklist()
+
 end
 
-function repalcecmd(args)
+function replacecmd(args)
     
     arg = splitSpace(args)
     arg1 = arg[1]
@@ -496,7 +757,7 @@ function repalcecmd(args)
     for xInSelectedRange = xpos1, xpos2, xstep do
         for yinSelectedRange = ypos1, ypos2, ystep do
             for zinSelectedRange = zpos1, zpos2, zstep do
-                if arg3 == "not" then
+                if arg3 == "true" then
                     
                     if(dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name == replacewhat)then else
                         
@@ -524,7 +785,7 @@ end
 function linecmd(args)
     arg = splitSpace(args)
     arg1 = arg[1]
-    arrg2 = arg[2]
+    arrg2 = 1
     if arg1 == nil then print("§eYou need to specify a block") else
         if arg2 == nil then arg2 = 1 end
         xline, yline, zline = player.pposition()
@@ -537,7 +798,7 @@ function linecmd(args)
         if arg2 == nil then
             arg2 = 1
         end
-        for countofdis = 1, DISTANCE, tonumber (arg2) do
+        for countofdis = 1, DISTANCE, 1 do
             client.execute("execute /setblock ^ ^ ^" .. countofdis .. " " .. arg1)
         end
         client.execute("execute tp " .. xline .. " " .. yline .. " " .. zline .. " " .. yaw .. " " .. pitch)
@@ -589,10 +850,7 @@ function OLDmircmd(args)
     end
 end
 
-function spherecmd(args)
-    arg = splitSpace(args)
-    arg1 = arg[1]
-    arg2 = arg[2]
+function spherecmd(block,fill)
     
     xdif = xpos1-xpos2
     ydif = ypos1-ypos2
@@ -606,13 +864,13 @@ function spherecmd(args)
                 ydif = ya-ypos1
                 zdif = za-zpos1
                 MYRAD = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
-                if arg2 == "true" then   -- FILLING IN SPHERE
+                if fill then   -- FILLING IN SPHERE
                     if (MYRAD < SPHERERAD) then
-                    client.execute("execute /setblock " .. xa .. " " .. ya .. " " .. za .." " .. arg1)     
+                        client.execute("execute /setblock " .. xa .. " " .. ya .. " " .. za .." " .. block)     
                     end      
                 else -- surface of sphere
                     if ((MYRAD < SPHERERAD + 0.55) and  (MYRAD > SPHERERAD - 0.55)) then
-                        client.execute("execute /setblock " .. xa .. " " .. ya .. " " .. za .." " .. arg1)     
+                        client.execute("execute /setblock " .. xa .. " " .. ya .. " " .. za .." " .. block)     
                     end    
                 end
             end
@@ -622,78 +880,54 @@ function spherecmd(args)
         playCustomSound("WEding.mp3")
     end    
     if not MuteSucess then
-        print("§aMade a sphere of §f "..arg1)
+        print("§aMade a sphere of §f "..block)
     end
 end
 
-function circlecmd(args)
-    arg = splitSpace(args)
-    arg1 = arg[1]
-    arg2 = arg[2]
-    arg3 =arg[3]
-    if arg1 == "x" or arg1 == "y" then else
-        print("No specified axis, assuming x")
-        arg2 = arg1
-        arg1 = "x"
-    end
-    if not MuteSucess then
-        print("§aMaking circle of §f" .. arg2 .. "§a and in the§f " .. arg1 .. " §a plain")
-    end
+function circlecmd(plane,block,fill)
+    
     xdif = xpos1-xpos2
     ydif = ypos1-ypos2
     zdif = zpos1-zpos2
-    CIRCLERAD = math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif)
-    yaw, pitch = player.rotation()
-    x, y, z =player.position()
-    client.execute("tp @s " .. xpos1 .. " " .. ypos1 .. " " .. zpos1)
+    radius = math.ceil (math.sqrt(xdif*xdif+ydif*ydif+zdif*zdif))
 
-    if arg3 == "true" then
-        if (arg1 == "x") then
-            for rot  = -180, 180, 1 do
-                client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. rot .. " " .. "0" )
-                client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2 )
-            end
-
-        elseif (arg1 == "y") then
-            for rot  = -180, 180, 1 do
-                client.execute("execute /tp @s".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. 90  .. " ".. rot )
-                arg2NEW = blockfiguer(arg2)
-                client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-            end
-            for rot  = -180, 180, 1 do
-                client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. " -90 " .. rot )
-                arg2NEW = blockfiguer(arg2)
-                client.execute("execute fill ~ ~ ~ ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-            end
-        else
-            print("§eThis is not a valid input (please put x or y)")
-        end
-        client.execute("execute /tp @s " .. x .. " " .. y .. " " .. z)
-    else
-        if (arg1 == "x") then
-            for rot  = -180, 180, 1 do
-                client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. rot .. " " .. "0" )
-                arg2NEW = blockfiguer(arg2)
-                client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-            end
-        
-        elseif (arg1 == "y") then
-            for rot  = -180, 180, 1 do
-                client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. 90  .. " ".. rot )
-                arg2NEW = blockfiguer(arg2)
-                client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
+    for xInRange = xpos1-radius, xpos1+radius, 1 do
+        for yInRange = ypos1-radius, ypos1+radius, 1 do
+            for zInRange = zpos1-radius, zpos1+radius, 1 do
+                local doit = false
+                if fill then
+                    if math.sqrt((xInRange-xpos1)^2+(yInRange-ypos1)^2+(zInRange-zpos1)^2) < radius then
+                        doit = true
+                    end
+                else
+                    if math.floor(math.sqrt((xInRange-xpos1)^2+(yInRange-ypos1)^2+(zInRange-zpos1)^2)) == radius then
+                        doit=true
+                    end 
+                end
                 
+                if doit then
+                    if plane == "xz" then
+                        if yInRange==ypos1 then
+                            client.execute("execute /setblock " .. xInRange .. " " .. yInRange .. " " .. zInRange .." " .. block)
+                        end 
+                    end
+                    if plane == "xy" then
+                        if zInRange==zpos1 then
+                            client.execute("execute /setblock " .. xInRange .. " " .. yInRange .. " " .. zInRange .." " .. block)
+                        end 
+                    end
+                    if plane == "yz" then
+                        if xInRange==xpos1 then
+                            client.execute("execute /setblock " .. xInRange .. " " .. yInRange .. " " .. zInRange .." " .. block)
+                        end 
+                    end
+                end
+               
             end
-            for rot  = -180, 180, 1 do
-                client.execute("execute /tp @s ".. xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " ".. " -90 " .. rot )
-                arg2NEW = blockfiguer(arg2)
-                client.execute("execute setblock ^ ^ ^"..CIRCLERAD.. " " .. arg2NEW )
-            end
-        else
-            print("§dThis is not a valid input (please put x or y)")
         end
-    client.execute("execute /tp @s " .. x .. " " .. y .. " " .. z)
     end
+
+    
     if DingS then
         playCustomSound("WEding.mp3")
     end
@@ -709,7 +943,8 @@ function wallcmd(args)
     if arg2 == nil then
         arg2 = 1
     end
-    xline, yline, zline = player.pposition()
+    local xline, yline, zline = player.pposition()
+    local yaw, pitch = player.rotation()
     ywall1 = ypos1 
     yawll2 = ypos2  
     for yness = math.min(ypos1,ypos2), math.max(ypos2, ypos1), 1 do
@@ -723,7 +958,7 @@ function wallcmd(args)
             client.execute("execute /setblock ^ ^ ^" .. countofdis .. " " .. NEWARG1 )
         end
     end
-    client.execute("execute tp " .. xline .. " " .. yline .. " " .. zline)
+    client.execute("execute tp " .. xline .. " " .. yline .. " " .. zline .. " " .. yaw .. " " .. pitch)
 end
 
 function infwatercmd(args)
@@ -771,7 +1006,7 @@ function bucmd(args)
             for zinSelectedRange = zpos1, zpos2, 1 do
                 --print("Found block "..dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name)
                 if(dimension.getBlock(xInSelectedRange,yinSelectedRange,zinSelectedRange).name == replacewhat)then
-                    for howhighcount = 1, howhigh, 1 do
+                    for howhighcount = 1, howhigh do
                         strtoexe = "execute /setblock " .. tostring(xInSelectedRange).. " " ..tostring(yinSelectedRange+howhighcount).. " " .. tostring(zinSelectedRange) .. " " .. replacewhat
                     --  print(strtoexe)
                         client.execute(strtoexe)
@@ -793,25 +1028,30 @@ function helpcmd(args)
     "When the syntax says \"block\", it means either something like \"dirt\" or something like \"50%dirt,50%air\"\n" ..
     dividerColor .. "------------------------------\n" ..
     keywordColor .. ".fill§r " .. dividerColor .. "| §7runs a normal fill command " .. dividerColor .. "| §7" .. usageColor .. ".fill§r <block>\n" ..
-    keywordColor .. ".replace§r " .. dividerColor .. "| §7replaces all of the first argument's block to the second within the selected range " .. dividerColor .. "| §7" .. usageColor .. ".replace§r <replacewhat> <replacewith> <not>\n" ..
+    keywordColor .. ".replace§r " .. dividerColor .. "| §7replaces all of the first argument's block to the second within the selected range " .. dividerColor .. "| §7" .. usageColor .. ".replace§r <replacewhat> <replacewith> <not:bolean>\n" ..
     keywordColor .. ".line§r " .. dividerColor .. "| §7creates a line between the two selected points " .. dividerColor .. "| §7" .. usageColor .. ".line§r <block> \n" ..
     keywordColor .. ".mirror§r " .. dividerColor .. "| §7mirrors one side of the blue line to the other. Doesn't work with block states" .. dividerColor .. "| §7" .. usageColor .. ".mirror§r\n" ..
     keywordColor .. ".wall§r " .. dividerColor .. "| §7creates a wall between two points " .. dividerColor .. "| §7" .. usageColor .. ".wall§r <block> [width/precision]\n" ..
     keywordColor .. ".infinitewater§r " .. dividerColor .. "| §7all non-source water blocks get turned into sources so can spread infinitely in any direction aside from up\n" ..
     dividerColor .. "------------------------------\n" ..
-    keywordColor .. ".circle§r " .. dividerColor .. "| §7makes a circle with the radius of the distance between the two selected points (the center being the first) " .. dividerColor .. "| §7" .. usageColor .. ".circle§r <x or y> <block> [true/false:fill]\n" ..
+    keywordColor .. ".circle§r " .. dividerColor .. "| §7makes a circle with the radius of the distance between the two selected points (the center being the first) " .. dividerColor .. "| §7" .. usageColor .. ".circle§r <xz,xy or yz:plane> <block> <filled> \n" ..
     keywordColor .. ".sphere§r " .. dividerColor .. "| §7makes a sphere with the radius of the distance between the two selected points " .. dividerColor .. "| §7" .. usageColor .. ".sphere§r <block> [true/false:fill]\n" ..
-    keywordColor .. ".build-up§r " .. dividerColor .. "| §7duplicates all of the specified block up a specified amount of times " .. dividerColor .. "| §7" .. usageColor .. ".build-up§r <block> <height>\n" ..
+    keywordColor .. ".buildup§r " .. dividerColor .. "| §7duplicates all of the specified block up a specified amount of times " .. dividerColor .. "| §7" .. usageColor .. ".build-up§r <block> <height>\n" ..
     keywordColor .. ".WEhelp§r " .. dividerColor .. "| §7I think you already know how to use this one " .. dividerColor .. "| §7" .. usageColor .. ".WEhelp§r\n" ..
     keywordColor .. ".pos1§r " .. dividerColor .. "| §7sets position 1 to your current coordinates (your feet) " .. dividerColor .. "| §7" .. usageColor .. ".pos1§r\n" ..
-    keywordColor .. ".pos2§r " .. dividerColor .. "| §7same as pos1 " .. dividerColor .. "| §7" .. usageColor .. ".pos2§r\n" ..
+    keywordColor .. ".pos2§r " .. dividerColor .. "| §7sets position 2 to your current coordinates (your feet)  " .. dividerColor .. "| §7" .. usageColor .. ".pos2§r\n" ..
     keywordColor .. ".up§r " .. dividerColor .. "| §7teleports you up a specified amount of blocks upward and places a block below you " .. dividerColor .. "| §7" .. usageColor .. ".up§r <height>\n" ..
     keywordColor .. ".thrutool§r " .. dividerColor .. "| §7when pressed against a block click and it will teleport you to the other side of the block/s (intended for going in and out of builds without using a door). Limit of 356 blocks " .. dividerColor .. "| §7" .. usageColor .. ".thrutool§r\n" ..
     keywordColor .. ".selnear§r " .. dividerColor .. "| §7Selects an area with a radius of x. If given nothing will deafault to 10" .. dividerColor .. "| §7" .. usageColor .. ".selnear §r[radius] \n" ..
     dividerColor .. "------------------------------\n" ..
     keywordColor .. ".copy§r " .. dividerColor .. "| §7Copies the selected area to a file in ..scripts\\data " .. dividerColor .. "| §7" .. usageColor .. ".copy§r\n" ..
-    keywordColor .. ".paste§r " .. dividerColor .. "| §7pastes the file in the file with no rotational changes. !!WARNING!! This function is laggy and doesn't work with block states on 1.20 blocks. If you're pasting very precisely or a large build, use structure blocks instead. " .. dividerColor .. "| §7" .. usageColor .. ".paste§r [true/false:skip/keep air]\n" ..
+    keywordColor .. ".paste§r " .. dividerColor .. "| §7pastes the file in the file with no rotational changes. !!WARNING!! This function is laggy. If you're pasting very precisely or a large build, use structure blocks instead. " .. dividerColor .. "| §7" .. usageColor .. ".paste§r\n" ..
     keywordColor .. ".count§r " .. dividerColor .. "| §7counts the number of a specified (or all) block(s) " .. dividerColor .. "| §7" .. usageColor .. ".count [block]§r\n" ..
+    keywordColor .. ".copyAlongSel§r " .. dividerColor .. "| §7Pastes your clipboard onto every block in your selection" .. dividerColor .. "| §7" .. usageColor .. ".copyAlongSel\n" ..
+    keywordColor .. ".addBrush§r " .. dividerColor .. "| §7adds a 'brush' to the item your holding, when you left click holding it, it will make a sphere of the specified block and size " .. dividerColor .. "| §7" .. usageColor .. ".addBrush <block> <size> <mask>§r\n" ..
+    keywordColor .. ".removeBrush§r " .. dividerColor .. "| §7removes a brush " .. dividerColor .. "| §7" .. usageColor .. ".removeBrush [brush]§r\n" ..
+    keywordColor .. ".clearBrushes§r " .. dividerColor .. "| §7removes all of your brushes " .. dividerColor .. "| §7" .. usageColor .. ".clearBrushes§r\n" ..
+    keywordColor .. ".listBrushes§r " .. dividerColor .. "| §7lists all of your brushes " .. dividerColor .. "| §7" .. usageColor .. ".listBrushes§r\n" ..  
     keywordColor .. ".wand§r " .. dividerColor .. "| §7gives you a wooden sword " .. dividerColor .. "| §7" .. usageColor .. ".wand§r")
 end
     
@@ -1036,25 +1276,43 @@ function rotatecmd(args)
 
     client.execute("execute /fill " .. dothething() .. " air")
 
-    if arg[1] == "0" then arg[1] = "0_degrees" end
-    if arg[1] == "90" then arg[1] = "90_degrees" end
-    if arg[1] == "180" then arg[1] = "180_degrees" end
-    if arg[1] == "270" then arg[1] = "270_degrees" end
 
-
-
-    if arg[2] == "weird" then
-        xpastepos = xpos1
-        ypastepos = ypos1
-        zpastepos = zpos1
-    else
-        xpastepos = math.min(xpos1,xpos2)
-        ypastepos = math.min(ypos1,ypos2)
-        zpastepos = math.min(zpos1,zpos2)
-    end
+    
+    xpastepos = math.min(xpos1,xpos2)
+    ypastepos = math.min(ypos1,ypos2)
+    zpastepos = math.min(zpos1,zpos2)
+    
     
     client.execute("execute /structure load rotatorClip "..xpastepos .. " "..ypastepos .. " " .. zpastepos .." " .. arg[1])
 
+end
+
+function cpAlongSel(args)
+    xstep=1
+    if (xpos1 > xpos2) then              --X FIX
+        xstep=-1
+    end
+    ystep = 1
+    if (ypos1 > ypos2) then              --YFIX
+        ystep = -1
+    end
+    zstep = 1
+    if (zpos1 > zpos2) then              --ZFIX
+        zstep = -1
+    end
+    for xInSelectedRange = xpos1, xpos2, xstep do
+        for yinSelectedRange = ypos1, ypos2, ystep do
+            for zinSelectedRange = zpos1, zpos2, zstep do
+                
+                --newsetblock(xInSelectedRange,yinSelectedRange,zinSelectedRange,BLOCKYTHING)
+                
+                
+                
+                
+                client.execute("execute /structure load worldEditClipboard " .. xInSelectedRange .. " " .. yinSelectedRange .. " " .. zinSelectedRange)
+            end
+        end
+    end
 end
 
 
@@ -1089,14 +1347,7 @@ function mircmd(args)
 end
 
 
-function debugstick(args)
-    xlpos,ylpos,zlpos = player.selectedPos()
-    mhm = findBlockState(xlpos,ylpos,zlpos)
-    increaseblockstate = args
-    --print("found answer = " .. THINGTORETURN) too soon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    
-end
 
 
 
@@ -1110,7 +1361,7 @@ end
 
     
 function undocmd()
-    print("§aComing soon!§c(ish)")
+    print("§c I told you there was no undo ...")
 
     -- sameRnd = true
 
@@ -1167,17 +1418,7 @@ end
 --================================================================================================================================================================================================================================================================================================================================================================================================
 
 function render(dt) 
-    if checkingEffects then
-        if player.gamemode() == 6 then
-            client.execute("execute gamemode c")
-            woodSwordClick()
-            checkingEffects = false
-        end
-        TimesDONE = TimesDONE +1
-        if TimesDONE == 200 then
-            checkEffects = false
-        end
-    end
+
    
     AreaVUI.visible = SizeS
     DiagCUI.visible = DiagS
@@ -1228,7 +1469,7 @@ function render(dt)
     end
     --INFINITE WATER
     if doinfinitewater then
-        repalcecmd("water water")
+        replacecmd("water water")
     end
 end
 
@@ -1337,7 +1578,13 @@ end
 
 event.listen("ChatMessageAdded", function(message, username, type, xuid)
 
-    
+    if message == "yes" then
+        if askForConfirm[1] then
+            fillcmd(askForConfirm[2],true)
+            askForConfirm = {}
+            return true
+        end
+    end
     
     --if cqnter4 == nil then cqnter4 = 0 end
     --print("hi")
@@ -1389,67 +1636,3 @@ function dothething()
     return(xpos1 .. " " .. ypos1 .. " " .. zpos1 .. " " .. xpos2 .. " " .. ypos2 .. " " .. zpos2)
 end
 
-
-function findBlockState(xstate,ystate,zstate)
-    
-    
-    Blockyy = dimension.getBlock(xstate,ystate,zstate)
-    blockNameyy = Blockyy.name
-    notnilplease = true
-    cqnter = 0
-    cqntr3 = 0
-    orderofexecuting = {}
-    chatOrders = {}
-
-    --While loop 
-    while notnilplease do
-        
-        thingyyface = convertAux(blockNameyy,cqnter)
-        if thingyyface == nil then break end
-        --print("execute /testforblock ".. xstate .. " " .. ystate .. " " .. zstate .. " ".. blockNameyy .." " .. thingyyface)
-        client.execute("execute /testforblock ".. xstate .. " " .. ystate .. " " .. zstate .. " ".. blockNameyy .." " .. thingyyface)
-        orderofexecuting[cqnter] = thingyyface
-        cqnter = cqnter + 1
-    end
-   
-    
-    
-end
-
-
-
-function newsetblock (xSet,ySet,zSet,blockSet)
-    xBlockList[counterBlockNotList] = xSet
-    yBlockList[counterBlockNotList] = ySet
-    zBlockList[counterBlockNotList] = zSet
-    --print("hi")
-    --print(dimension.getBlock(xSet,ySet,zSet).name)
-    --print(dimension.getBlock(xSet,ySet,zSet).data)
-
-
-    if dimension.getBlock(xSet,ySet,zSet).data == 0 or dimension.getBlock(xSet,ySet,zSet).data == nil then
-        newconvertedstateNotList= ""
-    else
-        newconvertedstateNotList = convertAux(dimension.getBlock(xSet,ySet,zSet).name, dimension.getBlock(xSet,ySet,zSet).data)
-    end
-
-
-    blockBlockList[counterBlockNotList] = dimension.getBlock(xSet,ySet,zSet).name .. newconvertedstateNotList -- not added space ?
-    rndBlockList[counterBlockNotList] = curRndBlockNotList
-
-    client.execute("execute /setblock " .. tostring(xSet) .. " " .. tostring(ySet) .. " " .. tostring(zSet) .. " " .. blockSet)
-    --client.execute("execute /setblock " .. tostring(xInSelectedRange).. " " ..tostring(yinSelectedRange).. " " .. tostring(zinSelectedRange) .. " " .. BLOCKYTHING)
-    counterBlockNotList = counterBlockNotList + 1
-    
-end
-
-
-
-
-
-
-function printblocklist()
-    for ij = 0, counterBlockNotList-1 do
-        print(xBlockList[ij] .. ", " .. yBlockList[ij] .. ", " .. zBlockList[ij] .. " ! " .. blockBlockList[ij] .. " ! " .. rndBlockList[ij] )
-    end
-end 
