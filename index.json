@@ -1319,17 +1319,20 @@
     {
       "name": "Voxeliser",
       "description": "Has the command 'load model' which takes in a .obj file with one texture file (no materials) and places it in minecraft",
-      "file": "voxelize.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/voxelize.lua",
+      "file": "voxelise.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/voxelise.lua",
       "libs": [
         "BlockRGB",
-        "geometryLib"
+        "geometryLib",
+        "onDemandRendering",
+        "key-codes"
       ],
       "commands": [
-        "loadModel"
+        "loadModel",
+        "buildFromVis"
       ],
-      "hash": "ecffa597daaac10c2524592ca05dce52",
-      "lastUpdated": "2024-12-20T23:18:50.497Z"
+      "hash": "f990bac88ed4dc27c7e376182758fc90",
+      "lastUpdated": "2025-06-02T17:18:48.258Z"
     },
     {
       "name": "Waypoint Hotkey",
@@ -1381,7 +1384,8 @@
       "file": "WorldEdit.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/WorldEdit.lua",
       "libs": [
-        "auxToState"
+        "auxToState",
+        "blockList"
       ],
       "commands": [
         "WEhelp",
@@ -1389,18 +1393,13 @@
         "WeHelp",
         "fill",
         "replace",
-        "rep",
         "line",
         "mirror",
-        "mir",
         "wall",
         "infinitewater",
-        "infwater",
         "circle",
         "sphere",
         "buildup",
-        "build-up",
-        "bu",
         "pos1",
         "pos2",
         "up",
@@ -1410,13 +1409,18 @@
         "count",
         "wand",
         "selnear",
-        "rot",
         "rotate",
-        "findstate",
-        "undo"
+        "rot",
+        "undo",
+        "copyAlongSel",
+        "addBrush",
+        "removeBrush",
+        "listBrushes",
+        "clearBrushes",
+        "move"
       ],
-      "hash": "40e321e64d8aef5319b992493580b53e",
-      "lastUpdated": "2024-02-11T01:15:26.077Z"
+      "hash": "08beeb059952ad2b660d22eeded5bb0d",
+      "lastUpdated": "2025-06-02T17:18:48.256Z"
     },
     {
       "name": "Zeqa Autoqueue",
@@ -1625,6 +1629,13 @@
       "lastUpdated": "2023-08-25T00:23:02.624Z"
     },
     {
+      "name": "blockList",
+      "file": "blockList.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/blockList.lua",
+      "hash": "4b47a09ee42a18ca378b39517ff50a94",
+      "lastUpdated": "2025-06-02T17:18:48.266Z"
+    },
+    {
       "name": "BlockRGB",
       "file": "BlockRGB.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/BlockRGB.lua",
@@ -1719,8 +1730,8 @@
       "name": "geometryLib",
       "file": "geometryLib.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/geometryLib.lua",
-      "hash": "de465d0e5f3dd0e17134516df00e8bd0",
-      "lastUpdated": "2024-12-20T23:18:50.505Z"
+      "hash": "5e9fc9f256f6a261b818ad26cbd696c2",
+      "lastUpdated": "2025-06-02T17:18:48.267Z"
     },
     {
       "name": "gfx2Colors",
@@ -1798,6 +1809,13 @@
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/module.lua",
       "hash": "33b6ecd14b12a0b2ee60c91d047f20a2",
       "lastUpdated": "2022-08-24T19:42:31.000Z"
+    },
+    {
+      "name": "onDemandRendering",
+      "file": "onDemandRendering.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/onDemandRendering.lua",
+      "hash": "3090a5af7eee8ea5bb4d04c99eeb7159",
+      "lastUpdated": "2025-06-02T17:18:48.267Z"
     },
     {
       "name": "OnixClientVSLogger",
