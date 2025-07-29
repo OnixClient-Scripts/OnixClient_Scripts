@@ -1,6 +1,6 @@
 ---@diagnostic disable: lowercase-global
 name = "Cape Switcher"
-description = "Lets you swap and manage your capes, directly from inside the game! (Doesn't apply on join)."
+description = "THERE HAVE BEEN KNOWN BANS ON THE HIVE WHEN USING THIS SCRIPT, BE CAREFUL. Lets you swap and manage your capes, directly from inside the game! (Doesn't apply on join)."
 
 selfmod = client.settings.addAir(0).parent
 for _, setting in pairs(selfmod.settings) do
