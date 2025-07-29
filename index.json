@@ -197,13 +197,13 @@
     },
     {
       "name": "Cape Switcher",
-      "description": "THERE HAVE BEEN KNOWN BANS ON THE HIVE WHEN USING THIS SCRIPT, BE CAREFUL. Lets you swap and manage your capes, directly from inside the game! (Doesn't apply on join).",
+      "description": "THERE HAVE BEEN KNOWN BANS ON THE HIVE WHEN USING THIS THIRD PARTY SCRIPT, BE CAREFUL. Lets you swap and manage your capes, directly from inside the game! (Doesn't apply on join).",
       "file": "CapeSwitcher.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/CapeSwitcher.lua",
       "libs": [],
       "commands": [],
-      "hash": "19ccb9d5ae379b217a38497f9e655119",
-      "lastUpdated": "2025-07-29T22:31:32.648Z"
+      "hash": "54fcde73821e787f76a70dc032666630",
+      "lastUpdated": "2025-07-29T22:32:27.890Z"
     },
     {
       "name": "Cat Switcher",
