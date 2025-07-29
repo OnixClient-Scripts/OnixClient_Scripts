@@ -197,13 +197,13 @@
     },
     {
       "name": "Cape Switcher",
-      "description": "Lets you swap and manage your capes, directly from inside the game! (Doesn't apply on join).",
+      "description": "THERE HAVE BEEN KNOWN BANS ON THE HIVE WHEN USING THIS SCRIPT, BE CAREFUL. Lets you swap and manage your capes, directly from inside the game! (Doesn't apply on join).",
       "file": "CapeSwitcher.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/CapeSwitcher.lua",
       "libs": [],
       "commands": [],
-      "hash": "69bdf6618aedaf4cbc6c551f23d5bb59",
-      "lastUpdated": "2024-05-15T20:28:06.791Z"
+      "hash": "19ccb9d5ae379b217a38497f9e655119",
+      "lastUpdated": "2025-07-29T22:31:32.648Z"
     },
     {
       "name": "Cat Switcher",
