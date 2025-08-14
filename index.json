@@ -1629,6 +1629,13 @@
       "lastUpdated": "2023-08-25T00:23:02.624Z"
     },
     {
+      "name": "BetterPrint",
+      "file": "BetterPrint.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/BetterPrint.lua",
+      "hash": "f0d6ff2ef7adada108c1545e81b47232",
+      "lastUpdated": "2025-08-14T03:52:45.168Z"
+    },
+    {
       "name": "blockList",
       "file": "blockList.lua",
       "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Libs/blockList.lua",
