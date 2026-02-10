@@ -1274,6 +1274,16 @@
       "lastUpdated": "2024-03-18T21:36:36.814Z"
     },
     {
+      "name": "Terminal",
+      "description": "Terminal script for Minecraft using the games chat. (Not a real terminal, just lets you run commands in the chat from any screen.)",
+      "file": "Terminal.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/Terminal.lua",
+      "libs": [],
+      "commands": [],
+      "hash": "925a7db0c87a8902bf23b38bff3693d0",
+      "lastUpdated": "2026-02-10T20:01:33.838Z"
+    },
+    {
       "name": "TestLuaMod",
       "description": "A simple module to test lua module stuff",
       "file": "testluamod.lua",
