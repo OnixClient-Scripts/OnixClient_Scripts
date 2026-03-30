@@ -2,11 +2,13 @@
 name = "Cape Switcher"
 description = "THERE HAVE BEEN KNOWN BANS ON THE HIVE WHEN USING THIS THIRD PARTY SCRIPT, BE CAREFUL. Lets you swap and manage your capes, directly from inside the game! (Doesn't apply on join)."
 
-selfmod = client.settings.addAir(0).parent
-for _, setting in pairs(selfmod.settings) do
-    if setting.name == "Key" then
-        setting.visible = false
-        break
+function postInit()
+    local selfmod = client.settings.addAir(0).parent
+    for _, setting in pairs(selfmod.settings) do
+        if setting.saveName == "module.module.setting.key.name" then
+            setting.visible = false
+            break
+        end
     end
 end
 
