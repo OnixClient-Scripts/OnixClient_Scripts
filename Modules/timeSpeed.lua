@@ -1,6 +1,6 @@
 -- Made By O2Flash20 🙂
 name = "Daylight Cycle Speed Changer"
-description = "Changes the speed of the day/night cycle. 1 is normal speed."
+description = "NOTE: Environemnt Changer now includes this feature. This module is now purely for demonstration and example purposes.\nChanges the speed of the day/night cycle. 1 is normal speed."
 
 info = [[The Environment Changer mod MUST be enabled and "Change Time" must be on for this to work!]]
 client.settings.addInfo("info")
