@@ -823,16 +823,6 @@
       "lastUpdated": "2023-01-12T23:57:33.000Z"
     },
     {
-      "name": "Kill Aura",
-      "description": "Automatically kills mobs around you.",
-      "file": "KillAura.lua",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/KillAura.lua",
-      "libs": [],
-      "commands": [],
-      "hash": "6e8ebe2d9939a2450acc1d51a21edf76",
-      "lastUpdated": "2023-05-10T13:26:36.000Z"
-    },
-    {
       "name": "Left Hand",
       "description": "Moves the left hand to the left side of the screen.",
       "file": "LeftHand.lua",
