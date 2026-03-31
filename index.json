@@ -1193,12 +1193,12 @@
     {
       "name": "SlashKill Aura",
       "description": "Automatically kills mobs around you.",
-      "file": "SlashKillAura",
-      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/SlashKillAura",
+      "file": "SlashKillAura.lua",
+      "url": "https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/SlashKillAura.lua",
       "libs": [],
       "commands": [],
       "hash": "296ed17c69198c6cb3f5f0e9133be55b",
-      "lastUpdated": "2026-03-31T16:59:23.393Z"
+      "lastUpdated": "2026-03-31T17:03:20.667Z"
     },
     {
       "name": "Slime Chunk Finder",
