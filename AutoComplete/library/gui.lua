@@ -61,6 +61,8 @@ function gui.sound(name, volume, pitch) end
 ---Stops all sound that are playing
 function gui.stopallsound() end
 
+---Stops a sound that may or may not be playing.
+function gui.stopsound(name) end
 
 ---Gets the user's theme
 ---@return Theme theme The user's theme
